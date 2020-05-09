@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Enfant:</strong>
+  <%= @absence.enfant.nom_et_prénom %>
+</p>
+
+<p>
+  <strong>Début:</strong>
+  <%= @absence.début %>
+</p>
+
+<p>
+  <strong>Fin:</strong>
+  <%= @absence.fin %>
+</p>
+
+<p>
+  <strong>Matin:</strong>
+  <%= @absence.matin %>
+</p>
+
+<p>
+  <strong>Midi:</strong>
+  <%= @absence.midi %>
+</p>
+
+<p>
+  <strong>Soir:</strong>
+  <%= @absence.soir %>
+</p>
+
+<%= link_to 'Editer', edit_absence_path(@absence) %> |
+<%= link_to 'Retour', absences_path %>

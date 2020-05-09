@@ -1,0 +1,13 @@
+<%= bootstrap_form_with(url: absences_path, model: absence, method: :post, local: true) do |form| %>
+
+  <%= form.hidden_field :enfant_id %>
+  <%= form.date_select :début %>
+  <%= form.date_select :fin %>
+  <%= form.check_box :matin, custom: :switch %>
+  <%= form.check_box :midi, custom: :switch %>
+  <%= form.check_box :soir, custom: :switch %>
+  <br />
+
+  <%= form.submit "Enregistrer", class: "btn btn-success" %>
+
+<% end %>

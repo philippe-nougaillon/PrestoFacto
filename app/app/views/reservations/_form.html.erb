@@ -1,0 +1,31 @@
+<%= bootstrap_form_with(model: reservation, local: true) do |form| %>
+
+  <p>
+    <h2>
+      <%= @reservation.enfant.nom_et_prénom %>
+    </h2>
+  </p>
+
+  <%= form.hidden_field :enfant_id %>
+  <%= form.select :prestation_type_id, options_from_collection_for_select(@prestation_types, 'id', 'nom', reservation.prestation_type_id), { label: "Prestation type:", wrapper: { class: 'has-warning', data: { foo: 'bar' } } }, { class: "selectpicker" } %>
+  <%= form.date_select :début %>
+  <%= form.date_select :fin %>
+  
+  <div class="row">
+    <div class="col"><%= form.text_field :lundi %></div>
+    <div class="col"><%= form.text_field :mardi %></div>
+    <div class="col"><%= form.text_field :mercredi %></div>
+    <div class="col"><%= form.text_field :jeudi %></div>
+    <div class="col"><%= form.text_field :vendredi %></div>
+  </div>
+
+  <%= form.check_box :matin, custom: :switch %>
+  <%= form.check_box :midi, custom: :switch %>
+  <%= form.check_box :soir, custom: :switch %>
+  <br />
+  <%= form.check_box :active, custom: :switch %>
+  <br />
+
+  <%= form.submit "Enregistrer", class: "btn btn-success" %>
+
+<% end %>

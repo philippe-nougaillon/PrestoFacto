@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Enfant:</strong>
+  <%= @reservation.enfant %>
+</p>
+
+<p>
+  <strong>Prestation type:</strong>
+  <%= @reservation.prestation_type %>
+</p>
+
+<p>
+  <strong>Début:</strong>
+  <%= @reservation.début %>
+</p>
+
+<p>
+  <strong>Fin:</strong>
+  <%= @reservation.fin %>
+</p>
+
+<p>
+  <strong>Lundi:</strong>
+  <%= @reservation.lundi %>
+</p>
+
+<p>
+  <strong>Mardi:</strong>
+  <%= @reservation.mardi %>
+</p>
+
+<p>
+  <strong>Mercredi:</strong>
+  <%= @reservation.mercredi %>
+</p>
+
+<p>
+  <strong>Jeudi:</strong>
+  <%= @reservation.jeudi %>
+</p>
+
+<p>
+  <strong>Vendredi:</strong>
+  <%= @reservation.vendredi %>
+</p>
+
+<p>
+  <strong>Matin:</strong>
+  <%= @reservation.matin %>
+</p>
+
+<p>
+  <strong>Midi:</strong>
+  <%= @reservation.midi %>
+</p>
+
+<p>
+  <strong>Soir:</strong>
+  <%= @reservation.soir %>
+</p>
+
+<%= link_to 'Edit', edit_reservation_path(@reservation) %> |
+<%= link_to 'Back', reservations_path %>

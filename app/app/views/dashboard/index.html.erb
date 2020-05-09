@@ -1,0 +1,14 @@
+<header>
+    <h2>
+        Welcome <%= current_user.email %> !
+    </h2>
+    <h2>
+        You are using Rails <%= Rails.version %>
+    </h2>
+</header>
+<section>
+    <p>
+        Dashboard
+    </p>
+    <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+</section>

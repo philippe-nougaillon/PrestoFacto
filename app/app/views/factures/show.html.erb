@@ -1,0 +1,86 @@
+<div class="card">
+  <div class="card-header">
+    <h5>  
+      FACTURE #<%= @facture.réf %> | <%= @facture.compte.nom %>
+    </h5>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+        <p>
+          <strong>Date:</strong>
+          <%= l @facture.date.to_date %>
+        </p>
+
+        <p>
+          <strong>Echéance le:</strong>
+          <%= l @facture.échéance.to_date %>
+        </p>
+
+        <p>
+          <strong>Envoyée le:</strong>
+          <%= l @facture.envoyée_le if @facture.envoyée_le %>
+        </p>
+
+        <p>
+          <strong>Vérifiée:</strong>
+          <i class="<%= @facture.vérifiée ? "far fa-check-circle" : "" %>"></i>
+        </p>
+      </div>
+
+      <div class="col">
+        <p>
+          <strong>Etat:</strong>
+          <span class="badge <%= @facture.style %>"><%= @facture.try(:workflow_state).try(:humanize) %></span>        </p>
+        <p>
+          <strong>Mémo:</strong>
+          <%= @facture.mémo %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <% if policy(@facture).show? %>
+        <%= link_to facture_url(@facture, format: :pdf) do %>
+            <i class="far fa-file-pdf"></i> PDF
+        <% end %>
+    <% end %>
+    |
+    <%= link_to edit_facture_path(@facture) do %>
+      <i class="far fa-edit"></i> Editer
+    <% end %>
+    |
+    <%= link_to 'Retour', factures_path %>
+  </div>
+</div>
+<br>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Intitulé</th>
+      <th>Prestation</th>
+      <th>Qté</th>
+      <th>Prix</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <% @facture.facture_lignes.each do |ligne| %>
+    <tr>
+      <td><%= ligne.intitulé %></td>
+      <td><%= ligne.prestation_type.nom %></td>
+      <td class="text-right"><%= ligne.qté %></td>
+      <td class="text-right"><%= number_to_currency(ligne.prix, unit: '€', precision: 2, format: "%n %u") %></td>
+      <td class="text-right"><%= number_to_currency(ligne.total, unit: '€', precision: 2, format: "%n %u") %></td>
+    </tr>
+  <% end %>
+  <tfoot>
+    <tr>
+      <td colspan=4></td>
+      <td class="text-right">
+        <b><%= number_to_currency(@facture.montant, unit: '€', precision: 2, format: "%n %u") %></b>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+
