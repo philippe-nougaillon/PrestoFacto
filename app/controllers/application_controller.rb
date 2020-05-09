@@ -21,7 +21,7 @@ private
     def set_layout_variables
       @ctrl = params[:controller]
 
-      @site_name = "PerFACTO"
+      @site_name = "PrestoFActo"
       version = "v5.1.a"
       @title = @site_name + ' ' + version
     end
