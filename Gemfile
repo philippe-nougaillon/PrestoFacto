@@ -68,3 +68,24 @@ gem 'bootstrap_form'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap4'
 gem 'font_awesome5_rails'
+
+# PDF
+#gem 'wicked_pdf'
+#gem 'wkhtmltopdf-binary'
+
+# XLSX sheet
+gem 'spreadsheet'
+gem 'yaml_db'
+
+# conversion md => html
+#gem 'redcarpet'
+
+gem 'exception_notification'
+gem 'sitemap_generator'
+
+# Sucker Punch is a Ruby asynchronous processing library using concurrent-ruby
+gem 'sucker_punch'
+
+# Ruby finite-state-machine-inspired API for modeling workflow 
+gem 'workflow'
+gem 'workflow-activerecord'

@@ -6,7 +6,7 @@
   <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
     <%= button_to "Se connecter en mode démonstration", admin_mode_demonstration_path, class: "btn btn-md btn-light" %>
     <br />
-    <%= button_to "S'inscrire", new_registration_path(resource_name), class: "btn btn-md btn-light" %>
+    <%= link_to "S'inscrire", new_registration_path(resource_name), class: "btn btn-md btn-light" %>
     <br />
   <% end %>
 

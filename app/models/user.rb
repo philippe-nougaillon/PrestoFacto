@@ -16,7 +16,7 @@ class User < ApplicationRecord
           :rememberable, 
           :validatable,
           :trackable, 
-          :confirmable, 
+          #:confirmable, 
           :lockable
 
   audited
