@@ -1,0 +1,8 @@
+<tr>
+    <td><%= l(audit.created_at, format: :short) %></td>
+    <td><%= audit.try(:user).try(:email) %></td>
+    <td><%= audit.auditable_type %></td>
+    <td style="text-align: right;"><%= audit.auditable_id %></td>
+    <td><%= audit.action.humanize %></td>
+    <td><%= sanitize prettify(audit).join('<br>') %></td>
+</tr>

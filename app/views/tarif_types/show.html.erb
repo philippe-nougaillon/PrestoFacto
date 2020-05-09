@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Organisation:</strong>
+  <%= @tarif_type.organisation %>
+</p>
+
+<p>
+  <strong>Nom:</strong>
+  <%= @tarif_type.nom %>
+</p>
+
+<%= link_to 'Edit', edit_tarif_type_path(@tarif_type) %> |
+<%= link_to 'Back', tarif_types_path %>

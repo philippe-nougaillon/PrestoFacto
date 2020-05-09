@@ -1,0 +1,41 @@
+<h2>Inscription</h2>
+<br />
+
+<div class="row">
+  <div class="col">
+
+    <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+      <div class="form-group">
+        <%= f.email_field :email, autofocus: true, required: true, autocomplete: "email", class: "form-control" %>
+
+        <p>
+          Un courriel va vous être envoyé. Cliquez sur le lien afin de confirmer votre adresse email et de vous connecter.
+        </p>
+
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> caractères minimum)</em>
+        <% end %><br />
+
+        <%= f.password_field :password, required: true, hide_label: true, autocomplete: "new-password", class: "form-control" %>
+        <%= f.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "form-control" %>
+      
+        <%= f.label :organisation %>
+        <%= text_field_tag :organisation, params[:organisation], required: true, placeholder: "Le nom de votre ASSOCIATION / MARIE", class: "form-control" %>
+      
+        <%= f.label :structure %>
+        <%= text_field_tag :structure, params[:structure], required: true, placeholder: "Le nom de la structure (CANTINE / ECOLE / ...)", class: "form-control" %>
+      </div>
+      <br>
+
+
+      <div class="actions">
+        <%= f.submit "S'incrire", class: "btn btn-primary btn-lg" %>
+      </div>
+    <% end %>
+
+  </div>
+
+  <div class="col"></div>
+</div>

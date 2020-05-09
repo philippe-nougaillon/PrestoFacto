@@ -1,0 +1,38 @@
+<%= bootstrap_form_with(model: organisation, local: true) do |form| %>
+
+  <div class="row">
+    <div class="col">
+      <%= form.text_field :nom %>
+      <%= form.text_field :adresse %>
+      <div class="row">
+        <div class="col-sm-3"><%= form.text_field :cp %></div>
+        <div class="col"><%= form.text_field :ville %></div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="row">
+        <div class="col-sm-4"><%= form.text_field :téléphone %></div>
+        <div class="col"><%= form.text_field :email %></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4"><%= form.select :zone, ["A", "B", "C"], { label: "Zone", help: "Zone de vacances scolaires", wrapper: { class: 'has-warning', data: { foo: 'bar' } } }, { class: "selectpicker" } %></div>
+        <div class="col"><%= form.file_field :logo, help: "Votre logo. Apparaît en haut des documents", placeholder: "Choisir un fichier image" %></div>
+      </div>
+    </div>
+  </div>
+
+  <p>
+    <h3><i class="fas fa-school"></i> Structures</h3>
+    <%= form.fields_for :structures do |structure_form| %>
+      <div class="row">
+        <div class="col-sm-5"><%= structure_form.text_field :nom, label_as_placeholder: true %></div>
+        <% unless structure_form.object.new_record? or structure_form.object.comptes.any? or structure_form.object.classrooms.any? %>
+          <div class="col"><%= structure_form.check_box :_destroy, label: "Supprimer ?" %></div>
+        <% end %>
+      </div>
+    <% end %>
+  </p>
+
+  <%= form.submit "Enregistrer", class: "btn btn-success" %>
+
+<% end %>

@@ -1,0 +1,24 @@
+<tr>
+    <td><%= absence.enfant.compte.structure.nom %></td>
+    <td><%= absence.enfant.nom_et_prénom %></td>
+    <td><%= absence.enfant.classroom.nom %></td>
+    <td><%= l absence.début %></td>
+    <td><%= l absence.fin %></td>
+    <td class="text-center"><i class="<%= absence.matin ? "far fa-check-circle" : "" %>"></i></td>
+    <td class="text-center"><i class="<%= absence.midi ? "far fa-check-circle" : "" %>"></i></td>
+    <td class="text-center"><i class="<%= absence.soir ? "far fa-check-circle" : "" %>"></i></td>
+    <td>
+        <% if policy(absence).edit? %>
+            <%= link_to  edit_absence_path(absence) do %>
+                <i class="far fa-edit"></i>
+            <% end %>
+        <% end %>
+    </td>
+    <td>
+        <% if policy(absence).destroy? %>
+            <%= link_to absence, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
+                <i class="fas fa-trash-alt"></i>
+            <% end %>
+        <% end %>
+    </td>
+</tr>

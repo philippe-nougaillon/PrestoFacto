@@ -1,0 +1,48 @@
+<p>
+  <h2>
+    <%= @structure.nom %>
+  </h2>
+</p>
+
+<p>
+  <strong>Adresse:</strong>
+  <%= @structure.adresse %>
+</p>
+
+<p>
+  <strong>Cp:</strong>
+  <%= @structure.cp %>
+</p>
+
+<p>
+  <strong>Ville:</strong>
+  <%= @structure.ville %>
+</p>
+<br />
+
+<p>
+  <h3>Classes</h3>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Référent</th>
+        <th>Enfants</th>
+      </tr>
+    </thead>
+
+  <% @structure.classrooms.each do |classroom| %>
+    <tr>
+      <td><%= classroom.nom %></td>
+      <td><%= classroom.référent %></td>
+      <td><%= classroom.enfants.size %></td>
+    </tr>
+  <% end %>
+  </table>
+</p>
+
+<% if policy(@structure).edit? %>
+  <%= link_to  edit_structure_path(@structure), class: "btn text-primary" do %>
+    <i class="far fa-edit"></i> Editer
+  <% end %>
+<% end %>

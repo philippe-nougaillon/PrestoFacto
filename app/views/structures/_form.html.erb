@@ -1,0 +1,26 @@
+<%= bootstrap_form_with(model: structure, local: true) do |form| %>
+
+  <%= form.hidden_field :organisation_id %>
+  <div class="row">
+    <div class="col-sm-6"><%= form.text_field :nom %></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4"><%= form.text_field :adresse %></div>
+    <div class="col-sm-2"><%= form.text_field :cp %></div>
+    <div class="col"><%= form.text_field :ville %></div>
+  </div>
+  <hr />
+
+  <h3>Classes</h3>
+  <%= form.fields_for :classrooms do |classroom_form| %>
+    <div class="row">
+      <div class="col"><%= classroom_form.text_field :nom, label_as_placeholder: true %></div>
+      <div class="col"><%= classroom_form.text_field :référent, label_as_placeholder: true %></div>
+      <div class="col"><%= classroom_form.check_box :_destroy, label: "Supprimer ?" %></div>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit "Enregistrer", class: "btn btn-success" %>
+  </div>
+<% end %>

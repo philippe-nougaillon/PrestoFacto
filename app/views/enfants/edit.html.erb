@@ -1,0 +1,6 @@
+<h2><%= @enfant.prénom_et_nom %></h2>
+
+<%= render 'form', enfant: @enfant %>
+
+<%= link_to 'Voir', @enfant %> |
+<%= link_to 'Retour', enfants_path %>

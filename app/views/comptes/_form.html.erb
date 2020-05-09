@@ -1,0 +1,34 @@
+<%= bootstrap_form_with(model: compte, local: true) do |form| %>
+
+  <div class="row">
+    <div class="col-sm-4">
+      <%= form.select :structure_id, options_from_collection_for_select(@structures, 'id', 'nom', @compte.structure_id), { label: "Structure", wrapper: { class: 'has-warning', data: { foo: 'bar' } } }, { class: "selectpicker" } %>
+      <%= form.text_field :nom, required: true  %>
+      <%= form.select :civilité, ["M","Mme","M et Mme"] %>
+      <%= form.text_field :adresse1 %>
+      <%= form.text_field :adresse2 %>
+      <div class="row">
+        <div class="col-sm-4"><%= form.text_field :cp %></div>
+        <div class="col-sm-8"><%= form.text_field :ville %></div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <%= form.text_field :num_allocataire %>
+      <%= form.text_area :mémo %>
+
+      <h3>Contacts</h3>
+      <%= form.fields_for :contacts do |contact_form| %>
+        <div class="row">
+            <div class="col"><%= contact_form.text_field :nom, label_as_placeholder: true %></div>
+            <div class="col"><%= contact_form.text_field :fixe, label_as_placeholder: true %></div>
+            <div class="col"><%= contact_form.text_field :portable, label_as_placeholder: true %></div>
+            <div class="col"><%= contact_form.text_field :email, label_as_placeholder: true %></div>
+            <div class="col"><%= contact_form.check_box :_destroy, label: "Supprimer ?" %></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= form.submit "Enregistrer", class: "btn btn-success" %>
+
+<% end %>

@@ -1,0 +1,23 @@
+<tr>
+    <td><%= prestation.enfant.compte.structure.nom %></td>
+    <td><%= l prestation.date %></td>
+    <td><%= prestation.prestation_type.nom %></td>
+    <td><%= link_to prestation.enfant.nom, prestation.enfant.compte, class: "text-primary" %></td>
+    <td><%= link_to prestation.enfant.prénom, prestation.enfant, class: "text-primary" %></td>
+    <td><%= prestation.enfant.classroom.nom %></td>
+    <td><%= prestation.qté %></td>
+    <td>
+        <% if policy(prestation).edit? %>
+            <%= link_to edit_prestation_path(prestation) do %>
+                <i class="far fa-edit"></i>
+            <% end %>
+        <% end %>
+    </td>
+    <td>
+        <% if policy(prestation).destroy? %>
+            <%= link_to prestation, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
+                <i class="fas fa-trash-alt"></i>
+            <% end %>
+        <% end %>
+    </td>
+</tr>

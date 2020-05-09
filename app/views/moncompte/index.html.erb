@@ -1,0 +1,184 @@
+<div class="row">
+  <div class="col">
+    <div class="card">
+      <div class="card-header">
+        <h2><%= @compte.nom %></h2>
+      </div>
+      <div class="card-body">
+        <p>
+          <strong>Nom:</strong>
+          <%= @compte.civilité %>
+          <%= @compte.nom %>
+        </p>
+
+        <p>
+          <strong>Adresse:</strong>
+          <%= @compte.adresse1 %>
+          <%= @compte.adresse2 %>
+        </p>
+
+        <p>
+          <strong>Ville:</strong>
+          <%= @compte.cp %> <%= @compte.ville %>
+        </p>
+
+        <p>
+          <strong>Num allocataire:</strong>
+          <%= @compte.num_allocataire %>
+        </p>
+      </div>
+
+      <div class="card-footer">
+        <% if policy(@compte).edit? %>
+          <%= link_to edit_compte_path(@compte), class: "btn text-primary" do %>
+            <i class="far fa-edit"></i> Editer compte
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <strong>Contacts</strong>
+        <table class="table table-hover table-borderless table-sm">
+          <% @compte.contacts.each do |contact| %>
+            <tr>
+              <td><%= contact.nom %></td>
+              <td><%= [contact.fixe, contact.portable, contact.email].join(' / ') %>
+              <td><%= contact.mémo %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+
+      <div class="card-footer">
+        <% if policy(@compte).edit? %>
+          <%= link_to edit_compte_path(@compte), class: "btn text-primary" do %>
+            <i class="far fa-edit"></i> Editer compte
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <br />
+
+    <div class="card">
+      <div class="card-body">
+        <strong>Factures: </strong>
+        <%= number_to_currency(@total_factures, unit: '€', precision: 2, format: "%n %u")  %>
+        | 
+        <strong>Paiements: </strong>
+        <%= number_to_currency(@total_paiements, unit: '€', precision: 2, format: "%n %u")  %>
+        | 
+        <strong>Solde: </strong>
+        <%= number_to_currency(@solde, unit: '€', precision: 2, format: "%n %u")  %>
+      </div>
+      <div class="card-footer">
+        <% if policy(Paiement).new? %>
+          <%= link_to new_paiement_path(compte_id: @compte.id), data: {toggle: "modal", target: "#myModalNewPaiement" }, class: "btn btn-sm" do %>
+            <i class="far fa-money-bill-alt"></i> Ajouter un paiement
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>
+  <h3><i class="fas fa-child"></i> Enfants</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Date naissance</th>
+        <th>Classe</th>
+        <th>Menu SP?</th>
+        <th>Menu ALLERGIE?</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tfoot><tr><% 8.times do %><th /><% end %></tr></tfoot>
+
+    <% @compte.enfants.each do |enfant| %>
+      <tr>
+        <td><%= enfant.nom %></td>
+        <td><%= enfant.prénom %></td>
+        <td><%= l enfant.date_naissance %></td>
+        <td><%= enfant.classroom.nom %></td>
+        <td class="text-center"><i class="<%= enfant.menu_sp ? "far fa-check-circle" : "" %>"></i></td>
+        <td class="text-center"><i class="<%= enfant.menu_all ? "far fa-check-circle" : "" %>"></i></td>
+        <td>
+          <% if policy(enfant).edit? %>
+            <%= link_to edit_enfant_path(enfant) do %>
+              <i class="far fa-edit"></i>
+            <% end %>
+          <% end %>
+        </td>
+        <td>
+          <% if policy(enfant).destroy? %>
+            <%= link_to enfant, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
+                <i class="fas fa-trash-alt"></i>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</p>
+
+<p>
+  <h3><i class="fas fa-balance-scale""></i> Balance</h3>
+
+  <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Type</th>
+        <th>Référence</th>
+        <th class="text-right">Débit</th>
+        <th class="text-right">Crédit</th>
+        <th class="text-right">Solde</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @releve.each do |ligne| %>
+        <%= render partial: 'comptes/balance', locals: {ligne: ligne} %>
+      <% end %>
+    </tbody>
+
+    <tfoot>
+      <tr>
+        <th><%= l Date.today %></th>
+        <th>SOLDE</th>
+        <th />
+        <th class="text-right"><%= number_to_currency(@debit, unit:'€') %></th>
+        <th class="text-right"><%= number_to_currency(@credit, unit:'€') %></th>
+        <th class="text-right"><%= number_to_currency(@solde, unit:'€') %></th>
+      </tr>
+    </tfoot>
+  </table>
+</p>
+
+
+
+<div class="modal fade" id="myModalNewPaiement">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Nouveau Paiement</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <%= render 'paiements/form', paiement: Paiement.new(compte_id: @compte.id) %>
+      </div>
+    </div>
+  </div>
+</div>
