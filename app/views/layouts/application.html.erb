@@ -80,11 +80,11 @@
           <% if current_user %>
             <% if current_user.admin? %>
               <li class="nav-item">
-                <%= link_to admin_index_url, class: "nav-link" do %><i class="fas fa-users-cog"></i></span> Administration<% end %>
+                <%= link_to admin_index_url, class: "nav-link" do %><i class="fas fa-fw fa-users-cog"></i></span> Administration<% end %>
               </li>
             <% end %>
             <li class="nav-item">
-              <%= link_to destroy_user_session_path, method: :delete, title: "Fermer la session de #{current_user.email}", class: "nav-link" do %><i class="fas fa-sign-out-alt"></i></span> Déconnexion<% end %> 
+              <%= link_to destroy_user_session_path, method: :delete, title: "Fermer la session de #{current_user.email}", class: "nav-link" do %><i class="fas fa-fw fa-sign-out-alt"></i></span> Déconnexion<% end %> 
             </li>
           <% else %>
             <li class="nav-item">
