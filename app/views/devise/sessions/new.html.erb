@@ -1,24 +1,23 @@
-<br><br>
-
 <div class="row">
 
   <div class="col-sm-9">
     <div class="shadow p-1 mb-1 bg-white">
       <div class="container" style="height: 600px; overflow-y: scroll;">
-        <h3>
-          <%= @site_name %>
-          <br>
-          <small>
-            <i>Facturation de services journaliers (repas, garderie, périscolaires, etc...)</i>
-          </small>
-        </h3>
-        <p>
-          PrestoFActo est destiné aux petites collectivités, mairies, écoles, centre de loisirs... 
-          Cette solution vous aidera dans l’organisation de votre mairie et vous fera gagner un temps précieux en simplifiant 
-          la gestion administrative et la facturation de vos cantines et services péri-scolaires. 
-        </p>
+        <h3><br><%= @site_name %></h3>
 
-        <div class="pb-2 mt-4 mb-2 border-bottom">Quoi de neuf ?</div>
+        <h6>
+          <i>Facturation de services journaliers (repas, garderie, périscolaires, etc...)</i>
+        </h6>
+        <br>
+
+        <pre>
+          PrestoFActo est destiné aux petites collectivités, mairies, écoles, centre de loisirs... 
+          Cette solution vous aidera dans l’organisation de votre mairie/association 
+          et vous fera gagner un temps précieux en simplifiant la gestion administrative et 
+          la facturation de vos cantines, services péri-scolaires et autres prestations. 
+        </pre>
+
+        <div class="pb-2 mt-4 mb-2 border-bottom">Nouveautés</div>
         <%= render Blog.all %>
       
       </div>
