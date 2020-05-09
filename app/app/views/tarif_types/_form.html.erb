@@ -1,8 +1,0 @@
-<%= bootstrap_form_with(model: tarif_type, local: true) do |form| %>
-
-  <%= form.hidden_field :organisation_id %>
-  <%= form.text_field :nom, required: true %>
-
-  <%= form.submit "Enregistrer", class: "btn btn-success" %>
-
-<% end %>

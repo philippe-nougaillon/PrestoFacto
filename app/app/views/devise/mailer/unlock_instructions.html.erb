@@ -1,7 +1,0 @@
-<p>Bonjour <%= @resource.email %>!</p>
-
-<p>Votre compte a été verrouillé en raison d'un nombre excessif de signes infructueux dans les tentatives.</p>
-
-<p>Cliquez sur le lien ci-dessous pour déverrouiller votre compte :</p>
-
-<p><%= link_to 'Déverrouiller mon compte', unlock_url(@resource, unlock_token: @token) %></p>

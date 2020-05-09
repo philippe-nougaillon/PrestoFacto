@@ -1,9 +1,0 @@
-<%= bootstrap_form_with(model: tarif, local: true) do |form| %>
-
-  <%= form.select :tarif_type_id, options_from_collection_for_select(current_user.organisation.tarif_types, 'id', 'nom', tarif.tarif_type_id), { label: "Type de Tarif" }, { class: "selectpicker" } %>
-  <%= form.select :prestation_type_id, options_from_collection_for_select(current_user.organisation.prestation_types, 'id', 'nom', tarif.prestation_type_id), { label: "Type de Prestation" }, { class: "selectpicker" } %>
-  <%= form.number_field :prix, step: :any, required: true %>
-
-  <%= form.submit "Enregistrer", class: "btn btn-success" %>
-
-<% end %>
