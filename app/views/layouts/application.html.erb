@@ -16,63 +16,63 @@
     <div class="row">
       <div class="col-sm-2">
         <ul class="nav nav-tabs flex-column ">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="/">
             <%= image_tag 'logo.jpg', width: 170 %>
           </a>
 
           <span class="navbar-text"></span>
 
           <li class="nav-item">
-            <%= link_to root_url, class: "nav-link" do %>
+            <%= link_to root_url, class: "nav-link text-secondary" do %>
               <i class="fas fa-fw fa-users"></i>
               Comptes
             <% end %>
           </li>
           
           <li class="nav-item">
-            <%= link_to enfants_url, class: "nav-link" do %>
+            <%= link_to enfants_url, class: "nav-link text-secondary" do %>
             <i class="fas fa-fw fa-child"></i> 
               Enfants
             <% end %>
           </li>
           
           <li class="nav-item">
-            <%= link_to reservations_url, class: "nav-link" do %>
+            <%= link_to reservations_url, class: "nav-link text-secondary" do %>
               <i class="fas fa-fw fa-calendar-alt"></i> 
               Réservations
             <% end %>
           </li>
           
           <li class="nav-item">
-            <%= link_to absences_url, class: "nav-link" do %>
+            <%= link_to absences_url, class: "nav-link text-secondary" do %>
               <i class="fas fa-fw fa-calendar-times"></i>
               Absences
             <% end %>
           </li>
           
           <li class="nav-item">
-            <%= link_to prestations_url, class: "nav-link" do %>
+            <%= link_to prestations_url, class: "nav-link text-secondary" do %>
               <i class="fas fa-fw fa-utensils"></i>
               Prestations
             <% end %>
           </li>
           
           <li class="nav-item">
-            <%= link_to factures_url, class: "nav-link" do %>
+            <%= link_to factures_url, class: "nav-link text-secondary" do %>
               <i class="fas fa-fw fa-file-invoice"></i>
               Factures
             <% end %>
           </li>
           
           <li class="nav-item">
-            <%= link_to paiements_url, class: "nav-link" do %>
+            <%= link_to paiements_url, class: "nav-link text-secondary" do %>
               <i class="far fa-fw fa-money-bill-alt"></i>
               Paiements
             <% end %>
           </li>
           
           <li class="nav-item">
-            <a class="nav-link disabled" href="#"></a>
+            <a class="nav-link text-secondary disabled" href="#"></a>
           </li>
 
           <span class="navbar-text"></span>
@@ -80,20 +80,20 @@
           <% if current_user %>
             <% if current_user.admin? %>
               <li class="nav-item">
-                <%= link_to admin_index_url, class: "nav-link" do %><i class="fas fa-fw fa-users-cog"></i></span> Administration<% end %>
+                <%= link_to admin_index_url, class: "nav-link text-secondary" do %><i class="fas fa-fw fa-users-cog"></i></span> Administration<% end %>
               </li>
             <% end %>
             <li class="nav-item">
-              <%= link_to destroy_user_session_path, method: :delete, title: "Fermer la session de #{current_user.email}", class: "nav-link" do %><i class="fas fa-fw fa-sign-out-alt"></i></span> Déconnexion<% end %> 
+              <%= link_to destroy_user_session_path, method: :delete, title: "Fermer la session de #{current_user.email}", class: "nav-link text-secondary" do %><i class="fas fa-fw fa-sign-out-alt"></i></span> Déconnexion<% end %> 
             </li>
           <% else %>
             <li class="nav-item">
-              <%= link_to guide_about_url, class: "nav-link" do %></span>
+              <%= link_to guide_about_url, class: "nav-link text-secondary" do %></span>
                 A propos
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to guide_utilisation_url, class: "nav-link" do %></span>
+              <%= link_to guide_utilisation_url, class: "nav-link text-secondary" do %></span>
                 Guide d'utilisation
               <% end %>
             </li>
