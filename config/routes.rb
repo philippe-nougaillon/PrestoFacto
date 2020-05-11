@@ -42,7 +42,7 @@ Rails.application.routes.draw do
 
   namespace :guide do
     get :a_propos
-    get :utilisation
+    get :guide
   end
   
   root 'comptes#index'
