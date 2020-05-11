@@ -22,54 +22,13 @@
 
           <span class="navbar-text"></span>
 
-          <li class="nav-item">
-            <%= link_to root_url, class: "nav-link text-secondary" do %>
-              <i class="fas fa-fw fa-users"></i>
-              Comptes
-            <% end %>
-          </li>
-          
-          <li class="nav-item">
-            <%= link_to enfants_url, class: "nav-link text-secondary" do %>
-            <i class="fas fa-fw fa-child"></i> 
-              Enfants
-            <% end %>
-          </li>
-          
-          <li class="nav-item">
-            <%= link_to reservations_url, class: "nav-link text-secondary" do %>
-              <i class="fas fa-fw fa-calendar-alt"></i> 
-              Réservations
-            <% end %>
-          </li>
-          
-          <li class="nav-item">
-            <%= link_to absences_url, class: "nav-link text-secondary" do %>
-              <i class="fas fa-fw fa-calendar-times"></i>
-              Absences
-            <% end %>
-          </li>
-          
-          <li class="nav-item">
-            <%= link_to prestations_url, class: "nav-link text-secondary" do %>
-              <i class="fas fa-fw fa-utensils"></i>
-              Prestations
-            <% end %>
-          </li>
-          
-          <li class="nav-item">
-            <%= link_to factures_url, class: "nav-link text-secondary" do %>
-              <i class="fas fa-fw fa-file-invoice"></i>
-              Factures
-            <% end %>
-          </li>
-          
-          <li class="nav-item">
-            <%= link_to paiements_url, class: "nav-link text-secondary" do %>
-              <i class="far fa-fw fa-money-bill-alt"></i>
-              Paiements
-            <% end %>
-          </li>
+          <%= navbar_nav_item('comptes', 'users') %>
+          <%= navbar_nav_item('enfants', 'child') %>
+          <%= navbar_nav_item('reservations', 'calendar-alt') %>
+          <%= navbar_nav_item('absences', 'calendar-times') %>
+          <%= navbar_nav_item('prestations', 'utensils') %>
+          <%= navbar_nav_item('factures', 'file-invoice') %>
+          <%= navbar_nav_item('paiements', 'money-bill-alt') %>
           
           <li class="nav-item">
             <a class="nav-link text-secondary disabled" href="#"></a>

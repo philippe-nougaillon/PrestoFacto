@@ -19,11 +19,11 @@ class ApplicationController < ActionController::Base
 
 private
     def set_layout_variables
-      @ctrl = params[:controller]
-
       @site_name = "PrestoFActo"
       version = "v5.1.a"
       @title = @site_name + ' ' + version
+
+      @ctrl = params[:controller]
     end
 
     def user_not_authorized

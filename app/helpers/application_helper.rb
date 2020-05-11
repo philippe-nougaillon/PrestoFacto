@@ -12,4 +12,17 @@ module ApplicationHelper
         link_to "<span title=\"#{h link_title}\">#{h title} <i class=\"#{icon}\"></i></span>".html_safe, 
                 url_for(request.parameters.merge(column: column, direction: direction))
     end
+
+    def navbar_nav_item(name, icon)
+        render(inline: %{
+            <li class="nav-item">
+                <%= link_to url_for(controller: '#{name}'), 
+                            class: 'nav-link #{@ctrl == name ? 'active bg-light' : 'text-secondary'}' do %>
+                    <i class='fas fa-fw fa-#{icon}'></i>
+                    #{name.humanize} 
+                <% end %>
+            </li>
+        })
+    end 
+
 end
