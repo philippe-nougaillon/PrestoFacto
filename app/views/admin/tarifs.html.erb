@@ -3,7 +3,71 @@
 </div>
 <br />
 
+<p>
+    <table class="table table-bordered table-striped table-sm">
+      <thead>
+          <tr>
+          <th>Nom du type de Tarif</th>
+          <th>Nom du type de Prestation</th>
+          <th>Prix</th>  
+          <th></th>
+          </tr>
+      </thead>
+      <% @organisation.tarifs.each do |tarif| %>
+          <tr>
+          <td><%= tarif.tarif_type.nom %></td>
+          <td><%= tarif.prestation_type.nom %></td>
+          <td><%= number_to_currency(tarif.prix, unit: '€', precision: 2, format: "%n %u") %></td>
+          <td>
+              <% if policy(tarif).destroy? %>
+              <%= link_to tarif, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
+                  <i class="fas fa-trash-alt"></i>
+              <% end %>
+              <% end %>
+          </td>
+          </tr>
+      <% end %>
+    </table>
+
+    <% if policy(Tarif).new? %>
+      <%= link_to new_tarif_path(organisation_id: @organisation), data: {toggle: "modal", target: "#myModalTarif" }, class: "btn text-primary" do %>
+          <i class="fas fa-plus-circle"></i> Ajouter un tarif
+      <% end %>
+    <% end %>
+</p>
+<br>
+
 <div class="row">
+
+    <div class="col">
+        <h3>Types de tarifs</h3>
+        <table class="table table-bordered table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <% @organisation.tarif_types.each do |tarif_type| %>
+                <tr>
+                    <td><%= link_to tarif_type.nom, edit_tarif_type_path(tarif_type), class: "text-primary" %></td>
+                    <td class="text-right col-sm-1">
+                        <% if policy(tarif_type).destroy? %>
+                            <%= link_to tarif_type, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
+                                <i class="fas fa-trash-alt"></i>
+                            <% end %>
+                        <% end %>
+                    </td>
+                </tr>
+            <% end %>
+        </table>
+        <% if policy(TarifType).new? %>
+            <%= link_to new_tarif_type_path(organisation_id: @organisation), data: {toggle: "modal", target: "#myModalTypeTarif" }, class: "btn text-primary" do %>
+            <i class="fas fa-plus-circle"></i> Ajouter un type de tarif
+            <% end %>
+        <% end %>
+    </div>
+
     <div class="col">
         <h3>Types de prestations</h3>
         <table class="table table-bordered table-striped table-sm">
@@ -34,70 +98,8 @@
         <% end %>
     </div>
 
-    <div class="col">
-        <h3>Types de tarifs</h3>
-        <table class="table table-bordered table-striped table-sm">
-            <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <% @organisation.tarif_types.each do |tarif_type| %>
-                <tr>
-                    <td><%= link_to tarif_type.nom, edit_tarif_type_path(tarif_type), class: "text-primary" %></td>
-                    <td class="text-right col-sm-1">
-                        <% if policy(tarif_type).destroy? %>
-                            <%= link_to tarif_type, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
-                                <i class="fas fa-trash-alt"></i>
-                            <% end %>
-                        <% end %>
-                    </td>
-                </tr>
-            <% end %>
-        </table>
-        <% if policy(TarifType).new? %>
-            <%= link_to new_tarif_type_path(organisation_id: @organisation), data: {toggle: "modal", target: "#myModalTypeTarif" }, class: "btn text-primary" do %>
-            <i class="fas fa-plus-circle"></i> Ajouter un type de tarif
-            <% end %>
-        <% end %>
-    </div>
 </div>
 <br />
-
-<p>
-    <h3>Tarifs</h3>
-    <table class="table table-bordered table-striped table-sm">
-    <thead>
-        <tr>
-        <th>Tarif</th>
-        <th>Prestation</th>
-        <th>Prix</th>  
-        <th></th>
-        </tr>
-    </thead>
-    <% @organisation.tarifs.each do |tarif| %>
-        <tr>
-        <td><%= tarif.tarif_type.nom %></td>
-        <td><%= tarif.prestation_type.nom %></td>
-        <td><%= number_to_currency(tarif.prix, unit: '€', precision: 2, format: "%n %u") %></td>
-        <td>
-            <% if policy(tarif).destroy? %>
-            <%= link_to tarif, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
-                <i class="fas fa-trash-alt"></i>
-            <% end %>
-            <% end %>
-        </td>
-        </tr>
-    <% end %>
-    </table>
-    <% if policy(Tarif).new? %>
-    <%= link_to new_tarif_path(organisation_id: @organisation), data: {toggle: "modal", target: "#myModalTarif" }, class: "btn text-primary" do %>
-        <i class="fas fa-plus-circle"></i> Ajouter un tarif
-    <% end %>
-    <% end %>
-
-</p>
 
 <div class="modal fade" id="myModalTypeTarif">
   <div class="modal-dialog modal-dialog-centered">
