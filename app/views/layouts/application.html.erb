@@ -15,49 +15,53 @@
   <body>
     <div class="row">
       <div class="col-sm-2">
-        <ul class="nav nav-tabs flex-column ">
-          <a class="navbar-brand" href="/">
-            <%= image_tag 'logo.jpg', width: 170 %>
-          </a>
+        <nav class="navbar navbar-expand-sm">
+          <ul class="nav nav-tabs flex-column ">
+            <a class="navbar-brand" href="/">
+              <% 3.times do%>
+                <%= image_tag 'logo.jpg', width: 70 %>
+              <% end %>
+            </a>
 
-          <span class="navbar-text"></span>
+            <span class="navbar-text"></span>
 
-          <%= navbar_nav_item('comptes', 'users') %>
-          <%= navbar_nav_item('enfants', 'child') %>
-          <%= navbar_nav_item('reservations', 'calendar-alt') %>
-          <%= navbar_nav_item('absences', 'calendar-times') %>
-          <%= navbar_nav_item('prestations', 'utensils') %>
-          <%= navbar_nav_item('factures', 'file-invoice') %>
-          <%= navbar_nav_item('paiements', 'money-bill-alt') %>
-          
-          <li class="nav-item">
-            <a class="nav-link text-secondary disabled" href="#"></a>
-          </li>
+            <%= navbar_nav_item('comptes', 'users') %>
+            <%= navbar_nav_item('enfants', 'child') %>
+            <%= navbar_nav_item('reservations', 'calendar-alt') %>
+            <%= navbar_nav_item('absences', 'calendar-times') %>
+            <%= navbar_nav_item('prestations', 'utensils') %>
+            <%= navbar_nav_item('factures', 'file-invoice') %>
+            <%= navbar_nav_item('paiements', 'money-bill-alt') %>
+            
+            <li class="nav-item">
+              <a class="nav-link text-secondary disabled" href="#"></a>
+            </li>
 
-          <span class="navbar-text"></span>
+            <span class="navbar-text"></span>
 
-          <% if current_user %>
-            <% if current_user.admin? %>
+            <% if current_user %>
+              <% if current_user.admin? %>
+                <li class="nav-item">
+                  <%= link_to admin_index_url, class: "nav-link text-secondary" do %><i class="fas fa-fw fa-users-cog"></i></span> Administration<% end %>
+                </li>
+              <% end %>
               <li class="nav-item">
-                <%= link_to admin_index_url, class: "nav-link text-secondary" do %><i class="fas fa-fw fa-users-cog"></i></span> Administration<% end %>
+                <%= link_to destroy_user_session_path, method: :delete, title: "Fermer la session de #{current_user.email}", class: "nav-link text-secondary" do %><i class="fas fa-fw fa-sign-out-alt"></i></span> Déconnexion<% end %> 
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to guide_about_url, class: "nav-link text-secondary" do %></span>
+                  A propos
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to guide_utilisation_url, class: "nav-link text-secondary" do %></span>
+                  Guide d'utilisation
+                <% end %>
               </li>
             <% end %>
-            <li class="nav-item">
-              <%= link_to destroy_user_session_path, method: :delete, title: "Fermer la session de #{current_user.email}", class: "nav-link text-secondary" do %><i class="fas fa-fw fa-sign-out-alt"></i></span> Déconnexion<% end %> 
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <%= link_to guide_about_url, class: "nav-link text-secondary" do %></span>
-                A propos
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to guide_utilisation_url, class: "nav-link text-secondary" do %></span>
-                Guide d'utilisation
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
+          </ul>
+        </nav>
       </div>
 
       <div class="col-sm-10">
