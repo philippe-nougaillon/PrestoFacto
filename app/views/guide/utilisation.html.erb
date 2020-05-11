@@ -1,14 +1,16 @@
 <h2>Guide d'utilisation<br></h2>
 
-<div id="présentation" style="padding-top: 50px;">
+<div id="présentation" style="padding-top: 30px;">
     <h3 class="text-info">Présentation<hr></h3>
     <p class="lead">
-        <%= @site_name %> se présente sous la forme de 7 onglets;  Comptes, Enfants, Réservations, Absences, Prestations, Factures, Paiements, qui vous permettent d'accéder aux données du même nom. 
+        <%= @site_name %> 
+        se présente sous la forme de 7 onglets;  Comptes, Enfants, Réservations, Absences, 
+                Prestations, Factures, Paiements, qui vous permettre d'accéder aux données du même nom. 
     </p>
     <% #= image_tag "guide_utilisation/1_Onglets.png", class: "m-3 d-block img-fluid img-thumbnail" %>
 </div>
 
-<div id="créer_compte" style="padding-top: 50px">
+<div id="créer_compte" style="padding-top: 30px">
     <h3 class="text-info">Créer un compte<hr></h3>
     <p class="lead text-justify">
         Pour créer un nouveau compte, il suffit de se rendre sur la page d'accueil et de cliquer sur le lien "S'inscrire".
@@ -24,15 +26,17 @@
         Organisation/Structures kesako ?
         <br><br>
         Cette nouvelle version  permet de gérer plusieurs structures dans la même "Organisation". 
-        Ainsi, si votre mairie doit gérer plusieurs écoles, vous devrez juste créer autant de structures qu'il y a d'école. Vous pourrez ainsi gérer les comptes familles de manière séparée mais dans la même application.
+        Ainsi, si votre mairie doit gérer plusieurs écoles, vous devrez juste créer autant de structures qu'il y a d'école. 
+        Vous pourrez ainsi gérer les comptes familles de manière distincte dans la même application.
     </p>
 </div>
 
-<div id="organisation" style="padding-top: 50px">
+<div id="organisation" style="padding-top: 30px">
     <h3 class="text-info">Enregistrer votre Organisation<hr></h3>
     <p class="lead text-justify">
-        Une fois connecté, rendez-vous sur la page "Administration".
-        Cette page "Administration" affiche un menu qui donne accès à l'ensemble des paramètres importants, tels que l'Organisation, les Utilisateurs et les Tarifs
+        Une fois connecté.e, rendez-vous sur la page "Administration".
+        Cette page "Administration" affiche un menu qui donne accès à l'ensemble des paramètres importants, 
+        tels que l'Organisation, les Utilisateurs et les Tarifs, etc.
     </p>
 
     <% #= image_tag "guide_utilisation/3_Administration.png", class: "m-3 d-block img-fluid img-thumbnail" %>
@@ -49,7 +53,8 @@
         <br>
         Pour ajouter une nouvelle structure, il vous suffit d'en saisir le nom dans la ligne vierge immédiatement en dessous.
         <br>
-        Pour supprimer une structure, une case à cocher "Supprimer ?" s'afficher en face de la structure pouvant être supprimée (pas d'éléments liés).
+        Pour supprimer une structure, une case à cocher "Supprimer ?" s'afficher en face de la structure 
+        pouvant être supprimée (n'ayant plus d'éléments liés).
     </p>
 
     <% #= image_tag "guide_utilisation/4_Organisation.png", class: "m-3 d-block img-fluid img-thumbnail" %>
@@ -57,7 +62,7 @@
     <% #= image_tag "guide_utilisation/5_OrganisationShow.png", class: "m-3 d-block img-fluid img-thumbnail" %>
 </div>
 
-<div id="tarifs" style="padding-top: 50px">
+<div id="tarifs" style="padding-top: 30px">
     <h3 class="text-info">Enregistrer vos tarifs<hr></h3>
     <p class="lead text-justify">
         Une fois l'organisation et les structures en place, nous allons pouvoir paramétrer les prestations proposées par votre organisation (Cantine, Garderie...) et leurs tarifs.
@@ -80,20 +85,21 @@
 
     <p class="lead text-justify">
 
-        Ca tombe bien, lors de votre inscription le système a créé une prestation et un tarif par défaut, qu'il suffit de supprimer pour en recréer un à votre convenance.
+        <%= 'ç'.upcase %>a tombe bien, lors de votre inscription le système a créé une prestation et un tarif par défaut, qu'il suffit de supprimer pour en recréer un à votre convenance.
         <br>
 
         Pour ajouter une prestation de Garderie au Tarif "Général", il suffit d'ajouter un type prestation "Garderie" et d'ajouter ensuite un Tarif qui associe "Garderie" + "Général" + "son Prix en €".
         <br>
 
-        Si vous avez plusieurs tarifs, ajouter autant de Type de Tarifs et de Tarifs que nécessaire.
+        Si vous avez plusieurs tarifs, ajoutez autant de Type de Tarifs et de Tarifs que nécessaire.
         <br>
 
-        Maintenant que l'organisation et les prestations fournies sont correctement paramétrées, nous pouvons ajouter Familles, Enfants et Réservations.
+        Maintenant que l'organisation et les prestations fournies sont correctement paramétrées, nous pouvons ajouter Familles, 
+        Enfants et Réservations.
     </p>
 </div>
 
-<div id="ajout_famille" style="padding-top: 50px">
+<div id="ajout_famille" style="padding-top: 30px">
     <h3 class="text-info">Ajouter une famille (Compte)<hr></h3>
     <p class="lead text-justify">
         Pour ajouter un compte Famille, rendez-vous sur la page "Comptes" et cliquez sur le lien "(+) Compte".
@@ -106,9 +112,9 @@
         <br>
         La liste des Contacts permet de conserver les coordonnées de tous les contacts liés (maman, papa, tonton, mamie, etc).
         <br>
-        Pour supprimfer un Contact, cochez "Supprimer?" et appuyer sur le bouton "Enregistrer", la demande de suppression sera alors effectuée.
+        Pour supprimer un Contact, cochez "Supprimer?" et appuyez sur le bouton "Enregistrer"; la demande de suppression sera alors effectuée.
         <br>
-        Quand les données ont été saisies, n'oubliez pas de les enregistrer en appuyant sur le bouton "Enregistrer"
+        Quand les données ont été saisies, n'oubliez pas de les enregistrer en appuyant sur le bouton "Enregistrer".
         <br>
         Une fois le compte créé avec succès, une page regroupant les informations du Compte ainsi qu'un résumé des données de comptabilité (Factures, Paiements, Solde) apparaît. 
         <br>
@@ -119,12 +125,12 @@
 
 </div>
 
-<div id="ajout_enfant" style="padding-top: 50px">
+<div id="ajout_enfant" style="padding-top: 30px">
     <h3 class="text-info">Ajouter un enfant<hr></h3>
     <p class="lead text-justify">
-        Pour ajouter un compte, ouvrir la page "Comptes" et cliquez sur le nom du compte concerné, la page d'information du compte apparait.
+        Pour ajouter un compte, ouvrir la page "Comptes" et cliquez sur le nom du compte concerné; la page d'information du compte apparaît.
         <br>
-        Cliquez sur "(+) Ajouter un enfant" et entrez les informations demandées, à commencer par sa classe, son nom (même s'il est identique à celui du compte).
+        Cliquez sur "(+) Ajouter un enfant" et entrez les informations demandées, à commencer par sa classe et son nom (même s'il est identique à celui du compte).
         <br>
         Ne pas oublier de choisir le tarif adapté et de signaler les allergies éventuelles.
         <br>
@@ -134,70 +140,79 @@
     <% #= image_tag "guide_utilisation/9_EnfantForm.png", class: "m-3 d-block img-fluid img-thumbnail" %>
 </div>
 
-<div id="réservations" style="padding-top: 50px">
-    <h3 class="text-info">Inscrire un enfant à des prestations (Réservation)<hr></h3>
+<div id="réservations" style="padding-top: 30px">
+    <h3 class="text-info">Inscrire un enfant à des prestations (Réservations)<hr></h3>
     <p class="lead text-justify">
-        Il s'agit maintenant de réserver une prestation parmi celles que vous avez créer lors du paramètrage des Tarifs.
+        Il s'agit maintenant de réserver une prestation parmi celles que vous avez créées lors du paramètrage des Tarifs.
         <br>
-        Pour éviter les saisies rébarbatives une première réservation est proposée par défaut pour toute l'année scolaire. 
+        Pour éviter les saisies rébarbatives, une première réservation est proposée par défaut pour toute l'année scolaire. 
         <br>
         Pour ce faire, il suffit de choisir le Type de prestation, de donner une date de début, une date de fin et la quantité souhaitée pour chaque jour de la semaine.
         <br>
-        Enfin, vous pouvez noter la période voulue et si cette réservation concerne les jours en période scolaire ou les jours de vacances scolaires (selon la zone paramétrée dans 'Organisation')
+        Enfin, vous pouvez noter la période voulue et si cette réservation concerne les jours en période scolaire ou les jours de vacances scolaires (selon la Zone paramétrée dans 'Organisation')
     </p>
 
     <% #= image_tag "guide_utilisation/10_EnfantShow.png", class: "m-3 d-block img-fluid img-thumbnail" %>
 
     <p class="lead text-justify">
-        Pour inscrire un enfant à la fois à la cantine et à la garderie, il faudra donc deux lignes, une par Type de prestation.
+        Pour inscrire un enfant à la fois à la cantine et à la garderie, il faudra donc deux lignes; une par Type de prestation.
         <br>
-        Si vous souhaitez inscrire l'enfant au centre de loisir pour les vacances de Février, il suffit d'ajouter une ligne avec le Type de prestation "Centre" (à créer dans Administration/Tarifs s'il n'existe pas déjà) et de saisir les dates de début et fin ainsi que d'activer le bouton "Hors période scolaire". 
+        Si vous souhaitez inscrire l'enfant au centre de loisir pour les vacances de Février; 
+        il suffit d'ajouter une ligne avec le Type de prestation "Centre" (à créer dans 'Administration/Tarifs' s'il n'existe pas déjà) 
+        et de saisir les dates de début et fin, ainsi que d'activer le bouton "Hors période scolaire". 
         <br>
-        Pour inscrire un enfant au centre de loisirs pour toutes les vancances scolaires, il faudra juste que les dates de début et de fin couvrent toute l'année scolaires et que le bouton "Hors période scolaire" soit activé
+        Pour inscrire un enfant au centre de loisirs pour toutes les vancances scolaires; 
+        il faudra juste que les dates de début et de fin couvrent toute l'année scolaire 
+        et que le bouton "Hors période scolaire" soit activé.
     </p>
 </div>
 
-<div id="prestations" style="padding-top: 50px">
+<div id="prestations" style="padding-top: 30px">
     <h3 class="text-info">Les Prestations<hr></h3>
     <p class="lead text-justify">
-        Les prestations sont créées automatiquement chaque jour (dès potron-minet) sur la base des réservations.
+        Les prestations sont créées automatiquement chaque matin, dès potron-minet, sur la base des réservations.
         <br>
-        Pour connaitre les prestations qui ont été consommées et qui seront donc ajouter automatiquement lors du traitement, 
+        Pour connaitre les prestations qui ont été consommées et qui seront donc ajoutées automatiquement lors du traitement, 
         il faut se rendre sur la page "Administration/Comptabilisation des prestations" et cliquer sur "Lancer". 
         <br>
-        Un rapport affichera le détails des prestations succeptibles d'être ajoutées. 
+        Un rapport affichera le détail des prestations succeptibles d'être ajoutées. 
     </p>
 
     <% #= image_tag "guide_utilisation/11_Prestations.png", class: "m-3 d-block img-fluid img-thumbnail" %>
 
     <p class="lead text-justify">
-        Si une prestation n'a pas été consommée, vous pouvez soit la modifier, soit la supprimer en allant sur l'onglet 'Prestations' si vous souhaitez que la prestations n'apparaise pas sur la facture.
+        Si une prestation n'a pas été consommée, vous pouvez soit la modifier, 
+        soit la supprimer en allant sur l'onglet 'Prestations' si vous souhaitez que la prestation
+         n'apparaisse pas sur la facture.
         <br>
-        Sinon il suffit ajouter une 'Absence', ce qui annulera la facturation de la prestation.
+        Sinon, il suffit ajouter une 'Absence', ce qui annulera la facturation de la prestation.
     </p>
 </div>
 
-<div id="absences" style="padding-top: 50px">
+<div id="absences" style="padding-top: 30px">
     <h3 class="text-info">Les Absences<hr></h3>
     <p class="lead text-justify">
-        Pour ajouter une Absence, rendez-vous sur la fiche de l'enfant concerné en allant que l'onglet "Enfants" puis en cliquant sur son Prénom.
+        Pour ajouter une Absence, rendez-vous sur la fiche de l'enfant concerné 
+        (en allant que l'onglet "Enfants" puis en cliquant sur son Prénom).
     </p>
     
     <% #= image_tag "guide_utilisation/12_Absence.png", class: "m-3 d-block img-fluid img-thumbnail" %>
     
     <p class="lead text-justify">
-        Cliquer sur "(+) Ajouter une Absence" et renseignez les informations demandées, à savoir les dates de début et de fin ainsi que la période (matin, midi, soir).
+        Cliquez sur "(+) Ajouter une Absence" et renseignez les informations demandées, 
+        à savoir les dates de début et de fin d'absence, ainsi que la période (matin, midi, soir).
     </p>
 </div>
 
-<div id="facturation" style="padding-top: 50px">
+<div id="facturation" style="padding-top: 30px">
     <h3 class="text-info">La Facturation<hr></h3>
     <p class="lead text-justify">
-        La facturation consiste à regrouper les prestations consommées durant un mois donné et d'en établir les factures. 
+        La facturation consiste à regrouper les prestations consommées durant un mois et d'en établir une facture par compte. 
         <br>
-        Pour lancer la "Facturation", rendez vous sur la page "Administration/Facturation prestations" et cliquez sur "Lancer" une fois la période choisie.
+        Pour lancer la "Facturation", rendez-vous sur la page "Administration/Facturation prestations" 
+        et cliquez sur "Lancer" une fois la période choisie.
         <br>
-        Une facture par compte sera alors créée avec le détails des prestations consommées.
+        Une facture par compte sera alors créée, avec le détails des prestations consommées par enfant.
     </p>
 
     <% #= image_tag "guide_utilisation/13_Facturation.png", class: "m-3 d-block img-fluid img-thumbnail" %>
@@ -213,61 +228,69 @@
     <% #= image_tag "guide_utilisation/14_FacturePDF.png", class: "m-3 d-block img-fluid img-thumbnail" %>
 </div>
 
-<div id="facture" style="padding-top: 50px">
+<div id="facture" style="padding-top: 30px">
     <h3 class="text-info">Facture manuelle<hr></h3>
     <p class="lead text-justify">
-        Vous avez la possibilité d'ajouter une facture manuelle où tous les éléments sont libres, montant, prestations et tarifs.
+        Vous avez la possibilité d'ajouter une facture manuellement. Dans cette facture manuelle la saisie tous les éléments (montant, prestations et tarifs) est libre.
         <br>
-        Pour ce faire, rendez vous sur la page du Compte concerné et cliquez sur "Nouvelle facture". 
+        Pour ce faire, rendez-vous sur la page du Compte concerné et cliquez sur "Nouvelle facture". 
         <br>
-        Une fois enregistrée, cette facture sera ajoutée à la liste des factures et comptabilisée dans la solde du compte.
+        Une fois enregistrée, cette facture sera ajoutée à la liste des factures et comptabilisée dans le solde du compte.
     </p>
 </div>
 
-<div id="avoirs" style="padding-top: 50px">
+<div id="avoirs" style="padding-top: 30px">
     <h3 class="text-info">Avoirs<hr></h3>
     <p class="lead text-justify">
-        Comme le montant de la facture manuelle est libre, vous pouvez créer des avoirs en indiquant un montant de facture négatif.
+        Comme le montant de la facture manuelle est libre, vous pouvez créer des avoirs en indiquant un montant négatif.
     </p>
 </div>
 
-<div id="solde" style="padding-top: 50px">
+<div id="solde" style="padding-top: 30px">
     <h3 class="text-info">Le solde famille<hr></h3>
     <p class="lead text-justify">
-        Pour afficher le solde d'un compte famille, rendez vous la page du compte concerné; le solde apparait dans un cartouche dédié.
+        Pour afficher le solde d'un compte famille, rendez-vous la page du compte concerné; 
+        le solde apparaît dans un cartouche dédié.
     </p>
     <% #= image_tag "guide_utilisation/15_Balance.png", class: "m-3 d-block img-fluid img-thumbnail" %>
 </div>
 
-<div id="balance" style="padding-top: 50px">
+<div id="balance" style="padding-top: 30px">
     <h3 class="text-info">Le relevé de compte (Balance)<hr></h3>
     <p class="lead text-justify">
-        Pour voir la balance d'un compte qui liste l'ensemble des opérations (factures/paiements), rendez vous la page du compte concerné et cliquez sur le bouton "Balance".
+        Pour voir la balance d'un compte, qui liste l'ensemble des opérations du compte (factures et paiements), 
+        rendez-vous la page du compte concerné et cliquez sur le bouton "Balance".
     </p>
     <% #= image_tag "guide_utilisation/16_Paiement.png", class: "m-3 d-block img-fluid img-thumbnail" %>
 </div>
 
-<div id="paiements" style="padding-top: 50px">
+<div id="paiements" style="padding-top: 30px">
     <h3 class="text-info">Remise de chèques (Paiements)<hr></h3>
     <p class="lead text-justify">
-        Pour saisir un paiement, rendez vous sur le compte concerné et cliquez sur "Ajouter un paiement". Une fois le paiement enregistré, le solde du compte est mis à jour automatiquement.
+        Pour saisir un paiement, rendez vous sur le compte concerné et cliquez sur "Ajouter un paiement". 
+        Une fois le paiement enregistré, le solde du compte est mis à jour automatiquement.
         <br>
-        Vous retrouverer l'ensemble des paiements dans l'onglets 'Paiements'.
+        Vous retrouverer l'ensemble des paiements dans l'onglet 'Paiements'.
         <br>
-        Pour exporter la liste des paiements vers Excel, il suffit de filtrer la liste des paiements selon la structure, période, mode de paiement. Une fois la liste voulue sous les yeux vous n'avez qu'à cliquer sur le bouton "Export XLS" pour générer une feuille de calcul Excel basée sur les éléments affichés.
+        Pour exporter la liste des paiements vers Excel, il suffit de filtrer la liste des paiements 
+        selon la structure, période, mode de paiement, puis, une fois la liste voulue sous les yeux 
+        cliquer sur le bouton "Export XLS" pour générer une feuille de calcul Excel basée sur les éléments affichés.
     </p>
 </div>
 
-<div id="portail" style="padding-top: 50px">
+<div id="portail" style="padding-top: 30px">
     <h3 class="text-info">Portail Parents<hr></h3>
     <p class="lead text-justify">
         Le portail Parents (en construction) permet à un utilisateur de consulter son compte. 
-        Une fois connecté, l'utilisateur a accès aux informations de son compte (adresse, contacts, enfants, etc.), ainsi qu'à son relevé de compte (balance). 
-        L'utilisateur pourra aussi imprimer (PDF) ses factures en cliquant sur le numéro de facture.
+        Une fois connecté, l'utilisateur a accès aux informations de son compte (adresse, contacts, enfants, etc.), 
+        ainsi qu'à son relevé de compte (balance). 
+        L'utilisateur pourra aussi imprimer (en PDF) ses factures en cliquant simplement sur le numéro de facture.
         A terme, l'utilisateur pourra effectuer un paiement en CB afin d'alimenter son compte.
         <br><br>
-        Pour donner l'accès à un utilisateur, il suffit aller dans "Administration/Utilisateurs" et d'ajouter un utilisateur ayant le rôle "User".
-        Attention: pour que l'utilisateur soit associé à un compte, il est nécessaire que l'adresse email de l'utilisateur existe dans la liste des contacts du compte à associer. 
+        Pour donner l'accès à un utilisateur, il suffit aller dans "Administration/Utilisateurs" 
+        et d'ajouter un utilisateur ayant le rôle "User".
+        Attention: pour que l'utilisateur soit associé à un compte, 
+        il est nécessaire que l'adresse email de l'utilisateur existe dans la liste des contacts du compte à associer. 
     </p>
 </div>
 <br>
