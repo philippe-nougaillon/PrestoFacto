@@ -13,13 +13,13 @@ module ApplicationHelper
                 url_for(request.parameters.merge(column: column, direction: direction))
     end
 
-    def navbar_nav_item(name, icon)
+    def navbar_nav_item(controller_name, icon, action = 'index')
         render(inline: %{
             <li class="nav-item">
-                <%= link_to url_for(controller: '#{name}'), 
-                            class: 'nav-link #{@ctrl == name ? 'active bg-light' : 'text-secondary'}' do %>
-                    <i class='fas fa-fw fa-#{icon}'></i>
-                    #{name.humanize} 
+                <%= link_to url_for(controller: '#{ controller_name }', action: '#{ action }'), 
+                            class: 'nav-link #{ @ctrl == controller_name ? 'active bg-light' : 'text-secondary' }' do %>
+                    <i class='fas fa-fw fa-#{ icon }'></i>
+                    #{ (action == 'index' ? controller_name : action).humanize } 
                 <% end %>
             </li>
         })

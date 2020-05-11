@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   end
 
   namespace :guide do
-    get :about
+    get :a_propos
     get :utilisation
   end
   

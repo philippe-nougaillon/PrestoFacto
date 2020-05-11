@@ -1,9 +1,9 @@
 class GuideController < ApplicationController
 
   # on saute la sécurité 
-  skip_before_action :authenticate_user!, only: [:about, :utilisation]
+  skip_before_action :authenticate_user!, only: [:a_propos, :utilisation]
 
-  def about
+  def a_propos
   end
 
   def utilisation

@@ -41,28 +41,19 @@
 
               <span class="navbar-text"></span>
 
-              <% if current_user.admin? %>
-                <li class="nav-item">
-                  <%= link_to admin_index_url, class: "nav-link text-secondary" do %><i class="fas fa-fw fa-users-cog"></i></span> Administration<% end %>
-                </li>
-              <% end %>
+              <%= navbar_nav_item('admin', 'users-cog') if current_user.admin? %>
 
               <li class="nav-item">
                 <%= link_to destroy_user_session_path, method: :delete, title: "Fermer la session de #{current_user.email}", class: "nav-link text-secondary" do %><i class="fas fa-fw fa-sign-out-alt"></i></span> Déconnexion<% end %> 
               </li>
+
             <% else %>
-              <li class="nav-item">
-                <%= link_to guide_about_url, class: "nav-link text-secondary" do %></span>
-                  A propos
-                <% end %>
-              </li>
-              
-              <li class="nav-item">
-                <%= link_to guide_utilisation_url, class: "nav-link text-secondary" do %></span>
-                  Guide d'utilisation
-                <% end %>
-              </li>
+
+              <%= navbar_nav_item('/guide', 'about', 'a_propos') %>
+              <%= navbar_nav_item('/guide', 'book', 'utilisation') %>
+
             <% end %>
+
           </ul>
         </nav>
       </div>
@@ -86,7 +77,10 @@
             <% end %>
           </div>
 
-          <%= yield %>
+          <div class="container">
+            <%= yield %>
+          </div>
+          
       </div>
     </div>
   </body>
