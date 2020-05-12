@@ -33,4 +33,10 @@
   </tbody>
 </table>
 
+
+<small class="text-secondary">
+  <%= @prestations.size %> 
+  <%= 'Prestation'.pluralize(@prestations.size) %> 
+</small> 
+
 <%= will_paginate @prestations, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>

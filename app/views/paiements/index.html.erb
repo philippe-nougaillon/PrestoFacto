@@ -36,8 +36,17 @@
   </tbody>
 </table>
 
+<small class="text-secondary">
+  <%= @paiements.size %> 
+  <%= 'Paiement'.pluralize(@paiements.size) %> 
+</small> 
+
 <%= will_paginate @paiements, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 
+<br>
+
 <% if policy(Paiement).to_xls? %>
-  <%= link_to "Export XLS", url_for(params.permit(:structure_id, :date_début, :date_fin, :mode, :search).merge(format: :xls)) %>
+  <%= link_to url_for(params.permit(:structure_id, :date_début, :date_fin, :mode, :search).merge(format: :xls)) do %>
+    <%= fa_icon "file-excel", class: "text-right", text: " Export XLS" %>
+  <% end %>
 <% end %>

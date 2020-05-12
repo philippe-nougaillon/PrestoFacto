@@ -12,7 +12,7 @@
   </div>
 <% end %>
 
-<table class="table table-striped table-hover">
+<table class="table table-striped table-hover table-sm">
   <thead>
     <tr>
       <th><%= sort_link 'structures.nom', 'Structure' %></th>
@@ -40,7 +40,7 @@
   </tbody>
 </table>
 
-<small>
+<small class="text-secondary">
   <%= @reservations.size %> 
   <%= 'Réservation'.pluralize(@reservations.size) %> 
 </small> 

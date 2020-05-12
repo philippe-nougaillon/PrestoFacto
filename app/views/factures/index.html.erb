@@ -35,8 +35,16 @@
   </tbody>
 </table>
 
+<small class="text-secondary">
+  <%= @factures.size %> 
+  <%= 'Facture'.pluralize(@factures.size) %> 
+</small> 
+
 <%= will_paginate @factures, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+<br>
 
 <% if policy(Facture).to_xls? %>
-  <%= link_to "Export XLS", url_for(params.permit(:structure_id, :date_début, :date_fin, :search).merge(format: :xls)) %>
+  <%= link_to url_for(params.permit(:structure_id, :date_début, :date_fin, :search).merge(format: :xls)) do %>
+   <%= fa_icon "file-excel", class: "text-right", text: " Export XLS" %>
+  <% end %>
 <% end %>

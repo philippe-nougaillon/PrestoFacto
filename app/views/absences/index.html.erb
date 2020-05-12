@@ -33,5 +33,10 @@
   </tbody>
 </table>
 
+<small class="text-secondary">
+  <%= @absences.size %> 
+  <%= 'Absence'.pluralize(@absences.size) %> 
+</small> 
+
 <%= will_paginate @absences, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 <br>

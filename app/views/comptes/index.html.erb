@@ -35,5 +35,11 @@
     <%= render @comptes.includes(:structure, :enfants) %>
   </tbody>
 </table>
+
+<small class="text-secondary">
+  <%= @comptes.size %> 
+  <%= 'Compte'.pluralize(@comptes.size) %> 
+</small> 
+
 <%= will_paginate @comptes, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 <br>
