@@ -28,7 +28,7 @@
     </tr>
   </thead>
 
-  <tfoot><tr><% 11.times do %><th /><% end %></tr></tfoot>
+  <tfoot><tr><% 11.times do %><th></th><% end %></tr></tfoot>
 
   <tbody>
     <%= render @factures.includes(:compte) %>

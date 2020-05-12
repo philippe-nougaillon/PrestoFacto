@@ -100,7 +100,7 @@
       </tr>
     </thead>
 
-    <tfoot><tr><% 8.times do %><th /><% end %></tr></tfoot>
+    <tfoot><tr><% 8.times do %><th></th><% end %></tr></tfoot>
 
     <% @compte.enfants.each do |enfant| %>
       <tr>
@@ -154,7 +154,7 @@
       <tr>
         <th><%= l Date.today %></th>
         <th>SOLDE</th>
-        <th />
+        <th></th>
         <th class="text-right"><%= number_to_currency(@debit, unit:'€') %></th>
         <th class="text-right"><%= number_to_currency(@credit, unit:'€') %></th>
         <th class="text-right"><%= number_to_currency(@solde, unit:'€') %></th>

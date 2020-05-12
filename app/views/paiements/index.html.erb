@@ -29,7 +29,7 @@
     </tr>
   </thead>
 
-  <tfoot><tr><% 12.times do %><th /><% end %></tr></tfoot>
+  <tfoot><tr><% 12.times do %><th></th><% end %></tr></tfoot>
 
   <tbody>
     <%= render @paiements.includes(:compte) %>

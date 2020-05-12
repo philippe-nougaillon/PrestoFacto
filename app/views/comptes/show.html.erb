@@ -15,7 +15,47 @@
           <%= @compte.civilité %>
           <%= @compte.nom %>
         </p>
+      </div>
 
+      <div class="card-footer">
+        <div class="card">
+            <div class="card-body">
+              <strong>Factures: </strong>
+              <%= number_to_currency(@total_factures, unit: '€', precision: 2, format: "%n %u")  %>
+              | 
+              <strong>Paiements: </strong>
+              <%= number_to_currency(@total_paiements, unit: '€', precision: 2, format: "%n %u")  %>
+              | 
+              <strong>Solde: </strong>
+              <%= number_to_currency(@solde, unit: '€', precision: 2, format: "%n %u")  %>
+            </div>
+            <div class="card-footer">
+              <% if policy(Facture).new? %>
+                <%= link_to new_facture_path(compte_id: @compte.id), class: "btn btn-sm" do %>
+                  <i class="fas fa-file-invoice"></i> Nouvelle facture
+                <% end %>
+              <% end %>
+              |
+              <% if policy(Paiement).new? %>
+                <%= link_to new_paiement_path(compte_id: @compte.id), data: {toggle: "modal", target: "#myModalNewPaiement" }, class: "btn btn-sm" do %>
+                  <i class="far fa-money-bill-alt"></i> Ajouter un paiement
+                <% end %>
+              <% end %>
+              | 
+              <% if policy(@compte).balance? %>
+                <%= link_to compte_balance_path(@compte), class: "btn btn-sm" do %>
+                  <i class="fas fa-balance-scale"></i> Voir la balance
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
         <p>
           <strong>Adresse:</strong>
           <%= @compte.adresse1 %>
@@ -31,21 +71,7 @@
           <strong>Num allocataire:</strong>
           <%= @compte.num_allocataire %>
         </p>
-      </div>
 
-      <div class="card-footer">
-        <% if policy(@compte).edit? %>
-          <%= link_to edit_compte_path(@compte), class: "btn text-primary" do %>
-            <i class="far fa-edit"></i> Editer compte
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
         <strong>Contacts</strong>
         <table class="table table-hover table-borderless table-sm">
           <% @compte.contacts.each do |contact| %>
@@ -69,41 +95,11 @@
         <% end %>
       </div>
     </div>
-    <br />
 
-    <div class="card">
-      <div class="card-body">
-        <strong>Factures: </strong>
-        <%= number_to_currency(@total_factures, unit: '€', precision: 2, format: "%n %u")  %>
-        | 
-        <strong>Paiements: </strong>
-        <%= number_to_currency(@total_paiements, unit: '€', precision: 2, format: "%n %u")  %>
-        | 
-        <strong>Solde: </strong>
-        <%= number_to_currency(@solde, unit: '€', precision: 2, format: "%n %u")  %>
-      </div>
-      <div class="card-footer">
-        <% if policy(Facture).new? %>
-          <%= link_to new_facture_path(compte_id: @compte.id), class: "btn btn-sm" do %>
-            <i class="fas fa-file-invoice"></i> Nouvelle facture
-          <% end %>
-        <% end %>
-        |
-        <% if policy(Paiement).new? %>
-          <%= link_to new_paiement_path(compte_id: @compte.id), data: {toggle: "modal", target: "#myModalNewPaiement" }, class: "btn btn-sm" do %>
-            <i class="far fa-money-bill-alt"></i> Ajouter un paiement
-          <% end %>
-        <% end %>
-        | 
-        <% if policy(@compte).balance? %>
-          <%= link_to compte_balance_path(@compte), class: "btn btn-sm" do %>
-            <i class="fas fa-balance-scale"></i> Voir la balance
-          <% end %>
-        <% end %>
-      </div>
-    </div>
   </div>
 </div>
+
+<br>
 
 <p>
   <h3><i class="fas fa-child"></i> Enfants</h3>
@@ -120,7 +116,7 @@
       </tr>
     </thead>
 
-    <tfoot><tr><% 8.times do %><th /><% end %></tr></tfoot>
+    <tfoot><tr><% 8.times do %><th></th><% end %></tr></tfoot>
 
     <% @compte.enfants.each do |enfant| %>
       <tr>
