@@ -7,9 +7,12 @@
 </p>
 <br />
 
-<%= bootstrap_form_with(url: "ajout_factures_do", method: :post, local: true) do |form| %>
-  <%= form.date_select :date, discard_day: true, label: "Période" %>
-  <%= form.check_box :enregistrer, {custom: :switch, label: "Enregistrer les changements ? (non=Visualisation seulement, ne fait rien de définitif :)"} %>  
+<%= bootstrap_form_with(url: 'ajout_factures_do', local: true) do |form| %>
+  <div class="col-sm-4">
+    <%= form.date_select :date, discard_day: true, label: "Période" %>
+    <%= form.check_box :enregistrer, { custom: :switch, label: "Enregistrer les modifications* ?" } %> 
+    <small>* Non = Visualisation seulement. Ne fera rien de définitif !</small> 
+  </div>
   <br /><br />
   <%= form.submit "Lancer", class: "btn btn-success" %>
 <% end %>
