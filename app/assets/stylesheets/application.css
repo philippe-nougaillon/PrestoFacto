@@ -15,5 +15,10 @@
  */
 
  .table a, th {
-     color: lightsteelblue;
+    color: lightsteelblue;
  }
+
+ a.nav-link {
+    color: black;  
+ }
+
