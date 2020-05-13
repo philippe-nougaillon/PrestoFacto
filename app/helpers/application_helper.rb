@@ -27,32 +27,33 @@ module ApplicationHelper
     
     def nav_breadcrumb
         render(inline: %{
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <%= link_to root_url, class: 'nav-link' do %>
-                        <%= fa_icon 'home' %>
-                    <% end %>
-                </li>
+            <nav class="navbar navbar-expand-sm bg-light">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <%= link_to root_url, class: 'nav-link' do %>
+                            <%= fa_icon 'home' %>
+                        <% end %>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#">>></a>
-                </li>              
-
-                <li class="nav-item">
-                    <%= link_to @ctrl.humanize, url_for(controller: @ctrl), class: 'nav-link' %>
-                </li>
-
-                <% if id = params[:id] %>
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#">>></a>
                     </li>              
-                    
-                    <li class="nav-item">
-                        <%= link_to id.humanize, url_for(controller: @ctrl, id: id), class: 'nav-link' %>
-                    </li>
-                <% end %>
 
-            </ul>
+                    <li class="nav-item">
+                        <%= link_to @ctrl.humanize, url_for(controller: @ctrl), class: 'nav-link' %>
+                    </li>
+
+                    <% if id = params[:id] %>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">>></a>
+                        </li>              
+                        
+                        <li class="nav-item">
+                            <%= link_to id.humanize, url_for(controller: @ctrl, action: :show, id: id), class: 'nav-link' %>
+                        </li>
+                    <% end %>
+                </ul>
+            </nav>
         })
     end    
 
