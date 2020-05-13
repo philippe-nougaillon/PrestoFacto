@@ -89,7 +89,7 @@
 
       <div class="card-footer">
         <% if policy(@compte).edit? %>
-          <%= link_to edit_compte_path(@compte), class: "btn text-primary" do %>
+          <%= link_to edit_compte_path(@compte), class: "btn text-info" do %>
             <i class="far fa-edit"></i> Editer compte
           <% end %>
         <% end %>
@@ -121,7 +121,7 @@
     <% @compte.enfants.each do |enfant| %>
       <tr>
         <td><%= enfant.nom %></td>
-        <td><%= link_to enfant.prénom, enfant, class: "text-primary" %></td>
+        <td><%= link_to enfant.prénom, enfant, class: "text-info" %></td>
         <td><%= l enfant.date_naissance %></td>
         <td><%= enfant.classroom.nom %></td>
         <td class="text-center"><i class="<%= enfant.menu_sp ? "far fa-check-circle" : "" %>"></i></td>
@@ -146,7 +146,7 @@
 </p>
 
  <% if policy(Enfant).new? %>
-  <%= link_to new_enfant_path(compte_id: @compte), class: "btn text-primary" do %>
+  <%= link_to new_enfant_path(compte_id: @compte), class: "btn text-info" do %>
     <i class="fas fa-plus-circle"></i> Ajouter un enfant
   <% end %>
 <% end %>

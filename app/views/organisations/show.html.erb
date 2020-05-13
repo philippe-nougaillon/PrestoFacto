@@ -31,7 +31,7 @@
     </p>
 
     <% if policy(@organisation).edit? %>
-      <%= link_to edit_organisation_path(@organisation), class: "btn text-primary" do %>
+      <%= link_to edit_organisation_path(@organisation), class: "btn text-info" do %>
         <i class="far fa-edit"></i> Editer
       <% end %>
     <% end %>
@@ -62,7 +62,7 @@
         </thead>
         <% @organisation.structures.each do |structure| %>
           <tr>
-            <td><%= link_to structure.nom, structure, class: "text-primary" %></td>
+            <td><%= link_to structure.nom, structure, class: "text-info" %></td>
             <td><%= structure.classrooms.pluck(:nom).join(", ") %></td>
             <td><%= structure.comptes.size %></td>
             <td>
@@ -76,7 +76,7 @@
         <% end %>
       </table>
       <% if policy(@organisation).edit? %>
-        <%= link_to edit_organisation_path(@organisation), class: "btn text-primary" do %>
+        <%= link_to edit_organisation_path(@organisation), class: "btn text-info" do %>
           <i class="far fa-edit"></i> Editer les structures
         <% end %>
       <% end %>

@@ -1,7 +1,7 @@
 <tr>
     <td><%= reservation.enfant.compte.structure.nom %></td>
     <td><%= reservation.enfant.classroom.nom %></td>
-    <td><%= link_to reservation.enfant.nom_et_prénom, reservation.enfant, class: "text-primary" %></td>
+    <td><%= link_to reservation.enfant.nom_et_prénom, reservation.enfant, class: "text-info" %></td>
     <td class="text-center"><i class="<%= reservation.enfant.menu_sp ? "far fa-check-circle" : "" %>"></i></td>
     <td class="text-center"><i class="<%= reservation.enfant.menu_all ? "far fa-check-circle" : "" %>"></i></td>
     <td><%= reservation.prestation_type.nom %></td>

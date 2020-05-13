@@ -30,7 +30,7 @@
     </table>
 
     <% if policy(Tarif).new? %>
-      <%= link_to new_tarif_path(organisation_id: @organisation), data: {toggle: "modal", target: "#myModalTarif" }, class: "btn text-primary" do %>
+      <%= link_to new_tarif_path(organisation_id: @organisation), data: {toggle: "modal", target: "#myModalTarif" }, class: "btn text-info" do %>
           <i class="fas fa-plus-circle"></i> Ajouter un tarif
       <% end %>
     <% end %>
@@ -50,7 +50,7 @@
             </thead>
             <% @organisation.tarif_types.each do |tarif_type| %>
                 <tr>
-                    <td><%= link_to tarif_type.nom, edit_tarif_type_path(tarif_type), class: "text-primary" %></td>
+                    <td><%= link_to tarif_type.nom, edit_tarif_type_path(tarif_type), class: "text-info" %></td>
                     <td class="text-right col-sm-1">
                         <% if policy(tarif_type).destroy? %>
                             <%= link_to tarif_type, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
@@ -62,7 +62,7 @@
             <% end %>
         </table>
         <% if policy(TarifType).new? %>
-            <%= link_to new_tarif_type_path(organisation_id: @organisation), data: {toggle: "modal", target: "#myModalTypeTarif" }, class: "btn text-primary" do %>
+            <%= link_to new_tarif_type_path(organisation_id: @organisation), data: {toggle: "modal", target: "#myModalTypeTarif" }, class: "btn text-info" do %>
             <i class="fas fa-plus-circle"></i> Ajouter un type de tarif
             <% end %>
         <% end %>
@@ -79,7 +79,7 @@
             </thead>
             <% @organisation.prestation_types.each do |prestation_type| %>
                 <tr>
-                    <td><%= link_to prestation_type.nom, edit_prestation_type_path(prestation_type), class: "text-primary" %></td>
+                    <td><%= link_to prestation_type.nom, edit_prestation_type_path(prestation_type), class: "text-info" %></td>
                     <td class="text-right col-sm-1">
                         <% if policy(prestation_type).destroy? %>
                             <%= link_to prestation_type, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
@@ -92,7 +92,7 @@
         </table>
 
         <% if policy(PrestationType).new? %>
-            <%= link_to new_prestation_type_path(organisation_id: @organisation), data: {toggle: "modal", target: "#myModalTypePresta" }, class: "btn text-primary" do %>
+            <%= link_to new_prestation_type_path(organisation_id: @organisation), data: {toggle: "modal", target: "#myModalTypePresta" }, class: "btn text-info" do %>
                 <i class="fas fa-plus-circle"></i> Ajouter un type de prestation
             <% end %>
         <% end %>

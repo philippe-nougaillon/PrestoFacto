@@ -11,7 +11,7 @@
       <div class="card-body">
         <p>
           <strong>Compte:</strong>
-          <%= link_to @enfant.compte.nom, @enfant.compte, class: "text-primary" %>
+          <%= link_to @enfant.compte.nom, @enfant.compte, class: "text-info" %>
         </p>
 
         <p>
@@ -36,7 +36,7 @@
       </div>
       <div class="card-footer">
         <% if policy(@enfant).edit? %>
-          <%= link_to edit_enfant_path(@enfant), class: "btn text-primary" do %>
+          <%= link_to edit_enfant_path(@enfant), class: "btn text-info" do %>
             <i class="far fa-edit"></i> Editer 
           <% end %>
         <% end %>
@@ -89,7 +89,7 @@
       </div>
       <div class="card-footer">
         <% if policy(@enfant).edit? %>
-          <%= link_to edit_enfant_path(@enfant), class: "btn text-primary" do %>
+          <%= link_to edit_enfant_path(@enfant), class: "btn text-info" do %>
             <i class="far fa-edit"></i> Editer les réservations
           <% end %>
         <% end %>
@@ -124,7 +124,7 @@
   </table>
 
   <% if policy(Absence).edit? %>
-    <%= link_to new_absence_path(enfant_id: @enfant), class: 'btn text-primary', data: {toggle: "modal", target: "#myModal" } do %>
+    <%= link_to new_absence_path(enfant_id: @enfant), class: 'btn text-info', data: {toggle: "modal", target: "#myModal" } do %>
       <i class="fas fa-plus-circle"></i> Ajouter une absence
     <% end %>
   <% end %>
