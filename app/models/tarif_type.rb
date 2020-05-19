@@ -8,4 +8,5 @@ class TarifType < ApplicationRecord
 
   validates :nom, presence: true
   validates_uniqueness_of :nom, scope: [:organisation_id]
+  
 end

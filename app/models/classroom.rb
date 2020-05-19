@@ -5,4 +5,6 @@ class Classroom < ApplicationRecord
 
   has_many :enfants
 
+  validates :structure_id, :nom, presence: true
+
 end
