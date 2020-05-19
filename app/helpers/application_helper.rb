@@ -34,23 +34,25 @@ module ApplicationHelper
                             <%= fa_icon 'home' %>
                         <% end %>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">>></a>
-                    </li>              
-
-                    <li class="nav-item">
-                        <%= link_to @ctrl.humanize, url_for(controller: @ctrl), class: 'nav-link' %>
-                    </li>
-
-                    <% if id = params[:id] %>
+                                        
+                    <% if current_user %>
                         <li class="nav-item">
                             <a class="nav-link disabled" href="#">>></a>
-                        </li>              
-                        
+                        </li>  
+
                         <li class="nav-item">
-                            <%= link_to id.humanize, url_for(controller: @ctrl, action: :show, id: id), class: 'nav-link' %>
+                            <%= link_to @ctrl.humanize, url_for(controller: @ctrl, action: @action), class: 'nav-link' %>
                         </li>
+
+                        <% if id = params[:id] %>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#">>></a>
+                            </li>              
+                            
+                            <li class="nav-item">
+                                <%= link_to id.humanize, url_for(controller: @ctrl, action: :show, id: id), class: 'nav-link' %>
+                            </li>
+                        <% end %>
                     <% end %>
                 </ul>
             </nav>

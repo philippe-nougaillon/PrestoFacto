@@ -24,6 +24,7 @@ private
       @title = @site_name + ' ' + version
 
       @ctrl = params[:controller]
+      @action = params[:action]
     end
 
     def user_not_authorized
