@@ -41,7 +41,7 @@ module ApplicationHelper
                         </li>  
 
                         <li class="nav-item">
-                            <%= link_to @ctrl.humanize, url_for(controller: @ctrl, action: @action), class: 'nav-link' %>
+                            <%= link_to @ctrl.humanize, url_for(controller: @ctrl), class: 'nav-link' %>
                         </li>
 
                         <% if id = params[:id] %>

@@ -1,4 +1,10 @@
-<h2><%= @enfant.prénom_et_nom %></h2>
+<div class="pb-2 mt-4 mb-2 border-bottom">
+  <h2><i class="fas fa-child"></i> 
+    <%= @enfant.prénom_et_nom %>
+  </h2>
+</div>
+<br>
+
 
 <%= render 'form', enfant: @enfant %>
 

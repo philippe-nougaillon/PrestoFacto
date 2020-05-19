@@ -1,7 +1,10 @@
 class EnfantsController < ApplicationController
   before_action :set_enfant, only: [:show, :edit, :update, :destroy]
   before_action :populate_select, only: [:new, :edit]
+  
   helper_method :sort_column, :sort_direction
+
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_child
 
   # GET /enfants
   # GET /enfants.json
@@ -142,6 +145,10 @@ class EnfantsController < ApplicationController
   
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+    end
+
+    def invalid_child
+      redirect_to enfants_url
     end
 
 end

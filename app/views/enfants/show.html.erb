@@ -25,14 +25,15 @@
         </p>
 
         <p>
+          <strong>Menu 'Allergie' ?:</strong>
+          <%= "OUI" if @enfant.menu_all %>
+        </p>
+
+        <p>
           <strong>Menu 'Sans porc' ?:</strong>
           <%= "OUI" if @enfant.menu_sp %>
         </p>
 
-        <p>
-          <strong>Menu 'Allergie' ?:</strong>
-          <%= "OUI" if @enfant.menu_all %>
-        </p>
       </div>
       <div class="card-footer">
         <% if policy(@enfant).edit? %>
@@ -87,6 +88,7 @@
           <% end %>
         </table>
       </div>
+
       <div class="card-footer">
         <% if policy(@enfant).edit? %>
           <%= link_to edit_enfant_path(@enfant), class: "btn text-info" do %>
