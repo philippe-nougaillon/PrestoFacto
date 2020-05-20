@@ -10,7 +10,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>  </head>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>  
+  </head>
 
   <body>
     <div class="row">
@@ -18,8 +19,8 @@
         <nav class="navbar navbar-expand-sm">
           <ul class="nav nav-tabs flex-column ">
             <a class="navbar-brand" href="/">
-              <% 3.times do%>
-                <%= image_tag 'logo.jpg', width: 70 %>
+              <% 4.times do%>
+                <%= image_tag 'logo.jpg', height: 60 %>
               <% end %>
             </a>
 
@@ -46,20 +47,40 @@
               <li class="nav-item">
                 <%= link_to destroy_user_session_path, method: :delete, title: "Fermer la session de #{current_user.email}", class: "nav-link text-secondary" do %><i class="fas fa-fw fa-sign-out-alt"></i></span> Déconnexion<% end %> 
               </li>
-
             <% else %>
-
               <%= navbar_nav_item('/guide', 'info-circle', 'a_propos') %>
               <%= navbar_nav_item('/guide', 'book', 'guide') %>
+              
+              <span class="navbar-text"></span>
 
+              <li class="nav-item">
+                <%= link_to new_user_session_path, class: "nav-link" do %>
+                  <i class="fas fa-sign-in-alt"></i>
+                  Se connecter
+                <% end %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to new_user_registration_path, class: "nav-link" do %>
+                  <i class="fas fa-user-plus"></i>
+                  S'inscrire
+                <% end %>
+              </li>
+
+              <li class="nav-item">
+                <%= link_to admin_mode_demonstration_path, class: "nav-link" do %>
+                  <i class="far fa-eye"></i>
+                  Mode démonstration
+                <% end %>
+              </li>
+ 
             <% end %>
-
           </ul>
         </nav>
       </div>
 
       <div class="col-sm-10">
-        <div class="container-fluid shadow p-2 mb-4 bg-white" style="height: 800px; overflow-y: scroll;">
+        <div class="container-fluid shadow p-3 bg-white" style="height: 800px; overflow-y: scroll;">
 
           <%= nav_breadcrumb %>
           
@@ -71,15 +92,13 @@
             <% end %>
 
             <% if alert.present? %>
-              <aside class="alert alert-highlight text-danger text-center">
+              <aside class="alert alert-highlight alert-warning text-center">
                 <%= alert %>
               </aside>
             <% end %>
           </div>
 
-          <div class="container">
-            <%= yield %>
-          </div>
+          <%= yield %>
           
       </div>
     </div>

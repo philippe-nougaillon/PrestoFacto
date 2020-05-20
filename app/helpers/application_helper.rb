@@ -17,7 +17,7 @@ module ApplicationHelper
         render(inline: %{
             <li class="nav-item">
                 <%= link_to url_for(controller: '#{ controller_name }', action: '#{ action }'), 
-                            class: 'nav-link #{ @ctrl == controller_name ? 'active bg-light' : 'text-secondary' }' do %>
+                            class: 'nav-link #{ 'bg-light text-info' if @ctrl == controller_name }' do %>
                     <i class='fas fa-fw fa-#{ icon }'></i>
                     #{ (action == 'index' ? controller_name : action).humanize } 
                 <% end %>
