@@ -33,11 +33,13 @@
     </tr>
   </thead>
 
-  <tfoot><tr><% 15.times do %><th></th><% end %></tr></tfoot>
 
   <tbody>
     <%= render @reservations.includes(:enfant) %>
   </tbody>
+
+  <tfoot><tr><% 15.times do %><th></th><% end %></tr></tfoot>
+
 </table>
 
 <small class="text-secondary">

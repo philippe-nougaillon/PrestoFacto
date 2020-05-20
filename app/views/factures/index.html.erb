@@ -28,11 +28,11 @@
     </tr>
   </thead>
 
-  <tfoot><tr><% 11.times do %><th></th><% end %></tr></tfoot>
-
   <tbody>
     <%= render @factures.includes(:compte) %>
   </tbody>
+
+  <tfoot><tr><% 11.times do %><th></th><% end %></tr></tfoot>
 </table>
 
 <small class="text-secondary">
@@ -43,7 +43,7 @@
 <%= will_paginate @factures, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 <br>
 
-<% if policy(Facture).to_xls? %>
+<% if policy(Facture).to_xls? && !@factures.size.zero? %>
   <%= link_to url_for(params.permit(:structure_id, :date_début, :date_fin, :search).merge(format: :xls)),
               class: "float-sm-right" do %>
       <%= fa_icon "file-excel", text: " Export XLS" %>

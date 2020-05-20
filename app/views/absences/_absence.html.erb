@@ -4,9 +4,9 @@
     <td><%= absence.enfant.classroom.nom %></td>
     <td><%= l absence.début %></td>
     <td><%= l absence.fin %></td>
-    <td class="text-center"><i class="<%= absence.matin ? "far fa-check-circle" : "" %>"></i></td>
-    <td class="text-center"><i class="<%= absence.midi ? "far fa-check-circle" : "" %>"></i></td>
-    <td class="text-center"><i class="<%= absence.soir ? "far fa-check-circle" : "" %>"></i></td>
+    <td><i class="<%= absence.matin ? "far fa-check-circle" : "" %>"></i></td>
+    <td><i class="<%= absence.midi ? "far fa-check-circle" : "" %>"></i></td>
+    <td><i class="<%= absence.soir ? "far fa-check-circle" : "" %>"></i></td>
     <td>
         <% if policy(absence).edit? %>
             <%= link_to  edit_absence_path(absence) do %>
