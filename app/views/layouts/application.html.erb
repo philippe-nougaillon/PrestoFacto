@@ -55,22 +55,19 @@
 
               <li class="nav-item">
                 <%= link_to new_user_session_path, class: "nav-link" do %>
-                  <i class="fas fa-sign-in-alt"></i>
-                  Se connecter
+                  <%= fa_icon "sign-in-alt", text: " Se connecter" %>
                 <% end %>
               </li>
 
               <li class="nav-item">
                 <%= link_to new_user_registration_path, class: "nav-link" do %>
-                  <i class="fas fa-user-plus"></i>
-                  S'inscrire
+                  <%= fa_icon "user-plus", text: " S'inscrire"%>
                 <% end %>
               </li>
 
               <li class="nav-item">
                 <%= link_to admin_mode_demonstration_path, class: "nav-link" do %>
-                  <i class="far fa-eye"></i>
-                  Mode démonstration
+                  <%= fa_icon "eye", text: " Mode démonstration"%>
                 <% end %>
               </li>
  
