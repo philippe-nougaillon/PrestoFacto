@@ -5,8 +5,8 @@
     <td><%= enfant.nom %></td>
     <td><%= link_to enfant.prénom, enfant, class: "text-info" %></td>
     <td><%= l enfant.date_naissance %></td>
-    <td class="text-center"><i class="<%= enfant.menu_sp ? "far fa-check-circle" : "" %>"></i></td>
-    <td class="text-center"><i class="<%= enfant.menu_all ? "far fa-check-circle" : "" %>"></i></td>
+    <td><i class="<%= enfant.menu_sp ? "far fa-check-circle" : "" %>"></i></td>
+    <td><i class="<%= enfant.menu_all ? "far fa-check-circle" : "" %>"></i></td>
     <td><%= enfant.reservations.actives.joins(:prestation_type).pluck("prestation_types.nom").join(', ') %></td>
     <td>
         <% if policy(enfant).edit? %>

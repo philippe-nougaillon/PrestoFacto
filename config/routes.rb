@@ -32,8 +32,8 @@ Rails.application.routes.draw do
     get :import
     get :exemple_fichier_import_xls
     get :envoyer_factures
+    get :mode_demonstration
 
-    post :mode_demonstration
     post :ajout_prestations_do
     post :ajout_factures_do
     post :import_do
