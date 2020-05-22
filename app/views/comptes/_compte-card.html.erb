@@ -1,0 +1,103 @@
+<div class="card">
+  <div class="card-header">
+    <h2><%= @compte.nom %></h2>
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+        <p>
+          <strong>Structure:</strong>
+          <%= @compte.structure.nom %>
+        </p>
+
+        <p>
+          <strong>Nom:</strong>
+          <%= @compte.civilité %>
+          <%= @compte.nom %>
+        </p>
+
+        <p>
+          <strong>Adresse:</strong>
+          <%= @compte.adresse1 %>
+          <%= @compte.adresse2 %>
+        </p>
+
+        <p>
+          <strong>Ville:</strong>
+          <%= @compte.cp %> <%= @compte.ville %>
+        </p>
+
+        <p>
+          <strong>Num allocataire:</strong>
+          <%= @compte.num_allocataire %>
+        </p>
+
+        <p>
+          <strong>Mémo:</strong>
+          <%= @compte.mémo %>
+        </p>
+        
+        <% if policy(@compte).edit? %>
+          <%= link_to edit_compte_path(@compte), class: "btn text-info" do %>
+            <i class="far fa-edit"></i> Editer compte
+          <% end %>
+        <% end %>
+
+      </div>
+
+      <div class="col">
+
+        <div class="card">
+          <div class="card-body">
+            <strong>Contacts:</strong>
+            <table class="table table-hover table-borderless table-sm">
+              <% @compte.contacts.each do |contact| %>
+                <tr>
+                  <td><%= contact.nom.humanize %></td>
+                  <td><%= [contact.fixe, contact.portable, contact.email].join(' / ') %>
+                  <td><%= contact.mémo %></td>
+                </tr>
+              <% end %>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <strong>Factures: </strong>
+            <%= number_to_currency(@total_factures, unit: '€', precision: 2, format: "%n %u")  %>
+            | 
+            <strong>Paiements: </strong>
+            <%= number_to_currency(@total_paiements, unit: '€', precision: 2, format: "%n %u")  %>
+            | 
+            <strong>Solde: </strong>
+            <%= number_to_currency(@solde, unit: '€', precision: 2, format: "%n %u")  %>
+          </div>
+
+          <div class="card-footer">
+            <% if policy(Facture).new? %>
+              <%= link_to new_facture_path(compte_id: @compte.id), class: "btn btn-sm" do %>
+                <i class="fas fa-file-invoice"></i> Nouvelle facture
+              <% end %>
+            <% end %>
+            |
+            <% if policy(Paiement).new? %>
+              <%= link_to new_paiement_path(compte_id: @compte.id), data: {toggle: "modal", target: "#myModalNewPaiement" }, class: "btn btn-sm" do %>
+                <i class="far fa-money-bill-alt"></i> Ajouter un paiement
+              <% end %>
+            <% end %>
+            | 
+            <% if policy(@compte).balance? %>
+              <%= link_to compte_balance_path(@compte), class: "btn btn-sm" do %>
+                <i class="fas fa-balance-scale"></i> Voir la balance
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <br>
+
+      </div>
+    </div>
+  </div>
+</div>

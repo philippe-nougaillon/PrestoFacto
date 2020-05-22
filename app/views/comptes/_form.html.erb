@@ -23,7 +23,9 @@
             <div class="col"><%= contact_form.text_field :fixe, label_as_placeholder: true %></div>
             <div class="col"><%= contact_form.text_field :portable, label_as_placeholder: true %></div>
             <div class="col"><%= contact_form.text_field :email, label_as_placeholder: true %></div>
-            <div class="col"><%= contact_form.check_box :_destroy, label: "Supprimer ?" %></div>
+            <% unless compte.new_record? %>
+              <div class="col"><%= contact_form.check_box :_destroy, label: "Supprimer ?" %></div>
+            <% end %>
         </div>
       <% end %>
     </div>
