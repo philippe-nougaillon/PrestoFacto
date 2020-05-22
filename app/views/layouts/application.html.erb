@@ -28,14 +28,18 @@
 
             <% if current_user %>
 
-              <%= navbar_nav_item('comptes', 'users') %>
-              <%= navbar_nav_item('enfants', 'child') %>
-              <%= navbar_nav_item('reservations', 'calendar-alt') %>
-              <%= navbar_nav_item('absences', 'calendar-times') %>
-              <%= navbar_nav_item('prestations', 'utensils') %>
-              <%= navbar_nav_item('factures', 'file-invoice') %>
-              <%= navbar_nav_item('paiements', 'money-bill-alt') %>
-              
+              <% if current_user.role == 'user' %>
+                <%= navbar_nav_item('moncompte', 'users') %>
+              <% else %>
+                <%= navbar_nav_item('comptes', 'users') %>
+                <%= navbar_nav_item('enfants', 'child') %>
+                <%= navbar_nav_item('reservations', 'calendar-alt') %>
+                <%= navbar_nav_item('absences', 'calendar-times') %>
+                <%= navbar_nav_item('prestations', 'utensils') %>
+                <%= navbar_nav_item('factures', 'file-invoice') %>
+                <%= navbar_nav_item('paiements', 'money-bill-alt') %>
+              <% end %>
+
               <li class="nav-item">
                 <a class="nav-link text-secondary disabled" href="#"></a>
               </li>
@@ -51,8 +55,6 @@
               <%= navbar_nav_item('/guide', 'info-circle', 'a_propos') %>
               <%= navbar_nav_item('/guide', 'book', 'guide') %>
               
-              <span class="navbar-text"></span>
-
               <li class="nav-item">
                 <%= link_to new_user_session_path, class: "nav-link" do %>
                   <%= fa_icon "sign-in-alt", text: " Se connecter" %>
@@ -65,11 +67,13 @@
                 <% end %>
               </li>
 
-              <li class="nav-item">
-                <%= link_to admin_mode_demonstration_path, class: "nav-link" do %>
-                  <%= fa_icon "eye", text: " Mode démonstration"%>
-                <% end %>
-              </li>
+              <% if false %>
+                <li class="nav-item">
+                  <%= link_to admin_mode_demonstration_path, class: "nav-link" do %>
+                    <%= fa_icon "eye", text: " Mode démonstration"%>
+                  <% end %>
+                </li>
+              <% end %>
  
             <% end %>
           </ul>
