@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   audited
 
-  enum role: [:user, :vip, :admin]
+  enum role: [:visiteur, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
   # Include default devise modules. Others available are:
@@ -22,13 +22,21 @@ class User < ApplicationRecord
 
   self.per_page = 10
 
+  def visiteur?
+    self.role == 'visiteur'
+  end
+
+  def vip?
+    self.role == 'vip'
+  end
+
   def admin? 
     self.role == 'admin'
   end
 
 private
   def set_default_role
-    self.role ||= :user
+    self.role ||= :visiteur
   end
   
 end

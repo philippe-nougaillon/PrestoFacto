@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def after_sign_in_path_for(resource)
-    if resource.role == 'user'
+    if resource.visiteur?
       moncompte_index_path
     else
       root_path

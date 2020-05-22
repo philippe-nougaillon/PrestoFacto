@@ -28,7 +28,7 @@
 
             <% if current_user %>
 
-              <% if current_user.role == 'user' %>
+              <% if current_user.visiteur? %>
                 <%= navbar_nav_item('moncompte', 'users') %>
               <% else %>
                 <%= navbar_nav_item('comptes', 'users') %>
