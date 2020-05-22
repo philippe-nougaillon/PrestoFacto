@@ -1,12 +1,9 @@
 <h2>Renvoyer les instructions de déverrouillage</h2>
 
-<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+<%= bootstrap_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-3" %>
 
   <div class="actions">
     <%= f.submit "Renvoyer les instructions", class: "btn btn-primary btn-lg" %>
