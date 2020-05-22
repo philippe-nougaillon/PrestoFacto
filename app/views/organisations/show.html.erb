@@ -39,8 +39,10 @@
 
   <div class="col">
     <p>
+      <strong>Logo:</strong>
+      <br><br>
       <% if @organisation.logo.attached? %>
-        <%= image_tag url_for(@organisation.logo), width: 100 %>
+        <%= image_tag url_for(@organisation.logo), width: 200 %>
       <% end %>
     </p>
   </div>
@@ -51,7 +53,7 @@
   <div class="col">
     <p>
       <h3><i class="fas fa-school"></i> Structures</h3>
-      <table class="table table-bordered table-striped table-sm">
+      <table class="table table-bordered table-hover table-sm">
         <thead>
           <tr>
             <th>Nom</th>
@@ -60,6 +62,7 @@
             <th></th>
           </tr>
         </thead>
+
         <% @organisation.structures.each do |structure| %>
           <tr>
             <td><%= link_to structure.nom, structure, class: "text-info" %></td>
@@ -75,18 +78,14 @@
           </tr>
         <% end %>
       </table>
-      <% if policy(@organisation).edit? %>
-        <%= link_to edit_organisation_path(@organisation), class: "btn text-info" do %>
-          <i class="far fa-edit"></i> Editer les structures
-        <% end %>
-      <% end %>
+
     </p>
   </div>
 
   <div class="col">
     <p>
       <h3><i class="fas fa-umbrella-beach"></i> Vacances (Zone <%= @organisation.zone %>)</h3>
-      <table class="table table-bordered table-striped table-sm">
+      <table class="table table-bordered table-hover table-sm">
         <thead>
           <tr>
             <th>Nom</th>
@@ -94,6 +93,7 @@
             <th>Fin</th>  
           </tr>
         </thead>
+
         <% Vacance.where(zone: @organisation.zone).each do | vacance | %>
           <tr>
             <td><%= vacance.nom %></td>

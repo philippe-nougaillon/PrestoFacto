@@ -28,7 +28,7 @@ private
     end
 
     def user_not_authorized
-      flash[:alert] = "Vous n'êtes pas autorisé.e à effectuer cette action !"
+      flash[:alert] = "Vous n'êtes pas autorisé(e) à effectuer cette action !"
       redirect_to(request.referrer || (current_user.role == 'user' ? moncompte_index_path : root_path))
     end
 
