@@ -12,7 +12,7 @@ namespace :prestations do
     puts "Enregistrer les changements !" if enregistrer
 
     current_user_id = args.current_user_id
-    puts "current_user_id: #{current_user_id}"
+    # puts "current_user_id: #{current_user_id}"
 
     if args.current_user_id
       # Obtenir une ActiveRecord::Relation pour une seule organisation
@@ -22,40 +22,45 @@ namespace :prestations do
       organisations = Organisation.all
     end
 
-    puts "Nombres d'Organisation à traiter : #{organisations.size}"
+    # puts "Nombres d'Organisations à traiter : #{organisations.size}"
 
     # Comme le traitement a lieu toutes les 24 heures, mais que l'on ne sait pas quand (anacron)
     # on doit comptabiliser le jour précédent (par sécurité)
 
     date = Date.today - 1.day
-    puts "Jour à comptabiliser: #{date}"
-
-    hors_période_scolaire = Vacance.where("DATE(?) BETWEEN début AND fin", date).any?
-    puts "Jour hors_période_scolaire ? = #{I18n.t hors_période_scolaire}"
+    vacances = Vacance.where("DATE(?) BETWEEN début AND fin", date)
+    hors_période_scolaire = vacances.any?
+    puts "Jour à comptabiliser: #{I18n.l date}." \
+         " Ce jour est #{hors_période_scolaire ? "hors période scolaire" : "en période_scolaire" }" \
+         " => #{ hors_période_scolaire ? vacances.first.nom : '' }"
 
     organisations.each do |organisation|
-      puts "@-@ " * 20
-      puts organisation.nom
-      puts "#{organisation.reservations.actives.size} réservation.s active.s au total pour cette organisation"
+      puts "- " * 50
+      puts "Organisation: #{ organisation.nom }"
+
+      reservations = organisation.reservations
+                                  .actives
+                                  .where(hors_période_scolaire: hors_période_scolaire)
+                                  .where("DATE(?) BETWEEN début AND fin", date)
+
+      puts "#{ reservations.size } réservation(s) active(s) pour cette organisation"
 
       prestations_ajoutées = 0
+      puts "+ " * 50  
 
-      organisation.enfants.each do |enfant|
-        puts "=> #{enfant.nom_et_prénom}"
+      reservations.each do | enfant |
+        enfant = reservation.enfant 
+        puts "=> #{ enfant.nom_et_prénom }"
 
-        reservations = enfant.reservations
-                              .actives
-                              .where(hors_période_scolaire: hors_période_scolaire)
-                              .where("DATE(?) BETWEEN début AND fin", date)
-        
-        puts "#{reservations.size} réservations"
+        enfant_reservations = reservations.where(enfant_id: enfant.id)
+        puts "#{ reservations.size } réservations"
 
         absences = enfant.absences.where("DATE(?) BETWEEN début AND fin", date).any?
-        puts "Des absences ? = #{I18n.t absences}"
-
-        if reservations.any? and !(absences)
+        puts "Des absences ? = #{ I18n.t absences }"
+        
+        if enfant_reservations.any? and !(absences)
           puts "PRESTATIONS CONSOMMÉES :"
-          reservations.each do |reservation|
+          enfant_reservations.each do |reservation|
             puts reservation.prestation_type.nom
             qté_reservée = jour_semaine_match?(date, reservation)
             
@@ -74,7 +79,7 @@ namespace :prestations do
             end
           end
         end
-        puts "+ " * 40  
+        puts "+ " * 50  
       end
       puts "Total prestations consommées : #{prestations_ajoutées}"
       puts "Les changements ont été enregistrés" if enregistrer
