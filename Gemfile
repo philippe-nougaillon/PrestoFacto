@@ -5,8 +5,6 @@ ruby '2.7.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3.1'
-# Use sqlite3 as the database for Active Record
-# gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -17,14 +15,6 @@ gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
-# Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -50,38 +40,19 @@ group :test do
   gem 'webdrivers'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-#gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-# ------------------------------------------------------------------
-
 gem 'pg'
-
 gem 'pundit'
 gem "devise", ">= 4.7.1"
 gem 'audited', '~> 4.9'
 gem 'friendly_id', '~> 5.2.4'
-
-gem 'capture_stdout'
-
 gem 'bootstrap_form'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap4'
 gem 'font_awesome5_rails'
 
-# PDF
-#gem 'wicked_pdf'
-#gem 'wkhtmltopdf-binary'
-
 # XLSX sheet
 gem 'spreadsheet'
 gem 'yaml_db'
-
-# conversion md => html
-#gem 'redcarpet'
-
-gem 'exception_notification'
-gem 'sitemap_generator'
 
 # Sucker Punch is a Ruby asynchronous processing library using concurrent-ruby
 gem 'sucker_punch'
@@ -89,3 +60,8 @@ gem 'sucker_punch'
 # Ruby finite-state-machine-inspired API for modeling workflow 
 gem 'workflow'
 gem 'workflow-activerecord'
+
+# 
+gem 'exception_notification'
+gem 'sitemap_generator'
+gem 'capture_stdout'
