@@ -54,6 +54,10 @@ gem 'font_awesome5_rails'
 gem 'spreadsheet'
 gem 'yaml_db'
 
+# PDF
+gem 'prawn', '1.3'
+gem 'prawn-table', '~> 0.1.0'
+
 # Sucker Punch is a Ruby asynchronous processing library using concurrent-ruby
 gem 'sucker_punch'
 

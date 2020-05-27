@@ -10,7 +10,7 @@
     <td><%= facture.mémo %></td>
     <td>
         <% if policy(facture).show? %>
-            <%= link_to facture_url(facture, format: :pdf), title: "Afficher la facture en PDF" do %>
+            <%= link_to facture_url(facture, format: :pdf), title: "Voir la facture en PDF" do %>
                 <i class="far fa-file-pdf"></i>
             <% end %>
         <% end %>

@@ -55,7 +55,14 @@ class FacturesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "Facture #{@facture.réf}"
+        filename = "Facture_#{Date.today.to_s}"
+        pdf = FacturePdf.new
+        pdf.export_facture(@facture)
+
+        send_data pdf.render,
+            filename: filename.concat('.pdf'),
+            type: 'application/pdf',
+            disposition: 'inline'	
       end
     end
   end
