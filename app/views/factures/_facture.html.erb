@@ -3,7 +3,7 @@
     <td><%= link_to facture.réf, facture %></td>
     <td><%= l facture.date.to_date %></td>
     <td><span class="badge <%= facture.style %>"><%= facture.try(:workflow_state).try(:humanize) %></span></td>
-    <td><%= facture.compte.nom %></td>
+    <td><%= link_to facture.compte.nom, facture.compte, class: 'text-info' %></td>
     <td><%= l facture.envoyée_le.to_date if facture.envoyée_le %></td>
     <td class="text-right"><%= number_to_currency(facture.montant, unit: '€', precision: 2, format: '%n %u') %></td>
     <td class="text-center"><i class="<%= facture.vérifiée ? "far fa-check-circle" : "" %>"></i></td>

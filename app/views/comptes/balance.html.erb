@@ -7,19 +7,20 @@
 	Solde à ce jour: <%= number_to_currency(@solde, unit:'€') %>
 </p>
 
-<table class="table table-hover table-bordered">
-  <thead>
-    <th>Date</th>
-    <th>Type</th>
-    <th>Référence</th>
-    <th class="text-right">Débit</th>
-    <th class="text-right">Crédit</th>
-    <th class="text-right">Solde</th>
-  </thead>
+<table class="table table-hover table-bordered table-striped table-sm">
+
+	<thead>
+		<th>Date</th>
+		<th>Type</th>
+		<th>Référence</th>
+		<th class="text-right">Débit</th>
+		<th class="text-right">Crédit</th>
+		<th class="text-right">Solde</th>
+	</thead>
 
 	<tbody>
 		<% @releve.each do |ligne| %>
-			<%= render partial: 'balance', locals: {ligne: ligne} %>
+			<%= render partial: 'balance', locals: { ligne: ligne } %>
 		<% end %>
     </tbody>
 

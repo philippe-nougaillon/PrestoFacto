@@ -79,7 +79,7 @@
           
           <div class="alert alert-highlight text-center" style="height: 35px;">
             <% if notice.present? or alert.present? %>
-              <aside class="text-<%= notice ? 'success' : 'warning' %>">
+              <aside class="text-<%= notice ? 'success' : 'danger' %>">
                 <%= notice ? notice : alert %>
               </aside>
             <% end %>

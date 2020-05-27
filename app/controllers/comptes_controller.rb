@@ -1,5 +1,7 @@
 class ComptesController < ApplicationController
-  before_action :set_compte, only: [:show, :edit, :update, :destroy]
+  before_action :set_compte, only: [:show, :balance, :edit, :update, :destroy]
+  before_action :calcul_solde_balance, only: [:show, :balance]
+
   helper_method :sort_column, :sort_direction
 
   # GET /comptes
@@ -30,16 +32,11 @@ class ComptesController < ApplicationController
   # GET /comptes/1.json
   def show
     authorize @compte
-    
-    @total_factures = @compte.factures.sum(:montant)
-    @total_paiements = @compte.paiements.sum(:montant)
-    @solde = @total_paiements - @total_factures
   end
 
   def balance
     authorize (Compte)
 
-    @compte = Compte.friendly.find(params[:compte_id])
     @releve = @compte.balance
   end
 
@@ -116,8 +113,14 @@ class ComptesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_compte
-      @compte = Compte.friendly.find(params[:id])
+      @compte = Compte.friendly.find(params[:id].present? ? params[:id] : params[:compte_id])
     end
+
+    def calcul_solde_balance
+      @total_factures  = @compte.factures.sum(:montant)
+      @total_paiements = @compte.paiements.sum(:montant)
+      @solde = @total_paiements - @total_factures
+    end  
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def compte_params

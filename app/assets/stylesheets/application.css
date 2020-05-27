@@ -15,26 +15,23 @@
  */
 
  .table a, th {
-    color: lightsteelblue;
+   color: lightsteelblue;
  }
 
  a.nav-link {
-    color: black;  
+   color: black;  
  }
-
 
  @keyframes alert-highlight {
-    0% {
-       opacity: 0;
-    }
-    100% {
-       opacity: 100;
-    }
-
+   0% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 100;
+   }
  }
 
- .alert-highlight {
-    animation: alert-highlight 3s;
-
- }
+.alert-highlight {
+   animation: alert-highlight 3s;
+}
 
