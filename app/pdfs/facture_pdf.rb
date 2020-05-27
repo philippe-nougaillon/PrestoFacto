@@ -64,8 +64,27 @@ class FacturePdf
         end
         move_down @margin_down * 5
 
-        data = [ ['Bénéficiaire', 'Prestation', 'Qté', 'Prix.U', 'Total'] ]
-  
+        # 
+        # Tableau de lignes de facture
+        #
+        
+        col_widths = [200, 100, 50, 50, 50]
+        cell_style = { 
+            inline_format: true,
+            border_width: 1,
+            borders: [:bottom],
+            border_color: 'DEDEDE'
+        }
+
+        # Générer les entêtes du tableau
+        table(
+            [ ['Bénéficiaire', 'Prestation', 'Qté', 'Prix.U', 'Total'] ], 
+            column_widths: col_widths, 
+            cell_style: cell_style.merge(text_color: 'C0C0C0')
+        )
+
+        # Lignes
+        data = []
         facture.facture_lignes.each do | ligne |
             data += [ [
                         "<b>#{ligne.intitulé}</b>",
@@ -76,18 +95,14 @@ class FacturePdf
                     ] ]
         end
 
-        data += [ [ nil, nil, nil, "Total : ", "%5.2f €" % facture.montant ] ]
+        # Total
+        data += [ [ nil, nil, nil, "Total : ", "<b> %5.2f € </b>" % facture.montant ] ]
 
+        # Générer le tableau
         table(
             data, 
-            header: true, 
-            column_widths: [200, 100, 50, 50, 50], 
-            cell_style: { 
-                            inline_format: true,  border_width: 1,
-                            borders: [:bottom],
-                            border_color: 'DEDEDE'
-                        }
-            
+            column_widths: col_widths, 
+            cell_style: cell_style
         )
 
     end
