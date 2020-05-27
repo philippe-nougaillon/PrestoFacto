@@ -48,7 +48,7 @@ namespace :prestations do
       prestations_ajoutées = 0
       puts "+ " * 50  
 
-      reservations.each do | enfant |
+      reservations.each do | reservation |
         enfant = reservation.enfant 
         puts "=> #{ enfant.nom_et_prénom }"
 
@@ -93,15 +93,15 @@ namespace :prestations do
     # si oui, on renvoit la quantité indiquée dans la réservation
 
     case date.wday
-    when 1 # lundi
+    when 0 
       reservation.lundi
-    when 2 # mardi
+    when 1 
       reservation.mardi
-    when 3
+    when 2
       reservation.mercredi
-    when 4
+    when 3
       reservation.jeudi
-    when 5
+    when 4
       reservation.vendredi
     else
       0
