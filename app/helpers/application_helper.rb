@@ -1,4 +1,5 @@
 module ApplicationHelper
+
     def sort_link(column, title = nil)
         title ||= (@model_class ? @model_class.human_attribute_name(column) : column.titleize)
         
