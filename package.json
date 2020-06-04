@@ -10,6 +10,7 @@
     "bootstrap": "^4.4.1",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
+    "stimulus": "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/stimulus.tar.gz",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",

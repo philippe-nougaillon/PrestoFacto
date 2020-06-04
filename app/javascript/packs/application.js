@@ -24,3 +24,4 @@ import "../stylesheets/application";
 
 // Importer Font Awesome
 import "@fortawesome/fontawesome-free/js/all";
+import "controllers"

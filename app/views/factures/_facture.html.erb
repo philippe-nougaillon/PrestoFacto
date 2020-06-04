@@ -1,4 +1,9 @@
 <tr>
+    <td>
+        <span data-action="click->action#click">
+            <%= check_box_tag "[factures_id][#{facture.id}]", 'yes', false,  data: {"action-target":"source"} %>
+        </span>
+    </td>
     <td><%= facture.compte.structure.nom %></td>
     <td><%= link_to facture.réf, facture %></td>
     <td><%= l facture.date.to_date %></td>

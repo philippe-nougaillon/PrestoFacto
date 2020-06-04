@@ -844,6 +844,26 @@
     webpack-cli "^3.3.10"
     webpack-sources "^1.4.3"
 
+"@stimulus/core@https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/core.tar.gz":
+  version "1.1.1"
+  resolved "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/core.tar.gz#03ea0bb10e85684dab4151bd5ae1a767cc5c52a9"
+  dependencies:
+    "@stimulus/mutation-observers" "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/mutation-observers.tar.gz"
+
+"@stimulus/multimap@https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/multimap.tar.gz":
+  version "1.1.1"
+  resolved "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/multimap.tar.gz#3f64d0aa7aa49d10060004f0e26a400810a54590"
+
+"@stimulus/mutation-observers@https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/mutation-observers.tar.gz":
+  version "1.1.1"
+  resolved "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/mutation-observers.tar.gz#33a01c587b9fa09cb7378dc9b54a83fdebd70bfa"
+  dependencies:
+    "@stimulus/multimap" "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/multimap.tar.gz"
+
+"@stimulus/webpack-helpers@https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/webpack-helpers.tar.gz":
+  version "1.1.1"
+  resolved "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/webpack-helpers.tar.gz#1f1b3d79ed21ec4930f28cb65fa0868bcbe96042"
+
 "@types/events@*":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/events/-/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"
@@ -6646,6 +6666,13 @@ stdout-stream@^1.4.0:
   integrity sha512-j4emi03KXqJWcIeF8eIXkjMFN1Cmb8gUlDYGeBALLPo5qdyTfA9bOtl8m33lRoC+vFMkP3gl0WsDr6+gzxbbTA==
   dependencies:
     readable-stream "^2.0.1"
+
+"stimulus@https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/stimulus.tar.gz":
+  version "1.1.1"
+  resolved "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/stimulus.tar.gz#6e0e097d712641214cc066e1b7aa83d308f0488c"
+  dependencies:
+    "@stimulus/core" "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/core.tar.gz"
+    "@stimulus/webpack-helpers" "https://github.com/stimulusjs/dev-builds/archive/b8cc8c4/@stimulus/webpack-helpers.tar.gz"
 
 stream-browserify@^2.0.1:
   version "2.0.2"

@@ -11,29 +11,37 @@
   </div>
 <% end %>
 
+<div data-controller="action">
+  <table class="table table-bordered table-hover table-sm">
+    <thead>
+      <tr>
+        <th><%= sort_link 'structures.nom', 'Structure' %></th>
+        <th><%= sort_link 'factures.réf', 'Réf' %></th>
+        <th><%= sort_link 'factures.date', 'Date' %></th>
+        <th><%= sort_link 'factures.workflow_state', 'Etat' %></th>
+        <th><%= sort_link 'comptes.nom', 'Compte' %></th>
+        <th><%= sort_link 'factures.envoyée_le', 'Envoyée le' %></th>
+        <th><%= sort_link 'factures.montant', 'Montant' %></th>
+        <th><%= sort_link 'factures.vérifiée', 'Vérifiée?' %></th>
+        <th><%= sort_link 'factures.mémo', 'Mémo' %></th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
 
-<table class="table table-bordered table-hover table-sm">
-  <thead>
-    <tr>
-      <th><%= sort_link 'structures.nom', 'Structure' %></th>
-      <th><%= sort_link 'factures.réf', 'Réf' %></th>
-      <th><%= sort_link 'factures.date', 'Date' %></th>
-      <th><%= sort_link 'factures.workflow_state', 'Etat' %></th>
-      <th><%= sort_link 'comptes.nom', 'Compte' %></th>
-      <th><%= sort_link 'factures.envoyée_le', 'Envoyée le' %></th>
-      <th><%= sort_link 'factures.montant', 'Montant' %></th>
-      <th><%= sort_link 'factures.vérifiée', 'Vérifiée?' %></th>
-      <th><%= sort_link 'factures.mémo', 'Mémo' %></th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+    <tbody>
+      <%= render @factures.includes(:compte) %>
+    </tbody>
 
-  <tbody>
-    <%= render @factures.includes(:compte) %>
-  </tbody>
+    <tfoot><tr><% 11.times do %><th></th><% end %></tr></tfoot>
+  </table>
 
-  <tfoot><tr><% 11.times do %><th></th><% end %></tr></tfoot>
-</table>
+  <%= select_tag :action_name, options_for_select(["Relancer","Passer à l'état 'imputée'"]), 
+                      include_blank: true, 
+                      onchange: 'this.form.submit()', 
+                      class: "form-control form-control-sm col-sm-2",
+                      data: {"action-target": "selector"} %>
+
+</div>
 
 <small class="text-secondary">
   <%= @factures.size %> 
