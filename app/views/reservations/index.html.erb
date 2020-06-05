@@ -42,10 +42,9 @@
 
 </table>
 
-<small class="text-secondary">
-  <%= @reservations.size %> 
-  <%= 'Réservation'.pluralize(@reservations.size) %> 
-</small> 
+<div class="text-secondary">
+  <%= page_entries_info @reservations, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>
 
 <%= will_paginate @reservations, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 

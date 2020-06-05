@@ -43,10 +43,9 @@
 
 </div>
 
-<small class="text-secondary">
-  <%= @factures.size %> 
-  <%= 'Facture'.pluralize(@factures.size) %> 
-</small> 
+<div class="text-secondary">
+  <%= page_entries_info @factures, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>
 
 <%= will_paginate @factures, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 <br>

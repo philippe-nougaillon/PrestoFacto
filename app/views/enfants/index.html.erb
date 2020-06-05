@@ -33,11 +33,9 @@
   </tbody>
 </table>
 
-<small class="text-secondary">
-  <%= @enfants.size %> 
-  <%= 'Enfant'.pluralize(@enfants.size) %> 
-</small> 
-
+<div class="text-secondary">
+  <%= page_entries_info @enfants, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>
 
 <%= will_paginate @enfants, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 

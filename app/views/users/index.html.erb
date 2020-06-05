@@ -30,5 +30,9 @@
   </tbody>
 </table>
 
+<div class="text-secondary">
+  <%= page_entries_info @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>
+
 <%= will_paginate @users, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 <br>

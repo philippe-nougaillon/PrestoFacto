@@ -36,10 +36,9 @@
   </tbody>
 </table>
 
-<small class="text-secondary">
-  <%= @comptes.size %> 
-  <%= 'Compte'.pluralize(@comptes.size) %> 
-</small> 
+<div class="text-secondary">
+  <%= page_entries_info @comptes, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>
 
 <%= will_paginate @comptes, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 <br>
