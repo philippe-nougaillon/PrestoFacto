@@ -18,7 +18,7 @@ module ApplicationHelper
         render(inline: %{
             <li class="nav-item">
                 <%= link_to '#{ url_for(path) }', 
-                            class: 'nav-link text-#{ (@ctrl == name) ? 'primary' : 'dark' }' do %>
+                            class: 'nav-link text-#{ (@ctrl == name) ? 'info' : 'dark' }' do %>
                     <i class='fas fa-fw fa-#{ icon }'></i>
                     #{ name.humanize } 
                 <% end %>
