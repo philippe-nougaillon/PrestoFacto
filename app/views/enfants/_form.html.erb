@@ -25,38 +25,40 @@
   <hr />
   
   <%= form.fields_for :reservations, layout: :horizontal do |reservation_form| %>
-    <div class="row">
-      <div class="col">
-        <%= reservation_form.select :prestation_type_id, 
-                                    options_from_collection_for_select(@prestation_types, 'id', 'nom', reservation_form.object.prestation_type_id),
-                                    { label: "Type", include_blank: true }, 
-                                    { class: "selectpicker" } %>
+    <div class="shadow-lg p-4 mb-4 bg-white">
+      <div class="row">
+        <div class="col">
+          <%= reservation_form.select :prestation_type_id, 
+                                      options_from_collection_for_select(@prestation_types, 'id', 'nom', reservation_form.object.prestation_type_id),
+                                      { label: "Type_presta.:", include_blank: true }, 
+                                      { class: "selectpicker" } %>
+        </div>
+        <div class="col-sm-3"><%= reservation_form.date_field :début %></div>
+        <div class="col-sm-3"><%= reservation_form.date_field :fin %></div>
       </div>
-      <div class="col"><%= reservation_form.date_field :début %></div>
-      <div class="col"><%= reservation_form.date_field :fin %></div>
-    </div>
 
-    <div class="row">
-      <div class="col"><%= reservation_form.number_field :lundi, step: :any, label_col: "col-sm-3", control_col: "col-sm-6" %></div>
-      <div class="col"><%= reservation_form.number_field :mardi, step: :any, label_col: "col-sm-3", control_col: "col-sm-6" %></div>
-      <div class="col"><%= reservation_form.number_field :mercredi, step: :any, label_col: "col-sm-4", control_col: "col-sm-6" %></div>
-      <div class="col"><%= reservation_form.number_field :jeudi, step: :any, label_col: "col-sm-4", control_col: "col-sm-6" %></div>
-      <div class="col"><%= reservation_form.number_field :vendredi, step: :any, label_col: "col-sm-4", control_col: "col-sm-6" %></div>
-    </div>
+      <div class="row">
+        <div class="col"><%= reservation_form.number_field :lundi, step: :any, label_col: "col-sm-3", control_col: "col-sm-6" %></div>
+        <div class="col"><%= reservation_form.number_field :mardi, step: :any, label_col: "col-sm-3", control_col: "col-sm-6" %></div>
+        <div class="col"><%= reservation_form.number_field :mercredi, step: :any, label_col: "col-sm-4", control_col: "col-sm-6" %></div>
+        <div class="col"><%= reservation_form.number_field :jeudi, step: :any, label_col: "col-sm-4", control_col: "col-sm-6" %></div>
+        <div class="col"><%= reservation_form.number_field :vendredi, step: :any, label_col: "col-sm-4", control_col: "col-sm-6" %></div>
+      </div>
 
-    <div class="row">
-      <div class="col-sm-1"><%= reservation_form.check_box :matin, custom: :switch %></div>
-      <div class="col-sm-1"><%= reservation_form.check_box :midi, custom: :switch %></div>
-      <div class="col-sm-1"><%= reservation_form.check_box :soir, custom: :switch %></div>
-      <div class="col"><%= reservation_form.check_box :hors_période_scolaire, custom: :switch %></div>
-      
-      <% unless reservation_form.object.new_record? %>  
-          <div class="col"></div>
-          <div class="col-sm-2"><%= reservation_form.check_box :active, custom: :switch %></div>
-          <div class="col-sm-2"><%= reservation_form.check_box :_destroy, label: "Supprimer?" %></div>
-      <% end %>
+      <div class="row">
+        <div class="col-sm-1"><%= reservation_form.check_box :matin, custom: :switch %></div>
+        <div class="col-sm-1"><%= reservation_form.check_box :midi, custom: :switch %></div>
+        <div class="col-sm-1"><%= reservation_form.check_box :soir, custom: :switch %></div>
+        <div class="col"><%= reservation_form.check_box :hors_période_scolaire, custom: :switch %></div>
+        
+        <% unless reservation_form.object.new_record? %>  
+            <div class="col"></div>
+            <div class="col-sm-2"><%= reservation_form.check_box :active, custom: :switch %></div>
+            <div class="col-sm-2"><%= reservation_form.check_box :_destroy, label: "Supprimer?" %></div>
+        <% end %>
+      </div>
     </div>
-    <hr />
+    
   <% end %>
 
   <%= form.submit "Enregistrer", class: "btn btn-success" %>
