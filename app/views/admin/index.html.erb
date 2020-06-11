@@ -1,5 +1,5 @@
 <div class="pb-2 mt-4 mb-2 border-bottom">
-  <h2><i class="fas fa-users-cog"></i> Administration</h2>
+  <h2><%= fa_icon 'users-cog' %> Administration</h2>
 </div>
 <br />  
 
@@ -8,7 +8,7 @@
     <ul class="list-group">
       <li class="list-group-item">
         <h5>
-          <i class="fas fa-city"></i> 
+          <%= fa_icon 'city' %> 
           <%= link_to organisation_url(current_user.organisation), class: "text-dark" do %>Organisation<% end %>
         </h5>
       </li>
@@ -17,7 +17,7 @@
 
       <li class="list-group-item">
         <h5>
-          <i class="fas fa-user-friends"></i>
+          <%= fa_icon 'user-friends' %>
           <%= link_to users_admin_index_path, class: "text-dark" do %>Utilisateurs<% end %>
         </h5>
       </li>
@@ -26,7 +26,7 @@
 
       <li class="list-group-item">
         <h5>
-          <i class="fas fa-euro-sign"></i>
+          <%= fa_icon 'euro-sign' %>
           <%= link_to admin_tarifs_url, class: "text-dark" do %>Tarifs<% end %>
         </h5>
       </li>
@@ -39,7 +39,7 @@
 
       <li class="list-group-item">
         <h5>
-          <i class="fas fa-calendar-day"></i>
+          <%= fa_icon 'calendar-day' %>
           <%= link_to admin_ajout_prestations_path, class: "text-dark" do %>Comptabilisation prestations<% end %>
         </h5>
       </li>
@@ -48,7 +48,7 @@
 
       <li class="list-group-item">
         <h5>
-          <i class="fas fa-calendar-day"></i>
+          <%= fa_icon 'calendar-day' %>
           <%= link_to admin_ajout_factures_path, class: "text-dark" do %>Facturation prestations<% end %>
         </h5>
       </li>
@@ -57,7 +57,7 @@
 
       <li class="list-group-item">
         <h5>
-          <i class="fas fa-paper-plane"></i>
+          <%= fa_icon 'paper-plane' %>
           <%= link_to admin_envoyer_factures_path, class: "text-dark" do %>Envoyer les factures<% end %>
         </h5>
       </li>
@@ -70,7 +70,7 @@
 
       <li class="list-group-item">
         <h5>
-          <i class="fas fa-search"></i>
+          <%= fa_icon 'search' %>
           <%= link_to admin_audit_path, class: "text-dark" do %>Audit des modifications<% end %>
         </h5>
       </li>
@@ -79,7 +79,7 @@
 
       <li class="list-group-item">
         <h5>
-          <i class="fas fa-file-import"></i>
+          <%= fa_icon 'file-import' %>
           <%= link_to admin_import_path, class: "text-dark" do %>Importer<% end %>
         </h5>
       </li>

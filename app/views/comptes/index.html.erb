@@ -1,10 +1,10 @@
 <div class="pb-2 mt-4 mb-2 border-bottom">
   <% if policy(Compte).new? %>
     <%= link_to new_compte_path, class: 'btn text-info float-right' do %>
-      <i class="fas fa-plus-circle"></i> Compte
+      <%= fa_icon 'plus-circle' %> Compte
     <% end %>
   <% end %>
-  <h2><i class="fas fa-users"></i> Comptes</h2>
+  <h2><%= fa_icon 'users' %> Comptes</h2>
 </div>
 
 <%= bootstrap_form_tag url: comptes_path, method: :get do |f| %>

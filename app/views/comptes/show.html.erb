@@ -3,7 +3,7 @@
 <div class="card">
   <div class="card-body">
 
-    <h4><i class="fas fa-child"></i> Enfants</h4>
+    <h4><%= fa_icon 'child' %> Enfants</h4>
     <table class="table table-bordered table-hover table-sm">
       <thead>
         <tr>
@@ -35,7 +35,7 @@
           <td>
             <% if policy(enfant).destroy? %>
               <%= link_to enfant, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
-                  <i class="fas fa-trash-alt"></i>
+                  <%= fa_icon 'trash-alt' %>
               <% end %>
             <% end %>
           </td>
@@ -47,7 +47,7 @@
 
     <% if policy(Enfant).new? %>
       <%= link_to new_enfant_path(compte_id: @compte), class: "btn text-info" do %>
-        <i class="fas fa-plus-circle"></i> Ajouter un enfant
+        <%= fa_icon 'plus-circle' %> Ajouter un enfant
       <% end %>
     <% end %>
 

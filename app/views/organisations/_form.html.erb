@@ -22,7 +22,7 @@
   </div>
 
   <p>
-    <h3><i class="fas fa-school"></i> Structures</h3>
+    <h3><%= fa_icon 'school' %> Structures</h3>
     <%= form.fields_for :structures do |structure_form| %>
       <div class="row">
         <div class="col-sm-5"><%= structure_form.text_field :nom, label_as_placeholder: true %></div>

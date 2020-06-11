@@ -51,7 +51,7 @@
 
 <div class="card">
   <div class="card-body">
-    <h4><i class="fas fa-calendar-alt"></i> Réservations actives</h4>
+    <h4><%= fa_icon 'calendar-alt' %> Réservations actives</h4>
 
     <table class="table table-bordered table-hover table-sm">
       <thead>
@@ -100,7 +100,7 @@
 
 <div class="card">
   <div class="card-body">
-    <h4><i class="fas fa-calendar-times"></i> Absences</h4>
+    <h4><%= fa_icon 'calendar-times' %> Absences</h4>
 
     <table class="table table-bordered table-hover table-sm">
       <thead>
@@ -126,7 +126,7 @@
 
     <% if policy(Absence).edit? %>
       <%= link_to new_absence_path(enfant_id: @enfant), class: 'btn text-info', data: {toggle: "modal", target: "#myModal" } do %>
-        <i class="fas fa-plus-circle"></i> Ajouter une absence
+        <%= fa_icon 'plus-circle' %> Ajouter une absence
       <% end %>
     <% end %>
 

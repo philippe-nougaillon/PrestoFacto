@@ -78,7 +78,7 @@
           <div class="card-footer">
             <% if policy(Facture).new? %>
               <%= link_to new_facture_path(compte_id: @compte.id), class: "btn btn-sm text-info" do %>
-                <i class="fas fa-file-invoice"></i> Nouvelle facture
+                <%= fa_icon 'file-invoice' %> Nouvelle facture
               <% end %>
             <% end %>
             |
@@ -90,7 +90,7 @@
             | 
             <% if policy(@compte).balance? %>
               <%= link_to compte_balance_path(@compte), class: "btn btn-sm text-info" do %>
-                <i class="fas fa-balance-scale"></i> Voir la balance
+                <%= fa_icon 'balance-scale' %> Voir la balance
               <% end %>
             <% end %>
           </div>
