@@ -94,7 +94,7 @@ class Facture < ApplicationRecord
   end
 
   def self.xls_headers
-		%w{ID Réf Date Compte Montant Mémo}
+		%w{ID Réf Date Compte Montant Mémo Etat Date_création Date_modification}
 	end
 
   def self.to_xls(factures)
@@ -118,6 +118,7 @@ class Facture < ApplicationRecord
         f.compte.nom,
         f.montant,
         f.mémo,
+        f.workflow_state.humanize,
 				f.created_at, 
 				f.updated_at
 			]
