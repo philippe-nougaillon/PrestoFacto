@@ -140,7 +140,7 @@ class FacturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def facture_params
-      params.require(:facture).permit(:compte_id, :réf, :date, :échéance, :envoyée_le, :montant, :vérifiée, :mémo,
+      params.require(:facture).permit(:compte_id, :réf, :date, :échéance, :envoyée_le, :montant, :vérifiée, :mémo, :workflow_state,
                                         facture_lignes_attributes: [:id, :facture_id, :prestation_type_id, :intitulé, :qté, :prix, :total ,:_destroy])
     end
 
