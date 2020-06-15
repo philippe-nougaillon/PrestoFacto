@@ -35,7 +35,7 @@ class Facture < ApplicationRecord
 
   workflow do
     state AJOUTEE, meta: {style: 'badge-info'} do
-      event :verifier, transitions_to: VERIFIEE
+      event :vérifier, transitions_to: VERIFIEE
     end
 
     state VERIFIEE, meta: {style: 'badge-primary'} do

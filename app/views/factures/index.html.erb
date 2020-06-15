@@ -2,52 +2,58 @@
   <h2><%= fa_icon 'file-invoice' %> Factures</h2>
 </div>
 
-<%= bootstrap_form_tag url: factures_path, method: :get do |f| %>
+<%= bootstrap_form_tag url: action_factures_path do |f| %>
   <div class="row">
     <div class="col-sm-3"><%= f.select :structure_id, options_from_collection_for_select(@structures, 'id', 'nom', params[:structure_id]), { include_blank: true, label: "Structure" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
     <div class="col-sm-2"><%= f.date_field :date_début, value: params[:date_début], onchange: "this.form.submit()" %></div>
     <div class="col-sm-2"><%= f.date_field :date_fin, value: params[:date_fin], onchange: "this.form.submit()" %></div>
     <div class="col"><%= f.text_field :search, value: params[:search], label:"Nom du compte/Référence facture", onchange: "this.form.submit()" %></div>
   </div>
+
+  <div data-controller="action">
+    <table class="table table-bordered table-hover table-striped table-sm">
+      <thead>
+        <tr>
+          <th></th>
+          <th><%= sort_link 'structures.nom', 'Structure' %></th>
+          <th><%= sort_link 'factures.réf', 'Réf' %></th>
+          <th><%= sort_link 'factures.date', 'Date' %></th>
+          <th><%= sort_link 'comptes.nom', 'Compte' %></th>
+          <th><%= sort_link 'factures.envoyée_le', 'Envoyée le' %></th>
+          <th><%= sort_link 'factures.montant', 'Montant' %></th>
+          <th><%= sort_link 'factures.vérifiée', 'Vérifiée?' %></th>
+          <th><%= sort_link 'factures.mémo', 'Mémo' %></th>
+          <th><%= sort_link 'factures.workflow_state', 'Etat' %></th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <%= render @factures.includes(:compte) %>
+      </tbody>
+
+      <tfoot><tr><% 11.times do %><th></th><% end %></tr></tfoot>
+    </table>
+
+    <div class="text-secondary">
+      <%= page_entries_info @factures, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+    </div>
+
+    <div class="input-group">
+      <%= select_tag :action_name, 
+                          options_for_select(["Passer à l'état 'vérifiée'"]), 
+                          include_blank: true, 
+                          class: 'form-control form-control-sm col-sm-3',
+                          data: {'action-target': 'selector'} %>
+      <div class="input-group-append">
+        <%= submit_tag 'ok',  name: 'action', 
+                              class: 'btn btn-sm btn-outline-success',
+                              data: {'action-target': 'button'} %>
+      </div>
+    </div>
+
+  </div>
 <% end %>
-
-<div data-controller="action">
-  <table class="table table-bordered table-hover table-striped table-sm">
-    <thead>
-      <tr>
-        <th></th>
-        <th><%= sort_link 'structures.nom', 'Structure' %></th>
-        <th><%= sort_link 'factures.réf', 'Réf' %></th>
-        <th><%= sort_link 'factures.date', 'Date' %></th>
-        <th><%= sort_link 'comptes.nom', 'Compte' %></th>
-        <th><%= sort_link 'factures.envoyée_le', 'Envoyée le' %></th>
-        <th><%= sort_link 'factures.montant', 'Montant' %></th>
-        <th><%= sort_link 'factures.vérifiée', 'Vérifiée?' %></th>
-        <th><%= sort_link 'factures.mémo', 'Mémo' %></th>
-        <th><%= sort_link 'factures.workflow_state', 'Etat' %></th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <%= render @factures.includes(:compte) %>
-    </tbody>
-
-    <tfoot><tr><% 11.times do %><th></th><% end %></tr></tfoot>
-  </table>
-
-  <%= select_tag :action_name, 
-                    options_for_select(["Relancer","Passer à l'état 'imputée'"]), 
-                    include_blank: true, 
-                    onchange: 'this.form.submit()', 
-                    class: "form-control form-control-sm col-sm-2",
-                    data: {"action-target": "selector"} %>
-
-</div>
-
-<div class="text-secondary">
-  <%= page_entries_info @factures, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
-</div>
 
 <%= will_paginate @factures, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 

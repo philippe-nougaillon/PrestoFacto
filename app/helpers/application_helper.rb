@@ -19,8 +19,7 @@ module ApplicationHelper
             <li class="nav-item pr-3">
                 <%= link_to '#{ url_for(path) }', 
                             class: 'nav-link text-#{ (@ctrl == name) ? 'dark active shadow-sm' : 'secondary' }' do %>
-                    <%= fa_icon '#{ icon }' %>
-                    #{ name.humanize } 
+                    <%= fa_icon '#{ icon }', text: ' #{ name.humanize }' %>
                 <% end %>
             </li>
         })

@@ -1,10 +1,11 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-    static targets = [ "source", "selector" ]
+    static targets = [ 'source', 'selector', 'button' ]
 
     initialize() {
-        this.selectorTarget.style.visibility = "hidden";
+        this.selectorTarget.style.visibility = 'hidden';
+        this.buttonTarget.style.visibility = 'hidden';
     }
 
     connect() {
@@ -21,9 +22,11 @@ export default class extends Controller {
         //console.log(`Clicks = ${enabled.length}`)
         
         if (enabled.length == 0 ) {
-            this.selectorTarget.style.visibility = "hidden";
+            this.selectorTarget.style.visibility = 'hidden';
+            this.buttonTarget.style.visibility = 'hidden';
         } else {
-            this.selectorTarget.style.visibility = "visible";
+            this.selectorTarget.style.visibility = 'visible';
+            this.buttonTarget.style.visibility = 'visible';
         }
     }
 }

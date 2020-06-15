@@ -11,7 +11,12 @@ Rails.application.routes.draw do
   
   get 'moncompte/index'
 
-  resources :factures
+  resources :factures do
+    collection do
+      post :action
+    end
+  end
+
   resources :prestations
   resources :tarifs
   resources :absences

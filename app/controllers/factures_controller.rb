@@ -47,6 +47,24 @@ class FacturesController < ApplicationController
     end
   end
 
+  def action
+    return unless params[:factures_id]
+
+    factures = Facture.where(id: params[:factures_id].keys)
+
+    case params[:action_name]
+    when "Passer à l'état 'vérifiée'"
+      factures = factures.with_ajoutée_state.each do | f | 
+        f.vérifier!
+      end
+    when "Envoyer"
+      
+    end
+    flash[:notice] = "#{factures.count} facture.s modifiée.s"  
+
+    redirect_to factures_url
+  end
+
   # GET /factures/1
   # GET /factures/1.json
   def show
