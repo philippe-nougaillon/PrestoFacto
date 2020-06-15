@@ -58,7 +58,10 @@ class FacturesController < ApplicationController
         f.vérifier!
       end
     when "Envoyer"
-      
+      factures = factures.with_vérifiée_state.each do | f |
+        EnvoyerFactureJob.perform_later(f) 
+        f.envoyer!
+      end
     end
     flash[:notice] = "#{factures.count} facture.s modifiée.s"  
 
