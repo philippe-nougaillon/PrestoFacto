@@ -16,10 +16,10 @@ module ApplicationHelper
 
     def navbar_nav_item(name, icon, path)
         render(inline: %{
-            <li class="nav-item">
+            <li class="nav-item pr-3">
                 <%= link_to '#{ url_for(path) }', 
-                            class: 'nav-link text-#{ (@ctrl == name) ? 'info' : 'dark' }' do %>
-                    <i class='fas fa-fw fa-#{ icon }'></i>
+                            class: 'nav-link text-#{ (@ctrl == name) ? 'dark active shadow-sm' : 'secondary' }' do %>
+                    <%= fa_icon '#{ icon }' %>
                     #{ name.humanize } 
                 <% end %>
             </li>

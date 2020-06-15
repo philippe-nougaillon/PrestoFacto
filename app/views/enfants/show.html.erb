@@ -41,7 +41,7 @@
     </div>
 
     <% if policy(@enfant).edit? %>
-      <%= link_to edit_enfant_path(@enfant), class: "btn text-info" do %>
+      <%= link_to edit_enfant_path(@enfant), class: "btn" do %>
         <i class="far fa-edit"></i> Editer 
       <% end %>
     <% end %>
@@ -90,7 +90,7 @@
     </table>
 
     <% if policy(@enfant).edit? %>
-      <%= link_to edit_enfant_path(@enfant), class: "btn text-info" do %>
+      <%= link_to edit_enfant_path(@enfant), class: "btn" do %>
         <i class="far fa-edit"></i> Editer les réservations
       <% end %>
     <% end %>
@@ -125,7 +125,7 @@
     </table>
 
     <% if policy(Absence).edit? %>
-      <%= link_to new_absence_path(enfant_id: @enfant), class: 'btn text-info', data: {toggle: "modal", target: "#myModal" } do %>
+      <%= link_to new_absence_path(enfant_id: @enfant), class: 'btn', data: {toggle: "modal", target: "#myModal" } do %>
         <%= fa_icon 'plus-circle' %> Ajouter une absence
       <% end %>
     <% end %>

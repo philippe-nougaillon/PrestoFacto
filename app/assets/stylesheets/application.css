@@ -16,6 +16,7 @@
 
  .table a, th  {
    color: darkblue;
+   text-decoration: underline gray;
  }
 
  a.nav-link {

@@ -30,7 +30,7 @@
     </table>
 
     <% if policy(Tarif).new? %>
-      <%= link_to new_tarif_path(organisation_id: @organisation), data: {toggle: "modal", target: "#myModalTarif" }, class: "btn text-info" do %>
+      <%= link_to new_tarif_path(organisation_id: @organisation), data: {toggle: "modal", target: "#myModalTarif" }, class: "btn" do %>
           <%= fa_icon 'plus-circle' %> Ajouter un tarif
       <% end %>
     <% end %>
@@ -62,7 +62,7 @@
             <% end %>
         </table>
         <% if policy(TarifType).new? %>
-            <%= link_to new_tarif_type_path(organisation_id: @organisation), data: {toggle: "modal", target: "#myModalTypeTarif" }, class: "btn text-info" do %>
+            <%= link_to new_tarif_type_path(organisation_id: @organisation), data: {toggle: "modal", target: "#myModalTypeTarif" }, class: "btn" do %>
             <%= fa_icon 'plus-circle' %> Ajouter un type de tarif
             <% end %>
         <% end %>
@@ -92,7 +92,7 @@
         </table>
 
         <% if policy(PrestationType).new? %>
-            <%= link_to new_prestation_type_path(organisation_id: @organisation), data: {toggle: "modal", target: "#myModalTypePresta" }, class: "btn text-info" do %>
+            <%= link_to new_prestation_type_path(organisation_id: @organisation), data: {toggle: "modal", target: "#myModalTypePresta" }, class: "btn" do %>
                 <%= fa_icon 'plus-circle' %> Ajouter un type de prestation
             <% end %>
         <% end %>
