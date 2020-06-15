@@ -42,7 +42,7 @@
 </p>
 
 <% if policy(@structure).edit? %>
-  <%= link_to  edit_structure_path(@structure), class: "btn text-info" do %>
+  <%= link_to  edit_structure_path(@structure) do %>
     <i class="far fa-edit"></i> Editer
   <% end %>
 <% end %>

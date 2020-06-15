@@ -1,7 +1,7 @@
 <tr>
     <td><%= reservation.enfant.compte.structure.nom %></td>
     <td><%= reservation.enfant.classroom.nom %></td>
-    <td><%= link_to reservation.enfant.nom_et_prénom, reservation.enfant, class: "text-info" %></td>
+    <td><%= link_to reservation.enfant.nom_et_prénom, reservation.enfant %></td>
 
     <td class="text-center"><%= fa_icon 'exclamation-triangle' if reservation.enfant.menu_all %></td>
     <td class="text-center"><%= fa_icon 'exclamation-triangle' if reservation.enfant.menu_sp %></td>

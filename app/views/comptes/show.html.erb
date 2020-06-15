@@ -20,7 +20,7 @@
       <% @compte.enfants.each do |enfant| %>
         <tr>
           <td><%= enfant.nom %></td>
-          <td><%= link_to enfant.prénom, enfant, class: "text-info" %></td>
+          <td><%= link_to enfant.prénom, enfant %></td>
           <td><%= l enfant.date_naissance %></td>
           <td><%= enfant.classroom.nom %></td>
           <td class="text-center"><%= fa_icon 'exclamation-triangle' if enfant.menu_sp %></td>

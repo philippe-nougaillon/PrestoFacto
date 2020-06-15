@@ -1,9 +1,9 @@
 <tr>
     <td><%= enfant.compte.structure.nom %></td>
-    <td><%= link_to enfant.compte.nom, enfant.compte, class: "text-info" %></td>
+    <td><%= link_to enfant.compte.nom, enfant.compte %></td>
     <td><%= enfant.classroom.nom %></td>
     <td><%= enfant.nom %></td>
-    <td><%= link_to enfant.prénom, enfant, class: "text-info" %></td>
+    <td><%= link_to enfant.prénom, enfant %></td>
     <td><%= l enfant.date_naissance %></td>
     <td class="text-center"><%= fa_icon 'exclamation-triangle' if enfant.menu_sp %></td>
     <td class="text-center"><%= fa_icon 'exclamation-triangle' if enfant.menu_all %></td>

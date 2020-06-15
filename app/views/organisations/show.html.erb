@@ -65,7 +65,7 @@
 
         <% @organisation.structures.each do |structure| %>
           <tr>
-            <td><%= link_to structure.nom, structure, class: "text-info" %></td>
+            <td><%= link_to structure.nom, structure %></td>
             <td><%= structure.classrooms.pluck(:nom).join(", ") %></td>
             <td><%= structure.comptes.size %></td>
             <td>

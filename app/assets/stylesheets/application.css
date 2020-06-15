@@ -14,8 +14,8 @@
  *= require_self
  */
 
- .table a, th {
-   color: lightsteelblue;
+ .table a, th  {
+   color: darkblue;
  }
 
  a.nav-link {
