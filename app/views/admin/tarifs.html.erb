@@ -4,36 +4,37 @@
 <br />
 
 <p>
-    <table class="table table-bordered table-bordered table-sm">
-      <thead>
-          <tr>
-          <th>Nom du type de Tarif</th>
-          <th>Nom du type de Prestation</th>
-          <th>Prix</th>  
-          <th></th>
-          </tr>
-      </thead>
-      <% @organisation.tarifs.each do |tarif| %>
-          <tr>
-          <td><%= tarif.tarif_type.nom %></td>
-          <td><%= tarif.prestation_type.nom %></td>
-          <td><%= number_to_currency(tarif.prix, unit: '€', precision: 2, format: "%n %u") %></td>
-          <td>
-              <% if policy(tarif).destroy? %>
+  <table class="table table-bordered table-striped table-sm">
+    <thead>
+      <tr>
+        <th>Nom du type de Tarif</th>
+        <th>Nom du type de Prestation</th>
+        <th>Prix</th>  
+        <th></th>
+      </tr>
+    </thead>
+
+    <% @organisation.tarifs.each do | tarif | %>
+      <tr>
+        <td><%= tarif.tarif_type.nom %></td>
+        <td><%= tarif.prestation_type.nom %></td>
+        <td><%= number_to_currency(tarif.prix, unit: '€', precision: 2, format: "%n %u") %></td>
+        <td>
+            <% if policy(tarif).destroy? %>
               <%= link_to tarif, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
                   <%= fa_icon 'trash-alt' %>
               <% end %>
-              <% end %>
-          </td>
-          </tr>
-      <% end %>
-    </table>
-
-    <% if policy(Tarif).new? %>
-      <%= link_to new_tarif_path(organisation_id: @organisation), data: {toggle: "modal", target: "#myModalTarif" }, class: "btn" do %>
-          <%= fa_icon 'plus-circle' %> Ajouter un tarif
-      <% end %>
+            <% end %>
+        </td>
+      </tr>
     <% end %>
+  </table>
+
+  <% if policy(Tarif).new? %>
+    <%= link_to new_tarif_path(organisation_id: @organisation), data: {toggle: "modal", target: "#myModalTarif" }, class: "btn" do %>
+      <%= fa_icon 'plus-circle' %> Ajouter un tarif
+    <% end %>
+  <% end %>
 </p>
 <br>
 
@@ -41,7 +42,7 @@
 
     <div class="col">
         <h3>Types de tarifs</h3>
-        <table class="table table-bordered table-bordered table-sm">
+        <table class="table table-bordered table-striped table-sm">
             <thead>
                 <tr>
                     <th>Nom</th>
@@ -70,7 +71,7 @@
 
     <div class="col">
         <h3>Types de prestations</h3>
-        <table class="table table-bordered table-bordered table-sm">
+        <table class="table table-bordered table-striped table-sm">
             <thead>
                 <tr>
                     <th>Nom</th>
