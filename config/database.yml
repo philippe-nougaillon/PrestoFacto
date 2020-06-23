@@ -65,7 +65,6 @@ test:
 #
 production:
   <<: *default
-  host: localhost
-  database: PrestoFActo_production
-  username: hosting-db
-  password: 
+  database: prestofacto_production
+  username: prestofacto
+  password:
