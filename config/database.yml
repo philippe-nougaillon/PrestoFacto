@@ -67,4 +67,4 @@ production:
   <<: *default
   database: prestofacto_production
   username: prestofacto
-  password:
+  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
