@@ -15,60 +15,58 @@
 
   <body>
     <div class="row">
-      <div class="col-sm-2">
-        <nav class="navbar navbar-expand-sm">
-          <ul class="nav nav-tabs flex-column">
-            <a class="navbar-brand" href="/">
-              <% 4.times do%>
-                <%= image_tag 'logo.jpg', height: 60 %>
-              <% end %>
-            </a>
+      <div class="col">
+        <ul class="nav nav-tabs flex-column p-2">
+          <a class="navbar-brand" href="/">
+            <nav class="navbar bg-light" style="height: 55px;">
+              PrestoFacto
+            </nav>
+          </a>
+
+          <span class="navbar-text"></span>
+
+          <% if current_user %>
+
+            <% if current_user.visiteur? %>
+              <%= navbar_nav_item('moncompte', 'users',  moncompte_index_path) %>
+            <% else %>
+              <%= navbar_nav_item('comptes', 'users', comptes_path) %>
+              <%= navbar_nav_item('enfants', 'child', enfants_path) %>
+              <%= navbar_nav_item('reservations', 'calendar-alt', reservations_path) %>
+              <%= navbar_nav_item('absences', 'calendar-times', absences_path) %>
+              <%= navbar_nav_item('prestations', 'utensils', prestations_path) %>
+              <%= navbar_nav_item('factures', 'file-invoice', factures_path) %>
+              <%= navbar_nav_item('paiements', 'money-bill-alt', paiements_path) %>
+            <% end %>
+
+            <li class="nav-item">
+              <a class="nav-link text-secondary disabled" href="#"></a>
+            </li>
 
             <span class="navbar-text"></span>
 
-            <% if current_user %>
+            <%= navbar_nav_item('admin', 'users-cog', admin_index_path) if current_user.admin? %>
 
-              <% if current_user.visiteur? %>
-                <%= navbar_nav_item('moncompte', 'users',  moncompte_index_path) %>
-              <% else %>
-                <%= navbar_nav_item('comptes', 'users', comptes_path) %>
-                <%= navbar_nav_item('enfants', 'child', enfants_path) %>
-                <%= navbar_nav_item('reservations', 'calendar-alt', reservations_path) %>
-                <%= navbar_nav_item('absences', 'calendar-times', absences_path) %>
-                <%= navbar_nav_item('prestations', 'utensils', prestations_path) %>
-                <%= navbar_nav_item('factures', 'file-invoice', factures_path) %>
-                <%= navbar_nav_item('paiements', 'money-bill-alt', paiements_path) %>
-              <% end %>
+            <li class="nav-item">
+              <%= link_to destroy_user_session_path, method: :delete, title: "Fermer la session de #{current_user.email}", class: "nav-link text-secondary" do %><i class="fas fa-fw fa-sign-out-alt"></i></span> Déconnexion<% end %> 
+            </li>
+          <% else %>
+            <%= navbar_nav_item('Accueil', 'home', new_user_session_path) %>
+            <%= navbar_nav_item('a_propos', 'info-circle', guide_a_propos_path) %>
+            <%= navbar_nav_item("guide d'utilisation", 'book', guide_utilisation_path) %>
+            <%= navbar_nav_item("Se connecter", 'sign-in-alt', new_user_session_path) %>
+            <%= navbar_nav_item("S'inscrire", 'user-plus', new_user_registration_path) %>
 
+            <% if false %>
               <li class="nav-item">
-                <a class="nav-link text-secondary disabled" href="#"></a>
+                <%= link_to admin_mode_demonstration_path, class: "nav-link" do %>
+                  <%= fa_icon "eye", text: " Mode démonstration"%>
+                <% end %>
               </li>
-
-              <span class="navbar-text"></span>
-
-              <%= navbar_nav_item('admin', 'users-cog', admin_index_path) if current_user.admin? %>
-
-              <li class="nav-item">
-                <%= link_to destroy_user_session_path, method: :delete, title: "Fermer la session de #{current_user.email}", class: "nav-link text-secondary" do %><i class="fas fa-fw fa-sign-out-alt"></i></span> Déconnexion<% end %> 
-              </li>
-            <% else %>
-              <%= navbar_nav_item('Accueil', 'home', new_user_session_path) %>
-              <%= navbar_nav_item('a_propos', 'info-circle', guide_a_propos_path) %>
-              <%= navbar_nav_item("guide d'utilisation", 'book', guide_utilisation_path) %>
-              <%= navbar_nav_item("Se connecter", 'sign-in-alt', new_user_session_path) %>
-              <%= navbar_nav_item("S'inscrire", 'user-plus', new_user_registration_path) %>
-
-              <% if false %>
-                <li class="nav-item">
-                  <%= link_to admin_mode_demonstration_path, class: "nav-link" do %>
-                    <%= fa_icon "eye", text: " Mode démonstration"%>
-                  <% end %>
-                </li>
-              <% end %>
- 
             <% end %>
-          </ul>
-        </nav>
+
+          <% end %>
+        </ul>
       </div>
 
       <div class="col-sm-10">
