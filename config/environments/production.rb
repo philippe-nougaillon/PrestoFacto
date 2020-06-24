@@ -121,6 +121,6 @@ Rails.application.configure do
   }
   ActionMailer::Base.delivery_method = :smtp
 
-  config.action_mailer.default_url_options = { :host => "prestofacto.herokuapp.com" }
+  config.action_mailer.default_url_options = { :host => 'prestofacto.herokuapp.com', :protocol => 'https' }
 
 end
