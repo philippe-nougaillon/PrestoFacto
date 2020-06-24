@@ -32,7 +32,7 @@ class RegistrationsController < Devise::RegistrationsController
         respond_to do |format|
             if @user.save
                 # on se connecte avec l'utilisateur créé mais comme le compte n'a pas été confirmé, 
-                # un message demandera de la faire en allant répondre au courriel envoyé...
+                # un message demandera de le faire en allant répondre au courriel envoyé...
                 sign_in @user
             else
                 format.html { render :new }
