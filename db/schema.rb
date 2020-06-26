@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_22_125834) do
+ActiveRecord::Schema.define(version: 2020_06_26_085606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -239,6 +239,7 @@ ActiveRecord::Schema.define(version: 2020_05_22_125834) do
     t.datetime "updated_at", null: false
     t.boolean "active", default: true
     t.boolean "hors_période_scolaire"
+    t.string "workflow_state"
     t.index ["enfant_id"], name: "index_reservations_on_enfant_id"
     t.index ["prestation_type_id"], name: "index_reservations_on_prestation_type_id"
   end

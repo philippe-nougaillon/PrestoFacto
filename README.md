@@ -59,4 +59,6 @@ Chaque modification de donnée est enregistrée dans un journal, avec la date, l
 
 ### Utilisateurs
 
-Il existe deux types de compte utilisateur; normal ou administrateur. Le compte de type normal peut accéder aux données mais sans pouvoir les modifier, au contraire de l'administrateur qui a tous les droits.
+Il existe trois types de comptes utilisateurs; Visiteur, Normal et Administrateur. 
+Le compte 'Visiteur' est utilisé pour utiliser le portail Familles/Comptes. 
+Le compte de type 'Normal' peut accéder à toutes les données mais sans pouvoir les modifier, au contraire de l'Administrateur qui a tous les droits.

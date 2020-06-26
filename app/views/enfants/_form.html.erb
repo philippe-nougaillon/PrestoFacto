@@ -30,9 +30,10 @@
         <div class="col">
           <%= reservation_form.select :prestation_type_id, 
                                       options_from_collection_for_select(@prestation_types, 'id', 'nom', reservation_form.object.prestation_type_id),
-                                      { label: "Type_presta.:", include_blank: true }, 
+                                      { label: "Presta.", include_blank: true }, 
                                       { class: "selectpicker" } %>
         </div>
+        <div class="col"><%= reservation_form.select :workflow_state, Reservation.workflow_spec.states, label: 'Etat' %></div>
         <div class="col-sm-3"><%= reservation_form.date_field :début %></div>
         <div class="col-sm-3"><%= reservation_form.date_field :fin %></div>
       </div>

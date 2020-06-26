@@ -8,12 +8,14 @@ class Compte < ApplicationRecord
 
   has_one :organisation, through: :structure
 
+  has_many :contacts, inverse_of: :compte, dependent: :delete_all
   has_many :enfants, dependent: :delete_all
   has_many :classrooms
-  has_many :prestations, through: :enfants
   has_many :factures
   has_many :paiements
-  has_many :contacts, inverse_of: :compte, dependent: :delete_all
+
+  has_many :prestations, through: :enfants
+  has_many :reservations, through: :enfants
 
   accepts_nested_attributes_for :contacts, reject_if: proc { |attributes| attributes[:nom].blank? }, allow_destroy: true
 

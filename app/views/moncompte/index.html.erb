@@ -49,6 +49,43 @@
 
 <div class="card">
   <div class="card-body">
+    <h3><%= fa_icon 'calendar-alt' %> Réservations</h3>
+    <table class="table table-bordered table-hover table-sm">
+      <thead>
+        <tr>
+          <th>Structure</th>
+          <th>Classe</th>
+          <th>Enfant</th>
+          <th>ALG?</th>
+          <th>SP?</th>
+          <th>Prestation</th>
+          <th>Début</th>
+          <th>Fin</th>
+          <th>Etat</th>
+          <th>Lun</th>
+          <th>Mar</th>
+          <th>Mer</th>
+          <th>Jeu</th>
+          <th>Ven</th>
+          <th>Matin</th>
+          <th>Midi</th>
+          <th>Soir</th>
+          <th>HScol?</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <%= render @compte.reservations.includes(:enfant) %>
+      </tbody>
+
+      <tfoot><tr><% 8.times do %><th></th><% end %></tr></tfoot>
+
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
     <h3><%= fa_icon 'balance-scale' %> Balance</h3>
 
     <table class="table table-hover table-bordered table-sm">

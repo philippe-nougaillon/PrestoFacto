@@ -37,8 +37,9 @@ class UsersController < ApplicationController
   def create
     authorize User
 
-    @user = User.new(user_params.permit(:email, :password, :password_confirmation, :admin))
+    @user = User.new(user_params.permit(:email, :password, :password_confirmation, :role))
     @user.organisation = current_user.organisation
+    @user.confirmed_at = DateTime.now
 
     respond_to do |format|
       if @user.save
@@ -87,7 +88,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.permit(:email, :organisation_id, :organisation, :password, :password_confirmation, :admin, :utf8, :authenticity_token, :commit)
+      params.permit(:email, :organisation_id, :organisation, :password, :password_confirmation, :role, :utf8, :authenticity_token, :commit)
     end
 
 end

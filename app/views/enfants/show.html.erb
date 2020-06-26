@@ -59,6 +59,7 @@
           <th></th>
           <th>Début</th>
           <th>Fin</th>
+          <th>Etat</th>
           <th>Lun</th>
           <th>Mar</th>
           <th>Mer</th>
@@ -76,11 +77,15 @@
           <td><%= reservation.prestation_type.nom %>
           <td><%= l reservation.début %></td>
           <td><%= l reservation.fin %></td>
+
+          <td><span class="badge <%= reservation.style %>"><%= reservation.workflow_state.humanize %></span></td>
+
           <td class="text-center"><%= number_with_precision(reservation.lundi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.lundi > 0 %></td>
           <td class="text-center"><%= number_with_precision(reservation.mardi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.mardi > 0 %></td>
           <td class="text-center"><%= number_with_precision(reservation.mercredi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.mercredi > 0 %></td>
           <td class="text-center"><%= number_with_precision(reservation.jeudi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.jeudi > 0 %></td>
           <td class="text-center"><%= number_with_precision(reservation.vendredi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.vendredi > 0 %></td>
+
           <td><i class="<%= reservation.matin ? "far fa-check-circle" : "" %>"></i></td>
           <td><i class="<%= reservation.midi ? "far fa-check-circle" : "" %>"></i></td>
           <td><i class="<%= reservation.soir ? "far fa-check-circle" : "" %>"></i></td>

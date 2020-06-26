@@ -122,7 +122,7 @@ class ReservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-      params.require(:reservation).permit(:enfant_id, :prestation_type_id, :active, :début, :fin, :lundi, :mardi, :mercredi, :jeudi, :vendredi, :matin, :midi, :soir, :hors_période_scolaire)
+      params.require(:reservation).permit(:enfant_id, :prestation_type_id, :active, :début, :fin, :lundi, :mardi, :mercredi, :jeudi, :vendredi, :matin, :midi, :soir, :hors_période_scolaire, :workflow_state)
     end
 
     def sortable_columns

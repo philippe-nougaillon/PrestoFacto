@@ -8,6 +8,11 @@
 
     <td><%= reservation.prestation_type.nom %></td>
 
+    <td><%= l reservation.début %></td>
+    <td><%= l reservation.fin %></td>
+
+    <td><span class="badge <%= reservation.style %>"><%= reservation.try(:workflow_state).try(:humanize) %></span></td>
+
     <td class="text-center"><%= number_with_precision(reservation.lundi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.lundi > 0 %></td>
     <td class="text-center"><%= number_with_precision(reservation.mardi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.mardi > 0 %></td>
     <td class="text-center"><%= number_with_precision(reservation.mercredi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.mercredi > 0 %></td>

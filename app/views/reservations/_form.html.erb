@@ -23,6 +23,7 @@
   <%= form.check_box :midi, custom: :switch %>
   <%= form.check_box :soir, custom: :switch %>
   <br />
+  <%= form.select :workflow_state, Reservation.workflow_spec.states, label: 'Etat' %>
   <%= form.check_box :active, custom: :switch %>
   <br />
 

@@ -1,6 +1,6 @@
 <tr>
     <td><%= user.email %></td>
-    <td><%= user.role %></td>
+    <td><%= user.role.humanize %></td>
     <td><% if policy(user).edit? %>
             <%= link_to  edit_user_path(user) do %>
                 <i class="far fa-edit"></i>

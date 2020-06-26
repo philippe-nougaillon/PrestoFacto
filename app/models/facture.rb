@@ -22,7 +22,6 @@ class Facture < ApplicationRecord
 
   self.per_page = 10
 
-
   AJOUTEE   = 'ajoutée'
   VERIFIEE  = 'vérifiée'
   ENVOYEE   = 'envoyée'
@@ -34,45 +33,45 @@ class Facture < ApplicationRecord
   IMPUTEE   = 'imputée'
 
   workflow do
-    state AJOUTEE, meta: {style: 'badge-info'} do
+    state AJOUTEE, meta: { style: 'badge-info' } do
       event :vérifier, transitions_to: VERIFIEE
     end
 
-    state VERIFIEE, meta: {style: 'badge-primary'} do
+    state VERIFIEE, meta: { style: 'badge-primary' } do
       event :envoyer, transitions_to: ENVOYEE
     end
 
-    state ENVOYEE, meta: {style: 'badge-warning'} do
+    state ENVOYEE, meta: { style: 'badge-warning' } do
       event :payer, transitions_to: PAYEE
       event :rejeter, transitions_to: REJETEE
       event :relancer, transitions_to: RELANCE1
     end
 
-    state RELANCE1, meta: {style: 'badge-secondary'} do
+    state RELANCE1, meta: { style: 'badge-secondary' } do
       event :payer, transitions_to: PAYEE
       event :rejeter, transitions_to: REJETEE
       event :relancer, transitions_to:  RELANCE2
     end
 
-    state RELANCE2, meta: {style: 'badge-secondary'} do
+    state RELANCE2, meta: { style: 'badge-secondary' } do
       event :payer, transitions_to: PAYEE
       event :rejeter, transitions_to: REJETEE
       event :relancer, transitions_to: RELANCE3
     end
 
-    state RELANCE3, meta: {style: 'badge-secondary'} do
+    state RELANCE3, meta: { style: 'badge-secondary' } do
       event :payer, transitions_to: PAYEE
       event :rejeter, transitions_to: REJETEE
       event :relancer, transitions_to: RELANCE1
     end
 
-    state PAYEE, meta: {style: 'badge-success'} do
+    state PAYEE, meta: { style: 'badge-success' } do
       event :imputer, transitions_to: IMPUTEE
     end
 
-    state REJETEE, meta: {style: 'badge-danger'}
+    state REJETEE, meta: { style: 'badge-danger' }
 
-    state IMPUTEE, meta: {style: 'badge-dark'}
+    state IMPUTEE, meta: { style: 'badge-dark' }
 
     after_transition do |from, to, triggering_event, *event_args|
       logger.debug "[WORKFLOW] #{from} -> #{to} #{triggering_event}"
