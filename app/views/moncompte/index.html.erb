@@ -82,6 +82,11 @@
 
     </table>
   </div>
+  <div class="card-footer">
+    <%= link_to new_reservation_path do %>
+      <%= fa_icon 'plus-circle', text: ' Ajouter une réservation' %>
+    <% end %>
+  </div>
 </div>
 
 <div class="card">
@@ -117,6 +122,11 @@
         </tr>
       </tfoot>
     </table>
+  </div>
+  <div class="card-footer">
+    <%= link_to new_paiement_path do %>
+      <%= fa_icon 'plus-circle', text: ' Effectuer un paiement' %>
+    <% end %>
   </div>
 </div>
 

@@ -8,5 +8,5 @@ class ReservationPolicy < ApplicationPolicy
   def show?
     false
   end
-  
+ 
 end

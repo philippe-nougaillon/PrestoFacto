@@ -33,10 +33,12 @@
           <%= @compte.num_allocataire %>
         </p>
 
-        <p>
-          <strong>Mémo:</strong>
-          <%= @compte.mémo %>
-        </p>
+        <% unless current_user.visiteur? %>
+          <p>
+            <strong>Mémo:</strong>
+            <%= @compte.mémo %>
+          </p>
+        <% end %>
         
         <% if policy(@compte).edit? %>
           <%= link_to edit_compte_path(@compte) do %>
@@ -75,25 +77,27 @@
             <%= number_to_currency(@solde, unit: '€', precision: 2, format: "%n %u")  %>
           </div>
 
-          <div class="card-footer">
-            <% if policy(Facture).new? %>
-              <%= link_to new_facture_path(compte_id: @compte.id), class: "btn btn-sm" do %>
-                <%= fa_icon 'file-invoice' %> Nouvelle facture
+          <% unless current_user.visiteur? %>
+            <div class="card-footer">
+              <% if policy(Facture).new? %>
+                <%= link_to new_facture_path(compte_id: @compte.id), class: "btn btn-sm" do %>
+                  <%= fa_icon 'file-invoice' %> Nouvelle facture
+                <% end %>
               <% end %>
-            <% end %>
-            |
-            <% if policy(Paiement).new? %>
-              <%= link_to new_paiement_path(compte_id: @compte.id), data: {toggle: "modal", target: "#myModalNewPaiement" }, class: "btn btn-sm" do %>
-                <i class="far fa-money-bill-alt"></i> Ajouter un paiement
+              |
+              <% if policy(Paiement).new? %>
+                <%= link_to new_paiement_path(compte_id: @compte.id), data: {toggle: "modal", target: "#myModalNewPaiement" }, class: "btn btn-sm" do %>
+                  <i class="far fa-money-bill-alt"></i> Ajouter un paiement
+                <% end %>
               <% end %>
-            <% end %>
-            | 
-            <% if policy(@compte).balance? %>
-              <%= link_to compte_balance_path(@compte), class: "btn btn-sm" do %>
-                <%= fa_icon 'balance-scale' %> Voir la balance
+              | 
+              <% if policy(@compte).balance? %>
+                <%= link_to compte_balance_path(@compte), class: "btn btn-sm" do %>
+                  <%= fa_icon 'balance-scale' %> Voir la balance
+                <% end %>
               <% end %>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
         </div>
 
       </div>

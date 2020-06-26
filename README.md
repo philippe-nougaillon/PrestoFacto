@@ -22,9 +22,12 @@ Exemple:
 - Mathieu PETIT a une réservation pour 1,5 heure de Garderie, tous les jours, le soir, sauf mercredi
 - Mathieu PETIT a une réservation pour 1 jour de Centre, tous les jours pendant les vacances scolaires (HorsPériodeScolaire)
 
+Une réservation a trois états: Ajoutée, Validée, Rejetée
+Une réservation peut être activée/désactivée
+
 ### Comptabilisation
 
-Chaque jour a lieu la comptabilisation automatique des prestations consommées par enfants, sur la base de leurs réservations.
+Chaque jour, très tôt le matin, a lieu la comptabilisation automatique des prestations consommées sur la base des réservations actives.
 
 Les prestations ne sont PAS comptabilisées si une absence a été saisie pour ce jour.
 
