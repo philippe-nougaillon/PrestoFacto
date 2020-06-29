@@ -69,3 +69,5 @@ gem 'workflow-activerecord'
 gem 'exception_notification'
 gem 'sitemap_generator'
 gem 'capture_stdout'
+
+gem "aws-sdk-s3", require: false

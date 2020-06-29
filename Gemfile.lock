@@ -60,6 +60,22 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     audited (4.9.0)
       activerecord (>= 4.2, < 6.1)
+    aws-eventstream (1.1.0)
+    aws-partitions (1.336.0)
+    aws-sdk-core (3.102.1)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.239.0)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1.0)
+    aws-sdk-kms (1.35.0)
+      aws-sdk-core (~> 3, >= 3.99.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.72.0)
+      aws-sdk-core (~> 3, >= 3.102.1)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.1)
+    aws-sigv4 (1.2.1)
+      aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.13)
     bindex (0.8.1)
     bootsnap (1.4.6)
@@ -102,6 +118,7 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
+    jmespath (1.4.0)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -250,6 +267,7 @@ PLATFORMS
 
 DEPENDENCIES
   audited (~> 4.9)
+  aws-sdk-s3
   bootsnap (>= 1.4.2)
   bootstrap_form
   byebug
