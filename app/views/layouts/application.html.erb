@@ -69,18 +69,19 @@
         </ul>
       </div>
 
-      <div class="col-sm-10">
-        <div class="container-fluid">
+      <div class="col-md-10">
 
-          <%= nav_breadcrumb %>
+        <%= nav_breadcrumb %>
           
-          <div class="alert alert-highlight text-center" style="height: 35px;">
-            <% if notice.present? or alert.present? %>
-              <aside class="text-<%= notice ? 'success' : 'danger' %>">
-                <%= notice ? notice : alert %>
-              </aside>
-            <% end %>
-          </div>
+        <div class="alert alert-highlight text-center" style="height: 35px;">
+          <% if notice.present? or alert.present? %>
+            <aside class="text-<%= notice ? 'success' : 'danger' %>">
+              <%= notice ? notice : alert %>
+            </aside>
+          <% end %>
+        </div>
+
+        <div class="container-fluid">
 
           <%= yield %>
           
