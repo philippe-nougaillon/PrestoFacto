@@ -40,6 +40,7 @@ namespace :prestations do
 
       reservations = organisation.reservations
                                   .actives
+                                  .where(workflow_state: 'validée')
                                   .where(hors_période_scolaire: hors_période_scolaire)
                                   .where("DATE(?) BETWEEN début AND fin", date)
 

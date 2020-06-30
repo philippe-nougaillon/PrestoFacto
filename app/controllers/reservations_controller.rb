@@ -137,7 +137,13 @@ class ReservationsController < ApplicationController
     end
 
     def sortable_columns
-      %w{structures.nom classrooms.nom enfants.nom enfants.menu_sp enfants.menu_all reservations.lundi reservations.mardi reservations.mercredi reservations.jeudi reservations.vendredi reservations.matin reservations.midi reservations.soir reservations.hors_période_scolaire}
+      %w{structures.nom classrooms.nom enfants.nom enfants.menu_sp enfants.menu_all 
+          reservations.début reservations.fin
+          reservations.prestation_type_id
+          reservations.lundi reservations.mardi reservations.mercredi reservations.jeudi reservations.vendredi 
+          reservations.matin reservations.midi reservations.soir reservations.hors_période_scolaire
+          reservations.workflow_state
+        }
     end
   
     def sort_column
