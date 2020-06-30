@@ -12,7 +12,7 @@
     <td>
         <% if policy(paiement).edit? %>
             <%= link_to edit_paiement_path(paiement) do %>
-                <i class="far fa-edit"></i>
+                <%= fa_icon 'edit' %>
             <% end %>
         <% end %>
     </td>

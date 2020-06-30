@@ -41,7 +41,7 @@
   </div>
   <div class="card-footer">
     <%= link_to edit_facture_path(@facture) do %>
-      <i class="far fa-edit"></i> Editer
+      <%= fa_icon 'edit', text: ' Editer' %>
     <% end %>
     |
     <% if policy(@facture).show? %>

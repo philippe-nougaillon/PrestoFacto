@@ -42,7 +42,7 @@
 
     <% if policy(@enfant).edit? %>
       <%= link_to edit_enfant_path(@enfant), class: "btn" do %>
-        far fa-edit"></i> Editer 
+        <%= fa_icon 'edit', text: ' Editer' %> 
       <% end %>
     <% end %>
   </div>
@@ -98,7 +98,7 @@
 
     <% if policy(@enfant).edit? %>
       <%= link_to edit_enfant_path(@enfant), class: "btn" do %>
-        far fa-edit"></i> Editer les réservations
+        <%= fa_icon 'edit', text: ' Editer les réservations' %> 
       <% end %>
     <% end %>
   </div>

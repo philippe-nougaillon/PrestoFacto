@@ -42,7 +42,7 @@
         
         <% if policy(@compte).edit? %>
           <%= link_to edit_compte_path(@compte) do %>
-            <i class="far fa-edit"></i> Editer compte
+            <%= fa_icon 'edit', text: ' Editer compte' %>
           <% end %>
         <% end %>
 

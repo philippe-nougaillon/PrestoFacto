@@ -10,7 +10,7 @@
     <td><%= compte.enfants.pluck(:prénom).join(', ') %> (<%= compte.enfants_count %>)</td>
     <td><% if policy(compte).edit? %>
             <%= link_to edit_compte_path(compte) do %>
-            <i class="far fa-edit"></i>
+                <%= fa_icon 'edit' %>
             <% end %>
         <% end %>
     </td>

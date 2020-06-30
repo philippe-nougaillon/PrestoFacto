@@ -27,7 +27,7 @@
           <td>
             <% if policy(enfant).edit? %>
               <%= link_to edit_enfant_path(enfant) do %>
-                <i class="far fa-edit"></i>
+                <%= fa_icon 'edit' %>
               <% end %>
             <% end %>
           </td>

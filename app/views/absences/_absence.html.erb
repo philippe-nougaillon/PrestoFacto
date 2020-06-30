@@ -10,7 +10,7 @@
     <td>
         <% if policy(absence).edit? %>
             <%= link_to  edit_absence_path(absence) do %>
-                <i class="far fa-edit"></i>
+                <%= fa_icon 'edit' %>
             <% end %>
         <% end %>
     </td>

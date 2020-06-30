@@ -32,7 +32,7 @@
 
     <% if policy(@organisation).edit? %>
       <%= link_to edit_organisation_path(@organisation), class: "btn" do %>
-        <i class="far fa-edit"></i> Editer
+        <%= fa_icon 'edit', text: ' Editer' %>
       <% end %>
     <% end %>
   </div>
