@@ -42,7 +42,7 @@
 
     <% if policy(@enfant).edit? %>
       <%= link_to edit_enfant_path(@enfant), class: "btn" do %>
-        <i class="far fa-edit"></i> Editer 
+        far fa-edit"></i> Editer 
       <% end %>
     <% end %>
   </div>
@@ -87,17 +87,18 @@
           <td class="text-center"><%= number_with_precision(reservation.jeudi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.jeudi > 0 %></td>
           <td class="text-center"><%= number_with_precision(reservation.vendredi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.vendredi > 0 %></td>
 
-          <td class="text-center"><i class="<%= reservation.matin ? "far fa-check-circle" : "" %>"></i></td>
-          <td class="text-center"><i class="<%= reservation.midi ? "far fa-check-circle" : "" %>"></i></td>
-          <td class="text-center"><i class="<%= reservation.soir ? "far fa-check-circle" : "" %>"></i></td>
-          <td><i class="<%= reservation.hors_période_scolaire ? "fas fa-umbrella-beach" : "" %>"></i></td>
+          <td class="text-center"><%= fa_icon 'check' if reservation.matin %></i></td>
+          <td class="text-center"><%= fa_icon 'check' if reservation.midi  %></i></td>
+          <td class="text-center"><%= fa_icon 'check' if reservation.soir  %></i></td>
+
+          <td class="text-center"><%= fa_icon 'umbrella-beach' if reservation.hors_période_scolaire %></i></td>
         </tr>
       <% end %>
     </table>
 
     <% if policy(@enfant).edit? %>
       <%= link_to edit_enfant_path(@enfant), class: "btn" do %>
-        <i class="far fa-edit"></i> Editer les réservations
+        far fa-edit"></i> Editer les réservations
       <% end %>
     <% end %>
   </div>
@@ -124,9 +125,9 @@
         <tr>
           <td><%= l absence.début %></td>
           <td><%= l absence.fin %></td>
-          <td><i class="<%= absence.matin ? "far fa-check-circle" : "" %>"></i></td>
-          <td><i class="<%= absence.midi ? "far fa-check-circle" : "" %>"></i></td>
-          <td><i class="<%= absence.soir ? "far fa-check-circle" : "" %>"></i></td>
+          <td class="text-center"><%= fa_icon 'check' if absence.matin %></i></td>
+          <td class="text-center"><%= fa_icon 'check' if absence.midi  %></i></td>
+          <td class="text-center"><%= fa_icon 'check' if absence.soir  %></i></td>
         </tr>
       <% end %>
     </table>

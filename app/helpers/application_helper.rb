@@ -15,11 +15,13 @@ module ApplicationHelper
     end
 
     def navbar_nav_item(name, icon, path)
+        name_us = I18n.transliterate(name)
         render(inline: %{
-            <li class="nav-item pr-3">
-                <%= link_to "#{ url_for(path) }", 
-                            class: "nav-link text-#{ (@ctrl == name) ? 'dark active shadow-sm' : 'secondary' }" do %>
-                    <%= fa_icon "#{ icon }", text: " #{ name.humanize }" %>
+            <li class="nav-item">
+                <%= link_to '#{ url_for(path) }', 
+                            class: "nav-link text-#{ (@ctrl == name_us) ? 'dark active shadow-sm' : 'secondary' }" do %>
+                    <%= fa_icon '#{ icon }' %>
+                    #{ name.humanize }
                 <% end %>
             </li>
         })

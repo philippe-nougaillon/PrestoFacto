@@ -24,7 +24,7 @@
 
         <p>
           <strong>Vérifiée:</strong>
-          <i class="<%= @facture.vérifiée ? "far fa-check-circle" : "" %>"></i>
+          <%= fa_icon 'check' if @facture.vérifiée %></i>
         </p>
       </div>
 

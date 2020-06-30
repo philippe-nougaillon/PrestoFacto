@@ -3,8 +3,8 @@
     <td><%= reservation.enfant.classroom.nom %></td>
     <td><%= link_to reservation.enfant.nom_et_prénom, reservation.enfant %></td>
 
-    <td class="text-center"><%= fa_icon 'exclamation-triangle' if reservation.enfant.menu_all %></td>
-    <td class="text-center"><%= fa_icon 'exclamation-triangle' if reservation.enfant.menu_sp %></td>
+    <td class="text-center"><%= fa_icon 'exclamation' if reservation.enfant.menu_all %></td>
+    <td class="text-center"><%= fa_icon 'exclamation' if reservation.enfant.menu_sp %></td>
 
     <td><%= reservation.prestation_type.nom %></td>
 
@@ -19,8 +19,8 @@
     <td class="text-center"><%= number_with_precision(reservation.jeudi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.jeudi > 0 %></td>
     <td class="text-center"><%= number_with_precision(reservation.vendredi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.vendredi > 0 %></td>
     
-    <td class="text-center"><%= fa_icon 'check-circle' if reservation.matin %></td>
-    <td class="text-center"><%= fa_icon 'check-circle' if reservation.midi %></td>
-    <td class="text-center"><%= fa_icon 'check-circle' if reservation.soir %></td>
+    <td class="text-center"><%= fa_icon 'check' if reservation.matin %></td>
+    <td class="text-center"><%= fa_icon 'check' if reservation.midi %></td>
+    <td class="text-center"><%= fa_icon 'check' if reservation.soir %></td>
     <td class="text-center"><%= fa_icon 'umbrella-beach' if reservation.hors_période_scolaire %></td>
 </tr>

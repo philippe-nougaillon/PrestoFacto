@@ -22,8 +22,8 @@
           <td><%= enfant.prénom %></td>
           <td><%= l enfant.date_naissance %></td>
           <td><%= enfant.classroom.nom %></td>
-          <td class="text-center"><i class="<%= enfant.menu_sp ? "far fa-check-circle" : "" %>"></i></td>
-          <td class="text-center"><i class="<%= enfant.menu_all ? "far fa-check-circle" : "" %>"></i></td>
+          <td class="text-center"><%= fa_icon 'check' if enfant.menu_sp %></i></td>
+          <td class="text-center"><%= fa_icon 'check' if enfant.menu_all %></i></td>
           <td>
             <% if policy(enfant).edit? %>
               <%= link_to edit_enfant_path(enfant) do %>

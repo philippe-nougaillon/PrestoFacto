@@ -1,12 +1,12 @@
 <tr>
     <td><%= absence.enfant.compte.structure.nom %></td>
-    <td><%= absence.enfant.nom_et_prénom %></td>
+    <td><%= link_to absence.enfant.nom_et_prénom, absence.enfant %></td>
     <td><%= absence.enfant.classroom.nom %></td>
     <td><%= l absence.début %></td>
     <td><%= l absence.fin %></td>
-    <td><i class="<%= absence.matin ? "far fa-check-circle" : "" %>"></i></td>
-    <td><i class="<%= absence.midi ? "far fa-check-circle" : "" %>"></i></td>
-    <td><i class="<%= absence.soir ? "far fa-check-circle" : "" %>"></i></td>
+    <td class="text-center"><%= fa_icon 'check' if absence.matin %></i></td>
+    <td class="text-center"><%= fa_icon 'check' if absence.midi %></i></td>
+    <td class="text-center"><%= fa_icon 'check' if absence.soir %></i></td>
     <td>
         <% if policy(absence).edit? %>
             <%= link_to  edit_absence_path(absence) do %>
