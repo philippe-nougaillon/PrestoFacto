@@ -131,7 +131,8 @@ class EnfantsController < ApplicationController
     def enfant_params
       params.require(:enfant)
             .permit(:compte_id, :classroom_id, :nom, :prénom, :date_naissance, :menu_sp, :menu_all, :tarif_type_id, :badge,
-                    reservations_attributes: [:id, :enfant_id, :prestation_type_id, :début, :fin, 
+                    reservations_attributes: [:id, :enfant_id, :prestation_type_id, :workflow_state,
+                                              :début, :fin, 
                                               :lundi, :mardi, :mercredi, :jeudi, :vendredi, 
                                               :matin, :midi, :soir, :hors_période_scolaire, :_destroy])
     end

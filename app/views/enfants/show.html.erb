@@ -52,6 +52,7 @@
 <div class="card">
   <div class="card-body">
     <h4><%= fa_icon 'calendar-alt' %> Réservations actives</h4>
+    <br>
 
     <table class="table table-bordered table-hover table-sm">
       <thead>
@@ -86,9 +87,9 @@
           <td class="text-center"><%= number_with_precision(reservation.jeudi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.jeudi > 0 %></td>
           <td class="text-center"><%= number_with_precision(reservation.vendredi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.vendredi > 0 %></td>
 
-          <td><i class="<%= reservation.matin ? "far fa-check-circle" : "" %>"></i></td>
-          <td><i class="<%= reservation.midi ? "far fa-check-circle" : "" %>"></i></td>
-          <td><i class="<%= reservation.soir ? "far fa-check-circle" : "" %>"></i></td>
+          <td class="text-center"><i class="<%= reservation.matin ? "far fa-check-circle" : "" %>"></i></td>
+          <td class="text-center"><i class="<%= reservation.midi ? "far fa-check-circle" : "" %>"></i></td>
+          <td class="text-center"><i class="<%= reservation.soir ? "far fa-check-circle" : "" %>"></i></td>
           <td><i class="<%= reservation.hors_période_scolaire ? "fas fa-umbrella-beach" : "" %>"></i></td>
         </tr>
       <% end %>
@@ -106,6 +107,7 @@
 <div class="card">
   <div class="card-body">
     <h4><%= fa_icon 'calendar-times' %> Absences</h4>
+    <br>
 
     <table class="table table-bordered table-hover table-sm">
       <thead>
