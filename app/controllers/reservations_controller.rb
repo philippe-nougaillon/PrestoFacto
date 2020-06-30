@@ -73,7 +73,7 @@ class ReservationsController < ApplicationController
 
     respond_to do |format|
       if @reservation.save
-        format.html { redirect_to @reservation, notice: 'Reservation créé.e avec succès.' }
+        format.html { redirect_to @reservation, notice: 'Réservation créé.e avec succès.' }
         format.json { render :show, status: :created, location: @reservation }
       else
         format.html { render :new }
@@ -81,6 +81,17 @@ class ReservationsController < ApplicationController
       end
     end
   end
+
+  def create_visiteur
+    @reservation = Reservation.new(reservation_params)
+
+    if @reservation.save
+      redirect_to moncompte_index_path, notice: 'Réservation créé.e avec succès.'
+    else
+      redirect_to moncompte_index_path, alert: 'Réservation PB.'
+    end
+
+  end  
 
   # PATCH/PUT /reservations/1
   # PATCH/PUT /reservations/1.json

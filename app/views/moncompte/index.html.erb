@@ -50,6 +50,7 @@
 <div class="card">
   <div class="card-body">
     <h3><%= fa_icon 'calendar-alt' %> Réservations</h3>
+    
     <table class="table table-bordered table-hover table-sm">
       <thead>
         <tr>
@@ -78,12 +79,13 @@
         <%= render @compte.reservations.includes(:enfant) %>
       </tbody>
 
-      <tfoot><tr><% 8.times do %><th></th><% end %></tr></tfoot>
+      <tfoot><tr><% 18.times do %><th></th><% end %></tr></tfoot>
 
     </table>
   </div>
+
   <div class="card-footer">
-    <%= link_to new_reservation_path do %>
+    <%= link_to new_reservation_path, data: {toggle: "modal", target: "#myModalTarif" } do %>
       <%= fa_icon 'plus-circle', text: ' Ajouter une réservation' %>
     <% end %>
   </div>
@@ -143,6 +145,25 @@
       <!-- Modal body -->
       <div class="modal-body">
         <%= render 'paiements/form', paiement: Paiement.new(compte_id: @compte.id) %>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="modal fade" id="myModalTarif">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Nouvelle réservation</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <%= render 'reservation', reservation: @compte.reservations.new %>
       </div>
     </div>
   </div>

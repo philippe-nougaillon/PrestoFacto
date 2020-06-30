@@ -2,7 +2,7 @@
 
   <p>
     <h2>
-      <%= @reservation.enfant.nom_et_prénom %>
+      <%= @reservation.try(:enfant).try(:nom_et_prénom) %>
     </h2>
   </p>
 
