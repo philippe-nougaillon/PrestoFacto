@@ -1,6 +1,12 @@
-<span class="badge  badge-pill badge-success"><%= blog.titre %></span>
-<br />
-<%= blog.corps %>
-<br />
-<small><i>il y a <%= time_ago_in_words(blog.created_at) %></i></small>
-<br />
+<h4>
+    <%= blog.titre %>
+</h4>
+
+<pre>
+    <%= blog.corps %>
+</pre>
+
+<small>
+    <i>il y a <%= time_ago_in_words(blog.created_at) %></i>
+</small>
+<hr />
