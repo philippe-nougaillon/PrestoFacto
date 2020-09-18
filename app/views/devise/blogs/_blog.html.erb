@@ -1,12 +1,13 @@
-<h4>
+<h5>
     <%= blog.titre %>
-</h4>
+</h5>
 
-<pre>
-    <%= blog.corps %>
-</pre>
+</small>
+    <%= simple_format blog.corps %>
+</small>
 
 <small>
-    <i>il y a <%= time_ago_in_words(blog.created_at) %></i>
+    <i class="text-secondary">il y a <%= time_ago_in_words(blog.created_at) %></i>
 </small>
+
 <hr />
