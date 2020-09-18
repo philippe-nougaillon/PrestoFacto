@@ -7,19 +7,20 @@
 
         <h6 class="text-primary">
           <i>
-            Aide les petites organisations dans la gestion et la facturation de prestations journalières
+            Aide les petites organisations dans la gestion et la facturation de leurs prestations journalières
           </i>
         </h6>
         <br>
 
         <pre>
-    <%= @site_name %> est destiné aux petites collectivités, mairies, écoles, etc. 
-    Cette solution vous aidera dans l’organisation de votre mairie/association 
-    et vous fera gagner un temps précieux en simplifiant la gestion administrative et 
-    la facturation de vos cantines, services péri-scolaires et autres prestations. 
+  <%= @site_name %> est destiné aux petites collectivités, mairies, écoles, etc. 
+
+  Cette solution vous aidera dans l’organisation de votre mairie/association et vous 
+  fera gagner un temps précieux en simplifiant la gestion administrative et la
+  facturation de vos cantines, services péri-scolaires et autres prestations. 
         </pre>
 
-        <div class="pb-2 mt-4 mb-2 border-bottom">Nouveautés</div>
+        <div class="pb-2 mt-4 mb-2 border-bottom text-secondary">Nouveautés</div>
         <%= render Blog.all %>
       
       </div>
@@ -40,10 +41,11 @@
 
       <div class="actions">
         <%= f.submit "Se connecter", class: "btn btn-primary btn-md" %>
+        <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-link" %>
       </div>
     <% end %>
     <br />
-
+  
     <%= render "devise/shared/links" %>
   </div>
 

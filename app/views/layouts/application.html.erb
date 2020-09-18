@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= display_meta_tags site: 'PrestoFacto', description: 'logiciel gestion cantine scolaire gratuit' %>
+    <%= display_meta_tags site: @site_name_and_version, description: 'logiciel gestion cantine scolaire gratuit' %>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-173642532-1"></script>
@@ -13,7 +13,6 @@
       gtag('config', 'UA-173642532-1');
     </script>
 
-    <title><%= @titre %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -31,7 +30,7 @@
         <ul class="nav nav-tabs flex-column">
           <a class="navbar-brand" href="/">
             <nav class="navbar" style="height: 55px;">
-              PrestoFacto
+              <%= @site_name %>
             </nav>
           </a>
 
@@ -66,8 +65,6 @@
             <%= navbar_nav_item('Accueil', 'home', new_user_session_path) %>
             <%= navbar_nav_item('a_propos', 'info-circle', guide_a_propos_path) %>
             <%= navbar_nav_item("guide d'utilisation", 'book', guide_utilisation_path) %>
-            <%= navbar_nav_item("Se connecter", 'sign-in-alt', new_user_session_path) %>
-            <%= navbar_nav_item("S'inscrire", 'user-plus', new_user_registration_path) %>
 
             <% if false %>
               <li class="nav-item">

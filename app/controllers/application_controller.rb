@@ -19,9 +19,9 @@ class ApplicationController < ActionController::Base
 
 private
     def set_layout_variables
-      @site_name = "PrestoFacto"
+      @site_name = "PrestoFacto !"
       version = "v5.1.a"
-      @title = @site_name + ' ' + version
+      @site_name_and_version = @site_name + ' ' + version
 
       @ctrl = params[:controller]
       @action = params[:action]
