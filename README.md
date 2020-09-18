@@ -1,56 +1,109 @@
 ### A propos de PrestoFActo
 
+Logiciel gratuit de facturation de cantine et des activités pré-scolaires
+
 Cette application web permet à une organisation (Mairie, Association,...) de gérer les comptes de ses familles, les réservations des enfants et la facturation des prestations consommées.
 
 Les prestations et les tarifs sont entièrement paramétrables et illimités.
 
+
+### Organisation
+
+- Une organisation (Mairie, Association,...) est composée d'un nom, d'une adresse, une zone (vacances scolaires) et d'un logo
+- Une organisation a une ou plusieurs structures
+- Un compte utilisateur de type administrateur est associé à une organisation lors de l'inscription 
+- Cet administrateur peut paramétrer les données variables de l'organisation commes les Structures, les Type de prestations (Repas, Garderie, Activité,...) ou les Tarifs
+- Un administrateur peut ajouter d'autres utilisateurs
+
+### Structures
+
+- Une structure est composée d'un nom (Ecole, Cantine, Garderie, Halte, Centre périscolaire,...)
+- Une structure contient des classes
+- Une structure contient des comptes
+- Une organisation peut avoir plusieurs structures (illimité)
+
 ### Comptes
-à compléter
+
+- Un compte est attaché à une structure
+- Un compte est composé d'un nom, d'une adresse, un numéro d'allocataire et un mémo
+- Un compte contient les coordonnées des personnes à contacter
+- Un compte contient les enfants
+- Un compte contient les factures
+- Un compte contient les paiements
+- Un compte affiche un solde en € (somme des factures - somme des paiements)
+- Un compte affiche une balance (liste des factures et des paiements)
 
 ### Enfants
-à compléter
 
-### Réservation
+- Un enfant est associé à un compte (famille)
+- Un enfant est lié à une classe
+- Un enfant est composé d'un nom, prénom, date de naissance, N° de badge, préférences alimentaires (sans porc, sans allergènes) et d'un tarif
+- Un enfant a des réservations
 
-Un enfant est associé à un compte (famille) qui est lui-même associé une structure (Ecole, Cantine, Garderie,...). 
+### Absences</h4>
 
-Cet enfant peut avoir une ou plusieurs réservations, qui indiquent les jours de la semaine, les quantités désirées pour chaque type de prestations (Repas, Garderie, Activité, et tout ce que vous voudrez :).
+- Une absence est liée à un enfant
+- Une absence est composée d'un début, d'une fin, d'une période (matin/midi/soir)
 
-Exemple: 
-- Mathieu PETIT a une réservation pour un Repas, tous les jours sauf mercredi
-- Mathieu PETIT a une réservation pour 1 heure de Garderie, tous les jours, le matin, sauf mercredi
-- Mathieu PETIT a une réservation pour 1,5 heure de Garderie, tous les jours, le soir, sauf mercredi
-- Mathieu PETIT a une réservation pour 1 jour de Centre, tous les jours pendant les vacances scolaires (HorsPériodeScolaire)
+### Réservations
 
-Une réservation a trois états: Ajoutée, Validée, Rejetée
-Une réservation peut être activée/désactivée
+- Une réservation est composée d'un type de prestation, d'une date de début et de fin, d'une quantité par jour de la semaine (lundi au vendredi), de la période (matin/midi/soir)
+- Une réservation est en période scolaire ou hors période scolaire
+- Une réservation peut être active ou inactive
 
-### Comptabilisation
+### Prestations
 
-Chaque jour, très tôt le matin, a lieu la comptabilisation automatique des prestations consommées sur la base des réservations actives.
+A lieu, chaque matin, dès potron-minet, la comptabilisation automatique des prestations consommées la veille
 
-Les prestations ne sont PAS comptabilisées si une absence a été saisie pour ce jour.
+Cette comptabilisation est effectuée sur la base des réservations actives
 
-Les prestations sont comptabilisées en fonction de la période, Scolaire/HorsScolaire : 
+Les prestations sont comptabilisées en fonction de la période, Scolaire/HorsScolaire :
+
 - sont comptabilisées les prestations dont la réservation n'est PAS "Hors Période Scolaire" si c'est un jour hors période de vacances scolaires
+
 - sont comptabilisées les prestations dont la réservation est "Hors Période Scolaire" si ce n'est PAS un jour en période de vacances scolaires
+
 - sont comptabilisées les prestations dont la réservation n'est PAS "Hors Période Scolaire" si ce jour n'est pas en période de vacances scolaires
 
-### Facturation
+Les prestations ne sont PAS comptabilisées si une absence existe pour ce jour
 
-Les prestations consommées seront facturées en fin de mois, par compte et par enfant, selon le tarif auquel est soumis l'enfant.
-Les factures peuvent être envoyées par courriel.
-Un export au format XLS (Excel 97-2003) est disponible. Il permet de générer un classeur contenant une feuille de calcul avec toutes vos factures, qui pourra être ouverte directement dans Excel.
+Une ligne de prestation est ajoutée à la liste des prestations de l'enfant quand toutes les conditions précedents sont remplies
+
+Au besoin, une prestation peut être supprimée par l'administrateur afin de ne pas apparaître sur la prochaine facture
+
+### Factures
+
+- Les prestations consommées sont facturées à la demande, pour tous les comptes d'une organisation
+
+- Une facture est crée par mois et par compte. Y figure le détail des prestations par enfant
+
+- Les prestations sont facturées selon le tarif auquel est soumis l'enfant
+
+- Les factures peuvent être envoyées, en lot, via courriel
+
+- Un export au format XLS (Excel 97-2003) est disponible. Il génére une feuille de calcul listant en détails toutes les factures d'une organisation
+
+### Tarifs
+
+- Un tarif est le prix d'un type de Prestation selon un type de Tarif
+
+- Les types de prestations (Cantine, Garderie, etc.) sont configurables à votre convenance
+
+- Les types de tarifs (Plein, Demi-tarif, QF1/2/3/4/5, etc...) aussi
 
 ### Paiements
 
-Les paiements reçus sont enregistrés afin d'établir une balance de compte.
-Chaque compte dispose d'un relevé qui liste l'ensemble des opérations (factures/paiements) et le soles après chaque opération.
-La liste des paiements peut s'exporter au format XLS
+- Les paiements reçus sont enregistrés afin d'établir une balance de compte
+
+- Chaque compte dispose d'un relevé qui liste l'ensemble des opérations (factures/paiements) et le soles après chaque opération
+
+- La liste des paiements peut s'exporter au format XLS
+
 
 ### Import
 
 Les données de compte, contact, enfant, réservation peuvent être importées d'un fichier au format Excel 97-2003 (.xls).
+
 Ce fichier doit contenir les colonnes suivantes :
 structure, nom_compte, civilité, adresse1, adresse2, cp, ville, num_allocataire, mémo_compte, nom_contact, fixe, portable, email, mémo_contact, nom_enfant, prénom, classe, date_naissance, menu_sp, menu_all, tarif_type, badge, prestation_type, début, fin, lundi, mardi, mercredi, jeudi, vendredi, matin, midi, soir, active, hors_période_scolaire
 
@@ -63,5 +116,9 @@ Chaque modification de donnée est enregistrée dans un journal, avec la date, l
 ### Utilisateurs
 
 Il existe trois types de comptes utilisateurs; Visiteur, Normal et Administrateur. 
-Le compte 'Visiteur' est utilisé pour utiliser le portail Familles/Comptes. 
+
+Le compte 'Visiteur' est utilisé donner l'accès au portail Familles/Comptes. 
+
 Le compte de type 'Normal' peut accéder à toutes les données mais sans pouvoir les modifier, au contraire de l'Administrateur qui a tous les droits.
+
+Pour en savoir plus, veuillez consulter [le guide d'utilisation](https://prestofacto.philnoug.com/guide/utilisation)
