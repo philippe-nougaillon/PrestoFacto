@@ -19,13 +19,14 @@ SitemapGenerator::Sitemap.create do
   #
   #   add articles_path, :priority => 0.7, :changefreq => 'daily'
   #
-  # Add all articles:
-  #
-  #   Article.find_each do |article|
-  #     add article_path(article), :lastmod => article.updated_at
-  #   end
 
   add guide_a_propos_path
   add guide_utilisation_path
+
+  # Add all articles:
   
+  Blog.find_each do |article|
+    add blog_path(article), :lastmod => article.updated_at
+  end
+
 end

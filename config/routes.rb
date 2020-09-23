@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :structures
   resources :organisations
   resources :paiements
+  resources :blogs
 
   namespace :admin do
     get :index
