@@ -25,8 +25,8 @@ SitemapGenerator::Sitemap.create do
 
   # Add all articles:
   
-  Blog.find_each do |article|
-    add blog_path(article), :lastmod => article.updated_at
-  end
+  # Blog.find_each do |article|
+  #   add blog_path(article), :lastmod => article.updated_at
+  # end
 
 end
