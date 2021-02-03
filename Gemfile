@@ -46,7 +46,7 @@ gem "devise", ">= 4.7.1"
 gem 'audited', '~> 4.9'
 gem 'friendly_id', '~> 5.2.4'
 gem 'bootstrap_form'
-gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate', '~> 3.3.0'
 gem 'will_paginate-bootstrap4'
 gem 'font_awesome5_rails'
 
