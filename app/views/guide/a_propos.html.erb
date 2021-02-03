@@ -256,7 +256,7 @@
             <div class="card-body">
                 <ul>
                     <li>Utilisation libre et illimitée</li>
-                    <li>Accès par un sous-domaine personnalisé.<br> ex: https://mon-organisation.<%= @site_name.downcase %></li>
+                    <li>Accès par un sous-domaine personnalisé.<br> ex: https://mon-organisation.<%= @site_name.downcase %>.fr</li>
                     <li>Une sauvegarde des données par 24h</li>
                     <li>Support par email</li>
                 </ul>
@@ -295,17 +295,15 @@
 </div>
 <p>
     Les sources de l'application (Ruby on Rails) 
-    <a href="https://github.com/philippe-nougaillon/PrestoFActo">sont disponibles sur Github</a>
+    <a href="https://github.com/philippe-nougaillon/PrestoFActo", target="_blank">sont disponibles sur Github</a>
 </p>
 
 <div class="pb-2 mt-4 mb-2 border-bottom">
   <h4 class="text-primary"><%= fa_icon 'comments' %> Me contacter</h4>
 </div>
 
-<kbd>
-    Vos commentaires et propositions sont les bienvenus; ils m'aident à améliorer l'application. 
-    <br>philippe.nougaillon@gmail.com
-</kbd>
-
-<br />
-<br />
+<p>
+    Vos remarques et propositions sont les bienvenues et m'aident à améliorer l'application. 
+    <br>
+    <%= mail_to 'philippe.nougaillon@gmail.com' %> 
+</p>
