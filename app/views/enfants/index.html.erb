@@ -33,10 +33,14 @@
   </tbody>
 </table>
 
-<div class="text-secondary">
+<%
+=begin%>
+ <div class="text-secondary">
   <%= page_entries_info @enfants, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
-</div>
+</div> 
+<%
+=end%>
 
-<%= will_paginate @enfants, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+<%= will_paginate @enfants %>
 
 <br>

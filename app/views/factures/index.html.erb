@@ -35,9 +35,13 @@
       <tfoot><tr><% 12.times do %><th></th><% end %></tr></tfoot>
     </table>
 
-    <div class="text-secondary">
+    <%
+=begin%>
+ <div class="text-secondary">
       <%= page_entries_info @factures, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
-    </div>
+    </div> 
+<%
+=end%>
 
     <div class="input-group">
       <%= select_tag :action_name, 
@@ -55,7 +59,7 @@
   </div>
 <% end %>
 
-<%= will_paginate @factures, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+<%= will_paginate @factures %>
 
 <% if policy(Facture).to_xls? && !@factures.size.zero? %>
   <%= link_to url_for(params.permit(:structure_id, :date_début, :date_fin, :search).merge(format: :xls)),

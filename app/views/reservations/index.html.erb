@@ -44,10 +44,14 @@
 
 </table>
 
-<div class="text-secondary">
+<%
+=begin%>
+ <div class="text-secondary">
   <%= page_entries_info @reservations, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
-</div>
+</div> 
+<%
+=end%>
 
-<%= will_paginate @reservations, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+<%= will_paginate @reservations %>
 
 <br>
