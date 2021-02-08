@@ -3,14 +3,22 @@
 </div>
 
 <p>
-    <h4>Permet de lancer la routine journalière de comptabilisation des prestations consommées</h4>
-    <small>Cette fonction balaye l'ensemble des réservations prévues le <%= l Date.today - 1.day %>
-            et crée les prestations idoines si les paramètres concordes (jour de la semaine, Scolaire/HorsScolaire, etc.)
+    <h4>Lancer la routine journalière de comptabilisation des prestations consommées</h4>
+    <small>
+      Cette fonction balaye l'ensemble des réservations prévues pour une date 
+      et crée les lignes 'prestations' adéquates (si les paramètres concordes; jour de la semaine, Scolaire/HorsScolaire, absences...)
+      <b>
+        Attention ; cette routine est lancée chaque jour, automatiquement. Enregistrez les changements que si nécessaire car sinon vous risquez de créer des doublons... 
+      </b>
     </small>
 </p>
 <br />
 
 <%= bootstrap_form_with(url: 'ajout_prestations_do', local: true) do |form| %>
+    <div class="col-sm-3">
+      <%= form.date_field :date %>
+    </div>
+    <br>
     <%= form.check_box :enregistrer, {custom: :switch, label: "Enregistrer les changements ? (non: visualisation seulement, ne fait rien de définitif :)"} %>  
     <br /><br />
     <%= form.submit "Lancer", class: "btn btn-success" %>

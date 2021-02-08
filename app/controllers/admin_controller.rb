@@ -23,7 +23,7 @@ class AdminController < ApplicationController
     # capture output
     @stdout_stream = capture_stdout do
       Rake::Task['prestations:ajouter'].reenable # in case you're going to invoke the same task second time.
-      Rake::Task['prestations:ajouter'].invoke(current_user.id, params[:enregistrer])
+      Rake::Task['prestations:ajouter'].invoke(current_user.id, params[:enregistrer], params[:date])
     end
 
     # Garder une trace dans un fichier de log

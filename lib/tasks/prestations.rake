@@ -1,7 +1,7 @@
 namespace :prestations do
 
   desc "Comptabiliser les prestations consommées sur la base des reservations"
-  task :ajouter, [:current_user_id, :enregistrer] => :environment do |task, args|
+  task :ajouter, [:current_user_id, :enregistrer, :date] => :environment do |task, args|
 
     # Tester si la routine est lancée par le système (par d'args) ou par un utilisateur
     enregistrer = if args.enregistrer
@@ -24,10 +24,16 @@ namespace :prestations do
 
     # puts "Nombres d'Organisations à traiter : #{organisations.size}"
 
-    # Comme le traitement a lieu toutes les 24 heures, mais que l'on ne sait pas quand (anacron)
-    # on doit comptabiliser le jour précédent (par sécurité)
 
-    date = Date.today - 1.day
+    unless args.date    
+      # Comme le traitement a lieu toutes les 24 heures, mais que l'on ne sait pas quand (anacron)
+      # on doit comptabiliser le jour précédent (par sécurité)
+      date = Date.today - 1.day
+    else
+      # sinon, on vient de l'admin
+      date = Date.parse(args.date)
+    end
+
     vacances = Vacance.where("DATE(?) BETWEEN début AND fin", date)
     hors_période_scolaire = vacances.any?
     puts "Jour à comptabiliser: #{I18n.l date}." \
