@@ -41,7 +41,7 @@ fr:
     - samedi
     formats:
       default: "%d/%m/%Y"
-      long: "%e %B %Y"
+      long: "%A %e %B %Y"
       short: "%e %b"
     month_names:
     - 

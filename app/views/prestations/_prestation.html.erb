@@ -1,6 +1,6 @@
 <tr>
     <td><%= prestation.enfant.compte.structure.nom %></td>
-    <td><%= l prestation.date %></td>
+    <td><%= l prestation.date, format: :long %></td>
     <td><%= prestation.prestation_type.nom %></td>
     <td><%= link_to prestation.enfant.nom, prestation.enfant.compte %></td>
     <td><%= link_to prestation.enfant.prénom, prestation.enfant %></td>
