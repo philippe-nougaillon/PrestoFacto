@@ -24,7 +24,6 @@ namespace :prestations do
 
     # puts "Nombres d'Organisations à traiter : #{organisations.size}"
 
-
     unless args.date    
       # Comme le traitement a lieu toutes les 24 heures, mais que l'on ne sait pas quand (anacron)
       # on doit comptabiliser le jour précédent (par sécurité)
@@ -38,7 +37,7 @@ namespace :prestations do
     hors_période_scolaire = vacances.any?
     puts "Jour à comptabiliser: #{I18n.l date}." \
          " Ce jour est #{hors_période_scolaire ? "hors période scolaire" : "en période_scolaire" }" \
-         " => #{ hors_période_scolaire ? vacances.first.nom : '' }"
+         " => #{ hors_période_scolaire ? vacances.first.nom : 'Non' }"
 
     organisations.each do |organisation|
       puts "- " * 50
@@ -100,15 +99,15 @@ namespace :prestations do
     # si oui, on renvoit la quantité indiquée dans la réservation
 
     case date.wday
-    when 0 
+    when 1
       reservation.lundi
-    when 1 
+    when 2 
       reservation.mardi
-    when 2
-      reservation.mercredi
     when 3
-      reservation.jeudi
+      reservation.mercredi
     when 4
+      reservation.jeudi
+    when 5
       reservation.vendredi
     else
       0
