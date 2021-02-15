@@ -9,6 +9,6 @@ class EnvoyerFactureJob < ApplicationJob
     FactureMailer.with(facture: f, to: email).envoyer_facture.deliver_later
 
     # Mise à jour de la date d'envoi
-    f.update_attribute(envoyée_le: DateTime.now)
+    f.update(envoyée_le: DateTime.now)
   end
 end
