@@ -279,7 +279,7 @@ class AdminController < ApplicationController
       
         if email && envoyer
           FactureMailer.with(facture: f, to: email).envoyer_facture.deliver_later
-          f.update_attributes(envoyée_le: DateTime.now)
+          f.update_attribute(envoyée_le: DateTime.now)
           envoyées +=1
         end
       end
