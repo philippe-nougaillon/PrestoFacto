@@ -102,6 +102,15 @@ class FacturePdf
             column_widths: col_widths, 
             cell_style: cell_style
         )
+        move_down @margin_down * 5
 
+        # Afficher le solde du compte
+        solde = compte.solde
+        if solde > 0 
+            text "Avant cette facture, votre avoir était de : #{ "%5.2f €" % compte.solde }"
+        else
+            text "Avant cette facture, vous deviez : #{ "%5.2f €" % compte.solde }"
+        end
+        text "<b>Votre nouveau solde dû est maintenant de : #{ "%5.2f €" % (compte.solde - facture.montant) }</b>", inline_format: true
     end
 end

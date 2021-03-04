@@ -61,4 +61,8 @@ class Compte < ApplicationRecord
     end 
   end
 
+  def solde
+    self.paiements.sum(:montant) - self.factures.sum(:montant)
+  end
+
 end
