@@ -16,59 +16,57 @@ class FacturePdf
         organisation = compte.structure.organisation
 
         font 'Helvetica'
-        font_size 11
+        font_size 12
 
         y_position = cursor
         bounding_box([0, y_position], :width => 300) do
             if organisation.logo.attached?
                 logo = organisation.logo
-                image StringIO.open(logo.download), width: 150
+                image StringIO.open(logo.download), width: 70
             end
-        end
-        bounding_box([300, y_position], :width => 300) do
-            
-            formatted_text([
-                { text: 'Facture n° ', color: 'C0C0C0' },
-                { text: facture.réf  , styles: [:bold] }
-            ])
             move_down @margin_down 
+
+            formatted_text [{ text: organisation.nom, styles: [:bold] }] 
+            text compte.structure.nom
+            text organisation.adresse
+            text "#{ organisation.cp } #{ organisation.ville }"  
+            move_down @margin_down 
+            text organisation.téléphone
+            text organisation.email
+            move_down @margin_down 
+        end
+
+        bounding_box([300, y_position], :width => 300) do
+            formatted_text [
+                { text: 'Date : ', color: 'C0C0C0' },
+                { text: I18n.l(facture.date.to_date) }
+            ]
 
             formatted_text [
                 { text: 'Statut : ', color: 'C0C0C0' },
                 { text: facture.workflow_state }
             ]
+            move_down @margin_down  * 8
 
-            formatted_text [
-                { text: 'Date : ', color: 'C0C0C0' },
-                { text: I18n.l(facture.date.to_date) }
-            ]
-        end
-        move_down @margin_down 
-
-        y_position = cursor
-        bounding_box([0, y_position], :width => 300) do
-            formatted_text [{ text: 'De :', color: 'C0C0C0' }]
-            formatted_text [{ text: organisation.nom, styles: [:bold] }] 
-            text compte.structure.nom
-            text organisation.adresse
-            text "#{ organisation.cp } #{ organisation.ville }"  
-            text organisation.téléphone
-            # text organisation.email
-        end
-        bounding_box([300, y_position], :width => 300) do
-            formatted_text [{ text: 'Pour :', color: 'C0C0C0' }]
             formatted_text [{ text: "#{ compte.civilité } #{ compte.nom }", styles: [:bold] }] 
             text compte.adresse1
             text compte.adresse2
             text "#{ compte.cp } #{ compte.ville }"  
+
         end
         move_down @margin_down * 5
+
+        formatted_text([
+            { text: 'Facture n° ', color: 'C0C0C0' },
+            { text: facture.réf  , styles: [:bold] }
+        ])
+        move_down @margin_down 
 
         # 
         # Tableau de lignes de facture
         #
         
-        col_widths = [200, 100, 50, 50, 50]
+        col_widths = [260, 100, 50, 50, 60]
         cell_style = { 
             inline_format: true,
             border_width: 1,
@@ -91,7 +89,7 @@ class FacturePdf
                         ligne.prestation_type.nom,
                         "%5.2f" % ligne.qté,
                         "%5.2f €" % ligne.prix,
-                        "%5.2f €" % ligne.total
+                        "<b>#{ "%5.2f €" % ligne.total }</b>"
                     ] ]
         end
 

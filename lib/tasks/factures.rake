@@ -54,25 +54,25 @@ namespace :factures do
 
             # regrouper par enfant, par type de prestations et en faire le cumul des quantités
             prestations.select("enfant_id, prestation_type_id, sum(qté) as quantité")
-                .group("enfant_id, prestation_type_id")
-                .reorder(:enfant_id, :prestation_type_id)
-                .each do |presta|
+                        .group("enfant_id, prestation_type_id")
+                        .reorder(:enfant_id, :prestation_type_id)
+                        .each do |presta|
 
-                # Trouver le prix pour ce type de prestation selon le barème de l'enfant    
-                prix = PrestationType.find(presta.prestation_type_id).tarifs.find_by(tarif_type_id: presta.enfant.tarif_type_id).prix
+                        # Trouver le prix pour ce type de prestation selon le barème de l'enfant    
+                        prix = PrestationType.find(presta.prestation_type_id).tarifs.find_by(tarif_type_id: presta.enfant.tarif_type_id).prix
 
-                # Calculer le total de la ligne et le total de la facure
-                total = prix * presta.quantité    
-                montant_total += total
+                        # Calculer le total de la ligne et le total de la facure
+                        total = prix * presta.quantité    
+                        montant_total += total
 
-                puts "[Prestations] enfant: #{presta.enfant_id} type: #{presta.prestation_type_id} qté: #{presta.quantité.to_f}, total: #{total}"
+                        puts "[Prestations] enfant: #{presta.enfant_id} type: #{presta.prestation_type_id} qté: #{presta.quantité.to_f}, total: #{total}"
 
-                # créer la ligne de facture
-                ligne = facture.facture_lignes.new(intitulé: Enfant.find(presta.enfant_id).nom_et_prénom, prestation_type: presta.prestation_type, qté: presta.quantité.to_f, prix: prix, total: total)    
-                if ligne.valid?
-                    ligne.save if enregistrer
-                    puts "Ligne: #{ligne.valid?}" 
-                end  
+                        # créer la ligne de facture
+                        ligne = facture.facture_lignes.new(intitulé: Enfant.find(presta.enfant_id).nom_et_prénom, prestation_type: presta.prestation_type, qté: presta.quantité.to_f, prix: prix, total: total)    
+                        if ligne.valid?
+                            ligne.save if enregistrer
+                            puts "Ligne: #{ligne.valid?}" 
+                        end  
             end
 
             # MAJ du prestation.facture_id pour indiquer que cette prestation a été facturée
