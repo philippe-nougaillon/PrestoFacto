@@ -15,12 +15,12 @@ namespace :factures do
 
         # quels sont les comptes ayants de prestations consommées durant la période ?
         comptes = Prestation
-                    .à_facturer
-                    .where("date BETWEEN DATE(?) AND (?)", date_début, date_fin)
-                    .joins(:enfant)
-                    .group("enfants.compte_id")
-                    .select(:id)
-                    .count(:id)
+                        .à_facturer
+                        .where("date BETWEEN DATE(?) AND (?)", date_début, date_fin)
+                        .joins(:enfant)
+                        .group("enfants.compte_id")
+                        .select(:id)
+                        .count(:id)
 
         # pour chaque compte, faire le chiffrage des prestations consommées
         comptes.each do |id, count|

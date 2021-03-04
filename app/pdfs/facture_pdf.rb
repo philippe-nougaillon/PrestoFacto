@@ -41,12 +41,7 @@ class FacturePdf
                 { text: 'Date : ', color: 'C0C0C0' },
                 { text: I18n.l(facture.date.to_date) }
             ]
-
-            formatted_text [
-                { text: 'Statut : ', color: 'C0C0C0' },
-                { text: facture.workflow_state }
-            ]
-            move_down @margin_down  * 8
+            move_down @margin_down  * 6
 
             formatted_text [{ text: "#{ compte.civilité } #{ compte.nom }", styles: [:bold] }] 
             text compte.adresse1
@@ -54,13 +49,22 @@ class FacturePdf
             text "#{ compte.cp } #{ compte.ville }"  
 
         end
-        move_down @margin_down * 5
+        move_down @margin_down * 7
 
         formatted_text([
             { text: 'Facture n° ', color: 'C0C0C0' },
             { text: facture.réf  , styles: [:bold] }
         ])
-        move_down @margin_down 
+        move_down @margin_down
+
+        # formatted_text [
+        #     { text: 'Statut : ', color: 'C0C0C0' },
+        #     { text: facture.workflow_state }
+        # ]
+
+        text "<u>#{ facture.mémo }</u>", inline_format: true
+
+        move_down @margin_down * 4
 
         # 
         # Tableau de lignes de facture
