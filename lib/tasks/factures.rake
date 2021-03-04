@@ -37,6 +37,7 @@ namespace :factures do
             # incrémenter le numéro de chrono de facture
             chrono = compte.structure.organisation.facture_chronos.last
             index = chrono.index + 1
+            montant_total = 0.0
 
             # créer l'entête de facture
             facture = compte.factures.new(
@@ -49,8 +50,19 @@ namespace :factures do
             facture.save if enregistrer
             
             # totaliser les prestations consommées par ce compte durant la période
-            montant_total = 0.0
             prestations = compte.prestations.à_facturer.where("date BETWEEN DATE(?) AND (?)", date_début, date_fin)
+
+            # Exclure les prestations ayant eu lieu un jour d'absence
+            prestations_absences = []
+            prestations.each do | prestation |
+                if Absence.where(enfant_id: prestation.enfant_id)
+                            .where("? BETWEEN début and fin", prestation.date).any?
+                    puts "Détection d'une prestation un jour d'absence le #{I18n.l prestation.date}. La prestation sera ignorée."
+                    prestations_absences << prestation.id
+                end
+            end
+
+            prestations = prestations.where.not(id: prestations_absences)
 
             # regrouper par enfant, par type de prestations et en faire le cumul des quantités
             prestations.select("enfant_id, prestation_type_id, sum(qté) as quantité")
@@ -65,7 +77,7 @@ namespace :factures do
                         total = prix * presta.quantité    
                         montant_total += total
 
-                        puts "[Prestations] enfant: #{presta.enfant_id} type: #{presta.prestation_type_id} qté: #{presta.quantité.to_f}, total: #{total}"
+                        puts "[Prestations] enfant: #{ presta.enfant.prénom }(##{ presta.enfant_id }) type: #{ presta.prestation_type_id } qté: #{ presta.quantité.to_f }, total: #{total} €"
 
                         # créer la ligne de facture
                         ligne = facture.facture_lignes.new(intitulé: Enfant.find(presta.enfant_id).nom_et_prénom, prestation_type: presta.prestation_type, qté: presta.quantité.to_f, prix: prix, total: total)    
