@@ -49,6 +49,8 @@ class PrestationsController < ApplicationController
   # GET /prestations/1/edit
   def edit
     authorize Prestation
+
+    @prestation_types = current_user.organisation.prestation_types
   end
 
   # POST /prestations
@@ -64,7 +66,7 @@ class PrestationsController < ApplicationController
 
     respond_to do |format|
       if @prestation.update(prestation_params)
-        format.html { redirect_to @prestation, notice: 'Prestation modifié.e avec succès.' }
+        format.html { redirect_to prestations_url, notice: 'Prestation modifiée avec succès.' }
         format.json { render :show, status: :ok, location: @prestation }
       else
         format.html { render :edit }
@@ -80,7 +82,7 @@ class PrestationsController < ApplicationController
 
     @prestation.destroy
     respond_to do |format|
-      format.html { redirect_to prestations_url, notice: 'Prestation supprimé.e avec succès.' }
+      format.html { redirect_to prestations_url, notice: 'Prestation supprimée avec succès.' }
       format.json { head :no_content }
     end
   end
