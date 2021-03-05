@@ -46,6 +46,13 @@ class PrestationsController < ApplicationController
     authorize Prestation
   end
 
+  def new
+    authorize Prestation
+
+    @prestation = Prestation.new
+    @prestation.enfant_id = params[:enfant_id]
+  end
+
   # GET /prestations/1/edit
   def edit
     authorize Prestation
@@ -57,6 +64,19 @@ class PrestationsController < ApplicationController
   # POST /prestations.json
   def create
     authorize Prestation
+
+    @prestation = Prestation.new(prestation_params)
+
+    respond_to do |format|
+      if @prestation.save
+        format.html { redirect_to @prestation.enfant, notice: 'Prestation créée avec succès.' }
+        format.json { render :show, status: :created, location: @prestation }
+      else
+        format.html { render :new }
+        format.json { render json: @prestation.errors, status: :unprocessable_entity }
+      end
+    end
+
   end
 
   # PATCH/PUT /prestations/1
@@ -95,7 +115,7 @@ class PrestationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def prestation_params
-      params.require(:prestation).permit(:qté)
+      params.require(:prestation).permit(:enfant_id, :date, :qté, :prestation_type_id)
     end
 
     def sortable_columns

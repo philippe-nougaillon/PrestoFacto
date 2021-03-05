@@ -159,3 +159,54 @@
     </div>
   </div>
 </div>
+
+<div class="card">
+  <div class="card-body">
+    <h4><%= fa_icon 'utensils' %> Prestations à facturer</h4>
+    <br>
+
+    <table class="table table-bordered table-hover table-sm">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Qté</th>
+        </tr>
+      </thead>
+
+      <% @enfant.prestations.à_facturer.each do |prestation| %>
+        <tr>
+          <td><%= l prestation.date %></td>
+          <td><%= prestation.prestation_type.nom %></td>
+          <td><%= prestation.qté %></td>
+        </tr>
+      <% end %>
+    </table>
+
+    <% if policy(Prestation).edit? %>
+      <%= link_to new_prestation_path(enfant_id: @enfant), class: 'btn', data: {toggle: "modal", target: "#myModalPrestation" } do %>
+        <%= fa_icon 'plus-circle' %> Ajouter une prestation
+      <% end %>
+    <% end %>
+
+  </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal fade" id="myModalPrestation">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Nouvelle Prestation</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <%= render 'prestations/modal_form', prestation: Prestation.new(enfant_id: @enfant.id) %>
+      </div>
+    </div>
+  </div>
+</div>
