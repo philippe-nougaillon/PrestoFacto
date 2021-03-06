@@ -174,7 +174,7 @@
         </tr>
       </thead>
 
-      <% @enfant.prestations.à_facturer.each do |prestation| %>
+      <% @enfant.prestations.à_facturer.order(:date).each do |prestation| %>
         <tr>
           <td><%= l prestation.date %></td>
           <td><%= prestation.prestation_type.nom %></td>

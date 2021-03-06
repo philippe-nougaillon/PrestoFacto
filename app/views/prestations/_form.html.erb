@@ -4,7 +4,6 @@
 
     <div class="row">
         <div class="col-sm-4">
-
             <%= form.date_field :date %>
             <%= form.select :prestation_type_id, options_from_collection_for_select(@prestation_types, 'id', 'nom', prestation.prestation_type_id), { label: "Prestation type:", wrapper: { class: 'has-warning', data: { foo: 'bar' } } }, { class: "selectpicker" } %>
             <%= form.number_field :qté %>
