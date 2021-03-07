@@ -18,6 +18,7 @@ class FacturePdf
         font 'Helvetica'
         font_size 12
 
+        # Partie gauche (organisation)
         y_position = cursor
         bounding_box([0, y_position], :width => 300) do
             if organisation.logo.attached?
@@ -36,6 +37,7 @@ class FacturePdf
             move_down @margin_down 
         end
 
+        # Partie droite (le compte)
         bounding_box([300, y_position], :width => 300) do
             formatted_text [
                 { text: 'Date : ', color: 'C0C0C0' },
@@ -109,12 +111,13 @@ class FacturePdf
         move_down @margin_down * 5
 
         # Afficher le solde du compte
-        solde = compte.solde
-        if solde > 0 
-            text "Avant cette facture, votre avoir était de : #{ "%5.2f €" % compte.solde }"
+        solde = compte.solde_avant_cette_facture(facture)
+        if solde >= 0 
+            text "Avant cette facture, votre avoir était de : #{ "%5.2f €" % solde }"
+            text "<b>Votre nouveau solde est maintenant de : #{ "%5.2f €" % (solde - facture.montant ) }</b>", inline_format: true
         else
-            text "Avant cette facture, vous deviez : #{ "%5.2f €" % compte.solde }"
+            text "Avant cette facture, vous deviez : #{ "%5.2f €" % solde.abs }"
+            text "<b>Votre nouveau solde dû est maintenant de : #{ "%5.2f €" % (solde.abs + facture.montant ) }</b>", inline_format: true
         end
-        text "<b>Votre nouveau solde dû est maintenant de : #{ "%5.2f €" % (compte.solde - facture.montant) }</b>", inline_format: true
     end
 end
