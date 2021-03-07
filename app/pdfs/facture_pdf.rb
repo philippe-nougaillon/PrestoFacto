@@ -112,12 +112,7 @@ class FacturePdf
 
         # Afficher le solde du compte
         solde = compte.solde_avant_cette_facture(facture)
-        if solde >= 0 
-            text "Avant cette facture, votre avoir était de : #{ "%5.2f €" % solde }"
-            text "<b>Votre nouveau solde est maintenant de : #{ "%5.2f €" % (solde - facture.montant ) }</b>", inline_format: true
-        else
-            text "Avant cette facture, vous deviez : #{ "%5.2f €" % solde.abs }"
-            text "<b>Votre nouveau solde dû est maintenant de : #{ "%5.2f €" % (solde.abs + facture.montant ) }</b>", inline_format: true
-        end
+        text "Avant cette facture, votre solde était de : #{ "%5.2f €" % solde }"
+        text "<b>Votre nouveau solde est maintenant de : #{ "%5.2f €" % compte.solde }</b>", inline_format: true
     end
 end

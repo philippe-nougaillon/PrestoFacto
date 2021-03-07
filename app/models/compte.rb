@@ -62,7 +62,12 @@ class Compte < ApplicationRecord
   end
 
   def solde_avant_cette_facture(facture)
-    (self.factures.sum(:montant) - facture.montant) - self.paiements.sum(:montant)
+    self.paiements.sum(:montant) - (self.factures.sum(:montant) - facture.montant)
   end
+
+  def solde
+    self.paiements.sum(:montant) - self.factures.sum(:montant)
+  end
+
 
 end
