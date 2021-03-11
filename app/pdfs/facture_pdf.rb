@@ -1,5 +1,6 @@
 class FacturePdf
     include Prawn::View
+    include ActionView::Helpers::NumberHelper
   
     # Taille et orientation du document par défaut
     def document
@@ -94,13 +95,13 @@ class FacturePdf
                         "<b>#{ligne.intitulé}</b>",
                         ligne.prestation_type.nom,
                         "%5.2f" % ligne.qté,
-                        "%5.2f €" % ligne.prix,
-                        "<b>#{ "%5.2f €" % ligne.total }</b>"
+                        number_to_currency(ligne.prix),
+                        "<b>#{ number_to_currency(ligne.total) }</b>"
                     ] ]
         end
 
         # Total
-        data += [ [ nil, nil, nil, "Total : ", "<b> %5.2f € </b>" % facture.montant ] ]
+        data += [ [ nil, nil, nil, "Total : ", "<b>#{ number_to_currency(facture.montant) }</b>" ] ]
 
         # Générer le tableau
         table(
@@ -112,7 +113,7 @@ class FacturePdf
 
         # Afficher le solde du compte
         solde = compte.solde_avant_cette_facture(facture)
-        text "Avant cette facture, votre solde était de : #{ "%5.2f €" % solde }"
-        text "<b>Votre nouveau solde est maintenant de : #{ "%5.2f €" % compte.solde }</b>", inline_format: true
+        text "Avant cette facture, votre solde était de : #{ number_to_currency(solde) }"
+        text "<b>Votre nouveau solde est maintenant de : #{ number_to_currency(compte.solde) }</b>", inline_format: true
     end
 end
