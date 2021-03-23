@@ -4,7 +4,7 @@ class StructuresController < ApplicationController
   # GET /structures/1
   # GET /structures/1.json
   def show
-    authorize Structure
+    authorize @structure
   end
 
   # GET /structures/new
@@ -14,7 +14,7 @@ class StructuresController < ApplicationController
 
   # GET /structures/1/edit
   def edit
-    authorize Structure
+    authorize @structure
 
     3.times { @structure.classrooms.build }
   end
@@ -40,7 +40,7 @@ class StructuresController < ApplicationController
   # PATCH/PUT /structures/1
   # PATCH/PUT /structures/1.json
   def update
-    authorize Structure
+    authorize @structure
     
     respond_to do |format|
       if @structure.update(structure_params)
