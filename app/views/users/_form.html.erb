@@ -1,11 +1,10 @@
-<%= bootstrap_form_tag url: '/users_admin' do |form| %>
+<%= bootstrap_form_with(model: @user, url: '/users_admin', local: true) do |form| %>
 
   <div class="col-sm-5">
-    <%= form.hidden_field :organisation_id %>
     <%= form.text_field :email, required: true %>
     <%= form.password_field :password, required: true, label: 'Mot de passe' %>
     <%= form.password_field :password_confirmation, required: true, label: 'Confirmation du mot de passe' %>
-    <%= form.select :role, options_for_select(User.roles), label: 'Rôle' %>
+    <%= form.select :role, options_for_select(User.roles.keys.to_a), label: 'Rôle' %>
     <br />
 
     <%= form.submit "Enregistrer", class: "btn btn-success" %>
