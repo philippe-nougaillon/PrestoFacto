@@ -5,8 +5,8 @@
     <td><%= enfant.nom %></td>
     <td><%= link_to enfant.prénom, enfant %></td>
     <td><%= l enfant.date_naissance %></td>
+    <td class="text-center"><%= fa_icon 'exclamation' if enfant.menu_all %> <%= enfant.allergenes %></td>
     <td class="text-center"><%= fa_icon 'exclamation' if enfant.menu_sp %></td>
-    <td class="text-center"><%= fa_icon 'exclamation' if enfant.menu_all %></td>
     <td><%= enfant.reservations.actives.joins(:prestation_type).pluck("prestation_types.nom").join(', ') %></td>
     <td>
         <% if policy(enfant).edit? %>
