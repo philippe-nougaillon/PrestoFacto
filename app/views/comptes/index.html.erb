@@ -36,13 +36,5 @@
   </tbody>
 </table>
 
-<%
-=begin%>
- <div class="text-secondary">
-  <%= page_entries_info @comptes, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
-</div> 
-<%
-=end%>
-
 <%= will_paginate @comptes %>
 <br>

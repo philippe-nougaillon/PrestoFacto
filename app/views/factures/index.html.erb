@@ -35,14 +35,6 @@
       <tfoot><tr><th colspan=12></th></tr></tfoot>
     </table>
 
-    <%
-=begin%>
- <div class="text-secondary">
-      <%= page_entries_info @factures, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
-    </div> 
-<%
-=end%>
-
     <div class="input-group">
       <%= select_tag :action_name, 
                           options_for_select(["Passer à l'état 'vérifiée'", "Envoyer"]), 
