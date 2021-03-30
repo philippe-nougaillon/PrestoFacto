@@ -83,7 +83,7 @@ class ComptesController < ApplicationController
 
     respond_to do |format|
       if @compte.update(compte_params)
-        format.html { redirect_to @compte, notice: 'Compte modifié.e avec succès.' }
+        format.html { redirect_to @compte, notice: 'Compte modifié avec succès.' }
         format.json { render :show, status: :ok, location: @compte }
       else
         format.html { render :edit }
@@ -100,12 +100,12 @@ class ComptesController < ApplicationController
     begin
       @compte.destroy
     rescue ActiveRecord::InvalidForeignKey
-      redirect_to comptes_url, alert: "Le Compte ne peut pas être supprimé pour le moment car des éléments liés existent. Veuillez d'abord supprimer ces éléments liés (Enfants/Factures...) avant de retenter l'opération."
+      redirect_to comptes_url, alert: "Le compte ne peut pas être supprimé pour le moment car des éléments liés existent. Veuillez d'abord supprimer ces éléments liés (Enfants/Factures...) avant de retenter l'opération."
       return
     end
     
     respond_to do |format|
-      format.html { redirect_to comptes_url, notice: 'Compte supprimé.e avec succès.' }
+      format.html { redirect_to comptes_url, notice: 'Compte supprimé avec succès.' }
       format.json { head :no_content }
     end
   end

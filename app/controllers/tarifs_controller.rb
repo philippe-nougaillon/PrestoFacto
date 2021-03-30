@@ -30,7 +30,7 @@ class TarifsController < ApplicationController
 
     respond_to do |format|
       if @tarif.save
-        format.html { redirect_to admin_tarifs_path, notice: 'Tarif créé.e avec succès.' }
+        format.html { redirect_to admin_tarifs_path, notice: 'Tarif créé avec succès.' }
         format.json { render :show, status: :created, location: @tarif }
       else
         format.html { redirect_to admin_tarifs_path, alert: @tarif.errors }
@@ -46,7 +46,7 @@ class TarifsController < ApplicationController
 
     respond_to do |format|
       if @tarif.update(tarif_params)
-        format.html { redirect_to admin_tarifs_path, notice: 'Tarif modifié.e avec succès.' }
+        format.html { redirect_to admin_tarifs_path, notice: 'Tarif modifié avec succès.' }
         format.json { render :show, status: :ok, location: @tarif }
       else
         format.html { redirect_to admin_tarifs_path, alert: @tarif.error }
@@ -62,7 +62,7 @@ class TarifsController < ApplicationController
 
     @tarif.destroy
     respond_to do |format|
-      format.html { redirect_to admin_tarifs_path, notice: 'Tarif supprimé.e avec succès.' }
+      format.html { redirect_to admin_tarifs_path, notice: 'Tarif supprimé avec succès.' }
       format.json { head :no_content }
     end
   end

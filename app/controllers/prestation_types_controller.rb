@@ -37,7 +37,7 @@ class PrestationTypesController < ApplicationController
 
     respond_to do |format|
       if @prestation_type.save
-        format.html { redirect_to admin_tarifs_path, notice: 'Prestation type créé.e avec succès.' }
+        format.html { redirect_to admin_tarifs_path, notice: 'Prestation type créée avec succès.' }
         format.json { render :show, status: :created, location: @prestation_type }
       else
         format.html { redirect_to admin_tarifs_path, alert: @prestation_type.errors}
@@ -53,7 +53,7 @@ class PrestationTypesController < ApplicationController
 
     respond_to do |format|
       if @prestation_type.update(prestation_type_params)
-        format.html { redirect_to admin_tarifs_path, notice: 'Prestation type modifié.e avec succès.' }
+        format.html { redirect_to admin_tarifs_path, notice: 'Prestation type modifiée avec succès.' }
         format.json { render :show, status: :ok, location: @prestation_type }
       else
         format.html { render :edit }
@@ -69,7 +69,7 @@ class PrestationTypesController < ApplicationController
 
     @prestation_type.destroy
     respond_to do |format|
-      format.html { redirect_to admin_tarifs_path, notice: 'Prestation type supprimé.e avec succès.' }
+      format.html { redirect_to admin_tarifs_path, notice: 'Prestation type supprimée avec succès.' }
       format.json { head :no_content }
     end
   end

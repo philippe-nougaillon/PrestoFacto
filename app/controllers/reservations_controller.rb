@@ -73,7 +73,7 @@ class ReservationsController < ApplicationController
 
     respond_to do |format|
       if @reservation.save
-        format.html { redirect_to @reservation, notice: 'Réservation créé.e avec succès.' }
+        format.html { redirect_to @reservation, notice: 'Réservation créée avec succès.' }
         format.json { render :show, status: :created, location: @reservation }
       else
         format.html { render :new }
@@ -86,7 +86,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
 
     if @reservation.save
-      redirect_to moncompte_index_path, notice: 'Réservation créé.e avec succès.'
+      redirect_to moncompte_index_path, notice: 'Réservation créée avec succès.'
     else
       redirect_to moncompte_index_path, alert: 'Réservation PB.'
     end
@@ -100,7 +100,7 @@ class ReservationsController < ApplicationController
 
     respond_to do |format|
       if @reservation.update(reservation_params)
-        format.html { redirect_to @reservation, notice: 'Reservation modifié.e avec succès.' }
+        format.html { redirect_to @reservation, notice: 'Reservation modifiée avec succès.' }
         format.json { render :show, status: :ok, location: @reservation }
       else
         format.html { render :edit }
@@ -116,7 +116,7 @@ class ReservationsController < ApplicationController
 
     @reservation.destroy
     respond_to do |format|
-      format.html { redirect_to reservations_url, notice: 'Reservation supprimé.e avec succès.' }
+      format.html { redirect_to reservations_url, notice: 'Reservation supprimée avec succès.' }
       format.json { head :no_content }
     end
   end

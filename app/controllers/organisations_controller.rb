@@ -37,7 +37,7 @@ class OrganisationsController < ApplicationController
 
     respond_to do |format|
       if @organisation.save
-        format.html { redirect_to @organisation, notice: 'Organisation créé.e avec succès.' }
+        format.html { redirect_to @organisation, notice: 'Organisation créée avec succès.' }
         format.json { render :show, status: :created, location: @organisation }
       else
         format.html { render :new }
@@ -53,7 +53,7 @@ class OrganisationsController < ApplicationController
 
     respond_to do |format|
       if @organisation.update(organisation_params)
-        format.html { redirect_to @organisation, notice: 'Organisation modifié.e avec succès.' }
+        format.html { redirect_to @organisation, notice: 'Organisation modifiée avec succès.' }
         format.json { render :show, status: :ok, location: @organisation }
       else
         format.html { render :edit }
@@ -69,7 +69,7 @@ class OrganisationsController < ApplicationController
 
     # @organisation.destroy
     respond_to do |format|
-      format.html { redirect_to organisations_url, notice: 'Organisation supprimé.e avec succès.' }
+      format.html { redirect_to organisations_url, notice: 'Organisation supprimée avec succès.' }
       format.json { head :no_content }
     end
   end

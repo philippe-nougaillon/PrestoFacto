@@ -81,7 +81,7 @@ class AbsencesController < ApplicationController
 
     respond_to do |format|
       if @absence.update(absence_params)
-        format.html { redirect_to @absence, notice: 'Absence modifié.e avec succès.' }
+        format.html { redirect_to @absence, notice: 'Absence modifiée avec succès.' }
         format.json { render :show, status: :ok, location: @absence }
       else
         format.html { render :edit }

@@ -28,7 +28,7 @@ class StructuresController < ApplicationController
 
     respond_to do |format|
       if @structure.save
-        format.html { redirect_to @structure, notice: 'Structure créé.e avec succès.' }
+        format.html { redirect_to @structure, notice: 'Structure créée avec succès.' }
         format.json { render :show, status: :created, location: @structure }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class StructuresController < ApplicationController
     
     respond_to do |format|
       if @structure.update(structure_params)
-        format.html { redirect_to @structure, notice: 'Structure modifié.e avec succès.' }
+        format.html { redirect_to @structure, notice: 'Structure modifiée avec succès.' }
         format.json { render :show, status: :ok, location: @structure }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class StructuresController < ApplicationController
 
     @structure.destroy
     respond_to do |format|
-      format.html { redirect_to current_user.organisation, notice: 'Structure supprimé.e avec succès.' }
+      format.html { redirect_to current_user.organisation, notice: 'Structure supprimée avec succès.' }
       format.json { head :no_content }
     end
   end
