@@ -25,20 +25,25 @@
           <strong>Date naissance:</strong>
           <%= l @enfant.date_naissance %>
         </p>
+
+        <p class="alert <%= 'alert-info' unless @enfant.mémo.blank? %>" >
+          <%= @enfant.mémo %>
+        </p>
       </div>
 
       <div class="col">
         <p>
+          <strong>Menu 'Sans porc' ? :</strong>
+          <%= "OUI" if @enfant.menu_sp %>
+        </p>
+
+        <p class="alert <%= 'alert-warning' if @enfant.menu_all %>" >
           <strong>Allergie ? :</strong>
           <%= "OUI" if @enfant.menu_all %>
           <%= "=> #{ @enfant.allergenes }" if @enfant.menu_all %>
         </p>
-
-        <p>
-          <strong>Menu 'Sans porc' ? :</strong>
-          <%= "OUI" if @enfant.menu_sp %>
-        </p>
       </div>
+
     </div>
 
     <% if policy(@enfant).edit? %>

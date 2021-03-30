@@ -15,13 +15,17 @@
     <div class="col-sm-1">
       <%= form.check_box :menu_all, label: "Allergie", custom: :switch %>
     </div>
-    <div class="col-sm-5">
+    <div class="col-sm-3">
       <%= form.text_field :allergenes, label_as_placeholder: true, label: 'Allergènes' %>
     </div>
     <div class="col-sm-2">
       <%= form.check_box :menu_sp, label: "Menu 'Sans porc'", custom: :switch %>
     </div>
+    <div class="col">
+      <div class="col"><%= form.text_field :mémo, label_as_placeholder: true, label: 'Mémo' %></div>
+    </div>
   </div>
+  <br>
 
   <h3><%= fa_icon 'calendar-alt' %> Réservations</h3>
   <hr />
