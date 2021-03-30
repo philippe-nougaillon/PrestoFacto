@@ -26,7 +26,7 @@
     </tr>
   </thead>
 
-  <tfoot><tr><% 9.times do %><th></th><% end %></tr></tfoot>
+  <tfoot><tr><th colspan=9></th></tr></tfoot>
 
   <tbody>
     <%=render @prestations.includes(:enfant, :prestation_type) %>

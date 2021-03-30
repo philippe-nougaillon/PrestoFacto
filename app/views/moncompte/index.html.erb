@@ -41,7 +41,7 @@
         </tr>
       <% end %>
 
-      <tfoot><tr><% 8.times do %><th></th><% end %></tr></tfoot>
+      <tfoot><tr><th colspan=8></th></tr></tfoot>
 
     </table>
   </div>
@@ -79,7 +79,7 @@
         <%= render @compte.reservations.includes(:enfant) %>
       </tbody>
 
-      <tfoot><tr><% 18.times do %><th></th><% end %></tr></tfoot>
+      <tfoot><tr><th colspan=18></th></tr></tfoot>
 
     </table>
   </div>
