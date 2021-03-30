@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_30_141031) do
+ActiveRecord::Schema.define(version: 2021_03_30_145412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 2021_03_30_141031) do
     t.bigint "tarif_type_id"
     t.string "badge"
     t.string "slug"
+    t.string "allergenes"
     t.index ["classroom_id"], name: "index_enfants_on_classroom_id"
     t.index ["compte_id"], name: "index_enfants_on_compte_id"
     t.index ["slug"], name: "index_enfants_on_slug", unique: true

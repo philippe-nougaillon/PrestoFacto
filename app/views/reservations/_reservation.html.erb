@@ -3,7 +3,12 @@
     <td><%= reservation.enfant.classroom.nom %></td>
     <td><%= link_to reservation.enfant.nom_et_prénom, reservation.enfant %></td>
 
-    <td class="text-center"><%= fa_icon 'exclamation' if reservation.enfant.menu_all %></td>
+    <td class="text-center">
+        <% if reservation.enfant.menu_all %>
+            <%= fa_icon 'exclamation' %>
+            <%= reservation.enfant.allergenes %>
+        <% end %>
+    </td>
     <td class="text-center"><%= fa_icon 'exclamation' if reservation.enfant.menu_sp %></td>
 
     <td><%= reservation.prestation_type.nom %></td>

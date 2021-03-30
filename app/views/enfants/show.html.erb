@@ -29,12 +29,13 @@
 
       <div class="col">
         <p>
-          <strong>Menu 'Allergie' ?:</strong>
+          <strong>Allergie ? :</strong>
           <%= "OUI" if @enfant.menu_all %>
+          <%= "=> #{ @enfant.allergenes }" if @enfant.menu_all %>
         </p>
 
         <p>
-          <strong>Menu 'Sans porc' ?:</strong>
+          <strong>Menu 'Sans porc' ? :</strong>
           <%= "OUI" if @enfant.menu_sp %>
         </p>
       </div>

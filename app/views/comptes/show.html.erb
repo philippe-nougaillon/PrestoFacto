@@ -11,7 +11,7 @@
           <th>Prénom</th>
           <th>Date naissance</th>
           <th>Classe</th>
-          <th>Menu ALLERGIE?</th>
+          <th>ALLERGIE?</th>
           <th>Menu SP?</th>
           <th colspan="3"></th>
         </tr>
@@ -24,7 +24,7 @@
           <td><%= l enfant.date_naissance %></td>
           <td><%= enfant.classroom.nom %></td>
           <td class="text-center"><%= fa_icon 'exclamation' if enfant.menu_sp %></td>
-          <td class="text-center"><%= fa_icon 'exclamation' if enfant.menu_all %></td>
+          <td class="text-center"><%= fa_icon('exclamation', title: 'oulala') if enfant.menu_all %></td>
           <td>
             <% if policy(enfant).edit? %>
               <%= link_to edit_enfant_path(enfant) do %>
