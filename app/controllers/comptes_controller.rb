@@ -125,7 +125,7 @@ class ComptesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def compte_params
       params.require(:compte).permit(:structure_id, :nom, :civilité, :adresse1, :adresse2, :cp, :ville, :num_allocataire, :mémo,
-                                      contacts_attributes: [:id, :nom, :fixe, :portable, :email, :mémo, :_destroy])
+                                      contacts_attributes: [:id, :nom, :fixe, :portable, :email, :mémo, :prevenir, :_destroy])
     end
 
     def sortable_columns

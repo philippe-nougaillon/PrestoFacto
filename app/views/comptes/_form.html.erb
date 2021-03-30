@@ -20,13 +20,17 @@
       <%= form.fields_for :contacts do |contact_form| %>
         <div class="row">
             <div class="col"><%= contact_form.text_field :nom, label_as_placeholder: true %></div>
+            <div class="col"><%= contact_form.text_field :email, label_as_placeholder: true %></div>
+        </div>
+        <div class="row">
             <div class="col"><%= contact_form.text_field :fixe, label_as_placeholder: true %></div>
             <div class="col"><%= contact_form.text_field :portable, label_as_placeholder: true %></div>
-            <div class="col"><%= contact_form.text_field :email, label_as_placeholder: true %></div>
+            <div class="col"><%= contact_form.check_box :prevenir, label_as_placeholder: true, label: "Personne à prévenir en cas d'urgence" %></div>
             <% unless compte.new_record? %>
               <div class="col"><%= contact_form.check_box :_destroy, label: "Supprimer ?" %></div>
             <% end %>
         </div>
+        <hr>
       <% end %>
     </div>
   </div>

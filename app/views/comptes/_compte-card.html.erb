@@ -55,9 +55,9 @@
             <strong>Contacts:</strong>
             <table class="table table-hover table-borderless table-sm">
               <% @compte.contacts.each do |contact| %>
-                <tr>
+                <tr class="alert <%= 'alert-warning' if contact.prevenir? %>" >
                   <td><%= contact.nom.humanize %></td>
-                  <td><%= [contact.fixe, contact.portable, contact.email].join(' / ') %>
+                  <td><%= [contact.fixe, contact.portable, contact.email].join(' | ') %>
                   <td><%= contact.mémo %></td>
                 </tr>
               <% end %>
