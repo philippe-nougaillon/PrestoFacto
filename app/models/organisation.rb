@@ -13,7 +13,7 @@ class Organisation < ApplicationRecord
     has_many :tarif_types
     has_many :facture_chronos
     has_many :classrooms, through: :structures
-    has_many :enfants, through: :comptes
+    has_many :enfants, through: :classrooms
     has_many :factures, through: :comptes
     has_many :paiements, through: :comptes 
     has_many :prestations, through: :enfants
