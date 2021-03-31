@@ -7,10 +7,11 @@ class Organisation < ApplicationRecord
     accepts_nested_attributes_for :structures, reject_if: proc { |attributes| attributes[:nom].blank? }, allow_destroy: true
 
     has_many :users
+    has_many :comptes
+
     has_many :prestation_types, inverse_of: :organisation
     has_many :tarif_types
     has_many :facture_chronos
-    has_many :comptes, through: :structures
     has_many :classrooms, through: :structures
     has_many :enfants, through: :comptes
     has_many :factures, through: :comptes

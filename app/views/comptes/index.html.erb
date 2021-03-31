@@ -9,7 +9,6 @@
 
 <%= bootstrap_form_tag url: comptes_path, method: :get do |f| %>
   <div class="row">
-    <div class="col-sm-3"><%= f.select :structure_id, options_from_collection_for_select(@structures, 'id', 'nom', params[:structure_id]), { include_blank: true, label: "Structure" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
     <div class="col"><%= f.text_field :search, value: params[:search], label: 'Nom/CP/Ville/Num', onchange: "this.form.submit()" %></div>
   </div>
 <% end %>
@@ -17,7 +16,6 @@
 <table class="table table-bordered table-hover table-striped  table-sm">
   <thead>
     <tr>
-      <th><%= sort_link 'structures.nom', 'Structure' %></th>
       <th><%= sort_link 'comptes.nom', 'Nom' %></th>
       <th><%= sort_link 'comptes.civilité', 'Civilité' %></th>
       <th colspan=2><%= sort_link 'comptes.adresse1', 'Adresse' %></th>
@@ -32,7 +30,7 @@
   <tfoot><tr><th colspan=11></th></tr></tfoot>
 
   <tbody>
-    <%= render @comptes.includes(:structure, :enfants) %>
+    <%= render @comptes.includes(:organisation, :enfants) %>
   </tbody>
 </table>
 

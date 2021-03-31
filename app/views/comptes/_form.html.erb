@@ -1,8 +1,9 @@
 <%= bootstrap_form_with(model: compte, local: true) do |form| %>
 
+  <%= form.hidden_field :organisation_id %>
+
   <div class="row">
     <div class="col-sm-4">
-      <%= form.select :structure_id, options_from_collection_for_select(@structures, 'id', 'nom', @compte.structure_id), { label: "Structure", wrapper: { class: 'has-warning', data: { foo: 'bar' } } }, { class: "selectpicker" } %>
       <%= form.text_field :nom, required: true  %>
       <%= form.select :civilité, ["M","Mme","M et Mme"] %>
       <%= form.text_field :adresse1 %>

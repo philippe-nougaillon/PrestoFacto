@@ -1,10 +1,10 @@
 <tr>
-    <td><%= prestation.enfant.compte.structure.nom %></td>
+    <td><%= prestation.enfant.classroom.structure.nom %></td>
+    <td><%= prestation.enfant.classroom.nom %></td>
     <td><%= l prestation.date, format: :long %></td>
     <td><%= prestation.prestation_type.nom %></td>
     <td><%= link_to prestation.enfant.nom, prestation.enfant.compte %></td>
     <td><%= link_to prestation.enfant.prénom, prestation.enfant %></td>
-    <td><%= prestation.enfant.classroom.nom %></td>
     <td><%= prestation.qté %></td>
     <td>
         <% if policy(prestation).edit? %>

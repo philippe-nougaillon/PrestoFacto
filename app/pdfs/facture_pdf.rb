@@ -14,7 +14,7 @@ class FacturePdf
   
     def export_facture(facture)
         compte = facture.compte
-        organisation = compte.structure.organisation
+        organisation = compte.organisation
 
         font 'Helvetica'
         font_size 12
@@ -29,7 +29,6 @@ class FacturePdf
             move_down @margin_down 
 
             formatted_text [{ text: organisation.nom, styles: [:bold] }] 
-            text compte.structure.nom
             text organisation.adresse
             text "#{ organisation.cp } #{ organisation.ville }"  
             move_down @margin_down 

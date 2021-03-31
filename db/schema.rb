@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_30_152426) do
+ActiveRecord::Schema.define(version: 2021_03_31_123620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,8 @@ ActiveRecord::Schema.define(version: 2021_03_30_152426) do
     t.datetime "updated_at", null: false
     t.integer "enfants_count"
     t.string "slug"
+    t.bigint "organisation_id"
+    t.index ["organisation_id"], name: "index_comptes_on_organisation_id"
     t.index ["slug"], name: "index_comptes_on_slug", unique: true
     t.index ["structure_id"], name: "index_comptes_on_structure_id"
   end
@@ -333,6 +335,7 @@ ActiveRecord::Schema.define(version: 2021_03_30_152426) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "classrooms", "structures"
+  add_foreign_key "comptes", "organisations"
   add_foreign_key "comptes", "structures"
   add_foreign_key "contacts", "comptes"
   add_foreign_key "enfants", "classrooms"

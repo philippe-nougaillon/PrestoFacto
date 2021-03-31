@@ -35,7 +35,7 @@ namespace :factures do
             puts "Compte: #{compte.nom} (#{compte.id}) = #{count} prestations consommées"
 
             # incrémenter le numéro de chrono de facture
-            chrono = compte.structure.organisation.facture_chronos.last
+            chrono = compte.organisation.facture_chronos.last
             index = chrono.index + 1
             montant_total = 0.0
 

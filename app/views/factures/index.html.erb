@@ -15,7 +15,6 @@
       <thead>
         <tr>
           <th></th>
-          <th><%= sort_link 'structures.nom', 'Structure' %></th>
           <th><%= sort_link 'factures.réf', 'Réf' %></th>
           <th><%= sort_link 'factures.date', 'Date' %></th>
           <th><%= sort_link 'comptes.nom', 'Compte' %></th>
@@ -32,7 +31,7 @@
         <%= render @factures.includes(:compte) %>
       </tbody>
 
-      <tfoot><tr><th colspan=12></th></tr></tfoot>
+      <tfoot><tr><th colspan=11></th></tr></tfoot>
     </table>
 
     <div class="input-group">

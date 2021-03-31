@@ -6,7 +6,7 @@ class Compte < ApplicationRecord
 
   belongs_to :structure
 
-  has_one :organisation, through: :structure
+  belongs_to :organisation 
 
   has_many :contacts, inverse_of: :compte, dependent: :delete_all
   has_many :enfants, dependent: :delete_all
@@ -19,8 +19,7 @@ class Compte < ApplicationRecord
 
   accepts_nested_attributes_for :contacts, reject_if: proc { |attributes| attributes[:nom].blank? }, allow_destroy: true
 
-  validates :structure_id, :nom, presence: true
-
+  
   self.per_page = 10
 
   default_scope { order(Arel.sql('comptes.nom')) }

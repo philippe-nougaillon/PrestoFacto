@@ -1,17 +1,12 @@
 <p>
-  <% if @facture.compte.structure.organisation.logo.attached? %>
-    <%= image_tag wicked_blob_path(@facture.compte.structure.organisation.logo), width: 100 %>
+  <% if @facture.compte.organisation.logo.attached? %>
+    <%= image_tag wicked_blob_path(@facture.compte.organisation.logo), width: 100 %>
   <% end %>
 
-  <h2>
-    <%= @facture.compte.structure.organisation.nom %><br />
-    <small><%= @facture.compte.structure.nom %></small>
-  </h2>
-
-  <%= @facture.compte.structure.organisation.adresse %><br />
-  <%= @facture.compte.structure.organisation.cp %> <%= @facture.compte.structure.organisation.ville %><br />
-  <%= @facture.compte.structure.organisation.téléphone %><br />
-  <%= @facture.compte.structure.organisation.email %><br />
+  <%= @facture.compte.organisation.adresse %><br />
+  <%= @facture.compte.organisation.cp %> <%= @facture.compte.organisation.ville %><br />
+  <%= @facture.compte.organisation.téléphone %><br />
+  <%= @facture.compte.organisation.email %><br />
 </p>
 
 <div class="client">

@@ -15,7 +15,6 @@
 <table class="table table-bordered table-hover table-striped table-sm">
   <thead>
     <tr>
-      <th><%= sort_link 'structures.nom', 'Structure' %></th>
       <th><%= sort_link 'paiements.date', 'Date' %></th>
       <th><%= sort_link 'comptes.nom', 'Compte' %></th>
       <th><%= sort_link 'paiements.réf', 'Réf' %></th>
@@ -29,7 +28,7 @@
     </tr>
   </thead>
 
-  <tfoot><tr><th colspan=12></th></tr></tfoot>
+  <tfoot><tr><th colspan=11></th></tr></tfoot>
 
   <tbody>
     <%= render @paiements.includes(:compte) %>

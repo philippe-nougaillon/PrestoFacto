@@ -45,7 +45,7 @@ class ComptesController < ApplicationController
     authorize Compte
     
     @compte = Compte.new
-    @structures = current_user.organisation.structures
+    @compte.organisation = current_user.organisation
     
     3.times { @compte.contacts.build }
   end
@@ -124,7 +124,7 @@ class ComptesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def compte_params
-      params.require(:compte).permit(:structure_id, :nom, :civilité, :adresse1, :adresse2, :cp, :ville, :num_allocataire, :mémo,
+      params.require(:compte).permit(:organisation_id, :nom, :civilité, :adresse1, :adresse2, :cp, :ville, :num_allocataire, :mémo,
                                       contacts_attributes: [:id, :nom, :fixe, :portable, :email, :mémo, :prevenir, :_destroy])
     end
 

@@ -8,8 +8,7 @@
       Bonjour,
       <br>
       Vous trouverez ci-dessous un lien vers votre facture 
-      <%= @facture.compte.structure.organisation.nom %>/
-      <%= @facture.compte.structure.nom %>
+      <%= @facture.compte.organisation.nom %>
       <br>
       <%= link_to "#{@facture.réf}", facture_url(@facture, format: :pdf) %>
       <br>
@@ -17,7 +16,7 @@
       <br>
       Nous vous remercions de votre confiance.
       <br>
-      L'équipe <%= @facture.compte.structure.organisation.nom %>
+      L'équipe <%= @facture.organisation.nom %>
     </p>
   </body>
 </html>
