@@ -4,10 +4,10 @@
 
 <%= bootstrap_form_tag url: absences_path, method: :get do |f| %>
   <div class="row">
+    <div class="col"><%= f.text_field :nom, value: params[:nom], label: 'Nom/Prénom', onchange: "this.form.submit()", autofocus: true %></div>
     <div class="col-sm-3"><%= f.select :structure_id, options_from_collection_for_select(@structures, 'id', 'nom', params[:structure_id]), { include_blank: true, label: "Structure" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
     <div class="col-sm-2"><%= f.select :classroom_id, options_from_collection_for_select(@classrooms, 'id', 'nom', params[:classroom_id]), { include_blank: true, label: "Classe" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
     <div class="col-sm-2"><%= f.date_field :date, value: params[:date], onchange: "this.form.submit()" %></div>
-    <div class="col"><%= f.text_field :nom, value: params[:nom], label: 'Nom/Prénom', onchange: "this.form.submit()" %></div>
   </div>
 <% end %>
 

@@ -4,7 +4,7 @@
 
 <%= bootstrap_form_tag url: action_factures_path do |f| %>
   <div class="row">
-    <div class="col"><%= f.text_field :search, value: params[:search], label:"Nom du compte/Référence facture", onchange: "this.form.submit()" %></div>
+    <div class="col"><%= f.text_field :search, value: params[:search], label:"Nom du compte/Référence facture", onchange: "this.form.submit()", autofocus: true %></div>
     <div class="col-sm-2"><%= f.date_field :date_début, value: params[:date_début], onchange: "this.form.submit()" %></div>
     <div class="col-sm-2"><%= f.date_field :date_fin, value: params[:date_fin], onchange: "this.form.submit()" %></div>
   </div>
