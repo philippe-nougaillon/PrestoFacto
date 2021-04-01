@@ -18,6 +18,11 @@
           <strong>Classe:</strong>
           <%= @enfant.classroom.nom %>
         </p>
+
+        <p>
+          <strong>Badge:</strong>
+          <%= @enfant.badge %>
+        </p>
       </div>
 
       <div class="col">
@@ -47,7 +52,7 @@
     </div>
 
     <% if policy(@enfant).edit? %>
-      <%= link_to edit_enfant_path(@enfant), class: "btn" do %>
+      <%= link_to edit_enfant_path(@enfant), class: "btn btn-link" do %>
         <%= fa_icon 'edit', text: ' Editer' %> 
       <% end %>
     <% end %>

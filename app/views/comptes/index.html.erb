@@ -9,7 +9,7 @@
 
 <%= bootstrap_form_tag url: comptes_path, method: :get do |f| %>
   <div class="row">
-    <div class="col"><%= f.text_field :search, value: params[:search], label: 'Nom/CP/Ville/Num', onchange: "this.form.submit()", autofocus: true %></div>
+    <div class="col"><%= f.text_field :search, value: params[:search], label: 'Nom/Prénom/CP/Ville/NumAllocataire/Badge', onchange: "this.form.submit()", autofocus: true %></div>
   </div>
 <% end %>
 
@@ -27,11 +27,12 @@
     </tr>
   </thead>
 
+  <tbody>
+    <%= render @comptes %>
+  </tbody>
+
   <tfoot><tr><th colspan=11></th></tr></tfoot>
 
-  <tbody>
-    <%= render @comptes.includes(:organisation, :enfants) %>
-  </tbody>
 </table>
 
 <%= will_paginate @comptes %>
