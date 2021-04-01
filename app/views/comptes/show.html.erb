@@ -46,7 +46,7 @@
     </table>
 
     <% if policy(Enfant).new? %>
-      <%= link_to new_enfant_path(compte_id: @compte), class: "btn" do %>
+      <%= link_to new_enfant_path(compte_id: @compte), class: "btn btn-link" do %>
         <%= fa_icon 'plus-circle' %> Ajouter un enfant
       <% end %>
     <% end %>
