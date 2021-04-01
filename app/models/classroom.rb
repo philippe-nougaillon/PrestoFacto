@@ -7,4 +7,8 @@ class Classroom < ApplicationRecord
 
   validates :structure_id, :nom, presence: true
 
+  def nom_et_structure
+    self.nom + ' (' + self.structure.nom + ')'
+  end
+
 end

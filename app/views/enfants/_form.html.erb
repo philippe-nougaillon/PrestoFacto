@@ -3,12 +3,12 @@
   <%= form.hidden_field :compte_id %>
   
   <div class="row">
-    <div class="col"><%= form.select :classroom_id, options_from_collection_for_select(@classrooms, 'id', 'nom', enfant.classroom_id), { label: "Classe" }, { class: "selectpicker" } %></div>
+    <div class="col"><%= form.select :classroom_id, options_from_collection_for_select(@classrooms, 'id', 'nom_et_structure', enfant.classroom_id), { label: "Classe" }, { class: "selectpicker" } %></div>
     <div class="col"><%= form.text_field :nom, required: true %></div>
     <div class="col"><%= form.text_field :prénom, required: true %></div>
     <div class="col"><%= form.date_field :date_naissance, required: true %></div>
     <div class="col"><%= form.select :tarif_type_id, options_from_collection_for_select(@tarif_types, 'id', 'nom', enfant.tarif_type_id), { label: "Tarif"}, { class: "selectpicker" } %></div>
-    <div class="col"><%= form.text_field :badge %></div>
+    <div class="col-sm-1"><%= form.text_field :badge %></div>
   </div>
 
   <div class="row">
