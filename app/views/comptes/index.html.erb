@@ -9,7 +9,13 @@
 
 <%= bootstrap_form_tag url: comptes_path, method: :get do |f| %>
   <div class="row">
-    <div class="col"><%= f.text_field :search, value: params[:search], label: 'Nom/Prénom/CP/Ville/NumAllocataire/Badge', onchange: "this.form.submit()", autofocus: true %></div>
+    <div class="col">
+      <%= f.text_field :search, 
+                        value: params[:search], 
+                        label: 'NomCompte/PrénomEnfant/CP/Ville/NumAllocataire/N°Badge', 
+                        onchange: 'this.form.submit()', 
+                        autofocus: true %>
+    </div>
   </div>
 <% end %>
 

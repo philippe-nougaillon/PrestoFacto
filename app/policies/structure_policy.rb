@@ -6,6 +6,6 @@ class StructurePolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.admin? && record.comptes.count == 0 && record.classrooms.count == 0
+    user.admin? && record.classrooms.count == 0
   end
 end

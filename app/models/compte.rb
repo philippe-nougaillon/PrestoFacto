@@ -4,10 +4,6 @@ class Compte < ApplicationRecord
 
   audited
 
-  # TODO: a supprimer
-  belongs_to :structure
-  has_many :classrooms
-
   belongs_to :organisation 
 
   has_many :contacts, inverse_of: :compte, dependent: :delete_all

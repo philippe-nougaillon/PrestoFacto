@@ -26,7 +26,7 @@
     <%= form.fields_for :structures do |structure_form| %>
       <div class="row">
         <div class="col-sm-5"><%= structure_form.text_field :nom, label_as_placeholder: true %></div>
-        <% unless structure_form.object.new_record? or structure_form.object.comptes.any? or structure_form.object.classrooms.any? %>
+        <% unless structure_form.object.new_record? or structure_form.object.classrooms.any? %>
           <div class="col"><%= structure_form.check_box :_destroy, label: "Supprimer ?" %></div>
         <% end %>
       </div>
