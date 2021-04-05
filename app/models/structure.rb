@@ -3,7 +3,9 @@ class Structure < ApplicationRecord
 
   belongs_to :organisation, inverse_of: :structures
 
+  # TODO: A supprimer
   has_many :comptes
+
   has_many :classrooms, inverse_of: :structure
   has_many :enfants, through: :classrooms
 

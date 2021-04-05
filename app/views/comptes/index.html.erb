@@ -18,7 +18,7 @@
     <tr>
       <th><%= sort_link 'comptes.nom', 'Nom' %></th>
       <th><%= sort_link 'comptes.civilité', 'Civilité' %></th>
-      <th colspan=2><%= sort_link 'comptes.adresse1', 'Adresse' %></th>
+      <th><%= sort_link 'comptes.adresse1', 'Adresse' %></th>
       <th><%= sort_link 'comptes.cp', 'CP'%></th>
       <th><%= sort_link 'comptes.ville', 'Ville' %></th>
       <th><%= sort_link 'comptes.num_allocataire', 'Num allocataire' %></th>
@@ -31,7 +31,7 @@
     <%= render @comptes %>
   </tbody>
 
-  <tfoot><tr><th colspan=11></th></tr></tfoot>
+  <tfoot><tr><th colspan=10></th></tr></tfoot>
 
 </table>
 
