@@ -26,39 +26,5 @@ module ApplicationHelper
             </li>
         })
     end
-    
-    def nav_breadcrumb
-        render(inline: %{
-            <nav class="navbar navbar-expand-sm bg-light">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <%= link_to root_url, class: 'nav-link' do %>
-                            <%= fa_icon 'home' %>
-                        <% end %>
-                    </li>
-                                        
-                    <% if current_user %>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="#">>></a>
-                        </li>  
-
-                        <li class="nav-item">
-                            <%= link_to @ctrl.humanize, url_for(controller: @ctrl), class: 'nav-link' %>
-                        </li>
-
-                        <% if id = params[:id] %>
-                            <li class="nav-item">
-                                <a class="nav-link disabled" href="#">>></a>
-                            </li>              
-                            
-                            <li class="nav-item">
-                                <%= link_to id.humanize, url_for(controller: @ctrl, action: :show, id: id), class: 'nav-link' %>
-                            </li>
-                        <% end %>
-                    <% end %>
-                </ul>
-            </nav>
-        })
-    end    
-
+     
 end
