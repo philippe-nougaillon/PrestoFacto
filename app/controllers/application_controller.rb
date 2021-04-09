@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 private
     def set_layout_variables
       @site_name = "PrestoFacto"
-      version = "v5.4"
+      version = "v5.4.a"
       @site_name_and_version = @site_name + ' ' + version
 
       @ctrl = params[:controller]
@@ -29,7 +29,7 @@ private
 
     def user_not_authorized
       flash[:alert] = "Vous n'êtes pas autorisé(e) à effectuer cette action !"
-      redirect_to(request.referrer || (current_user.role == 'user' ? moncompte_index_path : root_path))
+      redirect_to(request.referrer || (current_user.visiteur? ? moncompte_index_path : root_path))
     end
 
 end

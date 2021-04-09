@@ -9,8 +9,13 @@ class ComptesController < ApplicationController
   def index
     authorize Compte
 
-    @comptes = current_user.organisation.comptes
     @structures = current_user.organisation.structures
+
+    if current_user.visiteur?
+      @comptes = Compte.where(id: Contact.find_by(email: current_user.email).compte_id)
+    else
+      @comptes = current_user.organisation.comptes
+    end
     
     unless params[:structure_id].blank?
       @comptes = @comptes.where(structure_id: params[:structure_id])
