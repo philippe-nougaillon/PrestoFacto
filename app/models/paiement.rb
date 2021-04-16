@@ -7,7 +7,7 @@ class Paiement < ApplicationRecord
   self.per_page = 10
 
   def self.modes
-     %w{Chèque CB Espèces Autre}
+     %w{Chèque Virement CB Espèces Autre}
   end
 
   def self.banques

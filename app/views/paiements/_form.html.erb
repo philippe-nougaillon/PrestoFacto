@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col">
       <div class="row">
-        <div class="col"><%= form.date_field :date %></div>
+        <div class="col"><%= form.date_field :date, required: true %></div>
         <div class="col"><%= form.text_field :réf %></div>
         <div class="col"><%= form.select :mode, Paiement.modes %></div>
       </div>
