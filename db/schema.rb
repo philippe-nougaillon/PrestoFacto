@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_31_123620) do
+ActiveRecord::Schema.define(version: 2021_04_16_141953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -181,6 +181,8 @@ ActiveRecord::Schema.define(version: 2021_03_31_123620) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.string "workflow_state"
+    t.decimal "solde_avant", precision: 8, scale: 2
+    t.decimal "solde_après", precision: 8, scale: 2
     t.index ["compte_id"], name: "index_factures_on_compte_id"
     t.index ["slug"], name: "index_factures_on_slug", unique: true
     t.index ["workflow_state"], name: "index_factures_on_workflow_state"

@@ -111,8 +111,7 @@ class FacturePdf
         move_down @margin_down * 5
 
         # Afficher le solde du compte
-        solde = compte.solde_avant_cette_facture(facture)
-        text "Avant cette facture, votre solde était de : #{ number_to_currency(solde) }"
-        text "<b>Votre nouveau solde est maintenant de : #{ number_to_currency(compte.solde) }</b>", inline_format: true
+        text "Avant cette facture, votre solde était de : #{ number_to_currency(facture.solde_avant) }"
+        text "<b>Votre nouveau solde est maintenant de : #{ number_to_currency(facture.solde_après) }</b>", inline_format: true
     end
 end

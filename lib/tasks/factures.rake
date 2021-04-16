@@ -93,6 +93,10 @@ namespace :factures do
             puts "Montant total: #{montant_total} €"
             facture.montant = montant_total
 
+            # Calculer le solde du compte avant et après cette facture
+            facture.solde_avant = compte.solde_avant_cette_facture(facture)
+            facture.solde_après = compte.solde
+
             # Finalisation facture et enregistrement du chrono facture si la facture est enregistrée    
             if facture.valid?
                 facture.save if enregistrer
