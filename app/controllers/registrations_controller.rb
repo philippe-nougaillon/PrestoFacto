@@ -15,7 +15,7 @@ class RegistrationsController < Devise::RegistrationsController
 
         # et quelques données de base pour aider la prise en main 
         organisation.structures.first.classrooms.create(nom: 'UNE CLASSE')
-        organisation.structures.first.comptes.create(nom: 'FAMILLE TEST')
+        organisation.comptes.create(nom: 'FAMILLE-TEST')
         organisation.facture_chronos.create(index: 1)
         organisation.tarif_types.create(nom: 'Général')
         organisation.prestation_types.create(nom: 'Repas')
