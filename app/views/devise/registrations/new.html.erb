@@ -21,6 +21,8 @@
     <%= f.label :structure %>
     <%= text_field_tag :structure, params[:structure], required: true, placeholder: "Le nom de la structure (CANTINE / ECOLE / ...)", class: "form-control col-sm-4" %>
     <br>
+    <%= flash[:recaptcha_error] %>
+    <%= recaptcha_v3(action: 'signup') %>
   </div>
 
   <div class="actions">
