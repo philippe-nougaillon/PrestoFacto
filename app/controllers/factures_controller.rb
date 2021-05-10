@@ -1,5 +1,5 @@
 class FacturesController < ApplicationController
-  # on saute la sécurité si demande de facture PDF
+  # on saute par dessus la sécurité si la demande est d'afficher une facture PDF
   skip_before_action :authenticate_user!, only: [:show]
 
   before_action :set_facture, only: [:show, :edit, :update, :destroy]
