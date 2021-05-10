@@ -54,7 +54,8 @@ namespace :factures do
                 réf: Facture.fabrique_une_référence_facture(index), 
                 date: DateTime.now, 
                 échéance: Date.today + 1.month, 
-                mémo: "Période du #{I18n.l date_début} au #{I18n.l date_fin}"
+                mémo: "Période du #{I18n.l date_début} au #{I18n.l date_fin}",
+                solde_avant: compte.solde
             )
             
             facture.save if enregistrer
@@ -103,9 +104,8 @@ namespace :factures do
             puts "Montant total: #{montant_total} €"
             facture.montant = montant_total
 
-            # Calculer le solde du compte avant et après cette facture
-            facture.solde_avant = compte.solde_avant_cette_facture(facture)
-            facture.solde_après = compte.solde
+            # Calculer le solde du compte après cette facture
+            facture.solde_après = facture.solde_avant - facture.montant
 
             # Finalisation facture et enregistrement du chrono facture si la facture est enregistrée    
             if facture.valid?

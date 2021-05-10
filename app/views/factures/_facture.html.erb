@@ -14,7 +14,7 @@
     <td><span class="badge <%= facture.style %>"><%= facture.try(:workflow_state).try(:humanize) %></span></td>
     <td>
         <% if policy(facture).show? %>
-            <%= link_to facture_url(facture, format: :pdf), title: "Voir la facture en PDF" do %>
+            <%= link_to facture_url(facture, format: :pdf), target: '_blank', title: "Voir la facture en PDF" do %>
                 <i class="far fa-file-pdf"></i>
             <% end %>
         <% end %>

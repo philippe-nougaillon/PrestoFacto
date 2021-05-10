@@ -12,7 +12,8 @@
     <div class="col">
       <%= f.text_field :search, 
                         value: params[:search], 
-                        label: 'NomCompte/PrénomEnfant/CP/Ville/NumAllocataire/N°Badge', 
+                        label: 'Rechercher',
+                        placeholder: 'Entrez un mot à rechercher dans Nom du compte/Prénom enfant/Code postal/Ville/Numéro allocataire/N° badge', 
                         onchange: 'this.form.submit()', 
                         autofocus: true %>
     </div>

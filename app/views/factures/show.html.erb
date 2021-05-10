@@ -45,7 +45,7 @@
     <% end %>
     |
     <% if policy(@facture).show? %>
-        <%= link_to facture_url(@facture, format: :pdf) do %>
+        <%= link_to facture_url(@facture, format: :pdf), target: '_blank' do %>
             <i class="far fa-file-pdf"></i> PDF
         <% end %>
     <% end %>
