@@ -1,7 +1,7 @@
 namespace :factures do
     
     desc "Facturation"
-    task :facturer, [:current_user_id, :enregistrer, :date] => :environment do |task, args|
+    task :facturer, [:current_user_id, :enregistrer, :date, :compte] => :environment do |task, args|
 
         enregistrer = (args[:enregistrer] == '1')    
         puts "Enregistrer les modifications !" if enregistrer
@@ -13,14 +13,24 @@ namespace :factures do
         date_fin = date_début.end_of_month
         puts "Facturation des prestations du #{I18n.l date_début} au #{I18n.l date_fin}"
 
-        # quels sont les comptes ayants de prestations consommées durant la période ?
-        comptes = Prestation
+        # quels sont les comptes ayants des prestations consommées durant la période ?
+        if args[:compte] == nil
+            puts "Facturer tous les comptes"
+            comptes = Prestation
                         .à_facturer
                         .where("date BETWEEN DATE(?) AND (?)", date_début, date_fin)
                         .joins(:enfant)
                         .group("enfants.compte_id")
                         .select(:id)
                         .count(:id)
+        else
+            puts "Facturer que le compte: #{ args[:compte] }"
+            comptes = Compte
+                        .where(id: args[:compte])
+                        .group(:id)
+                        .select(:id)
+                        .count(:id)
+        end 
 
         # pour chaque compte, faire le chiffrage des prestations consommées
         comptes.each do |id, count|

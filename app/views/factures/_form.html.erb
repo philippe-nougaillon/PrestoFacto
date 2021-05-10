@@ -14,9 +14,9 @@
 
   <%= form.hidden_field :compte_id %>
 
-  <div class="row">
+  <div class="row shadow-sm p-2">
 
-    <div class="col-sm-5">
+    <div class="col-sm-6">
       <%= form.date_select :date %>
       <%= form.date_select :échéance, label: 'Echéance' %>
       <%= form.datetime_select :envoyée_le, include_blank: true, label: 'Envoyée_le' %>
@@ -39,21 +39,24 @@
     </div>
 
   </div>
-  <hr />
 
-  <p>
-    <%= form.fields_for :facture_lignes, layout: :horizontal do |ligne_form| %>
-        <%= ligne_form.text_field :intitulé, label: "Intitulé de la ligne" %>
-        <div class="row">
-          <div class="col"><%= ligne_form.select :prestation_type_id, options_from_collection_for_select(@prestation_types, 'id', 'nom', ligne_form.object.prestation_type_id), { label: "Type" }, { class: "selectpicker" } %></div>
-          <div class="col"><%= ligne_form.number_field :qté, step: :any %></div>
-          <div class="col"><%= ligne_form.number_field :prix, step: :any %></div>
-          <div class="col"><%= ligne_form.number_field :total, step: :any %></div>
+  <%= form.fields_for :facture_lignes do |ligne_form| %>
+    <div class="row shadow-sm p-2">
+      <div class="row">
+        <div class="col"><%= ligne_form.text_field :intitulé, label: "Intitulé" %></div>
+      </div>
+      <div class="row">
+        <div class="col"><%= ligne_form.select :prestation_type_id, options_from_collection_for_select(@prestation_types, 'id', 'nom', ligne_form.object.prestation_type_id), { label: "Type" }, { class: "selectpicker" } %></div>
+        <div class="col"><%= ligne_form.number_field :qté, step: :any %></div>
+        <div class="col"><%= ligne_form.number_field :prix, step: :any %></div>
+        <div class="col"><%= ligne_form.number_field :total, step: :any %></div>
+        <% unless ligne_form.object.new_record? %>
           <div class="col"><%= ligne_form.check_box :_destroy, label: "Supprimer ?" %></div>
-        </div>
-        <hr />
-    <% end %>
-  </p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <br>
 
   <%= form.submit "Enregistrer", class: "btn btn-success" %>
 

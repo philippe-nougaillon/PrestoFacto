@@ -15,14 +15,17 @@
     <%= f.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "form-control col-sm-3" %>
   
     <%= f.label :organisation %>
-    <%= text_field_tag :organisation, params[:organisation], required: true, placeholder: "Le nom de votre ASSOCIATION / MARIE", class: "form-control col-sm-4" %>
+    <%= text_field_tag :organisation, params[:organisation], required: true, placeholder: "Le nom de votre ASSOCIATION/MARIE", class: "form-control col-sm-5" %>
     <br>
     
     <%= f.label :structure %>
-    <%= text_field_tag :structure, params[:structure], required: true, placeholder: "Le nom de la structure (CANTINE / ECOLE / ...)", class: "form-control col-sm-4" %>
+    <%= text_field_tag :structure, params[:structure], required: true, placeholder: "Le nom d'une structure (CANTINE/GARDERIE/CENTRE DE LOISIRS/Etc.)", class: "form-control col-sm-6" %>
     <br>
+    <%= f.label 'Ces informations servent à créer un premier jeu de données que vous pourrez ensuite modifier' %>
+    <br>
+
     <%= flash[:recaptcha_error] %>
-    <%= recaptcha_v3(action: 'signup') %>
+    <%= recaptcha_v3(action: 'signup') %> 
   </div>
 
   <div class="actions">

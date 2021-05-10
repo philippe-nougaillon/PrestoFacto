@@ -53,7 +53,7 @@ class AdminController < ApplicationController
     # capture output
     @stdout_stream = capture_stdout do
       Rake::Task['factures:facturer'].reenable # in case you're going to invoke the same task second time.
-      Rake::Task['factures:facturer'].invoke(current_user.id, params[:enregistrer], date)
+      Rake::Task['factures:facturer'].invoke(current_user.id, params[:enregistrer], date, params[:compte_id])
     end
 
     # Garder une trace dans un fichier de log
