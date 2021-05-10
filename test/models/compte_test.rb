@@ -6,7 +6,7 @@ class CompteTest < ActiveSupport::TestCase
         compte = Compte.new
 
         assert compte.invalid?
-        assert compte.errors[:structure_id].any?
+        #assert compte.errors[:structure_id].any?
         assert compte.errors[:nom].any?
     end
 
