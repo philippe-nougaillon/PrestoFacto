@@ -78,5 +78,7 @@ gem 'meta-tags'
 # ActiveStorage Service to store files PostgeSQL.
 gem 'active_storage-postgresql'
 
+gem 'dotenv-rails', groups: [:development, :test]
+
 # This gem provides helper methods for the reCAPTCHA API
 gem 'recaptcha'

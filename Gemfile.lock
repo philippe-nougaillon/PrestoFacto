@@ -111,6 +111,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     erubi (1.10.0)
     exception_notification (4.4.3)
       actionmailer (>= 4.0, < 7)
@@ -295,6 +299,7 @@ DEPENDENCIES
   capture_stdout
   capybara (>= 2.15)
   devise (>= 4.7.1)
+  dotenv-rails
   exception_notification
   font_awesome5_rails
   friendly_id (~> 5.2.4)

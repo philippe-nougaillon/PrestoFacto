@@ -21,11 +21,15 @@
     <%= f.label :structure %>
     <%= text_field_tag :structure, params[:structure], required: true, placeholder: "Le nom d'une structure (CANTINE/GARDERIE/CENTRE DE LOISIRS/Etc.)", class: "form-control col-sm-6" %>
     <br>
-    <%= f.label 'Ces informations servent à créer un premier jeu de données que vous pourrez ensuite modifier' %>
+    <p>
+      <i><small>
+        Ces informations servent à créer un premier jeu de données que vous pourrez ensuite modifier
+      </small></i>
+    </p>
     <br>
 
     <%= flash[:recaptcha_error] %>
-    <%= recaptcha_v3(action: 'signup') %> 
+    <%= recaptcha_tags %> 
   </div>
 
   <div class="actions">
@@ -34,9 +38,8 @@
 
   <p>
     <i><small>
-      Un courriel va vous être envoyé. 
-      <br>
-      Cliquez sur le lien afin de confirmer votre adresse email et de vous connecter.
+      Un courriel va vous être envoyé afin de vérifier votre adresse email.
+      Cliquez sur le lien fourni afin de confirmer votre adresse email et de vous connecter.
     </small></i>
   </p>
 
