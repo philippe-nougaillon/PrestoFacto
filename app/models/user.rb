@@ -9,13 +9,14 @@ class User < ApplicationRecord
   #  :confirmable 
 
   devise  :database_authenticatable, 
-          :registerable,
           :recoverable, 
           :rememberable, 
           :validatable,
           :trackable, 
           :lockable,
-          :confirmable 
+          :confirmable
+          #:registerable,
+ 
 
   belongs_to :organisation
 
