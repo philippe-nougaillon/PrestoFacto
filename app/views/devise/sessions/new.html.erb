@@ -43,7 +43,13 @@
 
       <div class="actions">
         <%= f.submit "Se connecter", class: "btn btn-primary btn-md" %>
-        <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-link" %>
+
+        <%
+=begin%>
+ <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-link" %> 
+<%
+=end%>
+
       </div>
     <% end %>
     <br />

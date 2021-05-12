@@ -7,34 +7,38 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     def create
-        # On crée l'organisation 
-        organisation = Organisation.create( nom: params[:organisation], 
-                                            email: user_params[:email], 
-                                            zone: 'A')
-
-        organisation.structures.create(nom: params[:structure])
-
-        # et quelques données de base pour aider la prise en main 
-        organisation.structures.first.classrooms.create(nom: 'UNE CLASSE')
-        organisation.comptes.create(nom: 'FAMILLE-TEST')
-        organisation.facture_chronos.create(index: 1)
-        organisation.tarif_types.create(nom: 'Général')
-        organisation.prestation_types.create(nom: 'Repas')
-        organisation.tarif_types
-                    .first
-                    .tarifs
-                    .create(prestation_type: organisation.prestation_types.first, 
-                            prix: 1.00)
-
-        # Le premier utilisateur de l'organisation                        
-        @user = organisation.users.new(user_params)
-        @user.role = "admin"
+        @user = User.new(user_params)
+        status = verify_recaptcha(model: @user)
 
         respond_to do |format|
-            if @user.save
+            if status && @user.save
+                # On crée l'organisation 
+                organisation = Organisation.create( nom: params[:organisation], 
+                                                    email: user_params[:email], 
+                                                    zone: 'A')
+
+                organisation.structures.create(nom: params[:structure])
+
+                # et quelques données de base pour aider la prise en main 
+                organisation.structures.first.classrooms.create(nom: 'UNE CLASSE')
+                organisation.comptes.create(nom: 'FAMILLE-TEST')
+                organisation.facture_chronos.create(index: 1)
+                organisation.tarif_types.create(nom: 'Général')
+                organisation.prestation_types.create(nom: 'Repas')
+                organisation.tarif_types
+                                .first
+                                .tarifs
+                                .create(prestation_type: organisation.prestation_types.first, 
+                                prix: 1.00)
+
+                # on ajoute l'utilisateur à l'organisation
+                @user.update(role: 'admin')
+                @organisation.users << @user
+
                 # on se connecte avec l'utilisateur créé mais comme le compte n'a pas été confirmé, 
                 # un message demandera de le faire en allant répondre au courriel envoyé...
-                sign_in @user
+                # sign_in @user
+                format.html { redirect_to root_url, notice: "Veuillez vérifier vos emails." }
             else
                 format.html { render :new }
                 format.json { render json: @user.errors, status: :unprocessable_entity }
