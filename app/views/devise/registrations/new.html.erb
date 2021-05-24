@@ -27,7 +27,9 @@
       </small></i>
     </p>
     <br>
-
+    <%= f.label :question %>
+    <%= text_field_tag :question, params[:question], required: true, placeholder: "Question de sécurité; entrez la somme de 40 + 1 + 1", class: "form-control col-sm-6" %>
+    <br>
   </div>
 
   <div class="actions">

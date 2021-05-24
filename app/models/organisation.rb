@@ -22,4 +22,31 @@ class Organisation < ApplicationRecord
     has_many :tarifs, through: :tarif_types
 
     validates :nom, :email, presence: true
+
+
+    def self.create_from_signup(user, organisation, structure)
+        # On crée l'organisation 
+        organisation = Organisation.create( nom: organisation, 
+                                            email: user.email, 
+                                            zone: 'A')
+
+        organisation.structures.create(nom: structure)
+
+        # et quelques données de base pour aider la prise en main 
+        organisation.structures.first.classrooms.create(nom: 'UNE CLASSE')
+        organisation.comptes.create(nom: 'FAMILLE-TEST')
+        organisation.facture_chronos.create(index: 1)
+        organisation.tarif_types.create(nom: 'Général')
+        organisation.prestation_types.create(nom: 'Repas')
+        organisation.tarif_types
+                    .first
+                    .tarifs
+                    .create(prestation_type: organisation.prestation_types.first, 
+                            prix: 1.00)
+
+        # on ajoute l'utilisateur à l'organisation
+        user.update(role: 'admin')
+        organisation.users << user
+    end
+
 end
