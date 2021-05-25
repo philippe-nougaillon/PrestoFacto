@@ -8,7 +8,7 @@ class RegistrationsController < Devise::RegistrationsController
 
     def create
         @user = User.new(user_params)
-        if params[:question] == '42'
+        if params[:question] == ENV['REPONSE_SECRETE']
             Organisation.create_from_signup(@user, params[:organisation], params[:structure])
         else
             flash[:alert] == 'Mauvaise réponse !'
@@ -16,9 +16,6 @@ class RegistrationsController < Devise::RegistrationsController
         
         respond_to do |format|
             if @user.save
-                # on se connecte avec l'utilisateur créé mais comme le compte n'a pas été confirmé, 
-                # un message demandera de le faire en allant répondre au courriel envoyé...
-                # sign_in @user
                 format.html { redirect_to root_url, notice: "Veuillez vérifier vos emails." }
             else
                 format.html { render :new }
