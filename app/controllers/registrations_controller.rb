@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-    prepend_before_action :check_captcha, only: [:create]
+    #prepend_before_action :check_captcha, only: [:create]
 
     def new
         super
@@ -8,36 +8,14 @@ class RegistrationsController < Devise::RegistrationsController
 
     def create
         @user = User.new(user_params)
-        status = verify_recaptcha(model: @user)
-
+        if params[:question] == ENV['REPONSE_SECRETE']
+            Organisation.create_from_signup(@user, params[:organisation], params[:structure])
+        else
+            flash[:alert] == 'Mauvaise réponse !'
+        end
+        
         respond_to do |format|
-            if status && @user.save
-                # On crée l'organisation 
-                organisation = Organisation.create( nom: params[:organisation], 
-                                                    email: user_params[:email], 
-                                                    zone: 'A')
-
-                organisation.structures.create(nom: params[:structure])
-
-                # et quelques données de base pour aider la prise en main 
-                organisation.structures.first.classrooms.create(nom: 'UNE CLASSE')
-                organisation.comptes.create(nom: 'FAMILLE-TEST')
-                organisation.facture_chronos.create(index: 1)
-                organisation.tarif_types.create(nom: 'Général')
-                organisation.prestation_types.create(nom: 'Repas')
-                organisation.tarif_types
-                                .first
-                                .tarifs
-                                .create(prestation_type: organisation.prestation_types.first, 
-                                prix: 1.00)
-
-                # on ajoute l'utilisateur à l'organisation
-                @user.update(role: 'admin')
-                @organisation.users << @user
-
-                # on se connecte avec l'utilisateur créé mais comme le compte n'a pas été confirmé, 
-                # un message demandera de le faire en allant répondre au courriel envoyé...
-                # sign_in @user
+            if @user.save
                 format.html { redirect_to root_url, notice: "Veuillez vérifier vos emails." }
             else
                 format.html { render :new }
