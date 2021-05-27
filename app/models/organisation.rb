@@ -6,6 +6,9 @@ class Organisation < ApplicationRecord
     has_many :structures, inverse_of: :organisation
     accepts_nested_attributes_for :structures, reject_if: proc { |attributes| attributes[:nom].blank? }, allow_destroy: true
 
+    has_many :vacances
+    accepts_nested_attributes_for :vacances, reject_if: proc { |attrs| attrs[:nom].blank? && attrs[:zone].blank? && attrs[:début].blank? && attrs[:fin].blank? }, allow_destroy: true
+
     has_many :users
     has_many :comptes
 

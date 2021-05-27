@@ -38,13 +38,14 @@ namespace :prestations do
       puts "- " * 50
       puts "Organisation: #{ organisation.nom }"
 
-      vacances = Vacance.where(zone: organisation.zone).where("DATE(?) BETWEEN début AND fin", date)
+      vacances = Vacance.where(zone: organisation.zone)
+                        .or(Vacance.where(organisation_id: organisation.id))
+                        .where("DATE(?) BETWEEN début AND fin", date)
+
       hors_période_scolaire = vacances.any?
       puts "Jour à comptabiliser: #{I18n.l date}." \
            " Ce jour est #{hors_période_scolaire ? "hors période scolaire" : "en période_scolaire" }" \
            " => #{ hors_période_scolaire ? vacances.first.nom : 'Non' }"
-  
-
 
       reservations = organisation.reservations
                                   .actives

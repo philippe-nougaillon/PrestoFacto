@@ -15,23 +15,36 @@
         <div class="col"><%= form.text_field :email %></div>
       </div>
       <div class="row">
-        <div class="col-sm-4"><%= form.select :zone, ["A", "B", "C"], { label: "Zone", help: "Zone de vacances scolaires", wrapper: { class: 'has-warning', data: { foo: 'bar' } } }, { class: "selectpicker" } %></div>
+        <div class="col-sm-4"><%= form.select :zone, ['A', 'B', 'C'], { label: "Zone", help: "Zone de vacances scolaires", wrapper: { class: 'has-warning', data: { foo: 'bar' } } }, { class: "selectpicker" } %></div>
         <div class="col"><%= form.file_field :logo, help: "Votre logo. Apparaît en haut des documents", placeholder: "Choisir un fichier image" %></div>
       </div>
     </div>
   </div>
+  <br>
 
-  <p>
-    <h3><%= fa_icon 'school' %> Structures</h3>
-    <%= form.fields_for :structures do |structure_form| %>
-      <div class="row">
-        <div class="col-sm-5"><%= structure_form.text_field :nom, label_as_placeholder: true %></div>
-        <% unless structure_form.object.new_record? or structure_form.object.classrooms.any? %>
-          <div class="col"><%= structure_form.check_box :_destroy, label: "Supprimer ?" %></div>
-        <% end %>
-      </div>
-    <% end %>
-  </p>
+  <div class="row">
+    <div class="col">
+      <h3><%= fa_icon 'school' %> Structures</h3>
+      <%= form.fields_for :structures do |structure_form| %>
+        <div class="row">
+          <div class="col-sm-5"><%= structure_form.text_field :nom, label_as_placeholder: true %></div>
+          <% unless structure_form.object.new_record? or structure_form.object.classrooms.any? %>
+            <div class="col"><%= structure_form.check_box :_destroy, label: "Supprimer ?" %></div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col">
+      <h3><%= fa_icon 'umbrella-beach' %> Vacances spécifiques</h3>
+      <%= form.fields_for :vacances do |vacance_form| %>
+        <div class="row">
+          <div class="col"><%= vacance_form.text_field :nom, label_as_placeholder: true %></div>
+          <div class="col"><%= vacance_form.date_field :début, label_as_placeholder: true %></div>
+          <div class="col"><%= vacance_form.date_field :fin, label_as_placeholder: true %></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
   <%= form.submit "Enregistrer", class: "btn btn-success" %>
 
