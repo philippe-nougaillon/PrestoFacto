@@ -76,14 +76,18 @@ class FacturesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        filename = "Facture_#{Date.today.to_s}"
-        pdf = FacturePdf.new
-        pdf.export_facture(@facture)
+        if @facture
+          filename = "Facture_#{Date.today.to_s}"
+          pdf = FacturePdf.new
+          pdf.export_facture(@facture)
 
-        send_data pdf.render,
-            filename: filename.concat('.pdf'),
-            type: 'application/pdf',
-            disposition: 'inline'	
+          send_data pdf.render,
+              filename: filename.concat('.pdf'),
+              type: 'application/pdf',
+              disposition: 'inline'	
+        else
+          redirect_to root_url, alert: 'Oups! Cette facture est introuvable...'
+        end
       end
     end
   end
