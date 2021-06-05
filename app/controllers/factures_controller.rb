@@ -33,7 +33,7 @@ class FacturesController < ApplicationController
     # Appliquer le tri
     @factures = @factures.reorder(Arel.sql("#{sort_column} #{sort_direction}"))
 
-    @factures = @factures.paginate(page: params[:page])
+    @factures = @factures.page(params[:page])
 
     respond_to do |format|
       format.html

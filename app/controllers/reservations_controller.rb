@@ -42,7 +42,7 @@ class ReservationsController < ApplicationController
     # Appliquer le tri
     @reservations = @reservations.joins(:enfant => :classroom).reorder(Arel.sql("#{sort_column} #{sort_direction}"))
 
-    @reservations = @reservations.paginate(page: params[:page])
+    @reservations = @reservations.page(params[:page])
   end
 
   # GET /reservations/1

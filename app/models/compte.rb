@@ -17,7 +17,7 @@ class Compte < ApplicationRecord
   accepts_nested_attributes_for :contacts, reject_if: proc { |attributes| attributes[:nom].blank? }, allow_destroy: true
 
   
-  self.per_page = 10
+  # self.per_page = 10
 
   default_scope { order(Arel.sql('comptes.nom')) }
 

@@ -4,7 +4,7 @@ class Paiement < ApplicationRecord
   has_one :organisation, through: :compte
 
 
-  self.per_page = 10
+  # self.per_page = 10
 
   def self.modes
      %w{Chèque Virement CB Espèces Autre}

@@ -29,7 +29,7 @@ class PaiementsController < ApplicationController
     # Appliquer le tri
     @paiements = @paiements.reorder(Arel.sql("#{sort_column} #{sort_direction}"))
 
-    @paiements = @paiements.paginate(page: params[:page])
+    @paiements = @paiements.page(params[:page])
 
     respond_to do |format|
       format.html

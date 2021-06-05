@@ -8,7 +8,7 @@ class Reservation < ApplicationRecord
 
   scope :actives, ->{ where(active: true) }
 
-  self.per_page = 10
+  # self.per_page = 10
 
 
   AJOUTEE   = 'ajoutée'

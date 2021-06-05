@@ -6,6 +6,6 @@ class Absence < ApplicationRecord
   has_one :organisation, through: :enfant
 
 
-  self.per_page = 10
+  # self.per_page = 10
 
 end

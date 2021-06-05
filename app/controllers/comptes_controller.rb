@@ -31,7 +31,7 @@ class ComptesController < ApplicationController
     @comptes = @comptes.reorder(Arel.sql("#{sort_column} #{sort_direction}"))
 
     # Découper le résultat en pages
-    @comptes = @comptes.paginate(page: params[:page])
+    @comptes = @comptes.page(params[:page])
   end
 
   # GET /comptes/1

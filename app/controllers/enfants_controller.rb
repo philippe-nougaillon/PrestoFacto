@@ -34,7 +34,7 @@ class EnfantsController < ApplicationController
     @enfants = @enfants.reorder(Arel.sql("#{sort_column} #{sort_direction}"))
 
     # Découper le résultat en pages
-    @enfants = @enfants.paginate(page: params[:page])  
+    @enfants = @enfants.page(params[:page])  
   end
 
   # GET /enfants/1

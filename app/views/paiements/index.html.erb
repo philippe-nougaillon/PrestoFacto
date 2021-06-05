@@ -35,8 +35,8 @@
   </tbody>
 </table>
 
-<%= will_paginate @paiements %>
-
+<%= page_entries_info @paiements %>
+<%= paginate @paiements, theme: 'twitter-bootstrap-4' %>
 <br>
 
 <% if policy(Paiement).to_xls? && !@paiements.size.zero? %>

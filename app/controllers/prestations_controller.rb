@@ -39,7 +39,7 @@ class PrestationsController < ApplicationController
                                .joins(:prestation_type)
                                .reorder(Arel.sql("#{sort_column} #{sort_direction}"))
 
-    @prestations = @prestations.paginate(page: params[:page])
+    @prestations = @prestations.page(params[:page])
   end
 
   def show

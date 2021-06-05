@@ -20,7 +20,7 @@ class Enfant < ApplicationRecord
 
   default_scope { order(Arel.sql('enfants.nom, enfants.prénom')) }
 
-  self.per_page = 10
+  # self.per_page = 10
 
   def nom_et_prénom
     "#{self.nom} #{self.prénom}"

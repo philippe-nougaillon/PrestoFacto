@@ -20,7 +20,7 @@ class Facture < ApplicationRecord
 
   before_destroy :maj_prestations
 
-  self.per_page = 10
+  # self.per_page = 10
 
   AJOUTEE   = 'ajoutée'
   VERIFIEE  = 'vérifiée'
