@@ -30,24 +30,14 @@
       <%= @organisation.email %>
     </p>
 
-    <% if policy(@organisation).edit? %>
-      <%= link_to edit_organisation_path(@organisation), class: "btn btn-link" do %>
-        <%= fa_icon 'edit', text: ' Editer' %>
-      <% end %>
-    <% end %>
   </div>
 
   <div class="col">
-    <p>
-      <strong>Logo:</strong>
-      <br><br>
-      <% if @organisation.logo.attached? %>
-        <%= image_tag url_for(@organisation.logo), width: 200 %>
-      <% end %>
-    </p>
+    <% if @organisation.logo.attached? %>
+      <%= image_tag url_for(@organisation.logo), width: 150 %>
+    <% end %>
   </div>
 </div>
-<hr />
 
 <div class="row">
   <div class="col">
@@ -101,8 +91,24 @@
             <td><%= l vacance.fin if vacance.fin %></td>
           </tr>
         <% end %>
+
+        <% @organisation.vacances.each do | vacance | %>
+          <tr>
+            <td><%= vacance.nom %></td>
+            <td><%= l vacance.début %></td>
+            <td><%= l vacance.fin if vacance.fin %></td>
+          </tr>
+        <% end %>
+
       </table>
     </p>
   </div>
 </div>
-<br />
+
+<hr>
+
+<% if policy(@organisation).edit? %>
+  <%= link_to edit_organisation_path(@organisation), class: "btn btn-link" do %>
+    <%= fa_icon 'edit', text: ' Editer' %>
+  <% end %>
+<% end %>

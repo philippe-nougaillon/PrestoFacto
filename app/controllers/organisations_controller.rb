@@ -26,6 +26,7 @@ class OrganisationsController < ApplicationController
     authorize @organisation
 
     1.times { @organisation.structures.build }
+    2.times { @organisation.vacances.build(zone: @organisation.zone) }
   end
 
   # POST /organisations
@@ -83,6 +84,7 @@ class OrganisationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def organisation_params
       params.require(:organisation).permit(:nom, :adresse, :cp, :ville, :téléphone, :email, :logo, :zone,
-                                            structures_attributes: [:id, :nom, :_destroy])
+                                            structures_attributes: [:id, :nom, :_destroy],
+                                            vacances_attributes: [:id, :zone, :nom, :début, :fin])
     end
 end
