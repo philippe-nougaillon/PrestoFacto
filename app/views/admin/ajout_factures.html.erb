@@ -3,18 +3,21 @@
 </div>
 
 <p>
-  <h4>Permet de lancer la routine de facturation des prestations consommées sur un mois</h4>
+  <h4>Lance la facturation des prestations consommées sur un mois</h4>
 </p>
 <br />
 
 <%= bootstrap_form_with(url: 'ajout_factures_do', local: true) do |form| %>
   <div class="col-sm-4">
-    <%= form.date_select :date, discard_day: true, label: "Période" %>
+    <%= form.date_select :date, discard_day: true, label: "Mois", default: -1.month.from_now %>
     <%= form.select :compte_id, options_from_collection_for_select(current_user.organisation.comptes, :id, :nom, params[:compte_id]), { include_blank: true, label: "Compte (Aucun = Facturer tous les comptes)" } %>
-    <%= form.check_box :enregistrer, { custom: :switch, label: "Enregistrer les modifications* ?" } %> 
-    <small>* Non = Visualisation seulement. Ne fera rien de définitif !</small> 
+    <%= form.check_box :enregistrer, { custom: :switch, label: "Enregistrer les factures *" } %> 
+    <small>
+        * Off = Visualisation de contrôle. Ne fait rien de définitif.<br>
+        Aucune facture ne sera enregistrée.
+    </small> 
   </div>
-  <br /><br />
+  <br>
   <%= form.submit "Lancer", class: "btn btn-success" %>
 <% end %>
 

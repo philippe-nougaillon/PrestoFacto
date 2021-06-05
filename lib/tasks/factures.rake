@@ -4,7 +4,13 @@ namespace :factures do
     task :facturer, [:current_user_id, :enregistrer, :date, :compte] => :environment do |task, args|
 
         enregistrer = (args[:enregistrer] == '1')    
-        puts "Enregistrer les modifications !" if enregistrer
+        if enregistrer
+            puts "Enregistrer les modifications !"
+        else 
+            puts "*:" * 50
+            puts "Visualisation de contrôle. Ne fait rien de définitif. Aucune facture ne sera enregistrée."
+            puts "*:" * 50
+        end
         
         user = User.find(args.current_user_id)
         puts "current_user id = #{user.id}"
@@ -31,6 +37,7 @@ namespace :factures do
                         .select(:id)
                         .count(:id)
         end 
+        puts "- " * 60
 
         # pour chaque compte, faire le chiffrage des prestations consommées
         comptes.each do |id, count|
@@ -128,6 +135,9 @@ namespace :factures do
                 puts "- " * 60
             else
                 puts "KO !!"
+                puts "La facture n'a pas pu être créée"
+                puts "[Erreur] #{facture.errors.messages}"
+                puts "_ !" * 70
             end
         end
         puts "FIN"
