@@ -82,7 +82,15 @@ namespace :factures do
                         .each do |presta|
 
                         # Trouver le prix pour ce type de prestation selon le barème de l'enfant    
-                        prix = PrestationType.find(presta.prestation_type_id).tarifs.find_by(tarif_type_id: presta.enfant.tarif_type_id).prix
+                        begin
+                            prix = PrestationType
+                                            .find(presta.prestation_type_id)
+                                            .tarifs.find_by(tarif_type_id: presta.enfant.tarif_type_id)
+                                            .prix
+                        rescue
+                            puts "Erreur ! Ne peux pas trouver le prix de la prestation !!"
+                            prix = 0
+                        end
 
                         # Calculer le total de la ligne et le total de la facure
                         total = prix * presta.quantité    
