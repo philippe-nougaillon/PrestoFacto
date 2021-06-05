@@ -87,6 +87,9 @@ GEM
     bindex (0.8.1)
     bootsnap (1.7.5)
       msgpack (~> 1.0)
+    bootstrap4-kaminari-views (1.0.1)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     bootstrap_form (4.5.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -132,6 +135,18 @@ GEM
       activesupport (>= 5.0.0)
     jmespath (1.4.0)
     json (2.5.1)
+    kaminari (1.2.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.1)
+      kaminari-activerecord (= 1.2.1)
+      kaminari-core (= 1.2.1)
+    kaminari-actionview (1.2.1)
+      actionview
+      kaminari-core (= 1.2.1)
+    kaminari-activerecord (1.2.1)
+      activerecord
+      kaminari-core (= 1.2.1)
+    kaminari-core (1.2.1)
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -272,9 +287,6 @@ GEM
     websocket-driver (0.7.4)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    will_paginate (3.3.0)
-    will_paginate-bootstrap4 (0.2.2)
-      will_paginate (~> 3.0, >= 3.0.0)
     workflow (2.0.2)
     workflow-activerecord (4.1.8)
       activerecord (>= 3.0, < 6.2)
@@ -294,6 +306,7 @@ DEPENDENCIES
   audited (~> 4.9)
   aws-sdk-s3
   bootsnap (>= 1.4.2)
+  bootstrap4-kaminari-views
   bootstrap_form
   byebug
   capture_stdout
@@ -304,6 +317,7 @@ DEPENDENCIES
   font_awesome5_rails
   friendly_id (~> 5.2.4)
   jbuilder (~> 2.7)
+  kaminari
   listen (~> 3.2)
   meta-tags
   pg
@@ -325,8 +339,6 @@ DEPENDENCIES
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
-  will_paginate (~> 3.3.0)
-  will_paginate-bootstrap4
   workflow
   workflow-activerecord
   yaml_db

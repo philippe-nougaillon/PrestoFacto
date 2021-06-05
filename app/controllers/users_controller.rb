@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       @users = @users.where("UPPER(email) like ?", "%#{params[:email].upcase}%")       
     end
 
-    @users = @users.paginate(page: params[:page])
+    @users = @users.page(params[:page])
   end
 
   # GET /users/1

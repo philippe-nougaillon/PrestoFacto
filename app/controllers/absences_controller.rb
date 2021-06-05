@@ -34,7 +34,7 @@ class AbsencesController < ApplicationController
     # Appliquer le tri
     @absences = @absences.joins(:enfant => :classroom).reorder(Arel.sql("#{sort_column} #{sort_direction}"))
 
-    @absences = @absences.paginate(page: params[:page])
+    @absences = @absences.page(params[:page])
   end
 
   # GET /absences/1

@@ -49,7 +49,7 @@
   </div>
 <% end %>
 
-<%= will_paginate @factures %>
+<%= paginate @factures %>
 
 <% if policy(Facture).to_xls? && !@factures.size.zero? %>
   <%= link_to url_for(params.permit(:structure_id, :date_début, :date_fin, :search).merge(format: :xls)),

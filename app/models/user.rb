@@ -21,8 +21,6 @@ class User < ApplicationRecord
 
   validates :email, presence: true
 
-  self.per_page = 10
-
   def visiteur?
     self.role == 'visiteur'
   end
