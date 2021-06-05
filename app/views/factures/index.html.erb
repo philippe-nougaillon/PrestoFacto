@@ -49,7 +49,9 @@
   </div>
 <% end %>
 
-<%= paginate @factures %>
+<%= page_entries_info @factures %>
+<%= paginate @factures, theme: 'twitter-bootstrap-4' %>
+<br>
 
 <% if policy(Facture).to_xls? && !@factures.size.zero? %>
   <%= link_to url_for(params.permit(:structure_id, :date_début, :date_fin, :search).merge(format: :xls)),
