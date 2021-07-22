@@ -22,10 +22,8 @@
             <th>Modifications</th>
         </tr>
     </thead>
-
     <%= render partial: 'audit', collection: @audits.includes(:user) %>
-
 </table>
 
-<%= paginate @audits, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
-<br>
+<%= page_entries_info @audits %>
+<%= paginate @audits, theme: 'twitter-bootstrap-4' %>
