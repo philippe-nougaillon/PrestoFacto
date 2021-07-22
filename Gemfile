@@ -46,7 +46,8 @@ gem 'pundit'
 gem "devise", ">= 4.7.1"
 gem 'audited', '~> 4.9'
 gem 'friendly_id', '~> 5.2.4'
-gem 'bootstrap_form'
+
+gem 'bootstrap_form', git: 'https://github.com/bootstrap-ruby/bootstrap_form.git', branch: 'bootstrap-5'
 gem 'font_awesome5_rails'
 
 # XLSX sheet

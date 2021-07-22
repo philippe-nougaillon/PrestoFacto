@@ -17,9 +17,12 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 // Importer Bootstrap et ses copains
-import "jquery";
-import "popper.js";
-import "bootstrap";
+// import "jquery";
+// import "popper.js";
+// import "bootstrap";
+
+import 'bootstrap/js/src/modal' 
+
 import "../stylesheets/application";
 
 // Importer Font Awesome
