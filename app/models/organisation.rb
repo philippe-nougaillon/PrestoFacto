@@ -1,4 +1,7 @@
 class Organisation < ApplicationRecord
+    extend FriendlyId
+    friendly_id :nom, use: :slugged
+      
     audited
     
     has_one_attached :logo
