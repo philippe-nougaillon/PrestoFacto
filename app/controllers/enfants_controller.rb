@@ -49,10 +49,14 @@ class EnfantsController < ApplicationController
 
     @enfant = Enfant.new
     @enfant.compte = Compte.friendly.find(params[:compte_id]) 
-    #date_rentrée = Vacance.find_by(nom: "Rentrée").début
-    #date_grandes_vacances = Vacance.find_by(nom: "Vacances d'été").début
+    
+    # Valeurs par défaut de la réservation
+    rentrée = Vacance
+                .where(nom: "Vacances d'été")
+                .where("EXTRACT(YEAR FROM vacances.début) = ?", Date.today.year)
+                .where(zone: current_user.organisation.zone).first
 
-    @enfant.reservations.build
+    @enfant.reservations.build(début: rentrée.fin , fin: rentrée.début + 1.year, lundi: 1, mardi: 1, mercredi: 1, jeudi: 1, vendredi: 1, midi: true, workflow_state: 'validée')
   end
 
   # GET /enfants/1/edit
