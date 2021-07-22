@@ -52,9 +52,7 @@ class EnfantsController < ApplicationController
     #date_rentrée = Vacance.find_by(nom: "Rentrée").début
     #date_grandes_vacances = Vacance.find_by(nom: "Vacances d'été").début
 
-    #1.times { @enfant.reservations.build(début: date_rentrée, fin: date_grandes_vacances) }
-    1.times { @enfant.reservations.build }
-    1.times { @enfant.reservations.build }
+    @enfant.reservations.build
   end
 
   # GET /enfants/1/edit
