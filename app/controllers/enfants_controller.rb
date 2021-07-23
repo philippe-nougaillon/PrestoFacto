@@ -49,12 +49,14 @@ class EnfantsController < ApplicationController
 
     @enfant = Enfant.new
     @enfant.compte = Compte.friendly.find(params[:compte_id]) 
-    #date_rentrée = Vacance.find_by(nom: "Rentrée").début
-    #date_grandes_vacances = Vacance.find_by(nom: "Vacances d'été").début
+    
+    # Valeurs par défaut de la réservation
 
-    #1.times { @enfant.reservations.build(début: date_rentrée, fin: date_grandes_vacances) }
-    1.times { @enfant.reservations.build }
-    1.times { @enfant.reservations.build }
+    @enfant.reservations
+              .build(début: @enfant.organisation.vacances_été.fin , 
+                    fin: @enfant.organisation.vacances_été.début + 1.year, 
+                    lundi: 1, mardi: 1, mercredi: 1, jeudi: 1, vendredi: 1, midi: true, 
+                    workflow_state: 'validée')
   end
 
   # GET /enfants/1/edit

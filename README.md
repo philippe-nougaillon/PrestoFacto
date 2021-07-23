@@ -19,12 +19,11 @@ Les prestations et les tarifs sont entièrement paramétrables et illimités.
 
 - Une structure est composée d'un nom (Ecole, Cantine, Garderie, Halte, Centre périscolaire,...)
 - Une structure contient des classes
-- Une structure contient des comptes
 - Une organisation peut avoir plusieurs structures (illimité)
 
 ### Comptes
 
-- Un compte est attaché à une structure
+- Un compte est attaché à une organisation
 - Un compte est composé d'un nom, d'une adresse, un numéro d'allocataire et un mémo
 - Un compte contient les coordonnées des personnes à contacter
 - Un compte contient les enfants
