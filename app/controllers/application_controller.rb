@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     if resource.visiteur?
       moncompte_index_path
     else
-      root_path
+      comptes_path
     end
   end
 
