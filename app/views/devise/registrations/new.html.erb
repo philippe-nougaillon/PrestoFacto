@@ -21,6 +21,10 @@
     <%= f.label :structure %>
     <%= text_field_tag :structure, params[:structure], required: true, placeholder: "Le nom d'une structure (CANTINE/GARDERIE/CENTRE DE LOISIRS/Etc.)", class: "form-control col-sm-6" %>
     <br>
+
+    <%= f.label :zone, "Zone de vacances scolaires" %>
+    <%= select_tag :zone, options_for_select(['A', 'B', 'C']), class: "form-control" %></div>
+
     <p>
       <i><small>
         Ces informations servent à créer un premier jeu de données que vous pourrez ensuite modifier
