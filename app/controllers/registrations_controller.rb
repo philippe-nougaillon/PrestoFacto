@@ -16,7 +16,7 @@ class RegistrationsController < Devise::RegistrationsController
         
         respond_to do |format|
             if @user.save
-                format.html { redirect_to comptes_url, notice: "Veuillez vérifier vos emails afin de confirmer votre compte." }
+                format.html { redirect_to root_url, notice: "Compte créé avec succès. Veuillez vérifier vos emails afin de confirmer votre compte." }
             else
                 format.html { render :new }
                 format.json { render json: @user.errors, status: :unprocessable_entity }
