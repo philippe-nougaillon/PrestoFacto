@@ -289,7 +289,7 @@ class AdminController < ApplicationController
 
   def mode_demonstration
     sign_in User.first
-    redirect_to root_url
+    redirect_to comptes_url
   end
 
 private  
