@@ -55,4 +55,17 @@ class Organisation < ApplicationRecord
         organisation.users << user
     end
 
+    def vacances_été 
+        été = Vacance
+                .where(zone: self.zone)
+                .where(nom: "Vacance d'été")
+                .where("EXTRACT(YEAR FROM vacances.début) = ?", Date.today.year)
+
+        if été.any?
+            été.first
+        else
+            Vacance.new(début: Date.today.end_of_year - 1.year, fin: Date.today)
+        end    
+    end
+
 end
