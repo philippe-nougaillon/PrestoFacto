@@ -24,77 +24,9 @@
   </head>
 
   <body>
-    <div class="row">
-      <div class="col">
-        <ul class="nav nav-tabs flex-column">
-          <a class="navbar-brand" href="/">
-            <nav class="navbar" style="height: 55px;">
-              <%= @site_name %>
-            </nav>
-          </a>
-
-          <span class="navbar-text"></span>
-
-          <% if current_user %>
-
-            <% if current_user.visiteur? %>
-              <%= navbar_nav_item('moncompte', 'users',  moncompte_index_path) %>
-            <% else %>
-              <%= navbar_nav_item('comptes', 'users', comptes_path) %>
-              <%= navbar_nav_item('enfants', 'child', enfants_path) %>
-              <%= navbar_nav_item('réservations', 'calendar-alt', reservations_path) %>
-              <%= navbar_nav_item('absences', 'calendar-times', absences_path) %>
-              <%= navbar_nav_item('prestations', 'utensils', prestations_path) %>
-              <%= navbar_nav_item('factures', 'file-invoice', factures_path) %>
-              <%= navbar_nav_item('paiements', 'money-bill-alt', paiements_path) %>
-            <% end %>
-
-            <li class="nav-item">
-              <a class="nav-link text-secondary disabled" href="#"></a>
-            </li>
-
-            <span class="navbar-text"></span>
-
-            <%= navbar_nav_item('admin', 'users-cog', admin_index_path) if current_user.admin? %>
-
-            <li class="nav-item">
-              <%= link_to destroy_user_session_path, method: :delete, title: "Fermer la session de #{current_user.email}", class: "nav-link text-secondary" do %><i class="fas fa-fw fa-sign-out-alt"></i></span> Déconnexion<% end %> 
-            </li>
-          <% else %>
-            <%= navbar_nav_item('Accueil', 'home', new_user_session_path) %>
-            <%= navbar_nav_item('a_propos', 'info-circle', guide_a_propos_path) %>
-            <%= navbar_nav_item("guide d'utilisation", 'book', guide_utilisation_path) %>
-
-            <% if false %>
-              <li class="nav-item">
-                <%= link_to admin_mode_demonstration_path, class: "nav-link" do %>
-                  <%= fa_icon "eye", text: " Mode démonstration"%>
-                <% end %>
-              </li>
-            <% end %>
-
-          <% end %>
-        </ul>
-      </div>
-
-      <div class="col-md-10">
-
-        <%= render 'partials/nav' %>
-          
-        <div class="alert alert-highlight text-center" style="height: 25px;">
-          <% if notice.present? or alert.present? %>
-            <aside class="text-<%= notice ? 'success' : 'danger' %>">
-              <%= notice ? notice : alert %>
-            </aside>
-          <% end %>
-        </div>
-
-        <div class="container-fluid">
-
-          <%= yield %>
-          
-        </div>
-      </div>
+    <%= render 'partials/nav' %>
+    <div class="container">
+      <%= yield %>
     </div>
   </body>
 

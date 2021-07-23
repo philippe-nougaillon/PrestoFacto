@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'pages/welcome'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   devise_for :users, controllers: { registrations: 'registrations' }
@@ -56,6 +57,6 @@ Rails.application.routes.draw do
     get :utilisation
   end
   
-  root 'comptes#index'
+  root 'pages#welcome'
 
 end
