@@ -1,9 +1,9 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/" aria-label="logo">
-      <%= image_tag("prestofacto.webp", height: 40, alt: 'logo PrestoFacto') %>
-    </a>
+    <%= link_to (user_signed_in? ? comptes_path : root_path), class: 'navbar-brand' do %>
+      <%= image_tag("logo2.jpg", height: 50, alt: 'logo PrestoFacto') %>
+    <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -20,36 +20,37 @@
             <%= navbar_nav_item('prestations', 'utensils', prestations_path) %>
             <%= navbar_nav_item('factures', 'file-invoice', factures_path) %>
             <%= navbar_nav_item('paiements', 'money-bill-alt', paiements_path) %>
+            <%= navbar_nav_item("guide d'utilisation", 'book', guide_utilisation_path) %>
           <% end %>
         <% else %>
           <%= navbar_nav_item('Accueil', 'home', root_path) %>
-          <%= navbar_nav_item('Mode démonstration', 'eye', admin_mode_demonstration_path) %>
+          <%= navbar_nav_item('a_propos', 'info-circle', guide_a_propos_path) %>
+          <%= navbar_nav_item("guide d'utilisation", 'book', guide_utilisation_path) %>
+          <%= navbar_nav_item('Tester (mode démonstration)', 'eye', admin_mode_demonstration_path) %>
         <% end %>
-        <%= navbar_nav_item("guide d'utilisation", 'book', guide_utilisation_path) %>
-        <%= navbar_nav_item('a_propos', 'info-circle', guide_a_propos_path) %>
       </ul>
       <div class="d-flex">
         <% unless user_signed_in? %>
             <%= link_to "S'inscrire",
                 new_user_registration_path, 
-                class: "btn btn-outline-primary btn-sm me-2" 
+                class: "btn btn-outline-primary btn me-2" 
             %>
             <%= link_to "Connexion", 
                 new_user_session_path, 
-                class: "btn btn-outline-success btn-sm" 
+                class: "btn btn-outline-success btn" 
             %>
             <% else %>
               <% if current_user.admin? %>
                 <%= link_to "Administration", 
                     admin_index_path, 
-                    class: "btn btn-outline-primary btn-sm me-2" 
+                    class: "btn btn-outline-primary btn me-2" 
                 %>
               <% end %> 
 
               <%= link_to "Déconnection", 
                   destroy_user_session_path, 
                   method: :delete, 
-                  class: "btn btn-outline-danger btn-sm" 
+                  class: "btn btn-outline-danger btn" 
               %>
         <% end %>
       </div>

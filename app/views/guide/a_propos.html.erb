@@ -2,7 +2,9 @@
     A propos de <%= @site_name %>
     <br><br>
 </h2>
-
+<div class="text-center">
+    <%= image_tag 'logo.jpg' %>
+</div>
 <h4 class="text-primary">Pour qui ?<hr></h4>
 <p class="lead text-justify">
     <%= @site_name %> est destinée aux petites collectivités, mairies, écoles, centre de loisirs... 
@@ -231,69 +233,8 @@
         </ul>
     </ul>
 </p>
-<br />
+<br>
 
-<div class="pb-2 mt-4 mb-2 border-bottom">
-    <h2 class="text-primary">Les formules d'abonnement à <%= @site_name %></h2>
-</div>
-
-<div class="row">
-    <div class="col">
-        <div class="card" style="height: 400px">
-            <div class="card-header text-center">
-                <h5>Basique</h5>
-            </div>
-            <div class="card-body">
-                <ul>
-                    <li>Utilisation libre et illimitée</li>
-                </ul>
-            </div>
-            <div class="card-footer text-center">
-                0 €
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card" style="height: 400px">
-            <div class="card-header text-center">
-                <h5>Personnalisée</h5>
-            </div>
-            <div class="card-body">
-                <ul>
-                    <li>Utilisation libre et illimitée</li>
-                    <li>Accès par un sous-domaine personnalisé.<br> ex: https://mon-organisation.<%= @site_name.downcase %>.fr</li>
-                    <li>Une sauvegarde des données par 24h</li>
-                    <li>Support par email</li>
-                </ul>
-            </div>
-            <div class="card-footer text-center">
-                49 €
-                <small>TTC par mois</small>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card" style="height: 400px">
-            <div class="card-header text-center">
-                <h5>Hébergée</h5>
-            </div>
-            <div class="card-body">
-                <ul>
-                    <li>Utilisation libre et illimitée</li>
-                    <li>Accès par votre nom de domaine.<br> ex: https://<%= @site_name.downcase %>.votre-domaine.fr</li>
-                    <li>Serveur virtuel dédié</li>
-                    <li>Sauvegarde automatique toutes les heures</li>
-                    <li>Support téléphonique</li>
-                </ul>
-            </div>
-            <div class="card-footer text-center">
-                99 €
-                <small>TTC par mois</small>
-            </div>
-        </div>
-    </div>
-</div>
-<br />
 
 <div class="pb-2 mt-4 mb-2 border-bottom">
   <h4 class="text-primary"><%= fa_icon 'tools' %> Sources</h4>
