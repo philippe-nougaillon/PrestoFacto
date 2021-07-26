@@ -42,6 +42,7 @@
       </p>
     </div>
     <%= link_to 'En savoir plus', guide_a_propos_path, class: 'btn btn-primary btn-lg px-4 me-md-2' %>
+    <%= link_to "Guide d'utilisation", guide_utilisation_path, class: 'btn btn-outline-secondary btn-lg px-4' %>
   </div>
 </div>
 
@@ -67,7 +68,6 @@
             <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Aucun support</li>
             <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Pas d'accès par un sous-domaine personnalisé</li>
             <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Aucun serveur virtuel dédié</li>
-            <br>
           </ul>
           <button type="button" class="w-100 btn btn-lg btn-outline-primary">Inscription gratuite</button>
         </div>
@@ -82,7 +82,7 @@
           <h1 class="card-title pricing-card-title text-center">49 €<small class="text-muted fw-light"> TTC/mois</small></h1>
           <ul class="list-unstyled mt-3 mb-4">
             <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Utilisation libre et illimitée</li>
-            <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Sauvegarde automatique des données par 24h</li>
+            <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Sauvegarde automatique journalière</li>
             <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Support par email</li>
             <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Accès par un sous-domaine personnalisé
               <br>

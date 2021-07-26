@@ -1,5 +1,5 @@
 class FactureMailer < ApplicationMailer
-    default from: 'nepasrepondre@prestofacto.net' 
+    default from: 'prestofacto@philnoug.com' 
     layout 'mailer'
 
     def envoyer_facture
