@@ -1,7 +1,9 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><%= @site_name %></a>
+    <a class="navbar-brand" href="/" aria-label="logo">
+      <%= image_tag("prestofacto.webp", height: 40, alt: 'logo PrestoFacto') %>
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -20,7 +22,7 @@
             <%= navbar_nav_item('paiements', 'money-bill-alt', paiements_path) %>
           <% end %>
         <% else %>
-          <%= navbar_nav_item('Accueil', 'home', new_user_session_path) %>
+          <%= navbar_nav_item('Accueil', 'home', root_path) %>
           <%= navbar_nav_item('Mode démonstration', 'eye', admin_mode_demonstration_path) %>
         <% end %>
         <%= navbar_nav_item("guide d'utilisation", 'book', guide_utilisation_path) %>
