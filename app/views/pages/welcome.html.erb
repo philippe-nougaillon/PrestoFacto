@@ -4,11 +4,11 @@
     <%= image_tag("abacus-beads-mathematics-numeral.jpg", class: 'd-block mx-lg-auto img-fluid rounded', alt: "Logo de #{ @site_name }", width: 700, height: 500, loading: 'lazy') %>
     </div>
     <div class="col-lg-6">
-      <h1 class="display-1 fw-bold lh-1 mb-3">PrestoFacto</h1>
-      <h2 class="display-5">Application de facturation de services journaliers<h2>
+      <h1 class="display-2 fw-bold lh-1 mb-3">PrestoFacto</h1>
+      <h2 class="display-6">Application de facturation de services journaliers<h2>
       <p class="display-7">Aide les petites organisations dans la gestion et la facturation de leurs prestations journalières</p>
       <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <%= link_to 'Tester', admin_mode_demonstration_path, class: 'btn btn-primary btn-lg px-4 me-md-2' %>
+        <%= link_to 'En savoir plus', guide_a_propos_path, class: 'btn btn-primary btn-lg px-4 me-md-2' %>
         <%= link_to "Voir nos offres", "#offres" , class: 'btn btn-outline-secondary btn-lg px-4' %>
       </div>
     </div>
@@ -19,13 +19,15 @@
   <div class="px-4 py-5 bg-light">
     <div class="col-lg-6 mx-auto">
       <h3 class="fw-bold lh-1 mb-3">Pour qui ?</h3>
-      <p class="lead mb-4">PrestoFacto est destinée aux petites collectivités, mairies, écoles, centre de loisirs... Cette solution vous aidera dans l’organisation de votre mairie et vous fera gagner un temps précieux en simplifiant la gestion administrative et la facturation de vos cantines et services péri-scolaires.</p>
+      <p class="lead mb-4">
+        PrestoFacto est destinée aux petites collectivités, associations, mairies, écoles, centre de loisirs... 
+        Cette solution vous aidera dans l’organisation de votre association et vous fera gagner un temps précieux en simplifiant la gestion administrative et la facturation de vos cantines et services péri-scolaires.</p>
     </div>
   </div>
 
   <div class="px-4 py-5 bg-primary">
     <div class="col-lg-6 mx-auto">
-      <h3 class="fw-bold lh-1 mb-3">Un usage simplifié</h3>
+      <h3 class="fw-bold lh-1 mb-3 text-white">Un usage simplifié</h3>
       <p class="lead mb-4 text-white">Prise en main immédiate. Une comptabilité simple par famille. Une facture par mois avec solde. Balance famille. Ne dépend pas d'une société. Code source librement disponible.</p>
     </div>
   </div>
@@ -33,25 +35,29 @@
   <div class="px-4 py-5 bg-light">
     <div class="col-lg-6 mx-auto">
       <h3 class="fw-bold lh-1 mb-3">Une informatique 'dans le nuage'</h3>
-      <p class="lead mb-4">Une simple page internet, pas de logiciel à installer. 
-                      Mise à jour automatique.
-                      Nombre d'utilisateurs illimité. 
-                      Droits d'accès lecture seule pour les invités. 
-                      Pas de serveur à installer et à administer. 
-                      Pas de sauvegardes à gérer.
+      <p class="lead mb-4">
+          Une simple page internet, pas de logiciel à installer. 
+          Mise à jour automatique.
+          Nombre d'utilisateurs illimité. 
+          Droits d'accès lecture seule pour les invités. 
+          Pas de serveur à installer et à administer. 
+          Pas de sauvegardes à gérer.
       </p>
     </div>
   </div>
   <div class="px-4 py-5 bg-primary">
     <div class="col-lg-6 mx-auto">
-      <h3 class="fw-bold lh-1 mb-3">Portail Parents</h3>
-      <p class="lead mb-4 text-white">Le portail Parents permet à un parent de consulter son relevé de compte, ses réservations, et ses factures.</p>
+      <h3 class="fw-bold lh-1 mb-3 text-white">Portail Parents</h3>
+      <p class="lead mb-4 text-white">
+        Le portail Parents permet à un parent de consulter son relevé de compte, ses réservations, et ses factures.
+      </p>
     </div>
   </div>
   <div class="px-4 py-5 mb-4 bg-light">
     <div class="col-lg-6 mx-auto">
-    <%= link_to 'En savoir plus', guide_a_propos_path, class: 'btn btn-primary btn-lg px-4 me-md-2' %>
-    <%= link_to "Guide d'utilisation", guide_utilisation_path, class: 'btn btn-outline-secondary btn-lg px-4' %>
+      <%= link_to 'En savoir plus', guide_a_propos_path, class: 'btn btn-primary btn-lg px-4 me-md-2' %>
+      <%= link_to "Guide d'utilisation", guide_utilisation_path, class: 'btn btn-outline-secondary btn-lg px-4 me-md-2' %>
+      <%= link_to 'Tester', admin_mode_demonstration_path, class: 'btn btn-outline-secondary btn-lg px-4 me-md-2' %>
     </div>
   </div>
 </div>
@@ -72,13 +78,11 @@
       <div class="card-body">
         <h1 class="card-title pricing-card-title text-center">Gratuit</h1>
         <ul class="list-unstyled mt-3 mb-4">
-          
           <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Utilisation libre et illimitée</li>
           <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Aucune sauvegarde des données</li>
           <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Aucun support</li>
           <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Pas de sous-domaine personnalisé</li>
           <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Aucun serveur virtuel dédié</li>
-          <br>
         </ul>
         <button type="button" class="w-100 btn btn-lg btn-outline-primary">Inscription gratuite</button>
       </div>
@@ -95,10 +99,7 @@
           <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Utilisation libre et illimitée</li>
           <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Sauvegarde automatique journalière</li>
           <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Support par email</li>
-          <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Accès par un sous-domaine personnalisé
-            <br>
-            ex: https://mon-organisation.prestofacto.fr
-          </li>
+          <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Accès par sous-domaine personnalisé</li>
           <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Aucun serveur virtuel dédié</li>
         </ul>
         <button type="button" class="w-100 btn btn-lg btn-outline-primary">Nous contacter</button>
@@ -114,12 +115,9 @@
         <h1 class="card-title pricing-card-title text-center">99 €<small class="text-muted fw-light"> <small>TTC/mois</small></small></h1>
         <ul class="list-unstyled mt-3 mb-4">
           <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Utilisation libre et illimitée</li>
-          <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Sauvegarde automatique toutes les heures</li>
+          <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Sauvegarde automatique 1/h</li>
           <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Support par email / téléphonique</li>
-          <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Accès par votre nom de domaine
-            <br>
-            ex: https://prestofacto.votre-domaine.fr
-          </li>
+          <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Accès par votre nom de domaine</li>
           <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Serveur virtuel dédié</li>
         </ul>
         <button type="button" class="w-100 btn btn-lg btn-primary">Nous contacter</button>
@@ -140,7 +138,6 @@
         <th style="width: 22%;">Premium</th>
       </tr>
     </thead>
-    <svg class="bi bi-check" width="24" height="24"></svg>
     <tbody>
       <tr>
         <th scope="row" class="text-start">Utilisation libre et illimitée</th>
@@ -149,13 +146,20 @@
         <td><%= fa_icon 'check-circle', class: 'text-success' %></td>
       </tr>
       <tr>
-        <th scope="row" class="text-start">Accès par un sous-domaine personnalisé</th>
+        <th scope="row" class="text-start">
+          Accès par un sous-domaine personnalisé
+          <br> Ex: https://mon-organisation.prestofacto.fr
+        </th>
         <td></td>
         <td><%= fa_icon 'check-circle', class: 'text-success' %></td>
         <td><%= fa_icon 'check-circle', class: 'text-success' %></td>
       </tr>
       <tr>
-        <th scope="row" class="text-start">Accès par votre nom de domaine</th>
+        <th scope="row" class="text-start">
+          Accès par votre nom de domaine
+          <br>
+          ex: https://prestofacto.votre-domaine.fr
+        </th>
         <td></td>
         <td><%= fa_icon 'check-circle', class: 'text-success' %></td>
         <td><%= fa_icon 'check-circle', class: 'text-success' %></td>
@@ -163,14 +167,14 @@
       <tr>
         <th scope="row" class="text-start">Serveur virtuel dédié</th>
         <td></td>
-        <td><%= fa_icon 'check-circle', class: 'text-success' %></td>
+        <td></td>
         <td><%= fa_icon 'check-circle', class: 'text-success' %></td>
       </tr>
       <tr>
-        <th scope="row" class="text-start">Sauvegarde</th>
+        <th scope="row" class="text-start">Sauvegarde automatique des données</th>
         <td></td>
         <td><p>1/j</p></td>
-        <td><p>1/h automatique</p></td>
+        <td><p>1/h</p></td>
       </tr>
       <tr>
         <th scope="row" class="text-start">Support</th>
@@ -182,7 +186,5 @@
     </tbody>
   </table>
 </div>
-
-
 
 <%= render 'partials/footer' %>
