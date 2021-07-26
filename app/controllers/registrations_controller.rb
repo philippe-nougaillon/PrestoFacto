@@ -9,14 +9,14 @@ class RegistrationsController < Devise::RegistrationsController
     def create
         @user = User.new(user_params)
         if params[:question] == ENV['REPONSE_SECRETE']
-            Organisation.create_from_signup(@user, params[:organisation], params[:structure])
+            Organisation.create_from_signup(@user, params[:organisation], params[:structure], params[:zone])
         else
             flash[:alert] == 'Mauvaise réponse !'
         end
         
         respond_to do |format|
             if @user.save
-                format.html { redirect_to root_url, notice: "Veuillez vérifier vos emails." }
+                format.html { redirect_to root_url, notice: "Compte créé avec succès. Veuillez vérifier vos emails afin de confirmer votre compte." }
             else
                 format.html { render :new }
                 format.json { render json: @user.errors, status: :unprocessable_entity }
