@@ -2,7 +2,7 @@
 
 Logiciel gratuit de facturation de cantine et des activités pré-scolaires
 
-Cette application web permet à une organisation (Mairie, Association,...) de gérer les comptes de ses familles, les réservations des enfants et la facturation des prestations consommées.
+Cette application web permet à une organisation (mairie, association, école...) de gérer les comptes de ses familles, les réservations des enfants et la facturation des prestations consommées.
 
 Les prestations et les tarifs sont entièrement paramétrables et illimités.
 
