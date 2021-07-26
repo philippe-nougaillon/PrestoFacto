@@ -205,7 +205,7 @@ ActiveRecord::Schema.define(version: 2021_07_22_153850) do
     t.datetime "updated_at", null: false
     t.string "zone"
     t.string "slug"
-    t.index ["slug"], name: "index_organisations_on_slug"
+    t.index ["slug"], name: "index_organisations_on_slug", unique: true
   end
 
   create_table "paiements", force: :cascade do |t|
