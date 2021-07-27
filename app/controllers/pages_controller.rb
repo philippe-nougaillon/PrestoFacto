@@ -3,5 +3,10 @@ class PagesController < ApplicationController
 
   def welcome
   end
-  
+
+  def a_propos
+  end
+
+  def utilisation
+  end
 end
