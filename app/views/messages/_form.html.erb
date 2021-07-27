@@ -1,15 +1,15 @@
-<div class="px-4 py-5 my-5 text-center">
+<div class="px-4 py-5 my-4 text-center">
   <h1 class="display-5 fw-bold">Nous contacter</h1>
   <div class="col-lg-6 mx-auto">
-    <p class="lead mb-4">Vous avez une question ou vous souhaitez que l'on vous contacte ?</p>
+    <p class="lead">Vous avez une question ou vous souhaitez que l'on vous contacte ?</p>
   </div>
 </div>
 
-<div class="col-sm-7 shadow p-3 mb-5 bg-body rounded mx-auto">
+<div class="col-sm-8 shadow p-3 mb-5 bg-body rounded mx-auto">
   <%= bootstrap_form_with(model: message, local: true) do |form| %>
     <% if message.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h2>
+        <h2><%= pluralize(message.errors.count, "erreur(s)") %> empêche(nt) ce message d'être envoyé :</h2>
 
         <ul>
           <% message.errors.each do |error| %>
