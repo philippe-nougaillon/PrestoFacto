@@ -25,16 +25,10 @@
 
   <body>
     <%= render 'partials/nav' %>
-
-    <div class="alert alert-highlight text-center" style="height: 25px;">
-      <% if notice.present? or alert.present? %>
-        <aside class="text-<%= notice ? 'success' : 'danger' %>">
-          <%= notice ? notice : alert %>
-        </aside>
-      <% end %>
-    </div>
+    
 
     <div class="container mt-5">
+      <%= render 'partials/alert' %>
       <%= yield %>
     </div>
   </body>

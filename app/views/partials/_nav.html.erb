@@ -20,12 +20,12 @@
             <%= navbar_nav_item('prestations', 'utensils', prestations_path) %>
             <%= navbar_nav_item('factures', 'file-invoice', factures_path) %>
             <%= navbar_nav_item('paiements', 'money-bill-alt', paiements_path) %>
-            <%= navbar_nav_item("guide d'utilisation", 'book', guide_utilisation_path) %>
+            <%= navbar_nav_item('pages', 'book', pages_guide_path, 'guide') %>
           <% end %>
         <% else %>
-          <%= navbar_nav_item('Accueil', 'home', root_path) %>
-          <%= navbar_nav_item('a_propos', 'info-circle', guide_a_propos_path) %>
-          <%= navbar_nav_item("guide d'utilisation", 'book', guide_utilisation_path) %>
+          <%= navbar_nav_item('pages', 'home', pages_welcome_path, 'welcome') %>
+          <%= navbar_nav_item('pages', 'info-circle', pages_a_propos_path, 'a_propos') %>
+          <%= navbar_nav_item('pages', 'book', pages_guide_path, 'guide') %>
           <%= navbar_nav_item('Tester (mode démonstration)', 'eye', admin_mode_demonstration_path) %>
         <% end %>
       </ul>

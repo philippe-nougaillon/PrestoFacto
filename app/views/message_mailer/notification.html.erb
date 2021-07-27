@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Nouveau message de contact</h1>
+
+  <p>
+    <strong>Email: </strong>
+    <%= @message.email %>
+  </p>
+  <p>
+    <strong>Structure: </strong>
+    <%= @message.objet %>
+  </p>
+  <p>
+    <strong>Message: </strong>
+    <%= @message.contenu %>
+  </p>
+  <p>
+    <%= link_to 'Voir le message', @message %>
+  </p>
+</div>
