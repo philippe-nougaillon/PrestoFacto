@@ -102,7 +102,7 @@
           <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Accès par sous-domaine personnalisé</li>
           <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Aucun serveur virtuel dédié</li>
         </ul>
-        <button type="button" class="w-100 btn btn-lg btn-outline-primary">Nous contacter</button>
+        <%= link_to 'Nous Contacter', new_message_path, class: 'w-100 btn btn-lg btn-outline-primary' %>
       </div>
     </div>
   </div>
@@ -120,7 +120,7 @@
           <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Accès par votre nom de domaine</li>
           <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Serveur virtuel dédié</li>
         </ul>
-        <button type="button" class="w-100 btn btn-lg btn-primary">Nous contacter</button>
+        <%= link_to 'Nous Contacter', new_message_path, class: 'w-100 btn btn-lg btn-primary' %>
       </div>
     </div>
   </div>

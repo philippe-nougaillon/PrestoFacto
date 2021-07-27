@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_22_153850) do
+ActiveRecord::Schema.define(version: 2021_07_27_082424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -192,6 +192,14 @@ ActiveRecord::Schema.define(version: 2021_07_22_153850) do
     t.index ["compte_id"], name: "index_factures_on_compte_id"
     t.index ["slug"], name: "index_factures_on_slug", unique: true
     t.index ["workflow_state"], name: "index_factures_on_workflow_state"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "email"
+    t.string "objet"
+    t.text "contenu"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "organisations", force: :cascade do |t|
