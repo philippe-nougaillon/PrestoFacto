@@ -27,6 +27,12 @@
           <%= navbar_nav_item('pages', 'info-circle', pages_a_propos_path, 'a_propos') %>
           <%= navbar_nav_item('pages', 'book', pages_guide_path, 'guide') %>
           <%= navbar_nav_item('Tester (mode démonstration)', 'eye', admin_mode_demonstration_path) %>
+          <li class="nav-item">
+            <%= link_to new_message_path, class: "nav-link" do %>
+              <%= fa_icon 'envelope' %>
+              Nous contacter
+            <% end %>
+          </li>
         <% end %>
       </ul>
       <div class="d-flex">

@@ -20,7 +20,7 @@
     <% end %>
 
     <%= form.text_field :email, placeholder: 'E-mail*' %>
-    <%= form.select :objet, options_for_select(['Question', 'Offre standard', 'Offre premium', 'Remarque', 'Proposition', 'Autre']), prompt: 'Choisir un objet' %>
+    <%= form.select :objet, options_for_select(['Question', 'Offre standard', 'Offre premium', 'Remarque', "Proposition d'amélioration", 'Résiliation', 'Autre']), prompt: 'Choisir un objet' %>
     <%= form.text_area :contenu, placeholder: 'Message*'%>
     <small>* Champ requis</small>
 

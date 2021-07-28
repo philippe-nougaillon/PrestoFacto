@@ -1,24 +1,26 @@
 <h2>Guide d'utilisation<br><br></h2>
 
-<div id="présentation">
+<div id="présentation" class="mb-5">
     <h4 class="text-primary">Présentation<hr></h4>
     <p class="lead">
         <%= @site_name %> 
         se présente sous la forme de 7 onglets;  Comptes, Enfants, Réservations, Absences, 
-                Prestations, Factures, Paiements, qui vont vous permettre d'accéder aux données du même nom. 
+        Prestations, Factures, Paiements, qui vont vous permettre d'accéder aux données du même nom. 
     </p>
 </div>
 
-<div id="créer_compte">
+<div id="créer_compte" class="mb-5">
     <h4 class="text-primary">Créer un compte<hr></h4>
-    <p class="lead text-justify">
-        Pour créer un nouveau compte, il suffit de se rendre sur la page d'accueil et de cliquer sur le lien "S'inscrire".
+    <p class="lead">
+        Pour créer un nouveau compte, il suffit de se rendre sur la page d'accueil et de cliquer sur
+        <%= link_to "S'inscrire", new_user_registration_path %>
+        .
     </p>
 
-    <p class="lead text-justify">
-        Après avoir renseigné le formulaire avec une adresse email, un mot de passe, un nom d'organisation (ex: Mairie de Village) 
-        et enfin d'un nom de structure (ex: Ecole Jules Ferry), le système vous enverra un email afin de vérifier que l'adresse donnée existe bien 
-        (et oui, si vous saviez le nombre de robots esseulés qui passent leurs journées à s'incrire un peu partout...).
+    <p class="lead">
+        Après avoir renseigné le formulaire avec une adresse e-mail, un mot de passe, un nom d'organisation (ex: Mairie de Village) 
+        et enfin d'un nom de structure (ex: Ecole Jules Ferry), le système vous enverra un e-mail afin de vérifier que l'adresse donnée existe bien 
+        (et oui, si vous saviez le nombre de robots esseulés qui passent leurs journées à s'inscrire un peu partout...).
         <br><br>
         <i>Organisation/Structures kesako ?</i>
         <br><br>
@@ -28,15 +30,15 @@
     </p>
 </div>
 
-<div id="organisation">
+<div id="organisation" class="mb-5">
     <h4 class="text-primary">Enregistrer votre Organisation<hr></h4>
-    <p class="lead text-justify">
+    <p class="lead">
         Une fois connecté.e, rendez-vous sur la page "Administration".
         Cette page "Administration" affiche un menu qui donne accès à l'ensemble des paramètres importants, 
         tels que l'Organisation, les Utilisateurs et les Tarifs, etc.
     </p>
 
-    <p class="lead text-justify">
+    <p class="lead">
         Cliquez sur "Organisation" afin d'afficher les détails de votre organisation, comme la liste des structures et des classes, ainsi que les vacances scolaires.
         <br><br>
         Cliquez "Editer" pour modifier les données de votre organisation.
@@ -49,20 +51,19 @@
         <br><br>
         Pour ajouter une nouvelle structure, il vous suffit d'en saisir le nom dans la ligne vierge immédiatement en dessous.
         <br><br>
-        Pour supprimer une structure, une case à cocher "Supprimer ?" s'afficher en face de la structure 
+        Pour supprimer une structure, une case à cocher "Supprimer ?" s'affiche en face de la structure 
         pouvant être supprimée (n'ayant plus d'éléments liés).
-        <br><br>
     </p>
 </div>
 
-<div id="tarifs">
+<div id="tarifs" class="mb-5">
     <h4 class="text-primary">Enregistrer vos tarifs<hr></h4>
-    <p class="lead text-justify">
+    <p class="lead">
         Une fois l'organisation et les structures en place, nous allons pouvoir paramétrer les prestations proposées par votre organisation (Cantine, Garderie...) et leurs tarifs.
-        Pour se faire, rendez-vous à la page "Administration/Tarifs"
+        Pour se faire, rendez-vous à la page "Tarifs", dans le menu "Administration".
     </p>
 
-    <p class="lead text-justify">
+    <p class="lead">
         Commençons par un cas simple; vous proposez une prestation de cantine avec un repas au tarif unique de 5€.
         <br>
         Pour paramétrer correctement cette prestation, nous avons besoin :
@@ -74,7 +75,7 @@
         <li>et enfin d'un "Tarif" qui associe le "Repas" avec le tarif "Général" au prix de 5€</li>
     </ul>
 
-    <p class="lead text-justify">
+    <p class="lead">
 
         <%= 'ç'.upcase %>a tombe bien, lors de votre inscription le système a créé une prestation et un tarif par défaut, qu'il suffit de supprimer pour en recréer un à votre convenance.
         <br><br>
@@ -87,19 +88,16 @@
 
         Maintenant que l'organisation et les prestations fournies sont correctement paramétrées, nous pouvons ajouter Familles, 
         Enfants et Réservations.
-        <br><br>
     </p>
 </div>
 
-<div id="ajout_famille">
+<div id="ajout_famille" class="mb-5">
     <h4 class="text-primary">Ajouter une famille (Compte)<hr></h4>
-    <p class="lead text-justify">
+    <p class="lead">
         Pour ajouter un compte Famille, rendez-vous sur la page "Comptes" et cliquez sur le lien "(+) Compte".
     </p>
 
-    <p class="lead text-justify">
-        Choisir la structure à laquelle appartient la famille que vous voulez saisir puis saisir les informations demandées.
-        <br><br>
+    <p class="lead">
         La liste des Contacts permet de conserver les coordonnées de tous les contacts liés (maman, papa, tonton, mamie, etc).
         <br><br>
         Pour supprimer un Contact, cochez "Supprimer?" et appuyez sur le bouton "Enregistrer"; la demande de suppression sera alors effectuée.
@@ -109,14 +107,13 @@
         Une fois le compte créé avec succès, une page regroupant les informations du Compte ainsi qu'un résumé des données de comptabilité (Factures, Paiements, Solde) apparaît. 
         <br><br>
         On peut y voir aussi la liste des Enfants liés à ce compte.
-        <br><br>
     </p>
 
 </div>
 
-<div id="ajout_enfant">
+<div id="ajout_enfant" class="mb-5">
     <h4 class="text-primary">Ajouter un enfant<hr></h4>
-    <p class="lead text-justify">
+    <p class="lead">
         Pour ajouter un compte, ouvrir la page "Comptes" et cliquez sur le nom du compte concerné; la page d'primaryrmation du compte apparaît.
         <br><br>
         Cliquez sur "(+) Ajouter un enfant" et entrez les informations demandées, à commencer par sa classe et son nom (même s'il est identique à celui du compte).
@@ -124,14 +121,13 @@
         Ne pas oublier de choisir le tarif adapté et de signaler les allergies éventuelles.
         <br><br>
         L'étape suivante consiste à reserver les prestations.  
-        <br><br>
     </p>
 
 </div>
 
-<div id="réservations">
+<div id="réservations" class="mb-5">
     <h4 class="text-primary">Inscrire un enfant à des prestations (Réservations)<hr></h4>
-    <p class="lead text-justify">
+    <p class="lead">
         Il s'agit maintenant de réserver une prestation parmi celles que vous avez créées lors du paramètrage des Tarifs.
         <br><br>
         Pour éviter les saisies rébarbatives, une première réservation est proposée par défaut pour toute l'année scolaire. 
@@ -142,7 +138,7 @@
         <br><br>
     </p>
 
-    <p class="lead text-justify">
+    <p class="lead">
         Pour inscrire un enfant à la fois à la cantine et à la garderie, il faudra donc deux lignes; une par Type de prestation.
         <br><br>
         Si vous souhaitez inscrire l'enfant au centre de loisir pour les vacances de Février; 
@@ -152,13 +148,12 @@
         Pour inscrire un enfant au centre de loisirs pour toutes les vancances scolaires; 
         il faudra juste que les dates de début et de fin couvrent toute l'année scolaire 
         et que le bouton "Hors période scolaire" soit activé.
-        <br><br>
     </p>
 </div>
 
-<div id="prestations">
+<div id="prestations" class="mb-5">
     <h4 class="text-primary">Les Prestations<hr></h4>
-    <p class="lead text-justify">
+    <p class="lead">
         Les prestations sont créées automatiquement chaque matin, dès potron-minet, sur la base des réservations.
         <br><br>
         Pour connaitre les prestations qui ont été consommées et qui seront donc ajoutées automatiquement lors du traitement, 
@@ -168,34 +163,32 @@
         <br><br>
     </p>
 
-    <p class="lead text-justify">
+    <p class="lead">
         Si une prestation n'a pas été consommée, vous pouvez soit la modifier, 
         soit la supprimer en allant sur l'onglet 'Prestations' si vous souhaitez que la prestation
          n'apparaisse pas sur la facture.
         <br><br>
         Sinon, il suffit ajouter une 'Absence', ce qui annulera la facturation de la prestation.
-        <br><br>
     </p>
 </div>
 
-<div id="absences">
+<div id="absences" class="mb-5">
     <h4 class="text-primary">Les Absences<hr></h4>
-    <p class="lead text-justify">
+    <p class="lead">
         Pour ajouter une Absence, rendez-vous sur la fiche de l'enfant concerné 
         (en allant que l'onglet "Enfants" puis en cliquant sur son Prénom).
         <br><br>
     </p>
     
-    <p class="lead text-justify">
+    <p class="lead">
         Cliquez sur "(+) Ajouter une Absence" et renseignez les informations demandées, 
         à savoir les dates de début et de fin d'absence, ainsi que la période (matin, midi, soir).
-        <br><br>
     </p>
 </div>
 
-<div id="facturation">
+<div id="facturation" class="mb-5">
     <h4 class="text-primary">La Facturation<hr></h4>
-    <p class="lead text-justify">
+    <p class="lead">
         La facturation consiste à regrouper les prestations consommées durant un mois et d'en établir une facture par compte. 
         <br><br>
         Pour lancer la "Facturation", rendez-vous sur la page "Administration/Facturation prestations" 
@@ -204,85 +197,78 @@
         Une facture par compte sera alors créée, avec le détails des prestations consommées par enfant.
     </p>
 
-    <p class="lead text-justify">
+    <p class="lead">
         Notez que par défaut les factures ne sont pas réellement créées. Un rapport détaillé est produit afin de voir ce qui serait facturé.
         <br><br>
         Pour créer et enregistrer réellement les factures, activer le bouton "Enregistrer les changements ?" 
         <br><br>
         Les factures créées s'affiche alors dans l'onglet 'Factures'. Pour afficher la facture en PDF, cliquez sur l'icone PDF situé au bout de chaque ligne, à droite.
-        <br><br>
     </p>
 </div>
 
-<div id="facture">
+<div id="facture" class="mb-5">
     <h4 class="text-primary">Facture manuelle<hr></h4>
-    <p class="lead text-justify">
-        Vous avez la possibilité d'ajouter une facture manuellement. Dans cette facture manuelle la saisie tous les éléments (montant, prestations et tarifs) est libre.
+    <p class="lead">
+        Vous avez la possibilité d'ajouter une facture manuellement. Dans cette facture manuelle, la saisie de tous les éléments (montant, prestations et tarifs) est libre.
         <br><br>
         Pour ce faire, rendez-vous sur la page du Compte concerné et cliquez sur "Nouvelle facture". 
         <br><br>
         Une fois enregistrée, cette facture sera ajoutée à la liste des factures et comptabilisée dans le solde du compte.
-        <br><br>
     </p>
 </div>
 
-<div id="avoirs">
+<div id="avoirs" class="mb-5">
     <h4 class="text-primary">Avoirs<hr></h4>
-    <p class="lead text-justify">
+    <p class="lead">
         Comme le montant de la facture manuelle est libre, vous pouvez créer des avoirs en indiquant un montant négatif.
-        <br><br>
     </p>
 </div>
 
-<div id="solde">
+<div id="solde" class="mb-5">
     <h4 class="text-primary">Le solde famille<hr></h4>
-    <p class="lead text-justify">
-        Pour afficher le solde d'un compte famille, rendez-vous la page du compte concerné; 
+    <p class="lead">
+        Pour afficher le solde d'un compte famille, rendez-vous sur la page du compte concerné; 
         le solde apparaît dans un cartouche dédié.
-        <br><br>
     </p>
 </div>
 
-<div id="balance">
+<div id="balance" class="mb-5">
     <h4 class="text-primary">Le relevé de compte (Balance)<hr></h4>
-    <p class="lead text-justify">
+    <p class="lead">
         Pour voir la balance d'un compte, qui liste l'ensemble des opérations du compte (factures et paiements), 
-        rendez-vous la page du compte concerné et cliquez sur le bouton "Balance".
-        <br><br>
+        rendez-vous sur la page du compte concerné et cliquez sur le bouton "Balance".
     </p>
 </div>
 
-<div id="paiements">
+<div id="paiements" class="mb-5">
     <h4 class="text-primary">Remise de chèques (Paiements)<hr></h4>
-    <p class="lead text-justify">
-        Pour saisir un paiement, rendez vous sur le compte concerné et cliquez sur "Ajouter un paiement". 
+    <p class="lead">
+        Pour saisir un paiement, rendez-vous sur le compte concerné et cliquez sur "Ajouter un paiement". 
         Une fois le paiement enregistré, le solde du compte est mis à jour automatiquement.
         <br><br>
-        Vous retrouverer l'ensemble des paiements dans l'onglet 'Paiements'.
+        Vous retrouverez l'ensemble des paiements dans l'onglet 'Paiements'.
         <br><br>
         Pour exporter la liste des paiements vers Excel, il suffit de filtrer la liste des paiements 
         selon la structure, période, mode de paiement, puis, une fois la liste voulue sous les yeux 
-        cliquer sur le bouton "Export XLS" pour générer une feuille de calcul Excel basée sur les éléments affichés.
-        <br><br>
+        cliquez sur le bouton "Export XLS" pour générer une feuille de calcul Excel basée sur les éléments affichés.
     </p>
 </div>
 
-<div id="portail">
+<div id="portail" class="mb-5">
     <h4 class="text-primary">Portail Parents<hr></h4>
-    <p class="lead text-justify">
+    <p class="lead">
         Le portail Parents permet à un visiteur (ex: un parent) de consulter son compte.  
         Une fois connecté, le visiteur a un accès limité à l'application. Il a accès aux informations non sensibles du compte auquel il est associé. 
-        Il y retrouvera ses réservations ainsi qu'à son relevé de compte. Le visiteur pourra ainsi voir s'il doit de l'argent et visualiser/imprimer 
-        ses factures. Il pourra aussi effectuer un paiement en CB afin d'alimenter son compte (sous réserver de mise en place d'une passerelle avec votre banque).
+        Il y retrouvera ses réservations ainsi que son relevé de compte. Le visiteur pourra ainsi voir s'il doit de l'argent et visualiser/imprimer 
+        ses factures. Il pourra aussi effectuer un paiement en CB afin d'alimenter son compte (sous réserve de mise en place d'une passerelle avec votre banque).
         <br><br>
         Le visiteur pourra ajouter des réservations. Ces prestations nouvellement ajoutées devront être validées par un utilisateur de votre organisation.   
         <br><br>
-        Pour donner l'accès à un visiteur; aller dans "Administration/Utilisateurs" 
-        et ajoutez un utilisateur ayant le rôle "Visiteur" ET la même adresse mail qu'un des contacts du compte à qui vous souhaiter donner l'accès. 
+        Pour donner l'accès à un visiteur, allez dans "Administration/Utilisateurs" 
+        et ajoutez un utilisateur ayant le rôle "Visiteur" ET la même adresse mail qu'un des contacts du compte à qui vous souhaitez donner l'accès. 
         <br><br>
-        Attention: pour que l'utilisateur soit associé à un compte, il est impératif que l'adresse email 
+        Attention: pour que l'utilisateur soit associé à un compte, il est impératif que l'adresse e-mail 
         de l'utilisateur que vous ajoutez existe bien dans la liste des contacts du compte à associer. 
-        <br><br>
     </p>
 </div>
 <br>

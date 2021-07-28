@@ -84,7 +84,7 @@
           <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Pas de sous-domaine personnalisé</li>
           <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Aucun serveur virtuel dédié</li>
         </ul>
-        <button type="button" class="w-100 btn btn-lg btn-outline-primary">Inscription gratuite</button>
+        <%= link_to "S'inscrire", new_user_registration_path, class: 'w-100 btn btn-lg btn-outline-primary' %>
       </div>
     </div>
   </div>
@@ -187,4 +187,6 @@
   </table>
 </div>
 
+<!--
 <%= render 'partials/footer' %>
+-->
