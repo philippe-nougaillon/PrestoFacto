@@ -33,16 +33,20 @@
       <tfoot><tr><th colspan=11></th></tr></tfoot>
     </table>
 
-    <div class="input-group">
-      <%= select_tag :action_name, 
-                          options_for_select(["Passer à l'état 'vérifiée'", "Envoyer"]), 
-                          include_blank: true, 
-                          class: 'form-control form-control-sm col-sm-3',
-                          data: {'action-target': 'selector'} %>
-      <div class="input-group-append">
-        <%= submit_tag 'ok',  name: 'action', 
-                              class: 'btn btn-sm btn-outline-success',
-                              data: {'action-target': 'button'} %>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="input-group">
+          <%= select_tag :action_name, 
+                              options_for_select(["Passer à l'état 'vérifiée'", "Envoyer"]), 
+                              include_blank: true, 
+                              class: 'form-control form-control-sm',
+                              data: {'action-target': 'selector'} %>
+          <div class="input-group-append">
+            <%= submit_tag 'ok',  name: 'action', 
+                                  class: 'btn btn-sm btn-outline-success',
+                                  data: {'action-target': 'button'} %>
+          </div>
+        </div>
       </div>
     </div>
 

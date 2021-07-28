@@ -14,26 +14,13 @@ module ApplicationHelper
                 url_for(request.parameters.merge(column: column, direction: direction))
     end
 
-    # def navbar_nav_item(name, icon, path)
-    #     name_us = I18n.transliterate(name)
-    #     render(inline: %{
-    #         <li class="nav-item">
-    #             <%= link_to '#{ url_for(path) }', 
-    #                         class: "nav-link text-#{ (@ctrl == name_us) ? 'dark active shadow-sm' : 'secondary' }" do %>
-    #                 <%= fa_icon '#{ icon }' %>
-    #                 #{ name.humanize }
-    #             <% end %>
-    #         </li>
-    #     })
-    # end
-
     def navbar_nav_item(name, icon, path, *nom_de_action)
         name_us = I18n.transliterate(name)
         is_active = (nom_de_action.any? ? (@ctrl == name_us && @action == nom_de_action.first) : (@ctrl == name_us))
         render(inline: %{
             <li class="nav-item">
                 <%= link_to '#{ url_for(path) }', 
-                            class: "nav-link text-#{ is_active ? 'dark active shadow-sm' : 'secondary' }" do %>
+                            class: "nav-link text-#{ is_active ? 'dark active text-decoration-underline' : 'secondary' }" do %>
                     <%= fa_icon '#{ icon }' %>
                     #{ nom_de_action.any? ? nom_de_action.first.humanize : name.humanize }
                 <% end %>

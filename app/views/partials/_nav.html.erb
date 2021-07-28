@@ -39,27 +39,29 @@
         <% unless user_signed_in? %>
             <%= link_to "S'inscrire",
                 new_user_registration_path, 
-                class: "btn btn-outline-primary btn me-2" 
+                class: "btn btn-outline-primary me-2" 
             %>
             <%= link_to "Connexion", 
                 new_user_session_path, 
-                class: "btn btn-outline-success btn" 
+                class: "btn btn-outline-success" 
             %>
             <% else %>
               <% if current_user.admin? %>
                 <%= link_to "Administration", 
                     admin_index_path, 
-                    class: "btn btn-outline-primary btn me-2" 
+                    class: "btn btn-outline-primary btn-sm me-2" 
                 %>
               <% end %> 
 
               <%= link_to "Déconnection", 
                   destroy_user_session_path, 
                   method: :delete, 
-                  class: "btn btn-outline-danger btn" 
+                  class: "btn btn-outline-danger btn-sm" 
               %>
         <% end %>
       </div>
     </div>
   </div>
 </nav> 
+
+<div style="height: 80px;"></div>
