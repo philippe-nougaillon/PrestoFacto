@@ -19,7 +19,9 @@
     <div class="col-sm-6">
       <%= form.date_select :date %>
       <%= form.date_select :échéance, label: 'Echéance' %>
-      <%= form.datetime_select :envoyée_le, include_blank: true, label: 'Envoyée_le' %>
+      <% unless facture.new_record? %>
+        <%= form.datetime_select :envoyée_le, include_blank: true, label: 'Envoyée_le' %>
+      <% end %>
     </div>
     
     <div class="col-sm-1">

@@ -3,8 +3,8 @@
   <%= form.hidden_field :enfant_id %>
 
   <div class="form-inline">
-    <%= form.date_select :début, label: 'Du :', class: "form-control" %>
-    <%= form.date_select :fin, label: 'Au :', class: "form-control" %>
+    <%= form.text_field :début, label: 'Du :', class: "form-control", type: "date"  %>
+    <%= form.text_field :fin, label: 'Au :', class: "form-control", type: "date"  %>
   </div>
   <br />
 

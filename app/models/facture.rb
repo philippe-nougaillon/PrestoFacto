@@ -33,45 +33,45 @@ class Facture < ApplicationRecord
   IMPUTEE   = 'imputée'
 
   workflow do
-    state AJOUTEE, meta: { style: 'badge-info' } do
+    state AJOUTEE, meta: { style: 'bg-info' } do
       event :vérifier, transitions_to: VERIFIEE
     end
 
-    state VERIFIEE, meta: { style: 'badge-primary' } do
+    state VERIFIEE, meta: { style: 'bg-primary' } do
       event :envoyer, transitions_to: ENVOYEE
     end
 
-    state ENVOYEE, meta: { style: 'badge-warning' } do
+    state ENVOYEE, meta: { style: 'bg-warning' } do
       event :payer, transitions_to: PAYEE
       event :rejeter, transitions_to: REJETEE
       event :relancer, transitions_to: RELANCE1
     end
 
-    state RELANCE1, meta: { style: 'badge-secondary' } do
+    state RELANCE1, meta: { style: 'bg-secondary' } do
       event :payer, transitions_to: PAYEE
       event :rejeter, transitions_to: REJETEE
       event :relancer, transitions_to:  RELANCE2
     end
 
-    state RELANCE2, meta: { style: 'badge-secondary' } do
+    state RELANCE2, meta: { style: 'bg-secondary' } do
       event :payer, transitions_to: PAYEE
       event :rejeter, transitions_to: REJETEE
       event :relancer, transitions_to: RELANCE3
     end
 
-    state RELANCE3, meta: { style: 'badge-secondary' } do
+    state RELANCE3, meta: { style: 'bg-secondary' } do
       event :payer, transitions_to: PAYEE
       event :rejeter, transitions_to: REJETEE
       event :relancer, transitions_to: RELANCE1
     end
 
-    state PAYEE, meta: { style: 'badge-success' } do
+    state PAYEE, meta: { style: 'bg-success' } do
       event :imputer, transitions_to: IMPUTEE
     end
 
-    state REJETEE, meta: { style: 'badge-danger' }
+    state REJETEE, meta: { style: 'bg-danger' }
 
-    state IMPUTEE, meta: { style: 'badge-dark' }
+    state IMPUTEE, meta: { style: 'bg-dark' }
 
     after_transition do |from, to, triggering_event, *event_args|
       logger.debug "[WORKFLOW] #{from} -> #{to} #{triggering_event}"

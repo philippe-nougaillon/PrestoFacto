@@ -56,6 +56,7 @@ Rails.application.routes.draw do
     get :welcome
     get :a_propos
     get :guide
+    get :blog
   end
   
   root 'pages#welcome'

@@ -9,4 +9,7 @@ class PagesController < ApplicationController
 
   def utilisation
   end
+
+  def blog
+  end
 end

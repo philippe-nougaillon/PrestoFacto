@@ -1,4 +1,4 @@
-<div class="col-sm-4 mx-auto shadow p-3 mb-5 bg-body rounded">
+<div class="col-sm-5 mx-auto shadow p-3 mb-5 bg-body rounded">
   <p class="h1 mt-2 mb-5 text-center"><%= @site_name %></p>
   <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>

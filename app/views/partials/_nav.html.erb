@@ -26,34 +26,47 @@
           <%= navbar_nav_item('pages', 'home', pages_welcome_path, 'welcome') %>
           <%= navbar_nav_item('pages', 'info-circle', pages_a_propos_path, 'a_propos') %>
           <%= navbar_nav_item('pages', 'book', pages_guide_path, 'guide') %>
-          <%= navbar_nav_item('Tester (mode démonstration)', 'eye', admin_mode_demonstration_path) %>
+          <%= navbar_nav_item('pages', 'rss', pages_blog_path, 'blog') %>
+          <li class="nav-item">
+            <%= link_to new_message_path, class: "nav-link" do %>
+              <%= fa_icon 'envelope' %>
+              Nous contacter
+            <% end %>
+          </li>
         <% end %>
       </ul>
       <div class="d-flex">
         <% unless user_signed_in? %>
-            <%= link_to "S'inscrire",
-                new_user_registration_path, 
-                class: "btn btn-outline-primary btn me-2" 
+          <%= link_to "S'inscrire",
+              new_user_registration_path, 
+              class: "btn btn-outline-primary me-2" 
+          %>
+          <%= link_to "Tester", 
+              admin_mode_demonstration_path, 
+              title: 'passer en mode démonstration',
+              class: "btn btn-outline-warning me-2"  
+          %>
+          <%= link_to "Connexion", 
+              new_user_session_path, 
+              class: "btn btn-outline-success" 
+          %>
+        <% else %>
+          <% if current_user.admin? %>
+            <%= link_to "Administration", 
+                admin_index_path, 
+                class: "btn btn-outline-primary btn-sm me-2" 
             %>
-            <%= link_to "Connexion", 
-                new_user_session_path, 
-                class: "btn btn-outline-success btn" 
-            %>
-            <% else %>
-              <% if current_user.admin? %>
-                <%= link_to "Administration", 
-                    admin_index_path, 
-                    class: "btn btn-outline-primary btn me-2" 
-                %>
-              <% end %> 
+          <% end %> 
 
-              <%= link_to "Déconnection", 
-                  destroy_user_session_path, 
-                  method: :delete, 
-                  class: "btn btn-outline-danger btn" 
-              %>
+          <%= link_to "Déconnection", 
+              destroy_user_session_path, 
+              method: :delete, 
+              class: "btn btn-outline-danger btn-sm" 
+          %>
         <% end %>
       </div>
     </div>
   </div>
 </nav> 
+
+<div style="height: 80px;"></div>
