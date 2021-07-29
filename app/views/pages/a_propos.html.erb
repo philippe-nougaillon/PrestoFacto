@@ -5,19 +5,19 @@
 <p class="lead">
     <%= @site_name %> est destinée aux petites collectivités, associations, mairies, écoles, centre de loisirs... 
     Cette solution vous aidera dans l’organisation de votre association et vous fera gagner un temps précieux en simplifiant 
-    la gestion administrative et la facturation de vos cantines et services péri-scolaires.
+    la gestion administrative et la facturation de vos cantines et services périscolaires.
 </p>
 
 <h4 class="text-primary">Comment ça marche ?<hr></h4>
 <p class="lead">
-    Vous disposez d’un ordinateur et d’un accès internet : alors vous avez déjà toute l’infrastructure nécessaire pour utiliser 
+    Vous disposez d’un ordinateur(PC/MAC) et d’un accès internet : alors vous avez déjà toute l’infrastructure nécessaire pour utiliser 
     nos solutions ! 100% web, vous accédez à volonté à votre plateforme dédiée, nous nous chargeons d’héberger et de sécuriser vos données.
 </p>
 
 <h4 class="text-primary">Un logiciel simple, évolutif et innovant<hr></h4>
 <p class="lead">
     Conçu avec pour objectif la simplicité d'utilisation et de maintenance, 
-    ce logiciel de facturation de cantine et autres services permet une gestion efficace des familles, 
+    ce logiciel permet une gestion efficace des familles, 
     enfants, réservations, absences et la facturation des prestations. 
     Deux modules vous permettent d'assurer le suivi de vos Factures et Paiements.
 </p>
@@ -41,8 +41,8 @@
 <ul class="lead">
     <li>Pas de logiciel à installer, un simple navigateur Internet suffit</li>
     <li>Pas de mise à jour à gérer, l'application est mise à jour automatiquement</li>
-    <li>Nombre d'utilisateurs illimité. Droits d'accès lecture seule pour les invités</li>
-    <li>Pas de serveur à installer et à administer. Pas de sauvegardes à gérer</li>
+    <li>Nombre d'utilisateurs illimité. Droits d'accès en lecture seule pour les invités</li>
+    <li>Pas de serveur à installer et à administrer. Pas de sauvegarde à gérer</li>
 </ul>
 <br />
 
@@ -65,7 +65,7 @@
                 <li>Une organisation (Mairie, Association,...) est composée d'un nom, d'une adresse, une zone (vacances scolaires) et d'un logo</li>
                 <li>Une organisation a une ou plusieurs structures</li>
                 <li>Un compte utilisateur de type administrateur est associé à une organisation lors de l'inscription</li> 
-                <li>Cet administrateur peut paramétrer les données variables de l'organisation commes les Structures, les Type de prestations (Repas, Garderie, Activité,...) ou les Tarifs</li>
+                <li>Cet administrateur peut paramétrer les données variables de l'organisation comme les Structures, les Types de prestations (Repas, Garderie, Activité,...) ou les Tarifs</li>
                 <li>Un administrateur peut ajouter d'autres utilisateurs</li>
             </ul>
         </p>
@@ -76,7 +76,7 @@
         </div>
         <p>
             <ul class="lead">
-                <li>Une structure est composée d'un nom (Ecole, Cantine, Garderie, Halte, Centre périscolaire,...)</li>
+                <li>Une structure est composée d'un nom (École, Cantine, Garderie, Halte, Centre périscolaire,...)</li>
                 <li>Une structure contient des classes</li>
                 <li>Une structure contient des comptes</li>
                 <li>Une organisation peut avoir plusieurs structures (illimité)</li>
@@ -93,7 +93,7 @@
         <p>
             <ul class="lead">
                 <li>Un compte est attaché à une organisation</li>
-                <li>Un compte est composé d'un nom, d'une adresse, un numéro d'allocataire et un mémo</li>
+                <li>Un compte est composé d'un nom, d'une adresse, un numéro d'allocataire et d'un mémo</li>
                 <li>Un compte contient les coordonnées des personnes à contacter</li>
                 <li>Un compte contient les enfants</li>
                 <li>Un compte contient les factures</li>
@@ -135,13 +135,13 @@
 </div>
 <p>
     <ul class="lead">
-        <li>Une réservation est composée d'un type de prestation, d'une date de début et de fin, d'une quantité par jour de la semaine (lundi au vendredi), de la période (matin/midi/soir)</li>
+        <li>Une réservation est composée d'un Type de prestation, d'une date de début et de fin, d'une quantité par jour de la semaine (lundi au vendredi), de la période (matin/midi/soir)</li>
         <li>Une réservation est en période scolaire ou hors période scolaire</li>
         <li>Une réservation peut être active ou inactive</li>
         <li>
             Exemple:
             <ul class="lead">
-                <li>Mathieu PETIT a une réservation pour un Repas, tous les jours sauf mercredi</li>
+                <li>Mathieu PETIT a une réservation pour un Repas, tous les jours de la semaine sauf le mercredi</li>
                 <li>Mathieu PETIT a une réservation pour 1 heure de Garderie, tous les jours, le matin, sauf mercredi</li>
                 <li>Mathieu PETIT a une réservation pour 1,5 heure de Garderie, tous les jours, le soir, sauf mercredi</li>
                 <li>Mathieu PETIT a une réservation pour 1 jour de Centre, tous les jours pendant les vacances scolaires (HorsPériodeScolaire)</li>
@@ -153,10 +153,12 @@
 <div class="pb-1 mt-2 mb-1 border-bottom">
   <h4 class="text-primary"><%= fa_icon 'utensils' %> Prestations</h4>
 </div>
+<p class="lead">
+    À lieu, chaque matin, dès potron-minet, la comptabilisation automatique des prestations consommées la veille.
+    Cette comptabilisation est effectuée sur la base des réservations actives
+</p>
 <p>
     <ul class="lead">
-        <li>A lieu, chaque matin, dès potron-minet, la comptabilisation automatique des prestations consommées la veille</li>
-        <li>Cette comptabilisation est effectuée sur la base des réservations actives</li>
         <li>Les prestations sont comptabilisées en fonction de la période, Scolaire/HorsScolaire :</li>
         <ul class="lead">
             <li>sont comptabilisées les prestations dont la réservation n'est PAS "Hors Période Scolaire" si c'est un jour hors période de vacances scolaires</li>
@@ -164,7 +166,7 @@
             <li>sont comptabilisées les prestations dont la réservation n'est PAS "Hors Période Scolaire" si ce jour n'est pas en période de vacances scolaires</li>
         </ul>
         <li>Les prestations ne sont PAS comptabilisées si une absence existe pour ce jour</li>
-        <li>Une ligne de prestation est ajoutée à la liste des prestations de l'enfant quand toutes les conditions précedents sont remplies</li>
+        <li>Une ligne par prestation est ajoutée à la liste des prestations de l'enfant quand toutes les conditions précédentes sont remplies</li>
         <li>Au besoin, une prestation peut être supprimée par l'administrateur afin de ne pas apparaître sur la prochaine facture</li>
     </ul>
 </p>
@@ -175,10 +177,10 @@
 <p>
     <ul class="lead">
         <li>Les prestations consommées sont facturées à la demande, pour tous les comptes d'une organisation</li>
-        <li>Une facture est crée par mois et par compte. Y figure le détail des prestations par enfant</li>
+        <li>Une facture est créée par mois et par compte. Y figure le détail des prestations par enfant</li>
         <li>Les prestations sont facturées selon le tarif auquel est soumis l'enfant</li>
         <li>Les factures peuvent être envoyées, en lot, via courriel</li>
-        <li>Un export au format XLS (Excel 97-2003) est disponible. Il génére une feuille de calcul listant en détails toutes les factures d'une organisation</li>
+        <li>Un export au format XLS (Excel 97-2003) est disponible. Il génère une feuille de calcul listant en détails toutes les factures d'une organisation</li>
     </ul>
 </p>
 
@@ -189,8 +191,8 @@
         </div>
         <p>
             <ul class="lead">
-                <li>Un tarif est le prix d'un type de Prestation selon un type de Tarif</li>
-                <li>Les types de prestations (Cantine, Garderie, etc.) sont configurables à votre convenance</li>
+                <li>Un tarif est le prix d'un Type de prestation selon un type de Tarif</li>
+                <li>Les Types de prestations (Cantine, Garderie, etc.) sont configurables à votre convenance</li>
                 <li>Les types de tarifs (Plein, Demi-tarif, QF1/2/3/4/5, etc...) aussi</li>
             </ul>
         </p>
