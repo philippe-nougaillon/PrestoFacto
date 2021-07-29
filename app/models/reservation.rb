@@ -16,14 +16,14 @@ class Reservation < ApplicationRecord
   REJETEE   = 'rejetée'
 
   workflow do
-    state AJOUTEE, meta: { style: 'badge-info' } do
+    state AJOUTEE, meta: { style: 'bg-info' } do
       event :valider, transitions_to: VALIDEE
       event :rejeter, transitions_to: REJETEE
     end
 
-    state VALIDEE, meta: { style: 'badge-success' } 
+    state VALIDEE, meta: { style: 'bg-success' } 
 
-    state REJETEE, meta: { style: 'badge-danger' }
+    state REJETEE, meta: { style: 'bg-danger' }
 
     after_transition do |from, to, triggering_event, *event_args|
       logger.debug "[WORKFLOW RESERVATION] #{from} -> #{to} #{triggering_event}"
