@@ -22,6 +22,7 @@ SitemapGenerator::Sitemap.create do
 
   add pages_a_propos_path
   add pages_guide_path
+  add pages_blog_path
 
   # Add all articles:
   
