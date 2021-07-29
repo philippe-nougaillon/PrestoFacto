@@ -30,6 +30,10 @@ class FacturesController < ApplicationController
       @factures = @factures.joins(:compte).where("comptes.nom ILIKE ? OR factures.réf ILIKE ?", "%#{params[:search].upcase}%", "%#{params[:search].upcase}%")
     end 
 
+    unless params[:state].blank?
+      @factures = @factures.where("factures.workflow_state = ?", params[:state].to_s.downcase)
+    end
+
     # Appliquer le tri
     @factures = @factures.reorder(Arel.sql("#{sort_column} #{sort_direction}"))
 
