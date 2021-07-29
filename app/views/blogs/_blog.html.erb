@@ -1,13 +1,11 @@
-<h5>
+<h4 class="text-primary">
     <%= blog.titre %>
-</h5>
+</h4>
 
-</small>
-    <%= simple_format blog.corps %>
-</small>
+<%= simple_format blog.corps, class: 'fw-light' %>
 
 <small>
-    <i class="text-secondary">il y a <%= time_ago_in_words(blog.created_at) %></i>
+    <i class="fw-lighter">il y a <%= time_ago_in_words(blog.created_at) %></i>
 </small>
 
-<hr />
+<hr>
