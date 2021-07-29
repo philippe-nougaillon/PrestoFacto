@@ -1,0 +1,35 @@
+<div class="pb-2 mt-5 mb-2 border-bottom">
+  <h2><%= fa_icon 'tachometer-alt' %> Tableau de bord</h2>
+</div>
+
+<div class="row mt-4">
+  <div class="col">
+    <p>Nombre de Comptes : <%= organisation.comptes.count %></p>
+    <p>Nombre d'Enfants : <%= nbr_enfants = organisation.enfants.count %></p>
+    <p>Nombre de Classes : <%= nbr_classes = organisation.classrooms.count %></p>
+    
+    <% if nbr_classes > 0 %>
+      <p>Nombre d'Enfants par Classe : <%= nbr_enfants / nbr_classes %></p>
+    <% end %>
+  </div>
+
+  <div class="col">
+    <p>Nombre total de Prestations : <%= organisation.prestations.count %></p>
+    <p>Nombre total de Réservations : <%= organisation.reservations.count %></p>
+  </div>
+
+  <div class="col">
+    <p>
+      Montant total des Factures: 
+      <%= number_to_currency(montant_total_factures = organisation.factures.sum(:montant)) %>
+    </p>
+    <p>
+      Montant total des Paiements: 
+      <%= number_to_currency(montant_total_paiements = organisation.paiements.sum(:montant)) %>
+    </p>
+    <p>
+      Balance: 
+      <%= number_to_currency(montant_total_factures - montant_total_paiements) %>
+    </p>
+  </div>
+</div>
