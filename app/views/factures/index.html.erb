@@ -5,13 +5,7 @@
 <%= bootstrap_form_tag url: factures_path, method: :get do |f| %>
   <div class="row">
     <div class="col"><%= f.text_field :search, value: params[:search], label:"Nom du compte/Référence facture", onchange: "this.form.submit()", autofocus: true %></div>
-    <div class="col-sm-2">
-      <%= f.select :state, 
-          options_for_select(Facture.workflow_spec.states.keys.to_a, params[:state]), 
-          include_blank: true,
-          onchange: 'this.form.submit()',
-          label: 'État' %>
-    </div>
+    <div class="col-sm-2"><%= f.select :state, options_for_select(Facture.workflow_spec.states.keys.to_a, params[:state]), { include_blank: true, label: 'État' }, { onchange: "this.form.submit()" } %></div>
     <div class="col-sm-2"><%= f.date_field :date_début, value: params[:date_début], onchange: "this.form.submit()" %></div>
     <div class="col-sm-2"><%= f.date_field :date_fin, value: params[:date_fin], onchange: "this.form.submit()" %></div>
   </div>
