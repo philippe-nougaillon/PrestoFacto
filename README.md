@@ -12,7 +12,7 @@ Les prestations et les tarifs sont entièrement paramétrables et illimités.
 - Une organisation (Mairie, Association,...) est composée d'un nom, d'une adresse, une zone (vacances scolaires) et d'un logo
 - Une organisation a une ou plusieurs structures
 - Un compte utilisateur de type administrateur est associé à une organisation lors de l'inscription 
-- Cet administrateur peut paramétrer les données variables de l'organisation commes les Structures, les Type de prestations (Repas, Garderie, Activité,...) ou les Tarifs
+- Cet administrateur peut paramétrer les données variables de l'organisation comme les Structures, les Type de prestations (Repas, Garderie, Activité,...) ou les Tarifs
 - Un administrateur peut ajouter d'autres utilisateurs
 
 ### Structures
@@ -52,7 +52,7 @@ Les prestations et les tarifs sont entièrement paramétrables et illimités.
 
 ### Prestations
 
-A lieu, chaque matin, dès potron-minet, la comptabilisation automatique des prestations consommées la veille
+À lieu, chaque matin, dès potron-minet, la comptabilisation automatique des prestations consommées la veille
 
 Cette comptabilisation est effectuée sur la base des réservations actives
 
@@ -66,7 +66,7 @@ Les prestations sont comptabilisées en fonction de la période, Scolaire/HorsSc
 
 Les prestations ne sont PAS comptabilisées si une absence existe pour ce jour
 
-Une ligne de prestation est ajoutée à la liste des prestations de l'enfant quand toutes les conditions précedents sont remplies
+Une ligne par prestation est ajoutée à la liste des prestations de l'enfant quand toutes les conditions précédentes sont remplies
 
 Au besoin, une prestation peut être supprimée par l'administrateur afin de ne pas apparaître sur la prochaine facture
 
@@ -74,13 +74,13 @@ Au besoin, une prestation peut être supprimée par l'administrateur afin de ne 
 
 - Les prestations consommées sont facturées à la demande, pour tous les comptes d'une organisation
 
-- Une facture est crée par mois et par compte. Y figure le détail des prestations par enfant
+- Une facture est créée par mois et par compte. Y figure le détail des prestations par enfant
 
 - Les prestations sont facturées selon le tarif auquel est soumis l'enfant
 
 - Les factures peuvent être envoyées, en lot, via courriel
 
-- Un export au format XLS (Excel 97-2003) est disponible. Il génére une feuille de calcul listant en détails toutes les factures d'une organisation
+- Un export au format XLS (Excel 97-2003) est disponible. Il génère une feuille de calcul listant en détails toutes les factures d'une organisation
 
 ### Tarifs
 
