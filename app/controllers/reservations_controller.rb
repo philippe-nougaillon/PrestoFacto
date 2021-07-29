@@ -39,6 +39,10 @@ class ReservationsController < ApplicationController
       @reservations = @reservations.joins(:enfant).where("enfants.nom ILIKE ? OR enfants.prénom ILIKE ?", "%#{params[:nom]}%", "%#{params[:nom]}%")       
     end
 
+    unless params[:state].blank?
+      @reservations = @reservations.where("reservations.workflow_state = ?", params[:state].to_s.downcase)
+    end
+
     # Appliquer le tri
     @reservations = @reservations.joins(:enfant => :classroom).reorder(Arel.sql("#{sort_column} #{sort_direction}"))
 

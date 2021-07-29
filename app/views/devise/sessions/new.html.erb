@@ -1,58 +1,24 @@
-<div class="row">
+<div class="col-sm-5 mx-auto shadow p-3 mb-5 bg-body rounded">
+  <p class="h1 mt-2 mb-5 text-center"><%= @site_name %></p>
+  <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
 
-  <div class="col-sm-9">
-    <div class="shadow-sm p-1 mb-1">
-      <div class="container">
-        <h3><br><%= @site_name %></h3>
-
-        <h6 class="text-primary">
-          <i>
-            aide les petites organisations dans la gestion et la facturation de leurs prestations journalières
-          </i>
-        </h6>
-        <br>
-
-        <%= @site_name %> est destiné aux petites collectivités, mairies, écoles, et  
-        vous aidera dans l’organisation de votre mairie/association et vous 
-        fera gagner un temps précieux en simplifiant la gestion administrative et la
-        facturation de vos cantines, services péri-scolaires et autres prestations. 
-        <%= link_to 'En savoir plus...', guide_a_propos_url %> |
-        <%= link_to "Guide d'utilisation", guide_utilisation_url %>
-
-        <div class="pb-2 mt-4 mb-2 border-bottom text-secondary">
-          Mises à jour
-        </div>
-        
-        <%= render Blog.all %>
-      
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-3">
-    <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-      <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
-
-      <% if devise_mapping.rememberable? %>
-        <div class="checkbox">
-          <%= f.check_box :remember_me, custom: :switch %>
-        </div>
-      <% end %>
-      <br />
-
-      <div class="actions">
-        <%= f.submit "Se connecter", class: "btn btn-primary btn-md" %>
-
-        <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-link" %> 
-
+    <% if devise_mapping.rememberable? %>
+      <div class="checkbox">
+        <%= f.check_box :remember_me, custom: :switch %>
       </div>
     <% end %>
-    <br />
-  
-    <%= render "devise/shared/links" %>
-  </div>
+    <br>
 
+    <div class="actions">
+      <%= f.submit "Se connecter", class: "btn btn-outline-success btn-sm" %>
+
+      <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-outline-primary btn-sm me-2" %> 
+
+    </div>
+  <% end %>
+  <br>
+
+  <%= render "devise/shared/links" %>
 </div>
-
-

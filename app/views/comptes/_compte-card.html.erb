@@ -87,7 +87,7 @@
               <% end %>
               |
               <% if policy(Paiement).new? %>
-                <%= link_to new_paiement_path(compte_id: @compte.id), data: {toggle: "modal", target: "#myModalNewPaiement" }, class: "btn btn-sm" do %>
+                <%= link_to new_paiement_path(compte_id: @compte.id), data: {'bs-toggle': "modal", 'bs-target': "#myModalNewPaiement" }, class: "btn btn-sm" do %>
                   <i class="far fa-money-bill-alt"></i> Ajouter un paiement
                 <% end %>
               <% end %>

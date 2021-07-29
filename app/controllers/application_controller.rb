@@ -13,14 +13,14 @@ class ApplicationController < ActionController::Base
     if resource.visiteur?
       moncompte_index_path
     else
-      root_path
+      comptes_path
     end
   end
 
 private
     def set_layout_variables
       @site_name = "PrestoFacto"
-      version = "v5.6.a"
+      version = "v5.8"
       @site_name_and_version = @site_name + ' ' + version
 
       @ctrl = params[:controller]

@@ -1,0 +1,5 @@
+<% if notice.present? or alert.present? %>
+  <div class="alert alert-<%= notice ? 'success' : 'danger' %>" role="alert">
+    <%= notice ? notice : alert %>
+  </div>
+<% end %>

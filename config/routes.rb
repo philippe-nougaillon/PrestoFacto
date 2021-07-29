@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :messages
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   devise_for :users, controllers: { registrations: 'registrations' }
@@ -51,11 +52,13 @@ Rails.application.routes.draw do
     post :envoyer_factures_do
   end
 
-  namespace :guide do
+  namespace :pages do
+    get :welcome
     get :a_propos
-    get :utilisation
+    get :guide
+    get :blog
   end
   
-  root 'comptes#index'
+  root 'pages#welcome'
 
 end

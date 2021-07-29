@@ -4,6 +4,24 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= display_meta_tags site: @site_name_and_version, description: 'logiciel gestion cantine scolaire gratuit' %>
 
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-173642532-1"></script>
     <script>
@@ -18,85 +36,64 @@
     <%= csp_meta_tag %>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    
+    <script type="text/javascript" src="/tarteaucitron.js-1.9.3/tarteaucitron.js"></script>
+
+    <script type="text/javascript">
+        tarteaucitron.init({
+    	  "privacyUrl": "", /* Privacy policy url */
+
+    	  "hashtag": "#tarteaucitron", /* Open the panel with this hashtag */
+    	  "cookieName": "tarteaucitron", /* Cookie name */
+    
+    	  "orientation": "middle", /* Banner position (top - bottom) */
+       
+          "groupServices": false, /* Group services by category */
+                           
+    	  "showAlertSmall": false, /* Show the small banner on bottom right */
+    	  "cookieslist": true, /* Show the cookie list */
+                           
+          "closePopup": false, /* Show a close X on the banner */
+
+          "showIcon": true, /* Show cookie icon to manage cookies */
+          //"iconSrc": "", /* Optionnal: URL or base64 encoded image */
+          "iconPosition": "BottomRight", /* BottomRight, BottomLeft, TopRight and TopLeft */
+
+    	  "adblocker": false, /* Show a Warning if an adblocker is detected */
+                           
+          "DenyAllCta" : true, /* Show the deny all button */
+          "AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
+          "highPrivacy": true, /* HIGHLY RECOMMANDED Disable auto consent */
+                           
+    	  "handleBrowserDNTRequest": false, /* If Do Not Track == 1, disallow all */
+
+    	  "removeCredit": false, /* Remove credit link */
+    	  "moreInfoLink": true, /* Show more info link */
+
+          "useExternalCss": false, /* If false, the tarteaucitron.css file will be loaded */
+          "useExternalJs": false, /* If false, the tarteaucitron.js file will be loaded */
+                          
+          "readmoreLink": "", /* Change the default readmore link */
+
+          "mandatory": true, /* Show a message about mandatory cookies */
+        });
+    </script>
+
+    <script type="text/javascript">
+        tarteaucitron.user.gtagUa = 'UA-173642532-1';
+        (tarteaucitron.job = tarteaucitron.job || []).push('gtag');
+    </script>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>  
   </head>
 
   <body>
-    <div class="row">
-      <div class="col">
-        <ul class="nav nav-tabs flex-column">
-          <a class="navbar-brand" href="/">
-            <nav class="navbar" style="height: 55px;">
-              <%= @site_name %>
-            </nav>
-          </a>
+    <%= render 'partials/nav' %>
 
-          <span class="navbar-text"></span>
-
-          <% if current_user %>
-
-            <% if current_user.visiteur? %>
-              <%= navbar_nav_item('moncompte', 'users',  moncompte_index_path) %>
-            <% else %>
-              <%= navbar_nav_item('comptes', 'users', comptes_path) %>
-              <%= navbar_nav_item('enfants', 'child', enfants_path) %>
-              <%= navbar_nav_item('réservations', 'calendar-alt', reservations_path) %>
-              <%= navbar_nav_item('absences', 'calendar-times', absences_path) %>
-              <%= navbar_nav_item('prestations', 'utensils', prestations_path) %>
-              <%= navbar_nav_item('factures', 'file-invoice', factures_path) %>
-              <%= navbar_nav_item('paiements', 'money-bill-alt', paiements_path) %>
-            <% end %>
-
-            <li class="nav-item">
-              <a class="nav-link text-secondary disabled" href="#"></a>
-            </li>
-
-            <span class="navbar-text"></span>
-
-            <%= navbar_nav_item('admin', 'users-cog', admin_index_path) if current_user.admin? %>
-
-            <li class="nav-item">
-              <%= link_to destroy_user_session_path, method: :delete, title: "Fermer la session de #{current_user.email}", class: "nav-link text-secondary" do %><i class="fas fa-fw fa-sign-out-alt"></i></span> Déconnexion<% end %> 
-            </li>
-          <% else %>
-            <%= navbar_nav_item('Accueil', 'home', new_user_session_path) %>
-            <%= navbar_nav_item('a_propos', 'info-circle', guide_a_propos_path) %>
-            <%= navbar_nav_item("guide d'utilisation", 'book', guide_utilisation_path) %>
-
-            <% if false %>
-              <li class="nav-item">
-                <%= link_to admin_mode_demonstration_path, class: "nav-link" do %>
-                  <%= fa_icon "eye", text: " Mode démonstration"%>
-                <% end %>
-              </li>
-            <% end %>
-
-          <% end %>
-        </ul>
-      </div>
-
-      <div class="col-md-10">
-
-        <%= render 'partials/nav' %>
-          
-        <div class="alert alert-highlight text-center" style="height: 25px;">
-          <% if notice.present? or alert.present? %>
-            <aside class="text-<%= notice ? 'success' : 'danger' %>">
-              <%= notice ? notice : alert %>
-            </aside>
-          <% end %>
-        </div>
-
-        <div class="container-fluid">
-
-          <%= yield %>
-          
-        </div>
-      </div>
+    <div class="container mt-3">
+      <%= render 'partials/alert' %>
+      <%= yield %>
     </div>
   </body>
 

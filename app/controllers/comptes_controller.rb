@@ -53,7 +53,7 @@ class ComptesController < ApplicationController
     @compte = Compte.new
     @compte.organisation = current_user.organisation
     
-    3.times { @compte.contacts.build }
+    2.times { @compte.contacts.build }
   end
 
   # GET /comptes/1/edit

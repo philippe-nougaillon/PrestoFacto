@@ -1,0 +1,36 @@
+<div class="px-4 mb-4 text-center">
+  <h1 class="display-5">Nous contacter</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead fw-lighter">
+      Vous avez une question ou vous souhaitez que l'on vous contacte ?
+      <br>Vos remarques et propositions sont les bienvenues 
+      <br>et nous aident à améliorer l'application.
+    </p>
+  </div>
+</div>
+
+<div class="col-sm-8 shadow p-3 mb-5 bg-body rounded mx-auto">
+  <%= bootstrap_form_with(model: message, local: true) do |form| %>
+    <% if message.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(message.errors.count, "erreur(s)") %> empêche(nt) ce message d'être envoyé :</h2>
+
+        <ul>
+          <% message.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form.text_field :email, placeholder: 'E-mail*' %>
+    <%= form.select :objet, options_for_select(['Question', 'Offre standard', 'Offre premium', 'Remarque', "Proposition d'amélioration", 'Résiliation', 'Autre']), prompt: 'Choisir un objet' %>
+    <%= form.text_area :contenu, placeholder: 'Message*'%>
+    <small>* Champ requis</small>
+
+    <div class="actions">
+      <%= form.submit 'Envoyer', class: 'btn btn-success' %>
+      <%= link_to 'Retour', root_path, class: 'btn btn-outline-secondary'%>
+    </div>
+  <% end %>
+</div>

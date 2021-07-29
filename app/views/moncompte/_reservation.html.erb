@@ -13,8 +13,8 @@
   <%= form.select :prestation_type_id, options_from_collection_for_select(@compte.organisation.prestation_types, 'id', 'nom', reservation.prestation_type_id), { label: 'Prestation', wrapper: { class: 'has-warning', data: { foo: 'bar' } } }, { class: "selectpicker" } %>
 
   <div class="form-inline">
-    <%= form.date_select :début, label: 'Du :', class: "form-control" %>
-    <%= form.date_select :fin, label: 'Au :', class: "form-control" %>
+    <%= form.text_field :début, label: 'Du :', class: "form-control", type: "date" %>
+    <%= form.text_field :fin, label: 'Au :', class: "form-control", type: "date" %>
   </div>
   
   <div class="row">

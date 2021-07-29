@@ -144,7 +144,7 @@
     </table>
 
     <% if policy(Absence).edit? %>
-      <%= link_to new_absence_path(enfant_id: @enfant), class: 'btn btn-link', data: {toggle: "modal", target: "#myModal" } do %>
+      <%= link_to new_absence_path(enfant_id: @enfant), class: 'btn btn-link', data: {'bs-toggle': "modal", 'bs-target': "#myModal" } do %>
         <%= fa_icon 'plus-circle' %> Ajouter une absence
       <% end %>
     <% end %>
@@ -160,7 +160,7 @@
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">Nouvelle Absence</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></button>
       </div>
 
       <!-- Modal body -->
@@ -195,7 +195,7 @@
     </table>
 
     <% if policy(Prestation).edit? %>
-      <%= link_to new_prestation_path(enfant_id: @enfant), class: 'btn btn-link', data: {toggle: "modal", target: "#myModalPrestation" } do %>
+      <%= link_to new_prestation_path(enfant_id: @enfant), class: 'btn btn-link', data: {'bs-toggle': "modal", 'bs-target': "#myModalPrestation" } do %>
         <%= fa_icon 'plus-circle' %> Ajouter une prestation
       <% end %>
     <% end %>
@@ -211,7 +211,7 @@
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">Nouvelle Prestation</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
       <!-- Modal body -->

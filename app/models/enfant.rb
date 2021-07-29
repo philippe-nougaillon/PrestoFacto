@@ -14,7 +14,7 @@ class Enfant < ApplicationRecord
   has_many :absences
   has_many :prestations
 
-  accepts_nested_attributes_for :reservations, reject_if: proc { |attributes| attributes[:prestation_type_id].blank? or attributes[:début].blank? or attributes[:fin].blank?}, allow_destroy: true
+  accepts_nested_attributes_for :reservations, reject_if: proc { |attributes| attributes[:prestation_type_id].blank? }, allow_destroy: true
 
   validates :compte_id, :classroom_id, :tarif_type_id, :nom, :prénom, :date_naissance, presence: true
 

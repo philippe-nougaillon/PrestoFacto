@@ -1,4 +1,7 @@
 class Organisation < ApplicationRecord
+    extend FriendlyId
+    friendly_id :nom, use: :slugged
+      
     audited
     
     has_one_attached :logo
@@ -27,11 +30,11 @@ class Organisation < ApplicationRecord
     validates :nom, :email, presence: true
 
 
-    def self.create_from_signup(user, organisation, structure)
+    def self.create_from_signup(user, organisation, structure, zone)
         # On crée l'organisation 
         organisation = Organisation.create( nom: organisation, 
                                             email: user.email, 
-                                            zone: 'A')
+                                            zone: zone)
 
         organisation.structures.create(nom: structure)
 
@@ -47,9 +50,40 @@ class Organisation < ApplicationRecord
                     .create(prestation_type: organisation.prestation_types.first, 
                             prix: 1.00)
 
-        # on ajoute l'utilisateur à l'organisation
+        enfant = organisation.comptes.first
+                             .enfants.create(classroom: organisation.classrooms.first, 
+                                    nom: 'TEST', 
+                                    prénom: 'Martin', 
+                                    date_naissance: Date.today,
+                                    tarif_type: organisation.tarif_types.first)
+
+        enfant.reservations.create(prestation_type: organisation.prestation_types.first,
+                                    début: Date.today,
+                                    fin: Date.today.end_of_year,
+                                    lundi: 1,
+                                    mardi: 1,
+                                    mercredi: 1,
+                                    jeudi: 1,
+                                    vendredi: 1,
+                                    midi: true,
+                                    workflow_state: 'validée')
+
+        # on surclasse l'utilisateur et on l'ajoute à l'organisation
         user.update(role: 'admin')
         organisation.users << user
+    end
+
+    def vacances_été 
+        été = Vacance
+                .where(zone: self.zone)
+                .where(nom: "Vacance d'été")
+                .where("EXTRACT(YEAR FROM vacances.début) = ?", Date.today.year)
+
+        if été.any?
+            été.first
+        else
+            Vacance.new(début: Date.today.end_of_year - 1.year, fin: Date.today)
+        end    
     end
 
 end

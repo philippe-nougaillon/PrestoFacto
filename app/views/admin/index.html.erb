@@ -9,7 +9,7 @@
       <li class="list-group-item">
         <h5>
           <%= fa_icon 'city' %> 
-          <%= link_to organisation_url(current_user.organisation), class: "text-dark" do %>Organisation<% end %>
+          <%= link_to organisation_url(current_user.organisation), title: "Organisation, Structures, Vacances", class: "text-dark" do %>Organisation<% end %>
         </h5>
       </li>
 
@@ -27,7 +27,7 @@
       <li class="list-group-item">
         <h5>
           <%= fa_icon 'euro-sign' %>
-          <%= link_to admin_tarifs_url, class: "text-dark" do %>Tarifs<% end %>
+          <%= link_to admin_tarifs_url, title: "Tarifs, Types de tarifs et de Prestations", class: "text-dark" do %>Tarifs<% end %>
         </h5>
       </li>
 
@@ -88,3 +88,5 @@
   </div>
 
 </div>
+
+<%= render partial: "dashboard", locals: { organisation: current_user.organisation } %>

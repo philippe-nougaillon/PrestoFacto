@@ -2,9 +2,10 @@
   <h2><%= fa_icon 'file-invoice' %> Factures</h2>
 </div>
 
-<%= bootstrap_form_tag url: action_factures_path do |f| %>
+<%= bootstrap_form_tag url: factures_path, method: :get do |f| %>
   <div class="row">
     <div class="col"><%= f.text_field :search, value: params[:search], label:"Nom du compte/Référence facture", onchange: "this.form.submit()", autofocus: true %></div>
+    <div class="col-sm-2"><%= f.select :state, options_for_select(Facture.workflow_spec.states.keys.to_a, params[:state]), { include_blank: true, label: 'État' }, { onchange: "this.form.submit()" } %></div>
     <div class="col-sm-2"><%= f.date_field :date_début, value: params[:date_début], onchange: "this.form.submit()" %></div>
     <div class="col-sm-2"><%= f.date_field :date_fin, value: params[:date_fin], onchange: "this.form.submit()" %></div>
   </div>
@@ -33,16 +34,20 @@
       <tfoot><tr><th colspan=11></th></tr></tfoot>
     </table>
 
-    <div class="input-group">
-      <%= select_tag :action_name, 
-                          options_for_select(["Passer à l'état 'vérifiée'", "Envoyer"]), 
-                          include_blank: true, 
-                          class: 'form-control form-control-sm col-sm-3',
-                          data: {'action-target': 'selector'} %>
-      <div class="input-group-append">
-        <%= submit_tag 'ok',  name: 'action', 
-                              class: 'btn btn-sm btn-outline-success',
-                              data: {'action-target': 'button'} %>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="input-group">
+          <%= select_tag :action_name, 
+                              options_for_select(["Passer à l'état 'vérifiée'", "Envoyer"]), 
+                              include_blank: true, 
+                              class: 'form-control form-control-sm',
+                              data: {'action-target': 'selector'} %>
+          <div class="input-group-append">
+            <%= submit_tag 'ok',  name: 'action', 
+                                  class: 'btn btn-sm btn-outline-success',
+                                  data: {'action-target': 'button'} %>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -55,7 +60,7 @@
 
 <% if policy(Facture).to_xls? && !@factures.size.zero? %>
   <%= link_to url_for(params.permit(:structure_id, :date_début, :date_fin, :search).merge(format: :xls)),
-              class: "float-sm-right" do %>
+              class: "float-sm-end" do %>
       <%= fa_icon "file-excel", text: " Export XLS" %>
   <% end %>
 <% end %>

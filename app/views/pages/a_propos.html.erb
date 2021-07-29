@@ -1,47 +1,57 @@
-<h2>
+<h1 class="fw-light mb-5">
     A propos de <%= @site_name %>
-    <br><br>
-</h2>
-
+</h1>
 <h4 class="text-primary">Pour qui ?<hr></h4>
-<p class="lead text-justify">
-    <%= @site_name %> est destinée aux petites collectivités, mairies, écoles, centre de loisirs... 
-    Cette solution vous aidera dans l’organisation de votre mairie et vous fera gagner un temps précieux en simplifiant 
-    la gestion administrative et la facturation de vos cantines et services péri-scolaires.
+<p class="lead">
+    <%= @site_name %> est destinée aux petites collectivités, associations, mairies, écoles, centre de loisirs... 
+    Cette solution vous aidera dans l’organisation de votre association et vous fera gagner un temps précieux en simplifiant 
+    la gestion administrative et la facturation de vos cantines et services périscolaires.
 </p>
 
 <h4 class="text-primary">Comment ça marche ?<hr></h4>
-<p class="lead text-justify">
-    Vous disposez d’un ordinateur et d’un accès internet : alors vous avez déjà toute l’infrastructure nécessaire pour utiliser 
+<p class="lead">
+    Vous disposez d’un ordinateur(PC/MAC) et d’un accès internet : alors vous avez déjà toute l’infrastructure nécessaire pour utiliser 
     nos solutions ! 100% web, vous accédez à volonté à votre plateforme dédiée, nous nous chargeons d’héberger et de sécuriser vos données.
 </p>
 
 <h4 class="text-primary">Un logiciel simple, évolutif et innovant<hr></h4>
-<p class="lead text-justify">
+<p class="lead">
     Conçu avec pour objectif la simplicité d'utilisation et de maintenance, 
-    ce logiciel de facturation de cantine et autres services permet une gestion efficace des familles, 
+    ce logiciel permet une gestion efficace des familles, 
     enfants, réservations, absences et la facturation des prestations. 
     Deux modules vous permettent d'assurer le suivi de vos Factures et Paiements.
 </p>
 
+<h4 class="text-primary">Développé en communauté<hr></h4>
+<p class="lead">
+    Les sources de l'application sont disponibles ici : 
+    <a href="https://github.com/philippe-nougaillon/PrestoFActo" rel="noopener noreferrer" target="_blank">https://github.com/philippe-nougaillon/PrestoFActo</a>
+    <br>
+    Vos remarques et propositions sont les bienvenues et nous aident à améliorer l'application.
+</p>
+
 <h4 class="text-primary">Un usage simplifié<hr></h4>
-<ul>
+<ul class="lead">
     <li>Prise en main immédiate</li>
     <li>Une comptabilité simple par famille. Une facture par mois avec solde. Balance famille</li>
     <li>Ne dépend pas d'une société. Code source librement disponible.</li>
 </ul>
-         
+      
 <h4 class="text-primary">Une informatique 'dans le nuage'<hr></h4>
-<ul>
+<ul class="lead">
     <li>Pas de logiciel à installer, un simple navigateur Internet suffit</li>
     <li>Pas de mise à jour à gérer, l'application est mise à jour automatiquement</li>
-    <li>Nombre d'utilisateurs illimité. Droits d'accès lecture seule pour les invités</li>
-    <li>Pas de serveur à installer et à administer. Pas de sauvegardes à gérer</li>
+    <li>Nombre d'utilisateurs illimité. Droits d'accès en lecture seule pour les invités</li>
+    <li>Pas de serveur à installer et à administrer. Pas de sauvegarde à gérer</li>
 </ul>
 <br />
 
+<div class="text-center">
+    <%= image_tag 'logo.jpg' %>
+</div>
+
 <div class="pb-2 mt-4 mb-2 border-bottom">
-    <h2>Les modules </h2>
+    <h1 class="fw-light mb-2">Les modules </h1>
 </div>
 <br />
 
@@ -51,11 +61,11 @@
             <h4 class="text-primary"><%= fa_icon 'city' %> Organisation</h4>
         </div>
         <p>
-            <ul>
+            <ul class="lead">
                 <li>Une organisation (Mairie, Association,...) est composée d'un nom, d'une adresse, une zone (vacances scolaires) et d'un logo</li>
                 <li>Une organisation a une ou plusieurs structures</li>
                 <li>Un compte utilisateur de type administrateur est associé à une organisation lors de l'inscription</li> 
-                <li>Cet administrateur peut paramétrer les données variables de l'organisation commes les Structures, les Type de prestations (Repas, Garderie, Activité,...) ou les Tarifs</li>
+                <li>Cet administrateur peut paramétrer les données variables de l'organisation comme les Structures, les Types de prestations (Repas, Garderie, Activité,...) ou les Tarifs</li>
                 <li>Un administrateur peut ajouter d'autres utilisateurs</li>
             </ul>
         </p>
@@ -65,8 +75,8 @@
             <h4 class="text-primary"><%= fa_icon 'school' %> Structures</h4>
         </div>
         <p>
-            <ul>
-                <li>Une structure est composée d'un nom (Ecole, Cantine, Garderie, Halte, Centre périscolaire,...)</li>
+            <ul class="lead">
+                <li>Une structure est composée d'un nom (École, Cantine, Garderie, Halte, Centre périscolaire,...)</li>
                 <li>Une structure contient des classes</li>
                 <li>Une structure contient des comptes</li>
                 <li>Une organisation peut avoir plusieurs structures (illimité)</li>
@@ -81,9 +91,9 @@
             <h4 class="text-primary"><%= fa_icon 'users' %> Comptes</h4>
         </div>
         <p>
-            <ul>
+            <ul class="lead">
                 <li>Un compte est attaché à une organisation</li>
-                <li>Un compte est composé d'un nom, d'une adresse, un numéro d'allocataire et un mémo</li>
+                <li>Un compte est composé d'un nom, d'une adresse, un numéro d'allocataire et d'un mémo</li>
                 <li>Un compte contient les coordonnées des personnes à contacter</li>
                 <li>Un compte contient les enfants</li>
                 <li>Un compte contient les factures</li>
@@ -98,7 +108,7 @@
             <h4 class="text-primary"><%= fa_icon 'child' %> Enfants</h4>
         </div>
         <p>
-            <ul>
+            <ul class="lead">
                 <li>Un enfant est associé à un compte (famille)</li>
                 <li>Un enfant est lié à une structure et à une classe</li>
                 <li>Un enfant est composé d'un nom, prénom, date de naissance, N° de badge, préférences alimentaires (sans porc, sans allergènes) et d'un tarif</li>
@@ -111,7 +121,7 @@
             <h4 class="text-primary"><%= fa_icon 'calendar-times' %> Absences</h4>
         </div>
         <p>
-            <ul>
+            <ul class="lead">
                 <li>Une absence est liée à un enfant</li>
                 <li>Une absence est composée d'un début, d'une fin, d'une période (matin/midi/soir)</li>
             </ul>
@@ -124,14 +134,14 @@
     <h4 class="text-primary"><%= fa_icon 'calendar-alt' %> Réservations</h4>
 </div>
 <p>
-    <ul>
-        <li>Une réservation est composée d'un type de prestation, d'une date de début et de fin, d'une quantité par jour de la semaine (lundi au vendredi), de la période (matin/midi/soir)</li>
+    <ul class="lead">
+        <li>Une réservation est composée d'un Type de prestation, d'une date de début et de fin, d'une quantité par jour de la semaine (lundi au vendredi), de la période (matin/midi/soir)</li>
         <li>Une réservation est en période scolaire ou hors période scolaire</li>
         <li>Une réservation peut être active ou inactive</li>
         <li>
             Exemple:
-            <ul>
-                <li>Mathieu PETIT a une réservation pour un Repas, tous les jours sauf mercredi</li>
+            <ul class="lead">
+                <li>Mathieu PETIT a une réservation pour un Repas, tous les jours de la semaine sauf le mercredi</li>
                 <li>Mathieu PETIT a une réservation pour 1 heure de Garderie, tous les jours, le matin, sauf mercredi</li>
                 <li>Mathieu PETIT a une réservation pour 1,5 heure de Garderie, tous les jours, le soir, sauf mercredi</li>
                 <li>Mathieu PETIT a une réservation pour 1 jour de Centre, tous les jours pendant les vacances scolaires (HorsPériodeScolaire)</li>
@@ -143,18 +153,20 @@
 <div class="pb-1 mt-2 mb-1 border-bottom">
   <h4 class="text-primary"><%= fa_icon 'utensils' %> Prestations</h4>
 </div>
+<p class="lead">
+    À lieu, chaque matin, dès potron-minet, la comptabilisation automatique des prestations consommées la veille.
+    Cette comptabilisation est effectuée sur la base des réservations actives
+</p>
 <p>
-    <ul>
-        <li>A lieu, chaque matin, dès potron-minet, la comptabilisation automatique des prestations consommées la veille</li>
-        <li>Cette comptabilisation est effectuée sur la base des réservations actives</li>
+    <ul class="lead">
         <li>Les prestations sont comptabilisées en fonction de la période, Scolaire/HorsScolaire :</li>
-        <ul>
+        <ul class="lead">
             <li>sont comptabilisées les prestations dont la réservation n'est PAS "Hors Période Scolaire" si c'est un jour hors période de vacances scolaires</li>
             <li>sont comptabilisées les prestations dont la réservation est "Hors Période Scolaire" si ce n'est PAS un jour en période de vacances scolaires</li>
             <li>sont comptabilisées les prestations dont la réservation n'est PAS "Hors Période Scolaire" si ce jour n'est pas en période de vacances scolaires</li>
         </ul>
         <li>Les prestations ne sont PAS comptabilisées si une absence existe pour ce jour</li>
-        <li>Une ligne de prestation est ajoutée à la liste des prestations de l'enfant quand toutes les conditions précedents sont remplies</li>
+        <li>Une ligne par prestation est ajoutée à la liste des prestations de l'enfant quand toutes les conditions précédentes sont remplies</li>
         <li>Au besoin, une prestation peut être supprimée par l'administrateur afin de ne pas apparaître sur la prochaine facture</li>
     </ul>
 </p>
@@ -163,12 +175,12 @@
     <h4 class="text-primary"><%= fa_icon 'file-invoice' %> Factures</h4>
 </div>
 <p>
-    <ul>
+    <ul class="lead">
         <li>Les prestations consommées sont facturées à la demande, pour tous les comptes d'une organisation</li>
-        <li>Une facture est crée par mois et par compte. Y figure le détail des prestations par enfant</li>
+        <li>Une facture est créée par mois et par compte. Y figure le détail des prestations par enfant</li>
         <li>Les prestations sont facturées selon le tarif auquel est soumis l'enfant</li>
         <li>Les factures peuvent être envoyées, en lot, via courriel</li>
-        <li>Un export au format XLS (Excel 97-2003) est disponible. Il génére une feuille de calcul listant en détails toutes les factures d'une organisation</li>
+        <li>Un export au format XLS (Excel 97-2003) est disponible. Il génère une feuille de calcul listant en détails toutes les factures d'une organisation</li>
     </ul>
 </p>
 
@@ -178,9 +190,9 @@
             <h4 class="text-primary"><%= fa_icon 'euro-sign' %> Tarifs</h4>
         </div>
         <p>
-            <ul>
-                <li>Un tarif est le prix d'un type de Prestation selon un type de Tarif</li>
-                <li>Les types de prestations (Cantine, Garderie, etc.) sont configurables à votre convenance</li>
+            <ul class="lead">
+                <li>Un tarif est le prix d'un Type de prestation selon un type de Tarif</li>
+                <li>Les Types de prestations (Cantine, Garderie, etc.) sont configurables à votre convenance</li>
                 <li>Les types de tarifs (Plein, Demi-tarif, QF1/2/3/4/5, etc...) aussi</li>
             </ul>
         </p>
@@ -190,7 +202,7 @@
             <h4 class="text-primary"><i class="far fa-money-bill-alt"></i> Paiements</h4>
         </div>
         <p>
-            <ul>
+            <ul class="lead">
                 <li>Les paiements reçus sont enregistrés afin d'établir une balance de compte</li>
                 <li>Chaque compte dispose d'un relevé qui liste l'ensemble des opérations (factures/paiements) et le soles après chaque opération</li>
                 <li>La liste des paiements peut s'exporter au format XLS</li>
@@ -204,9 +216,9 @@
 </div>
 
 <p>
-    <ul>
+    <ul class="lead">
         <li>Importation des données:</li>
-        <ul>
+        <ul class="lead">
             <li>
                 Les données de compte, contact, enfant, réservation peuvent être importées d'un fichier au format Excel 97-2003 (.xls).
                 Ce fichier doit contenir les colonnes suivantes :
@@ -217,98 +229,17 @@
         </ul>
         <br />
         <li>Audit des modifications:</li>
-        <ul>
+        <ul class="lead">
             <li>
                 Chaque modification de donnée est enregistrée dans un journal, avec la date, l'utilisateur, la table, le champs et la valeur avant/après modification.
             </li>
         </ul>
         <br />        
         <li>Utilisateurs:</li>
-        <ul>
+        <ul class="lead">
             <li>
                 Il existe trois types de compte utilisateur; visiteur, normal ou administrateur. 
             </li>
         </ul>
     </ul>
-</p>
-<br />
-
-<div class="pb-2 mt-4 mb-2 border-bottom">
-    <h2 class="text-primary">Les formules d'abonnement à <%= @site_name %></h2>
-</div>
-
-<div class="row">
-    <div class="col">
-        <div class="card" style="height: 400px">
-            <div class="card-header text-center">
-                <h5>Basique</h5>
-            </div>
-            <div class="card-body">
-                <ul>
-                    <li>Utilisation libre et illimitée</li>
-                </ul>
-            </div>
-            <div class="card-footer text-center">
-                0 €
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card" style="height: 400px">
-            <div class="card-header text-center">
-                <h5>Personnalisée</h5>
-            </div>
-            <div class="card-body">
-                <ul>
-                    <li>Utilisation libre et illimitée</li>
-                    <li>Accès par un sous-domaine personnalisé.<br> ex: https://mon-organisation.<%= @site_name.downcase %>.fr</li>
-                    <li>Une sauvegarde des données par 24h</li>
-                    <li>Support par email</li>
-                </ul>
-            </div>
-            <div class="card-footer text-center">
-                49 €
-                <small>TTC par mois</small>
-            </div>
-        </div>
-    </div>
-    <div class="col">
-        <div class="card" style="height: 400px">
-            <div class="card-header text-center">
-                <h5>Hébergée</h5>
-            </div>
-            <div class="card-body">
-                <ul>
-                    <li>Utilisation libre et illimitée</li>
-                    <li>Accès par votre nom de domaine.<br> ex: https://<%= @site_name.downcase %>.votre-domaine.fr</li>
-                    <li>Serveur virtuel dédié</li>
-                    <li>Sauvegarde automatique toutes les heures</li>
-                    <li>Support téléphonique</li>
-                </ul>
-            </div>
-            <div class="card-footer text-center">
-                99 €
-                <small>TTC par mois</small>
-            </div>
-        </div>
-    </div>
-</div>
-<br />
-
-<div class="pb-2 mt-4 mb-2 border-bottom">
-  <h4 class="text-primary"><%= fa_icon 'tools' %> Sources</h4>
-</div>
-<p>
-    Les sources de l'application (Ruby on Rails) 
-    <a href="https://github.com/philippe-nougaillon/PrestoFActo" rel="noopener noreferrer" target="_blank">sont disponibles sur Github</a>
-</p>
-
-<div class="pb-2 mt-4 mb-2 border-bottom">
-  <h4 class="text-primary"><%= fa_icon 'comments' %> Me contacter</h4>
-</div>
-
-<p>
-    Vos remarques et propositions sont les bienvenues et m'aident à améliorer l'application. 
-    <br>
-    <%= mail_to 'philippe.nougaillon@gmail.com' %> 
 </p>
