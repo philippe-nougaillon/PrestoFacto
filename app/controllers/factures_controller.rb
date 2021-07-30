@@ -53,7 +53,6 @@ class FacturesController < ApplicationController
 
   def action
     return unless params[:factures_id]
-
     factures = Facture.where(id: params[:factures_id].keys)
 
     case params[:action_name]
@@ -163,14 +162,14 @@ class FacturesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_facture
-      #@facture = Facture.friendly.find(params[:id])
       @facture = Facture.find_by(slug: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def facture_params
-      params.require(:facture).permit(:compte_id, :réf, :date, :échéance, :envoyée_le, :montant, :vérifiée, :mémo, :workflow_state,
-                                        facture_lignes_attributes: [:id, :facture_id, :prestation_type_id, :intitulé, :qté, :prix, :total ,:_destroy])
+      params.require(:facture)
+            .permit(:compte_id, :réf, :date, :échéance, :envoyée_le, :montant, :vérifiée, :mémo, :workflow_state, 
+                    facture_lignes_attributes: [:id, :facture_id, :prestation_type_id, :intitulé, :qté, :prix, :total ,:_destroy])
     end
 
     def sortable_columns
