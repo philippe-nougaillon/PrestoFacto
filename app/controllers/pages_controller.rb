@@ -12,4 +12,10 @@ class PagesController < ApplicationController
 
   def blog
   end
+
+  def confidentialite
+  end
+
+  def conditions_generales_de_vente
+  end
 end
