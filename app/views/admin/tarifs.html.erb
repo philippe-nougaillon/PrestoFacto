@@ -52,7 +52,7 @@
             <% @organisation.tarif_types.each do |tarif_type| %>
                 <tr>
                     <td><%= link_to tarif_type.nom, edit_tarif_type_path(tarif_type) %></td>
-                    <td class="text-right col-sm-1">
+                    <td class="text-end col-sm-1">
                         <% if policy(tarif_type).destroy? %>
                             <%= link_to tarif_type, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
                                 <%= fa_icon 'trash-alt' %>
@@ -81,7 +81,7 @@
             <% @organisation.prestation_types.each do |prestation_type| %>
                 <tr>
                     <td><%= link_to prestation_type.nom, edit_prestation_type_path(prestation_type) %></td>
-                    <td class="text-right col-sm-1">
+                    <td class="text-end col-sm-1">
                         <% if policy(prestation_type).destroy? %>
                             <%= link_to prestation_type, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
                                 <%= fa_icon 'trash-alt' %>

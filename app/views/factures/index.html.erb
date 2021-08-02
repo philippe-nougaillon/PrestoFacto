@@ -23,7 +23,6 @@
           <th><%= sort_link 'comptes.nom', 'Compte' %></th>
           <th><%= sort_link 'factures.envoyée_le', 'Envoyée le' %></th>
           <th><%= sort_link 'factures.montant', 'Montant' %></th>
-          <th><%= sort_link 'factures.vérifiée', 'Vérifiée?' %></th>
           <th><%= sort_link 'factures.mémo', 'Mémo' %></th>
           <th><%= sort_link 'factures.workflow_state', 'Etat' %></th>
           <th colspan="2"></th>
@@ -34,7 +33,27 @@
         <%= render @factures.includes(:compte) %>
       </tbody>
 
-      <tfoot><tr><th colspan=11></th></tr></tfoot>
+      <tfoot>
+        <tr>
+          <td colspan=5 class="text-end">
+            Total page :
+          </td>
+          <td class="text-end">
+            <%= number_to_currency(@total_page, unit: '€', precision: 2, format: '%n %u') %>
+          </td>
+          <th colspan=5></th>
+        </tr>
+        
+        <tr>
+          <th colspan=5 class="text-end">
+            Total factures :
+          </th>
+          <th class="text-end">
+            <%= number_to_currency(@total_factures, unit: '€', precision: 2, format: '%n %u') %>
+          </th>
+          <th colspan=5></th>
+        </tr>
+      </tfoot>
     </table>
 
     <div class="row">

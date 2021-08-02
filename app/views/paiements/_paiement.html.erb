@@ -5,7 +5,7 @@
     <td><%= paiement.mode %></td>
     <td><%= paiement.banque %></td>
     <td><%= paiement.chèque_num %></td>
-    <td class="text-right"><%= number_to_currency(paiement.montant, unit: '€', precision: 2, format: "%n %u") %></td>
+    <td class="text-end"><%= number_to_currency(paiement.montant, unit: '€', precision: 2, format: "%n %u") %></td>
     <td><%= l paiement.date_remise if paiement.date_remise %></td>
     <td><%= paiement.mémo %></td>
     <td>

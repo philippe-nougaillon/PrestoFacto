@@ -13,9 +13,9 @@
 		<th>Date</th>
 		<th>Type</th>
 		<th>Référence</th>
-		<th class="text-right">Débit</th>
-		<th class="text-right">Crédit</th>
-		<th class="text-right">Solde</th>
+		<th class="text-end">Débit</th>
+		<th class="text-end">Crédit</th>
+		<th class="text-end">Solde</th>
 	</thead>
 
 	<tbody>
@@ -29,9 +29,9 @@
 			<th><%= l Date.today %></th>
 			<th>SOLDE</th>
 			<th></th>
-			<th class="text-right"><%= number_to_currency(@debit, unit:'€') %></th>
-			<th class="text-right"><%= number_to_currency(@credit, unit:'€') %></th>
-			<th class="text-right"><%= number_to_currency(@solde, unit:'€') %></th>
+			<th class="text-end"><%= number_to_currency(@debit, unit:'€') %></th>
+			<th class="text-end"><%= number_to_currency(@credit, unit:'€') %></th>
+			<th class="text-end"><%= number_to_currency(@solde, unit:'€') %></th>
 		</tr>
 	</tfoot>
 	

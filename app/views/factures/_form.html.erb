@@ -17,10 +17,10 @@
   <div class="row shadow-sm p-2">
 
     <div class="col-sm-6">
-      <%= form.date_select :date %>
-      <%= form.date_select :échéance, label: 'Echéance' %>
+      <%= form.date_field :date %>
+      <%= form.date_field :échéance, label: 'Echéance' %>
       <% unless facture.new_record? %>
-        <%= form.datetime_select :envoyée_le, include_blank: true, label: 'Envoyée_le' %>
+        <%= form.datetime_field :envoyée_le, include_blank: true, label: 'Envoyée_le' %>
       <% end %>
     </div>
     

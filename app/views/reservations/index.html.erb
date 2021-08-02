@@ -22,6 +22,7 @@
         <th><%= sort_link 'enfants.nom', 'Enfant' %></th>
         <th><%= sort_link 'enfants.menu_all', 'ALG?' %></th>
         <th><%= sort_link 'enfants.menu_sp', 'SP?' %></th>
+        <th><%= sort_link 'enfants.mémo', 'Mémo' %></th>
         <th><%= sort_link 'reservations.prestation_type_id', 'Prestation' %></th>
         <th><%= sort_link 'reservations.début', 'Début' %></th>
         <th><%= sort_link 'reservations.fin', 'Fin' %></th>
@@ -42,7 +43,20 @@
       <%= render @reservations.includes(:enfant) %>
     </tbody>
 
-    <tfoot><tr><th colspan=18></th></tr></tfoot>
+    <tfoot>
+      <tr>
+        <th colspan=3 class="text-end">
+          Total :
+        </th>
+        <th class="text-center">
+          <%= @total_alg %>
+        </th>
+        <th class="text-center">
+          <%= @total_sp %>
+        </th>
+        <th colspan=14></th>
+      </tr>
+    </tfoot>
 
   </table>
 </div>
