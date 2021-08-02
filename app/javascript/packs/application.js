@@ -19,9 +19,15 @@ require("channels")
 // Importer Bootstrap et ses copains
 // import "jquery";
 // import "popper.js";
-// import "bootstrap";
 
-import 'bootstrap/js/src/modal' 
+import 'bootstrap/js/src/collapse'  
+import 'bootstrap/js/src/dropdown'
+import 'bootstrap/js/src/alert'  
+import 'bootstrap/js/src/scrollspy'
+import 'bootstrap/js/src/modal'
+//import 'bootstrap/js/src/tooltip' 
+// import 'bootstrap/js/src/popover'  
+
 
 import "../stylesheets/application";
 

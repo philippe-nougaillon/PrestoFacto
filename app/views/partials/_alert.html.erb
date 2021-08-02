@@ -1,5 +1,6 @@
 <% if notice.present? or alert.present? %>
-  <div class="alert alert-<%= notice ? 'success' : 'danger' %>" role="alert">
+  <div class="alert alert-dismissible fade show alert-<%= notice ? 'success' : 'danger' %>" role="alert">
     <%= notice ? notice : alert %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 <% end %>
