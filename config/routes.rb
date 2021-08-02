@@ -57,6 +57,8 @@ Rails.application.routes.draw do
     get :a_propos
     get :guide
     get :blog
+    get :confidentialite
+    get :conditions_generales_de_vente
   end
   
   root 'pages#welcome'

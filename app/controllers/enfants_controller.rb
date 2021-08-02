@@ -25,16 +25,26 @@ class EnfantsController < ApplicationController
       @enfants = @enfants.where(classroom_id: params[:classroom_id])      
     end
     
-    unless params[:nom].blank?
-      s = "'%#{params[:nom]}%'"
-      @enfants = @enfants.where(Arel.sql("enfants.nom ILIKE #{s} OR enfants.prénom ILIKE #{s}"))
+    unless params[:search].blank?
+      s = "'%#{params[:search]}%'"
+      @enfants = @enfants.where(Arel.sql("enfants.nom ILIKE #{s} OR enfants.prénom ILIKE #{s} OR enfants.badge ILIKE #{s}"))
     end
 
     # Appliquer le tri
     @enfants = @enfants.reorder(Arel.sql("#{sort_column} #{sort_direction}"))
 
-    # Découper le résultat en pages
-    @enfants = @enfants.page(params[:page])  
+    respond_to do |format|
+      format.html do 
+        @enfants = @enfants.page(params[:page])
+      end
+      format.xls do
+        book = Compte.to_xls(Compte.where(id: @enfants.pluck(:compte_id)))
+        file_contents = StringIO.new
+        book.write file_contents # => Now file_contents contains the rendered file output
+        filename = "Enfants.xls"
+        send_data file_contents.string.force_encoding('binary'), filename: filename 
+      end
+    end
   end
 
   # GET /enfants/1

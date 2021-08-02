@@ -12,28 +12,30 @@
   </div>
 <% end %>
 
-<table class="table table-bordered table-hover table-striped table-sm">
-  <thead>
-    <tr>
-      <th><%= sort_link 'paiements.date', 'Date' %></th>
-      <th><%= sort_link 'comptes.nom', 'Compte' %></th>
-      <th><%= sort_link 'paiements.réf', 'Réf' %></th>
-      <th><%= sort_link 'paiements.mode', 'Mode' %></th>
-      <th><%= sort_link 'paiements.banque', 'Banque' %></th>
-      <th><%= sort_link 'paiements.chèque_num', 'Chèque N°' %></th>
-      <th><%= sort_link 'paiements.montant', 'Montant' %></th>
-      <th><%= sort_link 'paiements.date_remise', 'Date remise' %></th>
-      <th><%= sort_link 'paiements.mémo', 'Mémo' %></th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+<div class="table-responsive">
+  <table class="table table-bordered table-hover table-striped table-sm">
+    <thead>
+      <tr>
+        <th><%= sort_link 'paiements.date', 'Date' %></th>
+        <th><%= sort_link 'comptes.nom', 'Compte' %></th>
+        <th><%= sort_link 'paiements.réf', 'Réf' %></th>
+        <th><%= sort_link 'paiements.mode', 'Mode' %></th>
+        <th><%= sort_link 'paiements.banque', 'Banque' %></th>
+        <th><%= sort_link 'paiements.chèque_num', 'Chèque N°' %></th>
+        <th><%= sort_link 'paiements.montant', 'Montant' %></th>
+        <th><%= sort_link 'paiements.date_remise', 'Date remise' %></th>
+        <th><%= sort_link 'paiements.mémo', 'Mémo' %></th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
 
-  <tfoot><tr><th colspan=11></th></tr></tfoot>
+    <tfoot><tr><th colspan=11></th></tr></tfoot>
 
-  <tbody>
-    <%= render @paiements.includes(:compte) %>
-  </tbody>
-</table>
+    <tbody>
+      <%= render @paiements.includes(:compte) %>
+    </tbody>
+  </table>
+</div>
 
 <%= page_entries_info @paiements %>
 <%= paginate @paiements, theme: 'twitter-bootstrap-4' %>

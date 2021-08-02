@@ -12,26 +12,28 @@
   </div>
 <% end %>
 
-<table class="table table-bordered table-hover table-striped table-sm">
-  <thead>
-    <tr>
-      <th><%= sort_link 'structures.nom', 'Structure' %></th>
-      <th><%= sort_link 'classrooms.nom', 'Classe' %></th>
-      <th><%= sort_link 'prestations.date', 'Date' %></th>
-      <th><%= sort_link 'prestation_types.nom', 'Type' %></th>
-      <th><%= sort_link 'enfants.nom', 'Nom' %></th>
-      <th><%= sort_link 'enfants.prénom', 'Prénom' %></th>
-      <th><%= sort_link 'prestations.qté', 'Qté' %></th>
-      <th colspan=2></th>
-    </tr>
-  </thead>
+<div class="table-responsive">
+  <table class="table table-bordered table-hover table-striped table-sm">
+    <thead>
+      <tr>
+        <th><%= sort_link 'structures.nom', 'Structure' %></th>
+        <th><%= sort_link 'classrooms.nom', 'Classe' %></th>
+        <th><%= sort_link 'prestations.date', 'Date' %></th>
+        <th><%= sort_link 'prestation_types.nom', 'Type' %></th>
+        <th><%= sort_link 'enfants.nom', 'Nom' %></th>
+        <th><%= sort_link 'enfants.prénom', 'Prénom' %></th>
+        <th><%= sort_link 'prestations.qté', 'Qté' %></th>
+        <th colspan=2></th>
+      </tr>
+    </thead>
 
-  <tfoot><tr><th colspan=9></th></tr></tfoot>
+    <tfoot><tr><th colspan=9></th></tr></tfoot>
 
-  <tbody>
-    <%=render @prestations.includes(:enfant, :prestation_type) %>
-  </tbody>
-</table>
+    <tbody>
+      <%=render @prestations.includes(:enfant, :prestation_type) %>
+    </tbody>
+  </table>
+</div>
 
 <%= page_entries_info @prestations %>
 <%= paginate @prestations, theme: 'twitter-bootstrap-4' %>

@@ -13,37 +13,39 @@
   </div>
 <% end %>
 
-<table class="table table-bordered table-striped table-hover table-sm">
-  <thead>
-    <tr>
-      <th><%= sort_link 'structures.nom', 'Structure' %></th>
-      <th><%= sort_link 'classrooms.nom', 'Classe' %></th>
-      <th><%= sort_link 'enfants.nom', 'Enfant' %></th>
-      <th><%= sort_link 'enfants.menu_all', 'ALG?' %></th>
-      <th><%= sort_link 'enfants.menu_sp', 'SP?' %></th>
-      <th><%= sort_link 'reservations.prestation_type_id', 'Prestation' %></th>
-      <th><%= sort_link 'reservations.début', 'Début' %></th>
-      <th><%= sort_link 'reservations.fin', 'Fin' %></th>
-      <th><%= sort_link 'reservations.workflow_state', 'Etat' %></th>
-      <th><%= sort_link 'reservations.lundi', 'Lun' %></th>
-      <th><%= sort_link 'reservations.mardi', 'Mar' %></th>
-      <th><%= sort_link 'reservations.mercredi', 'Mer' %></th>
-      <th><%= sort_link 'reservations.jeudi', 'Jeu' %></th>
-      <th><%= sort_link 'reservations.vendredi', 'Ven' %></th>
-      <th><%= sort_link 'reservations.matin', 'Matin' %></th>
-      <th><%= sort_link 'reservations.midi', 'Midi' %></th>
-      <th><%= sort_link 'reservations.soir', 'Soir' %></th>
-      <th><%= sort_link 'reservations.hors_période_scolaire', 'HScol?' %></th>
-    </tr>
-  </thead>
+<div class="table-responsive">
+  <table class="table table-bordered table-striped table-hover table-sm">
+    <thead>
+      <tr>
+        <th><%= sort_link 'structures.nom', 'Structure' %></th>
+        <th><%= sort_link 'classrooms.nom', 'Classe' %></th>
+        <th><%= sort_link 'enfants.nom', 'Enfant' %></th>
+        <th><%= sort_link 'enfants.menu_all', 'ALG?' %></th>
+        <th><%= sort_link 'enfants.menu_sp', 'SP?' %></th>
+        <th><%= sort_link 'reservations.prestation_type_id', 'Prestation' %></th>
+        <th><%= sort_link 'reservations.début', 'Début' %></th>
+        <th><%= sort_link 'reservations.fin', 'Fin' %></th>
+        <th><%= sort_link 'reservations.workflow_state', 'Etat' %></th>
+        <th><%= sort_link 'reservations.lundi', 'Lun' %></th>
+        <th><%= sort_link 'reservations.mardi', 'Mar' %></th>
+        <th><%= sort_link 'reservations.mercredi', 'Mer' %></th>
+        <th><%= sort_link 'reservations.jeudi', 'Jeu' %></th>
+        <th><%= sort_link 'reservations.vendredi', 'Ven' %></th>
+        <th><%= sort_link 'reservations.matin', 'Matin' %></th>
+        <th><%= sort_link 'reservations.midi', 'Midi' %></th>
+        <th><%= sort_link 'reservations.soir', 'Soir' %></th>
+        <th><%= sort_link 'reservations.hors_période_scolaire', 'HScol?' %></th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <%= render @reservations.includes(:enfant) %>
-  </tbody>
+    <tbody>
+      <%= render @reservations.includes(:enfant) %>
+    </tbody>
 
-  <tfoot><tr><th colspan=18></th></tr></tfoot>
+    <tfoot><tr><th colspan=18></th></tr></tfoot>
 
-</table>
+  </table>
+</div>
 
 <%= page_entries_info @reservations %>
 <%= paginate @reservations, theme: 'twitter-bootstrap-4' %>
