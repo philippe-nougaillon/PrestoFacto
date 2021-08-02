@@ -9,4 +9,8 @@ class ComptePolicy < ApplicationPolicy
     user.admin?
   end
 
+  def to_xls?
+    user.admin?
+  end
+
 end

@@ -30,8 +30,18 @@ class ComptesController < ApplicationController
     # Appliquer le tri
     @comptes = @comptes.reorder(Arel.sql("#{sort_column} #{sort_direction}"))
 
-    # Découper le résultat en pages
-    @comptes = @comptes.page(params[:page])
+    respond_to do |format|
+      format.html do 
+        @comptes = @comptes.page(params[:page])
+      end
+      format.xls do
+        book = Compte.to_xls(@comptes)
+        file_contents = StringIO.new
+        book.write file_contents # => Now file_contents contains the rendered file output
+        filename = "Comptes.xls"
+        send_data file_contents.string.force_encoding('binary'), filename: filename 
+      end
+    end
   end
 
   # GET /comptes/1

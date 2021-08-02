@@ -4,4 +4,9 @@ class EnfantPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def to_xls?
+    user.admin?
+  end
+  
 end
