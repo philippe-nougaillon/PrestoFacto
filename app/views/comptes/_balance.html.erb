@@ -3,12 +3,12 @@
     <td><%= ligne[:type] %></td>
     <% if ligne[:type] == "Facture" %>
         <td><%= link_to ligne[:ref], facture_url(Facture.find(ligne[:id]), format: :pdf) %></td>
-        <td class="text-right"><%= number_to_currency(ligne[:mnt], unit:'€') %></td>
+        <td class="text-end"><%= number_to_currency(ligne[:mnt], unit:'€') %></td>
         <td></td>
     <% else %>
         <td><%= ligne[:ref] %></td>
         <td></td>
-        <td class="text-right"><%= number_to_currency(ligne[:mnt], unit:'€') %></td>
+        <td class="text-end"><%= number_to_currency(ligne[:mnt], unit:'€') %></td>
     <% end %>
-    <td class="text-right"><%= number_to_currency(ligne[:solde], unit:'€') %></td>
+    <td class="text-end"><%= number_to_currency(ligne[:solde], unit:'€') %></td>
 </tr>

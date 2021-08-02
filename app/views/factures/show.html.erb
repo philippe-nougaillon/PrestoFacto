@@ -72,15 +72,15 @@
     <tr>
       <td><%= ligne.intitulé %></td>
       <td><%= ligne.prestation_type.nom %></td>
-      <td class="text-right"><%= ligne.qté %></td>
-      <td class="text-right"><%= number_to_currency(ligne.prix, unit: '€', precision: 2, format: "%n %u") %></td>
-      <td class="text-right"><%= number_to_currency(ligne.total, unit: '€', precision: 2, format: "%n %u") %></td>
+      <td class="text-end"><%= ligne.qté %></td>
+      <td class="text-end"><%= number_to_currency(ligne.prix, unit: '€', precision: 2, format: "%n %u") %></td>
+      <td class="text-end"><%= number_to_currency(ligne.total, unit: '€', precision: 2, format: "%n %u") %></td>
     </tr>
   <% end %>
   <tfoot>
     <tr>
       <td colspan=4></td>
-      <td class="text-right">
+      <td class="text-end">
         <b><%= number_to_currency(@facture.montant, unit: '€', precision: 2, format: "%n %u") %></b>
       </td>
     </tr>
