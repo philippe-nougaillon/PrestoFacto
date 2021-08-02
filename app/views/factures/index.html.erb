@@ -9,7 +9,10 @@
     <div class="col-sm-2"><%= f.date_field :date_début, value: params[:date_début], onchange: "this.form.submit()" %></div>
     <div class="col-sm-2"><%= f.date_field :date_fin, value: params[:date_fin], onchange: "this.form.submit()" %></div>
   </div>
+<%end %>
 
+
+<%= bootstrap_form_tag url: action_factures_path, method: :post do %>
   <div class="table-responsive" data-controller="action">
     <table class="table table-bordered table-hover table-striped table-sm">
       <thead>
@@ -38,10 +41,10 @@
       <div class="col-sm-3">
         <div class="input-group">
           <%= select_tag :action_name, 
-                              options_for_select(["Passer à l'état 'vérifiée'", "Envoyer"]), 
-                              include_blank: true, 
-                              class: 'form-control form-control-sm',
-                              data: {'action-target': 'selector'} %>
+                          options_for_select(["Passer à l'état 'vérifiée'", "Envoyer"]), 
+                          include_blank: true, 
+                          class: 'form-control form-control-sm',
+                          data: { 'action-target': 'selector' } %>
           <div class="input-group-append">
             <%= submit_tag 'ok',  name: 'action', 
                                   class: 'btn btn-sm btn-outline-success',
