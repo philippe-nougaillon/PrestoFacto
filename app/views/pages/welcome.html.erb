@@ -72,14 +72,14 @@
 
 <div class="row row-cols-1 row-cols-md-3 mb-5 text-start">
   <div class="col">
-    <div class="card mb-4 rounded-3 shadow-sm">
+    <div class="card mb-4 rounded-3 shadow-sm border-primary">
       <div class="card-header py-3">
-        <h4 class="my-0 fw-normal text-center">Démo</h4>
+        <h4 class="my-0 fw-normal text-center">Libre</h4>
       </div>
       <div class="card-body">
         <h1 class="card-title pricing-card-title text-center">Gratuit</h1>
         <ul class="list-unstyled mt-3 mb-4">
-          <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Utilisation libre et illimitée</li>
+          <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Utilisation libre et limitée</li>
           <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Aucune sauvegarde des données</li>
           <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Aucun support</li>
           <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Pas de sous-domaine personnalisé</li>
@@ -91,7 +91,7 @@
   </div>
   <div class="col">
     <div class="card mb-4 rounded-3 shadow-sm">
-      <div class="card-header py-3">
+      <div class="card-header py-3 text-white bg-primary border-primary">
         <h4 class="my-0 fw-normal text-center">Standard</h4>
       </div>
       <div class="card-body">
@@ -103,25 +103,25 @@
           <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Accès par sous-domaine personnalisé</li>
           <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Aucun serveur virtuel dédié</li>
         </ul>
-        <%= link_to 'Nous Contacter', new_message_path, class: 'w-100 btn btn-lg btn-outline-primary' %>
+        <%= link_to 'Nous Contacter', new_message_path, class: 'w-100 btn btn-lg btn-primary' %>
       </div>
     </div>
   </div>
   <div class="col">
     <div class="card mb-4 rounded-3 shadow-sm border-primary">
-      <div class="card-header py-3 text-white bg-primary border-primary">
+      <div class="card-header py-3">
         <h4 class="my-0 fw-normal text-center">Premium</h4>
       </div>
       <div class="card-body">
         <h1 class="card-title pricing-card-title text-center">99 €<small class="text-muted fw-light"> <small>TTC/mois</small></small></h1>
         <ul class="list-unstyled mt-3 mb-4">
           <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Utilisation libre et illimitée</li>
-          <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Sauvegarde automatique 1/h</li>
+          <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Sauvegarde continue (24/7)</li>
           <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Support par email / téléphonique</li>
           <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Accès par votre nom de domaine</li>
           <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Serveur virtuel dédié</li>
         </ul>
-        <%= link_to 'Nous Contacter', new_message_path, class: 'w-100 btn btn-lg btn-primary' %>
+        <%= link_to 'Nous Contacter', new_message_path, class: 'w-100 btn btn-lg btn-outline-primary' %>
       </div>
     </div>
   </div>
@@ -134,7 +134,7 @@
     <thead>
       <tr>
         <th style="width: 34%;"></th>
-        <th style="width: 22%;">Démo</th>
+        <th style="width: 22%;">Libre</th>
         <th style="width: 22%;">Standard</th>
         <th style="width: 22%;">Premium</th>
       </tr>
@@ -175,7 +175,7 @@
         <th scope="row" class="text-start">Sauvegarde automatique des données</th>
         <td></td>
         <td><p>1/j</p></td>
-        <td><p>1/h</p></td>
+        <td><p>Continue</p></td>
       </tr>
       <tr>
         <th scope="row" class="text-start">Support</th>
