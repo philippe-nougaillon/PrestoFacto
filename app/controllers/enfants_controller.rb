@@ -25,9 +25,9 @@ class EnfantsController < ApplicationController
       @enfants = @enfants.where(classroom_id: params[:classroom_id])      
     end
     
-    unless params[:nom].blank?
-      s = "'%#{params[:nom]}%'"
-      @enfants = @enfants.where(Arel.sql("enfants.nom ILIKE #{s} OR enfants.prénom ILIKE #{s}"))
+    unless params[:search].blank?
+      s = "'%#{params[:search]}%'"
+      @enfants = @enfants.where(Arel.sql("enfants.nom ILIKE #{s} OR enfants.prénom ILIKE #{s} OR enfants.badge ILIKE #{s}"))
     end
 
     # Appliquer le tri
