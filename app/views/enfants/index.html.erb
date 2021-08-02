@@ -37,3 +37,10 @@
 
 <%= page_entries_info @enfants %>
 <%= paginate @enfants, theme: 'twitter-bootstrap-4' %>
+
+<% if policy(Enfant).to_xls? && !@enfants.size.zero? %>
+  <%= link_to url_for(params.permit(:search).merge(format: :xls)),
+              class: "float-sm-end" do %>
+      <%= fa_icon "file-excel", text: " Export XLS" %>
+  <% end %>
+<% end %>

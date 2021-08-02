@@ -37,10 +37,10 @@ class FacturesController < ApplicationController
     # Appliquer le tri
     @factures = @factures.reorder(Arel.sql("#{sort_column} #{sort_direction}"))
 
-    @factures = @factures.page(params[:page])
-
     respond_to do |format|
-      format.html
+      format.html do 
+        @factures = @factures.page(params[:page])
+      end
       format.xls do
         book = Facture.to_xls(@factures)
         file_contents = StringIO.new
