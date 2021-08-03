@@ -7,9 +7,17 @@
         <% if reservation.enfant.menu_all %>
             <%= fa_icon 'exclamation' %>
             <%= reservation.enfant.allergenes %>
+            <% @total_alg += 1 %>
         <% end %>
     </td>
-    <td class="text-center"><%= fa_icon 'exclamation' if reservation.enfant.menu_sp %></td>
+    <td class="text-center">
+        <% if reservation.enfant.menu_sp %>
+            <%= fa_icon 'exclamation' %>
+            <% @total_sp += 1 %>
+        <% end %>
+    </td>
+
+    <td><%= truncate(reservation.enfant.mémo, length: 10) %></td>
 
     <td><%= reservation.prestation_type.nom %></td>
 

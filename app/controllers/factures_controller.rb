@@ -39,6 +39,8 @@ class FacturesController < ApplicationController
 
     respond_to do |format|
       format.html do 
+        @total_page = 0
+        @total_factures = @factures.sum(:montant)
         @factures = @factures.page(params[:page])
       end
       format.xls do

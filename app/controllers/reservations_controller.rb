@@ -46,6 +46,9 @@ class ReservationsController < ApplicationController
     # Appliquer le tri
     @reservations = @reservations.joins(:enfant => :classroom).reorder(Arel.sql("#{sort_column} #{sort_direction}"))
 
+    @total_alg = 0
+    @total_sp = 0
+
     @reservations = @reservations.page(params[:page])
   end
 
