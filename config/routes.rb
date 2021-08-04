@@ -19,6 +19,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :enfants do
+    collection do
+      post :action
+    end
+  end
+
   resources :reservations do
     collection do
       post :create_visiteur
@@ -30,7 +36,6 @@ Rails.application.routes.draw do
   resources :absences
   resources :tarif_types
   resources :prestation_types
-  resources :enfants
   resources :structures
   resources :organisations
   resources :paiements
