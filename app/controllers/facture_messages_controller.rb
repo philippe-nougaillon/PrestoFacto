@@ -26,7 +26,7 @@ class FactureMessagesController < ApplicationController
 
     respond_to do |format|
       if @facture_message.save
-        format.html { redirect_to @facture_message, notice: "Message créé avec succès." }
+        format.html { redirect_to facture_messages_path, notice: "Message créé avec succès." }
         format.json { render :show, status: :created, location: @facture_message }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class FactureMessagesController < ApplicationController
   def update
     respond_to do |format|
       if @facture_message.update(facture_message_params)
-        format.html { redirect_to @facture_message, notice: "Message modifié avec succès." }
+        format.html { redirect_to facture_messages_path, notice: "Message modifié avec succès." }
         format.json { render :show, status: :ok, location: @facture_message }
       else
         format.html { render :edit, status: :unprocessable_entity }
