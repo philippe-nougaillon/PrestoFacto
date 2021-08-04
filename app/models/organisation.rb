@@ -26,6 +26,7 @@ class Organisation < ApplicationRecord
     has_many :reservations, through: :enfants
     has_many :absences, through: :enfants
     has_many :tarifs, through: :tarif_types
+    has_many :facture_messages
 
     validates :nom, :email, presence: true
 

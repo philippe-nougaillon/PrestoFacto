@@ -1,22 +1,29 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <p>
-      Bonjour,
-      <br>
-      Vous trouverez ci-dessous un lien vers votre facture 
-      <%= @facture.compte.organisation.nom %>
-      <br>
-      <%= link_to "#{@facture.réf}", facture_url(@facture, format: :pdf) %>
-      <br>
-      Le total de votre facture est de <%= @facture.montant %> Euros.
-      <br>
-      Nous vous remercions de votre confiance.
-      <br>
-      L'équipe <%= @facture.compte.organisation.nom %>
-    </p>
-  </body>
-</html>
+<% if @facture.organisation.logo.attached? %>
+  <%= image_tag url_for(@facture.organisation.logo), width: 50 %>
+<% end %>
+
+<p>
+  Bonjour,
+  <br><br>
+  Ceci est un message automatique.
+  <br><br>
+  Nous vous informons que votre facture est disponible 
+  à l'adresse suivante :
+  <br>
+  <%= link_to facture_url(@facture, format: :pdf) do %>
+    <%= facture_url(@facture, format: :pdf) %>
+  <% end %>
+
+  <br><br>
+  Le total de votre facture est de 
+  <%= number_to_currency(@facture.montant, unit: '€', precision: 2, format: '%n %u') %>.
+  
+  <% if (@facture.organisation.facture_messages.actif.any?) %>
+    <br><br>
+    <u><%= @facture.organisation.facture_messages.actif.first.contenu %></u>
+  <% end %>
+  <br><br>
+  Nous vous remercions de votre confiance.
+  <br>
+  L'équipe <%= @facture.organisation.nom %>
+</p>

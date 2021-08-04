@@ -21,7 +21,7 @@
         <tr>
           <td><%= enfant.nom %></td>
           <td><%= link_to enfant.prénom, enfant %></td>
-          <td><%= l enfant.date_naissance %></td>
+          <td><%= l(enfant.date_naissance) if enfant.date_naissance %></td>
           <td><%= enfant.classroom.nom %></td>
           <td class="text-center"><%= fa_icon('exclamation', title: enfant.allergenes) if enfant.menu_all %></td>
           <td class="text-center"><%= fa_icon 'exclamation' if enfant.menu_sp %></td>
