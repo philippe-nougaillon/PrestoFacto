@@ -3,6 +3,6 @@ class FactureMailer < ApplicationMailer
         @facture = params[:facture]
         @email = params[:to]
         mail(to: @email,
-             subject: "[#{@facture.compte.organisation.nom}] Facture n° #{@facture.réf} disponible")
+             subject: "[#{@facture.organisation.nom}] Facture n° #{@facture.réf} disponible")
     end
 end
