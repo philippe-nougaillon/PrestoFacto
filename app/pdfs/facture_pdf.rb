@@ -110,6 +110,10 @@ class FacturePdf
         )
         move_down @margin_down * 5
 
+        if (organisation.facture_messages.actif.any?)
+            text "<u>#{ organisation.facture_messages.actif.first.contenu }</u>", inline_format: true
+        end
+
         # Afficher le solde du compte
         text "Avant cette facture, votre solde était de : #{ number_to_currency(facture.solde_avant) }"
         text "<b>Votre nouveau solde est maintenant de : #{ number_to_currency(facture.solde_après) }</b>", inline_format: true

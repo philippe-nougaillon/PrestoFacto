@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_27_082424) do
+ActiveRecord::Schema.define(version: 2021_08_02_150053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -172,6 +172,15 @@ ActiveRecord::Schema.define(version: 2021_07_27_082424) do
     t.string "intitulé"
     t.index ["facture_id"], name: "index_facture_lignes_on_facture_id"
     t.index ["prestation_type_id"], name: "index_facture_lignes_on_prestation_type_id"
+  end
+
+  create_table "facture_messages", force: :cascade do |t|
+    t.string "contenu"
+    t.boolean "actif"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "organisation_id", null: false
+    t.index ["organisation_id"], name: "index_facture_messages_on_organisation_id"
   end
 
   create_table "factures", force: :cascade do |t|
@@ -364,6 +373,7 @@ ActiveRecord::Schema.define(version: 2021_07_27_082424) do
   add_foreign_key "facture_chronos", "organisations"
   add_foreign_key "facture_lignes", "factures"
   add_foreign_key "facture_lignes", "prestation_types"
+  add_foreign_key "facture_messages", "organisations"
   add_foreign_key "factures", "comptes"
   add_foreign_key "paiements", "comptes"
   add_foreign_key "prestation_types", "organisations"
