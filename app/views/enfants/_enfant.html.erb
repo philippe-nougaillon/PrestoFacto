@@ -4,7 +4,7 @@
     <td><%= link_to enfant.compte.nom, enfant.compte %></td>
     <td><%= enfant.nom %></td>
     <td><%= link_to enfant.prénom, enfant %></td>
-    <td><%= l enfant.date_naissance %></td>
+    <td><%= l(enfant.date_naissance) if enfant.date_naissance %></td>
     <td class="text-center"><%= fa_icon 'exclamation' if enfant.menu_all %> <%= enfant.allergenes %></td>
     <td class="text-center"><%= fa_icon 'exclamation' if enfant.menu_sp %></td>
     <td><%= truncate(enfant.mémo, length: 10) %></td>
