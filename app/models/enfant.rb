@@ -16,7 +16,7 @@ class Enfant < ApplicationRecord
 
   accepts_nested_attributes_for :reservations, reject_if: proc { |attributes| attributes[:prestation_type_id].blank? }, allow_destroy: true
 
-  validates :compte_id, :classroom_id, :tarif_type_id, :nom, :prénom, :date_naissance, presence: true
+  validates :compte_id, :classroom_id, :tarif_type_id, :nom, :prénom, presence: true
 
   default_scope { order(Arel.sql('enfants.nom, enfants.prénom')) }
 

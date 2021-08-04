@@ -1,0 +1,4 @@
+user_001:
+  role: admin
+  email: test@gmail.com
+  encrypted_password: 123456ezf

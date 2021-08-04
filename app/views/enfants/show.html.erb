@@ -29,7 +29,7 @@
       <div class="col">
         <p>
           <strong>Date naissance:</strong>
-          <%= l @enfant.date_naissance %>
+          <%= l(@enfant.date_naissance) if @enfant.date_naissance %>
         </p>
 
         <p class="alert <%= 'alert-info' unless @enfant.mémo.blank? %>" >

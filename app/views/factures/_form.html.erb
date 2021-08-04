@@ -2,7 +2,7 @@
 
   <% if facture.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(facture.errors.count, "erreur") %> empêche l'enregistrement de la facture:</h2>
+      <h2><%= pluralize(facture.errors.count, "erreur") %> empêche(nt) l'enregistrement de la facture:</h2>
 
       <ul>
       <% facture.errors.full_messages.each do |message| %>

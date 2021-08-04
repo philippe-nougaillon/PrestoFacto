@@ -1,0 +1,31 @@
+<h2 class="mb-4"><%= fa_icon 'comment-dots' %> Messages</h2>
+
+<h3 class="fw-lighter mb-5">Ajoutez ici le message que vous voulez voir en bas de vos factures et e-mails d'accompagnement</h3>
+
+<div class="table-responsive col-sm-6">
+  <table class="table table-bordered table-hover table-striped table-sm">
+    <thead>
+      <tr>
+        <th>Contenu</th>
+        <th>Actif</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @facture_messages.each do |facture_message| %>
+        <tr>
+          <td><%= facture_message.contenu %></td>
+          <td class="text-center"><%= fa_icon 'check' if facture_message.actif %></td>
+          <td class="text-center"><%= link_to 'Editer', edit_facture_message_path(facture_message) %></td>
+          <td class="text-center"><%= link_to '[X]', facture_message, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<br>
+
+<%= link_to new_facture_message_path, class: "btn btn-link" do %>
+  <%= fa_icon 'plus-circle' %> Ajouter un message
+<% end %>

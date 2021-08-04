@@ -9,6 +9,7 @@ class Facture < ApplicationRecord
   belongs_to :compte
   has_many :facture_lignes, dependent: :destroy
   has_many :prestations
+  has_one :organisation, through: :compte
 
   validates :réf, presence: true
   validates_uniqueness_of :réf, scope: [:compte_id]
