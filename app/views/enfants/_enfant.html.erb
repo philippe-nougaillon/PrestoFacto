@@ -1,4 +1,9 @@
 <tr>
+    <td>
+        <span data-action="click->action#click">
+            <%= check_box_tag "[enfants_id][#{enfant.id}]", 'yes', false,  data: {"action-target":"source"} %>
+        </span>
+    </td>
     <td><%= enfant.classroom.structure.nom %></td>
     <td><%= enfant.classroom.nom %></td>
     <td><%= link_to enfant.compte.nom, enfant.compte %></td>

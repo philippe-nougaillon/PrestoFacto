@@ -47,6 +47,21 @@ class EnfantsController < ApplicationController
     end
   end
 
+  def action
+    return unless params[:enfants_id]
+    enfants = Enfant.where(id: params[:enfants_id].keys)
+
+    case params[:action_name]
+    when "Marquer comme absent ce jour"
+      enfants = enfants.each do | enfant | 
+        enfant.absences.create(début: Date.today, fin: Date.today)
+      end
+      flash[:notice] = "#{enfants.count} absence.s créée.s"  
+    end
+
+    redirect_to enfants_url
+  end
+
   # GET /enfants/1
   # GET /enfants/1.json
   def show
@@ -126,6 +141,7 @@ class EnfantsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

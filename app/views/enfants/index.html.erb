@@ -10,31 +10,51 @@
   </div>
 <% end %>
 
-<div class="table-responsive">
-  <table class="table table-bordered table-hover table-striped table-sm">
-    <thead>
-      <tr>
-        <th><%= sort_link 'structures.nom', 'Structure' %></th>
-        <th><%= sort_link 'classrooms.nom', 'Classe' %></th>
-        <th><%= sort_link 'comptes.nom', 'Compte' %></th>
-        <th><%= sort_link 'enfants.nom', 'Nom' %></th>
-        <th><%= sort_link 'enfants.prénom', 'Prénom' %></th>
-        <th><%= sort_link 'enfants.date_naissance', 'Né(e) le' %></th>
-        <th><%= sort_link 'enfants.menu_all', 'ALLERGIE ?' %></th>
-        <th><%= sort_link 'enfants.menu_sp', 'SP ?' %></th>
-        <th><%= sort_link 'enfants.mémo', 'Mémo' %></th>
-        <th>Réservations</th>
-        <th colspan="2"></th>
-      </tr>
-    </thead>
+<%= bootstrap_form_tag url: action_enfants_path, method: :post do %>
+  <div class="table-responsive" data-controller="action">
+    <table class="table table-bordered table-hover table-striped table-sm">
+      <thead>
+        <tr>
+          <th></th>
+          <th><%= sort_link 'structures.nom', 'Structure' %></th>
+          <th><%= sort_link 'classrooms.nom', 'Classe' %></th>
+          <th><%= sort_link 'comptes.nom', 'Compte' %></th>
+          <th><%= sort_link 'enfants.nom', 'Nom' %></th>
+          <th><%= sort_link 'enfants.prénom', 'Prénom' %></th>
+          <th><%= sort_link 'enfants.date_naissance', 'Né(e) le' %></th>
+          <th><%= sort_link 'enfants.menu_all', 'ALLERGIE ?' %></th>
+          <th><%= sort_link 'enfants.menu_sp', 'SP ?' %></th>
+          <th><%= sort_link 'enfants.mémo', 'Mémo' %></th>
+          <th>Réservations</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
 
-    <tfoot><tr><th colspan=12></th></tr></tfoot>
+      <tfoot><tr><th colspan=13></th></tr></tfoot>
 
-    <tbody>
-      <%= render @enfants.includes(:compte, :classroom) %>
-    </tbody>
-  </table>
-</div>
+      <tbody>
+        <%= render @enfants.includes(:compte, :classroom) %>
+      </tbody>
+    </table>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="input-group">
+          <%= select_tag :action_name, 
+                          options_for_select(["Marquer comme absent ce jour"]), 
+                          include_blank: true, 
+                          class: 'form-control form-control-sm',
+                          data: { 'action-target': 'selector' } %>
+          <div class="input-group-append">
+            <%= submit_tag 'ok',  name: 'action', 
+                                  class: 'btn btn-sm btn-outline-success',
+                                  data: {'action-target': 'button'} %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 <%= page_entries_info @enfants %>
 <%= paginate @enfants, theme: 'twitter-bootstrap-4' %>
