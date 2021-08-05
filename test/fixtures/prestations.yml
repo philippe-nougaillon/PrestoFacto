@@ -1,0 +1,5 @@
+prestation:
+  id: 1
+  enfant_id: 1
+  prestation_type_id: 1
+  date: <%= Date.today %>

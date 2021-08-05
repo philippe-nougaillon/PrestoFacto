@@ -3,6 +3,9 @@ class Paiement < ApplicationRecord
 
   has_one :organisation, through: :compte
 
+  validates :date, presence: true
+
+  validates :montant, numericality: { greater_than_or_equal_to: 0.01 }
 
   # self.per_page = 10
 

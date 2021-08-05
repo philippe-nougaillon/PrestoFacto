@@ -1,0 +1,5 @@
+paiement:
+  id: 1
+  compte_id: 1
+  date: <%= Date.today %>
+  montant: 23
