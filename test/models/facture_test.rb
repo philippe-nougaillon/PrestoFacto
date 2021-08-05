@@ -13,4 +13,5 @@ class FactureTest < ActiveSupport::TestCase
     facture = factures(:one)
     assert facture.valid?
   end
+  
 end

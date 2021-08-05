@@ -22,6 +22,7 @@ class ActiveSupport::TestCase
     absence_thomas = absences(:absence_thomas)
     facture_message_actif = facture_messages(:one)
     facture_dupont = factures(:one)
+    jeanguile = vacances(:jeanguile)
   end
 
   def login_user
