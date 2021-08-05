@@ -1,4 +1,7 @@
 user_001:
+  id: 1
   role: admin
   email: test@gmail.com
-  encrypted_password: 123456ezf
+  encrypted_password: 123456789ezf
+  confirmed_at: DateTime.now
+  organisation_id: 1

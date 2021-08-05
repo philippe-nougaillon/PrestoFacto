@@ -3,18 +3,7 @@ require 'test_helper'
 class AbsenceTest < ActiveSupport::TestCase
 
     setup do
-      monoprix = Organisation.create(nom: 'monoprix', email: 'monoprixgmail.com' )
-      cantine = TarifType.create(nom: 'cantine', organisation_id: monoprix.id)
-      structure = Structure.create(nom: 'structure', organisation_id: monoprix.id)
-      cp = Classroom.create(nom: 'CP', structure_id: structure.id)
-      dupont = Compte.create(organisation_id: monoprix.id, nom: 'Dupont')
-      thomas = Enfant.create(
-          nom: 'Dupont',
-          prénom: 'Thomas',
-          tarif_type_id: cantine.id,
-          classroom_id: cp.id,
-          compte_id: dupont.id)
-      @absence = Absence.create(enfant_id: thomas.id, début: Date.today, fin: Date.today)
+      @absence = Absence.create(enfant_id: @enfant_thomas.id, début: Date.today, fin: Date.today)
     end
 
     test "une absence a quelques champs obligatoires" do
