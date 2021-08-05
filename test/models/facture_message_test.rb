@@ -3,8 +3,8 @@ require "test_helper"
 class FactureMessageTest < ActiveSupport::TestCase
 
   setup do
-    @organisation = Organisation.create(nom: 'monoprix', email: 'monoprix@gmail.com' )
-    @facture_message_actif = FactureMessage.create(contenu: 'bonjour', actif: true, organisation_id: @organisation.id)
+    organisation = Organisation.create(nom: 'monoprix', email: 'monoprix@gmail.com' )
+    @facture_message_actif = FactureMessage.create(contenu: 'bonjour', actif: true, organisation_id: organisation.id)
   end
 
   test "les attributs des messages de factures doivent être non nuls" do

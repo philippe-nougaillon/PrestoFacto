@@ -6,6 +6,8 @@ class Compte < ApplicationRecord
 
   belongs_to :organisation 
 
+  validates :nom, presence: true
+
   has_many :contacts, inverse_of: :compte, dependent: :delete_all
   has_many :enfants, dependent: :delete_all
   has_many :factures

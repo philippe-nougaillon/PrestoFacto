@@ -1,0 +1,21 @@
+<h2 class="mb-4">Changer de classe</h2>
+<h3 class="mb-5 fw-lighter">Choisissez la classe de destination</h3>
+
+<div class="row">
+  <div class="col-sm-4">
+    <%= bootstrap_form_tag url: action_execute_enfants_path, method: :post do %>
+      <%= hidden_field_tag :enfants_id, params[:enfants_id].keys %>
+      <%= select_tag :classroom_id,
+                        options_from_collection_for_select(
+                          current_user.organisation.classrooms,
+                          'id',
+                          'nom_et_structure',
+                          params[:classroom_id]
+                        ),
+                      class: "form-control mb-3"
+      %>
+      <%=  submit_tag 'Changer', class: 'btn btn-success' %>
+      <%= submit_tag 'Annuler', class: 'btn btn-link'%>
+    <% end %>
+  </div>
+</div>

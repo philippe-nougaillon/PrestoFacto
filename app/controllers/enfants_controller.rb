@@ -56,9 +56,22 @@ class EnfantsController < ApplicationController
       enfants = enfants.each do | enfant | 
         enfant.absences.create(début: Date.today, fin: Date.today)
       end
-      flash[:notice] = "#{enfants.count} absence.s créée.s"  
+      flash[:notice] = "#{enfants.count} absence.s créée.s" 
+      redirect_to enfants_url
+    when "Changer de classe"
     end
 
+  end
+
+  def action_execute
+    return unless params[:enfants_id]
+    enfants = Enfant.where(id: params[:enfants_id].split(' '))
+
+    enfants = enfants.each do | enfant | 
+      enfant.classroom_id = params[:classroom_id]
+      enfant.save
+    end
+    flash[:notice] = "#{enfants.count} enfants déplacé.e.s" 
     redirect_to enfants_url
   end
 
