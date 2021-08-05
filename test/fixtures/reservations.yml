@@ -1,0 +1,6 @@
+reservation_repas_thomas:
+  id: 1
+  enfant_id: 1
+  prestation_type_id: 1
+  début: <%= Date.today %>
+  fin: <%= Date.today + 1.day %>

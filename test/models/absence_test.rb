@@ -2,10 +2,6 @@ require 'test_helper'
 
 class AbsenceTest < ActiveSupport::TestCase
 
-    setup do
-      @absence = Absence.create(enfant_id: @enfant_thomas.id, début: Date.today, fin: Date.today)
-    end
-
     test "une absence a quelques champs obligatoires" do
       absence = Absence.new
       assert absence.invalid?
@@ -15,8 +11,8 @@ class AbsenceTest < ActiveSupport::TestCase
     end
 
     test "l'absence doit être créée si elle a des attributs valides" do
-      puts @absence.errors.full_messages
-      assert @absence.valid?
+      absence_thomas = absences(:absence_thomas)
+      assert absence_thomas.valid?
     end
 
 
