@@ -1,0 +1,5 @@
+one:
+  id: 1
+  tarif_type_id: 1
+  prestation_type_id: 1
+  prix: 1

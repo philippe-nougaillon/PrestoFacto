@@ -20,23 +20,14 @@ class TarifTest < ActiveSupport::TestCase
     end
 
     test "un type de tarif de même nom doit être unique à chaque organisation" do
-        organisation = Organisation.create(nom: 'TEST', email: 'toto@g.com')
-        
-        tarif_type = TarifType.create(organisation: organisation, nom: 'test unique')
-        assert tarif_type.valid?
+        tarif = tarifs(:one).dup
+        tarif.valid?
+        assert_equal ["n'est pas disponible"], tarif.errors[:tarif_type_id]
+    end
 
-        prestation_type = PrestationType.create(organisation: organisation, nom: 'test unique')
-        assert prestation_type.valid?
-
-        tarif = Tarif.new(tarif_type: tarif_type, prestation_type: prestation_type, prix: 1)
-        tarif.save
-
+    test "le tarif doit être créé s'il a des attributs valides" do
+        tarif = tarifs(:one)
         assert tarif.valid?
-
-        tarif_dupliqué = tarif.dup
-        tarif_dupliqué.valid?
-
-        assert_equal ["n'est pas disponible"], tarif_dupliqué.errors[:tarif_type_id]
     end
 
 end

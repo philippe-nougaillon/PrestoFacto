@@ -2,11 +2,6 @@ require 'test_helper'
 
 class CompteTest < ActiveSupport::TestCase
 
-    setup do
-        organisation = Organisation.create(nom: 'monoprix', email: 'monoprix@gmail.com' )
-        @dupont = Compte.create(organisation_id: organisation.id, nom: 'Dupont')
-    end
-
     test "un compte a quelques champs obligatoires" do
         compte = Compte.new
         assert compte.invalid?
@@ -15,11 +10,7 @@ class CompteTest < ActiveSupport::TestCase
     end
 
     test "le compte doit être créé s'il a des attributs valides" do
-        assert @dupont.valid?
+        compte_dupont = comptes(:dupont)
+        assert compte_dupont.valid?
     end
-
-
-
-
-
 end

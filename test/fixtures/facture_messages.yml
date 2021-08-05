@@ -1,16 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  contenu: MyString
-  actif: false
-  organisation_id: 1
-
-two:
-  contenu: MyString
-  actif: true
-  organisation_id: 1
-
-third:
-  contenu: MyString
+  id: 1
+  contenu: À payer avant la fin du mois
   actif: true
   organisation_id: 1

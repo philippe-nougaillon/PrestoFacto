@@ -16,7 +16,12 @@ class ActiveSupport::TestCase
     sainteclotilde = structures(:sainteclotilde)
     classe_cp = classrooms(:cp)
     compte_dupont = comptes(:dupont)
-    @enfant_thomas = enfants(:thomas)
+    enfant_thomas = enfants(:thomas)
+    prestation_type_repas = prestation_types(:repas)
+    reservation_repas_thomas = reservations(:reservation_repas_thomas)
+    absence_thomas = absences(:absence_thomas)
+    facture_message_actif = facture_messages(:one)
+    facture_dupont = factures(:one)
   end
 
   def login_user

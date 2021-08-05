@@ -9,5 +9,10 @@ class OrganisationTest < ActiveSupport::TestCase
         assert organisation.errors[:nom].any?
         assert organisation.errors[:email].any?
     end
+
+    test "l'organisation doit être créée si elle a des attributs valides" do
+        organisation = organisations(:monoprix)
+        assert organisation.valid?
+    end
     
 end
