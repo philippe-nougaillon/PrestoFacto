@@ -16,6 +16,7 @@ class ActiveSupport::TestCase
     sainteclotilde = structures(:sainteclotilde)
     classe_cp = classrooms(:cp)
     compte_dupont = comptes(:dupont)
+    maman_thomas = contacts(:maman)
     enfant_thomas = enfants(:thomas)
     prestation_type_repas = prestation_types(:repas)
     reservation_repas_thomas = reservations(:reservation_repas_thomas)
@@ -26,9 +27,9 @@ class ActiveSupport::TestCase
   end
 
   def login_user
-    sleep(1)
-    click_on "Tout accepter"
     visit new_user_session_path
+    sleep(2)
+    click_on "Tout accepter"
     fill_in 'user_email', with: @user_001.email
     fill_in 'user_password', with: @user_001.password
     click_on 'Se connecter'
