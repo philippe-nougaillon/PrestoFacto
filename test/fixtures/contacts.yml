@@ -1,3 +1,8 @@
-contact:
+maman:
   id: 1
   compte_id: 1
+  nom: Marie Dupont
+  email: marie.dupont@gmail.com
+  fixe: 0123456789
+  portable: 0612345678
+  prevenir: true
