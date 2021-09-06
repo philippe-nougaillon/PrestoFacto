@@ -26,7 +26,7 @@ class OrganisationsController < ApplicationController
     authorize @organisation
 
     1.times { @organisation.structures.build }
-    2.times { @organisation.vacances.build(zone: @organisation.zone) }
+    2.times { @organisation.vacances.build }
   end
 
   # POST /organisations
