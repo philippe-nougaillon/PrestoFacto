@@ -5,13 +5,16 @@ class PrestationsController < ApplicationController
   def index
     authorize Prestation
 
-    # params[:date] ||= Date.today
-
     organisation = current_user.organisation  
     @structures = organisation.structures
     @classrooms = organisation.classrooms
     @prestation_types = organisation.prestation_types
-    @prestations = organisation.prestations
+        
+    unless params[:archives].blank?
+      @prestations = organisation.prestations.unscoped
+    else
+      @prestations = organisation.prestations
+    end
     
     unless params[:structure_id].blank?
       @prestations = @prestations.joins(enfant: [:compte]).where(comptes: { structure_id: params[:structure_id] })
@@ -110,7 +113,7 @@ class PrestationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_prestation
-      @prestation = Prestation.find(params[:id])
+      @prestation = Prestation.unscoped.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

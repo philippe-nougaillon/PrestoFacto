@@ -7,6 +7,7 @@ class Absence < ApplicationRecord
 
   has_one :organisation, through: :enfant
 
+  default_scope { where.not(archive: true) }
 
   # self.per_page = 10
 

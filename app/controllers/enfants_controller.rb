@@ -79,6 +79,11 @@ class EnfantsController < ApplicationController
   # GET /enfants/1.json
   def show
     authorize @enfant
+    if params[:archives] == 'yes'
+      @absences = @enfant.absences.unscoped
+    else
+      @absences = @enfant.absences
+    end
   end
 
   # GET /enfants/new
