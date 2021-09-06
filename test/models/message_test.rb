@@ -1,6 +1,7 @@
 require "test_helper"
 
 class MessageTest < ActiveSupport::TestCase
+
   test "les attributs des messages doivent être non nuls" do
     message = Message.new
     assert message.invalid?
@@ -10,12 +11,16 @@ class MessageTest < ActiveSupport::TestCase
   end
 
   test "l'adresse e-mail doit être correcte" do
-    message = Message.new(email: 'incorect.com', objet: 'question', contenu: 'bonjour')
+    message = messages(:one)
+    message.email = 'incorrect.com'
 
-    message.invalid?
+    message.valid?
     assert_equal ["n'est pas valide"], message.errors[:email]
+  end
 
-    message.email = 'corect@gmail.com'
+  test "le message doit être créé s'il a des attributs valides" do
+    message = messages(:one)
     assert message.valid?
   end
+
 end

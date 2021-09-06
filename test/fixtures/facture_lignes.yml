@@ -1,0 +1,4 @@
+facture_ligne:
+  id: 1
+  facture_id: 1
+  prestation_type_id: 1

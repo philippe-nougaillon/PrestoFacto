@@ -3,6 +3,8 @@ class Absence < ApplicationRecord
   
   belongs_to :enfant
 
+  validates :début, :fin, presence: true
+
   has_one :organisation, through: :enfant
 
 

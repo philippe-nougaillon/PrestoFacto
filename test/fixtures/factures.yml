@@ -2,6 +2,5 @@
 
 one:
   id: 1
-  email: josé@gmail.com
-  objet: question
-  contenu: bonjour, je voudrais savoir un truc
+  compte_id: 1
+  réf: 1234

@@ -74,7 +74,7 @@
 
   <div class="col">
     <p>
-      <h3><%= fa_icon 'umbrella-beach' %> Vacances (Zone <%= @organisation.zone %>)</h3>
+      <h3><%= fa_icon 'umbrella-beach' %> Vacances à venir en zone <%= @organisation.zone %></h3>
       <table class="table table-bordered table-hover table-sm">
         <thead>
           <tr>
@@ -84,22 +84,13 @@
           </tr>
         </thead>
 
-        <% Vacance.where(zone: @organisation.zone).each do | vacance | %>
+        <% @vacances.each do | vacance | %>
           <tr>
             <td><%= vacance.nom %></td>
             <td><%= l vacance.début %></td>
             <td><%= l vacance.fin if vacance.fin %></td>
           </tr>
         <% end %>
-
-        <% @organisation.vacances.each do | vacance | %>
-          <tr>
-            <td><%= vacance.nom %></td>
-            <td><%= l vacance.début %></td>
-            <td><%= l vacance.fin if vacance.fin %></td>
-          </tr>
-        <% end %>
-
       </table>
     </p>
   </div>

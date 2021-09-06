@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :enfants do
     collection do
       post :action
+      post :action_execute
     end
   end
 

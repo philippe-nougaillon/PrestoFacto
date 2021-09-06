@@ -17,9 +17,9 @@ class ComptesController < ApplicationController
       @comptes = current_user.organisation.comptes
     end
     
-    unless params[:structure_id].blank?
-      @comptes = @comptes.where(structure_id: params[:structure_id])
-    end
+    # unless params[:structure_id].blank?
+    #   @comptes = @comptes.where(structure_id: params[:structure_id])
+    # end
 
     unless params[:search].blank?
       s = "'%#{ params[:search] }%'"

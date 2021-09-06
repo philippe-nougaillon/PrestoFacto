@@ -1,0 +1,5 @@
+absence_thomas:
+  id: 1
+  enfant_id: 1
+  début: <%= Date.today %>
+  fin: <%= Date.today %>

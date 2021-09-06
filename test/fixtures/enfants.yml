@@ -1,0 +1,7 @@
+thomas:
+  id: 1
+  nom: 'Dupont'
+  prénom: 'Thomas'
+  tarif_type_id: 1
+  classroom_id: 1
+  compte_id: 1
