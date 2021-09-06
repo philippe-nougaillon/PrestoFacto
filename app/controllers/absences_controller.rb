@@ -14,6 +14,12 @@ class AbsencesController < ApplicationController
     @structures = organisation.structures
     @classrooms = organisation.classrooms
 
+    unless params[:archives].blank?
+      @absences = organisation.absences.unscoped
+    else
+      @absences = organisation.absences
+    end
+
     unless params[:structure_id].blank?
       @absences = @absences.joins(enfant: [:compte]).where(comptes: { structure_id: params[:structure_id] })
       @classrooms = @classrooms.where(structure_id: params[:structure_id]) 
