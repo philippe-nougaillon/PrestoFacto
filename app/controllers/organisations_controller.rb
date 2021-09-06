@@ -11,6 +11,9 @@ class OrganisationsController < ApplicationController
   # GET /organisations/1.json
   def show
     authorize @organisation
+    @vacances = Vacance.where(zone: @organisation.zone)
+                       .or(Vacance.where(organisation_id: @organisation.id))
+                       .where("DATE(fin) >= ?", Date.today)
   end
 
   # GET /organisations/new
