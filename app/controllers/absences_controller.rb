@@ -15,7 +15,7 @@ class AbsencesController < ApplicationController
     @classrooms = organisation.classrooms
 
     unless params[:archives].blank?
-      @absences = organisation.absences.unscoped
+      @absences = organisation.absences.unscoped.where(archive: true)
     else
       @absences = organisation.absences
     end

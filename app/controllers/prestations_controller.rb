@@ -11,7 +11,7 @@ class PrestationsController < ApplicationController
     @prestation_types = organisation.prestation_types
         
     unless params[:archives].blank?
-      @prestations = organisation.prestations.unscoped
+      @prestations = organisation.prestations.unscoped.where(archive: true)
     else
       @prestations = organisation.prestations
     end
