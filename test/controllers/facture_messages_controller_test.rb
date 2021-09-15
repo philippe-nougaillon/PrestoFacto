@@ -4,7 +4,7 @@ class FactureMessagesControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @organisation = Organisation.create(nom: 'monoprix', email: 'monoprix@gmail.com' )
+    @organisation = Organisation.create(nom: 'asso_cantine', email: 'asso_cantine@gmail.com' )
     @facture_message_actif = FactureMessage.create(contenu: 'bonjour', actif: true, organisation_id: @organisation.id)
     get new_user_session_path
     @user_001 = @organisation.users.create(email: 'toto@gmail.com', role: 'admin', password: '12345ZEIMFJ67U', password_confirmation: '12345ZEIMFJ67U')
