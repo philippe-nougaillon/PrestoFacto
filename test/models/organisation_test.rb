@@ -11,7 +11,7 @@ class OrganisationTest < ActiveSupport::TestCase
 	end
 
 	test "l'organisation doit être créée si elle a des attributs valides" do
-		organisation = organisations(:monoprix)
+		organisation = organisations(:asso_cantine)
 		assert organisation.valid?
 	end
     

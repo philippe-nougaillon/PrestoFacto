@@ -10,8 +10,8 @@ class ActiveSupport::TestCase
   fixtures :all
 
   setup do
-    monoprix = organisations(:monoprix)
-    @user_001 = monoprix.users.create(email: 'toto@gmail.com', role: 'admin', password: '12345ZEIMFJ67U', password_confirmation: '12345ZEIMFJ67U', confirmed_at: DateTime.now)
+    asso_cantine = organisations(:asso_cantine)
+    @user_001 = asso_cantine.users.create(email: 'toto@gmail.com', role: 'admin', password: '12345ZEIMFJ67U', password_confirmation: '12345ZEIMFJ67U', confirmed_at: DateTime.now)
     tarif_general = tarif_types(:general)
     sainteclotilde = structures(:sainteclotilde)
     classe_cp = classrooms(:cp)
