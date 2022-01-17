@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
     @user = User.new(user_params)
     @user.organisation = current_user.organisation
-    @user.confirmed_at = DateTime.now
+    #@user.confirmed_at = DateTime.now
 
     respond_to do |format|
       if @user.save
