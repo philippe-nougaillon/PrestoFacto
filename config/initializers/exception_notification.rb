@@ -24,6 +24,11 @@ ExceptionNotification.configure do |config|
     sender_address: %{"PrestoFacto" <prestofacto@philnoug.com>},
     exception_recipients: %w{philippe.nougaillon@gmail.com}
   }
+
+  config.error_grouping = true
+  # error_grouping_period: 5.minutes,    # the time before an error is regarded as fixed
+  # error_grouping_cache: Rails.cache,   # for other applications such as Sinatra, use one instance of ActiveSupport::Cache::Store
+  
   # Campfire notifier sends notifications to your Campfire room. Requires 'tinder' gem.
   # config.add_notifier :campfire, {
   #   subdomain: 'my_subdomain',
