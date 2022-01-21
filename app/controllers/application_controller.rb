@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user!
   before_action :set_layout_variables
+  before_action :prepare_exception_notifier
   
   # Ensuring PUNDIT policies and scopes are used
   #after_action :verify_authorized
@@ -30,6 +31,12 @@ private
     def user_not_authorized
       flash[:alert] = "Vous n'êtes pas autorisé(e) à effectuer cette action !"
       redirect_to(request.referrer || (current_user.visiteur? ? moncompte_index_path : root_path))
+    end
+
+    def prepare_exception_notifier
+      request.env["exception_notifier.exception_data"] = {
+        current_user: current_user
+      }
     end
 
 end
