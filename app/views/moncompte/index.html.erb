@@ -51,37 +51,42 @@
   <div class="card-body">
     <h3><%= fa_icon 'calendar-alt' %> Réservations</h3>
     
-    <table class="table table-bordered table-hover table-sm">
-      <thead>
-        <tr>
-          <th>Structure</th>
-          <th>Classe</th>
-          <th>Enfant</th>
-          <th>ALG?</th>
-          <th>SP?</th>
-          <th>Prestation</th>
-          <th>Début</th>
-          <th>Fin</th>
-          <th>Etat</th>
-          <th>Lun</th>
-          <th>Mar</th>
-          <th>Mer</th>
-          <th>Jeu</th>
-          <th>Ven</th>
-          <th>Matin</th>
-          <th>Midi</th>
-          <th>Soir</th>
-          <th>HScol?</th>
-        </tr>
-      </thead>
+    <% if @compte.reservations.any? %>
+      <table class="table table-bordered table-hover table-sm">
+        <thead>
+          <tr>
+            <th>Structure</th>
+            <th>Classe</th>
+            <th>Enfant</th>
+            <th>ALG?</th>
+            <th>SP?</th>
+            <th>Prestation</th>
+            <th>Début</th>
+            <th>Fin</th>
+            <th>Etat</th>
+            <th>Lun</th>
+            <th>Mar</th>
+            <th>Mer</th>
+            <th>Jeu</th>
+            <th>Ven</th>
+            <th>Matin</th>
+            <th>Midi</th>
+            <th>Soir</th>
+            <th>HScol?</th>
+          </tr>
+        </thead>
 
-      <tbody>
-        <%= render @compte.reservations.includes(:enfant) %>
-      </tbody>
+        <tbody>
+          <%= render @compte.reservations.includes(:enfant) %>
+        </tbody>
 
-      <tfoot><tr><th colspan=18></th></tr></tfoot>
-
-    </table>
+        <tfoot><tr><th colspan=18></th></tr></tfoot>
+      </table>
+    <% else %>
+      <p>
+        Aucune réservation pour l'instant...
+      </p>
+    <% end %>
   </div>
 
   <div class="card-footer">
