@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-  include Pundit
-
+  include Pundit::Authorization
+  
   before_action :authenticate_user!
   before_action :set_layout_variables
   before_action :prepare_exception_notifier

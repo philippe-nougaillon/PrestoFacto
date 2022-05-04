@@ -13,12 +13,11 @@
         <div class="col-sm-4"><%= form.text_field :cp %></div>
         <div class="col-sm-8"><%= form.text_field :ville %></div>
       </div>
+      <%= form.text_field :num_allocataire %>
+      <%= form.text_area :mémo %>
     </div>
 
     <div class="col-sm-8">
-      <%= form.text_field :num_allocataire %>
-      <%= form.text_area :mémo %>
-
       <h3>Contacts</h3>
       <%= form.fields_for :contacts do |contact_form| %>
         <div class="row">
