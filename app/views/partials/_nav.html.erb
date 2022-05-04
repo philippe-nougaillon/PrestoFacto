@@ -9,7 +9,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <% if current_user %>
+        <% if user_signed_in? %>
           <% if current_user.visiteur? %>
             <%= navbar_nav_item('moncompte', 'users',  moncompte_index_path) %>
           <% else %>
@@ -20,7 +20,6 @@
             <%= navbar_nav_item('prestations', 'utensils', prestations_path) %>
             <%= navbar_nav_item('factures', 'file-invoice', factures_path) %>
             <%= navbar_nav_item('paiements', 'money-bill-alt', paiements_path) %>
-            <%= navbar_nav_item('pages', 'book', pages_guide_path, 'guide') %>
           <% end %>
         <% else %>
           <%= navbar_nav_item('pages', 'home', pages_welcome_path, 'welcome') %>
@@ -41,20 +40,20 @@
               new_user_registration_path, 
               class: "btn btn-outline-primary me-2" 
           %>
-          <%
-=begin%>
- <%= link_to "Tester", 
+           <%= link_to "Tester", 
               admin_mode_demonstration_path, 
               title: 'passer en mode démonstration',
               class: "btn btn-outline-warning me-2"  
           %> 
-<%
-=end%>
           <%= link_to "Connexion", 
               new_user_session_path, 
               class: "btn btn-outline-success" 
           %>
         <% else %>
+          <%= link_to "Guide d'utilisation", 
+                      pages_guide_path, 
+                      class: "btn btn-outline-secondary btn-sm me-2" 
+          %>
           <% if current_user.admin? %>
             <%= link_to "Administration", 
                 admin_index_path, 

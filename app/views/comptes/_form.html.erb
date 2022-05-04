@@ -3,7 +3,6 @@
   <%= form.hidden_field :organisation_id %>
 
   <div class="row">
-
     <div class="col-sm-4">
       <%= form.text_field :nom, required: true, autofocus: true %>
       <%= form.select :civilité, ["M","Mme","M et Mme"] %>
@@ -35,7 +34,6 @@
         <hr>
       <% end %>
     </div>
-    
   </div>
 
   <%= form.submit "Enregistrer", class: "btn btn-success" %>
