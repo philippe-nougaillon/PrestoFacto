@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  resources :facture_messages
-  resources :messages
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   devise_for :users, controllers: { registrations: 'registrations' }
 
@@ -41,6 +38,8 @@ Rails.application.routes.draw do
   resources :organisations
   resources :paiements
   resources :blogs
+  resources :facture_messages
+  resources :messages
 
   namespace :admin do
     get :index
