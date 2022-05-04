@@ -43,8 +43,9 @@ class FacturesController < ApplicationController
         @total_factures = @factures.sum(:montant)
         @factures = @factures.page(params[:page])
       end
+      
       format.xls do
-        book = Facture.to_xls(@factures)
+        book = FacturesToXls.new(@factures).call
         file_contents = StringIO.new
         book.write file_contents # => Now file_contents contains the rendered file output
         filename = "Factures.xls"
