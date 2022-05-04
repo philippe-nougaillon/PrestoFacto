@@ -17,10 +17,6 @@ class ComptesController < ApplicationController
       @comptes = current_user.organisation.comptes
     end
     
-    # unless params[:structure_id].blank?
-    #   @comptes = @comptes.where(structure_id: params[:structure_id])
-    # end
-
     unless params[:search].blank?
       s = "'%#{ params[:search] }%'"
       @comptes = @comptes.joins(:enfants)
@@ -29,13 +25,14 @@ class ComptesController < ApplicationController
 
     # Appliquer le tri
     @comptes = @comptes.reorder(Arel.sql("#{sort_column} #{sort_direction}"))
-
+    
     respond_to do |format|
       format.html do 
         @comptes = @comptes.page(params[:page])
       end
+
       format.xls do
-        book = Compte.to_xls(@comptes)
+        book = ComptesToXls.new(@comptes).call
         file_contents = StringIO.new
         book.write file_contents # => Now file_contents contains the rendered file output
         filename = "Comptes.xls"

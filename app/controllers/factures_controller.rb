@@ -43,8 +43,9 @@ class FacturesController < ApplicationController
         @total_factures = @factures.sum(:montant)
         @factures = @factures.page(params[:page])
       end
+      
       format.xls do
-        book = Facture.to_xls(@factures)
+        book = FacturesToXls.new(@factures).call
         file_contents = StringIO.new
         book.write file_contents # => Now file_contents contains the rendered file output
         filename = "Factures.xls"
@@ -103,6 +104,7 @@ class FacturesController < ApplicationController
 
     @facture = Facture.new
     @facture.compte_id = params[:compte_id]
+    @facture.date = Date.today
     @prestation_types = current_user.organisation.prestation_types
     3.times{ @facture.facture_lignes.build }
   end
@@ -121,6 +123,7 @@ class FacturesController < ApplicationController
     authorize Facture
 
     @facture = Facture.new(facture_params)
+    @prestation_types = current_user.organisation.prestation_types
 
     respond_to do |format|
       if @facture.save
@@ -137,6 +140,8 @@ class FacturesController < ApplicationController
   # PATCH/PUT /factures/1.json
   def update
     authorize Facture
+
+    @prestation_types = current_user.organisation.prestation_types
 
     respond_to do |format|
       if @facture.update(facture_params)

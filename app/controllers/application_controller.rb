@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-  include Pundit
-
+  include Pundit::Authorization
+  
   before_action :authenticate_user!
   before_action :set_layout_variables
   before_action :prepare_exception_notifier
@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  def after_sign_in_path_for(resource)
-    if resource.visiteur?
+  def after_sign_in_path_for(user)
+    if user.visiteur?
       moncompte_index_path
     else
       comptes_path
