@@ -31,7 +31,7 @@
       </small></i>
     </p>
     <%= f.label :question %>
-    <%= text_field_tag :question, params[:question], required: true, placeholder: "Question de sécurité; entrez la somme de 40 + 1 + 1", class: "form-control col-sm-6" %>
+    <%= text_field_tag :question, params[:question], required: true, placeholder: "Question de sécurité pour vérifier que vous êtes bien humain : Entrez la somme de 40 + 1 + 1 (Indice: c'est la réponse à la grande question sur la vie, l'univers et tout le reste...)", class: "form-control col-sm-6" %>
     <br>
   <div class="actions">
     <%= f.submit "S'inscrire", class: "btn btn-primary btn-lg" %>

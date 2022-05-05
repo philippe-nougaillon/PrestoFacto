@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "https://prestofacto.philnoug.com"
+SitemapGenerator::Sitemap.default_host = "https://www.prestofacto.fr"
 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
