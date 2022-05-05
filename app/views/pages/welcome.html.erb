@@ -1,7 +1,12 @@
 <div class="main-banner my-5 px-4">
   <div class="row flex-lg-row-reverse align-items-center g-5 py-4 shadow-sm">
     <div class="col-10 col-sm-8 col-lg-6">
-    <%= image_tag("abacus-beads-mathematics-numeral.jpg", class: 'd-block mx-lg-auto img-fluid rounded', alt: "Logo de #{ @site_name }", width: 740, height: 500, loading: 'lazy') %>
+    <%= image_tag("abacus-beads-mathematics-numeral.jpg", 
+        class: 'd-block mx-lg-auto img-fluid rounded', 
+        alt: "Logo de #{ @site_name }", 
+        width: 740, height: 500,
+        style: "opacity: 75%;", 
+        loading: 'lazy') %>
     </div>
     <div class="col-lg-6">
       <h1 class="display-2 lh-1 mb-3">PrestoFacto</h1>
@@ -68,7 +73,7 @@
       <div class="card-body">
         <h1 class="card-title pricing-card-title text-center">Gratuit</h1>
         <ul class="list-unstyled mt-3 mb-4">
-          <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Utilisation libre et limitée</li>
+          <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Utilisation libre et limitée</li>
           <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Aucune sauvegarde des données</li>
           <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Aucun support</li>
           <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Pas de sous-domaine personnalisé</li>
@@ -86,10 +91,10 @@
       <div class="card-body">
         <h1 class="card-title pricing-card-title text-center">49 €<small class="text-muted fw-light"> TTC/mois</small></h1>
         <ul class="list-unstyled mt-3 mb-4">
-          <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Utilisation libre et illimitée</li>
-          <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Sauvegarde automatique journalière</li>
-          <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Support par email</li>
-          <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Accès par sous-domaine personnalisé</li>
+          <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Utilisation libre et illimitée</li>
+          <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Sauvegarde automatique journalière</li>
+          <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Support par email</li>
+          <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Accès par sous-domaine personnalisé</li>
           <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Aucun serveur virtuel dédié</li>
         </ul>
         <%= link_to 'Nous Contacter', new_message_path, class: 'w-100 btn btn-lg btn-outline-primary' %>
@@ -104,11 +109,11 @@
       <div class="card-body">
         <h1 class="card-title pricing-card-title text-center">99 €<small class="text-muted fw-light"> <small>TTC/mois</small></small></h1>
         <ul class="list-unstyled mt-3 mb-4">
-          <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Utilisation libre et illimitée</li>
-          <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Sauvegarde continue (24/7)</li>
-          <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Support par email / téléphonique</li>
-          <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Accès par votre nom de domaine</li>
-          <li><%= fa_icon 'check-circle', class: 'text-success me-4' %>Serveur virtuel dédié</li>
+          <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Utilisation libre et illimitée</li>
+          <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Sauvegarde continue (24/7)</li>
+          <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Support par email / téléphonique</li>
+          <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Accès par votre nom de domaine</li>
+          <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Serveur virtuel dédié</li>
         </ul>
         <%= link_to 'Nous Contacter', new_message_path, class: 'w-100 btn btn-lg btn-outline-primary' %>
       </div>
