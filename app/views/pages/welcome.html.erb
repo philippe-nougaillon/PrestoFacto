@@ -1,16 +1,12 @@
-<div class="main-banner container col-xxl-11 px-4 py-5">
-  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+<div class="main-banner my-5 px-4">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-4 shadow-sm">
     <div class="col-10 col-sm-8 col-lg-6">
-    <%= image_tag("abacus-beads-mathematics-numeral.jpg", class: 'd-block mx-lg-auto img-fluid rounded', alt: "Logo de #{ @site_name }", width: 700, height: 500, loading: 'lazy') %>
+    <%= image_tag("abacus-beads-mathematics-numeral.jpg", class: 'd-block mx-lg-auto img-fluid rounded', alt: "Logo de #{ @site_name }", width: 740, height: 500, loading: 'lazy') %>
     </div>
     <div class="col-lg-6">
       <h1 class="display-2 lh-1 mb-3">PrestoFacto</h1>
-      <h2 class="display-6">Application de facturation de services journaliers<h2>
-      <p class="display-7 fw-lighter">Aide les petites organisations dans la gestion et la facturation de leurs prestations journalières</p>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <%= link_to 'En savoir plus', pages_a_propos_path, class: 'btn btn-primary btn-lg px-4 me-md-2' %>
-        <%= link_to "Voir nos offres", "#offres" , class: 'btn btn-outline-secondary btn-lg px-4' %>
-      </div>
+      <h2 class="display-6 fw-bold mb-3">Application libre de facturation de services journaliers<h2>
+      <p class="display-7 fw-lighter">Aide les petites organisations dans la gestion et la facturation de leurs prestations journalières (repas, activités...)</p>
     </div>
   </div>
 </div>
@@ -52,13 +48,6 @@
       <p class="lead mb-4 text-white">
         Le portail Parents permet à un parent de consulter son relevé de compte, ses réservations, et ses factures.
       </p>
-    </div>
-  </div>
-  <div class="px-4 py-5 mb-4 bg-light">
-    <div class="col-lg-6 mx-auto">
-      <%= link_to 'En savoir plus', pages_a_propos_path, class: 'btn btn-primary btn-lg px-4 me-md-2' %>
-      <%= link_to "Guide d'utilisation", pages_guide_path, class: 'btn btn-outline-secondary btn-lg px-4 me-md-2' %>
-      <%= link_to 'Tester', admin_mode_demonstration_path, class: 'btn btn-outline-secondary btn-lg px-4 me-md-2' %>
     </div>
   </div>
 </div>
@@ -130,7 +119,7 @@
 <h2 class="display-6 text-center mb-4">Comparer les offres</h2>
 
 <div class="table-responsive mb-5">
-  <table class="table text-center">
+  <table class="table table-striped table-hover text-center">
     <thead>
       <tr>
         <th style="width: 50%;"></th>
@@ -141,10 +130,10 @@
     </thead>
     <tbody>
       <tr>
-        <th scope="row" class="text-start">Utilisation libre et illimitée</th>
-        <td><%= fa_icon 'check-circle', class: 'text-success' %></td>
-        <td><%= fa_icon 'check-circle', class: 'text-success' %></td>
-        <td><%= fa_icon 'check-circle', class: 'text-success' %></td>
+        <td scope="row" class="text-start">Utilisation libre et illimitée</td>
+        <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
+        <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
+        <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
       </tr>
       <tr>
         <td scope="row" class="text-start">
@@ -152,8 +141,8 @@
           <br> Ex: https://mon-organisation.prestofacto.fr
         </td>
         <td></td>
-        <td><%= fa_icon 'check-circle', class: 'text-success' %></td>
-        <td><%= fa_icon 'check-circle', class: 'text-success' %></td>
+        <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
+        <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
       </tr>
       <tr>
         <td scope="row" class="text-start">
@@ -162,20 +151,20 @@
           ex: https://prestofacto.votre-domaine.fr
         </td>
         <td></td>
-        <td><%= fa_icon 'check-circle', class: 'text-success' %></td>
-        <td><%= fa_icon 'check-circle', class: 'text-success' %></td>
+        <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
+        <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
       </tr>
       <tr>
         <td scope="row" class="text-start">Serveur virtuel dédié</td>
         <td></td>
         <td></td>
-        <td><%= fa_icon 'check-circle', class: 'text-success' %></td>
+        <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
       </tr>
       <tr>
         <td scope="row" class="text-start">Sauvegarde automatique des données</td>
         <td></td>
         <td><p>1/j</p></td>
-        <td><p>Continue</p></td>
+        <td><p>En continue</p></td>
       </tr>
       <tr>
         <td scope="row" class="text-start">Support</td>
@@ -186,6 +175,14 @@
 
     </tbody>
   </table>
+    <div class="px-4 py-5 mb-4 bg-light">
+    <div class="col-lg-6 mx-auto">
+      <%= link_to 'En savoir plus', pages_a_propos_path, class: 'btn btn-primary btn-lg px-4 me-md-2' %>
+      <%= link_to "Guide d'utilisation", pages_guide_path, class: 'btn btn-outline-secondary btn-lg px-4 me-md-2' %>
+      <%= link_to 'Tester', admin_mode_demonstration_path, class: 'btn btn-outline-secondary btn-lg px-4 me-md-2' %>
+    </div>
+  </div>
+
 </div>
 
 <!--
