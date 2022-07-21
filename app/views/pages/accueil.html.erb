@@ -1,17 +1,16 @@
 <div class="main-banner my-5 px-4">
-  <div class="row flex-lg-row-reverse align-items-center g-5 py-4 shadow-sm">
-    <div class="col-10 col-sm-8 col-lg-6">
-    <%= image_tag("abacus-beads-mathematics-numeral.jpg", 
-        class: 'd-block mx-lg-auto img-fluid rounded', 
-        alt: "Logo de #{ @site_name }", 
-        width: 740, height: 500,
-        style: "opacity: 75%;", 
-        loading: 'lazy') %>
-    </div>
-    <div class="col-lg-6">
+  <div class="row flex-lg-row align-items-center g-5 py-4 shadow-sm">
+    <div class="col-lg-7">
       <h1 class="display-2 lh-1 mb-3">PrestoFacto</h1>
-      <h2 class="display-6 fw-bold mb-3">Application libre de facturation de services journaliers<h2>
-      <p class="display-7 fw-lighter">Aide les petites organisations dans la gestion et la facturation de leurs prestations journalières (repas, activités...)</p>
+      <h2 class="display-7 fw-bold mb-3">Facturation de vos services journaliers<h2>
+      <h3 class="display-8 fw-lighter">Aide les petites organisations dans la gestion et la facturation de leurs prestations journalières (repas, activités...)</h3>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-5">
+        <%= link_to 'En savoir plus', pages_a_propos_path, class: 'btn btn-primary btn-lg px-4 me-md-2' %>
+        <%= link_to "Voir nos offres", "#offres" , class: 'btn btn-outline-secondary btn-lg px-4' %>
+      </div>
+    </div>
+    <div class="col-10 col-sm-8 col-lg-5">
+      <%= image_tag("abacus-beads-mathematics-numeral.jpg", class: 'd-block mx-lg-auto img-fluid rounded opacity-50', alt: "Logo de #{ @site_name }", width: 700, height: 500, loading: 'lazy') %>
     </div>
   </div>
 </div>
@@ -21,7 +20,7 @@
     <div class="col-lg-6 mx-auto">
       <h3 class="lh-1 mb-3">Pour qui ?</h3>
       <p class="lead mb-4">
-        PrestoFacto est destinée aux petites collectivités, associations, mairies, écoles, centre de loisirs... 
+        PrestoFacto est destiné aux petites collectivités, associations, mairies, écoles, centre de loisirs... 
         Cette solution vous aidera dans l’organisation de votre association et vous fera gagner un temps précieux en simplifiant la gestion administrative et la facturation de vos cantines et services périscolaires.</p>
     </div>
   </div>
@@ -169,7 +168,7 @@
         <td scope="row" class="text-start">Sauvegarde automatique des données</td>
         <td></td>
         <td><p>1/j</p></td>
-        <td><p>En continue</p></td>
+        <td><p>En continu</p></td>
       </tr>
       <tr>
         <td scope="row" class="text-start">Support</td>

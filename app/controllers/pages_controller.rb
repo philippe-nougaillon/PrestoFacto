@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!
 
-  def welcome
+  def accueil
     redirect_to comptes_path if user_signed_in?
   end
 
