@@ -27,5 +27,5 @@ module ApplicationHelper
             </li>
         })
     end
-     
+
 end

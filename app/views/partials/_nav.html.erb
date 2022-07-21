@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container-fluid">
     <%= link_to (user_signed_in? ? comptes_path : root_path), class: 'navbar-brand' do %>
-      <%= image_tag("logo2.jpg", height: 50, alt: 'logo PrestoFacto') %>
+      PrestoFacto
     <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -23,7 +23,7 @@
             <%= navbar_nav_item('pages', 'book', pages_guide_path, 'guide') %>
           <% end %>
         <% else %>
-          <%= navbar_nav_item('pages', 'home', pages_welcome_path, 'welcome') %>
+          <%= navbar_nav_item('pages', 'home', pages_accueil_path, 'accueil') %>
           <%= navbar_nav_item('pages', 'info-circle', pages_a_propos_path, 'a_propos') %>
           <%= navbar_nav_item('pages', 'book', pages_guide_path, 'guide') %>
           <%= navbar_nav_item('pages', 'rss', pages_blog_path, 'blog') %>
@@ -62,7 +62,7 @@
             %>
           <% end %> 
 
-          <%= link_to "Déconnection", 
+          <%= link_to "Déconnexion", 
               destroy_user_session_path, 
               method: :delete, 
               class: "btn btn-outline-danger btn-sm" 

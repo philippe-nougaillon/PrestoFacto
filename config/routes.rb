@@ -60,7 +60,7 @@ Rails.application.routes.draw do
   end
 
   namespace :pages do
-    get :welcome
+    get :accueil
     get :a_propos
     get :guide
     get :blog
@@ -68,6 +68,6 @@ Rails.application.routes.draw do
     get :conditions_generales_de_vente
   end
   
-  root 'pages#welcome'
+  root 'pages#accueil'
 
 end
