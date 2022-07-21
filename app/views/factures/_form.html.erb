@@ -2,7 +2,7 @@
 
   <% if facture.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(facture.errors.count, "erreur") %> empêche(nt) l'enregistrement de la facture:</h2>
+      <h3><%= pluralize(facture.errors.count, "erreur") %> empêche(nt) l'enregistrement de la facture:</h3>
 
       <ul>
       <% facture.errors.full_messages.each do |message| %>
@@ -16,31 +16,26 @@
 
   <div class="row shadow-sm p-2">
 
-    <div class="col-sm-6">
+    <div class="col">
       <%= form.date_field :date %>
-      <%= form.date_field :échéance, label: 'Echéance' %>
-      <% unless facture.new_record? %>
-        <%= form.datetime_field :envoyée_le, include_blank: true, label: 'Envoyée_le' %>
-      <% end %>
+      <%= form.text_field :réf, label: 'Réf' %>
+      <%= form.select :workflow_state, Facture.workflow_spec.states, label: 'Etat' %>
     </div>
     
-    <div class="col-sm-1">
+    <div class="col">
+      <%= form.date_field :échéance, label: 'Echéance' %>
+      <% unless facture.new_record? %>
+        <%= form.datetime_field :envoyée_le, include_blank: true, label: 'Envoi_le' %>
+      <% end %>
+      <%= form.number_field :montant, step: :any, label: 'Total' %>
     </div>
 
     <div class="col">
-      <div class="row">
-        <div class="col">
-          <%= form.text_field :réf, label: 'Réf' %>
-        </div>
-        <div class="col">
-          <%= form.number_field :montant, step: :any, label: 'Total' %>
-        </div>
-      </div>
       <%= form.text_area :mémo %>
-      <%= form.select :workflow_state, Facture.workflow_spec.states, label: 'Etat' %>
     </div>
-
   </div>
+
+  <h4 class="p-2">Prestations</h4>
 
   <%= form.fields_for :facture_lignes do |ligne_form| %>
     <div class="row shadow-sm p-2">

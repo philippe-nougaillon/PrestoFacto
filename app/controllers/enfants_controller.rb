@@ -38,7 +38,7 @@ class EnfantsController < ApplicationController
         @enfants = @enfants.page(params[:page])
       end
       format.xls do
-        book = Compte.to_xls(Compte.where(id: @enfants.pluck(:compte_id)))
+        book = ComptesToXls.new(Compte.where(id: @enfants.pluck(:compte_id))).call
         file_contents = StringIO.new
         book.write file_contents # => Now file_contents contains the rendered file output
         filename = "Enfants.xls"

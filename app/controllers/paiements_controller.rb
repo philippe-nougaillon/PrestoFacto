@@ -34,7 +34,7 @@ class PaiementsController < ApplicationController
     respond_to do |format|
       format.html
       format.xls do
-        book = Paiement.to_xls(@paiements)
+        book = PaiementsToXls.new(@paiements).call
         file_contents = StringIO.new
         book.write file_contents # => Now file_contents contains the rendered file output
         filename = "Paiements.xls"
