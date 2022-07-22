@@ -31,7 +31,7 @@ class EnfantsController < ApplicationController
     end
 
     # Appliquer le tri
-    @enfants = @enfants.reorder(Arel.sql("#{sort_column} #{sort_direction}"))
+    @enfants = @enfants.joins(:compte).reorder(Arel.sql("#{sort_column} #{sort_direction}"))
 
     respond_to do |format|
       format.html do 
