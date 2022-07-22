@@ -2,7 +2,7 @@
 
 <div class="card">
   <div class="card-body">
-    <h3><%= fa_icon 'child' %> Enfants</h3>
+    <h3><%= fa_icon 'child', class: 'text-primary' %> Enfants</h3>
     <table class="table table-bordered table-hover table-sm">
       <thead>
         <tr>
@@ -49,7 +49,7 @@
 
 <div class="card">
   <div class="card-body">
-    <h3><%= fa_icon 'calendar-alt' %> Réservations</h3>
+    <h3><%= fa_icon 'calendar-alt', class: 'text-warning' %> Réservations</h3>
     
     <% if @compte.reservations.any? %>
       <table class="table table-bordered table-hover table-sm">
