@@ -1,5 +1,5 @@
 <div class="pb-2 mt-4 mb-2 border-bottom">
-  <h2><%= fa_icon 'calendar-times' %> Absences</h2>
+  <h2><%= fa_icon 'calendar-times', class: 'text-danger' %> Absences</h2>
 </div>
 
 <%= bootstrap_form_tag url: absences_path, method: :get do |f| %>

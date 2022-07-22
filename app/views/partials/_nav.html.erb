@@ -15,18 +15,18 @@
           <% else %>
             <%= navbar_nav_item('comptes', 'users', comptes_path) %>
             <%= navbar_nav_item('enfants', 'child', enfants_path) %>
-            <%= navbar_nav_item('réservations', 'calendar-alt', reservations_path) %>
+            <%= navbar_nav_item('reservations', 'calendar-alt', reservations_path, 'Réservations') %>
             <%= navbar_nav_item('absences', 'calendar-times', absences_path) %>
             <%= navbar_nav_item('prestations', 'utensils', prestations_path) %>
             <%= navbar_nav_item('factures', 'file-invoice', factures_path) %>
             <%= navbar_nav_item('paiements', 'money-bill-alt', paiements_path) %>
           <% end %>
         <% else %>
-          <%= navbar_nav_item('accueil', 'home', root_path) %>
-          <%= navbar_nav_item('a_propos', 'info-circle', a_propos_path) %>
-          <%= navbar_nav_item('guide', 'book', guide_path) %>
-          <%= navbar_nav_item('actualite', 'rss', actualite_path) %>
-          <%= navbar_nav_item('new', 'envelope', new_message_path, 'Nous contacter') %>
+          <%= navbar_item('accueil', 'home', root_path) %>
+          <%= navbar_item('a_propos', 'info-circle', a_propos_path) %>
+          <%= navbar_item('guide', 'book', guide_path) %>
+          <%= navbar_item('actualite', 'rss', actualite_path, 'Actualité') %>
+          <%= navbar_nav_item('messages', 'envelope', new_message_path, 'Nous contacter') %>
         <% end %>
       </ul>
       <div class="d-flex">

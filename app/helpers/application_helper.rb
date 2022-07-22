@@ -14,13 +14,27 @@ module ApplicationHelper
                 url_for(request.parameters.merge(column: column, direction: direction))
     end
 
-    def navbar_nav_item(action_name, icon, path, label = nil)
+    def navbar_item(action_name, icon, path, label = nil)
         is_active = params[:action] == action_name
         render(inline: %{
             <li class="nav-item">
                 <%= link_to '#{ url_for(path) }', 
                             class: "nav-link text-#{ is_active ? 'dark active text-decoration-underline text-underline-offset-4' : 'secondary' }", style: "text-underline-offset: 5px;" do %>
                     <%= fa_icon '#{ icon }', class: "me-1" %>#{ label ? label : action_name.humanize }
+                <% end %>
+            </li>
+        })
+    end
+
+    def navbar_nav_item(controller_name, icon, path, label = nil)
+
+        is_active = params[:controller] == controller_name
+
+        render(inline: %{
+            <li class="nav-item">
+                <%= link_to '#{ url_for(path) }', 
+                            class: "nav-link text-#{ is_active ? 'dark active text-decoration-underline text-underline-offset-4' : 'secondary' }", style: "text-underline-offset: 5px;" do %>
+                    <%= fa_icon '#{ icon }', class: "me-1" %>#{ label ? label : controller_name.humanize }
                 <% end %>
             </li>
         })

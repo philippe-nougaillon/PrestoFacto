@@ -182,16 +182,12 @@
 
     </tbody>
   </table>
-    <div class="px-4 py-5 mb-4 bg-light">
-    <div class="col-lg-6 mx-auto">
-      <%= link_to 'En savoir plus', a_propos_path, class: 'btn btn-primary btn-lg px-4 me-md-2' %>
-      <%= link_to "Guide d'utilisation", guide_path, class: 'btn btn-outline-secondary btn-lg px-4 me-md-2' %>
-      <%= link_to 'Tester', admin_mode_demonstration_path, class: 'btn btn-outline-secondary btn-lg px-4 me-md-2' %>
+  <div class="bg-light p-5">
+    <div class="text-center">
+      <%= link_to 'En savoir plus', a_propos_path, class: 'btn btn-primary btn-lg px-4' %>
+      <%= link_to "Guide d'utilisation", guide_path, class: 'btn btn-outline-secondary btn-lg px-4 mx-2 my-2' %>
+      <%= link_to 'Tester', admin_mode_demonstration_path, class: 'btn btn-outline-secondary btn-lg px-4' %>
     </div>
   </div>
 
 </div>
-
-<!--
-<%= render 'partials/footer' %>
--->
