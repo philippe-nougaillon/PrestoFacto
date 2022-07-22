@@ -1,49 +1,51 @@
-<h2>Inscription</h2>
-<br>
+<div class="col-sm-5 mx-auto shadow-sm rounded p-5 mt-5">
+  <h1 class="mt-2 mb-5 text-center">Inscription</h1>
 
-<%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-  <div class="form-group">
-    <%= f.email_field :email, autofocus: true, required: true, autocomplete: "email", class: "form-control col-sm-3" %>
+    <div class="form-group">
+      <%= f.email_field :email, autofocus: true, required: true, autocomplete: "email", class: "form-control col-sm-3" %>
 
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> caractères minimum)</em>
-    <% end %><br />
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> caractères minimum)</em>
+      <% end %><br />
 
-    <%= f.password_field :password, required: true, hide_label: true, autocomplete: "new-password", class: "form-control col-sm-3" %>
-    <%= f.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "form-control col-sm-3" %>
-  
-    <%= f.label :organisation %>
-    <%= text_field_tag :organisation, params[:organisation], required: true, placeholder: "Le nom de votre ASSOCIATION/MAIRIE", class: "form-control col-sm-5" %>
-    <br>
+      <%= f.password_field :password, required: true, hide_label: true, autocomplete: "new-password", class: "form-control col-sm-3" %>
+      <%= f.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "form-control col-sm-3" %>
     
-    <%= f.label :structure %>
-    <%= text_field_tag :structure, params[:structure], required: true, placeholder: "Le nom d'une structure (CANTINE/GARDERIE/CENTRE DE LOISIRS/Etc.)", class: "form-control col-sm-6" %>
-    <br>
+      <%= f.label :organisation %>
+      <%= text_field_tag :organisation, params[:organisation], required: true, placeholder: "Le nom de votre ASSOCIATION/MAIRIE", class: "form-control col-sm-5" %>
+      <br>
+      
+      <%= f.label :structure %>
+      <%= text_field_tag :structure, params[:structure], required: true, placeholder: "Nom de la structure (CANTINE/GARDERIE/CENTRE...)", class: "form-control col-sm-6" %>
+      <br>
 
-    <%= f.label :zone, "Zone de vacances scolaires" %>
-    <%= select_tag :zone, options_for_select(['A', 'B', 'C']), prompt: 'Choisir votre zone', class: "form-control" %></div>
+      <%= f.label :zone, "Zone de vacances scolaires" %>
+      <%= select_tag :zone, options_for_select(['A', 'B', 'C']), prompt: 'Choisir votre zone', class: "form-control" %></div>
 
-    <p>
-      <i><small>
-        Ces informations servent à créer un premier jeu de données que vous pourrez ensuite modifier
-      </small></i>
-    </p>
-    <%= f.label :question %>
-    <%= text_field_tag :question, params[:question], required: true, placeholder: "Question de sécurité pour vérifier que vous êtes bien humain : Entrez la somme de 40 + 1 + 1 (Indice: c'est la réponse à la grande question sur la vie, l'univers et tout le reste...)", class: "form-control col-sm-6" %>
-    <br>
-  <div class="actions">
-    <%= f.submit "S'inscrire", class: "btn btn-primary btn-lg" %>
-  </div>
-  <p>
-    <i><small>
-      Un courriel va vous être envoyé afin de vérifier votre adresse email.
-      Cliquez sur le lien fourni afin de confirmer votre adresse email et de vous connecter.
-    </small></i>
-  </p>
-  </div>
+      <br>
+
+      <%= f.label :question, "Question de sécurité" %>
+      <%= text_field_tag :question, params[:question], required: true, placeholder: "Entrez la somme de 40 + 1 + 1", class: "form-control col-sm-6" %>
+
+      <br>
+
+      <p>
+        <i><small>
+          Un courriel va vous être envoyé afin de vérifier votre adresse email.
+          Cliquez sur le lien fourni afin de confirmer votre adresse email et de vous connecter.
+        </small></i>
+      </p>
+
+      <div class="actions">
+        <%= f.submit "S'inscrire", class: "btn btn-primary btn-lg" %>
+      </div>
+    </div>
 
 
 
-<% end %>
+  <% end %>
+
+</div>
