@@ -1,5 +1,5 @@
-<div class="col-sm-5 mx-auto shadow p-3 mb-5 bg-body rounded">
-  <p class="h1 mt-2 mb-5 text-center"><%= @site_name %></p>
+<div class="col-sm-5 mx-auto shadow-sm rounded p-5 mt-5">
+  <h1 class="mt-2 mb-5 text-center">Connexion</h1>
   <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
     <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
@@ -12,9 +12,9 @@
     <br>
 
     <div class="actions">
-      <%= f.submit "Se connecter", class: "btn btn-outline-success btn-sm" %>
+      <%= f.submit "Se connecter", class: "btn btn-outline-success" %>
 
-      <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-outline-primary btn-sm me-2" %> 
+      <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-outline-primary" %> 
 
     </div>
   <% end %>

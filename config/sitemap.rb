@@ -20,9 +20,9 @@ SitemapGenerator::Sitemap.create do
   #   add articles_path, :priority => 0.7, :changefreq => 'daily'
   #
 
-  add pages_a_propos_path
-  add pages_guide_path
-  add pages_blog_path
+  add a_propos_path
+  add guide_path
+  add actualite_path
 
   # Add all articles:
   
