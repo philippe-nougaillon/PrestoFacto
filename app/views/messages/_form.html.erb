@@ -1,5 +1,5 @@
-<div class="col-sm-5 mx-auto shadow-sm rounded p-5 mt-5">
-  <h1 class="text-center">Nous contacter</h1>
+<div class="col-sm-7 mx-auto shadow-sm rounded p-4 mt-2">
+  <h1 class="fw-light text-center">Nous contacter</h1>
   <div class="text-center">
     <p class="lead fw-lighter">
       Vous avez une question ou vous souhaitez que l'on vous contacte ?
@@ -22,7 +22,7 @@
 
     <%= form.email_field :email, placeholder: 'Votre adresse e-mail', required: true%>
     <%= form.select :objet, options_for_select(['Question', 'Offre standard', 'Offre premium', 'Remarque', "Proposition d'amélioration", 'Résiliation', 'Autre']), prompt: 'Choisir un objet' %>
-    <%= form.text_area :contenu, placeholder: 'Votre message', rows: 5, required: true %>
+    <%= form.text_area :contenu, placeholder: 'Votre message', rows: 4, required: true %>
 
     <div class="actions">
       <%= form.submit 'Envoyer', class: 'btn btn-outline-success' %>

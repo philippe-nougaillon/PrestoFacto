@@ -1,5 +1,5 @@
-<div class="col-sm-5 mx-auto shadow-sm rounded p-5 mt-5">
-  <h1 class="mt-2 mb-5 text-center">Connexion</h1>
+<div class="col-sm-6 mx-auto shadow-sm rounded p-5 mt-5">
+  <h1 class="fw-light mt-2 mb-5 text-center">Connexion</h1>
   <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
     <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
