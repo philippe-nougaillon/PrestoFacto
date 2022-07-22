@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-header">
     <h2>
-      <%= fa_icon 'child' %>
+      <%= fa_icon 'child', class: 'text-primary' %>
       <%= @enfant.prénom %>
       <%= @enfant.nom %>
     </h2>
@@ -63,7 +63,7 @@
 
 <div class="card">
   <div class="card-body">
-    <h4><%= fa_icon 'calendar-alt' %> Réservations actives</h4>
+    <h4><%= fa_icon 'calendar-alt', class: 'text-warning' %> Réservations actives</h4>
     <br>
 
     <table class="table table-bordered table-hover table-sm">
@@ -119,7 +119,7 @@
 
 <div class="card">
   <div class="card-body">
-    <h4><%= fa_icon 'calendar-times' %> Absences</h4>
+    <h4><%= fa_icon 'calendar-times', class: 'text-danger' %> Absences</h4>
     <br>
 
     <table class="table table-bordered table-hover table-sm">
@@ -180,7 +180,7 @@
 
 <div class="card">
   <div class="card-body">
-    <h4><%= fa_icon 'utensils' %> Prestations à facturer</h4>
+    <h4><%= fa_icon 'utensils', class: 'text-secondary' %> Prestations à facturer</h4>
     <br>
 
     <table class="table table-bordered table-hover table-sm">

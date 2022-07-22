@@ -76,19 +76,19 @@
             <div class="card-footer">
               <% if policy(Facture).new? %>
                 <%= link_to admin_ajout_factures_path(compte_id: @compte.id), class: "btn btn-sm" do %>
-                  <%= fa_icon 'file-invoice' %> Facturer
+                  <%= fa_icon 'file-invoice', class: 'text-info' %> Facturer
                 <% end %>
               <% end %>
               |
               <% if policy(Facture).new? %>
                 <%= link_to new_facture_path(compte_id: @compte.id), class: "btn btn-sm" do %>
-                  <%= fa_icon 'file-invoice' %> Nouvelle facture spéciale
+                  <%= fa_icon 'file-invoice', class: 'text-info' %> Nouvelle facture spéciale
                 <% end %>
               <% end %>
               |
               <% if policy(Paiement).new? %>
                 <%= link_to new_paiement_path(compte_id: @compte.id), data: {'bs-toggle': "modal", 'bs-target': "#myModalNewPaiement" }, class: "btn btn-sm" do %>
-                  <i class="far fa-money-bill-alt"></i> Ajouter un paiement
+                  <i class="far fa-money-bill-alt text-success"></i> Ajouter un paiement
                 <% end %>
               <% end %>
               | 
