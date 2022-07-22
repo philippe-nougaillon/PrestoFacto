@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<nav class="navbar navbar-expand-lg fixed-top bg-white bg-opacity-75 shadow-sm py-3">
   <div class="container-fluid">
     <%= link_to (user_signed_in? ? comptes_path : root_path), class: 'navbar-brand' do %>
       PrestoFacto
@@ -22,36 +22,22 @@
             <%= navbar_nav_item('paiements', 'money-bill-alt', paiements_path) %>
           <% end %>
         <% else %>
-          <%= navbar_nav_item('pages', 'home', pages_accueil_path, 'accueil') %>
-          <%= navbar_nav_item('pages', 'info-circle', pages_a_propos_path, 'a_propos') %>
-          <%= navbar_nav_item('pages', 'book', pages_guide_path, 'guide') %>
-          <%= navbar_nav_item('pages', 'rss', pages_blog_path, 'blog') %>
-          <li class="nav-item">
-            <%= link_to new_message_path, class: "nav-link" do %>
-              <%= fa_icon 'envelope' %>
-              Nous contacter
-            <% end %>
-          </li>
+          <%= navbar_nav_item('accueil', 'home', root_path) %>
+          <%= navbar_nav_item('a_propos', 'info-circle', a_propos_path) %>
+          <%= navbar_nav_item('guide', 'book', guide_path) %>
+          <%= navbar_nav_item('actualite', 'rss', actualite_path) %>
+          <%= navbar_nav_item('new', 'envelope', new_message_path, 'Nous contacter') %>
         <% end %>
       </ul>
       <div class="d-flex">
         <% unless user_signed_in? %>
-          <%= link_to "S'inscrire",
-              new_user_registration_path, 
-              class: "btn btn-outline-primary me-2" 
-          %>
-           <%= link_to "Tester", 
-              admin_mode_demonstration_path, 
-              title: 'passer en mode démonstration',
-              class: "btn btn-outline-warning me-2"  
-          %> 
           <%= link_to "Connexion", 
               new_user_session_path, 
               class: "btn btn-outline-success" 
           %>
         <% else %>
           <%= link_to "Guide d'utilisation", 
-                      pages_guide_path, 
+                      guide_path, 
                       class: "btn btn-outline-secondary btn-sm me-2" 
           %>
           <% if current_user.admin? %>

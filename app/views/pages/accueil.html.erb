@@ -1,11 +1,11 @@
 <div class="main-banner my-5 px-4">
-  <div class="row flex-lg-row align-items-center g-5 py-4 shadow-sm">
+  <div class="row flex-lg-row align-items-center g-5 py-4">
     <div class="col-lg-7">
       <h1 class="display-2 lh-1 mb-3">PrestoFacto</h1>
       <h2 class="display-7 fw-bold mb-3">Facturation de vos services journaliers<h2>
       <h3 class="display-8 fw-lighter">Aide les petites organisations dans la gestion et la facturation de leurs prestations journalières (repas, activités...)</h3>
       <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-5">
-        <%= link_to 'En savoir plus', pages_a_propos_path, class: 'btn btn-primary btn-lg px-4 me-md-2' %>
+        <%= link_to 'En savoir plus', a_propos_path, class: 'btn btn-primary btn-lg px-4 me-md-2' %>
         <%= link_to "Voir nos offres", "#offres" , class: 'btn btn-outline-secondary btn-lg px-4' %>
       </div>
     </div>
@@ -25,10 +25,10 @@
     </div>
   </div>
 
-  <div class="px-4 py-5 bg-primary">
+  <div class="px-4 py-5">
     <div class="col-lg-6 mx-auto">
-      <h3 class="lh-1 mb-3 text-white">Un usage simplifié</h3>
-      <p class="lead mb-4 text-white">Prise en main immédiate. Une comptabilité simple par famille. Une facture par mois avec solde. Balance famille. Ne dépend pas d'une société. Code source librement disponible.</p>
+      <h3 class="lh-1 mb-3 text-primary">Un usage simplifié</h3>
+      <p class="lead mb-4">Prise en main immédiate. Une comptabilité simple par famille. Une facture par mois avec solde. Balance famille. Ne dépend pas d'une société. Code source librement disponible.</p>
     </div>
   </div>
 
@@ -46,10 +46,10 @@
       </p>
     </div>
   </div>
-  <div class="px-4 py-5 bg-primary">
+  <div class="px-4 py-5">
     <div class="col-lg-6 mx-auto">
-      <h3 class="lh-1 mb-3 text-white">Portail Parents</h3>
-      <p class="lead mb-4 text-white">
+      <h3 class="lh-1 mb-3 text-primary">Portail Parents</h3>
+      <p class="lead mb-4">
         Le portail Parents permet à un parent de consulter son relevé de compte, ses réservations, et ses factures.
       </p>
     </div>
@@ -58,66 +58,69 @@
 
 <div id="offres" style="height: 66px;"></div>
 
-<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-  <h1 class="display-4">Tarifs</h1>
-  <p class="fs-5 text-muted">Toutes les offres disponibles.</p>
-</div>
+<div class="bg-light px-4">
+  <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Tarifs</h1>
+    <p class="fs-5 text-muted">Toutes les offres disponibles.</p>
+  </div>
 
-<div class="row row-cols-1 row-cols-md-3 mb-5 text-start">
-  <div class="col">
-    <div class="card mb-4 rounded-3 shadow-sm border-primary">
-      <div class="card-header py-3 text-white bg-primary border-primary">
-        <h4 class="my-0 fw-normal text-center">Libre</h4>
+  <div class="row row-cols-1 row-cols-md-3 mb-5 text-start">
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm border-primary">
+        <div class="card-header py-3 text-white bg-primary border-primary">
+          <h4 class="my-0 fw-normal text-center">Libre</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title text-center">Gratuit</h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Utilisation libre et limitée</li>
+            <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Aucune sauvegarde des données</li>
+            <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Aucun support</li>
+            <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Pas de sous-domaine personnalisé</li>
+            <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Aucun serveur virtuel dédié</li>
+          </ul>
+          <%= link_to "S'inscrire", new_user_registration_path, class: 'w-100 btn btn-lg btn-primary' %>
+        </div>
       </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title text-center">Gratuit</h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Utilisation libre et limitée</li>
-          <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Aucune sauvegarde des données</li>
-          <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Aucun support</li>
-          <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Pas de sous-domaine personnalisé</li>
-          <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Aucun serveur virtuel dédié</li>
-        </ul>
-        <%= link_to "S'inscrire", new_user_registration_path, class: 'w-100 btn btn-lg btn-primary' %>
+    </div>
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal text-center">Standard</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title text-center">49 €<small class="text-muted fw-light"> TTC/mois</small></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Utilisation libre et illimitée</li>
+            <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Sauvegarde automatique journalière</li>
+            <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Support par email</li>
+            <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Accès par sous-domaine personnalisé</li>
+            <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Aucun serveur virtuel dédié</li>
+          </ul>
+          <%= link_to 'Nous Contacter', new_message_path, class: 'w-100 btn btn-lg btn-outline-primary' %>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm border-primary">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal text-center">Premium</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title text-center">99 €<small class="text-muted fw-light"> <small>TTC/mois</small></small></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Utilisation libre et illimitée</li>
+            <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Sauvegarde continue (24/7)</li>
+            <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Support par email / téléphonique</li>
+            <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Accès par votre nom de domaine</li>
+            <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Serveur virtuel dédié</li>
+          </ul>
+          <%= link_to 'Nous Contacter', new_message_path, class: 'w-100 btn btn-lg btn-outline-primary' %>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col">
-    <div class="card mb-4 rounded-3 shadow-sm">
-      <div class="card-header py-3">
-        <h4 class="my-0 fw-normal text-center">Standard</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title text-center">49 €<small class="text-muted fw-light"> TTC/mois</small></h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Utilisation libre et illimitée</li>
-          <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Sauvegarde automatique journalière</li>
-          <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Support par email</li>
-          <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Accès par sous-domaine personnalisé</li>
-          <li><%= fa_icon 'times-circle', class: 'text-danger me-4' %>Aucun serveur virtuel dédié</li>
-        </ul>
-        <%= link_to 'Nous Contacter', new_message_path, class: 'w-100 btn btn-lg btn-outline-primary' %>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card mb-4 rounded-3 shadow-sm border-primary">
-      <div class="card-header py-3">
-        <h4 class="my-0 fw-normal text-center">Premium</h4>
-      </div>
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title text-center">99 €<small class="text-muted fw-light"> <small>TTC/mois</small></small></h1>
-        <ul class="list-unstyled mt-3 mb-4">
-          <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Utilisation libre et illimitée</li>
-          <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Sauvegarde continue (24/7)</li>
-          <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Support par email / téléphonique</li>
-          <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Accès par votre nom de domaine</li>
-          <li><%= fa_icon 'check-circle', class: 'text-primary me-4' %>Serveur virtuel dédié</li>
-        </ul>
-        <%= link_to 'Nous Contacter', new_message_path, class: 'w-100 btn btn-lg btn-outline-primary' %>
-      </div>
-    </div>
-  </div>
+
 </div>
 
 <h2 class="display-6 text-center mb-4">Comparer les offres</h2>
@@ -181,8 +184,8 @@
   </table>
     <div class="px-4 py-5 mb-4 bg-light">
     <div class="col-lg-6 mx-auto">
-      <%= link_to 'En savoir plus', pages_a_propos_path, class: 'btn btn-primary btn-lg px-4 me-md-2' %>
-      <%= link_to "Guide d'utilisation", pages_guide_path, class: 'btn btn-outline-secondary btn-lg px-4 me-md-2' %>
+      <%= link_to 'En savoir plus', a_propos_path, class: 'btn btn-primary btn-lg px-4 me-md-2' %>
+      <%= link_to "Guide d'utilisation", guide_path, class: 'btn btn-outline-secondary btn-lg px-4 me-md-2' %>
       <%= link_to 'Tester', admin_mode_demonstration_path, class: 'btn btn-outline-secondary btn-lg px-4 me-md-2' %>
     </div>
   </div>

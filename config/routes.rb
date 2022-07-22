@@ -58,13 +58,13 @@ Rails.application.routes.draw do
     post :envoyer_factures_do
   end
 
-  namespace :pages do
-    get :accueil
-    get :a_propos
-    get :guide
-    get :blog
-    get :confidentialite
-    get :conditions_generales_de_vente
+  controller :pages do
+    get :accueil, to: 'pages#home'
+    get :a_propos, to: 'pages#a_propos'
+    get :guide, to: 'pages#guide'
+    get :actualite, to: 'pages#actualite'
+    get :confidentialite, to: 'pages#confidentialite'
+    post :conditions_generales_de_vente, to: 'pages#conditions_generales_de_vente'
   end
   
   root 'pages#accueil'

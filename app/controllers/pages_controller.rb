@@ -11,7 +11,7 @@ class PagesController < ApplicationController
   def utilisation
   end
 
-  def blog
+  def actualite
   end
 
   def confidentialite
