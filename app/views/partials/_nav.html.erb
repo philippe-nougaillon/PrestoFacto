@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-lg fixed-top bg-white bg-opacity-75 shadow-sm py-3">
   <div class="container-fluid">
-    <%= link_to (user_signed_in? ? comptes_path : root_path), class: 'navbar-brand' do %>
+    <%= link_to (user_signed_in? ? comptes_path : root_path), class: 'navbar-brand fw-bold ' do %>
       PrestoFacto
     <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +25,7 @@
           <%= navbar_item('accueil', 'home', root_path) %>
           <%= navbar_item('a_propos', 'info-circle', a_propos_path) %>
           <%= navbar_item('guide', 'book', guide_path) %>
-          <%= navbar_item('actualite', 'rss', actualite_path, 'Actualité') %>
+          <%= navbar_item('actualite', 'rss', actualite_path, 'Actualités') %>
           <%= navbar_nav_item('messages', 'envelope', new_message_path, 'Nous contacter') %>
         <% end %>
       </ul>
