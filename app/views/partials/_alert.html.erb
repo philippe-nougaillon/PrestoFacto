@@ -1,6 +1,12 @@
-<% if notice.present? or alert.present? %>
+<% if notice.present? || alert.present? %>
   <div class="alert alert-dismissible fade show alert-<%= notice ? 'success' : 'danger' %>" role="alert">
-    <%= notice ? notice : alert %>
+    <% if alert %>
+      <%= fa_icon 'exclamation-circle' %>
+      <%= alert %>
+    <% else %>
+      <%= fa_icon 'info-circle' %>
+      <%= notice %>
+    <% end %>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 <% end %>
