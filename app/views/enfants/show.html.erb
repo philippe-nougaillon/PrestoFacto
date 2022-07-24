@@ -53,7 +53,7 @@
     </div>
 
     <% if policy(@enfant).edit? %>
-      <%= link_to edit_enfant_path(@enfant), class: "btn btn-link" do %>
+      <%= link_to edit_enfant_path(@enfant), class: "btn btn-outline-primary" do %>
         <%= fa_icon 'edit', text: ' Editer' %> 
       <% end %>
     <% end %>
@@ -109,7 +109,7 @@
     </table>
 
     <% if policy(@enfant).edit? %>
-      <%= link_to edit_enfant_path(@enfant), class: "btn btn-link" do %>
+      <%= link_to edit_enfant_path(@enfant), class: "btn btn-outline-primary" do %>
         <%= fa_icon 'edit', text: ' Editer les réservations' %> 
       <% end %>
     <% end %>
@@ -145,7 +145,7 @@
     </table>
 
     <% if policy(Absence).edit? %>
-      <%= link_to new_absence_path(enfant_id: @enfant), class: 'btn btn-link', data: {'bs-toggle': "modal", 'bs-target': "#myModal" } do %>
+      <%= link_to new_absence_path(enfant_id: @enfant), class: 'btn btn-outline-primary', data: {'bs-toggle': "modal", 'bs-target': "#myModal" } do %>
         <%= fa_icon 'plus-circle' %> Ajouter une absence
       <% end %>
     <% end %>
@@ -202,7 +202,7 @@
     </table>
 
     <% if policy(Prestation).edit? %>
-      <%= link_to new_prestation_path(enfant_id: @enfant), class: 'btn btn-link', data: {'bs-toggle': "modal", 'bs-target': "#myModalPrestation" } do %>
+      <%= link_to new_prestation_path(enfant_id: @enfant), class: 'btn btn-outline-primary', data: {'bs-toggle': "modal", 'bs-target': "#myModalPrestation" } do %>
         <%= fa_icon 'plus-circle' %> Ajouter une prestation
       <% end %>
     <% end %>

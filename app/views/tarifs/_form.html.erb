@@ -4,6 +4,6 @@
   <%= form.select :prestation_type_id, options_from_collection_for_select(current_user.organisation.prestation_types, 'id', 'nom', tarif.prestation_type_id), { label: "Type de Prestation" }, { class: "selectpicker" } %>
   <%= form.number_field :prix, step: :any, required: true %>
 
-  <%= form.submit "Enregistrer", class: "btn btn-success" %>
+  <%= form.submit "Enregistrer", class: "btn btn-outline-success" %>
 
 <% end %>

@@ -11,7 +11,7 @@
 <%= bootstrap_form_with(url: "envoyer_factures_do", method: :post, local: true) do |form| %>
   <%= form.check_box :envoyer, {custom: :switch, label: "Envoyer les emails ? (non: visualisation seulement, ne fait rien de définitif :)"} %>  
   <br /><br />
-  <%= form.submit "Lancer", class: "btn btn-success" %>
+  <%= form.submit "Lancer", class: "btn btn-outline-success" %>
 <% end %>
 
 
