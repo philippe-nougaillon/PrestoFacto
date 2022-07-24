@@ -3,7 +3,7 @@
 <%= bootstrap_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: 'col-sm-3' %>
+  <%= f.email_field :email, autofocus: false, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: 'col-sm-3' %>
 
   <div class="actions">
     <%= f.submit "Renvoyer les instructions", class: "btn btn-primary btn-lg" %>

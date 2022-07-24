@@ -4,7 +4,7 @@
 
 <%= bootstrap_form_tag url: enfants_path, method: :get do |f| %>
   <div class="row">
-    <div class="col"><%= f.text_field :search, value: params[:search], label: 'Nom/Prénom/Badge', onchange: "this.form.submit()", autofocus: true %></div>
+    <div class="col"><%= f.text_field :search, value: params[:search], label: 'Nom/Prénom/Badge', onchange: "this.form.submit()", autofocus: false %></div>
     <div class="col-sm-3"><%= f.select :structure_id, options_from_collection_for_select(@structures, 'id', 'nom', params[:structure_id]), { include_blank: true, label: "Structure" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
     <div class="col-sm-2"><%= f.select :classroom_id, options_from_collection_for_select(@classrooms, 'id', 'nom', params[:classroom_id]), { include_blank: true, label: "Classe" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
   </div>
@@ -12,7 +12,7 @@
 
 <%= bootstrap_form_tag url: action_enfants_path, method: :post do %>
   <div class="table-responsive" data-controller="action">
-    <table class="table table-bordered table-hover table-striped">
+    <table class="table table-hover">
       <thead>
         <tr>
           <th></th>

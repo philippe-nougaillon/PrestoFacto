@@ -4,7 +4,7 @@
   <div class="card-body">
 
     <h4><%= fa_icon 'child', class: 'text-primary' %> Enfants</h4>
-    <table class="table table-bordered table-hover table-sm">
+    <table class="table table-hover table-sm">
       <thead>
         <tr>
           <th>Nom</th>
@@ -46,7 +46,7 @@
     </table>
 
     <% if policy(Enfant).new? %>
-      <%= link_to new_enfant_path(compte_id: @compte), class: "btn btn-link" do %>
+      <%= link_to new_enfant_path(compte_id: @compte), class: "btn btn-outline-primary" do %>
         <%= fa_icon 'plus-circle' %> Ajouter un enfant
       <% end %>
     <% end %>

@@ -36,7 +36,7 @@
         <% end %>
         
         <% if policy(@compte).edit? %>
-          <%= link_to edit_compte_path(@compte) do %>
+          <%= link_to edit_compte_path(@compte), class: "btn btn-outline-primary" do %>
             <%= fa_icon 'edit', text: ' Editer compte' %>
           <% end %>
         <% end %>
