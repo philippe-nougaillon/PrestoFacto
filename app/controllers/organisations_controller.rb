@@ -28,7 +28,7 @@ class OrganisationsController < ApplicationController
   def edit
     authorize @organisation
 
-    1.times { @organisation.structures.build }
+    2.times { @organisation.structures.build }
     2.times { @organisation.vacances.build }
   end
 

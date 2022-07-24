@@ -4,9 +4,9 @@
 
 <div class="row mt-4">
   <div class="col px-5 mx-3">
-    <p>Nombre total de Comptes : <span class="float-end"><%= organisation.comptes.count %></span></p>
-    <p>Nombre total d'Enfants : <span class="float-end"><%= nbr_enfants = organisation.enfants.count %></span></p>
-    <p>Nombre total de Classes : <span class="float-end"><%= nbr_classes = organisation.classrooms.count %></span></p>
+    <p>Nombre de Comptes : <span class="float-end"><%= organisation.comptes.count %></span></p>
+    <p>Nombre d'Enfants : <span class="float-end"><%= nbr_enfants = organisation.enfants.count %></span></p>
+    <p>Nombre de Classes : <span class="float-end"><%= nbr_classes = organisation.classrooms.count %></span></p>
     
     <% if nbr_classes > 0 %>
       <p>Nombre d'Enfants par Classe : <span class="float-end"><%= nbr_enfants / nbr_classes %></span></p>
@@ -14,19 +14,19 @@
   </div>
 
   <div class="col px-5 mx-3">
-    <p>Nombre total de Prestations : <span class="float-end"><%= organisation.prestations.count %></span></p>
-    <p>Nombre total de Réservations : <span class="float-end"><%= organisation.reservations.count %></span></p>
+    <p>Nombre de Prestations : <span class="float-end"><%= organisation.prestations.count %></span></p>
+    <p>Nombre de Réservations : <span class="float-end"><%= organisation.reservations.count %></span></p>
   </div>
 
   <div class="col px-5 mx-3">
     <p>
-      Montant total des Factures : 
+      Total des Factures : 
       <span class="float-end">
         <%= number_to_currency(montant_total_factures = organisation.factures.sum(:montant)) %>
       </span>
     </p>
     <p>
-      Montant total des Paiements : 
+      Total des Paiements : 
       <span class="float-end">
         <%= number_to_currency(montant_total_paiements = organisation.paiements.sum(:montant)) %>
       </span>
