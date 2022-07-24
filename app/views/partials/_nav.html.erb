@@ -36,23 +36,21 @@
               class: "btn btn-outline-success" 
           %>
         <% else %>
-          <%= link_to "Guide", 
-                      guide_path, 
-                      class: "me-2" 
-          %>
-          |
           <% if current_user.admin? %>
             <%= link_to "Administration", 
                 admin_index_path, 
-                class: "mx-2" 
+                class: "btn btn-sm btn-link mx-2" 
             %>
-          |
           <% end %>
-
+          <%= link_to "Guide", 
+                      guide_path, 
+                      class: "btn btn-sm btn-link mx-2" 
+          %>
+        
           <%= link_to "Déconnexion", 
               destroy_user_session_path, 
               method: :delete, 
-              class: "btn btn-outline-danger btn-sm ms-2" 
+              class: "btn btn-outline-danger btn-sm" 
           %>
         <% end %>
       </div>

@@ -1,7 +1,7 @@
 <%= bootstrap_form_with(model: organisation, local: true) do |form| %>
 
   <div class="row">
-    <div class="col">
+    <div class="col-sm-5">
       <%= form.text_field :nom %>
       <%= form.text_field :adresse %>
       <div class="row">
@@ -23,11 +23,11 @@
   <br>
 
   <div class="row">
-    <div class="col">
+    <div class="col-sm-5">
       <h3><%= fa_icon 'school' %> Structures</h3>
       <%= form.fields_for :structures do |structure_form| %>
         <div class="row">
-          <div class="col-sm-5"><%= structure_form.text_field :nom, label_as_placeholder: true %></div>
+          <div class="col-sm-8"><%= structure_form.text_field :nom, label_as_placeholder: true %></div>
           <% unless structure_form.object.new_record? or structure_form.object.classrooms.any? %>
             <div class="col"><%= structure_form.check_box :_destroy, label: "Supprimer ?" %></div>
           <% end %>
@@ -50,6 +50,7 @@
   <%= form.submit "Enregistrer", class: "btn btn-outline-success" %>
 
 <% end %>
+<br>
 
 <script type="application/javascript">
     $('input[type="file"]').change(function(e){
