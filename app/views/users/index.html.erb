@@ -10,7 +10,7 @@
 
 <%= bootstrap_form_tag url: users_admin_index_path, method: :get do |f| %>
   <div class="row">
-    <div class="col"><%= f.text_field :email, value: params[:email], onchange: "this.form.submit()", autofocus: true %></div>
+    <div class="col"><%= f.text_field :email, value: params[:email], onchange: "this.form.submit()", autofocus: false %></div>
   </div>
 <% end %>
 

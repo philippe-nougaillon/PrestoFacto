@@ -10,7 +10,7 @@ module ApplicationHelper
         
         link_title = sort_direction == "asc" ? "Trier croissant" : "Trier décroissant"
 
-        link_to "<span class='text-muted' title=\"#{h link_title}\">#{h title} <i class=\"#{icon}\"></i></span>".html_safe, 
+        link_to "<span class='btn btn-sm' title=\"#{h link_title}\">#{h title} <i class=\"#{icon}\"></i></span>".html_safe, 
                 url_for(request.parameters.merge(column: column, direction: direction))
     end
 
