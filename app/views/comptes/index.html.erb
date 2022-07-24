@@ -1,7 +1,7 @@
 <div class="pb-2 mt-4 mb-2 border-bottom">
   <% if policy(Compte).new? %>
     <%= link_to new_compte_path, class: 'btn btn-link float-end' do %>
-      <%= fa_icon 'plus-circle' %> Compte
+      <%= fa_icon 'plus-circle' %> Ajouter un Compte
     <% end %>
   <% end %>
   <h2 class="fw-light"><%= fa_icon 'users' %> Comptes</h2>
@@ -13,9 +13,9 @@
       <%= f.text_field :search, 
                         value: params[:search], 
                         label: 'Rechercher',
-                        placeholder: 'Entrez un mot à rechercher dans Nom du compte/Prénom enfant/Code postal/Ville/Numéro allocataire/N° badge', 
+                        placeholder: 'Entrez un terme à rechercher (ex: Nom, Prénom enfant, Code postal, Ville, Numéro allocataire, Badge)', 
                         onchange: 'this.form.submit()', 
-                        autofocus: true %>
+                        autofocus: false %>
     </div>
   </div>
 <% end %>

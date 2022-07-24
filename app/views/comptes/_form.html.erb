@@ -3,21 +3,37 @@
   <%= form.hidden_field :organisation_id %>
 
   <div class="row">
-    <div class="col-sm-4">
-      <%= form.text_field :nom, required: true, autofocus: true %>
-      <%= form.select :civilité, ["M","Mme","M et Mme"] %>
-      <%= form.text_field :adresse1 %>
-      <%= form.text_field :adresse2 %>
+    <div class="col-sm-6">
       <div class="row">
-        <div class="col-sm-4"><%= form.text_field :cp %></div>
-        <div class="col-sm-8"><%= form.text_field :ville %></div>
+        <div class="col-sm-9">
+          <%= form.text_field :nom, required: true, autofocus: true %>
+        </div>
+        <div class="col-sm-3">
+          <%= form.select :civilité, ["M","Mme","M et Mme"] %>
+        </div>
       </div>
-      <%= form.text_field :num_allocataire %>
+
+      <div class="row">
+        <div class="col">
+          <%= form.text_field :adresse1, label: "Adresse" %>
+        </div>
+        <div class="col">
+          <%= form.text_field :adresse2, label: "Adresse complémentaire" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-3"><%= form.text_field :cp %></div>
+        <div class="col-sm-9"><%= form.text_field :ville %></div>
+      </div>
+      <%= form.text_field :num_allocataire, label: "Numéro d'Allocataire" %>
       <%= form.text_area :mémo %>
     </div>
 
-    <div class="col-sm-8">
-      <h3>Contacts</h3>
+    <div class="col-sm-6">
+      <h5>
+        Contacts
+      </h5>
       <%= form.fields_for :contacts do |contact_form| %>
         <div class="row">
             <div class="col"><%= contact_form.text_field :nom, label_as_placeholder: true %></div>
