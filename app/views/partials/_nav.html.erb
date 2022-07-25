@@ -13,13 +13,13 @@
           <% if current_user.visiteur? %>
             <%= navbar_nav_item('moncompte', 'users',  moncompte_index_path) %>
           <% else %>
-            <%= navbar_nav_item('comptes', 'users', comptes_path) %>
-            <%= navbar_nav_item('enfants', 'child', enfants_path) %>
-            <%= navbar_nav_item('reservations', 'calendar-alt', reservations_path, 'Réservations') %>
-            <%= navbar_nav_item('absences', 'calendar-times', absences_path) %>
-            <%= navbar_nav_item('prestations', 'utensils', prestations_path) %>
-            <%= navbar_nav_item('factures', 'file-invoice', factures_path) %>
-            <%= navbar_nav_item('paiements', 'money-bill-alt', paiements_path) %>
+            <%= navbar_nav_item('comptes', 'users', 'dark', comptes_path) %>
+            <%= navbar_nav_item('enfants', 'child', 'primary', enfants_path) %>
+            <%= navbar_nav_item('reservations', 'calendar-alt', 'warning', reservations_path, 'Réservations') %>
+            <%= navbar_nav_item('absences', 'calendar-times', 'danger', absences_path) %>
+            <%= navbar_nav_item('prestations', 'utensils', 'secondary', prestations_path) %>
+            <%= navbar_nav_item('factures', 'file-invoice', 'info', factures_path) %>
+            <%= navbar_nav_item('paiements', 'money-bill-alt', 'success', paiements_path) %>
           <% end %>
         <% else %>
           <%= navbar_item('accueil', 'home', root_path) %>
