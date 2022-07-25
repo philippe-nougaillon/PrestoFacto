@@ -1,56 +1,62 @@
-<%= render partial: "compte-card" %>
+<div class="card mb-5">
+  <div class="card-header">
+    <h2><%= fa_icon 'user' %> <%= @compte.nom %></h2>
+  </div>
 
-<div class="card">
   <div class="card-body">
+    <%= render partial: "compte-card" %>
+    <div class="card mt-3">
+      <div class="card-body">
 
-    <h4><%= fa_icon 'child', class: 'text-primary' %> Enfants</h4>
-    <table class="table table-hover table-sm">
-      <thead>
-        <tr>
-          <th>Nom</th>
-          <th>Prénom</th>
-          <th>Date naissance</th>
-          <th>Classe</th>
-          <th>ALLERGIE ?</th>
-          <th>Menu SP?</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
+        <h4><%= fa_icon 'child', class: 'text-primary' %> Enfants</h4>
+        <table class="table table-hover table-sm">
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th>Date naissance</th>
+              <th>Classe</th>
+              <th>ALLERGIE ?</th>
+              <th>Menu SP?</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
 
-      <% @compte.enfants.each do |enfant| %>
-        <tr>
-          <td><%= enfant.nom %></td>
-          <td><%= link_to enfant.prénom, enfant %></td>
-          <td><%= l(enfant.date_naissance) if enfant.date_naissance %></td>
-          <td><%= enfant.classroom.nom %></td>
-          <td class="text-center"><%= fa_icon('exclamation', title: enfant.allergenes) if enfant.menu_all %></td>
-          <td class="text-center"><%= fa_icon 'exclamation' if enfant.menu_sp %></td>
-          <td>
-            <% if policy(enfant).edit? %>
-              <%= link_to edit_enfant_path(enfant) do %>
-                <%= fa_icon 'edit' %>
-              <% end %>
-            <% end %>
-          </td>
-          <td>
-            <% if policy(enfant).destroy? %>
-              <%= link_to enfant, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
-                  <%= fa_icon 'trash-alt' %>
-              <% end %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
+          <% @compte.enfants.each do |enfant| %>
+            <tr>
+              <td><%= enfant.nom %></td>
+              <td><%= link_to enfant.prénom, enfant %></td>
+              <td><%= l(enfant.date_naissance) if enfant.date_naissance %></td>
+              <td><%= enfant.classroom.nom %></td>
+              <td class="text-center"><%= fa_icon('exclamation', title: enfant.allergenes) if enfant.menu_all %></td>
+              <td class="text-center"><%= fa_icon 'exclamation' if enfant.menu_sp %></td>
+              <td>
+                <% if policy(enfant).edit? %>
+                  <%= link_to edit_enfant_path(enfant) do %>
+                    <%= fa_icon 'edit' %>
+                  <% end %>
+                <% end %>
+              </td>
+              <td>
+                <% if policy(enfant).destroy? %>
+                  <%= link_to enfant, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
+                      <%= fa_icon 'trash-alt' %>
+                  <% end %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
 
-      <tfoot><tr><th colspan=8></th></tr></tfoot>
-    </table>
+        </table>
 
-    <% if policy(Enfant).new? %>
-      <%= link_to new_enfant_path(compte_id: @compte), class: "btn btn-outline-primary" do %>
-        <%= fa_icon 'plus-circle' %> Ajouter un enfant
-      <% end %>
-    <% end %>
+        <% if policy(Enfant).new? %>
+          <%= link_to new_enfant_path(compte_id: @compte), class: "btn btn-outline-primary" do %>
+            <%= fa_icon 'plus-circle' %> Ajouter un enfant
+          <% end %>
+        <% end %>
 
+      </div>
+    </div>
   </div>
 </div>
 

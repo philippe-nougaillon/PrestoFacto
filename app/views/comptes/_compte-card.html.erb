@@ -1,121 +1,116 @@
-<div class="card">
-  <div class="card-header">
-    <h2><%= fa_icon 'user' %> <%= @compte.nom %></h2>
+<div class="row">
+  <div class="col-sm-5">
+    <p>
+      <strong>Nom:</strong>
+      <%= @compte.civilité %>
+      <%= @compte.nom %>
+    </p>
+
+    <p>
+      <strong>Adresse:</strong>
+      <%= @compte.adresse1 %>
+      <%= @compte.adresse2 %>
+    </p>
+
+    <p>
+      <strong>Ville:</strong>
+      <%= @compte.cp %> <%= @compte.ville %>
+    </p>
+
+    <p>
+      <strong>Num allocataire:</strong>
+      <%= @compte.num_allocataire %>
+    </p>
+
+    <% unless current_user.visiteur? %>
+      <p>
+        <strong>Mémo:</strong>
+        <%= @compte.mémo %>
+      </p>
+    <% end %>
+    
+    <% if policy(@compte).edit? %>
+      <%= link_to edit_compte_path(@compte), class: "btn btn-outline-primary" do %>
+        <%= fa_icon 'edit', text: ' Editer compte' %>
+      <% end %>
+    <% end %>
+
   </div>
 
-  <div class="card-body">
-    <div class="row">
-      <div class="col-sm-5">
-        <p>
-          <strong>Nom:</strong>
-          <%= @compte.civilité %>
-          <%= @compte.nom %>
-        </p>
+  <div class="col">
 
-        <p>
-          <strong>Adresse:</strong>
-          <%= @compte.adresse1 %>
-          <%= @compte.adresse2 %>
-        </p>
-
-        <p>
-          <strong>Ville:</strong>
-          <%= @compte.cp %> <%= @compte.ville %>
-        </p>
-
-        <p>
-          <strong>Num allocataire:</strong>
-          <%= @compte.num_allocataire %>
-        </p>
-
-        <% unless current_user.visiteur? %>
-          <p>
-            <strong>Mémo:</strong>
-            <%= @compte.mémo %>
-          </p>
-        <% end %>
-        
-        <% if policy(@compte).edit? %>
-          <%= link_to edit_compte_path(@compte), class: "btn btn-outline-primary" do %>
-            <%= fa_icon 'edit', text: ' Editer compte' %>
+    <div class="card">
+      <div class="card-body">
+        <strong>Contacts</strong>
+        <table class="table table-hover table-borderless table-sm">
+          <% @compte.contacts.each do |contact| %>
+            <tr class="alert <%= 'alert-warning' if contact.prevenir? %>" >
+              <td><%= contact.nom.humanize %></td>
+              <td><%= mail_to contact.email %>
+              <td><%= [contact.fixe, contact.portable].join(' ') %>
+              <td><%= contact.mémo %></td>
+            </tr>
           <% end %>
-        <% end %>
-
-      </div>
-
-      <div class="col">
-
-        <div class="card">
-          <div class="card-body">
-            <strong>Contacts</strong>
-            <table class="table table-hover table-borderless table-sm">
-              <% @compte.contacts.each do |contact| %>
-                <tr class="alert <%= 'alert-warning' if contact.prevenir? %>" >
-                  <td><%= contact.nom.humanize %></td>
-                  <td><%= [contact.fixe, contact.portable, contact.email].join(' | ') %>
-                  <td><%= contact.mémo %></td>
-                </tr>
-              <% end %>
-            </table>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-body d-flex justify-content-between">
-            <div>
-              <strong>Factures : </strong>
-              <%= number_to_currency(@total_factures, unit: '€', precision: 2, format: "%n %u")  %>
-            </div>
-            |
-            <div>
-              <strong>Paiements : </strong>
-              <%= number_to_currency(@total_paiements, unit: '€', precision: 2, format: "%n %u")  %>
-            </div>
-            | 
-            <div>
-              <strong>Solde : </strong>
-              <%= number_to_currency(@solde, unit: '€', precision: 2, format: "%n %u")  %>
-            </div>
-          </div>
-
-          <% unless current_user.visiteur? %>
-            <div class="card-footer d-flex justify-content-between">
-              <% if policy(Facture).new? %>
-                <div>
-                  <%= link_to admin_ajout_factures_path(compte_id: @compte.id), class: "btn btn-sm", title: 'Lance la facturation des prestations du mois' do %>
-                    <%= fa_icon 'file-invoice', class: 'text-info me-1' %> Facturer
-                  <% end %>
-                </div>
-              <% end %>
-              |
-              <% if policy(Facture).new? %>
-                <div>
-                  <%= link_to new_facture_path(compte_id: @compte.id), class: "btn btn-sm", title: 'Créer une nouvelle facture manuelle' do %>
-                    <%= fa_icon 'file-invoice', class: 'text-info me-1' %> Nouvelle facture spéciale
-                  <% end %>
-                </div>
-              <% end %>
-              |
-              <% if policy(Paiement).new? %>
-                <div>
-                  <%= link_to new_paiement_path(compte_id: @compte.id), data: {'bs-toggle': "modal", 'bs-target': "#myModalNewPaiement" }, class: "btn btn-sm" do %>
-                    <i class="far fa-money-bill-alt text-success me-1"></i> Ajouter un paiement
-                  <% end %>
-                </div>
-              <% end %>
-              | 
-              <% if policy(@compte).balance? %>
-                <div>
-                  <%= link_to compte_balance_path(@compte), class: "btn btn-sm" do %>
-                    <%= fa_icon 'balance-scale', class: 'me-1' %> Balance
-                  <% end %>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-
+        </table>
       </div>
     </div>
+
+    <div class="card">
+      <div class="card-body d-flex justify-content-between">
+        <div>
+          <strong>Factures : </strong>
+          <%= number_to_currency(@total_factures, unit: '€', precision: 2, format: "%n %u")  %>
+        </div>
+        |
+        <div>
+          <strong>Paiements : </strong>
+          <%= number_to_currency(@total_paiements, unit: '€', precision: 2, format: "%n %u")  %>
+        </div>
+        | 
+        <div>
+          <strong>Solde : </strong>
+          <span class="<%= 'text-danger' if @solde.negative? %>">
+            <%= number_to_currency(@solde, unit: '€', precision: 2, format: "%n %u") %>
+          </span>
+        </div>
+      </div>
+
+      <% unless current_user.visiteur? %>
+        <div class="card-footer d-flex justify-content-between">
+          <% if policy(Facture).new? %>
+            <div>
+              <%= link_to admin_ajout_factures_path(compte_id: @compte.id), class: "btn btn-sm", title: 'Lance la facturation des prestations du mois' do %>
+                <%= fa_icon 'file-invoice', class: 'text-info me-1' %> Facturer
+              <% end %>
+            </div>
+          <% end %>
+          |
+          <% if policy(Facture).new? %>
+            <div>
+              <%= link_to new_facture_path(compte_id: @compte.id), class: "btn btn-sm", title: 'Créer une nouvelle facture manuelle' do %>
+                <%= fa_icon 'file-invoice', class: 'text-info me-1' %> Nouvelle facture spéciale
+              <% end %>
+            </div>
+          <% end %>
+          |
+          <% if policy(Paiement).new? %>
+            <div>
+              <%= link_to new_paiement_path(compte_id: @compte.id), data: {'bs-toggle': "modal", 'bs-target': "#myModalNewPaiement" }, class: "btn btn-sm" do %>
+                <i class="far fa-money-bill-alt text-success me-1"></i> Ajouter un paiement
+              <% end %>
+            </div>
+          <% end %>
+          | 
+          <% if policy(@compte).balance? %>
+            <div>
+              <%= link_to compte_balance_path(@compte), class: "btn btn-sm" do %>
+                <%= fa_icon 'balance-scale', class: 'me-1' %> Balance
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
   </div>
 </div>
