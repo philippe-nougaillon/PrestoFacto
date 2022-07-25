@@ -11,24 +11,24 @@
     <div class="row">
       <div class="col">
         <p>
-          <strong>Compte:</strong>
+          <strong>Compte :</strong>
           <%= link_to @enfant.compte.nom, @enfant.compte %>
         </p>
 
         <p>
-          <strong>Classe:</strong>
+          <strong>Classe :</strong>
           <%= @enfant.classroom.nom %>
         </p>
 
         <p>
-          <strong>Badge:</strong>
+          <strong>Badge :</strong>
           <%= @enfant.badge %>
         </p>
       </div>
 
       <div class="col">
         <p>
-          <strong>Date naissance:</strong>
+          <strong>Date naissance :</strong>
           <%= l(@enfant.date_naissance) if @enfant.date_naissance %>
         </p>
 
@@ -61,7 +61,7 @@
 
     <div class="card mt-3">
       <div class="card-body">
-        <h4><%= fa_icon 'calendar-alt', class: 'text-warning' %> Réservations actives</h4>
+        <h4><%= fa_icon 'calendar-alt', class: 'text-warning' %> Réservations</h4>
         <br>
 
         <table class="table table-bordered table-hover table-sm">
