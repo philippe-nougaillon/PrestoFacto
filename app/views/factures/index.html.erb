@@ -79,7 +79,7 @@
   </div>
 <% end %>
 
-<%= page_entries_info @factures %>
+<%= page_entries_info @factures, entry_name: 'facture' %>
 <%= paginate @factures, theme: 'twitter-bootstrap-4' %>
 
 <% if policy(Facture).to_xls? && !@factures.size.zero? %>

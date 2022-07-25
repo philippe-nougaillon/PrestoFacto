@@ -40,17 +40,15 @@
     </div>
   </div>
   <div class="card-footer">
-    <%= link_to edit_facture_path(@facture) do %>
+    <%= link_to edit_facture_path(@facture), class: "btn btn-outline-primary"  do %>
       <%= fa_icon 'edit', text: ' Editer' %>
     <% end %>
-    |
     <% if policy(@facture).show? %>
-        <%= link_to facture_url(@facture, format: :pdf), target: '_blank' do %>
-            <i class="far fa-file-pdf"></i> PDF
+        <%= link_to facture_url(@facture, format: :pdf), target: '_blank', class: "btn btn-outline-primary"  do %>
+            <i class="far fa-file-pdf"></i> Afficher le PDF
         <% end %>
     <% end %>
-    |
-    <%= link_to factures_path do %>
+    <%= link_to factures_path, class: "ms-3"  do %>
       <%= fa_icon 'list' %>
       Retour
     <% end %>

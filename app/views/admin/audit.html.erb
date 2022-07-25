@@ -25,5 +25,5 @@
     <%= render partial: 'audit', collection: @audits.includes(:user) %>
 </table>
 
-<%= page_entries_info @audits %>
+<%= page_entries_info @audits, entry_name: 'audit' %>
 <%= paginate @audits, theme: 'twitter-bootstrap-4' %>
