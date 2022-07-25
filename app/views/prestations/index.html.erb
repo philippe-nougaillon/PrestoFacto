@@ -31,8 +31,6 @@
       </tr>
     </thead>
 
-    <tfoot><tr><th colspan=9></th></tr></tfoot>
-
     <tbody>
       <%=render @prestations.includes(:enfant, :prestation_type) %>
     </tbody>
