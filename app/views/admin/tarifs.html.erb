@@ -1,5 +1,5 @@
 <div class="pb-2 mt-4 mb-2 border-bottom">
-  <h2><%= fa_icon 'euro-sign' %> Tarifs</h2>
+  <h2><%= fa_icon 'euro-sign' %> Prestations et Tarifs</h2>
 </div>
 <p>
   <small class="text-muted">
@@ -11,154 +11,154 @@
 
 <p>
   <table class="table">
-    <thead>
-      <tr>
-        <th>Nom du type de Tarif</th>
-        <th>Nom du type de Prestation</th>
-        <th>Prix</th>  
-        <th></th>
-      </tr>
-    </thead>
+  <thead>
+    <tr>
+    <th>Nom du type de Tarif</th>
+    <th>Nom du type de Prestation</th>
+    <th>Prix</th>  
+    <th></th>
+    </tr>
+  </thead>
 
-    <% @organisation.tarifs.each do | tarif | %>
-      <tr>
-        <td><%= tarif.tarif_type.nom %></td>
-        <td><%= tarif.prestation_type.nom %></td>
-        <td><%= number_to_currency(tarif.prix, unit: '€', precision: 2, format: "%n %u") %></td>
-        <td>
-            <% if policy(tarif).destroy? %>
-              <%= link_to tarif, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
-                  <%= fa_icon 'trash-alt' %>
-              <% end %>
-            <% end %>
-        </td>
-      </tr>
-    <% end %>
+  <% @organisation.tarifs.each do | tarif | %>
+    <tr>
+    <td><%= tarif.tarif_type.nom %></td>
+    <td><%= tarif.prestation_type.nom %></td>
+    <td><%= number_to_currency(tarif.prix, unit: '€', precision: 2, format: "%n %u") %></td>
+    <td>
+      <% if policy(tarif).destroy? %>
+        <%= link_to tarif, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
+          <%= fa_icon 'trash-alt' %>
+        <% end %>
+      <% end %>
+    </td>
+    </tr>
+  <% end %>
   </table>
 
   <% if policy(Tarif).new? %>
-    <%= link_to new_tarif_path(organisation_id: @organisation), data: {'bs-toggle': "modal", 'bs-target': "#myModalTarif" }, class: "btn  btn-outline-primary" do %>
-      <%= fa_icon 'plus-circle' %> Créer un nouveau tarif
-    <% end %>
+  <%= link_to new_tarif_path(organisation_id: @organisation), data: {'bs-toggle': "modal", 'bs-target': "#myModalTarif" }, class: "btn  btn-outline-primary" do %>
+    <%= fa_icon 'plus-circle' %> Créer un nouveau tarif
+  <% end %>
   <% end %>
 </p>
 <br>
 
 <div class="row">
 
-    <div class="col">
-        <h3>Types de tarifs</h3>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <% @organisation.tarif_types.each do |tarif_type| %>
-                <tr>
-                    <td><%= link_to tarif_type.nom, edit_tarif_type_path(tarif_type) %></td>
-                    <td class="text-end col-sm-1">
-                        <% if policy(tarif_type).destroy? %>
-                            <%= link_to tarif_type, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
-                                <%= fa_icon 'trash-alt' %>
-                            <% end %>
-                        <% end %>
-                    </td>
-                </tr>
+  <div class="col">
+    <h3>Types de prestations</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th></th>
+        </tr>
+      </thead>
+      <% @organisation.prestation_types.each do |prestation_type| %>
+        <tr>
+          <td><%= link_to prestation_type.nom, edit_prestation_type_path(prestation_type) %></td>
+          <td class="text-end col-sm-1">
+            <% if policy(prestation_type).destroy? %>
+              <%= link_to prestation_type, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
+                <%= fa_icon 'trash-alt' %>
+              <% end %>
             <% end %>
-        </table>
-        <% if policy(TarifType).new? %>
-            <%= link_to new_tarif_type_path(organisation_id: @organisation), data: {'bs-toggle': "modal", 'bs-target': "#myModalTypeTarif" }, class: "btn  btn-outline-primary" do %>
-            <%= fa_icon 'plus-circle' %> Ajouter un type de tarif
-            <% end %>
-        <% end %>
-    </div>
+          </td>
+        </tr>
+      <% end %>
+    </table>
 
-    <div class="col">
-        <h3>Types de prestations</h3>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <% @organisation.prestation_types.each do |prestation_type| %>
-                <tr>
-                    <td><%= link_to prestation_type.nom, edit_prestation_type_path(prestation_type) %></td>
-                    <td class="text-end col-sm-1">
-                        <% if policy(prestation_type).destroy? %>
-                            <%= link_to prestation_type, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
-                                <%= fa_icon 'trash-alt' %>
-                            <% end %>
-                        <% end %>
-                    </td>
-                </tr>
-            <% end %>
-        </table>
+    <% if policy(PrestationType).new? %>
+      <%= link_to new_prestation_type_path(organisation_id: @organisation), 
+          data: {'bs-toggle': "modal", 'bs-target': "#myModalTypePresta" }, class: "btn btn-outline-primary" do %>
+        <%= fa_icon 'plus-circle' %> Ajouter un type de prestation
+      <% end %>
+    <% end %>
+  </div>
 
-        <% if policy(PrestationType).new? %>
-            <%= link_to new_prestation_type_path(organisation_id: @organisation), 
-                  data: {'bs-toggle': "modal", 'bs-target': "#myModalTypePresta" }, class: "btn btn-outline-primary" do %>
-                <%= fa_icon 'plus-circle' %> Ajouter un type de prestation
+  <div class="col">
+    <h3>Types de tarifs</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th></th>
+        </tr>
+      </thead>
+      <% @organisation.tarif_types.each do |tarif_type| %>
+        <tr>
+          <td><%= link_to tarif_type.nom, edit_tarif_type_path(tarif_type) %></td>
+          <td class="text-end col-sm-1">
+            <% if policy(tarif_type).destroy? %>
+              <%= link_to tarif_type, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
+                <%= fa_icon 'trash-alt' %>
+              <% end %>
             <% end %>
-        <% end %>
-    </div>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <% if policy(TarifType).new? %>
+      <%= link_to new_tarif_type_path(organisation_id: @organisation), data: {'bs-toggle': "modal", 'bs-target': "#myModalTypeTarif" }, class: "btn  btn-outline-primary" do %>
+      <%= fa_icon 'plus-circle' %> Ajouter un type de tarif
+      <% end %>
+    <% end %>
+  </div>
 
 </div>
 <br />
 
 <div class="modal fade" id="myModalTypeTarif">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
+  <div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Nouveau Type de Tarif</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        <%= render 'tarif_types/form', tarif_type: TarifType.new(organisation_id: @organisation.id) %>
-      </div>
+    <!-- Modal Header -->
+    <div class="modal-header">
+    <h4 class="modal-title">Nouveau Type de Tarif</h4>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
+
+    <!-- Modal body -->
+    <div class="modal-body">
+    <%= render 'tarif_types/form', tarif_type: TarifType.new(organisation_id: @organisation.id) %>
+    </div>
+  </div>
   </div>
 </div>
 
 <div class="modal fade" id="myModalTypePresta">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
+  <div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Nouveau Type de Prestation</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        <%= render 'prestation_types/form', prestation_type: PrestationType.new(organisation_id: @organisation.id) %>
-      </div>
+    <!-- Modal Header -->
+    <div class="modal-header">
+    <h4 class="modal-title">Nouveau Type de Prestation</h4>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
+
+    <!-- Modal body -->
+    <div class="modal-body">
+    <%= render 'prestation_types/form', prestation_type: PrestationType.new(organisation_id: @organisation.id) %>
+    </div>
+  </div>
   </div>
 </div>
 
 <div class="modal fade" id="myModalTarif">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
+  <div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Nouveau Tarif</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        <%= render 'tarifs/form', tarif: Tarif.new %>
-      </div>
+    <!-- Modal Header -->
+    <div class="modal-header">
+    <h4 class="modal-title">Nouveau Tarif</h4>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
+
+    <!-- Modal body -->
+    <div class="modal-body">
+    <%= render 'tarifs/form', tarif: Tarif.new %>
+    </div>
+  </div>
   </div>
 </div>

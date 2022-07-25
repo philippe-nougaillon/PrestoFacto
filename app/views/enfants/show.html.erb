@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card mb-5">
   <div class="card-header">
     <h2>
       <%= fa_icon 'child', class: 'text-primary' %>
@@ -57,176 +57,178 @@
         <%= fa_icon 'edit', text: ' Editer' %> 
       <% end %>
     <% end %>
-  </div>
+  
 
-</div>
+    <div class="card mt-3">
+      <div class="card-body">
+        <h4><%= fa_icon 'calendar-alt', class: 'text-warning' %> Réservations actives</h4>
+        <br>
 
-<div class="card">
-  <div class="card-body">
-    <h4><%= fa_icon 'calendar-alt', class: 'text-warning' %> Réservations actives</h4>
-    <br>
+        <table class="table table-bordered table-hover table-sm">
+          <thead>
+            <tr>
+              <th>Prestation</th>
+              <th>Début</th>
+              <th>Fin</th>
+              <th>Etat</th>
+              <th>Lun</th>
+              <th>Mar</th>
+              <th>Mer</th>
+              <th>Jeu</th>
+              <th>Ven</th>
+              <th>Matin</th>
+              <th>Midi</th>
+              <th>Soir</th>
+              <th>H.P.S ?</th>
+            </tr>
+          </thead>
 
-    <table class="table table-bordered table-hover table-sm">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Début</th>
-          <th>Fin</th>
-          <th>Etat</th>
-          <th>Lun</th>
-          <th>Mar</th>
-          <th>Mer</th>
-          <th>Jeu</th>
-          <th>Ven</th>
-          <th>Matin</th>
-          <th>Midi</th>
-          <th>Soir</th>
-          <th>H.P.S ?</th>
-        </tr>
-      </thead>
+          <% @enfant.reservations.actives.each do |reservation| %>
+            <tr>
+              <td><%= reservation.prestation_type.nom %>
+              <td><%= l reservation.début %></td>
+              <td><%= l reservation.fin %></td>
 
-      <% @enfant.reservations.actives.each do |reservation| %>
-        <tr>
-          <td><%= reservation.prestation_type.nom %>
-          <td><%= l reservation.début %></td>
-          <td><%= l reservation.fin %></td>
+              <td><span class="badge <%= reservation.style %>"><%= reservation.workflow_state.humanize %></span></td>
 
-          <td><span class="badge <%= reservation.style %>"><%= reservation.workflow_state.humanize %></span></td>
+              <td class="text-center"><%= number_with_precision(reservation.lundi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.lundi > 0 %></td>
+              <td class="text-center"><%= number_with_precision(reservation.mardi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.mardi > 0 %></td>
+              <td class="text-center"><%= number_with_precision(reservation.mercredi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.mercredi > 0 %></td>
+              <td class="text-center"><%= number_with_precision(reservation.jeudi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.jeudi > 0 %></td>
+              <td class="text-center"><%= number_with_precision(reservation.vendredi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.vendredi > 0 %></td>
 
-          <td class="text-center"><%= number_with_precision(reservation.lundi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.lundi > 0 %></td>
-          <td class="text-center"><%= number_with_precision(reservation.mardi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.mardi > 0 %></td>
-          <td class="text-center"><%= number_with_precision(reservation.mercredi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.mercredi > 0 %></td>
-          <td class="text-center"><%= number_with_precision(reservation.jeudi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.jeudi > 0 %></td>
-          <td class="text-center"><%= number_with_precision(reservation.vendredi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.vendredi > 0 %></td>
+              <td class="text-center"><%= fa_icon 'check' if reservation.matin %></i></td>
+              <td class="text-center"><%= fa_icon 'check' if reservation.midi  %></i></td>
+              <td class="text-center"><%= fa_icon 'check' if reservation.soir  %></i></td>
 
-          <td class="text-center"><%= fa_icon 'check' if reservation.matin %></i></td>
-          <td class="text-center"><%= fa_icon 'check' if reservation.midi  %></i></td>
-          <td class="text-center"><%= fa_icon 'check' if reservation.soir  %></i></td>
+              <td class="text-center"><%= fa_icon 'umbrella-beach' if reservation.hors_période_scolaire %></i></td>
+            </tr>
+          <% end %>
+        </table>
 
-          <td class="text-center"><%= fa_icon 'umbrella-beach' if reservation.hors_période_scolaire %></i></td>
-        </tr>
-      <% end %>
-    </table>
-
-    <% if policy(@enfant).edit? %>
-      <%= link_to edit_enfant_path(@enfant), class: "btn btn-outline-primary" do %>
-        <%= fa_icon 'edit', text: ' Editer les réservations' %> 
-      <% end %>
-    <% end %>
-  </div>
-</div>
-
-
-<div class="card">
-  <div class="card-body">
-    <h4><%= fa_icon 'calendar-times', class: 'text-danger' %> Absences</h4>
-    <br>
-
-    <table class="table table-bordered table-hover table-sm">
-      <thead>
-        <tr>
-          <th>Début</th>
-          <th>Fin</th>
-          <th>Matin</th>
-          <th>Midi</th>
-          <th>Soir</th>
-        </tr>
-      </thead>
-
-      <% @absences.each do |absence| %>
-        <tr>
-          <td><%= l absence.début %></td>
-          <td><%= l absence.fin %></td>
-          <td class="text-center"><%= fa_icon 'check' if absence.matin %></i></td>
-          <td class="text-center"><%= fa_icon 'check' if absence.midi  %></i></td>
-          <td class="text-center"><%= fa_icon 'check' if absence.soir  %></i></td>
-        </tr>
-      <% end %>
-    </table>
-
-    <% if policy(Absence).edit? %>
-      <%= link_to new_absence_path(enfant_id: @enfant), class: 'btn btn-outline-primary', data: {'bs-toggle': "modal", 'bs-target': "#myModal" } do %>
-        <%= fa_icon 'plus-circle' %> Ajouter une absence
-      <% end %>
-    <% end %>
-    |
-    <% if params[:archives] == 'yes' %>
-      <%= link_to 'Afficher toutes les absences en cours (non-archivées)', url_for(params.permit.merge(archives: 'no')) %> 
-    <% else %>
-      <%= link_to 'Afficher les absences archivées', url_for(params.permit.merge(archives: 'yes')) %> 
-    <% end %>
-
-  </div>
-</div>
-
-<!-- The Modal -->
-<div class="modal fade" id="myModal">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Nouvelle Absence</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        <%= render 'absences/modal_form', absence: Absence.new(enfant_id: @enfant.id) %>
+        <% if policy(@enfant).edit? %>
+          <%= link_to edit_enfant_path(@enfant), class: "btn btn-outline-primary" do %>
+            <%= fa_icon 'edit', text: ' Editer les réservations' %> 
+          <% end %>
+        <% end %>
       </div>
     </div>
-  </div>
-</div>
 
-<div class="card">
-  <div class="card-body">
-    <h4><%= fa_icon 'utensils', class: 'text-secondary' %> Prestations à facturer</h4>
-    <br>
 
-    <table class="table table-bordered table-hover table-sm">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Type</th>
-          <th>Qté</th>
-        </tr>
-      </thead>
+    <div class="card">
+      <div class="card-body">
+        <h4><%= fa_icon 'calendar-times', class: 'text-danger' %> Absences</h4>
+        <br>
 
-      <% @enfant.prestations.à_facturer.order(:date).each do |prestation| %>
-        <tr>
-          <td><%= l prestation.date %></td>
-          <td><%= prestation.prestation_type.nom %></td>
-          <td><%= prestation.qté %></td>
-        </tr>
-      <% end %>
-    </table>
+        <table class="table table-bordered table-hover table-sm">
+          <thead>
+            <tr>
+              <th>Début</th>
+              <th>Fin</th>
+              <th>Matin</th>
+              <th>Midi</th>
+              <th>Soir</th>
+            </tr>
+          </thead>
 
-    <% if policy(Prestation).edit? %>
-      <%= link_to new_prestation_path(enfant_id: @enfant), class: 'btn btn-outline-primary', data: {'bs-toggle': "modal", 'bs-target': "#myModalPrestation" } do %>
-        <%= fa_icon 'plus-circle' %> Ajouter une prestation
-      <% end %>
-    <% end %>
+          <% @absences.each do |absence| %>
+            <tr>
+              <td><%= l absence.début %></td>
+              <td><%= l absence.fin %></td>
+              <td class="text-center"><%= fa_icon 'check' if absence.matin %></i></td>
+              <td class="text-center"><%= fa_icon 'check' if absence.midi  %></i></td>
+              <td class="text-center"><%= fa_icon 'check' if absence.soir  %></i></td>
+            </tr>
+          <% end %>
+        </table>
 
-  </div>
-</div>
+        <% if policy(Absence).edit? %>
+          <%= link_to new_absence_path(enfant_id: @enfant), class: 'btn btn-outline-primary', data: {'bs-toggle': "modal", 'bs-target': "#myModal" } do %>
+            <%= fa_icon 'plus-circle' %> Ajouter une absence
+          <% end %>
+        <% end %>
+        |
+        <% if params[:archives] == 'yes' %>
+          <%= link_to 'Afficher toutes les absences en cours (non-archivées)', url_for(params.permit.merge(archives: 'no')) %> 
+        <% else %>
+          <%= link_to 'Afficher les absences archivées', url_for(params.permit.merge(archives: 'yes')) %> 
+        <% end %>
 
-<!-- The Modal -->
-<div class="modal fade" id="myModalPrestation">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Nouvelle Prestation</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        <%= render 'prestations/modal_form', prestation: Prestation.new(enfant_id: @enfant.id) %>
       </div>
     </div>
-  </div>
-</div>
 
-<br>
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Nouvelle Absence</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <%= render 'absences/modal_form', absence: Absence.new(enfant_id: @enfant.id) %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h4><%= fa_icon 'utensils', class: 'text-secondary' %> Prestations à facturer</h4>
+        <br>
+
+        <table class="table table-bordered table-hover table-sm">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Type</th>
+              <th>Qté</th>
+            </tr>
+          </thead>
+
+          <% @enfant.prestations.à_facturer.order(:date).each do |prestation| %>
+            <tr>
+              <td><%= l prestation.date %></td>
+              <td><%= prestation.prestation_type.nom %></td>
+              <td><%= prestation.qté %></td>
+            </tr>
+          <% end %>
+        </table>
+
+        <% if policy(Prestation).edit? %>
+          <%= link_to new_prestation_path(enfant_id: @enfant), class: 'btn btn-outline-primary', data: {'bs-toggle': "modal", 'bs-target': "#myModalPrestation" } do %>
+            <%= fa_icon 'plus-circle' %> Ajouter une prestation
+          <% end %>
+        <% end %>
+
+      </div>
+    </div>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModalPrestation">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Nouvelle Prestation</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <%= render 'prestations/modal_form', prestation: Prestation.new(enfant_id: @enfant.id) %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+  </div>
+
+</div>

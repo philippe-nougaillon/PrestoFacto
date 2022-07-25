@@ -4,7 +4,7 @@
             <%= check_box_tag "[factures_id][#{facture.id}]", 'yes', false,  data: {"action-target":"source"} %>
         </span>
     </td>
-    <td><%= link_to facture.réf, facture %></td>
+    <td><%= link_to facture.réf, facture, style: 'white-space: nowrap;' %></td>
     <td><%= l facture.date.to_date %></td>
     <td><%= link_to facture.compte.nom, facture.compte %></td>
     <td><%= l facture.envoyée_le.to_date if facture.envoyée_le %></td>
