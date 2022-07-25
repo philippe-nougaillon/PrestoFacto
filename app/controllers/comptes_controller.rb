@@ -18,9 +18,8 @@ class ComptesController < ApplicationController
     end
     
     unless params[:search].blank?
-      s = "'%#{ params[:search] }%'"
-      @comptes = @comptes.joins(:enfants)
-                          .where(Arel.sql("enfants.badge ILIKE #{ s } OR enfants.prénom ILIKE #{ s } OR comptes.nom ILIKE #{ s } OR comptes.cp ILIKE #{ s } OR comptes.ville ILIKE #{ s } OR comptes.num_allocataire ILIKE #{ s }"))
+      s = "%#{params[:search].upcase}%"
+      @comptes = @comptes.joins(:enfants).where('enfants.badge ILIKE :search OR enfants.prénom ILIKE :search OR comptes.nom ILIKE :search OR comptes.cp ILIKE :search OR comptes.ville ILIKE :search OR comptes.num_allocataire ILIKE :search', {search: s})
     end
 
     # Appliquer le tri

@@ -26,8 +26,8 @@ class EnfantsController < ApplicationController
     end
     
     unless params[:search].blank?
-      s = "'%#{params[:search]}%'"
-      @enfants = @enfants.where(Arel.sql("enfants.nom ILIKE #{s} OR enfants.prénom ILIKE #{s} OR enfants.badge ILIKE #{s}"))
+      s = "%#{params[:search].upcase}%"
+      @enfants = @enfants.where('enfants.nom ILIKE :search OR enfants.prénom ILIKE :search OR enfants.badge ILIKE :search', {search: s})
     end
 
     # Appliquer le tri

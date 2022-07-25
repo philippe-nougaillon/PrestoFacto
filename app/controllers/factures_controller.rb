@@ -27,7 +27,8 @@ class FacturesController < ApplicationController
     end 
 
     unless params[:search].blank?
-      @factures = @factures.joins(:compte).where("comptes.nom ILIKE ? OR factures.réf ILIKE ?", "%#{params[:search].upcase}%", "%#{params[:search].upcase}%")
+      s = "%#{params[:search].upcase}%"
+      @factures = @factures.joins(:compte).where("comptes.nom ILIKE :search OR factures.réf ILIKE :search", {search: s})
     end 
 
     unless params[:state].blank?
