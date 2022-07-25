@@ -30,8 +30,6 @@
         </tr>
       </thead>
 
-      <tfoot><tr><th colspan=13></th></tr></tfoot>
-
       <tbody>
         <%= render @enfants.includes(:compte, :classroom) %>
       </tbody>
