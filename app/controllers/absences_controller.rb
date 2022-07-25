@@ -16,8 +16,10 @@ class AbsencesController < ApplicationController
 
     unless params[:archives].blank?
       @absences = organisation.absences.unscoped.where(archive: true)
-    else
-      @absences = organisation.absences
+    end
+
+    unless (params[:date].blank? || params[:date] == 'full')
+      @absences = @absences.where("DATE(?) BETWEEN début AND fin", params[:date])
     end
 
     unless params[:structure_id].blank?
@@ -27,10 +29,6 @@ class AbsencesController < ApplicationController
 
     unless params[:classroom_id].blank?
       @absences = @absences.joins(:enfant).where(enfants: { classroom_id: params[:classroom_id] })      
-    end
-
-    unless params[:date].blank?
-      @absences = @absences.where("DATE(?) BETWEEN début AND fin", params[:date])
     end
 
     unless params[:nom].blank?

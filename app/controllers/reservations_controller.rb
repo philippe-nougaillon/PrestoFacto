@@ -9,12 +9,18 @@ class ReservationsController < ApplicationController
     authorize Reservation
 
     params[:date] ||= Date.today
-
+    
     organisation = current_user.organisation
     @reservations = organisation.reservations.actives
     @structures = organisation.structures
     @classrooms = organisation.classrooms
     @prestation_types = organisation.prestation_types
+    
+    unless params[:date].blank? || params[:date] == 'full'
+      # la date demandée est hors période scolaire ?
+      hps = Vacance.where("DATE(?) BETWEEN début AND fin", params[:date]).any?
+      @reservations = @reservations.where(hors_période_scolaire: hps).where("DATE(?) BETWEEN début AND fin", params[:date])
+    end
 
     unless params[:structure_id].blank?
       @reservations = @reservations.joins(enfant: [:compte]).where(comptes: { structure_id: params[:structure_id] })
@@ -27,12 +33,6 @@ class ReservationsController < ApplicationController
 
     unless params[:prestation_type_id].blank?
       @reservations = @reservations.where(prestation_type_id: params[:prestation_type_id]) 
-    end
-
-    unless params[:date].blank?
-      # la date demandée est hors période scolaire ?
-      hps = Vacance.where("DATE(?) BETWEEN début AND fin", params[:date]).any?
-      @reservations = @reservations.where(hors_période_scolaire: hps).where("DATE(?) BETWEEN début AND fin", params[:date])
     end
 
     unless params[:nom].blank?
