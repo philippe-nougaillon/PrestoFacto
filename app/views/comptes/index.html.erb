@@ -44,7 +44,7 @@
   </table>
 </div>
 
-<%= page_entries_info @comptes %>
+<%= page_entries_info @comptes, entry_name: 'compte' %>
 <%= paginate @comptes, theme: 'twitter-bootstrap-4' %>
 
 <% if policy(Compte).to_xls? && !@comptes.size.zero? %>

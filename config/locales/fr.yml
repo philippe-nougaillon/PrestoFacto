@@ -230,7 +230,7 @@ fr:
       one_page:
         display_entries:
           zero: "0 %{entry_name} à afficher"
-          one: "Affichage de <b>1</b> %{entry_name}"
-          other: "Affichage de <b>%{count}</b> %{entry_name}"
+          one: "Affichage de <strong>1</strong> %{entry_name}"
+          other: "Affichage de <strong>%{count}</strong> %{entry_name}s"
       more_pages:
-        display_entries: "Affichage de %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> sur <b>%{total}</b> au total"
+        display_entries: "Affichage des %{entry_name}s <strong>%{first}&nbsp;à&nbsp;%{last}</strong> sur <strong>%{total}</strong> au total"
