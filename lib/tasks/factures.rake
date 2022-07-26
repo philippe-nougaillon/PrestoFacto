@@ -77,14 +77,17 @@ namespace :factures do
                             .where("? BETWEEN début and fin", prestation.date).any?
                     puts "Détection d'une prestation un jour d'absence le #{I18n.l prestation.date}. La prestation sera ignorée."
                     prestations_absences << prestation.id
+                    # Supprimer la prestation
+                    prestation.destroy if enregistrer
                 end
             end
 
-            prestations = prestations.where.not(id: prestations_absences)
+            # Supprimer les prestations si absences
+            prestations = prestations.where.not(id: prestations_absences) unless enregistrer
 
             # regrouper par enfant, par type de prestations et en faire le cumul des quantités
-            prestations.select("enfant_id, prestation_type_id, sum(qté) as quantité")
-                        .group("enfant_id, prestation_type_id")
+            prestations.select("enfant_id, prestation_type_id, date, sum(qté) as quantité")
+                        .group("enfant_id, prestation_type_id, date")
                         .reorder(:enfant_id, :prestation_type_id)
                         .each do |presta|
 
@@ -103,10 +106,10 @@ namespace :factures do
                         total = prix * presta.quantité    
                         montant_total += total
 
-                        puts "[Prestations] enfant: #{ presta.enfant.prénom }(##{ presta.enfant_id }) type: #{ presta.prestation_type_id } qté: #{ presta.quantité.to_f }, total: #{total} €"
+                        puts "[Prestations] enfant: #{ presta.enfant.prénom }(##{ presta.enfant_id }) le: #{ I18n.l(presta.date, format: :jour) } type: #{ presta.prestation_type_id } qté: #{ presta.quantité.to_f }, total: #{total} €"
 
                         # créer la ligne de facture
-                        ligne = facture.facture_lignes.new(intitulé: Enfant.find(presta.enfant_id).nom_et_prénom, prestation_type: presta.prestation_type, qté: presta.quantité.to_f, prix: prix, total: total)    
+                        ligne = facture.facture_lignes.new(intitulé: Enfant.find(presta.enfant_id).nom_et_prénom, date: presta.date, prestation_type: presta.prestation_type, qté: presta.quantité.to_f, prix: prix, total: total)    
                         if ligne.valid?
                             ligne.save if enregistrer
                             puts "Ligne: #{ligne.valid?}" 

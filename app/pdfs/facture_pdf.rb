@@ -72,7 +72,7 @@ class FacturePdf
         # Tableau de lignes de facture
         #
         
-        col_widths = [260, 100, 50, 50, 60]
+        col_widths = [200, 60, 100, 50, 50, 60]
         cell_style = { 
             inline_format: true,
             border_width: 1,
@@ -82,7 +82,7 @@ class FacturePdf
 
         # Générer les entêtes du tableau
         table(
-            [ ['Bénéficiaire', 'Prestation', 'Qté', 'Prix.U', 'Total'] ], 
+            [ ['Bénéficiaire', 'Date', 'Prestation', 'Qté', 'Prix.U', 'Total'] ], 
             column_widths: col_widths, 
             cell_style: cell_style.merge(text_color: 'C0C0C0')
         )
@@ -92,6 +92,7 @@ class FacturePdf
         facture.facture_lignes.each do | ligne |
             data += [ [
                         "<b>#{ligne.intitulé}</b>",
+                        ligne.date ? I18n.l(ligne.date, format: :jour) : nil,
                         ligne.prestation_type.nom,
                         "%5.2f" % ligne.qté,
                         number_to_currency(ligne.prix),
@@ -100,7 +101,7 @@ class FacturePdf
         end
 
         # Total
-        data += [ [ nil, nil, nil, "Total : ", "<b>#{ number_to_currency(facture.montant) }</b>" ] ]
+        data += [ [ nil, nil, nil, nil, "Total : ", "<b>#{ number_to_currency(facture.montant) }</b>" ] ]
 
         # Générer le tableau
         table(
