@@ -149,8 +149,9 @@ class EnfantsController < ApplicationController
 
     begin
       @enfant.destroy
-    rescue ActiveRecord::InvalidForeignKey
-      redirect_to enfants_url, alert: "L'enfant ne peut pas être supprimé pour le moment car des éléments liés existent. Veuillez d'abord supprimer ces éléments liés (Réservations/Absences...) avant de retenter l'opération."
+    rescue ActiveRecord::InvalidForeignKey => exception
+      #redirect_to enfants_url, alert: "L'enfant ne peut pas être supprimé pour le moment car des éléments liés existent. Veuillez d'abord supprimer ces éléments liés (Réservations/Absences...) avant de retenter l'opération."
+      redirect_to enfants_url, alert: exception
       return
     end
 
