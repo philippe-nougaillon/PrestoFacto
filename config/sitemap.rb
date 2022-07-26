@@ -22,7 +22,7 @@ SitemapGenerator::Sitemap.create do
 
   add a_propos_path
   add guide_path
-  add actualite_path
+  add actualites_path
 
   # Add all articles:
   

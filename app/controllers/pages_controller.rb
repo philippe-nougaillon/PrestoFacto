@@ -11,7 +11,7 @@ class PagesController < ApplicationController
   def utilisation
   end
 
-  def actualite
+  def actualites
   end
 
   def confidentialite
