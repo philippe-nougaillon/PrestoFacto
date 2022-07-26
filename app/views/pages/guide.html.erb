@@ -1,57 +1,20 @@
 <h1 class="fw-light mb-5">Guide d'utilisation</h1>
 
-<p class="lead">
+<div id="modules" class="mb-5">
+  <div class="pb-2 mt-4">
+    <h2 class="fw-light">Descriptions des modules </h2>
+  </div>
+  <p class="lead mb-2">
   <%= @site_name %> 
-  se présente sous la forme de 7 onglets;  Comptes, Enfants, Réservations, Absences, 
+  se présente sous la forme de 7 modules;  Comptes, Enfants, Réservations, Absences, 
   Prestations, Factures, Paiements, qui vont vous permettre d'accéder aux données du même nom. 
 </p>
-
-<div id="modules" class="mb-5">
-  <div class="pb-2 mt-4 mb-5 border-bottom">
-    <h1 class="fw-light mb-2">Les modules </h1>
-  </div>
   <br />
 
   <div class="row">
     <div class="col">
-      <div class="pb-1 mb-1 border-bottom">
-        <h4 class="text-primary">
-          <%= fa_icon 'city', class: 'text-dark' %>
-          Organisation
-        </h4>
-      </div>
-      <p>
-        <ul class="lead">
-          <li>Une organisation (Mairie, Association,...) est composée d'un nom, d'une adresse, une zone (vacances scolaires) et d'un logo</li>
-          <li>Une organisation a une ou plusieurs structures</li>
-          <li>Un compte utilisateur de type administrateur est associé à une organisation lors de l'inscription</li>
-          <li>Cet administrateur peut paramétrer les données variables de l'organisation comme les Structures, les Types de prestations (Repas, Garderie, Activité,...) ou les Tarifs</li>
-          <li>Un administrateur peut ajouter d'autres utilisateurs</li>
-        </ul>
-      </p>
-    </div>
-    <div class="col">
-      <div class="pb-1 mb-1 border-bottom">
-        <h4 class="text-primary">
-          <%= fa_icon 'school', class: 'text-dark' %>
-          Structures
-        </h4>
-      </div>
-      <p>
-        <ul class="lead">
-          <li>Une structure est composée d'un nom (École, Cantine, Garderie, Halte, Centre périscolaire,...)</li>
-          <li>Une structure contient des classes</li>
-          <li>Une structure contient des comptes</li>
-          <li>Une organisation peut avoir plusieurs structures (illimité)</li>
-        </ul>
-      </p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
       <div class="pb-1 mt-2 mb-1 border-bottom">
-        <h4 class="text-primary">
+        <h4 class="text-secondary fw-bold">
           <%= fa_icon 'users', class: 'text-dark' %>
           Comptes
         </h4>
@@ -71,7 +34,7 @@
     </div>
     <div class="col">
       <div class="pb-1 mt-2 mb-1 border-bottom">
-        <h4 class="text-primary">
+        <h4 class="text-secondary fw-bold">
           <%= fa_icon 'child', class: 'text-primary' %>
           Enfants
         </h4>
@@ -87,7 +50,7 @@
       </p>
 
       <div class="pb-1 mt-2 mb-1 border-bottom">
-        <h4 class="text-primary">
+        <h4 class="text-secondary fw-bold">
           <%= fa_icon 'calendar-times', class: 'text-danger' %>
           Absences
         </h4>
@@ -103,7 +66,7 @@
   </div>
 
   <div class="pb-1 mt-2 mb-1 border-bottom">
-    <h4 class="text-primary">
+    <h4 class="text-secondary fw-bold">
       <%= fa_icon 'calendar-alt', class: 'text-warning' %>
       Réservations
     </h4>
@@ -126,7 +89,7 @@
   </p>
 
   <div class="pb-1 mt-2 mb-1 border-bottom">
-    <h4 class="text-primary">
+    <h4 class="text-secondary fw-bold">
       <%= fa_icon 'utensils', class: 'text-secondary' %>
       Prestations
     </h4>
@@ -150,7 +113,7 @@
   </p>
 
   <div class="pb-1 mt-2 mb-1 border-bottom">
-    <h4 class="text-primary">
+    <h4 class="text-secondary fw-bold">
       <%= fa_icon 'file-invoice', class: 'text-info' %>
       Factures
     </h4>
@@ -168,7 +131,7 @@
   <div class="row">
     <div class="col">
       <div class="pb-1 mt-2 mb-1 border-bottom">
-        <h4 class="text-primary">
+        <h4 class="text-secondary fw-bold">
           <%= fa_icon 'euro-sign', class: 'text-dark' %>
           Tarifs
         </h4>
@@ -183,7 +146,7 @@
     </div>
     <div class="col">
       <div class="pb-1 mt-2 mb-1 border-bottom">
-        <h4 class="text-primary"><i class="far fa-money-bill-alt text-success"></i> Paiements</h4>
+        <h4 class="text-secondary fw-bold"><i class="far fa-money-bill-alt text-success"></i> Paiements</h4>
       </div>
       <p>
         <ul class="lead">
@@ -195,9 +158,45 @@
     </div>
   </div>
 
+    <div class="row">
+    <div class="col">
+      <div class="pb-1 mb-1 border-bottom">
+        <h4 class="text-secondary fw-bold">
+          <%= fa_icon 'city', class: 'text-muted' %>
+          Organisation
+        </h4>
+      </div>
+      <p>
+        <ul class="lead">
+          <li>Une organisation (Mairie, Association,...) est composée d'un nom, d'une adresse, une zone (vacances scolaires) et d'un logo</li>
+          <li>Une organisation a une ou plusieurs structures</li>
+          <li>Un compte utilisateur de type administrateur est associé à une organisation lors de l'inscription</li>
+          <li>Cet administrateur peut paramétrer les données variables de l'organisation comme les Structures, les Types de prestations (Repas, Garderie, Activité,...) ou les Tarifs</li>
+          <li>Un administrateur peut ajouter d'autres utilisateurs</li>
+        </ul>
+      </p>
+    </div>
+    <div class="col">
+      <div class="pb-1 mb-1 border-bottom">
+        <h4 class="text-secondary fw-bold">
+          <%= fa_icon 'school', class: 'text-muted' %>
+          Structures
+        </h4>
+      </div>
+      <p>
+        <ul class="lead">
+          <li>Une structure est composée d'un nom (École, Cantine, Garderie, Halte, Centre périscolaire,...)</li>
+          <li>Une structure contient des classes</li>
+          <li>Une structure contient des comptes</li>
+          <li>Une organisation peut avoir plusieurs structures (illimité)</li>
+        </ul>
+      </p>
+    </div>
+  </div>
+
   <div>
     <div class="pb-1 mt-2 mb-1 border-bottom">
-      <h4 class="text-primary">
+      <h4 class="text-secondary fw-bold">
         <%= fa_icon 'users-cog', class: 'text-success' %>
         Administration
       </h4>
@@ -235,10 +234,10 @@
 </div>
 <div id="possibilites" class="mb-5">
   <div class="pb-2 mt-4 mb-5 border-bottom">
-    <h1 class="fw-light mb-2">Les possibilités </h1>
+    <h2 class="fw-light mb-2">Bien démarrer la configuration de <%= @site_name %></h2>
     </div>
   <div id="créer_compte" class="mb-5">
-    <h4 class="text-primary">Créer un compte<hr></h4>
+    <h4 class="text-secondary fw-bold">Créer un compte<hr></h4>
     <p class="lead">
       Pour créer un nouveau compte, il suffit de se rendre sur la page d'accueil et de cliquer sur
       <%= link_to "S'inscrire", new_user_registration_path %>
@@ -258,7 +257,7 @@
   </div>
 
   <div id="organisation" class="mb-5">
-    <h4 class="text-primary">Enregistrer votre Organisation<hr></h4>
+    <h4 class="text-secondary fw-bold">Enregistrer votre Organisation<hr></h4>
     <p class="lead">
       Une fois connecté.e, rendez-vous sur la page "Administration".
       Cette page "Administration" affiche un menu qui donne accès à l'ensemble des paramètres importants, 
@@ -284,7 +283,7 @@
   </div>
 
   <div id="tarifs" class="mb-5">
-    <h4 class="text-primary">Enregistrer vos tarifs<hr></h4>
+    <h4 class="text-secondary fw-bold">Enregistrer vos tarifs<hr></h4>
     <p class="lead">
       Une fois l'organisation et les structures en place, nous allons pouvoir paramétrer les prestations proposées par votre organisation (Cantine, Garderie...) et leurs tarifs.
       Pour se faire, rendez-vous à la page "Tarifs", dans le menu "Administration".
@@ -319,7 +318,7 @@
   </div>
 
   <div id="ajout_famille" class="mb-5">
-    <h4 class="text-primary">Ajouter une famille (Compte)<hr></h4>
+    <h4 class="text-secondary fw-bold">Ajouter une famille (Compte)<hr></h4>
     <p class="lead">
       Pour ajouter un compte Famille, rendez-vous sur la page "Comptes" et cliquez sur le lien "(+) Compte".
     </p>
@@ -339,7 +338,7 @@
   </div>
 
   <div id="ajout_enfant" class="mb-5">
-    <h4 class="text-primary">Ajouter un enfant<hr></h4>
+    <h4 class="text-secondary fw-bold">Ajouter un enfant<hr></h4>
     <p class="lead">
       Pour ajouter un enfant, ouvrir la page "Comptes" et cliquez sur le nom du compte concerné. Cliquez sur "(+) Ajouter un enfant" et entrez les informations demandées, à commencer par sa classe et son nom (même s'il est identique à celui du compte).
       <br><br>
@@ -351,7 +350,7 @@
   </div>
 
   <div id="réservations" class="mb-5">
-    <h4 class="text-primary">Inscrire un enfant à des prestations (Réservations)<hr></h4>
+    <h4 class="text-secondary fw-bold">Inscrire un enfant à des prestations (Réservations)<hr></h4>
     <p class="lead">
       Il s'agit maintenant de réserver une prestation parmi celles que vous avez créées lors du paramètrage des Tarifs.
       <br><br>
@@ -377,7 +376,7 @@
   </div>
 
   <div id="prestations" class="mb-5">
-    <h4 class="text-primary">Les Prestations<hr></h4>
+    <h4 class="text-secondary fw-bold">Les Prestations<hr></h4>
     <p class="lead">
       Les prestations sont créées automatiquement chaque matin, dès potron-minet, sur la base des réservations.
       <br><br>
@@ -398,7 +397,7 @@
   </div>
 
   <div id="absences" class="mb-5">
-    <h4 class="text-primary">Les Absences<hr></h4>
+    <h4 class="text-secondary fw-bold">Les Absences<hr></h4>
     <p class="lead">
       Pour ajouter une Absence, rendez-vous sur la fiche de l'enfant concerné 
       (en allant que l'onglet "Enfants" puis en cliquant sur son Prénom).
@@ -412,7 +411,7 @@
   </div>
 
   <div id="facturation" class="mb-5">
-    <h4 class="text-primary">La Facturation<hr></h4>
+    <h4 class="text-secondary fw-bold">La Facturation<hr></h4>
     <p class="lead">
       La facturation consiste à regrouper les prestations consommées durant un mois et d'en établir une facture par compte. 
       <br><br>
@@ -432,7 +431,7 @@
   </div>
 
   <div id="facture" class="mb-5">
-    <h4 class="text-primary">Facture manuelle<hr></h4>
+    <h4 class="text-secondary fw-bold">Facture manuelle<hr></h4>
     <p class="lead">
       Vous avez la possibilité d'ajouter une facture manuellement. Dans cette facture manuelle, la saisie de tous les éléments (montant, prestations et tarifs) est libre.
       <br><br>
@@ -443,14 +442,14 @@
   </div>
 
   <div id="avoirs" class="mb-5">
-    <h4 class="text-primary">Avoirs<hr></h4>
+    <h4 class="text-secondary fw-bold">Avoirs<hr></h4>
     <p class="lead">
       Comme le montant de la facture manuelle est libre, vous pouvez créer des avoirs en indiquant un montant négatif.
     </p>
   </div>
 
   <div id="solde" class="mb-5">
-    <h4 class="text-primary">Le solde famille<hr></h4>
+    <h4 class="text-secondary fw-bold">Le solde famille<hr></h4>
     <p class="lead">
       Pour afficher le solde d'un compte famille, rendez-vous sur la page du compte concerné; 
       le solde apparaît dans un cartouche dédié.
@@ -458,7 +457,7 @@
   </div>
 
   <div id="balance" class="mb-5">
-    <h4 class="text-primary">Le relevé de compte (Balance)<hr></h4>
+    <h4 class="text-secondary fw-bold">Le relevé de compte (Balance)<hr></h4>
     <p class="lead">
       Pour voir la balance d'un compte, qui liste l'ensemble des opérations du compte (factures et paiements), 
       rendez-vous sur la page du compte concerné et cliquez sur le bouton "Balance".
@@ -466,7 +465,7 @@
   </div>
 
   <div id="paiements" class="mb-5">
-    <h4 class="text-primary">Remise de chèques (Paiements)<hr></h4>
+    <h4 class="text-secondary fw-bold">Remise de chèques (Paiements)<hr></h4>
     <p class="lead">
       Pour saisir un paiement, rendez-vous sur le compte concerné et cliquez sur "Ajouter un paiement". 
       Une fois le paiement enregistré, le solde du compte est mis à jour automatiquement.
@@ -480,7 +479,7 @@
   </div>
 
   <div id="portail" class="mb-5">
-    <h4 class="text-primary">Portail Parents<hr></h4>
+    <h4 class="text-secondary fw-bold">Portail Parents<hr></h4>
     <p class="lead">
       Le portail Parents permet à un visiteur (ex: un parent) de consulter son compte.  
       Une fois connecté, le visiteur a un accès limité à l'application. Il a accès aux informations non sensibles du compte auquel il est associé. 
