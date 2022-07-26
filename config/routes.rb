@@ -60,7 +60,6 @@ Rails.application.routes.draw do
 
   controller :pages do
     get :accueil, to: 'pages#home'
-    get :a_propos, to: 'pages#a_propos'
     get :guide, to: 'pages#guide'
     get :actualites, to: 'pages#actualites'
     get :confidentialite, to: 'pages#confidentialite'

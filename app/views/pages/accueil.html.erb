@@ -1,40 +1,47 @@
-<div class="main-banner my-5 px-4">
-  <div class="row flex-lg-row align-items-center g-5 py-4">
-    <div class="col-lg-7">
-      <h1 class="display-2 lh-1 mb-3">PrestoFacto</h1>
-      <h2 class="display-7 mb-3">Facturation de vos services journaliers<h2>
-      <h3 class="display-8 fw-lighter">Aide les petites organisations dans la gestion et la facturation de leurs prestations journalières (repas, activités, etc...)</h3>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-5">
-        <%= link_to 'En savoir plus', a_propos_path, class: 'btn btn-primary btn-lg px-4 me-md-2' %>
-        <%= link_to "Voir nos offres", "#offres" , class: 'btn btn-outline-secondary btn-lg px-4' %>
-      </div>
+<div class="min-vh-100 row flex-lg-row align-items-center justify-content-center">
+  <div class="col-lg-7">
+    <h1 class="display-2 lh-1 mb-3">PrestoFacto</h1>
+    <h2 class="display-7 mb-3">Facturation de vos services journaliers<h2>
+    <h3 class="display-8 fw-lighter">Aide les petites organisations dans la gestion et la facturation de leurs prestations (repas, garderie, activités, etc...)</h3>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-5">
+      <%= link_to "S'inscrire", new_user_registration_path, class: 'btn btn-primary btn-lg px-4 me-md-2' %>
+      <%= link_to "Découvrir nos offres", "#offres" , class: 'btn btn-outline-secondary btn-lg px-4' %>
     </div>
-    <div class="col-10 col-sm-8 col-lg-5">
-      <%= image_tag("abacus-beads-mathematics-numeral.jpg", class: 'd-block mx-lg-auto img-fluid rounded opacity-50', alt: "Logo de #{ @site_name }", width: 700, height: 500, loading: 'lazy') %>
-    </div>
+  </div>
+  <div class="col-12 col-lg-5">
+    <%= image_tag("abacus-beads-mathematics-numeral.jpg", class: 'd-block mx-lg-auto img-fluid rounded opacity-50', alt: "Logo de #{ @site_name }", width: 700, height: 500, loading: 'lazy') %>
   </div>
 </div>
 
-<div class="my-5 text-center">
-  <div class="px-4 py-5 bg-light">
-    <div class="col-lg-6 mx-auto">
-      <h3 class="lh-1 mb-3">Pour qui ?</h3>
+<div class="my-5">
+  <div class="row px-4 py-5 bg-light">
+    <div class="col">
+      <%= image_tag 'hands.jpeg', class: 'img-fluid' %>
+    </div>
+    <div class="col">
+      <h3 class="lh-1 mb-3 text-secondary fw-bold">Pour qui ?</h3>
       <p class="lead mb-4">
         PrestoFacto est destiné aux petites collectivités, associations, mairies, écoles, centre de loisirs... 
         Cette solution vous aidera dans l’organisation de votre association et vous fera gagner un temps précieux en simplifiant la gestion administrative et la facturation de vos cantines et services périscolaires.</p>
     </div>
   </div>
 
-  <div class="px-4 py-5">
-    <div class="col-lg-6 mx-auto">
-      <h3 class="lh-1 mb-3 text-primary">Un usage simplifié</h3>
+  <div class="row px-4 py-5">
+    <div class="col">
+      <h3 class="lh-1 mb-3 text-secondary fw-bold">Un usage simplifié</h3>
       <p class="lead mb-4">Prise en main immédiate. Une comptabilité simple par famille. Une facture par mois avec solde. Balance famille. Ne dépend pas d'une société. Code source librement disponible.</p>
+    </div>
+    <div class="col">
+      <%= image_tag 'stones.jpeg', class: 'img-fluid' %>
     </div>
   </div>
 
-  <div class="px-4 py-5 bg-light">
-    <div class="col-lg-6 mx-auto">
-      <h3 class="lh-1 mb-3">Une informatique 'dans le nuage'</h3>
+  <div class="row px-4 py-5 bg-light">
+    <div class="col">
+      <%= image_tag 'cloud.webp', class: 'img-fluid' %>
+    </div>
+    <div class="col">
+      <h3 class="lh-1 mb-3 text-secondary fw-bold">Une informatique 'dans le nuage'</h3>
       <p class="lead mb-4">
           Une simple page internet, pas de logiciel à installer. 
           Mise à jour automatique.
@@ -46,11 +53,29 @@
       </p>
     </div>
   </div>
-  <div class="px-4 py-5">
-    <div class="col-lg-6 mx-auto">
-      <h3 class="lh-1 mb-3 text-primary">Portail Parents</h3>
+  <div class="row px-4 pt-5">
+    <div class="col">
+      <h3 class="lh-1 mb-3 text-secondary fw-bold">Développé en communauté</h3>
       <p class="lead mb-4">
-        Le portail Parents permet à un parent de consulter son relevé de compte, ses réservations, et ses factures.
+        Les sources de l'application sont disponibles ici : 
+        <a href="https://github.com/philippe-nougaillon/PrestoFActo" rel="noopener noreferrer" target="_blank">https://github.com/philippe-nougaillon/PrestoFActo</a>
+        <br><br>
+        Vos remarques et propositions sont les bienvenues et nous aident à améliorer l'application.
+      </p>
+    </div>
+    <div class="col">
+      <%= image_tag 'blue_arrows.png', class: 'img-fluid', style: 'height: 80%' %>
+    </div>
+  </div>
+  <div class="row px-4 py-5 bg-light">
+    <div class="col">
+      <h3 class="lh-1 mb-3 text-secondary fw-bold text-center mb-2">Une solution éprouvée</h3>
+      <p class="lead mb-4">
+          Après plus de <strong>10 ans</strong> de bons et loyaux services, openCantine fait sa mue, change de nom et se professionnalise.
+          Ce projet était au départ conçu pour donner un petit coup de main à une mairie qui gérait péniblement sa cantine sur Excel.
+          Mais le passage en logiciel libre a permis à une cinquantaine de mairies ou associations de gérer <strong>~500.000 repas</strong> via cette plateforme dont j'assure bénévolement la maintenance et les coûts d'hébergement.
+          Ce que je vais continuer à faire car openCantine est adapté aux petites mono-structures et a ses habitués.
+          Mais les structures plus importantes ne pouvaient s'en contenter, c'est pourquoi j'ai réécrit un autre logiciel, PrestoFacto, plus souple et adaptable, qui conviendra à des organisations de plus grande taille et multi-structures.
       </p>
     </div>
   </div>
@@ -58,9 +83,71 @@
 
 <div id="offres" style="height: 66px;"></div>
 
-<div class="bg-light px-4">
+<h2 class="display-3 text-center mb-4">Comparer les offres</h2>
+
+  <div class="table-responsive mb-5">
+    <table class="table table-striped table-hover text-center">
+      <thead>
+        <tr>
+          <th style="width: 50%;"></th>
+          <th style="width: 10%;">Libre</th>
+          <th style="width: 20%;">Standard</th>
+          <th style="width: 20%;">Premium</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td scope="row" class="text-start">Utilisation libre et illimitée</td>
+          <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
+          <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
+          <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
+        </tr>
+        <tr>
+          <td scope="row" class="text-start">
+            Accès par un sous-domaine personnalisé
+            <br> Ex: https://mon-organisation.prestofacto.fr
+          </td>
+          <td></td>
+          <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
+          <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
+        </tr>
+        <tr>
+          <td scope="row" class="text-start">
+            Accès par votre nom de domaine
+            <br>
+            ex: https://prestofacto.votre-domaine.fr
+          </td>
+          <td></td>
+          <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
+          <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
+        </tr>
+        <tr>
+          <td scope="row" class="text-start">Serveur virtuel dédié</td>
+          <td></td>
+          <td></td>
+          <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
+        </tr>
+        <tr>
+          <td scope="row" class="text-start">Sauvegarde automatique des données</td>
+          <td></td>
+          <td><p>1/j</p></td>
+          <td><p>En continu</p></td>
+        </tr>
+        <tr>
+          <td scope="row" class="text-start">Support</td>
+          <td></td>
+          <td><p>e-mail</p></td>
+          <td><p>e-mail/téléphonique</p></td>
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+
+<div class="px-4">
   <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-    <h1 class="display-6">Tarifs</h1>
+    <h2 class="display-3">Tarifs</h2>
     <p class="fs-5 text-muted">Toutes les offres disponibles.</p>
   </div>
 
@@ -79,7 +166,7 @@
             <li><%= fa_icon 'times-circle', class: 'text-danger me-2' %>Pas de sous-domaine personnalisé</li>
             <li><%= fa_icon 'times-circle', class: 'text-danger me-2' %>Pas de serveur virtuel dédié</li>
           </ul>
-          <%= link_to "S'inscrire", new_user_registration_path, class: 'w-100 btn btn-lg btn-primary' %>
+          <%= link_to "S'inscrire", new_user_registration_path, class: 'w-100 btn btn-lg btn-outline-primary' %>
         </div>
       </div>
     </div>
@@ -97,12 +184,12 @@
             <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Accès via sous-domaine perso.</li>
             <li><%= fa_icon 'times-circle', class: 'text-danger me-2' %>Aucun serveur virtuel dédié</li>
           </ul>
-          <%= link_to 'Nous Contacter', new_message_path, class: 'w-100 btn btn-lg btn-outline-primary' %>
+          <%= link_to "S'inscrire", new_user_registration_path, class: 'w-100 btn btn-lg btn-outline-primary' %>
         </div>
       </div>
     </div>
     <div class="col">
-      <div class="card mb-4 rounded-3 shadow-sm border-primary">
+      <div class="card mb-4 rounded-3 shadow-sm">
         <div class="card-header py-3">
           <h4 class="my-0 fw-normal text-center">Premium</h4>
         </div>
@@ -115,79 +202,44 @@
             <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Accès par votre nom de domaine</li>
             <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Serveur virtuel dédié</li>
           </ul>
-          <%= link_to 'Nous Contacter', new_message_path, class: 'w-100 btn btn-lg btn-outline-primary' %>
+          <%= link_to "S'inscrire", new_user_registration_path, class: 'w-100 btn btn-lg btn-outline-primary' %>
         </div>
       </div>
     </div>
   </div>
-
 </div>
 
-<h2 class="display-6 text-center mb-4">Comparer les offres</h2>
+<h1 class="fw-light mb-5">
+  A propos de <%= @site_name %>
+</h1>
 
-<div class="table-responsive mb-5">
-  <table class="table table-striped table-hover text-center">
-    <thead>
-      <tr>
-        <th style="width: 50%;"></th>
-        <th style="width: 10%;">Libre</th>
-        <th style="width: 20%;">Standard</th>
-        <th style="width: 20%;">Premium</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td scope="row" class="text-start">Utilisation libre et illimitée</td>
-        <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
-        <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
-        <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
-      </tr>
-      <tr>
-        <td scope="row" class="text-start">
-          Accès par un sous-domaine personnalisé
-          <br> Ex: https://mon-organisation.prestofacto.fr
-        </td>
-        <td></td>
-        <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
-        <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
-      </tr>
-      <tr>
-        <td scope="row" class="text-start">
-          Accès par votre nom de domaine
-          <br>
-          ex: https://prestofacto.votre-domaine.fr
-        </td>
-        <td></td>
-        <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
-        <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
-      </tr>
-      <tr>
-        <td scope="row" class="text-start">Serveur virtuel dédié</td>
-        <td></td>
-        <td></td>
-        <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
-      </tr>
-      <tr>
-        <td scope="row" class="text-start">Sauvegarde automatique des données</td>
-        <td></td>
-        <td><p>1/j</p></td>
-        <td><p>En continu</p></td>
-      </tr>
-      <tr>
-        <td scope="row" class="text-start">Support</td>
-        <td></td>
-        <td><p>e-mail</p></td>
-        <td><p>e-mail/téléphonique</p></td>
-      </tr>
+<h4 class="text-primary">Comment ça marche ?<hr></h4>
+<p class="lead">
+  Vous disposez d’un ordinateur(PC/MAC) et d’un accès internet : alors vous avez déjà toute l’infrastructure nécessaire pour utiliser 
+  nos solutions ! 100% web, vous accédez à volonté à votre plateforme dédiée, nous nous chargeons d’héberger et de sécuriser vos données.
+</p>
 
-    </tbody>
-  </table>
-  <div class="bg-light p-5">
-    <div class="text-center">
-      <%= link_to 'En savoir plus', a_propos_path, class: 'btn btn-primary btn-lg px-4' %>
-      <%= link_to "Guide d'utilisation", guide_path, class: 'btn btn-outline-secondary btn-lg px-4 mx-2 my-2' %>
-      <%= link_to 'Tester', admin_mode_demonstration_path, class: 'btn btn-outline-secondary btn-lg px-4' %>
-    </div>
-  </div>
+<h4 class="text-primary">Un logiciel simple, évolutif et innovant<hr></h4>
+<p class="lead">
+  Conçu avec pour objectif la simplicité d'utilisation et de maintenance, 
+  ce logiciel permet une gestion efficace des familles, 
+  enfants, réservations, absences et la facturation des prestations. 
+  Deux modules vous permettent d'assurer le suivi de vos Factures et Paiements.
+</p>
 
+<h4 class="text-primary">Développé en communauté<hr></h4>
+<p class="lead">
+  Les sources de l'application sont disponibles ici : 
+  <a href="https://github.com/philippe-nougaillon/PrestoFActo" rel="noopener noreferrer" target="_blank">https://github.com/philippe-nougaillon/PrestoFActo</a>
+  <br>
+  Vos remarques et propositions sont les bienvenues et nous aident à améliorer l'application.
+</p>
+
+<h4 class="text-primary">Passé<hr></h4>
+<p class="lead">
+  Après plus de 10 ans de bons et loyaux services, openCantine fait sa mue, change de nom et se professionnalise. Ce projet était au départ conçu pour donner un petit coup de main à une mairie qui gérait péniblement sa cantine sur Excel. Mais le passage en logiciel libre a permis à une cinquantaine de mairies ou associations de gérer plus de 400.000 repas via cette plateforme dont j'assure bénévolement la maintenance et les coûts d'hébergement. Ce que je vais continuer à faire car openCantine est adapté aux petites mono-structures et a ses habitués. Mais les structures plus importantes ne pouvaient s'en contenter, c'est pourquoi j'ai réécrit un autre logiciel, PrestoFacto, plus souple et adaptable, qui conviendra à des organisations de plus grande taille et multi-structures.
+</p>
+
+<div class="text-center mb-5">
+  <%= image_tag 'logo.jpg', alt: 'PrestoFacto' %>
 </div>

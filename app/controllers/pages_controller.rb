@@ -5,9 +5,6 @@ class PagesController < ApplicationController
     redirect_to comptes_path if user_signed_in?
   end
 
-  def a_propos
-  end
-
   def utilisation
   end
 
