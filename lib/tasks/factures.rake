@@ -77,10 +77,13 @@ namespace :factures do
                             .where("? BETWEEN début and fin", prestation.date).any?
                     puts "Détection d'une prestation un jour d'absence le #{I18n.l prestation.date}. La prestation sera ignorée."
                     prestations_absences << prestation.id
+                    # TODO : supprimer la prestation
+                    prestation.destroy if enregistrer
                 end
             end
 
-            prestations = prestations.where.not(id: prestations_absences)
+            # TODO : supprimer la prestation
+            prestations = prestations.where.not(id: prestations_absences) unless enregistrer
 
             # regrouper par enfant, par type de prestations et en faire le cumul des quantités
             prestations.select("enfant_id, prestation_type_id, sum(qté) as quantité")
