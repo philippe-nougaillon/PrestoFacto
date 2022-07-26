@@ -62,7 +62,7 @@ Rails.application.routes.draw do
     get :accueil, to: 'pages#home'
     get :a_propos, to: 'pages#a_propos'
     get :guide, to: 'pages#guide'
-    get :actualite, to: 'pages#actualite'
+    get :actualites, to: 'pages#actualites'
     get :confidentialite, to: 'pages#confidentialite'
     post :conditions_generales_de_vente, to: 'pages#conditions_generales_de_vente'
   end
