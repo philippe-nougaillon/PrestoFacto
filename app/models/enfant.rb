@@ -11,8 +11,8 @@ class Enfant < ApplicationRecord
   has_one :organisation, through: :compte
 
   has_many :reservations, dependent: :destroy
-  has_many :absences
-  has_many :prestations
+  has_many :absences, dependent: :destroy
+  has_many :prestations, dependent: :destroy
 
   accepts_nested_attributes_for :reservations, reject_if: proc { |attributes| attributes[:prestation_type_id].blank? }, allow_destroy: true
 

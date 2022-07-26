@@ -28,10 +28,6 @@
   animation: alert-highlight 3s;
 }
 
-.main-banner{
-  background-color: rgba(245,248,254,255);
-}
-
 .footer {
   background-color: red;
 }
@@ -39,4 +35,8 @@
 .bd-footer-links {
   padding-left: 0;
   margin-bottom: 1rem;
+}
+
+.main-banner{
+  background-color: red !important;
 }
