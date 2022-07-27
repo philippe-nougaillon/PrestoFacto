@@ -20,10 +20,11 @@
 <% end %>
 
 <%= bootstrap_form_tag url: action_reservations_path, method: :post do %>
-  <div class="table-responsive">
+  <div class="table-responsive" data-controller="action">
     <table class="table table-hover">
       <thead>
         <tr>
+          <th></th>
           <th><%= sort_link 'structures.nom', 'Structure' %></th>
           <th><%= sort_link 'classrooms.nom', 'Classe' %></th>
           <th><%= sort_link 'enfants.nom', 'Enfant' %></th>

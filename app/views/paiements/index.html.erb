@@ -44,7 +44,7 @@
 
 <% if policy(Paiement).to_xls? && !@paiements.size.zero? %>
   <%= link_to url_for(params.permit(:structure_id, :date_début, :date_fin, :mode, :search).merge(format: :xls)),
-              class: "float-sm-end" do %>
+              class: "float-sm-end text-muted" do %>
     <%= fa_icon "file-excel", class: 'me-1', text: "Export XLS" %>
   <% end %>
 <% end %>

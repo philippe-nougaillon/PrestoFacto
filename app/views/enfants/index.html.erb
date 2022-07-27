@@ -59,7 +59,7 @@
 
 <% if policy(Enfant).to_xls? && !@enfants.size.zero? %>
   <%= link_to url_for(params.permit(:search).merge(format: :xls)),
-              class: "float-sm-end" do %>
+              class: "float-sm-end text-muted" do %>
       <%= fa_icon "file-excel", class: 'me-1', text: "Export XLS" %>
   <% end %>
 <% end %>

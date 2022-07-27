@@ -13,30 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
-
-@keyframes alert-highlight {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 100;
-  }
-}
-
-.alert-highlight {
-  animation: alert-highlight 3s;
-}
-
-.footer {
-  background-color: red;
-}
-
-.bd-footer-links {
-  padding-left: 0;
-  margin-bottom: 1rem;
-}
-
-.main-banner{
-  background-color: red !important;
-}
