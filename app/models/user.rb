@@ -37,5 +37,9 @@ private
   def set_default_role
     self.role ||= :visiteur
   end
-  
+
+  def after_confirmation
+    UserMailer.with(user: self).welcome().deliver_now
+  end
+
 end
