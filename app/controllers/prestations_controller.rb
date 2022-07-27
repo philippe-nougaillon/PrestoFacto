@@ -45,6 +45,21 @@ class PrestationsController < ApplicationController
     @prestations = @prestations.page(params[:page])
   end
 
+  def action
+    return unless params[:prestations_id]
+    prestations = Prestation.where(id: params[:prestations_id].keys)
+    prestations_count = prestations.count
+
+    case params[:action_name]
+    when "Supprimer"
+      prestations.each do | p | 
+        p.destroy
+      end
+      flash[:notice] = "#{prestations_count} prestation.s supprimée.s" 
+      redirect_to prestations_url
+    end
+  end
+
   def show
     authorize Prestation
   end

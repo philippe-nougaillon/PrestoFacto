@@ -1,4 +1,9 @@
 <tr>
+    <td>
+        <span data-action="click->action#click">
+            <%= check_box_tag "[prestations_id][#{prestation.id}]", 'yes', false,  data: {"action-target":"source"} %>
+        </span>
+    </td>
     <td><%= prestation.enfant.classroom.structure.nom %></td>
     <td><%= prestation.enfant.classroom.nom %></td>
     <td><%= l prestation.date, format: :long %></td>

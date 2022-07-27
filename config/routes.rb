@@ -25,11 +25,16 @@ Rails.application.routes.draw do
 
   resources :reservations do
     collection do
+      post :action
       post :create_visiteur
     end
   end
 
-  resources :prestations
+  resources :prestations do
+    collection do
+      post :action
+    end
+  end
   resources :tarifs
   resources :absences
   resources :tarif_types
