@@ -7,14 +7,14 @@
     <td><%= compte.enfants.pluck(:prénom).join(', ') %> (<%= compte.enfants_count %>)</td>
     <td><% if policy(compte).edit? %>
             <%= link_to edit_compte_path(compte) do %>
-                <%= fa_icon 'edit' %>
+                <%= fa_icon 'edit', class: 'text-dark' %>
             <% end %>
         <% end %>
     </td>
     <td>
         <% if policy(compte).destroy? %>
         <%= link_to compte, method: :delete, data: { confirm: 'Attention ! Les enfants liés à ce compte seront effacés ! Etes-vous bien certain.e ???' } do %>
-            <%= fa_icon 'trash-alt' %>
+            <%= fa_icon 'trash-alt', class: 'text-dark' %>
         <% end %>
         <% end %>
     </td>

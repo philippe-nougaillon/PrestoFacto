@@ -34,7 +34,7 @@
     </p>
     <p>
       Balance : 
-      <span class="float-end">
+      <span class="float-end <%= 'text-danger' if (montant_total_factures - montant_total_paiements).negative? %>">
         <%= number_to_currency(montant_total_factures - montant_total_paiements) %>
       </span>
     </p>
