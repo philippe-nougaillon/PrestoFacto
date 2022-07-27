@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :vacances
   devise_for :users, controllers: { registrations: 'registrations' }
 
   resources :users_admin, controller: 'users'
