@@ -11,14 +11,14 @@
     <td>
         <% if policy(paiement).edit? %>
             <%= link_to edit_paiement_path(paiement) do %>
-                <%= fa_icon 'edit' %>
+                <%= fa_icon 'edit', class: 'text-muted' %>
             <% end %>
         <% end %>
     </td>
     <td>
         <% if policy(paiement).destroy? %>
             <%= link_to paiement, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
-                <%= fa_icon 'trash-alt' %>
+                <%= fa_icon 'trash-alt', class: 'text-muted' %>
             <% end %>
         <% end %>
     </td>

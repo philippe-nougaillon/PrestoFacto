@@ -17,14 +17,14 @@
     <td>
         <% if policy(facture).show? %>
             <%= link_to facture_url(facture, format: :pdf), target: '_blank', title: "Voir la facture en PDF" do %>
-                <i class="fas fa-file-pdf"></i>
+                <i class="fas fa-file-pdf text-muted"></i>
             <% end %>
         <% end %>
     </td>
     <td>
         <% if policy(facture).destroy? %>
             <%= link_to facture, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
-                <%= fa_icon 'trash' %>
+                <%= fa_icon 'trash', class: 'text-muted' %>
             <% end %>
         <% end %>
     </td>

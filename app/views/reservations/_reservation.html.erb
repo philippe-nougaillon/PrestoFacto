@@ -1,4 +1,11 @@
 <tr>
+    <% if current_user.admin? %>
+        <td>
+            <span data-action="click->action#click">
+                <%= check_box_tag "[reservations_id][#{reservation.id}]", 'yes', false,  data: {"action-target":"source"} %>
+            </span>
+        </td>
+    <% end %>
     <td><%= reservation.enfant.classroom.structure.nom %></td>
     <td><%= reservation.enfant.classroom.nom %></td>
     <td><%= link_to reservation.enfant.nom_et_prénom, reservation.enfant %></td>
@@ -17,7 +24,9 @@
         <% end %>
     </td>
 
-    <td><%= truncate(reservation.enfant.mémo, length: 10) %></td>
+    <% if current_user.admin? %>
+        <td><%= truncate(reservation.enfant.mémo, length: 10) %></td>
+    <% end %>
 
     <td><%= reservation.prestation_type.nom %></td>
 

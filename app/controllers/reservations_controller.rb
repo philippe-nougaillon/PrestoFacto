@@ -52,6 +52,21 @@ class ReservationsController < ApplicationController
     @reservations = @reservations.page(params[:page])
   end
 
+  def action
+    return unless params[:reservations_id]
+    réservations = Reservation.where(id: params[:reservations_id].keys)
+    réservations_count = réservations.count
+
+    case params[:action_name]
+    when "Supprimer"
+      réservations.each do | r | 
+        r.destroy
+      end
+      flash[:notice] = "#{réservations_count} réservation.s supprimée.s" 
+      redirect_to reservations_url
+    end
+  end
+
   # GET /reservations/1
   # GET /reservations/1.json
   def show

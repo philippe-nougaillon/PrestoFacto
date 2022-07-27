@@ -19,53 +19,73 @@
   </div>
 <% end %>
 
-<div class="table-responsive">
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th><%= sort_link 'structures.nom', 'Structure' %></th>
-        <th><%= sort_link 'classrooms.nom', 'Classe' %></th>
-        <th><%= sort_link 'enfants.nom', 'Enfant' %></th>
-        <th><%= sort_link 'enfants.menu_all', 'ALG?' %></th>
-        <th><%= sort_link 'enfants.menu_sp', 'SP?' %></th>
-        <th><%= sort_link 'enfants.mémo', 'Mémo' %></th>
-        <th><%= sort_link 'reservations.prestation_type_id', 'Prestation' %></th>
-        <th><%= sort_link 'reservations.début', 'Début' %></th>
-        <th><%= sort_link 'reservations.fin', 'Fin' %></th>
-        <th><%= sort_link 'reservations.workflow_state', 'Etat' %></th>
-        <th><%= sort_link 'reservations.lundi', 'Lun' %></th>
-        <th><%= sort_link 'reservations.mardi', 'Mar' %></th>
-        <th><%= sort_link 'reservations.mercredi', 'Mer' %></th>
-        <th><%= sort_link 'reservations.jeudi', 'Jeu' %></th>
-        <th><%= sort_link 'reservations.vendredi', 'Ven' %></th>
-        <th><%= sort_link 'reservations.matin', 'Matin' %></th>
-        <th><%= sort_link 'reservations.midi', 'Midi' %></th>
-        <th><%= sort_link 'reservations.soir', 'Soir' %></th>
-        <th><%= sort_link 'reservations.hors_période_scolaire', 'HScol?' %></th>
-      </tr>
-    </thead>
+<%= bootstrap_form_tag url: action_reservations_path, method: :post do %>
+  <div class="table-responsive" data-controller="action">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th></th>
+          <th><%= sort_link 'structures.nom', 'Structure' %></th>
+          <th><%= sort_link 'classrooms.nom', 'Classe' %></th>
+          <th><%= sort_link 'enfants.nom', 'Enfant' %></th>
+          <th><%= sort_link 'enfants.menu_all', 'ALG?' %></th>
+          <th><%= sort_link 'enfants.menu_sp', 'SP?' %></th>
+          <th><%= sort_link 'enfants.mémo', 'Mémo' %></th>
+          <th><%= sort_link 'reservations.prestation_type_id', 'Prestation' %></th>
+          <th><%= sort_link 'reservations.début', 'Début' %></th>
+          <th><%= sort_link 'reservations.fin', 'Fin' %></th>
+          <th><%= sort_link 'reservations.workflow_state', 'Etat' %></th>
+          <th><%= sort_link 'reservations.lundi', 'Lun' %></th>
+          <th><%= sort_link 'reservations.mardi', 'Mar' %></th>
+          <th><%= sort_link 'reservations.mercredi', 'Mer' %></th>
+          <th><%= sort_link 'reservations.jeudi', 'Jeu' %></th>
+          <th><%= sort_link 'reservations.vendredi', 'Ven' %></th>
+          <th><%= sort_link 'reservations.matin', 'Matin' %></th>
+          <th><%= sort_link 'reservations.midi', 'Midi' %></th>
+          <th><%= sort_link 'reservations.soir', 'Soir' %></th>
+          <th><%= sort_link 'reservations.hors_période_scolaire', 'HScol?' %></th>
+        </tr>
+      </thead>
 
-    <tbody>
-      <%= render @reservations.includes(:enfant) %>
-    </tbody>
+      <tbody>
+        <%= render @reservations.includes(:enfant) %>
+      </tbody>
 
-    <tfoot>
-      <tr>
-        <th colspan=3 class="text-end">
-          Total :
-        </th>
-        <th class="text-center">
-          <%= @total_alg %>
-        </th>
-        <th class="text-center">
-          <%= @total_sp %>
-        </th>
-        <th colspan=14></th>
-      </tr>
-    </tfoot>
+      <tfoot>
+        <tr>
+          <th colspan=3 class="text-end">
+            Total :
+          </th>
+          <th class="text-center">
+            <%= @total_alg %>
+          </th>
+          <th class="text-center">
+            <%= @total_sp %>
+          </th>
+          <th colspan=14></th>
+        </tr>
+      </tfoot>
 
-  </table>
-</div>
+    </table>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="input-group">
+          <%= select_tag :action_name, 
+                          options_for_select(["Supprimer"]), 
+                          include_blank: true, 
+                          class: 'form-control form-control-sm',
+                          data: { 'action-target': 'selector' } %>
+          <div class="input-group-append">
+            <%= submit_tag 'ok',  name: 'action', 
+                                  class: 'btn btn-sm btn-outline-success',
+                                  data: {'action-target': 'button'} %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 <%= page_entries_info @reservations, entry_name: 'réservation' %>
 <%= paginate @reservations, theme: 'twitter-bootstrap-4' %>

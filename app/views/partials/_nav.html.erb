@@ -11,7 +11,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <% if user_signed_in? %>
           <% if current_user.visiteur? %>
-            <%= navbar_nav_item('moncompte', 'users',  moncompte_index_path) %>
+            <%= navbar_nav_item('moncompte', 'users', 'dark', moncompte_index_path, 'Mon compte') %>
           <% else %>
             <%= navbar_nav_item('comptes', 'users', 'dark', comptes_path) %>
             <%= navbar_nav_item('enfants', 'child', 'primary', enfants_path) %>
@@ -22,10 +22,10 @@
             <%= navbar_nav_item('paiements', 'money-bill-alt', 'success', paiements_path) %>
           <% end %>
         <% else %>
-          <%= navbar_item('accueil', 'home', root_path) %>
-          <%= navbar_item('actualites', 'rss', actualites_path, 'Actualités') %>
-          <%= navbar_item('guide', 'book', guide_path) %>
-          <%= navbar_nav_item('messages', 'envelope', 'secondary', new_message_path, 'Nous contacter') %>
+          <%= navbar_item('accueil', root_path) %>
+          <%= navbar_item('actualites', actualites_path, 'Actualités') %>
+          <%= navbar_item('guide', guide_path) %>
+          <%= navbar_nav_item('messages', 'comments', 'secondary', new_message_path, 'Contact') %>
         <% end %>
       </ul>
       <div class="d-flex">
@@ -40,11 +40,11 @@
                 admin_index_path, 
                 class: "btn btn-sm btn-link mx-2" 
             %>
-          <% end %>
           <%= link_to "Guide", 
                       guide_path, 
                       class: "btn btn-sm btn-link mx-2" 
           %>
+          <% end %>
         
           <%= link_to "Déconnexion", 
               destroy_user_session_path, 

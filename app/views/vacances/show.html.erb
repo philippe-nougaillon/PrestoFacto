@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Zone:</strong>
+  <%= @vacance.zone %>
+</p>
+
+<p>
+  <strong>Nom:</strong>
+  <%= @vacance.nom %>
+</p>
+
+<p>
+  <strong>Début:</strong>
+  <%= @vacance.début %>
+</p>
+
+<p>
+  <strong>Fin:</strong>
+  <%= @vacance.fin %>
+</p>
+
+<p>
+  <strong>Organisation:</strong>
+  <%= @vacance.organisation_id %>
+</p>
+
+<%= link_to 'Edit', edit_vacance_path(@vacance) %> |
+<%= link_to 'Back', vacances_path %>

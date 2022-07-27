@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :vacances
   devise_for :users, controllers: { registrations: 'registrations' }
 
   resources :users_admin, controller: 'users'
@@ -25,11 +26,16 @@ Rails.application.routes.draw do
 
   resources :reservations do
     collection do
+      post :action
       post :create_visiteur
     end
   end
 
-  resources :prestations
+  resources :prestations do
+    collection do
+      post :action
+    end
+  end
   resources :tarifs
   resources :absences
   resources :tarif_types

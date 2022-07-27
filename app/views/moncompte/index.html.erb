@@ -63,7 +63,7 @@
                 <th>Structure</th>
                 <th>Classe</th>
                 <th>Enfant</th>
-                <th>ALG?</th>
+                <th>&ALG?</th>
                 <th>SP?</th>
                 <th>Prestation</th>
                 <th>Début</th>
@@ -93,7 +93,7 @@
       </div>
 
       <div class="card-footer">
-        <%= link_to new_reservation_path, data: {'bs-toggle': "modal", 'bs-target': "#myModalTarif" } do %>
+        <%= link_to new_reservation_path, data: {'bs-toggle': "modal", 'bs-target': "#myModalTarif" }, class: 'btn btn-outline-primary' do %>
           <%= fa_icon 'plus-circle', text: ' Ajouter une réservation' %>
         <% end %>
       </div>
@@ -101,7 +101,7 @@
 
     <div class="card">
       <div class="card-body">
-        <h3><%= fa_icon 'balance-scale' %> Balance</h3>
+        <h3><%= fa_icon 'balance-scale' %> Relevé de compte</h3>
 
         <table class="table table-hover table-bordered table-sm">
           <thead>
@@ -134,7 +134,7 @@
         </table>
       </div>
       <div class="card-footer">
-        <%= link_to new_paiement_path do %>
+        <%= link_to new_paiement_path, class: 'btn btn-outline-primary' do %>
           <%= fa_icon 'plus-circle', text: ' Effectuer un paiement' %>
         <% end %>
       </div>

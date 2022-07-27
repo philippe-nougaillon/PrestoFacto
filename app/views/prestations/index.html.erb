@@ -16,26 +16,46 @@
   </div>
 <% end %>
 
-<div class="table-responsive">
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th><%= sort_link 'structures.nom', 'Structure' %></th>
-        <th><%= sort_link 'classrooms.nom', 'Classe' %></th>
-        <th><%= sort_link 'prestations.date', 'Date' %></th>
-        <th><%= sort_link 'prestation_types.nom', 'Type' %></th>
-        <th><%= sort_link 'enfants.nom', 'Nom' %></th>
-        <th><%= sort_link 'enfants.prénom', 'Prénom' %></th>
-        <th><%= sort_link 'prestations.qté', 'Qté' %></th>
-        <th colspan=2></th>
-      </tr>
-    </thead>
+<%= bootstrap_form_tag url: action_prestations_path, method: :post do %>
+  <div class="table-responsive" data-controller="action">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th></th>
+          <th><%= sort_link 'structures.nom', 'Structure' %></th>
+          <th><%= sort_link 'classrooms.nom', 'Classe' %></th>
+          <th><%= sort_link 'prestations.date', 'Date' %></th>
+          <th><%= sort_link 'prestation_types.nom', 'Type' %></th>
+          <th><%= sort_link 'enfants.nom', 'Nom' %></th>
+          <th><%= sort_link 'enfants.prénom', 'Prénom' %></th>
+          <th><%= sort_link 'prestations.qté', 'Qté' %></th>
+          <th colspan=2></th>
+        </tr>
+      </thead>
 
-    <tbody>
-      <%=render @prestations.includes(:enfant, :prestation_type) %>
-    </tbody>
-  </table>
-</div>
+      <tbody>
+        <%=render @prestations.includes(:enfant, :prestation_type) %>
+      </tbody>
+    </table>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="input-group">
+          <%= select_tag :action_name, 
+                          options_for_select(["Supprimer"]), 
+                          include_blank: true, 
+                          class: 'form-control form-control-sm',
+                          data: { 'action-target': 'selector' } %>
+          <div class="input-group-append">
+            <%= submit_tag 'ok',  name: 'action', 
+                                  class: 'btn btn-sm btn-outline-success',
+                                  data: {'action-target': 'button'} %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 <%= page_entries_info @prestations, entry_name: 'prestation' %>
 <%= paginate @prestations, theme: 'twitter-bootstrap-4' %>
