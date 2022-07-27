@@ -60,7 +60,7 @@
       </p>
     </div>
   </div>
-  <div class="row px-4 pt-5">
+  <div class="row px-4 py-5">
     <div class="col-md">
       <h3 class="lh-1 mb-3 text-secondary fw-bold">Développé en communauté</h3>
       <p class="lead mb-4">
@@ -72,7 +72,7 @@
       </p>
     </div>
     <div class="col-md">
-      <%= image_tag 'blue_arrows.png', class: 'img-fluid', style: 'height: 80%' %>
+      <%= image_tag 'blue_arrows.png', class: 'img-fluid' %>
     </div>
   </div>
   <div class="px-4 py-5 bg-light">
@@ -160,7 +160,7 @@
     <div class="col">
       <div class="card mb-4 rounded-3 shadow-sm border-success">
         <div class="card-header py-3 bg-success border-success">
-          <h4 class="my-0 fw-normal text-center">Libre</h4>
+          <h4 class="my-0 fw-normal text-white text-center">Libre</h4>
         </div>
         <div class="card-body">
           <h1 class="card-title pricing-card-title text-center">Gratuit</h1>
@@ -171,17 +171,17 @@
             <li><%= fa_icon 'times-circle', class: 'text-danger me-2' %>Pas de sous-domaine personnalisé</li>
             <li><%= fa_icon 'times-circle', class: 'text-danger me-2' %>Pas de serveur virtuel dédié</li>
           </ul>
-          <%= link_to "S'inscrire", new_user_registration_path, class: 'w-100 btn btn-lg btn-outline-primary' %>
+          <%= link_to "S'inscrire", new_user_registration_path, class: 'w-100 btn btn-lg btn-outline-success' %>
         </div>
       </div>
     </div>
     <div class="col">
       <div class="card mb-4 rounded-3 shadow-sm border-primary">
-        <div class="card-header py-3 text-white bg-primary">
-          <h4 class="my-0 fw-normal text-center">Standard</h4>
+        <div class="card-header py-3 bg-primary">
+          <h4 class="my-0 fw-normal text-white text-center">Standard</h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title pricing-card-title text-center">29 €<small class="text-muted fw-light"> TTC/mois</small></h1>
+          <h1 class="card-title pricing-card-title text-center">29 €<small class="text-muted fw-light" style="font-size: 1rem"> / mois</small></h1>
           <ul class="list-unstyled mt-3 mb-4">
             <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Utilisation libre et illimitée</li>
             <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Sauvegarde automatique journalière</li>
@@ -189,17 +189,17 @@
             <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Accès via sous-domaine perso.</li>
             <li><%= fa_icon 'times-circle', class: 'text-danger me-2' %>Aucun serveur virtuel dédié</li>
           </ul>
-          <%= link_to "Sur demande", new_message_path(objet: 'Offre standard'), class: 'w-100 btn btn-lg btn-outline-primary' %>
+          <%= link_to "Sur demande", new_message_path(offre: 'Offre standard'), class: 'w-100 btn btn-lg btn-outline-primary' %>
         </div>
       </div>
     </div>
     <div class="col">
-      <div class="card mb-4 rounded-3 shadow-sm" style="border: orange solid;">
-        <div class="card-header py-3" style="background-color: orange">
+      <div class="card mb-4 rounded-3 shadow-sm border-warning">
+        <div class="card-header py-3 bg-warning">
           <h4 class="my-0 fw-normal text-center">Premium</h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title pricing-card-title text-center">49 €<small class="text-muted fw-light"> <small>TTC/mois</small></small></h1>
+          <h1 class="card-title pricing-card-title text-center">49 €<small class="text-muted fw-light"> <small style="font-size: 1rem"> / mois</small></small></h1>
           <ul class="list-unstyled mt-3 mb-4">
             <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Utilisation libre et illimitée</li>
             <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Sauvegarde continue (24 / 7)</li>
@@ -207,7 +207,7 @@
             <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Accès par votre nom de domaine</li>
             <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Serveur virtuel dédié</li>
           </ul>
-          <%= link_to "Sur demande", new_message_path(objet: 'Offre premium'), class: 'w-100 btn btn-lg btn-outline-primary' %>
+          <%= link_to "Sur demande", new_message_path(offre: 'Offre premium'), class: 'w-100 btn btn-lg btn-outline-warning' %>
         </div>
       </div>
     </div>
