@@ -8,10 +8,10 @@ class RegistrationsController < Devise::RegistrationsController
 
     def create
         @user = User.new(user_params)
-        if params[:question] == ENV['REPONSE_SECRETE']
+        if verify_recaptcha
             Organisation.create_from_signup(@user, params[:organisation], params[:structure], params[:zone])
         else
-            flash[:alert] == 'Mauvaise réponse !'
+            rend 'new'
         end
         
         respond_to do |format|

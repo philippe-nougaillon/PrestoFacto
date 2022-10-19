@@ -85,3 +85,6 @@ gem 'recaptcha'
 
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
+
+# ReCaptcha helpers for ruby apps
+gem "recaptcha"
