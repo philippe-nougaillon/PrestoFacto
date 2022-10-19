@@ -24,6 +24,8 @@
     <%= form.select :objet, options_for_select(['Question', 'Offre standard', 'Offre premium', 'Remarque', "Proposition d'amélioration", 'Résiliation', 'Autre'], @offre), prompt: 'Choisir un objet' %>
     <%= form.text_area :contenu, placeholder: 'Votre message', rows: 4, required: true %>
 
+    <%= recaptcha_tags %>
+
     <div class="actions">
       <%= form.submit 'Envoyer', class: 'btn btn-outline-success' %>
       <%= link_to 'Retour', root_path, class: 'btn btn-outline-secondary'%>

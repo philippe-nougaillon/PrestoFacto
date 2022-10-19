@@ -27,8 +27,7 @@
 
       <br>
 
-      <%= f.label :question, "Question de sécurité" %>
-      <%= text_field_tag :question, params[:question], required: true, placeholder: "Entrez la somme de 40 + 1 + 1", class: "form-control col-sm-6" %>
+      <%= recaptcha_tags %>
 
       <br>
 
