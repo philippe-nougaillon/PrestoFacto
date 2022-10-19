@@ -19,7 +19,7 @@ class RegistrationsController < Devise::RegistrationsController
                 end
             end
         else
-            rend 'new'
+            render 'new'
         end
     end
 
