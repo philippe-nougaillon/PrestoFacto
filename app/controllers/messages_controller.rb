@@ -39,6 +39,7 @@ class MessagesController < ApplicationController
       end
     else
       render 'new'
+    end
   end
 
   # PATCH/PUT /messages/1 or /messages/1.json
