@@ -19,7 +19,7 @@ class RegistrationsController < Devise::RegistrationsController
                 end
             end
         else
-            render 'new'
+            redirect_to root_url, alert: "Problème avec l'inscription..."
         end
     end
 
