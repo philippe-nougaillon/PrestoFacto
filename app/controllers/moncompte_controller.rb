@@ -10,6 +10,9 @@ class MoncompteController < ApplicationController
     @total_paiements = @compte.paiements.sum(:montant)
     @solde = @total_paiements - @total_factures
     @releve = @compte.balance
+
+    @total_alg = 0
+    @total_sp = 0
   end
 
 end
