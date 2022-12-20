@@ -110,17 +110,26 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
-  ActionMailer::Base.smtp_settings = {
-    :port           => 587,
-    :address        => 'smtp.sendgrid.net',
-    :user_name      => 'apikey',
-    :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'www.prestofacto.fr',
-    :authentication => :plain,
-    :enable_starttls_auto => true
+  # ActionMailer::Base.smtp_settings = {
+  #   :port           => 587,
+  #   :address        => 'smtp.sendgrid.net',
+  #   :user_name      => 'apikey',
+  #   :password       => ENV['SENDGRID_PASSWORD'],
+  #   :domain         => 'www.prestofacto.fr',
+  #   :authentication => :plain,
+  #   :enable_starttls_auto => true
+  # }
+  # ActionMailer::Base.delivery_method = :smtp
+
+  ActionMailer::Base.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    :api_key => ENV['MAILGUN_API_KEY'],
+    :domain => ENV['MAILGUN_DOMAIN'],
+    :api_host => 'api.eu.mailgun.net'  # Uncomment this line for EU region domains
   }
-  ActionMailer::Base.delivery_method = :smtp
 
   config.action_mailer.default_url_options = { :host => 'www.prestofacto.fr', :protocol => 'https' }
+  config.action_controller.default_url_options = { host: 'www.prestofacto.fr', protocol: 'https' }
+
 
 end

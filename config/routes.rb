@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :vacances
   devise_for :users, controllers: { registrations: 'registrations' }
 
   resources :users_admin, controller: 'users'
@@ -46,6 +45,8 @@ Rails.application.routes.draw do
   resources :blogs
   resources :facture_messages
   resources :messages
+  resources :vacances
+  resources :mail_logs, only: %i[ index show ]
 
   namespace :admin do
     get :index

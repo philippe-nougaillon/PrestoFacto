@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_03_165359) do
+ActiveRecord::Schema.define(version: 2022_12_20_083044) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -206,6 +206,16 @@ ActiveRecord::Schema.define(version: 2022_11_03_165359) do
     t.index ["workflow_state"], name: "index_factures_on_workflow_state"
   end
 
+  create_table "mail_logs", force: :cascade do |t|
+    t.string "to"
+    t.string "subject"
+    t.string "message_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "organisation_id", null: false
+    t.index ["organisation_id"], name: "index_mail_logs_on_organisation_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.string "email"
     t.string "objet"
@@ -380,6 +390,7 @@ ActiveRecord::Schema.define(version: 2022_11_03_165359) do
   add_foreign_key "facture_lignes", "prestation_types"
   add_foreign_key "facture_messages", "organisations"
   add_foreign_key "factures", "comptes"
+  add_foreign_key "mail_logs", "organisations"
   add_foreign_key "paiements", "comptes"
   add_foreign_key "prestation_types", "organisations"
   add_foreign_key "prestations", "enfants"

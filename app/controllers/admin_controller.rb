@@ -278,7 +278,8 @@ class AdminController < ApplicationController
         puts "Facture: #{f.réf} Compte: #{f.compte.nom}  => #{email ? email : "MANQUE ADRESSE EMAIL !!!"}"
       
         if email && envoyer
-          FactureMailer.with(facture: f, to: email).envoyer_facture.deliver_later
+          mailer_response = FactureMailer.with(facture: f, to: email).envoyer_facture.deliver_now
+          MailLog.create(organisation_id: current_user.organisation.id, message_id:mailer_response.message_id, to:email, subject: "Facture")
           f.update(envoyée_le: DateTime.now)
           envoyées +=1
         end

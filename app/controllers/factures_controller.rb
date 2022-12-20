@@ -64,13 +64,14 @@ class FacturesController < ApplicationController
       factures = factures.with_ajoutée_state.each do | f | 
         f.vérifier!
       end
+      flash[:notice] = "#{factures.count} facture.s modifiée.s"  
     when "Envoyer"
       factures = factures.with_vérifiée_state.each do | f |
-        EnvoyerFactureJob.perform_later(f) 
+        EnvoyerFactureJob.perform_later(f, current_user) 
         f.envoyer!
       end
+      flash[:notice] = "#{factures.count} facture.s envoyée.s"  
     end
-    flash[:notice] = "#{factures.count} facture.s modifiée.s"  
 
     redirect_to factures_url
   end

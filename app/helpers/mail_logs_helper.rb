@@ -1,0 +1,2 @@
+module MailLogsHelper
+end
