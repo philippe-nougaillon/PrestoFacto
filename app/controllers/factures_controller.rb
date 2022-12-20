@@ -1,6 +1,7 @@
 class FacturesController < ApplicationController
   # on saute par dessus la sécurité si la demande est d'afficher une facture PDF
   skip_before_action :authenticate_user!, only: [:show]
+  before_action :is_user_authorized, except: %i[ edit update destroy]
 
   before_action :set_facture, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
@@ -8,8 +9,6 @@ class FacturesController < ApplicationController
   # GET /factures
   # GET /factures.json
   def index
-    authorize Facture
-
     organisation = current_user.organisation
     @factures = organisation.factures
     @structures = organisation.structures
@@ -85,8 +84,6 @@ class FacturesController < ApplicationController
   # GET /factures/1
   # GET /factures/1.json
   def show
-    authorize Facture
-
     respond_to do |format|
       format.html
       format.pdf do
@@ -108,8 +105,6 @@ class FacturesController < ApplicationController
 
   # GET /factures/new
   def new
-    authorize Facture
-
     @facture = Facture.new
     @facture.compte_id = params[:compte_id]
     @facture.date = Date.today
@@ -119,7 +114,7 @@ class FacturesController < ApplicationController
 
   # GET /factures/1/edit
   def edit
-    authorize Facture
+    authorize @facture
 
     @prestation_types = current_user.organisation.prestation_types
     1.times { @facture.facture_lignes.build }
@@ -128,8 +123,6 @@ class FacturesController < ApplicationController
   # POST /factures
   # POST /factures.json
   def create
-    authorize Facture
-
     @facture = Facture.new(facture_params)
     @prestation_types = current_user.organisation.prestation_types
 
@@ -147,7 +140,7 @@ class FacturesController < ApplicationController
   # PATCH/PUT /factures/1
   # PATCH/PUT /factures/1.json
   def update
-    authorize Facture
+    authorize @facture
 
     @prestation_types = current_user.organisation.prestation_types
 
@@ -165,7 +158,7 @@ class FacturesController < ApplicationController
   # DELETE /factures/1
   # DELETE /factures/1.json
   def destroy
-    authorize Facture
+    authorize @facture
 
     @facture.destroy
     respond_to do |format|
@@ -197,6 +190,10 @@ class FacturesController < ApplicationController
   
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : 'desc'
+    end
+
+    def is_user_authorized
+      authorize Facture
     end
 
 end

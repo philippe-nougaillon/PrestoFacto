@@ -1,4 +1,4 @@
-class AbsencePolicy < ApplicationPolicy
+class MessagePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -6,7 +6,7 @@ class AbsencePolicy < ApplicationPolicy
   end
 
   def index?
-    user.vip_admin?
+    user && user.email == "philippe.nougaillon@gmail.com"
   end
 
   def show?
@@ -14,7 +14,7 @@ class AbsencePolicy < ApplicationPolicy
   end
 
   def edit?
-    index? && (user.organisation == record.organisation)
+    index?
   end
 
   def update?
@@ -22,7 +22,7 @@ class AbsencePolicy < ApplicationPolicy
   end
 
   def new?
-    index?
+    true
   end
 
   def create?
@@ -30,6 +30,6 @@ class AbsencePolicy < ApplicationPolicy
   end
 
   def destroy?
-    edit?
+    index?
   end
 end

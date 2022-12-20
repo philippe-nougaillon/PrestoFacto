@@ -60,7 +60,7 @@ class PaiementsController < ApplicationController
 
   # GET /paiements/1/edit
   def edit
-    authorize Paiement
+    authorize @paiement
   end
 
   # POST /paiements
@@ -84,7 +84,7 @@ class PaiementsController < ApplicationController
   # PATCH/PUT /paiements/1
   # PATCH/PUT /paiements/1.json
   def update
-    authorize Paiement
+    authorize @paiement
 
     respond_to do |format|
       if @paiement.update(paiement_params)
@@ -100,7 +100,7 @@ class PaiementsController < ApplicationController
   # DELETE /paiements/1
   # DELETE /paiements/1.json
   def destroy
-    authorize Paiement
+    authorize @paiement
 
     @paiement.destroy
     respond_to do |format|

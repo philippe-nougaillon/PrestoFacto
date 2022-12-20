@@ -142,7 +142,7 @@
           <% end %>
         </table>
 
-        <% if policy(Absence).edit? %>
+        <% if policy(Absence).new? %>
           <%= link_to new_absence_path(enfant_id: @enfant), class: 'btn btn-outline-primary', data: {'bs-toggle': "modal", 'bs-target': "#myModal" } do %>
             <%= fa_icon 'plus-circle' %> Ajouter une absence
           <% end %>
@@ -199,7 +199,7 @@
           <% end %>
         </table>
 
-        <% if policy(Prestation).edit? %>
+        <% if policy(Prestation).new? %>
           <%= link_to new_prestation_path(enfant_id: @enfant), class: 'btn btn-outline-primary', data: {'bs-toggle': "modal", 'bs-target': "#myModalPrestation" } do %>
             <%= fa_icon 'plus-circle' %> Ajouter une prestation
           <% end %>

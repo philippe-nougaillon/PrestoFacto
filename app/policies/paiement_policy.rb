@@ -5,8 +5,32 @@ class PaiementPolicy < ApplicationPolicy
     end
   end
 
+  def index?
+    user.vip_admin?
+  end
+
+  def show?
+    index?
+  end
+
+  def edit?
+    index? && (user.organisation == record.organisation)
+  end
+
+  def update?
+    edit?
+  end
+
   def new?
-    user.admin?
+    index?
+  end
+
+  def create?
+    new?
+  end
+
+  def destroy?
+    edit?
   end
 
   def to_xls?

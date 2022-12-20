@@ -5,16 +5,40 @@ class FacturePolicy < ApplicationPolicy
     end
   end
 
+  def index?
+    user.vip_admin?
+  end
+
+  def action?
+    index?
+  end
+
   def show?
     true
   end
 
   def edit?
-    user.admin?
+    index? && (user.organisation == record.organisation)
+  end
+
+  def update?
+    edit?
+  end
+
+  def new?
+    index?
+  end
+
+  def create?
+    new?
   end
 
   def to_xls?
-    user.admin?
+    index?
+  end
+
+  def destroy?
+    edit?
   end
 
 end
