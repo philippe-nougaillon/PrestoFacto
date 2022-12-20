@@ -279,12 +279,13 @@ class AdminController < ApplicationController
       
         if email && envoyer
           mailer_response = FactureMailer.with(facture: f, to: email).envoyer_facture.deliver_now
-          MailLog.create(organisation_id: current_user.organisation.id, message_id:mailer_response.message_id, to:email, subject: "Facture")
+          MailLog.create(organisation_id: current_user.organisation.id, message_id:mailer_response.message_id, to:email, subject: "Facture #{f.réf}")
           f.update(envoyée_le: DateTime.now)
           envoyées +=1
         end
       end
       puts "Total factures envoyées = #{envoyées}"
+      puts "Consultez l'état des envoies dans 'Administation/Mail Logs'"
     end
   end
 

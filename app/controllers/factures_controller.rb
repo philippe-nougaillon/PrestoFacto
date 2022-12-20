@@ -67,10 +67,16 @@ class FacturesController < ApplicationController
       flash[:notice] = "#{factures.count} facture.s modifiée.s"  
     when "Envoyer"
       factures = factures.with_vérifiée_state.each do | f |
-        EnvoyerFactureJob.perform_later(f, current_user) 
+        email = f.compte.try(:contacts).first.try(:email)
+        # Envoyer la facture
+        mailer_response = FactureMailer.with(facture: f, to: email).envoyer_facture.deliver_now
+        MailLog.create(organisation_id: current_user.organisation.id, message_id:mailer_response.message_id, to:email, subject: "Facture #{f.réf}")
+
+        # Mise à jour de la date d'envoi
+        f.update(envoyée_le: DateTime.now)
         f.envoyer!
       end
-      flash[:notice] = "#{factures.count} facture.s envoyée.s"  
+      flash[:notice] = "#{factures.count} facture.s envoyée.s. Consultez l'état des envoies dans 'Administation/Mail Logs'"  
     end
 
     redirect_to factures_url
