@@ -42,7 +42,6 @@ Rails.application.routes.draw do
   resources :structures
   resources :organisations
   resources :paiements
-  resources :blogs
   resources :facture_messages
   resources :messages
   resources :vacances

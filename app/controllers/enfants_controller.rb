@@ -104,7 +104,7 @@ class EnfantsController < ApplicationController
 
   # GET /enfants/1/edit
   def edit
-    authorize Enfant
+    authorize @enfant
 
     1.times { @enfant.reservations.build(début: Date.today) }
   end
@@ -129,7 +129,7 @@ class EnfantsController < ApplicationController
   # PATCH/PUT /enfants/1
   # PATCH/PUT /enfants/1.json
   def update
-    authorize Enfant
+    authorize @enfant
 
     respond_to do |format|
       if @enfant.update(enfant_params)
@@ -145,7 +145,7 @@ class EnfantsController < ApplicationController
   # DELETE /enfants/1
   # DELETE /enfants/1.json
   def destroy
-    authorize Enfant
+    authorize @enfant
 
     begin
       @enfant.destroy

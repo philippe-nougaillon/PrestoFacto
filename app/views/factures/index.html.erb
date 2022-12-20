@@ -59,7 +59,7 @@
       </tfoot>
     </table>
 
-    <div class="row">
+    <div class="row mb-3">
       <div class="col-sm-3">
         <div class="input-group">
           <%= select_tag :action_name, 
@@ -68,7 +68,7 @@
                           class: 'form-control form-control-sm',
                           data: { 'action-target': 'selector' } %>
           <div class="input-group-append">
-            <%= submit_tag 'ok',  name: 'action', 
+            <%= submit_tag 'Ok',  name: 'action', 
                                   class: 'btn btn-sm btn-outline-success',
                                   data: {'action-target': 'button'} %>
           </div>
@@ -88,3 +88,6 @@
     <%= fa_icon "file-excel", class: 'me-1', text: "Export XLS" %>
   <% end %>
 <% end %>
+
+<br>
+<br>

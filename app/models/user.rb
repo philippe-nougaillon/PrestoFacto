@@ -33,6 +33,10 @@ class User < ApplicationRecord
     self.role == 'admin'
   end
 
+  def vip_admin?
+    self.vip? || self.admin?
+  end
+
 private
   def set_default_role
     self.role ||= :visiteur

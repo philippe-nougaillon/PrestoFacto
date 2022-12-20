@@ -73,7 +73,7 @@ class PrestationsController < ApplicationController
 
   # GET /prestations/1/edit
   def edit
-    authorize Prestation
+    authorize @prestation
 
     @prestation_types = current_user.organisation.prestation_types
   end
@@ -100,7 +100,7 @@ class PrestationsController < ApplicationController
   # PATCH/PUT /prestations/1
   # PATCH/PUT /prestations/1.json
   def update
-    authorize Prestation
+    authorize @prestation
 
     respond_to do |format|
       if @prestation.update(prestation_params)
@@ -116,7 +116,7 @@ class PrestationsController < ApplicationController
   # DELETE /prestations/1
   # DELETE /prestations/1.json
   def destroy
-    authorize Prestation
+    authorize @prestation
 
     @prestation.destroy
     respond_to do |format|

@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :prepare_exception_notifier
   
   # Ensuring PUNDIT policies and scopes are used
-  #after_action :verify_authorized
+  # after_action :verify_authorized
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
