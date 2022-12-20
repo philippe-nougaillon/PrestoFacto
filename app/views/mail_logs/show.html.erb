@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Il y a :</strong>
+  <%= time_ago_in_words @mail_log.created_at %>
+</p>
+
+<p>
+  <strong>Destinataire :</strong>
+  <%= @mail_log.to %>
+</p>
+
+<p>
+  <strong>Objet :</strong>
+  <%= @mail_log.subject %>
+</p>
+
+<p>
+  <strong>Date :</strong>
+  <%= l @mail_log.created_at %>
+</p>
+
+<p>
+  <strong>Id :</strong>
+  <%= @mail_log.message_id %>
+</p>
+
+
+<p>
+  <strong>Statut :</strong>
+  <% if status = @result["items"].find{|item| item["message"]["headers"]["message-id"] == @mail_log.message_id } %>
+    <span class="text-danger">
+      <%= JSON.pretty_generate(status) %>
+    </span>
+
+  <% else %>
+    <span class="text-success">OK</span>
+  <% end %>
+</p>
+
+<%= link_to 'Retour', mail_logs_path %>

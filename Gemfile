@@ -60,7 +60,6 @@ gem 'prawn', '1.3'
 gem 'prawn-table', '~> 0.1.0'
 
 # Sucker Punch is a Ruby asynchronous processing library using concurrent-ruby
-gem 'sucker_punch'
 
 # Ruby finite-state-machine-inspired API for modeling workflow 
 gem 'workflow'
@@ -85,3 +84,7 @@ gem 'recaptcha'
 
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
+
+gem "mailgun-ruby", "~> 1.2"
+
+gem "sortable-for-rails", "~> 1.2"

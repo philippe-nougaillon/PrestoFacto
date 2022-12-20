@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<div class="pb-2 mt-4 mb-2 border-bottom">
+  <h2 class="fw-light">
+    <%= fa_icon 'envelope' %>
+    Mail Logs
+  </h2>
+</div>
+
+<p class="text-muted">
+  Journal d'activité des envois de courriels
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= sortable :to do %>Destinataire<% end %></th>
+      <th><%= sortable :subject do %>Objet<% end %></th>
+      <th><%= sortable :created_at, default: true do %>Il y a<% end %></th>
+      <th>Statut</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mail_logs.each do |mail_log| %>
+      <tr>
+        <td><%= mail_log.to %></td>
+        <td><%= mail_log.subject %></td>
+        <td><%= time_ago_in_words mail_log.created_at %></td>
+        <td>
+          <% if status = @result["items"].find{|item| item["message"]["headers"]["message-id"] == mail_log.message_id } %>
+            <span class="text-danger">KO</span>
+
+          <% else %>
+            <span class="text-success">OK</span>
+          <% end %>
+        </td>
+        <td><%= link_to 'Détails', mail_log %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
