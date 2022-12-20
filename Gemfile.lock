@@ -289,8 +289,6 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sucker_punch (3.0.1)
-      concurrent-ruby (~> 1.0)
     thor (1.2.1)
     tilt (2.0.10)
     ttfunk (1.4.0)
@@ -371,7 +369,6 @@ DEPENDENCIES
   spreadsheet
   spring
   spring-watcher-listen (~> 2.0.0)
-  sucker_punch
   turbolinks (~> 5)
   web-console (>= 3.3.0)
   webdrivers
