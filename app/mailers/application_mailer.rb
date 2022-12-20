@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'contact@prestofacto.fr' 
+  default from: "PrestoFacto <contact@prestofacto.fr>"
   layout 'mailer'
 end
