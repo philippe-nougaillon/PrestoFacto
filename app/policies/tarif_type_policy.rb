@@ -5,8 +5,24 @@ class TarifTypePolicy < ApplicationPolicy
     end
   end
 
+  def edit?
+    user.admin? && (user.organisation == record.organisation)
+  end
+
+  def update?
+    edit?
+  end
+
+  def new?
+    user.admin?
+  end
+
+  def create?
+    new?
+  end
+
   def destroy?
-    user.admin? && record.tarifs.count == 0 && record.enfants.count == 0
+    edit? && record.tarifs.count == 0 && record.enfants.count == 0
   end
 
 end

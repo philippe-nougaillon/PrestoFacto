@@ -1,19 +1,5 @@
 class TarifTypesController < ApplicationController
-  before_action :set_tarif_type, only: [:show, :edit, :update, :destroy]
-
-  # GET /tarif_types
-  # GET /tarif_types.json
-  def index
-    authorize TarifType
-
-    @tarif_types = TarifType.all
-  end
-
-  # GET /tarif_types/1
-  # GET /tarif_types/1.json
-  def show
-    authorize TarifType
-  end
+  before_action :set_tarif_type, only: [:edit, :update, :destroy]
 
   # GET /tarif_types/new
   def new
@@ -25,7 +11,7 @@ class TarifTypesController < ApplicationController
 
   # GET /tarif_types/1/edit
   def edit
-    authorize TarifType
+    authorize @tarif_type
   end
 
   # POST /tarif_types
@@ -49,7 +35,7 @@ class TarifTypesController < ApplicationController
   # PATCH/PUT /tarif_types/1
   # PATCH/PUT /tarif_types/1.json
   def update
-    authorize TarifType
+    authorize @tarif_type
 
     respond_to do |format|
       if @tarif_type.update(tarif_type_params)

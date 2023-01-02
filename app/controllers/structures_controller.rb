@@ -7,34 +7,11 @@ class StructuresController < ApplicationController
     authorize @structure
   end
 
-  # GET /structures/new
-  def new
-    @structure = Structure.new
-  end
-
   # GET /structures/1/edit
   def edit
     authorize @structure
 
     3.times { @structure.classrooms.build }
-  end
-
-  # POST /structures
-  # POST /structures.json
-  def create
-    authorize Structure
-
-    @structure = Structure.new(structure_params)
-
-    respond_to do |format|
-      if @structure.save
-        format.html { redirect_to @structure, notice: 'Structure créée avec succès.' }
-        format.json { render :show, status: :created, location: @structure }
-      else
-        format.html { render :new }
-        format.json { render json: @structure.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /structures/1

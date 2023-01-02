@@ -9,24 +9,8 @@ class ReservationPolicy < ApplicationPolicy
     user.vip_admin?
   end
 
-  def edit?
-    index? && (user.organisation == record.organisation)
-  end
-
   def update?
-    edit?
-  end
-
-  def new?
-    user
-  end
-
-  def create?
-    new?
-  end
-
-  def show?
-    false
+    index? && (user.organisation == record.organisation)
   end
 
   def destroy?

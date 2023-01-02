@@ -1,12 +1,11 @@
 class AbsencesController < ApplicationController
   before_action :set_absence, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
+  before_action :is_user_authorized, except: %i[ show edit update destroy]
 
   # GET /absences
   # GET /absences.json
   def index
-    authorize Absence
-
     params[:date] ||= Date.today
 
     organisation = current_user.organisation
@@ -49,22 +48,18 @@ class AbsencesController < ApplicationController
 
   # GET /absences/new
   def new
-    authorize Absence
-
     @absence = Absence.new
     @absence.enfant_id = params[:enfant_id]
   end
 
   # GET /absences/1/edit
   def edit
-    authorize Absence
+    authorize @absence
   end
 
   # POST /absences
   # POST /absences.json
   def create
-    authorize Absence
-
     @absence = Absence.new(absence_params)
 
     respond_to do |format|
@@ -81,7 +76,7 @@ class AbsencesController < ApplicationController
   # PATCH/PUT /absences/1
   # PATCH/PUT /absences/1.json
   def update
-    authorize Absence
+    authorize @absence
 
     respond_to do |format|
       if @absence.update(absence_params)
@@ -97,7 +92,7 @@ class AbsencesController < ApplicationController
   # DELETE /absences/1
   # DELETE /absences/1.json
   def destroy
-    authorize Absence
+    authorize @absence
 
     @absence.destroy
     respond_to do |format|
@@ -127,6 +122,10 @@ class AbsencesController < ApplicationController
   
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+    end
+
+    def is_user_authorized
+      authorize Absence
     end
 
 end

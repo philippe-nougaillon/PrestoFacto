@@ -67,43 +67,6 @@ class ReservationsController < ApplicationController
     end
   end
 
-  # GET /reservations/1
-  # GET /reservations/1.json
-  def show
-    authorize @reservation
-  end
-
-  # GET /reservations/new
-  def new
-    authorize Reservation
-
-    @reservation = Reservation.new
-    @reservation.enfant_id = params[:enfant_id]
-  end
-
-  # GET /reservations/1/edit
-  def edit
-    authorize Reservation
-  end
-
-  # POST /reservations
-  # POST /reservations.json
-  def create
-    authorize Reservation
-
-    @reservation = Reservation.new(reservation_params)
-
-    respond_to do |format|
-      if @reservation.save
-        format.html { redirect_to @reservation, notice: 'Réservation créée avec succès.' }
-        format.json { render :show, status: :created, location: @reservation }
-      else
-        format.html { render :new }
-        format.json { render json: @reservation.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   def create_visiteur
     @reservation = Reservation.new(reservation_params)
 
@@ -115,26 +78,10 @@ class ReservationsController < ApplicationController
 
   end  
 
-  # PATCH/PUT /reservations/1
-  # PATCH/PUT /reservations/1.json
-  def update
-    authorize Reservation
-
-    respond_to do |format|
-      if @reservation.update(reservation_params)
-        format.html { redirect_to @reservation, notice: 'Reservation modifiée avec succès.' }
-        format.json { render :show, status: :ok, location: @reservation }
-      else
-        format.html { render :edit }
-        format.json { render json: @reservation.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # DELETE /reservations/1
   # DELETE /reservations/1.json
   def destroy
-    authorize Reservation
+    authorize @reservation
 
     @reservation.destroy
     respond_to do |format|

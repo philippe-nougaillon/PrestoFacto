@@ -61,7 +61,7 @@ class PrestationsController < ApplicationController
   end
 
   def show
-    authorize Prestation
+    authorize @prestation
   end
 
   def new
