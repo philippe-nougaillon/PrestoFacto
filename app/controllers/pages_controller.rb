@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, except: %i[dashboard]
 
   def accueil
     redirect_to comptes_path if user_signed_in?
@@ -18,6 +18,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    authorize :pages
     @months = []
     @organisation = current_user.organisation
 
