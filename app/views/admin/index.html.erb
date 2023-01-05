@@ -7,32 +7,32 @@
   <div class="col">
     <ul class="list-group">
       <li class="list-group-item">
-        <h5>
+        <h4 class="my-1">
           <%= fa_icon 'city' %> 
-          <%= link_to organisation_url(current_user.organisation), title: "Organisation, Structures, Vacances", class: "text-dark text-decoration-none" do %>Organisation<% end %>
-        </h5>
+          <%= link_to organisation_url(current_user.organisation), title: "Organisation, Structures, Vacances", class: "text-muted text-decoration-none" do %>Organisation<% end %>
+        </h4>
       </li>
 
       <li class="list-group-item"></li>
 
       <li class="list-group-item">
-        <h5>
+        <h4 class="my-1">
           <%= fa_icon 'user-friends' %>
-          <%= link_to users_admin_index_path, class: "text-dark text-decoration-none" do %>
+          <%= link_to users_admin_index_path, class: "text-muted text-decoration-none" do %>
             Utilisateurs
           <% end %>
-        </h5>
+        </h4>
       </li>
 
       <li class="list-group-item"></li>
 
       <li class="list-group-item">
-        <h5>
+        <h4 class="my-1">
           <%= fa_icon 'euro-sign' %>
-          <%= link_to admin_tarifs_url, title: "Tarifs, Types de tarifs et de Prestations", class: "text-dark text-decoration-none" do %>
+          <%= link_to admin_tarifs_url, title: "Tarifs, Types de tarifs et de Prestations", class: "text-muted text-decoration-none" do %>
             Prestations et Tarifs
           <% end %>
-        </h5>
+        </h4>
       </li>
 
     </ul>  
@@ -42,37 +42,37 @@
     <ul class="list-group">
 
       <li class="list-group-item">
-        <h5>
+        <h4 class="my-1">
           <%= fa_icon 'calendar-day' %>
-          <%= link_to 'Comptabilisation prestations', admin_ajout_prestations_path, class: "text-dark text-decoration-none" %>
-        </h5>
+          <%= link_to 'Comptabilisation prestations', admin_ajout_prestations_path, class: "text-muted text-decoration-none" %>
+        </h4>
       </li>
 
       <li class="list-group-item"></li>
 
       <li class="list-group-item">
-        <h5>
+        <h4 class="my-1">
           <%= fa_icon 'calendar-day' %>
-          <%= link_to 'Facturation prestations', admin_ajout_factures_path, class: "text-dark text-decoration-none" %>
-        </h5>
+          <%= link_to 'Facturation prestations', admin_ajout_factures_path, class: "text-muted text-decoration-none" %>
+        </h4>
       </li>
 
       <li class="list-group-item"></li>
 
       <li class="list-group-item">
-        <h5>
+        <h4 class="my-1">
           <%= fa_icon 'paper-plane' %>
-          <%= link_to 'Envoyer les factures', admin_envoyer_factures_path, class: "text-dark text-decoration-none" %>
-        </h5>
+          <%= link_to 'Envoyer les factures', admin_envoyer_factures_path, class: "text-muted text-decoration-none" %>
+        </h4>
       </li>
 
       <li class="list-group-item"></li>
 
       <li class="list-group-item">
-        <h5>
+        <h4 class="my-1">
           <%= fa_icon 'envelope' %>
-          <%= link_to 'Mail Logs', mail_logs_path, class: "text-dark text-decoration-none", title:"Journal d'activité des envois de courriels" %>
-        </h5>
+          <%= link_to 'Mail Logs', mail_logs_path, class: "text-muted text-decoration-none", title:"Journal d'activité des envois de courriels" %>
+        </h4>
       </li>
 
     </ul>
@@ -82,28 +82,28 @@
     <ul class="list-group">
 
       <li class="list-group-item">
-        <h5>
+        <h4 class="my-1">
           <%= fa_icon 'search' %>
-          <%= link_to 'Audit des modifications', admin_audit_path, class: "text-dark text-decoration-none" %>
-        </h5>
+          <%= link_to 'Audit des modifications', admin_audit_path, class: "text-muted text-decoration-none" %>
+        </h4>
       </li>
 
       <li class="list-group-item"></li>
 
       <li class="list-group-item">
-        <h5>
+        <h4 class="my-1">
           <%= fa_icon 'file-import' %>
-          <%= link_to 'Importer', admin_import_path, class: "text-dark text-decoration-none" %>
-        </h5>
+          <%= link_to 'Importer', admin_import_path, class: "text-muted text-decoration-none" %>
+        </h4>
       </li>
 
       <li class="list-group-item"></li>
 
       <li class="list-group-item">
-        <h5>
+        <h4 class="my-1">
           <%= fa_icon 'comment-dots' %>
-          <%= link_to 'Messages de factures', facture_messages_path, title: "Afficher en bas de vos factures et dans l'e-mail d'accompagnement" ,class: "text-dark text-decoration-none" %>
-        </h5>
+          <%= link_to 'Messages de factures', facture_messages_path, title: "Afficher en bas de vos factures et dans l'e-mail d'accompagnement" ,class: "text-muted text-decoration-none" %>
+        </h4>
       </li>
 
     </ul>

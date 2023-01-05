@@ -6,8 +6,8 @@ class UsersController < ApplicationController
 
     @users = current_user.organisation.users
 
-    unless params[:email].blank?
-      @users = @users.where("UPPER(email) like ?", "%#{params[:email].upcase}%")       
+    unless params[:search].blank?
+      @users = @users.where("UPPER(email) like ?", "%#{params[:search].upcase}%")       
     end
 
     @users = @users.page(params[:page])

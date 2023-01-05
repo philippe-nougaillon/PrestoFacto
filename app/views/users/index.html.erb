@@ -9,9 +9,7 @@
 </div>
 
 <%= bootstrap_form_tag url: users_admin_index_path, method: :get do |f| %>
-  <div class="row">
-    <div class="col"><%= f.text_field :email, value: params[:email], onchange: "this.form.submit()", autofocus: false %></div>
-  </div>
+  <%= f.text_field :search, value: params[:search], onchange: "this.form.submit()", label: 'Rechercher' %>
 <% end %>
 
 <table class="table table-hover">
