@@ -19,7 +19,6 @@ class PagesController < ApplicationController
 
   def dashboard
     authorize :pages
-    @months = []
     @organisation = current_user.organisation
 
     @results = current_user
@@ -27,12 +26,10 @@ class PagesController < ApplicationController
               .factures
               .unscoped
               .where("factures.created_at BETWEEN ? AND ?", Date.today - 1.year, Date.today)
-              .group("DATE_PART('month', factures.created_at)")
+              .group("TO_CHAR(factures.created_at, 'YYYY-MM')")
               .sum(:montant)
 
-    @results.keys.each do |key|
-      @months << t("date.month_names")[key].humanize
-    end
+    @results = @results.sort_by { |key| key }.to_h
 
   end
 end

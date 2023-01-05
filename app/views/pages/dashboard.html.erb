@@ -52,7 +52,7 @@
 <!-- Chart bar -->
 <script>
   const dataBarChart = {
-    labels: <%= @months.to_json.html_safe %>,
+    labels: <%= @results.keys.to_json.html_safe %>,
     datasets: [
       {
         label: "Total factures",
