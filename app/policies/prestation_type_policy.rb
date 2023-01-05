@@ -5,6 +5,22 @@ class PrestationTypePolicy < ApplicationPolicy
     end
   end
 
+  def new?
+    user.admin?
+  end
+
+  def create?
+    new?
+  end
+
+  def edit?
+    new? && (user.organisation == record.organisation)
+  end
+
+  def update?
+    edit?
+  end
+
   def destroy?
     user.admin? && record.tarifs.count == 0 && record.prestations.count == 0
   end

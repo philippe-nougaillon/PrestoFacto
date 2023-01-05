@@ -10,15 +10,15 @@ class AbsencePolicy < ApplicationPolicy
   end
 
   def show?
-    index?
-  end
-
-  def edit?
     index? && (user.organisation == record.organisation)
   end
 
+  def edit?
+    show?
+  end
+
   def update?
-    edit?
+    show?
   end
 
   def new?
@@ -30,6 +30,6 @@ class AbsencePolicy < ApplicationPolicy
   end
 
   def destroy?
-    edit?
+    show?
   end
 end

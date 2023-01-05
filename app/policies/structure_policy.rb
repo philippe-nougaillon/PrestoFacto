@@ -5,7 +5,19 @@ class StructurePolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    user.admin? && (user.organisation == record.organisation)
+  end
+
+  def edit?
+    show?
+  end
+
+  def update?
+    edit?
+  end
+
   def destroy?
-    user.admin? && record.classrooms.count == 0
+    show? && record.classrooms.count == 0
   end
 end

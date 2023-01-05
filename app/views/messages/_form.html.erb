@@ -20,8 +20,8 @@
       </div>
     <% end %>
 
-    <%= form.email_field :email, placeholder: 'Votre adresse e-mail', required: true%>
-    <%= form.select :objet, options_for_select(['Question', 'Offre standard', 'Offre premium', 'Remarque', "Proposition d'amélioration", 'Résiliation', 'Autre'], @offre), prompt: 'Choisir un objet' %>
+    <%= form.email_field :email, placeholder: 'Votre adresse e-mail', required: true %>
+    <%= form.select :objet, options_for_select(['Question', 'Offre standard', 'Offre premium', 'Remarque', "Proposition d'amélioration", 'Résiliation', 'Autre'], @offre), prompt: 'Choisir un objet', required: true %>
     <%= form.text_area :contenu, placeholder: 'Votre message', rows: 4, required: true %>
 
     <%= recaptcha_tags %>

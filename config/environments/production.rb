@@ -129,7 +129,5 @@ Rails.application.configure do
   }
 
   config.action_mailer.default_url_options = { :host => 'www.prestofacto.fr', :protocol => 'https' }
-  config.action_controller.default_url_options = { host: 'www.prestofacto.fr', protocol: 'https' }
-
 
 end

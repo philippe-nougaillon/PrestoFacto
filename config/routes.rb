@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :reservations do
+  resources :reservations, except: %i[ show create update ] do
     collection do
       post :action
       post :create_visiteur
@@ -37,9 +37,9 @@ Rails.application.routes.draw do
   end
   resources :tarifs
   resources :absences
-  resources :tarif_types
-  resources :prestation_types
-  resources :structures
+  resources :tarif_types, except: %i[ index show ]
+  resources :prestation_types, except: %i[ index show ]
+  resources :structures, except: %i[ index new create ]
   resources :organisations
   resources :paiements
   resources :facture_messages
@@ -70,6 +70,7 @@ Rails.application.routes.draw do
     get :actualites, to: 'pages#actualites'
     get :confidentialite, to: 'pages#confidentialite'
     post :conditions_generales_de_vente, to: 'pages#conditions_generales_de_vente'
+    get :dashboard, to: 'pages#dashboard'
   end
   
   root 'pages#accueil'

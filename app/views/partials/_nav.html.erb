@@ -38,12 +38,16 @@
           <% if current_user.admin? %>
             <%= link_to "Administration", 
                 admin_index_path, 
-                class: "btn btn-sm btn-link mx-2" 
+                class: "btn btn-sm btn-link me-1" 
             %>
-          <%= link_to "Guide", 
-                      guide_path, 
-                      class: "btn btn-sm btn-link mx-2" 
-          %>
+            <%= link_to "Tableau de bord", 
+                dashboard_path, 
+                class: "btn btn-sm btn-link me-1" 
+            %>
+            <%= link_to "Guide", 
+                guide_path, 
+                class: "btn btn-sm btn-link me-1" 
+            %>
           <% end %>
         
           <%= link_to "Déconnexion", 

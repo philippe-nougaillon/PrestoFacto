@@ -1,19 +1,5 @@
 class PrestationTypesController < ApplicationController
-  before_action :set_prestation_type, only: [:show, :edit, :update, :destroy]
-
-  # GET /prestation_types
-  # GET /prestation_types.json
-  def index
-    authorize PrestationType
-
-    @prestation_types = PrestationType.all
-  end
-
-  # GET /prestation_types/1
-  # GET /prestation_types/1.json
-  def show
-    authorize PrestationType
-  end
+  before_action :set_prestation_type, only: [ :edit, :update, :destroy]
 
   # GET /prestation_types/new
   def new
@@ -25,7 +11,7 @@ class PrestationTypesController < ApplicationController
 
   # GET /prestation_types/1/edit
   def edit
-    authorize PrestationType
+    authorize @prestation_type
   end
 
   # POST /prestation_types
@@ -49,7 +35,7 @@ class PrestationTypesController < ApplicationController
   # PATCH/PUT /prestation_types/1
   # PATCH/PUT /prestation_types/1.json
   def update
-    authorize PrestationType
+    authorize @prestation_type
 
     respond_to do |format|
       if @prestation_type.update(prestation_type_params)

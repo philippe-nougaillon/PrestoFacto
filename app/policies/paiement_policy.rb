@@ -10,11 +10,11 @@ class PaiementPolicy < ApplicationPolicy
   end
 
   def show?
-    index?
+    index? && (user.organisation == record.organisation)
   end
 
   def edit?
-    index? && (user.organisation == record.organisation)
+    show?
   end
 
   def update?
@@ -30,7 +30,7 @@ class PaiementPolicy < ApplicationPolicy
   end
 
   def destroy?
-    edit?
+    show?
   end
 
   def to_xls?

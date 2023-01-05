@@ -11,6 +11,25 @@
   Journal d'activité des envois de courriels
 </p>
 
+<%= form_tag request.path, method: :get do %>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="input-group">
+        <%= select_tag :to, 
+                        options_for_select(current_user.organisation.mail_logs.pluck(:to).uniq.sort, params[:to]), 
+                        include_blank: true, 
+                        class: 'form-control form-control-sm',
+                        data: { 'action-target': 'selector' } %>
+        <div class="input-group-append">
+          <%= submit_tag 'ok',  name: 'action', 
+                                class: 'btn btn-sm btn-outline-success',
+                                data: {'action-target': 'button'} %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 <table class="table">
   <thead>
     <tr>
@@ -41,3 +60,7 @@
     <% end %>
   </tbody>
 </table>
+
+
+<%= page_entries_info @mail_logs, entry_name: 'mail_log' %>
+<%= paginate @mail_logs, theme: 'twitter-bootstrap-4' %>

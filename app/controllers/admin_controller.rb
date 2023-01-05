@@ -294,6 +294,10 @@ class AdminController < ApplicationController
     redirect_to comptes_url, notice: "Bienvenue dans la démonstration. Vous pouvez ici tester librement l'application. Merci d'en faire bon usage."
   end
 
+  def dashboard
+
+  end
+
 private  
   def message_import_log(model)
     if model.valid? 

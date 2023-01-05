@@ -10,11 +10,11 @@ class PrestationPolicy < ApplicationPolicy
   end
 
   def show?
-    index?
+    index? && (user.organisation == record.enfant.organisation)
   end
 
   def edit?
-    index? && (user.organisation == record.enfant.organisation)
+    show?
   end
 
   def update?
