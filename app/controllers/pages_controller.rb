@@ -18,7 +18,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    authorize :pages
+    authorize :pages, :dashboard?
     @organisation = current_user.organisation
 
     @results = current_user
@@ -31,8 +31,9 @@ class PagesController < ApplicationController
 
     unless @results.keys.count == 12
       for i in 1..12 do
-        unless @results.key?((Date.today - i.months).strftime("%Y-%m"))
-          @results.store((Date.today - i.months).strftime("%Y-%m"),0)
+        key = (Date.today - i.months).strftime("%Y-%m")
+        unless @results.key?(key)
+          @results.store(key, 0)
         end
       end
     end

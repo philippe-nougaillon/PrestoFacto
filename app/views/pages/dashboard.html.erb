@@ -16,7 +16,22 @@
   <div class="col px-5 mx-3">
     <p>Nombre de Réservations : <span class="float-end"><%= @organisation.reservations.count %></span></p>
     <p>Nombre de Prestations : <span class="float-end"><%= @organisation.prestations.count %></span></p>
-    <p>Nombre de Factures : <span class="float-end"><%= @organisation.factures.count %></span></p>
+    <% if @organisation.factures.count >= 1000 %>
+      <p class="text-danger">
+        <i class="fas fa-exclamation-circle"></i>
+        Nombre de Factures : 
+        <span class="float-end">
+          <%= @organisation.factures.count %>
+        </span>
+      </p>
+    <% else %>
+      <p>
+        Nombre de Factures : 
+        <span class="float-end">
+          <%= @organisation.factures.count %>
+        </span>
+      </p>
+    <% end %>
   </div>
 
   <div class="col px-5 mx-3">
