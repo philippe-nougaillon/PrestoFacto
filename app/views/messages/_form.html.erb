@@ -8,17 +8,6 @@
     </p>
   </div>
   <%= bootstrap_form_with(model: message, local: true) do |form| %>
-    <% if message.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(message.errors.count, "erreur(s)") %> empêche(nt) ce message d'être envoyé :</h2>
-
-        <ul>
-          <% message.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
 
     <%= form.email_field :email, placeholder: 'Votre adresse e-mail', required: true %>
     <%= form.select :objet, options_for_select(['Question', 'Offre standard', 'Offre premium', 'Remarque', "Proposition d'amélioration", 'Résiliation', 'Autre'], @offre), prompt: 'Choisir un objet', required: true %>
