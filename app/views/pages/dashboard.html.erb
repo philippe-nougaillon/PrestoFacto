@@ -16,7 +16,7 @@
   <div class="col px-5 mx-3">
     <p>Nombre de Réservations : <span class="float-end"><%= number_with_delimiter(@organisation.reservations.count, delimiter: " ") %></span></p>
     <p>Nombre de Prestations : <span class="float-end"><%= number_with_delimiter(@organisation.prestations.count, delimiter: " ") %></span></p>
-    <% if @organisation.factures.count >= 2 %>
+    <% if @organisation.en_dépassement_plan_gratuit? %>
       <p class="text-danger">
         <i class="fas fa-exclamation-circle" title="La limite de la formulre 'Libre' a été dépassée !"></i>
         Nombre de Factures : 
