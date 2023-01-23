@@ -41,7 +41,7 @@
   </div>
   <div class="card-footer">
     <%= link_to edit_facture_path(@facture), class: "btn btn-outline-primary"  do %>
-      <%= fa_icon 'edit', text: ' Editer' %>
+      <%= fa_icon 'edit', text: ' Éditer' %>
     <% end %>
     <% if policy(@facture).show? %>
         <%= link_to facture_url(@facture, format: :pdf), target: '_blank', class: "btn btn-outline-primary"  do %>

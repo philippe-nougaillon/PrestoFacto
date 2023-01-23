@@ -35,7 +35,7 @@ class EnfantsTest < ApplicationSystemTestCase
   #   visit enfant_path(@enfant_thomas)
 
   #   # sleep(3)
-  #   # click_on "Editer"
+  #   # click_on "Éditer"
   #   # sleep(3)
   #   # fill_in "enfant_prénom", with: "toto"
   #   # click_on "Enregistrer"
