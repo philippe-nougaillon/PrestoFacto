@@ -63,6 +63,8 @@
               <%= link_to prestation_type, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
                 <%= fa_icon 'trash-alt' %>
               <% end %>
+            <% else %>
+              <%= fa_icon 'trash-alt', class:'text-secondary', title: "Pas supprimable : il y a des données liées dans Réservations, Prestations, ou Tarifs" %>
             <% end %>
           </td>
         </tr>
