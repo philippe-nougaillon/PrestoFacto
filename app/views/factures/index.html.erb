@@ -84,7 +84,7 @@
 
 <% if policy(Facture).to_xls? && !@factures.size.zero? %>
   <%= link_to url_for(params.permit(:structure_id, :date_début, :date_fin, :search).merge(format: :xls)),
-              class: "float-sm-end text-muted" do %>
+              class: "float-sm-end text-success" do %>
     <%= fa_icon "file-excel", class: 'me-1', text: "Export XLS" %>
   <% end %>
 <% end %>

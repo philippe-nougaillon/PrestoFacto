@@ -25,17 +25,18 @@
   <%= @mail_log.message_id %>
 </p>
 
+<% if @mail_log.created_at > 5.days.ago %>
+  <p>
+    <strong>Statut :</strong>
+    <% if status = @result["items"].find{|item| item["message"]["headers"]["message-id"] == @mail_log.message_id } %>
+      <span class="text-danger">
+        <%= JSON.pretty_generate(status) %>
+      </span>
 
-<p>
-  <strong>Statut :</strong>
-  <% if status = @result["items"].find{|item| item["message"]["headers"]["message-id"] == @mail_log.message_id } %>
-    <span class="text-danger">
-      <%= JSON.pretty_generate(status) %>
-    </span>
-
-  <% else %>
-    <span class="text-success">OK</span>
-  <% end %>
-</p>
+    <% else %>
+      <span class="text-success">OK</span>
+    <% end %>
+  </p>
+<% end %>
 
 <%= link_to 'Retour', mail_logs_path %>

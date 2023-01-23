@@ -27,7 +27,7 @@ class FactureMessagesTest < ApplicationSystemTestCase
   test "updating a Facture message" do
     visit facture_message_path(@facture_message)
     # take_screenshot
-    click_on "Editer", match: :first
+    click_on "Éditer", match: :first
     check "Actif"
     fill_in "Contenu", with: @facture_message.contenu
     click_on "Enregistrer"

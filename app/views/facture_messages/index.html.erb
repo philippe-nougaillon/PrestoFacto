@@ -17,8 +17,16 @@
         <tr>
           <td><%= facture_message.contenu %></td>
           <td class="text-center"><%= fa_icon 'check' if facture_message.actif %></td>
-          <td class="text-center"><%= link_to 'Editer', edit_facture_message_path(facture_message) %></td>
-          <td class="text-center"><%= link_to '[X]', facture_message, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } %></td>
+          <td class="text-center">
+            <%= link_to edit_facture_message_path(facture_message) do %>
+              <%= fa_icon 'edit' %>
+            <% end %>
+          </td>
+          <td class="text-center">
+            <%= link_to facture_message, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
+              <%= fa_icon 'trash-alt', class: 'text-danger' %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

@@ -88,3 +88,5 @@ gem 'bootstrap4-kaminari-views'
 gem "mailgun-ruby", "~> 1.2"
 
 gem "sortable-for-rails", "~> 1.2"
+
+gem "page_title_helper", "~> 6.0"

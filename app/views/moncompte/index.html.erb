@@ -40,7 +40,7 @@
               <td>
                 <% if policy(enfant).destroy? %>
                   <%= link_to enfant, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
-                      <%= fa_icon 'trash-alt' %>
+                      <%= fa_icon 'trash-alt', class: 'text-danger' %>
                   <% end %>
                 <% end %>
               </td>

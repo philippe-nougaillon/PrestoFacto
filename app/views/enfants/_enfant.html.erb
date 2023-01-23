@@ -17,14 +17,14 @@
     <td>
         <% if policy(enfant).edit? %>
             <%= link_to edit_enfant_path(enfant) do %>
-                <%= fa_icon 'edit', class: 'text-muted' %>
+                <%= fa_icon 'edit' %>
             <% end %>
         <% end %>
     </td>
     <td>
         <% if policy(enfant).destroy? %>
             <%= link_to enfant, method: :delete, data: { confirm: 'Attention ! Les réservations, absences et prestations de cet enfant vont être détruites !! Etes-vous bien certain.e de vouloir faire ça ?' } do %>
-                <%= fa_icon 'trash-alt', class: 'text-muted' %>
+                <%= fa_icon 'trash-alt', class: 'text-danger' %>
             <% end %>
         <% end %>
     </td>
