@@ -259,9 +259,6 @@ fr:
       title: Audit des modifications
     import:
       title: Importer données XLS
-    factures_messages:
-      index:
-        title: Messages
   messages:
     new:
       title: Contact
@@ -290,6 +287,8 @@ fr:
       title: Éditer Compte
     new:
       title: Nouveau Compte
+    balance:
+      title: Balance
   enfants:
     index:
       title: Enfants
@@ -380,4 +379,15 @@ fr:
       title: Éditer Mail Log
     new:
       title: Nouveau Mail Log
-
+  facture_messages:
+      index:
+        title: Messages
+  facture_messages:
+    index:
+      title: Messages
+    show:
+      title: Message
+    edit:
+      title: Éditer Message
+    new:
+      title: Nouveau Message
