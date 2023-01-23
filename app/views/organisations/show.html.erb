@@ -61,7 +61,7 @@
             <td>
               <% if policy(structure).destroy? %>
                 <%= link_to structure, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
-                    <%= fa_icon 'trash-alt' %>
+                    <%= fa_icon 'trash-alt', class: 'text-danger' %>
                 <% end %>
               <% end %>
             </td>
