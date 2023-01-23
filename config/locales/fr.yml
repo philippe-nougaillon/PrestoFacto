@@ -235,3 +235,149 @@ fr:
           other: "Affichage de <strong>%{count}</strong> %{entry_name}s"
       more_pages:
         display_entries: "Affichage des %{entry_name}s <strong>%{first}&nbsp;à&nbsp;%{last}</strong> sur <strong>%{total}</strong> au total"
+  pages:
+    accueil:
+      title: Accueil
+    actualites:
+      title: Actualités
+    guide:
+      title: Guide
+    dashboard:
+      title: Tableau de bord
+  admin:
+    index:
+      title: Administration
+    tarifs:
+      title: Prestations et Tarifs
+    ajout_prestations:
+      title: Comptabilisation des prestations
+    ajout_factures:
+      title: Facturation des prestations
+    envoyer_factures:
+      title: Envoyer les factures
+    audit:
+      title: Audit des modifications
+    import:
+      title: Importer données XLS
+    factures_messages:
+      index:
+        title: Messages
+  messages:
+    new:
+      title: Contact
+  devise:
+    sessions:
+      new:
+        title: Connexion
+    passwords:
+      new:
+        title: Mot de passe Oublié
+    confirmations:
+      new:
+        title: Renvoyer les instructions de confirmation
+    unlocks:
+      new:
+        title: Renvoyer les instructions de déverrouillage
+  registrations:
+    new:
+      title: Inscription
+  comptes:
+    index:
+      title: Comptes
+    show:
+      title: Compte
+    edit:
+      title: Éditer Compte
+    new:
+      title: Nouveau Compte
+  enfants:
+    index:
+      title: Enfants
+    show:
+      title: Enfant
+    edit:
+      title: Éditer Enfant
+    new:
+      title: Ajouter Enfant
+  reservations:
+    index:
+      title: Réservations
+    show:
+      title: Réservation
+    edit:
+      title: Éditer Réservation
+    new:
+      title: Nouvelle Réservation
+  absences:
+    index:
+      title: Absences
+    show:
+      title: Absence
+    edit:
+      title: Éditer Absence
+    new:
+      title: Nouvelle Absence
+  prestations:
+    index:
+      title: Prestations
+    show:
+      title: Prestation
+    edit:
+      title: Éditer Prestation
+    new:
+      title: Nouvelle Prestation
+  factures:
+    index:
+      title: Factures
+    show:
+      title: Facture
+    edit:
+      title: Éditer Facture
+    new:
+      title: Nouvelle Facture
+  paiements:
+    index:
+      title: Paiements
+    show:
+      title: Paiement
+    edit:
+      title: Éditer Paiement
+    new:
+      title: Nouveau Paiement
+  organisations:
+    index:
+      title: Organisations
+    show:
+      title: Organisation
+    edit:
+      title: Éditer Organisation
+    new:
+      title: Nouvelle Organisation
+  users:
+    index:
+      title: Utilisateurs
+    show:
+      title: Utilisateur
+    edit:
+      title: Éditer Utilisateur
+    new:
+      title: Nouvel Utilisateur
+  prestations_types:
+    index:
+      title: Types de prestations
+    show:
+      title: Type de prestation
+    edit:
+      title: Éditer Type de prestation
+    new:
+      title: Nouveau Type de prestation
+  mail_logs:
+    index:
+      title: Mail Logs
+    show:
+      title: Mail Log
+    edit:
+      title: Éditer Mail Log
+    new:
+      title: Nouveau Mail Log
+
