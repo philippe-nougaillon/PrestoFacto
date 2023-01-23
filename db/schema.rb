@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_20_083044) do
+ActiveRecord::Schema.define(version: 2023_01_23_083433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -329,7 +329,7 @@ ActiveRecord::Schema.define(version: 2022_12_20_083044) do
   create_table "tarifs", force: :cascade do |t|
     t.bigint "tarif_type_id"
     t.bigint "prestation_type_id"
-    t.decimal "prix", precision: 4, scale: 2
+    t.decimal "prix", precision: 6, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["prestation_type_id"], name: "index_tarifs_on_prestation_type_id"

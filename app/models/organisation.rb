@@ -88,4 +88,8 @@ class Organisation < ApplicationRecord
         end    
     end
 
+    def en_dépassement_plan_gratuit?
+        self.factures.count >= 1000
+    end
+
 end

@@ -22,7 +22,7 @@ class PrestationTypePolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.admin? && record.tarifs.count == 0 && record.prestations.count == 0
+    user.admin? && record.tarifs.count == 0 && record.prestations.count == 0 && record.reservations.count == 0
   end
 
 end
