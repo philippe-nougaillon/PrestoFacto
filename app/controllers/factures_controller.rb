@@ -17,10 +17,6 @@ class FacturesController < ApplicationController
       @factures = @factures.joins(:compte).where(comptes: { structure_id: params[:structure_id] })
     end
 
-    unless params[:structure_id].blank?
-      @factures = @factures.joins(:compte).where(comptes: { structure_id: params[:structure_id] })
-    end
-
     unless params[:date_début].blank? || params[:date_fin].blank?
       @factures = @factures.where("DATE(date) BETWEEN ? AND ?", params[:date_début], params[:date_fin]) 
     end 
