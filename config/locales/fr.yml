@@ -391,3 +391,6 @@ fr:
       title: Éditer Message
     new:
       title: Nouveau Message
+  moncompte:
+    index:
+      title: Mon Compte

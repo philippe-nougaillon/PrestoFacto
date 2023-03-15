@@ -1,4 +1,4 @@
-### A propos de PrestoFActo
+### A propos de PrestoFacto
 
 Logiciel gratuit de facturation de cantine et des activités pré-scolaires
 

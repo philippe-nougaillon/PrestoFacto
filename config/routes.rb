@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :users, controllers: { registrations: 'registrations' }
 
   resources :users_admin, controller: 'users'
@@ -72,7 +71,7 @@ Rails.application.routes.draw do
     post :conditions_generales_de_vente, to: 'pages#conditions_generales_de_vente'
     get :dashboard, to: 'pages#dashboard'
   end
-  
+
   root 'pages#accueil'
 
 end
