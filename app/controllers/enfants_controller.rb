@@ -17,7 +17,7 @@ class EnfantsController < ApplicationController
     @classrooms = organisation.classrooms
 
     unless params[:structure_id].blank?
-      @enfants = @enfants.joins(:compte).where(comptes: { structure_id: params[:structure_id] })
+      @enfants = @enfants.joins(:classroom).where(classrooms: { structure_id: params[:structure_id] })
       @classrooms = @classrooms.where(structure_id: params[:structure_id])      
     end
 
