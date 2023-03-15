@@ -121,3 +121,7 @@ gem "mailgun-ruby", "~> 1.2"
 gem "sortable-for-rails", "~> 1.2"
 
 gem "page_title_helper", "~> 6.0"
+
+gem "importmap-rails", "~> 1.1"
+
+gem "bootstrap", "~> 5.2"
