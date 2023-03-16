@@ -50,11 +50,7 @@
                 class: "btn btn-sm btn-link me-1" 
             %>
           <% end %>
-          <%= button_to destroy_user_session_path, method: :delete do %>
-            <button class="btn btn-outline-danger btn-sm">
-              Déconnexion
-            <button>
-          <% end %>
+          <%= button_to 'Déconnexion', destroy_user_session_path, class: "btn btn-outline-danger btn-sm", method: :delete %>
         <% end %>
       </div>
     </div>
