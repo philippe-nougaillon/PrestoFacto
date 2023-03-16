@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
   enum role: [:visiteur, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
+  validate :check_visiteur_email
 
   # Include default devise modules. Others available are:
   #  :timeoutable, :trackable and :omniauthable          
@@ -44,6 +45,14 @@ private
 
   def after_confirmation
     UserMailer.with(user: self).welcome().deliver_now
+  end
+
+  def check_visiteur_email
+    if self.visiteur? && Contact.find_by(email: self.email).nil?
+      self.errors.add(:base, "L'adresse email d'un visiteur doit être celle d'un contact")
+    else
+      true
+    end
   end
 
 end

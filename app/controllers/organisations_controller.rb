@@ -21,14 +21,14 @@ class OrganisationsController < ApplicationController
     authorize Organisation
 
     @organisation = Organisation.new
-    3.times { @organisation.structures.build }
+    1.times { @organisation.structures.build }
   end
 
   # GET /organisations/1/edit
   def edit
     authorize @organisation
 
-    2.times { @organisation.vacances.build }
+    1.times { @organisation.vacances.build }
   end
 
   # POST /organisations
