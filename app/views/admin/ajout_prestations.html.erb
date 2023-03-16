@@ -12,14 +12,14 @@
 </p>
 <br />
 
-<%= bootstrap_form_with(url: 'ajout_prestations_do', local: true) do |form| %>
+<%= bootstrap_form_with(url: 'ajout_prestations_do') do |form| %>
     <div class="col-sm-3">
       <%= form.date_field :date %>
     </div>
     <br>
     <%= form.check_box :enregistrer, {custom: :switch, label: "Enregistrer les changements ? (non: visualisation seulement, ne fait rien de définitif :)"} %>  
     <br /><br />
-    <%= form.submit "Lancer", class: "btn btn-outline-success" %>
+    <%= form.submit "Lancer", class: "btn btn-outline-success", 'data-turbo': false %>
 <% end %>
 
 

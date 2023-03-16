@@ -1,7 +1,7 @@
 class Organisation < ApplicationRecord
     extend FriendlyId
     friendly_id :nom, use: :slugged
-      
+
     audited
     
     has_one_attached :logo
@@ -30,7 +30,6 @@ class Organisation < ApplicationRecord
     has_many :mail_logs
 
     validates :nom, :email, presence: true
-
 
     def self.create_from_signup(user, organisation, structure, zone)
         # On crée l'organisation 

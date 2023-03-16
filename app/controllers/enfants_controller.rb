@@ -105,8 +105,6 @@ class EnfantsController < ApplicationController
   # GET /enfants/1/edit
   def edit
     authorize @enfant
-
-    1.times { @enfant.reservations.build(début: Date.today) }
   end
 
   # POST /enfants

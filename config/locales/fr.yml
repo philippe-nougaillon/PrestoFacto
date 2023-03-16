@@ -251,13 +251,21 @@ fr:
       title: Prestations et Tarifs
     ajout_prestations:
       title: Comptabilisation des prestations
+    ajout_prestations_do:
+      title: Comptabilisation des prestations
     ajout_factures:
       title: Facturation des prestations
+    ajout_factures_do:
+      title: Facturation des prestations
     envoyer_factures:
+      title: Envoyer les factures
+    envoyer_factures_do:
       title: Envoyer les factures
     audit:
       title: Audit des modifications
     import:
+      title: Importer données XLS
+    import_do:
       title: Importer données XLS
   messages:
     new:
@@ -394,3 +402,8 @@ fr:
   moncompte:
     index:
       title: Mon Compte
+  structures:
+    show:
+      title: Structure
+    edit:
+      title: Éditer Structure

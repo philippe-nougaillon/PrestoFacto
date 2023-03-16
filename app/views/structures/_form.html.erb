@@ -1,4 +1,4 @@
-<%= bootstrap_form_with(model: structure, local: true) do |form| %>
+<%= bootstrap_form_with(model: structure, local: true, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' }) do |form| %>
 
   <%= form.hidden_field :organisation_id %>
   <div class="row">
@@ -12,15 +12,18 @@
   <hr />
 
   <h3>Classes</h3>
-  <%= form.fields_for :classrooms do |classroom_form| %>
-    <div class="row">
-      <div class="col"><%= classroom_form.text_field :nom, label_as_placeholder: true %></div>
-      <div class="col"><%= classroom_form.text_field :référent, label_as_placeholder: true %></div>
-      <div class="col"><%= classroom_form.check_box :_destroy, label: "Supprimer ?" %></div>
-    </div>
+  <template data-nested-form-target="template">
+    <%= form.fields_for :classrooms, Classroom.new, child_index: 'NEW_RECORD' do |classroom_fields| %>
+      <%= render "classroom_form", form: classroom_fields %>
+    <% end %>
+  </template>
+  <%= form.fields_for :classrooms do |classroom_fields| %>
+    <%= render "classroom_form", form: classroom_fields %>
   <% end %>
 
-  <div class="actions">
-    <%= form.submit "Enregistrer", class: "btn btn-outline-success" %>
-  </div>
+  <!-- Inserted elements will be injected before that target. -->
+  <div data-nested-form-target="target"></div>
+
+  <button class="btn btn-outline-primary" type="button" data-action="nested-form#add"><%= fa_icon 'plus-circle' %> Ajouter classe</button>
+  <%= form.submit "Enregistrer", class: "btn btn-outline-success" %>
 <% end %>

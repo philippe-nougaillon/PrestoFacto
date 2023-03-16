@@ -59,7 +59,7 @@ class ComptesController < ApplicationController
     @compte = Compte.new
     @compte.organisation = current_user.organisation
     
-    3.times { @compte.contacts.build }
+    1.times { @compte.contacts.build }
   end
 
   # GET /comptes/1/edit
@@ -67,7 +67,6 @@ class ComptesController < ApplicationController
     authorize Compte
     
     @structures = current_user.organisation.structures
-    3.times { @compte.contacts.build }
   end
 
   # POST /comptes
