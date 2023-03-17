@@ -84,10 +84,32 @@ class OrganisationsController < ApplicationController
 
   def suppression_organisation_do
     authorize @organisation
+    AdminMailer.with(organisation: @organisation, reason: params[:reason]).suppression_organisation_notification.deliver_now
 
-    @organisation.facture_messages.delete_all
+    MailLog.where(organisation_id: @organisation.id).delete_all
+
+    @organisation.structures.each do |structure|
+      structure.classrooms.each do |classroom|
+        classroom.enfants.each do |enfant|
+          enfant.prestations.delete_all
+          enfant.reservations.delete_all
+          enfant.absences.delete_all
+        end
+        classroom.enfants.delete_all
+      end
+      structure.classrooms.delete_all
+    end
+
+    @organisation.comptes.each do |compte|
+      compte.factures.delete_all
+      compte.paiements.delete_all
+    end
+
+    @organisation.tarif_types.each do |tarif_type|
+      tarif_type.tarifs.delete_all
+    end
+
     @organisation.structures.delete_all
-    @organisation.users.delete_all
     @organisation.vacances.delete_all
     @organisation.facture_messages.delete_all
     @organisation.facture_chronos.delete_all
@@ -95,21 +117,14 @@ class OrganisationsController < ApplicationController
     @organisation.prestation_types.delete_all
     @organisation.tarif_types.delete_all
 
-    @organisation.classrooms.delete_all
-    @organisation.enfants.delete_all
-    @organisation.factures.delete_all
-    @organisation.paiements.delete_all
-    @organisation.prestations.delete_all
-    @organisation.reservations.delete_all
-    @organisation.absences.delete_all
-    @organisation.tarifs.delete_all
+    @organisation.users.delete_all
 
     @organisation.delete
 
     session[:current_user] = nil
 
     respond_to do |format|
-      format.html { redirect_to root_path, notice: "fiaoai" }
+      format.html { redirect_to root_path, notice: "Tout a bien été supprimé." }
       format.json { head :no_content }
     end
   end
