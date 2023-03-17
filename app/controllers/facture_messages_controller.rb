@@ -1,9 +1,12 @@
 class FactureMessagesController < ApplicationController
   before_action :set_facture_message, only: %i[ show edit update destroy ]
+  before_action :is_user_authorized, except: %i[ index new create ]
+
 
   # GET /facture_messages or /facture_messages.json
   def index
-    @facture_messages = FactureMessage.all
+    authorize FactureMessage
+    @facture_messages = current_user.organisation.facture_messages
   end
 
   # GET /facture_messages/1 or /facture_messages/1.json
@@ -12,6 +15,8 @@ class FactureMessagesController < ApplicationController
 
   # GET /facture_messages/new
   def new
+    authorize FactureMessage
+
     @facture_message = FactureMessage.new
     @facture_message.organisation = current_user.organisation
   end
@@ -22,6 +27,8 @@ class FactureMessagesController < ApplicationController
 
   # POST /facture_messages or /facture_messages.json
   def create
+    authorize FactureMessage
+
     @facture_message = FactureMessage.new(facture_message_params)
 
     respond_to do |format|
@@ -66,5 +73,9 @@ class FactureMessagesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def facture_message_params
       params.require(:facture_message).permit(:contenu, :actif, :organisation_id)
+    end
+
+    def is_user_authorized
+      authorize @facture_message
     end
 end

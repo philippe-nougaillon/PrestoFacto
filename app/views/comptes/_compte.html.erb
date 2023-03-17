@@ -13,7 +13,7 @@
     </td>
     <td>
         <% if policy(compte).destroy? %>
-            <%= link_to compte, method: :delete, data: { confirm: 'Attention ! Les enfants liés à ce compte seront effacés ! Etes-vous bien certain.e ???' } do %>
+            <%= button_to compte, method: :delete, data: { confirm: 'Attention ! Les enfants liés à ce compte seront effacés ! Etes-vous bien certain.e ???' } do %>
                 <%= fa_icon 'trash-alt', class: 'text-danger' %>
             <% end %>
         <% end %>

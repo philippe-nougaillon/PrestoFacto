@@ -23,7 +23,7 @@
     </td>
     <td>
         <% if policy(enfant).destroy? %>
-            <%= link_to enfant, method: :delete, data: { confirm: 'Attention ! Les réservations, absences et prestations de cet enfant vont être détruites !! Etes-vous bien certain.e de vouloir faire ça ?' } do %>
+            <%= button_to enfant, method: :delete, data: { confirm: 'Attention ! Les réservations, absences et prestations de cet enfant vont être détruites !! Etes-vous bien certain.e de vouloir faire ça ?' } do %>
                 <%= fa_icon 'trash-alt', class: 'text-danger' %>
             <% end %>
         <% end %>
