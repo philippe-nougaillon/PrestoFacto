@@ -25,11 +25,11 @@
     <thead>
       <tr>
         <th><%= sort_link 'comptes.nom', 'Nom' %></th>
+        <th><%= sort_link 'comptes.enfants_count', 'Enfants' %></th>
         <th><%= sort_link 'comptes.adresse1', 'Adresse' %></th>
         <th><%= sort_link 'comptes.cp', 'CP'%></th>
         <th><%= sort_link 'comptes.ville', 'Ville' %></th>
-        <th><%= sort_link 'comptes.num_allocataire', '#Allocataire' %></th>
-        <th><%= sort_link 'comptes.enfants_count', 'Enfants' %></th>
+        <th class="font-weight-light sortlink-style">Solde</th>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -47,6 +47,6 @@
 <% if policy(Compte).to_xls? && !@comptes.size.zero? %>
   <%= link_to url_for(params.permit(:search).merge(format: :xls)),
               class: "float-sm-end text-success" do %>
-      <%= fa_icon "file-excel", class: 'me-1', text: "Export XLS" %>
+      <%= fa_icon "file-excel", class: 'me-1 mb-5', text: "Export XLS" %>
   <% end %>
 <% end %>

@@ -25,7 +25,7 @@
           <th><%= sort_link 'enfants.menu_all', 'ALLERGIE?' %></th>
           <th><%= sort_link 'enfants.menu_sp', 'SP?' %></th>
           <th><%= sort_link 'enfants.mémo', 'Mémo' %></th>
-          <th style="font-weight: normal">Réservations</th>
+          <th class="sortlink-style">Réservations</th>
           <th colspan="2"></th>
         </tr>
       </thead>
@@ -60,6 +60,6 @@
 <% if policy(Enfant).to_xls? && !@enfants.size.zero? %>
   <%= link_to url_for(params.permit(:search).merge(format: :xls)),
               class: "float-sm-end text-success" do %>
-      <%= fa_icon "file-excel", class: 'me-1', text: "Export XLS" %>
+      <%= fa_icon "file-excel", class: 'me-1 mb-5', text: "Export XLS" %>
   <% end %>
 <% end %>
