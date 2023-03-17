@@ -1,5 +1,5 @@
 class OrganisationsController < ApplicationController
-  before_action :set_organisation, only: [:show, :edit, :update, :destroy]
+  before_action :set_organisation, only: [:show, :edit, :update, :destroy, :suppression_organisation, :suppression_organisation_do]
 
   # GET /organisations
   # GET /organisations.json
@@ -70,9 +70,46 @@ class OrganisationsController < ApplicationController
   def destroy
     authorize Organisation
 
+    @organisation.mail_logs.destroy
     # @organisation.destroy
     respond_to do |format|
       format.html { redirect_to organisations_url, notice: 'Organisation supprimée avec succès.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def suppression_organisation
+    authorize @organisation
+  end
+
+  def suppression_organisation_do
+    authorize @organisation
+
+    @organisation.facture_messages.delete_all
+    @organisation.structures.delete_all
+    @organisation.users.delete_all
+    @organisation.vacances.delete_all
+    @organisation.facture_messages.delete_all
+    @organisation.facture_chronos.delete_all
+    @organisation.comptes.delete_all
+    @organisation.prestation_types.delete_all
+    @organisation.tarif_types.delete_all
+
+    @organisation.classrooms.delete_all
+    @organisation.enfants.delete_all
+    @organisation.factures.delete_all
+    @organisation.paiements.delete_all
+    @organisation.prestations.delete_all
+    @organisation.reservations.delete_all
+    @organisation.absences.delete_all
+    @organisation.tarifs.delete_all
+
+    @organisation.delete
+
+    session[:current_user] = nil
+
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: "fiaoai" }
       format.json { head :no_content }
     end
   end

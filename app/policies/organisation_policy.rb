@@ -22,15 +22,23 @@ class OrganisationPolicy < ApplicationPolicy
   end
 
   def edit?
-    show?
+    user.admin? && (user.organisation == record)
   end
 
   def update?
-    show?
+    edit?
   end
 
-  def destroy
+  def destroy?
     false
+  end
+
+  def suppression_organisation?
+    user.admin? && (user.organisation == record)
+  end
+
+  def suppression_organisation_do?
+    suppression_organisation?
   end
 
 end

@@ -360,6 +360,8 @@ fr:
       title: Éditer Organisation
     new:
       title: Nouvelle Organisation
+    suppression_organisation:
+      title: Suppression Organisation
   users:
     index:
       title: Utilisateurs

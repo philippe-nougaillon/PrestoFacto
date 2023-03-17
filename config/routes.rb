@@ -39,7 +39,12 @@ Rails.application.routes.draw do
   resources :tarif_types, except: %i[ index show ]
   resources :prestation_types, except: %i[ index show ]
   resources :structures, except: %i[ index new create ]
-  resources :organisations
+  resources :organisations do
+    member do
+      get :suppression_organisation
+      post :suppression_organisation_do
+    end
+  end
   resources :paiements
   resources :facture_messages
   resources :messages
