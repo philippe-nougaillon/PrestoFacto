@@ -1,0 +1,18 @@
+<h1>Un compte a été supprimée</h1>
+
+<br>
+organisation ID #<%= @organisation.id %>
+<br>
+Nom : <%= @organisation.nom %>
+<br>
+Utilisateurs : <%= @organisation.users.pluck(:role, :email) %>
+<br>
+Comptes : <%= @organisation.comptes.count %>
+<br>
+Enfants : <%= @organisation.enfants.count %>
+
+
+<% unless @reason.blank? %>
+  <br><br>
+  Raison : <%= @reason %>
+<% end %>

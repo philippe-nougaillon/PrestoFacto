@@ -1,0 +1,11 @@
+<div class="nested-form-wrapper" data-new-record="<%= f.object.new_record? %>">
+  <div class="row">
+    <div class="col"><%= f.text_field :nom, label_as_placeholder: true, required: true %></div>
+    <div class="col"><%= f.date_field :début, label_as_placeholder: true, required: true %></div>
+    <div class="col"><%= f.date_field :fin, label_as_placeholder: true, required: true %></div>
+    <div class="col-1">
+      <a type="button" data-action="nested-form#remove"><%= fa_icon 'trash-alt', class:"text-danger mt-2" %></a>
+    </div>
+  </div>
+  <%= f.hidden_field :_destroy %>
+</div>

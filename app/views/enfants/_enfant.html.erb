@@ -16,14 +16,14 @@
     <td><%= enfant.reservations.actives.joins(:prestation_type).pluck("prestation_types.nom").join(', ') %></td>
     <td>
         <% if policy(enfant).edit? %>
-            <%= link_to edit_enfant_path(enfant) do %>
+            <%= link_to edit_enfant_path(enfant), class: 'btn btn-link btn-sm' do %>
                 <%= fa_icon 'edit' %>
             <% end %>
         <% end %>
     </td>
     <td>
         <% if policy(enfant).destroy? %>
-            <%= link_to enfant, method: :delete, data: { confirm: 'Attention ! Les réservations, absences et prestations de cet enfant vont être détruites !! Etes-vous bien certain.e de vouloir faire ça ?' } do %>
+            <%= button_to enfant, method: :delete, 'data-turbo-confirm': 'Attention ! Les réservations, absences et prestations de cet enfant vont être détruites !! Êtes-vous bien certain.e de vouloir faire ça ?', class: 'btn btn-sm' do %>
                 <%= fa_icon 'trash-alt', class: 'text-danger' %>
             <% end %>
         <% end %>

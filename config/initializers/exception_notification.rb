@@ -20,8 +20,8 @@ ExceptionNotification.configure do |config|
 
   # Email notifier sends notifications by email.
   config.add_notifier :email, {
-    email_prefix: '[PrestoFacto] ',
-    sender_address: %{"PrestoFacto" <prestofacto@philnoug.com>},
+    email_prefix: '[PRESTOFACTO ERROR] ',
+    sender_address: %{"PrestoFacto Notifier" <prestofacto@philnoug.com>},
     exception_recipients: %w{philippe.nougaillon@gmail.com, p-edacquet@hotmail.fr}
   }
 

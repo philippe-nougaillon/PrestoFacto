@@ -1,5 +1,5 @@
 class OrganisationsController < ApplicationController
-  before_action :set_organisation, only: [:show, :edit, :update, :destroy]
+  before_action :set_organisation, only: [:show, :edit, :update, :destroy, :suppression_organisation, :suppression_organisation_do]
 
   # GET /organisations
   # GET /organisations.json
@@ -21,15 +21,14 @@ class OrganisationsController < ApplicationController
     authorize Organisation
 
     @organisation = Organisation.new
-    3.times { @organisation.structures.build }
+    1.times { @organisation.structures.build }
   end
 
   # GET /organisations/1/edit
   def edit
     authorize @organisation
 
-    2.times { @organisation.structures.build }
-    2.times { @organisation.vacances.build }
+    1.times { @organisation.vacances.build }
   end
 
   # POST /organisations
@@ -71,9 +70,61 @@ class OrganisationsController < ApplicationController
   def destroy
     authorize Organisation
 
+    @organisation.mail_logs.destroy
     # @organisation.destroy
     respond_to do |format|
       format.html { redirect_to organisations_url, notice: 'Organisation supprimée avec succès.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def suppression_organisation
+    authorize @organisation
+  end
+
+  def suppression_organisation_do
+    authorize @organisation
+    AdminMailer.with(organisation: @organisation, reason: params[:reason]).suppression_organisation_notification.deliver_now
+
+    MailLog.where(organisation_id: @organisation.id).destroy_all
+
+    @organisation.structures.each do |structure|
+      structure.classrooms.each do |classroom|
+        classroom.enfants.each do |enfant|
+          enfant.prestations.destroy_all
+          enfant.reservations.destroy_all
+          enfant.absences.destroy_all
+        end
+        classroom.enfants.destroy_all
+      end
+      structure.classrooms.destroy_all
+    end
+
+    @organisation.comptes.each do |compte|
+      compte.factures.destroy_all
+      compte.paiements.destroy_all
+    end
+
+    @organisation.tarif_types.each do |tarif_type|
+      tarif_type.tarifs.destroy_all
+    end
+
+    @organisation.structures.destroy_all
+    @organisation.vacances.destroy_all
+    @organisation.facture_messages.destroy_all
+    @organisation.facture_chronos.destroy_all
+    @organisation.comptes.destroy_all
+    @organisation.prestation_types.destroy_all
+    @organisation.tarif_types.destroy_all
+
+    @organisation.users.destroy_all
+
+    @organisation.destroy
+
+    sign_out
+
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: "Tout a bien été supprimé. En espérant vous revoir prochainement :)" }
       format.json { head :no_content }
     end
   end

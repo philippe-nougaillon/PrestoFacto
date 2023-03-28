@@ -17,10 +17,6 @@ class FacturesController < ApplicationController
       @factures = @factures.joins(:compte).where(comptes: { structure_id: params[:structure_id] })
     end
 
-    unless params[:structure_id].blank?
-      @factures = @factures.joins(:compte).where(comptes: { structure_id: params[:structure_id] })
-    end
-
     unless params[:date_début].blank? || params[:date_fin].blank?
       @factures = @factures.where("DATE(date) BETWEEN ? AND ?", params[:date_début], params[:date_fin]) 
     end 
@@ -109,7 +105,7 @@ class FacturesController < ApplicationController
     @facture.compte_id = params[:compte_id]
     @facture.date = Date.today
     @prestation_types = current_user.organisation.prestation_types
-    3.times{ @facture.facture_lignes.build }
+    1.times{ @facture.facture_lignes.build }
   end
 
   # GET /factures/1/edit

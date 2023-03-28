@@ -1,5 +1,17 @@
 <%= bootstrap_form_with(model: @user, url: '/users_admin', local: true) do |form| %>
 
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(user.errors.count, "erreur") %> empêche(nt) l'enregistrement de l'utilisateur :</h3>
+
+      <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="col-sm-5">
     <%= form.text_field :email, required: true %>
     <%= form.password_field :password, required: true, label: 'Mot de passe' %>
@@ -7,7 +19,7 @@
     <%= form.select :role, options_for_select(User.roles.keys.to_a), label: 'Rôle' %>
     <br />
 
-    <%= form.submit "Enregistrer", class: "btn btn-outline-success" %>
+    <%= form.submit "Enregistrer", class: "btn btn-outline-success", 'data-turbo': false %>
   </div>
 
 <% end %>

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :users, controllers: { registrations: 'registrations' }
 
   resources :users_admin, controller: 'users'
@@ -40,7 +39,12 @@ Rails.application.routes.draw do
   resources :tarif_types, except: %i[ index show ]
   resources :prestation_types, except: %i[ index show ]
   resources :structures, except: %i[ index new create ]
-  resources :organisations
+  resources :organisations do
+    member do
+      get :suppression_organisation
+      post :suppression_organisation_do
+    end
+  end
   resources :paiements
   resources :facture_messages
   resources :messages
@@ -72,7 +76,7 @@ Rails.application.routes.draw do
     post :conditions_generales_de_vente, to: 'pages#conditions_generales_de_vente'
     get :dashboard, to: 'pages#dashboard'
   end
-  
+
   root 'pages#accueil'
 
 end

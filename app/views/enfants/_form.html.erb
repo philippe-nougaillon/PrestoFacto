@@ -1,28 +1,28 @@
-<%= bootstrap_form_with(model: enfant, local: true) do |form| %>
+<%= bootstrap_form_with(model: enfant, local: true, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' }) do |f| %>
 
-  <%= form.hidden_field :compte_id %>
+  <%= f.hidden_field :compte_id %>
   
   <div class="row">
-    <div class="col"><%= form.select :classroom_id, options_from_collection_for_select(@classrooms, 'id', 'nom_et_structure', enfant.classroom_id), { label: "Classe" }, { class: "selectpicker" } %></div>
-    <div class="col"><%= form.text_field :nom, required: true %></div>
-    <div class="col"><%= form.text_field :prénom, required: true %></div>
-    <div class="col"><%= form.date_field :date_naissance%></div>
-    <div class="col"><%= form.select :tarif_type_id, options_from_collection_for_select(@tarif_types, 'id', 'nom', enfant.tarif_type_id), { label: "Tarif"}, { class: "selectpicker" } %></div>
-    <div class="col-sm-1"><%= form.text_field :badge %></div>
+    <div class="col"><%= f.select :classroom_id, options_from_collection_for_select(@classrooms, 'id', 'nom_et_structure', enfant.classroom_id), { label: "Classe" }, { class: "selectpicker" } %></div>
+    <div class="col"><%= f.text_field :nom, required: true %></div>
+    <div class="col"><%= f.text_field :prénom, required: true %></div>
+    <div class="col"><%= f.date_field :date_naissance%></div>
+    <div class="col"><%= f.select :tarif_type_id, options_from_collection_for_select(@tarif_types, 'id', 'nom', enfant.tarif_type_id), { label: "Tarif"}, { class: "selectpicker" } %></div>
+    <div class="col-sm-1"><%= f.text_field :badge %></div>
   </div>
 
   <div class="row">
     <div class="col-sm-1">
-      <%= form.check_box :menu_all, label: "Allergie", custom: :switch %>
+      <%= f.check_box :menu_all, label: "Allergie", custom: :switch %>
     </div>
     <div class="col-sm-3">
-      <%= form.text_field :allergenes, label_as_placeholder: true, label: 'Allergènes' %>
+      <%= f.text_field :allergenes, label_as_placeholder: true, label: 'Allergènes' %>
     </div>
     <div class="col-sm-2">
-      <%= form.check_box :menu_sp, label: "Menu 'Sans porc'", custom: :switch %>
+      <%= f.check_box :menu_sp, label: "Menu 'Sans porc'", custom: :switch %>
     </div>
     <div class="col">
-      <div class="col"><%= form.text_field :mémo, label_as_placeholder: true, label: 'Mémo' %></div>
+      <div class="col"><%= f.text_field :mémo, label_as_placeholder: true, label: 'Mémo' %></div>
     </div>
   </div>
   <br>
@@ -30,45 +30,22 @@
   <h3><%= fa_icon 'calendar-alt', class: 'text-warning' %> Réservations</h3>
   <hr />
   
-  <%= form.fields_for :reservations, layout: :horizontal do |reservation_form| %>
-    <div class="shadow-sm p-4 mb-4">
-      <div class="row">
-        <div class="col">
-          <%= reservation_form.select :prestation_type_id, 
-                                      options_from_collection_for_select(@prestation_types, 'id', 'nom', reservation_form.object.prestation_type_id),
-                                      { label: "Presta.", include_blank: true }, 
-                                      { class: "selectpicker" } %>
-        </div>
-        <div class="col-sm-3"><%= reservation_form.date_field :début %></div>
-        <div class="col-sm-3"><%= reservation_form.date_field :fin %></div>
-        <div class="col"><%= reservation_form.select :workflow_state, Reservation.workflow_spec.states, label: 'Etat' %></div>
-      </div>
+  <template data-nested-form-target="template">
+    <%= f.fields_for :reservations, Reservation.new, child_index: 'NEW_RECORD' do |reservation_fields| %>
+      <%= render "reservation_form", f: reservation_fields %>
+    <% end %>
+  </template>
 
-      <div class="row">
-        <div class="col"><%= reservation_form.number_field :lundi, step: :any, label_col: "col-sm-3", control_col: "col-sm-6" %></div>
-        <div class="col"><%= reservation_form.number_field :mardi, step: :any, label_col: "col-sm-3", control_col: "col-sm-6" %></div>
-        <div class="col"><%= reservation_form.number_field :mercredi, step: :any, label_col: "col-sm-4", control_col: "col-sm-6" %></div>
-        <div class="col"><%= reservation_form.number_field :jeudi, step: :any, label_col: "col-sm-4", control_col: "col-sm-6" %></div>
-        <div class="col"><%= reservation_form.number_field :vendredi, step: :any, label_col: "col-sm-4", control_col: "col-sm-6" %></div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-1"><%= reservation_form.check_box :matin, custom: :switch %></div>
-        <div class="col-sm-1"><%= reservation_form.check_box :midi, custom: :switch %></div>
-        <div class="col-sm-1"><%= reservation_form.check_box :soir, custom: :switch %></div>
-        <div class="col"><%= reservation_form.check_box :hors_période_scolaire, custom: :switch %></div>
-        
-        <% unless reservation_form.object.new_record? %>  
-            <div class="col"></div>
-            <div class="col-sm-2"><%= reservation_form.check_box :active, custom: :switch %></div>
-            <div class="col-sm-2"><%= reservation_form.check_box :_destroy, label: "Supprimer?" %></div>
-        <% end %>
-      </div>
-    </div>
-    
+  <%= f.fields_for :reservations, layout: :horizontal do |reservation_fields| %>
+    <%= render "reservation_form", f: reservation_fields %>
   <% end %>
 
-  <%= form.submit "Enregistrer", class: "btn btn-outline-success" %>
+  <!-- Inserted elements will be injected before that target. -->
+  <div data-nested-form-target="target"></div>
+
+  <button class="btn btn-outline-primary" type="button" data-action="nested-form#add"><%= fa_icon 'plus-circle' %> Ajouter réservation</button>
+
+  <%= f.submit "Enregistrer", class: "btn btn-outline-success" %>
 
 <% end %>
 <br>
