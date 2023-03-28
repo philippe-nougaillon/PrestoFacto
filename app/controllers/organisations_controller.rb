@@ -121,10 +121,10 @@ class OrganisationsController < ApplicationController
 
     @organisation.delete
 
-    session[:current_user] = nil
+    sign_out
 
     respond_to do |format|
-      format.html { redirect_to root_path, notice: "Tout a bien été supprimé." }
+      format.html { redirect_to root_path, notice: "Tout a bien été supprimé. En espérant vous revoir prochainement :)" }
       format.json { head :no_content }
     end
   end
