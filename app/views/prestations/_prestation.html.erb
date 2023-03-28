@@ -13,14 +13,14 @@
     <td><%= prestation.qté %></td>
     <td>
         <% if policy(prestation).edit? %>
-            <%= link_to edit_prestation_path(prestation) do %>
+            <%= link_to edit_prestation_path(prestation), class: 'btn btn-link btn-sm' do %>
                 <%= fa_icon 'edit' %>
             <% end %>
         <% end %>
     </td>
     <td>
         <% if policy(prestation).destroy? %>
-            <%= button_to prestation, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
+            <%= button_to prestation, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class: 'btn btn-sm' do %>
                 <%= fa_icon 'trash-alt', class: 'text-danger' %>
             <% end %>
         <% end %>

@@ -9,7 +9,7 @@
     </td>
     <td>
         <% if policy(user).destroy? %>
-            <%= button_to users_admin_path(user), method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
+            <%= button_to users_admin_path(user), method: :delete, data: { confirm: 'Êtes-vous bien certain.e ???' } do %>
                 <%= fa_icon 'trash-alt', class: 'text-danger' %>
             <% end %>
         <% end %>

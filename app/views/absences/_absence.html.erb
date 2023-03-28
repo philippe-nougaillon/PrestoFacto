@@ -9,14 +9,14 @@
     <td class="text-center"><%= fa_icon 'check' if absence.soir %></i></td>
     <td>
         <% if policy(absence).edit? %>
-            <%= link_to  edit_absence_path(absence) do %>
+            <%= link_to edit_absence_path(absence), class: 'btn btn-link btn-sm' do %>
                 <%= fa_icon 'edit' %>
             <% end %>
         <% end %>
     </td>
     <td>
         <% if policy(absence).destroy? %>
-            <%= button_to absence, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
+            <%= button_to absence, method: :delete, 'data-turbo-confirm':  'Êtes-vous bien certain.e ???', class:'btn btn-sm' do %>
                 <%= fa_icon 'trash-alt', class: 'text-danger' %>
             <% end %>
         <% end %>
