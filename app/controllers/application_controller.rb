@@ -22,6 +22,7 @@ private
     def set_layout_variables
       @ctrl = params[:controller]
       @action = params[:action]
+      @site_name = "PrestoFacto"
     end
 
     def user_not_authorized

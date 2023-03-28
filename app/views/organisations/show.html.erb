@@ -60,8 +60,8 @@
             <td><%= structure.enfants.size %></td>
             <td>
               <% if policy(structure).destroy? %>
-                <%= button_to structure, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???' do %>
-                    <%= fa_icon 'trash-alt', class: 'text-danger' %>
+                <%= button_to structure, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class:'btn btn-sm' do %>
+                  <%= fa_icon 'trash-alt', class: 'text-danger' %>
                 <% end %>
               <% end %>
             </td>
