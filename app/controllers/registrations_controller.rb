@@ -7,7 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     def create
-        # if verify_recaptcha
+        if verify_recaptcha
             @user = User.new(user_params)
             Organisation.create_from_signup(@user, params[:organisation], params[:structure], params[:zone])
             respond_to do |format|
@@ -19,9 +19,9 @@ class RegistrationsController < Devise::RegistrationsController
                     format.json { render json: @user.errors, status: :unprocessable_entity }
                 end
             end
-        # else
-            # redirect_to root_url, alert: "Problème avec l'inscription..."
-        # end
+        else
+            redirect_to root_url, alert: "Problème avec l'inscription..."
+        end
     end
 
     def update
