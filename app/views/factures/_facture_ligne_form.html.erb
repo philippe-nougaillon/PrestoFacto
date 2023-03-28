@@ -1,13 +1,13 @@
 <div class="nested-form-wrapper mb-3" data-new-record="<%= f.object.new_record? %>">
   <div class="row shadow-sm p-2">
-    <div class="row">
-      <div class="col"><%= f.text_field :intitulé, label: "Intitulé", required: true %></div>
+    <div class="row my-auto">
+      <div class="col"><%= f.text_field :intitulé, placeholder: "Intitulé", required: true, class:'text-right' %></div>
+      <div class="col"><%= f.select :prestation_type_id, options_from_collection_for_select(@prestation_types, 'id', 'nom', f.object.prestation_type_id), { label: "Type_presta." }, { class: "selectpicker", include_blank: true, required: true } %></div>
     </div>
     <div class="row my-auto">
-      <div class="col"><%= f.select :prestation_type_id, options_from_collection_for_select(@prestation_types, 'id', 'nom', f.object.prestation_type_id), { label: "Type" }, { class: "selectpicker", include_blank: true, required: true } %></div>
       <div class="col"><%= f.number_field :qté, step: :any %></div>
       <div class="col"><%= f.number_field :prix, step: :any %></div>
-      <div class="col"><%= f.number_field :total, step: :any %></div>
+      <div class="col"><%= f.number_field :total, disabled: true %></div>
       <div class="col-1"><a type="button" data-action="nested-form#remove"><%= fa_icon 'trash-alt', class:"text-danger mt-2" %></a></div>
     </div>
   </div>

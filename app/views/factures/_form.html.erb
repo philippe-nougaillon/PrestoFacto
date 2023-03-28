@@ -27,11 +27,11 @@
       <% unless facture.new_record? %>
         <%= form.datetime_field :envoyée_le, include_blank: true, label: 'Envoi_le' %>
       <% end %>
-      <%= form.number_field :montant, step: :any, label: 'Total' %>
+      <%= form.text_area :mémo, rows: 4 %>
     </div>
 
     <div class="col">
-      <%= form.text_area :mémo %>
+      <%= form.number_field :montant, step: :any, label: 'Total', disabled: true %>
     </div>
   </div>
 
