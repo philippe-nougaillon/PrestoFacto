@@ -124,6 +124,7 @@ class FacturesController < ApplicationController
 
     respond_to do |format|
       if @facture.save
+        update_total(@facture)
         format.html { redirect_to @facture, notice: 'Facture créée' }
         format.json { render :show, status: :created, location: @facture }
       else
@@ -142,6 +143,7 @@ class FacturesController < ApplicationController
 
     respond_to do |format|
       if @facture.update(facture_params)
+        update_total(@facture)
         format.html { redirect_to @facture, notice: 'Facture modifiée avec succès.' }
         format.json { render :show, status: :ok, location: @facture }
       else
@@ -190,6 +192,13 @@ class FacturesController < ApplicationController
 
     def is_user_authorized
       authorize Facture
+    end
+
+    def update_total(facture)
+      facture.facture_lignes.each do |facture_ligne|
+        facture_ligne.update(total: facture_ligne.prix * facture_ligne.qté)
+      end
+      facture.update(montant: facture.facture_lignes.sum(:total))
     end
 
 end
