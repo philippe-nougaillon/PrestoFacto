@@ -10,8 +10,6 @@ class StructuresController < ApplicationController
   # GET /structures/1/edit
   def edit
     authorize @structure
-
-    3.times { @structure.classrooms.build }
   end
 
   # PATCH/PUT /structures/1

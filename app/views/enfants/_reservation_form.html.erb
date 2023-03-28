@@ -1,0 +1,36 @@
+<div class="nested-form-wrapper" data-new-record="<%= f.object.new_record? %>">
+  <div class="shadow-sm p-4 mb-4">
+    <div class="row">
+      <div class="col">
+        <%= f.select :prestation_type_id, 
+                                    options_from_collection_for_select(@prestation_types, 'id', 'nom', f.object.prestation_type_id),
+                                    { label: "Presta.", include_blank: true }, 
+                                    { class: "selectpicker", required: true } %>
+      </div>
+      <div class="col-sm-3"><%= f.date_field :début, value: Date.today, required: true %></div>
+      <div class="col-sm-3"><%= f.date_field :fin, required: true %></div>
+      <div class="col"><%= f.select :workflow_state, Reservation.workflow_spec.states, label: 'État', required: true %></div>
+    </div>
+
+    <div class="row">
+      <div class="col"><%= f.number_field :lundi, step: :any, label_col: "col-sm-3", control_col: "col-sm-6" %></div>
+      <div class="col"><%= f.number_field :mardi, step: :any, label_col: "col-sm-3", control_col: "col-sm-6" %></div>
+      <div class="col"><%= f.number_field :mercredi, step: :any, label_col: "col-sm-4", control_col: "col-sm-6" %></div>
+      <div class="col"><%= f.number_field :jeudi, step: :any, label_col: "col-sm-4", control_col: "col-sm-6" %></div>
+      <div class="col"><%= f.number_field :vendredi, step: :any, label_col: "col-sm-4", control_col: "col-sm-6" %></div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-1"><%= f.check_box :matin, custom: :switch %></div>
+      <div class="col-sm-1"><%= f.check_box :midi, custom: :switch %></div>
+      <div class="col-sm-1"><%= f.check_box :soir, custom: :switch %></div>
+      <div class="col"><%= f.check_box :hors_période_scolaire, custom: :switch %></div>
+      
+      <div class="col"></div>
+      <div class="col-sm-2"><%= f.check_box :active, custom: :switch %></div>
+
+      <div class="col-1"><a type="button" data-action="nested-form#remove"><%= fa_icon 'trash-alt', class:"text-danger mt-1" %></a></div>
+    </div>
+  </div>
+  <%= f.hidden_field :_destroy %>
+</div>

@@ -43,19 +43,14 @@
             <%= link_to "Tableau de bord", 
                 dashboard_path, 
                 class: "btn btn-sm btn-link me-1",
-                'data-turbolinks': false
+                'data-turbo': false
             %>
             <%= link_to "Guide", 
                 guide_path, 
                 class: "btn btn-sm btn-link me-1" 
             %>
           <% end %>
-        
-          <%= link_to "Déconnexion", 
-              destroy_user_session_path, 
-              method: :delete, 
-              class: "btn btn-outline-danger btn-sm" 
-          %>
+          <%= button_to 'Déconnexion', destroy_user_session_path, class: "btn btn-outline-danger btn-sm", method: :delete %>
         <% end %>
       </div>
     </div>

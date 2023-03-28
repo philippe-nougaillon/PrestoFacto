@@ -110,3 +110,10 @@
   </div>
 
 </div>
+
+<% if current_user.admin? %>
+  <hr class="style-two mt-5 mb-3">
+
+  <h2 class="mb-6">Zone dangereuse</h2>
+  <%= link_to "Supprimer mon organisation", suppression_organisation_organisation_path(current_user.organisation), class:"link link-danger" %>
+<% end %>

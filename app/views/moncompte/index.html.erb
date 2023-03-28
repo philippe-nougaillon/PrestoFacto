@@ -39,7 +39,7 @@
               </td>
               <td>
                 <% if policy(enfant).destroy? %>
-                  <%= link_to enfant, method: :delete, data: { confirm: 'Etes-vous bien certain.e ???' } do %>
+                  <%= button_to enfant, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???' do %>
                       <%= fa_icon 'trash-alt', class: 'text-danger' %>
                   <% end %>
                 <% end %>
@@ -134,8 +134,10 @@
         </table>
       </div>
       <div class="card-footer">
-        <%= link_to new_paiement_path, class: 'btn btn-outline-primary' do %>
-          <%= fa_icon 'plus-circle', text: ' Effectuer un paiement' %>
+        <% if policy(Paiement).new? %>
+          <%= link_to new_paiement_path, class: 'btn btn-outline-primary' do %>
+            <%= fa_icon 'plus-circle', text: ' Effectuer un paiement' %>
+          <% end %>
         <% end %>
       </div>
     </div>

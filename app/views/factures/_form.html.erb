@@ -1,4 +1,4 @@
-<%= bootstrap_form_with(model: facture, layout: :horizontal, local: true) do |form| %>
+<%= bootstrap_form_with(model: facture, layout: :horizontal, local: true, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' }) do |form| %>
 
   <% if facture.errors.any? %>
     <div id="error_explanation">
@@ -18,7 +18,7 @@
 
     <div class="col">
       <%= form.date_field :date %>
-      <%= form.text_field :réf, label: 'Réf' %>
+      <%= form.text_field :réf, label: 'Référence', required: true %>
       <%= form.select :workflow_state, Facture.workflow_spec.states, label: 'Etat' %>
     </div>
     
@@ -35,26 +35,24 @@
     </div>
   </div>
 
-  <h4 class="p-2">Prestations</h4>
+  <h4 class="title is-3 mt-4 p-2">Prestations</h4>
 
-  <%= form.fields_for :facture_lignes do |ligne_form| %>
-    <div class="row shadow-sm p-2">
-      <div class="row">
-        <div class="col"><%= ligne_form.text_field :intitulé, label: "Intitulé" %></div>
-      </div>
-      <div class="row">
-        <div class="col"><%= ligne_form.select :prestation_type_id, options_from_collection_for_select(@prestation_types, 'id', 'nom', ligne_form.object.prestation_type_id), { label: "Type" }, { class: "selectpicker" } %></div>
-        <div class="col"><%= ligne_form.number_field :qté, step: :any %></div>
-        <div class="col"><%= ligne_form.number_field :prix, step: :any %></div>
-        <div class="col"><%= ligne_form.number_field :total, step: :any %></div>
-        <% unless ligne_form.object.new_record? %>
-          <div class="col"><%= ligne_form.check_box :_destroy, label: "Supprimer ?" %></div>
-        <% end %>
-      </div>
-    </div>
+  <template data-nested-form-target="template">
+    <%= form.fields_for :facture_lignes, FactureLigne.new, child_index: 'NEW_RECORD' do |facture_ligne_fields| %>
+      <%= render "facture_ligne_form", f: facture_ligne_fields %>
+    <% end %>
+  </template>
+
+  <%= form.fields_for :facture_lignes do |facture_ligne_fields| %>
+    <%= render "facture_ligne_form", f: facture_ligne_fields %>
   <% end %>
-  <br>
 
-  <%= form.submit "Enregistrer", class: "btn btn-outline-success" %>
+  <!-- Inserted elements will be injected before that target. -->
+  <div data-nested-form-target="target"></div>
+
+  <div class="mb-3">
+    <button class="btn btn-outline-primary" type="button" data-action="nested-form#add"><%= fa_icon 'plus-circle' %> Ajouter une ligne</button>
+    <%= form.submit "Enregistrer", class: "btn btn-outline-success" %>
+  </div>
 
 <% end %>

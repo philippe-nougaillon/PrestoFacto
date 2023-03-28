@@ -105,7 +105,7 @@ class FacturesController < ApplicationController
     @facture.compte_id = params[:compte_id]
     @facture.date = Date.today
     @prestation_types = current_user.organisation.prestation_types
-    3.times{ @facture.facture_lignes.build }
+    1.times{ @facture.facture_lignes.build }
   end
 
   # GET /factures/1/edit
