@@ -86,40 +86,40 @@ class OrganisationsController < ApplicationController
     authorize @organisation
     AdminMailer.with(organisation: @organisation, reason: params[:reason]).suppression_organisation_notification.deliver_now
 
-    MailLog.where(organisation_id: @organisation.id).delete_all
+    MailLog.where(organisation_id: @organisation.id).destroy_all
 
     @organisation.structures.each do |structure|
       structure.classrooms.each do |classroom|
         classroom.enfants.each do |enfant|
-          enfant.prestations.delete_all
-          enfant.reservations.delete_all
-          enfant.absences.delete_all
+          enfant.prestations.destroy_all
+          enfant.reservations.destroy_all
+          enfant.absences.destroy_all
         end
-        classroom.enfants.delete_all
+        classroom.enfants.destroy_all
       end
-      structure.classrooms.delete_all
+      structure.classrooms.destroy_all
     end
 
     @organisation.comptes.each do |compte|
-      compte.factures.delete_all
-      compte.paiements.delete_all
+      compte.factures.destroy_all
+      compte.paiements.destroy_all
     end
 
     @organisation.tarif_types.each do |tarif_type|
-      tarif_type.tarifs.delete_all
+      tarif_type.tarifs.destroy_all
     end
 
-    @organisation.structures.delete_all
-    @organisation.vacances.delete_all
-    @organisation.facture_messages.delete_all
-    @organisation.facture_chronos.delete_all
-    @organisation.comptes.delete_all
-    @organisation.prestation_types.delete_all
-    @organisation.tarif_types.delete_all
+    @organisation.structures.destroy_all
+    @organisation.vacances.destroy_all
+    @organisation.facture_messages.destroy_all
+    @organisation.facture_chronos.destroy_all
+    @organisation.comptes.destroy_all
+    @organisation.prestation_types.destroy_all
+    @organisation.tarif_types.destroy_all
 
-    @organisation.users.delete_all
+    @organisation.users.destroy_all
 
-    @organisation.delete
+    @organisation.destroy
 
     sign_out
 
