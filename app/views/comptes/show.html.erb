@@ -1,4 +1,4 @@
-<div class="card mb-5">
+<div class="card my-3">
   <div class="card-header">
     <h2><%= fa_icon 'user' %> <%= @compte.nom %></h2>
   </div>
@@ -32,14 +32,14 @@
               <td class="text-center"><%= fa_icon 'exclamation' if enfant.menu_sp %></td>
               <td>
                 <% if policy(enfant).edit? %>
-                  <%= link_to edit_enfant_path(enfant) do %>
+                  <%= link_to edit_enfant_path(enfant), class: 'btn btn-link btn-sm' do %>
                     <%= fa_icon 'edit' %>
                   <% end %>
                 <% end %>
               </td>
               <td>
                 <% if policy(enfant).destroy? %>
-                  <%= button_to enfant, method: :delete, data: { confirm: 'Êtes-vous bien certain.e ???' } do %>
+                  <%= button_to enfant, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class: 'btn btn-sm' do %>
                       <%= fa_icon 'trash-alt', class: 'text-danger' %>
                   <% end %>
                 <% end %>

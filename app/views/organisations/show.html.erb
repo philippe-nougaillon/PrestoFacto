@@ -60,7 +60,7 @@
             <td><%= structure.enfants.size %></td>
             <td>
               <% if policy(structure).destroy? %>
-                <%= button_to structure, method: :delete, data: { confirm: 'Êtes-vous bien certain.e ???' } do %>
+                <%= button_to structure, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???' do %>
                     <%= fa_icon 'trash-alt', class: 'text-danger' %>
                 <% end %>
               <% end %>

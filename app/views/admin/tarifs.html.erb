@@ -27,7 +27,7 @@
     <td><%= number_to_currency(tarif.prix, unit: '€', precision: 2, format: "%n %u") %></td>
     <td>
       <% if policy(tarif).destroy? %>
-        <%= button_to tarif, method: :delete, data: { confirm: 'Êtes-vous bien certain.e ???' } do %>
+        <%= button_to tarif, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???' do %>
           <%= fa_icon 'trash-alt', class: 'text-danger' %>
         <% end %>
       <% end %>
@@ -60,7 +60,7 @@
           <td><%= link_to prestation_type.nom, edit_prestation_type_path(prestation_type) %></td>
           <td class="text-end col-sm-1">
             <% if policy(prestation_type).destroy? %>
-              <%= button_to prestation_type, method: :delete, data: { confirm: 'Êtes-vous bien certain.e ???' } do %>
+              <%= button_to prestation_type, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???' do %>
                 <%= fa_icon 'trash-alt', class:'text-danger' %>
               <% end %>
             <% else %>
@@ -93,7 +93,7 @@
           <td><%= link_to tarif_type.nom, edit_tarif_type_path(tarif_type) %></td>
           <td class="text-end col-sm-1">
             <% if policy(tarif_type).destroy? %>
-              <%= button_to tarif_type, method: :delete, data: { confirm: 'Êtes-vous bien certain.e ???' } do %>
+              <%= button_to tarif_type, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???' do %>
                 <%= fa_icon 'trash-alt', class: 'text-danger' %>
               <% end %>
             <% end %>
