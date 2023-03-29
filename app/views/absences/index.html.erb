@@ -1,11 +1,14 @@
 <div class="pb-2 mt-4 mb-2 border-bottom">
-  <h2 class="fw-light">
+  <h2 class="fw-light d-inline">
     <%= fa_icon 'calendar-times', class: 'text-danger' %> 
     Absences 
     <% unless params[:date].blank? || params[:date] == 'full' %>
       du <%= l params[:date].to_date %>
     <% end %>
   </h2>
+  <%= link_to guide_path(anchor: "absences") do %>
+    <%= fa_icon 'info-circle', title: "Ouvrir l'aide" %>
+  <% end %>
 </div>
 
 <%= bootstrap_form_tag url: absences_path, method: :get do |f| %>

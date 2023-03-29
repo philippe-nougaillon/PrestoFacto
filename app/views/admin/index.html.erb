@@ -1,7 +1,10 @@
 <div class="pb-2 mt-4 mb-2 border-bottom">
-  <h2><%= fa_icon 'users-cog', class: 'text-success' %> Administration</h2>
+  <h2 class="d-inline"><%= fa_icon 'users-cog', class: 'text-success' %> Administration</h2>
+  <%= link_to guide_path(anchor: "administration") do %>
+    <%= fa_icon 'info-circle', title: "Ouvrir l'aide" %>
+  <% end %>
 </div>
-<br />  
+<br />
 
 <div class="row" style="gap: 2rem;">
   <div class="col">
@@ -16,10 +19,10 @@
       <li class="list-group-item"></li>
 
       <li class="list-group-item">
-        <h4 class="my-1">
+        <h4 class="my-1 d-inline">
           <%= fa_icon 'user-friends' %>
           <%= link_to users_admin_index_path, class: "text-muted text-decoration-none" do %>
-            Utilisateurs
+            Utilisateurs / Portail Parents
           <% end %>
         </h4>
       </li>

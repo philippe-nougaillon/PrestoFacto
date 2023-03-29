@@ -1,5 +1,8 @@
 <div class="pb-2 mt-4 mb-2 border-bottom">
-  <h2 class="fw-light"><%= fa_icon 'child', class: 'text-primary' %> Enfants</h2>
+  <h2 class="fw-light d-inline"><%= fa_icon 'child', class: 'text-primary' %> Enfants</h2>
+  <%= link_to guide_path(anchor: "ajout_enfant") do %>
+    <%= fa_icon 'info-circle', title: "Ouvrir l'aide" %>
+  <% end %>
 </div>
 
 <%= bootstrap_form_tag url: enfants_path, method: :get do |f| %>

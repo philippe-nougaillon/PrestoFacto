@@ -1,5 +1,8 @@
 <div class="pb-2 mt-4 mb-2 border-bottom">
-  <h2><%= fa_icon 'euro-sign' %> Prestations et Tarifs</h2>
+  <h2 class="d-inline"><%= fa_icon 'euro-sign' %> Prestations et Tarifs</h2>
+  <%= link_to guide_path(anchor: "tarifs") do %>
+    <%= fa_icon 'info-circle', title: "Ouvrir l'aide" %>
+  <% end %>
 </div>
 <p>
   <small class="text-muted">
