@@ -46,7 +46,7 @@
           <% @compte.contacts.each do |contact| %>
             <tr class="alert <%= 'alert-warning' if contact.prevenir? %>" >
               <td><%= contact.nom.humanize %></td>
-              <td><%= mail_to contact.email %>
+              <td><%= mail_to contact.email, class:"text-break" %>
               <td><%= [contact.fixe, contact.portable].join(' ') %>
               <td><%= contact.mémo %></td>
             </tr>
