@@ -78,6 +78,7 @@ class ComptesController < ApplicationController
 
     respond_to do |format|
       if @compte.save
+        create_contacts
         format.html { redirect_to @compte, notice: 'Compte créé avec succès.' }
         format.json { render :show, status: :created, location: @compte }
       else
@@ -94,6 +95,7 @@ class ComptesController < ApplicationController
 
     respond_to do |format|
       if @compte.update(compte_params)
+        create_contacts
         format.html { redirect_to @compte, notice: 'Compte modifié avec succès.' }
         format.json { render :show, status: :ok, location: @compte }
       else
@@ -131,7 +133,20 @@ class ComptesController < ApplicationController
       @total_factures  = @compte.factures.sum(:montant)
       @total_paiements = @compte.paiements.sum(:montant)
       @solde = @total_paiements - @total_factures
-    end  
+    end
+
+    def create_contacts
+      if params[:acces] == "1"
+        @compte.contacts.each do |contact|
+          if contact.prevenir && User.find_by(email: contact.email).nil?
+            password = SecureRandom.hex(10)
+            user = User.create(organisation: current_user.organisation, role: "visiteur", email: contact.email, password: password, confirmed_at: DateTime.now)
+            UserMailer.with(user: user, password: password, organisation: current_user.organisation).welcome_with_password.deliver_now
+            UserMailer.with(user: user).new_account_notification.deliver_now
+          end
+        end
+      end
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def compte_params

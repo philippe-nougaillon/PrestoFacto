@@ -44,7 +44,9 @@ private
   end
 
   def after_confirmation
-    UserMailer.with(user: self).welcome().deliver_now
+    if self.administrateur?
+      UserMailer.with(user: self).welcome().deliver_now
+    end
   end
 
   def check_visiteur_email
