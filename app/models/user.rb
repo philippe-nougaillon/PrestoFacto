@@ -44,7 +44,7 @@ private
   end
 
   def after_confirmation
-    if self.administrateur?
+    if self.admin?
       UserMailer.with(user: self).welcome().deliver_now
     end
   end
