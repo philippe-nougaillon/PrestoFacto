@@ -1,8 +1,11 @@
 <div class="pb-2 mt-4 mb-2 border-bottom">
-  <h2 class="fw-light">
+  <h2 class="fw-light d-inline">
     <%= fa_icon 'file-invoice', class: 'text-info' %> 
     Factures
   </h2>
+  <%= link_to guide_path(anchor: "facturation") do %>
+    <%= fa_icon 'info-circle', title: "Ouvrir l'aide" %>
+  <% end %>
 </div>
 
 <%= bootstrap_form_tag url: factures_path, method: :get do |f| %>

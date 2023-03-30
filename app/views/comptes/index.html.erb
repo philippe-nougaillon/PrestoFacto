@@ -4,7 +4,10 @@
       <%= fa_icon 'plus-circle' %> Ajouter un Compte
     <% end %>
   <% end %>
-  <h2 class="fw-light"><%= fa_icon 'users' %> Comptes</h2>
+  <h2 class="fw-light d-inline"><%= fa_icon 'users' %> Comptes</h2>
+  <%= link_to guide_path(anchor: "ajout_famille") do %>
+    <%= fa_icon 'info-circle', title: "Ouvrir l'aide" %>
+  <% end %>
 </div>
 
 <%= bootstrap_form_tag url: comptes_path, method: :get do |f| %>

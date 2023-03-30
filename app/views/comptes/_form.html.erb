@@ -3,7 +3,7 @@
   <%= form.hidden_field :organisation_id %>
 
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-6 mb-3">
       <div class="row">
         <div class="col-sm-9">
           <%= form.text_field :nom, required: true, autofocus: false %>
@@ -28,6 +28,8 @@
       </div>
       <%= form.text_field :num_allocataire, label: "Numéro d'Allocataire" %>
       <%= form.text_area :mémo %>
+      <%= check_box_tag :acces %>
+      <%= label_tag :acces, "Créer automatiquement un compte d'accès au portail parents pour les contacts à prévenir en cas d'urgence et leur envoyer une notification ?", class:'d-inline' %>
     </div>
 
     <div class="col-sm-6">

@@ -17,12 +17,12 @@
       <%= @compte.cp %> <%= @compte.ville %>
     </p>
 
-    <p>
-      <strong>#Allocataire :</strong>
-      <%= @compte.num_allocataire %>
-    </p>
-
     <% unless current_user.visiteur? %>
+      <p>
+        <strong>#Allocataire :</strong>
+        <%= @compte.num_allocataire %>
+      </p>
+
       <p>
         <strong>Mémo :</strong>
         <%= @compte.mémo %>
