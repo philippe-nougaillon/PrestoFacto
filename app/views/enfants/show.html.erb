@@ -52,11 +52,19 @@
 
     </div>
 
-    <% if policy(@enfant).edit? %>
-      <%= link_to edit_enfant_path(@enfant), class: "btn btn-outline-primary" do %>
-        <%= fa_icon 'edit', text: ' Éditer' %> 
+    <div class="d-flex justify-content-between">
+      <% if policy(@enfant).edit? %>
+        <%= link_to edit_enfant_path(@enfant), class: "btn btn-outline-primary" do %>
+          <%= fa_icon 'edit', text: ' Éditer' %> 
+        <% end %>
       <% end %>
-    <% end %>
+
+      <% if policy(@enfant).destroy? %>
+        <%= button_to @enfant, method: :delete, 'data-turbo-confirm': 'Attention ! Les réservations, absences et prestations de cet enfant vont être détruites !! Êtes-vous bien certain.e de vouloir faire ça ?', class: 'btn btn-outline-danger' do %>
+          <%= fa_icon 'trash-alt' %>
+        <% end %>
+      <% end %>
+    </div>
   
 
     <div class="card mt-3">

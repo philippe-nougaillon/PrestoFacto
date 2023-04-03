@@ -1,1 +1,1 @@
-PageTitleHelper.options[:app] = 'PrestoFacto v7.0'
+PageTitleHelper.options[:app] = 'PrestoFacto v7.0.b'

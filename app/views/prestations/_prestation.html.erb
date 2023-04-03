@@ -18,11 +18,4 @@
             <% end %>
         <% end %>
     </td>
-    <td>
-        <% if policy(prestation).destroy? %>
-            <%= button_to prestation, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class: 'btn btn-sm' do %>
-                <%= fa_icon 'trash-alt', class: 'text-danger' %>
-            <% end %>
-        <% end %>
-    </td>
 </tr>

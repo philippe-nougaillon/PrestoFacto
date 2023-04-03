@@ -7,17 +7,20 @@ class MailLogsController < ApplicationController
     mg_client = Mailgun::Client.new ENV["MAILGUN_API_KEY"], 'api.eu.mailgun.net'
     domain = ENV["MAILGUN_DOMAIN"]
     @result_failed = mg_client.get("#{domain}/events", {:event => 'failed'}).to_h
-    @result_opened = mg_client.get("#{domain}/events", {:event => 'opened'}).to_h
+    @result_opened = {}
 
     @mail_logs = current_user.organisation.mail_logs
 
-    unless params[:to].blank?
-      @mail_logs = @mail_logs.where("LOWER(mail_logs.to) like :search", {search: "%#{params[:to]}%".downcase})
+    unless params[:search].blank?
+      @mail_logs = @mail_logs.where("LOWER(mail_logs.to) like :search", {search: "%#{params[:search]}%".downcase})
     end
 
     @mail_logs = @mail_logs.reorder('mail_logs.'+ sort_column + ' ' + sort_direction)
 
-    @mail_logs = @mail_logs.page(params[:page]).per(20)
+    if params[:ko].blank?
+      @mail_logs = @mail_logs.page(params[:page]).per(20)
+      @result_opened = mg_client.get("#{domain}/events", {:event => 'opened'}).to_h
+    end
   end
 
   # GET /mail_logs/1 or /mail_logs/1.json
