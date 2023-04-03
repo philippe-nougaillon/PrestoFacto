@@ -7,7 +7,7 @@ class MailLogsController < ApplicationController
     mg_client = Mailgun::Client.new ENV["MAILGUN_API_KEY"], 'api.eu.mailgun.net'
     domain = ENV["MAILGUN_DOMAIN"]
     @result_failed = mg_client.get("#{domain}/events", {:event => 'failed'}).to_h
-    @result_opened = {}.to_h
+    @result_opened = {}
 
     @mail_logs = current_user.organisation.mail_logs
 
