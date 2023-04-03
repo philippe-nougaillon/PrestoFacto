@@ -31,7 +31,7 @@
           <th><%= sort_link 'factures.montant', 'Montant' %></th>
           <th><%= sort_link 'factures.mémo', 'Mémo' %></th>
           <th><%= sort_link 'factures.workflow_state', 'Etat' %></th>
-          <th colspan="2"></th>
+          <th></th>
         </tr>
       </thead>
 
@@ -73,7 +73,7 @@
           <div class="input-group-append">
             <%= submit_tag 'Ok',  name: 'action', 
                                   class: 'btn btn-sm btn-outline-success',
-                                  data: {'action-target': 'button'} %>
+                                  data: {'action-target': 'button', 'turbo-method': :post} %>
           </div>
         </div>
       </div>

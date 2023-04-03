@@ -1,5 +1,4 @@
 <tr>
-  <td><%= mail_log.user_id == 0 ? "Système" : User.find(mail_log.user_id).nom_et_prénom %></td>
   <td><%= mail_log.to %></td>
   <td><%= mail_log.subject %></td>
   <td><%= time_ago_in_words mail_log.created_at %></td>

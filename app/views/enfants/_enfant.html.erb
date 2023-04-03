@@ -21,11 +21,4 @@
             <% end %>
         <% end %>
     </td>
-    <td>
-        <% if policy(enfant).destroy? %>
-            <%= button_to enfant, method: :delete, 'data-turbo-confirm': 'Attention ! Les réservations, absences et prestations de cet enfant vont être détruites !! Êtes-vous bien certain.e de vouloir faire ça ?', class: 'btn btn-sm' do %>
-                <%= fa_icon 'trash-alt', class: 'text-danger' %>
-            <% end %>
-        <% end %>
-    </td>
 </tr>
