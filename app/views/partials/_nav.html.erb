@@ -40,6 +40,13 @@
                 admin_index_path, 
                 class: "btn btn-sm btn-link me-1" 
             %>
+
+            <% if @current_user.organisation.en_dépassement_plan_gratuit? %>
+              <p class="text-danger me-1">
+                <i class="fas fa-exclamation-circle" title="La limite de la formule libre et gratuite a été dépassée !"></i>
+              </p>
+            <% end %>    
+
             <%= link_to "Tableau de bord", 
                 dashboard_path, 
                 class: "btn btn-sm btn-link me-1",
