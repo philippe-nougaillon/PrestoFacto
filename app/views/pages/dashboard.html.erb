@@ -18,11 +18,15 @@
     <p>Nombre de Prestations : <span class="float-end"><%= number_with_delimiter(@organisation.prestations.count, delimiter: " ") %></span></p>
     <% if @organisation.en_dépassement_plan_gratuit? %>
       <p class="text-danger">
-        <i class="fas fa-exclamation-circle" title="La limite de la formulre 'Libre' a été dépassée !"></i>
+        <i class="fas fa-exclamation-circle" title="La limite de la formule 'Libre' a été dépassée !"></i>
         Nombre de Factures : 
         <span class="float-end">
           <%= number_with_delimiter(@organisation.factures.count, delimiter: " ") %>
         </span>
+        <br>
+        <b>Limite de la formule libre et gratuite dépassée !</b> 
+        <br>
+        <%= link_to "Merci de nous contacter pour changer de formule.", "https://www.philnoug.com/contact" %>
       </p>
     <% else %>
       <p>
