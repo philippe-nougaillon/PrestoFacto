@@ -18,16 +18,12 @@
       <%= text_field_tag :organisation, params[:organisation], required: true, placeholder: "Le nom de votre ASSOCIATION/MAIRIE", class: "form-control col-sm-5" %>
       <br>
       
-      <%= f.label :structure %>
-      <%= text_field_tag :structure, params[:structure], required: true, placeholder: "Nom de la structure (CANTINE/GARDERIE/CENTRE...)", class: "form-control col-sm-6" %>
+      <%= f.label :structure, "Nom de la structure (CANTINE/GARDERIE/CENTRE DE LOISIRS...)" %>
+      <%= text_field_tag :structure, params[:structure], required: true, value: "Cantine", class: "form-control col-sm-6" %>
       <br>
 
       <%= f.label :zone, "Zone de vacances scolaires" %>
-      <%= select_tag :zone, options_for_select(['A', 'B', 'C']), prompt: 'Choisir votre zone', class: "form-control" %></div>
-
-      <br>
-
-      <%= recaptcha_tags %>
+      <%= select_tag :zone, options_for_select(['A', 'B', 'C'], 'A'), class: "form-control" %></div>
 
       <br>
 
@@ -39,7 +35,7 @@
       </p>
 
       <div class="actions">
-        <%= f.submit "S'inscrire", class: "btn btn-outline-primary btn-lg", 'data-turbo': false %>
+        <%= f.submit "S'inscrire", class: "btn btn-outline-primary btn-lg" %>
       </div>
     </div>
 
