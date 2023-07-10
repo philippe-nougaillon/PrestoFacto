@@ -7,20 +7,16 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     def create
-        if verify_recaptcha
-            @user = User.new(user_params)
-            Organisation.create_from_signup(@user, params[:organisation], params[:structure], params[:zone])
-            respond_to do |format|
-                if @user.save
-                    UserMailer.with(user: @user).new_account_notification().deliver_now
-                    format.html { redirect_to root_url, notice: "Compte créé avec succès. Veuillez vérifier vos emails afin de confirmer votre compte." }
-                else
-                    format.html { render :new, alert: @user.errors.full_messages }
-                    format.json { render json: @user.errors, status: :unprocessable_entity }
-                end
+        @user = User.new(user_params)
+        Organisation.create_from_signup(@user, params[:organisation], params[:structure], params[:zone])
+        respond_to do |format|
+            if @user.save
+                UserMailer.with(user: @user).new_account_notification().deliver_now
+                format.html { redirect_to root_url, notice: "Compte créé avec succès. Veuillez vérifier vos emails afin de confirmer votre compte." }
+            else
+                format.html { render :new, alert: @user.errors.full_messages }
+                format.json { render json: @user.errors, status: :unprocessable_entity }
             end
-        else
-            redirect_to root_url, alert: "Problème avec l'inscription..."
         end
     end
 

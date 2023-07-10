@@ -14,7 +14,7 @@
     <div class="actions">
       <%= f.submit "Se connecter", class: "btn btn-outline-success" %>
 
-      <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-outline-primary" %> 
+      <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-outline-primary", 'data-turbo': false %> 
 
     </div>
   <% end %>
