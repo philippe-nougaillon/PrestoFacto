@@ -4,26 +4,26 @@
   <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
     <div class="form-group">
-      <%= f.email_field :email, autofocus: false, required: true, autocomplete: "email", class: "form-control col-sm-3" %>
+      <%= f.email_field :email, value: params[:email], autofocus: false, required: true, autocomplete: "email", class: "form-control col-sm-3" %>
 
       <%= f.label :password %>
       <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> caractères minimum)</em>
       <% end %><br />
 
-      <%= f.password_field :password, required: true, hide_label: true, autocomplete: "new-password", class: "form-control col-sm-3" %>
-      <%= f.password_field :password_confirmation, required: true, autocomplete: "new-password", class: "form-control col-sm-3" %>
+      <%= f.password_field :password, value: params[:password], required: true, hide_label: true, autocomplete: "new-password", class: "form-control col-sm-3" %>
+      <%= f.password_field :password_confirmation, value: params[:password], required: true, autocomplete: "new-password", class: "form-control col-sm-3" %>
     
       <%= f.label :organisation %>
       <%= text_field_tag :organisation, params[:organisation], required: true, placeholder: "Le nom de votre ASSOCIATION/MAIRIE", class: "form-control col-sm-5" %>
       <br>
       
       <%= f.label :structure, "Nom de la structure (CANTINE/GARDERIE/CENTRE DE LOISIRS...)" %>
-      <%= text_field_tag :structure, params[:structure], required: true, value: "Cantine", class: "form-control col-sm-6" %>
+      <%= text_field_tag :structure, params[:structure], required: true, value: ( params[:structure] || "Cantine"), class: "form-control col-sm-6" %>
       <br>
 
       <%= f.label :zone, "Zone de vacances scolaires" %>
-      <%= select_tag :zone, options_for_select(['A', 'B', 'C'], 'A'), class: "form-control" %></div>
+      <%= select_tag :zone, options_for_select(['A', 'B', 'C'], (params[:zone] || 'A')), class: "form-control" %></div>
 
       <br>
 
@@ -34,12 +34,12 @@
         </small></i>
       </p>
 
+      <%= recaptcha_tags %>
+
       <div class="actions">
-        <%= f.submit "S'inscrire", class: "btn btn-outline-primary btn-lg" %>
+        <%= f.submit "S'inscrire", class: "btn btn-outline-primary btn-lg mt-4" %>
       </div>
     </div>
-
-
 
   <% end %>
 
