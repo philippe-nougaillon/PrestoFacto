@@ -119,5 +119,3 @@ gem "page_title_helper", "~> 6.0"
 gem "importmap-rails", "~> 1.1"
 
 gem "bootstrap", "~> 5.2"
-
-gem "rack-attack", "~> 6.6"

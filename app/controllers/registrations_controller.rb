@@ -19,8 +19,8 @@ class RegistrationsController < Devise::RegistrationsController
                     format.json { render json: @user.errors, status: :unprocessable_entity }
                 end
             end
-        else 
-            redirect_to new_user_registration_path(email: params[:user][:email], organisation: params[:organisation], structure: params[:structure], zone: params[:zone], password: params[:user][:password])
+        else
+            redirect_to root_url, alert: "Problème avec l'inscription..."
         end
     end
 

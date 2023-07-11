@@ -29,7 +29,7 @@ fr:
       user: Utilisateur
   devise:
     confirmations:
-      confirmed: Votre compte a bien été confirmé. Vous pouvez maintenant vous connecter.
+      confirmed: Votre compte a bien été confirmé.
       new:
         resend_confirmation_instructions: Renvoyer les instructions de confirmation
       send_instructions: Vous allez recevoir sous quelques minutes un courriel comportant des instructions pour confirmer votre compte.

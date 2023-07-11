@@ -39,7 +39,6 @@ class MessagesController < ApplicationController
         end
       end
     else
-      flash[:alert] = "Problème avec reCAPTCHA, merci de réessayer"
       render 'new'
     end
   end
