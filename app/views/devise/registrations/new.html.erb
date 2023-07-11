@@ -1,4 +1,4 @@
-<div class="col-md-10 col-lg-7 shadow-sm rounded p-3 p-md-5 mt-5 mx-auto">
+<div class="col-md-10 col-lg-7 shadow-sm rounded p-3 p-md-5 mx-auto">
   <h1 class="fw-light mt-2 mb-5 text-center">Inscription</h1>
 
   <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -6,39 +6,50 @@
     <div class="form-group">
       <%= f.email_field :email, value: params[:email], autofocus: false, required: true, autocomplete: "email", class: "form-control col-sm-3" %>
 
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> caractères minimum)</em>
-      <% end %><br />
 
-      <%= f.password_field :password, value: params[:password], required: true, hide_label: true, autocomplete: "new-password", class: "form-control col-sm-3" %>
-      <%= f.password_field :password_confirmation, value: params[:password], required: true, autocomplete: "new-password", class: "form-control col-sm-3" %>
+      <div class="row">
+        <div class="col">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> caractères minimum)</em>
+        <% end %>
+          <%= f.password_field :password, value: params[:password], required: true, hide_label: true, autocomplete: "new-password", class: "form-control" %>
+        </div>
+        <div class="col">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, value: params[:password], hide_label: true, required: true, autocomplete: "new-password", class: "form-control" %>
+        </div>
+      </div>
     
       <%= f.label :organisation %>
       <%= text_field_tag :organisation, params[:organisation], required: true, placeholder: "Le nom de votre ASSOCIATION/MAIRIE", class: "form-control col-sm-5" %>
       <br>
       
-      <%= f.label :structure, "Nom de la structure (CANTINE/GARDERIE/CENTRE DE LOISIRS...)" %>
-      <%= text_field_tag :structure, params[:structure], required: true, value: ( params[:structure] || "Cantine"), class: "form-control col-sm-6" %>
+      <div class="row">
+        <div class="col">
+          <%= f.label :structure, "Nom de la structure (GARDERIE/CENTRE DE LOISIRS...)" %>
+          <%= text_field_tag :structure, params[:structure], required: true, value: ( params[:structure] || "Cantine"), class: "form-control col-sm-6" %>
+        </div>
+        <div class="col-4">
+          <%= f.label :zone, "Zone de vacances scolaires" %>
+          <%= select_tag :zone, options_for_select(['A', 'B', 'C'], (params[:zone] || 'A')), class: "form-control" %></div>
+        </div>
+      </div>
+
       <br>
-
-      <%= f.label :zone, "Zone de vacances scolaires" %>
-      <%= select_tag :zone, options_for_select(['A', 'B', 'C'], (params[:zone] || 'A')), class: "form-control" %></div>
-
-      <br>
-
-      <p>
-        <i><small>
-          Un courriel va vous être envoyé afin de vérifier votre adresse email.
-          Cliquez sur le lien fourni afin de confirmer votre adresse email et de vous connecter.
-        </small></i>
-      </p>
 
       <%= recaptcha_tags %>
 
       <div class="actions">
         <%= f.submit "S'inscrire", class: "btn btn-outline-primary btn-lg mt-4" %>
       </div>
+
+      <p class="mt-3">
+        <i><small>
+          Un courriel va vous être envoyé afin de vérifier votre adresse email.
+          Cliquez sur le lien fourni afin de confirmer votre adresse email et de vous connecter.
+        </small></i>
+      </p>
     </div>
 
   <% end %>
