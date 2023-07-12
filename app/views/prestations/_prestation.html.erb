@@ -10,7 +10,7 @@
     <td><%= prestation.prestation_type.nom %></td>
     <td><%= link_to prestation.enfant.nom, prestation.enfant.compte %></td>
     <td><%= link_to prestation.enfant.prénom, prestation.enfant %></td>
-    <td><%= prestation.qté %></td>
+    <td><%= number_with_precision(prestation.qté, precision: 2) %></td>
     <td>
         <% if policy(prestation).edit? %>
             <%= link_to edit_prestation_path(prestation), class: 'btn btn-link btn-sm' do %>
