@@ -14,7 +14,7 @@ class User < ApplicationRecord
           :validatable,
           :trackable, 
           :lockable,
-          :confirmable,
+          # :confirmable,
           :registerable
  
   belongs_to :organisation
