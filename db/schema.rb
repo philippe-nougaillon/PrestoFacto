@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_23_083433) do
-
+ActiveRecord::Schema[7.0].define(version: 2023_07_13_091750) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -180,8 +179,8 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
   create_table "facture_messages", force: :cascade do |t|
     t.string "contenu"
     t.boolean "actif"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "organisation_id", null: false
     t.index ["organisation_id"], name: "index_facture_messages_on_organisation_id"
   end
@@ -210,8 +209,8 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.string "to"
     t.string "subject"
     t.string "message_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "organisation_id", null: false
     t.index ["organisation_id"], name: "index_mail_logs_on_organisation_id"
   end
@@ -220,8 +219,8 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.string "email"
     t.string "objet"
     t.text "contenu"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "organisations", force: :cascade do |t|
@@ -253,11 +252,27 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.index ["compte_id"], name: "index_paiements_on_compte_id"
   end
 
+  create_table "pointages", force: :cascade do |t|
+    t.bigint "enfant_id", null: false
+    t.bigint "prestation_type_id", null: false
+    t.date "date_pointage"
+    t.datetime "heure_pointage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["enfant_id"], name: "index_pointages_on_enfant_id"
+    t.index ["prestation_type_id"], name: "index_pointages_on_prestation_type_id"
+  end
+
   create_table "prestation_types", force: :cascade do |t|
     t.bigint "organisation_id"
     t.string "nom", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "forfaitaire", default: true
+    t.integer "duree_tranche", default: 0
+    t.string "debut"
+    t.string "fin"
+    t.boolean "pointage_arrivee", default: true, null: false
     t.index ["organisation_id"], name: "index_prestation_types_on_organisation_id"
   end
 
@@ -392,6 +407,8 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
   add_foreign_key "factures", "comptes"
   add_foreign_key "mail_logs", "organisations"
   add_foreign_key "paiements", "comptes"
+  add_foreign_key "pointages", "enfants"
+  add_foreign_key "pointages", "prestation_types"
   add_foreign_key "prestation_types", "organisations"
   add_foreign_key "prestations", "enfants"
   add_foreign_key "prestations", "factures"

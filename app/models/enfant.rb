@@ -13,6 +13,7 @@ class Enfant < ApplicationRecord
   has_many :reservations, dependent: :destroy
   has_many :absences, dependent: :destroy
   has_many :prestations, dependent: :destroy
+  has_many :pointages
 
   accepts_nested_attributes_for :reservations, reject_if: proc { |attributes| attributes[:prestation_type_id].blank? }, allow_destroy: true
 

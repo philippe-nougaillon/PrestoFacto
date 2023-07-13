@@ -1,0 +1,36 @@
+<div class="pb-2 mt-4 mb-2 border-bottom">
+  <h2 class="fw-light d-inline">
+    <%= fa_icon 'bullseye', class: "text-danger" %> 
+    Pointage
+    <% unless params[:date].blank? %>
+      du <%= l params[:date].to_date %>
+    <% end %>
+  </h2>
+  <%= link_to guide_path(anchor: "pointage") do %>
+    <%= fa_icon 'info-circle', title: "Ouvrir l'aide" %>
+  <% end %>
+</div>
+
+<%= bootstrap_form_tag url: pointages_path, method: :get do |f| %>
+  <div class="row">
+    <div class="col-sm-2"><%= f.date_field :date, value: params[:date], onchange: "this.form.submit()" %></div>
+    <div class="col-sm-2"><%= f.select :prestation_type_id, options_from_collection_for_select(@prestation_types, 'id', 'nom', params[:prestation_type_id]), { include_blank: true, label: "Prestation" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
+  </div>
+<% end %>
+
+<div id="pointages">
+  <table class="table table-striped">
+    <thead>
+      <th>Enfant</th>
+      <th>Type prestation</th>
+      <th>Date pointage</th>
+      <th>Heure pointage</th>
+      <th>Minutes consommées</th>
+      <th>Tranches consommées</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <%= render @pointages %>
+    </tbody>
+  </table>
+</div>

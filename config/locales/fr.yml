@@ -409,3 +409,12 @@ fr:
       title: Structure
     edit:
       title: Éditer Structure
+  pointages:
+    index:
+      title: Pointages
+    show:
+      title: Pointage
+    edit:
+      title: Éditer Pointage
+    new:
+      title: Nouveau Pointage

@@ -1,0 +1,11 @@
+<tr id="<%= dom_id pointage %>">
+  <td><%= pointage.enfant.nom_et_prénom %></td>
+  <td><%= pointage.prestation_type.nom %></td>
+  <td><%= l pointage.date_pointage %></td>
+  <td><%= l pointage.heure_pointage if pointage.heure_pointage %></td>
+  <td><%= pointage.minutes_consommées %></td>
+  <td><%= pointage.tranches_consommées %></td>
+  <td>
+    <%= link_to "Modifier", edit_pointage_path(pointage) %>
+  </td>
+</tr>
