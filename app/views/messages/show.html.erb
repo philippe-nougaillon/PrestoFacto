@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Email:</strong>
   <%= @message.email %>
@@ -15,5 +13,16 @@
   <%= @message.contenu %>
 </p>
 
-<%= link_to 'Edit', edit_message_path(@message) %> |
-<%= link_to 'Back', messages_path %>
+<p>
+  <strong>État:</strong>
+  <span class="badge text-bg-<%= @message.style %>"><%= @message.workflow_state.humanize %></span>
+</p>
+
+  <% if true %>
+    <%= render partial: 'partials/wf_button', locals: { state: 'traité', transition: 'traiter', label: 'traiter' } %>
+    <%= render partial: 'partials/wf_button', locals: { state: 'archivé', transition: 'archiver', label: 'archiver' } %>
+  <% end %>
+
+<br>
+
+<%= link_to 'Retour', messages_path %>

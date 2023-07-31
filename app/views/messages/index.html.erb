@@ -1,31 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div class="pb-2 mt-4 mb-2 border-bottom">
+  <h2 class="fw-light d-inline"><%= fa_icon 'envelope', class: 'text-primary' %> Messages</h2>
+  <%= link_to guide_path(anchor: "messages") do %>
+    <%= fa_icon 'info-circle', title: "Ouvrir l'aide" %>
+  <% end %>
+</div>
 
-<h1>Messages</h1>
+<%= bootstrap_form_tag url: messages_path, method: :get do |f| %>
+  <div class="row">
+    <div class="col-sm-2"><%= f.select :state, options_for_select(Message.workflow_spec.states.keys.to_a, params[:state]), { include_blank: true, label: 'État' }, { onchange: "this.form.submit()" } %>
+        </div>
+  </div>
+<% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Objet</th>
-      <th>Contenu</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @messages.each do |message| %>
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
       <tr>
-        <td><%= message.email %></td>
-        <td><%= message.objet %></td>
-        <td><%= message.contenu %></td>
-        <td><%= link_to 'Show', message %></td>
-        <td><%= link_to 'Edit', edit_message_path(message) %></td>
-        <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Envoyé</th>
+        <th>Email</th>
+        <th>Objet</th>
+        <th>Contenu</th>
+        <th>État</th>
+        <th>MàJ</th>
+        <th colspan="2"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-
-<%= link_to 'New Message', new_message_path %>
+    <tbody>
+      <% @messages.each do |message| %>
+        <tr>
+          <td>Il y a <%= time_ago_in_words message.created_at %></td>
+          <td><%= message.email %></td>
+          <td><%= message.objet %></td>
+          <td><%= message.contenu %></td>
+          <td><span class="badge text-bg-<%= message.style %>"><%= message.workflow_state.humanize %></span></td>
+          <td><%= l message.updated_at %></td>
+          <td><%= link_to 'Voir', message %></td>
+          <td><%= link_to 'Supprimer', message, method: :delete, data: { confirm: 'Êtes-vous bien certain.e ???' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
