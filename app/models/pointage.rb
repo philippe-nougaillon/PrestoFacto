@@ -1,4 +1,6 @@
 class Pointage < ApplicationRecord
+  audited
+
   belongs_to :enfant
   belongs_to :prestation_type
 

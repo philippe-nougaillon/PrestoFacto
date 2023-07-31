@@ -15,10 +15,11 @@
   <div class="row">
     <div class="col-sm-2"><%= f.date_field :date, value: params[:date], onchange: "this.form.submit()" %></div>
     <div class="col-sm-2"><%= f.select :prestation_type_id, options_from_collection_for_select(@prestation_types, 'id', 'nom', params[:prestation_type_id]), { include_blank: true, label: "Prestation" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
+    <div class="col-sm-2"><%= f.select :classroom_id, options_from_collection_for_select(@classrooms, 'id', 'nom', params[:classroom_id]), { include_blank: true, label: "Classe" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
   </div>
 <% end %>
 
-<div id="pointages">
+<div id="pointages" class="table-responsive">
   <table class="table table-striped">
     <thead>
       <th>Enfant</th>

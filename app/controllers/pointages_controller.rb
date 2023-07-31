@@ -9,12 +9,16 @@ class PointagesController < ApplicationController
     @pointages = Pointage.all
     organisation = current_user.organisation
     @prestation_types = organisation.prestation_types.where(forfaitaire: false).order(:nom)
+    @classrooms = organisation.classrooms
 
     unless params[:date].blank?
       @pointages = @pointages.where(date_pointage: params[:date])
     end
     unless params[:prestation_type_id].blank?
       @pointages = @pointages.where(prestation_type_id: params[:prestation_type_id]) 
+    end
+    unless params[:classroom_id].blank?
+      @pointages = @pointages.joins(:enfant).where(enfants: {classroom_id: params[:classroom_id]})
     end
   end
 
