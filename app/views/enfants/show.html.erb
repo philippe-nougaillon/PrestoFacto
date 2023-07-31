@@ -72,47 +72,49 @@
         <h4><%= fa_icon 'calendar-alt', class: 'text-warning' %> Réservations</h4>
         <br>
 
-        <table class="table table-bordered table-hover table-sm">
-          <thead>
-            <tr>
-              <th>Prestation</th>
-              <th>Début</th>
-              <th>Fin</th>
-              <th>Etat</th>
-              <th>Lun</th>
-              <th>Mar</th>
-              <th>Mer</th>
-              <th>Jeu</th>
-              <th>Ven</th>
-              <th>Matin</th>
-              <th>Midi</th>
-              <th>Soir</th>
-              <th>H.P.S ?</th>
-            </tr>
-          </thead>
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover table-sm">
+            <thead>
+              <tr>
+                <th>Prestation</th>
+                <th>Début</th>
+                <th>Fin</th>
+                <th>Etat</th>
+                <th>Lun</th>
+                <th>Mar</th>
+                <th>Mer</th>
+                <th>Jeu</th>
+                <th>Ven</th>
+                <th>Matin</th>
+                <th>Midi</th>
+                <th>Soir</th>
+                <th>HPS?</th>
+              </tr>
+            </thead>
 
-          <% @enfant.reservations.actives.each do |reservation| %>
-            <tr>
-              <td><%= reservation.prestation_type.nom %>
-              <td><%= l reservation.début %></td>
-              <td><%= l reservation.fin %></td>
+            <% @enfant.reservations.actives.each do |reservation| %>
+              <tr>
+                <td><%= reservation.prestation_type.nom %>
+                <td><%= l reservation.début %></td>
+                <td><%= l reservation.fin %></td>
 
-              <td><span class="badge <%= reservation.style %>"><%= reservation.workflow_state.humanize %></span></td>
+                <td><span class="badge <%= reservation.style %>"><%= reservation.workflow_state.humanize %></span></td>
 
-              <td class="text-center"><%= number_with_precision(reservation.lundi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.lundi > 0 %></td>
-              <td class="text-center"><%= number_with_precision(reservation.mardi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.mardi > 0 %></td>
-              <td class="text-center"><%= number_with_precision(reservation.mercredi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.mercredi > 0 %></td>
-              <td class="text-center"><%= number_with_precision(reservation.jeudi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.jeudi > 0 %></td>
-              <td class="text-center"><%= number_with_precision(reservation.vendredi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.vendredi > 0 %></td>
+                <td class="text-center"><%= number_with_precision(reservation.lundi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.lundi > 0 %></td>
+                <td class="text-center"><%= number_with_precision(reservation.mardi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.mardi > 0 %></td>
+                <td class="text-center"><%= number_with_precision(reservation.mercredi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.mercredi > 0 %></td>
+                <td class="text-center"><%= number_with_precision(reservation.jeudi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.jeudi > 0 %></td>
+                <td class="text-center"><%= number_with_precision(reservation.vendredi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.vendredi > 0 %></td>
 
-              <td class="text-center"><%= fa_icon 'check' if reservation.matin %></i></td>
-              <td class="text-center"><%= fa_icon 'check' if reservation.midi  %></i></td>
-              <td class="text-center"><%= fa_icon 'check' if reservation.soir  %></i></td>
+                <td class="text-center"><%= fa_icon 'check' if reservation.matin %></i></td>
+                <td class="text-center"><%= fa_icon 'check' if reservation.midi  %></i></td>
+                <td class="text-center"><%= fa_icon 'check' if reservation.soir  %></i></td>
 
-              <td class="text-center"><%= fa_icon 'umbrella-beach' if reservation.hors_période_scolaire %></i></td>
-            </tr>
-          <% end %>
-        </table>
+                <td class="text-center"><%= fa_icon 'umbrella-beach' if reservation.hors_période_scolaire %></i></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
 
         <% if policy(@enfant).edit? %>
           <%= link_to edit_enfant_path(@enfant), class: "btn btn-outline-primary" do %>
@@ -128,27 +130,29 @@
         <h4><%= fa_icon 'calendar-times', class: 'text-danger' %> Absences</h4>
         <br>
 
-        <table class="table table-bordered table-hover table-sm">
-          <thead>
-            <tr>
-              <th>Début</th>
-              <th>Fin</th>
-              <th>Matin</th>
-              <th>Midi</th>
-              <th>Soir</th>
-            </tr>
-          </thead>
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover table-sm">
+            <thead>
+              <tr>
+                <th>Début</th>
+                <th>Fin</th>
+                <th>Matin</th>
+                <th>Midi</th>
+                <th>Soir</th>
+              </tr>
+            </thead>
 
-          <% @absences.each do |absence| %>
-            <tr>
-              <td><%= l absence.début %></td>
-              <td><%= l absence.fin %></td>
-              <td class="text-center"><%= fa_icon 'check' if absence.matin %></i></td>
-              <td class="text-center"><%= fa_icon 'check' if absence.midi  %></i></td>
-              <td class="text-center"><%= fa_icon 'check' if absence.soir  %></i></td>
-            </tr>
-          <% end %>
-        </table>
+            <% @absences.each do |absence| %>
+              <tr>
+                <td><%= l absence.début %></td>
+                <td><%= l absence.fin %></td>
+                <td class="text-center"><%= fa_icon 'check' if absence.matin %></i></td>
+                <td class="text-center"><%= fa_icon 'check' if absence.midi  %></i></td>
+                <td class="text-center"><%= fa_icon 'check' if absence.soir  %></i></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
 
         <% if policy(Absence).new? %>
           <%= link_to new_absence_path(enfant_id: @enfant), class: 'btn btn-outline-primary', data: {'bs-toggle': "modal", 'bs-target': "#myModal" } do %>
@@ -189,23 +193,25 @@
         <h4><%= fa_icon 'utensils', class: 'text-secondary' %> Prestations à facturer</h4>
         <br>
 
-        <table class="table table-bordered table-hover table-sm">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Type</th>
-              <th>Qté</th>
-            </tr>
-          </thead>
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover table-sm">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Qté</th>
+              </tr>
+            </thead>
 
-          <% @enfant.prestations.à_facturer.order(:date).each do |prestation| %>
-            <tr>
-              <td><%= l prestation.date %></td>
-              <td><%= prestation.prestation_type.nom %></td>
-              <td><%= prestation.qté %></td>
-            </tr>
-          <% end %>
-        </table>
+            <% @enfant.prestations.à_facturer.order(:date).each do |prestation| %>
+              <tr>
+                <td><%= l prestation.date %></td>
+                <td><%= prestation.prestation_type.nom %></td>
+                <td><%= prestation.qté %></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
 
         <% if policy(Prestation).new? %>
           <%= link_to new_prestation_path(enfant_id: @enfant), class: 'btn btn-outline-primary', data: {'bs-toggle': "modal", 'bs-target': "#myModalPrestation" } do %>

@@ -371,7 +371,7 @@ fr:
       title: Éditer Utilisateur
     new:
       title: Nouvel Utilisateur
-  prestations_types:
+  prestation_types:
     index:
       title: Types de prestations
     show:

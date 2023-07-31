@@ -60,11 +60,11 @@
       </thead>
       <% @organisation.prestation_types.each do |prestation_type| %>
         <tr>
-          <td><%= link_to prestation_type.nom, edit_prestation_type_path(prestation_type) %></td>
+          <td><%= link_to prestation_type.nom.humanize, edit_prestation_type_path(prestation_type) %></td>
           <td class="text-end col-sm-1">
             <% if policy(prestation_type).destroy? %>
-              <%= button_to prestation_type, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class:'btn btn-sm' do %>
-                <%= fa_icon 'trash-alt', class:'text-danger' %>
+              <%= button_to prestation_type, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class:'btn btn-sm p-0' do %>
+                <%= fa_icon 'trash-alt', class:'text-danger fs-6' %>
               <% end %>
             <% else %>
               <%= fa_icon 'trash-alt', class:'text-muted', title: "Pas supprimable : il y a des données liées dans Réservations, Prestations, ou Tarifs" %>

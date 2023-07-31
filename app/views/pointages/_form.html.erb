@@ -23,8 +23,10 @@
     <strong>Date de pointage :</strong>
     <%= l pointage.date_pointage %>
   </p>
-
-  <%= form.datetime_field :heure_pointage, class:'w-25' %>
-
-  <%= form.submit "Enregistrer", class: "btn btn-outline-success mt-4" %>
+  <div class="row">
+    <div class="col-sm-3"><%= form.datetime_field :heure_pointage %></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3"><%= form.submit "Enregistrer", class: "btn btn-outline-success w-100 mt-4" %></div>
+  </div>
 <% end %>
