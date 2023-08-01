@@ -32,11 +32,32 @@
       tels que l'Organisation, les Utilisateurs et les Tarifs, etc.
     </p>
 
+
+    <div class="col-md-6 mx-auto">
+      <div class="img-thumbnail">
+        <a href="/guide/administration.png">
+          <img src="/guide/administration.png" alt="Administration" style="width:100%">
+          <div class="caption">
+            <p class="text-center">Administration</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
     <p class="lead">
       Cliquez sur "Organisation" afin d'afficher les détails de votre organisation, comme la liste des structures et des classes, ainsi que les vacances scolaires.
       <br><br>
       Cliquez "Éditer" pour modifier les données de votre organisation.
-      <br><br>
+      <div class="col-md-6 mx-auto">
+        <div class="img-thumbnail">
+          <a href="/guide/edit_organisation.png">
+            <img src="/guide/edit_organisation.png" alt="Édition organisation" style="width:100%">
+            <div class="caption">
+              <p class="text-center">Édition organisation</p>
+            </div>
+          </a>
+        </div>
+      </div>
       Compléter l'adresse de votre organisation et le logo (ces informations apparaitront sur les factures et autres documents à entête).
       <br><br>
       La zone de vacances scolaires doit être renseignée afin que le système puisse faire la différence entre un jour en période scolaire et un jour de vacances.
@@ -56,6 +77,17 @@
       Une fois l'organisation et les structures en place, nous allons pouvoir paramétrer les prestations proposées par votre organisation (Cantine, Garderie...) et leurs tarifs.
       Pour se faire, rendez-vous à la page "Tarifs", dans le menu "Administration".
     </p>
+
+    <div class="col-md-6 mx-auto">
+      <div class="img-thumbnail">
+        <a href="/guide/prestations_et_tarifs.png">
+          <img src="/guide/prestations_et_tarifs.png" alt="Prestations et Tarifs" style="width:100%">
+          <div class="caption">
+            <p class="text-center">Prestations et Tarifs</p>
+          </div>
+        </a>
+      </div>
+    </div>
 
     <p class="lead">
       Commençons par un cas simple; vous proposez une prestation de cantine avec un repas au tarif unique de 5€.
@@ -83,7 +115,16 @@
       Pour facturer des prestations non forfaitaires (ex: garderie facturée au temps passé, par tranche de X minutes), il suffit de décocher la case "forfaitaire ?" et de saisir les paramètres suivants : "Heure de début de la période (ex: 07:30)", "Heure de fin de la période (ex: 09:00)", "Durée de la tranche de facturation (en minutes) : (ex: 15min)".
       <br>
       Pour pointer une heure d'arrivée, cochez "Pointage", sinon, le pointage correspondra à l'heure de départ.
-      <br><br>
+      <div class="col-md-6 mx-auto">
+        <div class="img-thumbnail">
+          <a href="/guide/prestation_type_form.png">
+            <img src="/guide/prestation_type_form.png" alt="Formulaire type de prestation" style="width:100%">
+            <div class="caption">
+              <p class="text-center">Formulaire type de prestation</p>
+            </div>
+          </a>
+        </div>
+      </div>
 
       Maintenant que l'organisation et les prestations fournies sont correctement paramétrées, nous pouvons ajouter Familles, 
       Enfants et Réservations.
@@ -95,6 +136,29 @@
     <p class="lead">
       Pour ajouter un compte Famille, rendez-vous sur la page "Comptes" et cliquez sur le lien "(+) Ajouter un Compte".
     </p>
+
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="img-thumbnail">
+          <a href="/guide/compte_form.png">
+            <img src="/guide/compte_form.png" alt="Formulaire compte" style="width:100%">
+            <div class="caption">
+              <p class="text-center">Formulaire compte</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 mx-auto">
+        <div class="img-thumbnail">
+          <a href="/guide/compte_edit.png">
+            <img src="/guide/compte.png" alt="Compte" style="width:100%">
+            <div class="caption">
+              <p class="text-center">Compte</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
 
     <p class="lead">
       La liste des Contacts permet de conserver les coordonnées de tous les contacts liés (maman, papa, tonton, mamie, etc).
@@ -128,7 +192,18 @@
     <h4 class="text-secondary fw-bold">Réservations (Inscrire un enfant à des prestations)<hr></h4>
     <p class="lead">
       Il s'agit maintenant de réserver une prestation parmi celles que vous avez créées lors du paramètrage des Tarifs.
-      <br><br>
+    </p>
+      <div class="col-md-6 mx-auto">
+        <div class="img-thumbnail">
+          <a href="/guide/compte_edit.png">
+            <img src="/guide/compte.png" alt="Compte" style="width:100%">
+            <div class="caption">
+              <p class="text-center">Compte</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    <p class="lead">
       Pour éviter les saisies rébarbatives, une première réservation est proposée par défaut pour toute l'année scolaire. 
       <br><br>
       Pour ce faire, il suffit de choisir le Type de prestation, de donner une date de début, une date de fin et la quantité souhaitée pour chaque jour de la semaine.
@@ -144,7 +219,7 @@
       il suffit d'ajouter une ligne avec le Type de prestation "Centre" (à créer dans 'Administration/Tarifs' s'il n'existe pas déjà) 
       et de saisir les dates de début et de fin, ainsi que d'activer le bouton "Hors période scolaire". 
       <br><br>
-      Pour inscrire un enfant au centre de loisirs pour toutes les vancances scolaires; 
+      Pour inscrire un enfant au centre de loisirs pour toutes les vacances scolaires; 
       il faudra juste que les dates de début et de fin couvrent toute l'année scolaire 
       et que le bouton "Hors période scolaire" soit activé.
     </p>
@@ -159,7 +234,16 @@
       il faut se rendre sur la page "Administration/Comptabilisation des prestations" et cliquer sur "Lancer". 
       <br><br>
       Un rapport affichera le détail des prestations succeptibles d'être ajoutées. 
-      <br><br>
+      <div class="col-md-6 mx-auto">
+        <div class="img-thumbnail">
+          <a href="/guide/comptabilisation_prestation.png">
+            <img src="/guide/comptabilisation_prestation.png" alt="Comptabilisation des prestations consommées" style="width:100%">
+            <div class="caption">
+              <p class="text-center">Comptabilisation des prestations consommées</p>
+            </div>
+          </a>
+        </div>
+      </div>
     </p>
 
     <p class="lead">
@@ -183,6 +267,17 @@
       Cliquez sur "(+) Ajouter une Absence" et renseignez les informations demandées, 
       à savoir les dates de début et de fin d'absence, ainsi que la période (matin, midi, soir).
     </p>
+
+    <div class="col-md-6 mx-auto">
+      <div class="img-thumbnail">
+        <a href="/guide/absence_form.png">
+          <img src="/guide/absence_form.png" alt="Formulaire absence" style="width:100%">
+          <div class="caption">
+            <p class="text-center">Formulaire absence</p>
+          </div>
+        </a>
+      </div>
+    </div>
   </div>
 
   <div id="facturation" class="mb-5">
@@ -194,6 +289,28 @@
       et cliquez sur "Lancer" une fois la période choisie.
       <br><br>
       Une facture par compte sera alors créée, avec le détails des prestations consommées par enfant.
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="img-thumbnail">
+          <a href="/guide/facturation_form.png">
+            <img src="/guide/facturation_form.png" alt="Formulaire facturation" style="width:100%">
+            <div class="caption">
+              <p class="text-center">Formulaire facturation</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 mx-auto">
+        <div class="img-thumbnail">
+          <a href="/guide/facturation_prestations.png">
+            <img src="/guide/facturation_prestations.png" alt="Création facturation" style="width:100%">
+            <div class="caption">
+              <p class="text-center">Création facturation</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
     </p>
 
     <p class="lead">
@@ -211,7 +328,16 @@
       Vous avez la possibilité d'ajouter une facture manuellement. Dans cette facture manuelle, la saisie de tous les éléments (montant, prestations et tarifs) est libre.
       <br><br>
       Pour ce faire, rendez-vous sur la page du Compte concerné et cliquez sur "Nouvelle facture". 
-      <br><br>
+      <div class="col-md-6 mx-auto">
+        <div class="img-thumbnail">
+          <a href="/guide/facture_spéciale_form.png">
+            <img src="/guide/facture_spéciale_form.png" alt="Création facture manuelle" style="width:100%">
+            <div class="caption">
+              <p class="text-center">Création facture manuelle</p>
+            </div>
+          </a>
+        </div>
+      </div>
       Une fois enregistrée, cette facture sera ajoutée à la liste des factures et comptabilisée dans le solde du compte.
     </p>
   </div>
@@ -246,7 +372,28 @@
       Une fois le paiement enregistré, le solde du compte est mis à jour automatiquement.
       <br><br>
       Vous retrouverez l'ensemble des paiements dans l'onglet 'Paiements'.
-      <br><br>
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="img-thumbnail">
+          <a href="/guide/paiement_form.png">
+            <img src="/guide/paiement_form.png" alt="Formulaire paiement" style="width:100%">
+            <div class="caption">
+              <p class="text-center">Formulaire paiement</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6 mx-auto">
+        <div class="img-thumbnail">
+          <a href="/guide/paiements.png">
+            <img src="/guide/paiements.png" alt="Paiements" style="width:100%">
+            <div class="caption">
+              <p class="text-center">Paiements</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
       Pour exporter la liste des paiements vers Excel, il suffit de filtrer la liste des paiements 
       selon la structure, période, mode de paiement, puis, une fois la liste voulue sous les yeux 
       cliquez sur le bouton "Export XLS" pour générer une feuille de calcul Excel basée sur les éléments affichés.
@@ -344,12 +491,23 @@
       Pointage
     </h4>
   </div>
-  <p>
+  <p class="lead">
     Pour les prestations de type non forfaitaire (ex: garderie facturée au temps passé), il est important de savoir les heures d'arrivées et de départs des enfants.
     Cette liste présente l'ensemble des prestations devant être pointées pour pouvoir être facturées.
     Pour pointer une prestation, cliquez sur le bouton modifier, et saisissez la date d'arrivée ou de départ, puis enregistrer.
     Pour pointer rapidement un ensemble de prestations à l'instant T, cochez la case à gauche des prestations,et choisissez l'action "Pointer les arrivées/départs à l'instant T".
   </p>
+
+  <div class="col-md-6 mx-auto">
+    <div class="img-thumbnail">
+      <a href="/guide/pointages.png">
+        <img src="/guide/pointages.png" alt="Liste des pointages" style="width:100%">
+        <div class="caption">
+          <p class="text-center">Liste des pointages</p>
+        </div>
+      </a>
+    </div>
+  </div>
 
   <div class="pb-1 mt-5 mb-1 border-bottom">
     <h4 class="text-secondary fw-bold">
@@ -371,7 +529,17 @@
           <li>Mathieu PETIT a une réservation pour 1 jour de Centre, tous les jours pendant les vacances scolaires (HorsPériodeScolaire)</li>
         </ul>
       </li>
-    </ul>  
+    </ul>
+    <div class="col-md-6 mx-auto">
+      <div class="img-thumbnail">
+        <a href="/guide/réservations.png">
+          <img src="/guide/réservations.png" alt="Liste des réservations" style="width:100%">
+          <div class="caption">
+            <p class="text-center">Liste des réservations</p>
+          </div>
+        </a>
+      </div>
+    </div>
   </p>
 
   <div class="pb-1 mt-2 mb-1 border-bottom">
@@ -515,7 +683,7 @@
           </li>
         </ul>
         <br />
-        <li>Messages :</li>
+        <li id="messages">Messages :</li>
         <ul class="lead">
           <li>
             Un utilisateur qui reçoit une facture, a la possibilité de communiquer avec le gestionnaire de la facturation au moyen des "Messages".

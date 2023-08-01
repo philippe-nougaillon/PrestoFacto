@@ -27,8 +27,6 @@ class OrganisationsController < ApplicationController
   # GET /organisations/1/edit
   def edit
     authorize @organisation
-
-    1.times { @organisation.vacances.build }
   end
 
   # POST /organisations

@@ -6,10 +6,10 @@
     <div class="col-sm-6 mb-3">
       <div class="row">
         <div class="col-sm-9">
-          <%= form.text_field :nom, required: true, autofocus: false %>
+          <%= form.text_field :nom, required: true, autofocus: false, label: "Nom *" %>
         </div>
         <div class="col-sm-3">
-          <%= form.select :civilité, ["M","Mme","M et Mme"] %>
+          <%= form.select :civilité, ["M et Mme","Mme", "M"] %>
         </div>
       </div>
 
@@ -52,6 +52,8 @@
       <button class="btn btn-outline-primary" type="button" data-action="nested-form#add"><%= fa_icon 'plus-circle' %> Ajouter un contact</button>
     </div>
   </div>
+
+  <p>* : Champs requis</p>
 
   <div class="mb-3">
     <%= form.submit "Enregistrer", class: "btn btn-outline-success" %>

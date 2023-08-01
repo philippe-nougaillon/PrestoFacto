@@ -12,6 +12,7 @@
   <td><%= l pointage.heure_pointage if pointage.heure_pointage %></td>
   <td><%= pointage.minutes_consommées %></td>
   <td><%= pointage.tranches_consommées %></td>
+  <td>Il y a <%= time_ago_in_words pointage.updated_at %></td>
   <td>
     <% if policy(pointage).edit? %>
       <%= link_to edit_pointage_path(pointage), class: 'btn btn-link btn-sm' do %>
