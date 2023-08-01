@@ -72,7 +72,7 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        <%= render 'paiements/form', paiement: Paiement.new(compte_id: @compte.id) %>
+        <%= render 'paiements/form', paiement: Paiement.new(compte_id: @compte.id, date: Date.today, réf: current_user.organisation.factures.where(compte_id: @compte.id, workflow_state: "vérifiée").last.try(:réf)) %>
       </div>
     </div>
   </div>

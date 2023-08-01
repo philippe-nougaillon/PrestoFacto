@@ -68,6 +68,6 @@ class PrestationTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def prestation_type_params
-      params.require(:prestation_type).permit(:organisation_id, :nom)
+      params.require(:prestation_type).permit(:organisation_id, :nom, :forfaitaire, :duree_tranche, :debut, :fin, :pointage_arrivee)
     end
 end

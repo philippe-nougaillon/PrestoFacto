@@ -67,7 +67,7 @@ namespace :prestations do
 
         absences = enfant.absences.where("DATE(?) BETWEEN début AND fin", date).any?
         puts "Des absences ? = #{ I18n.t absences }"
-        
+
         if enfant_reservations.any? and !(absences)
           puts "PRESTATIONS CONSOMMÉES :"
           enfant_reservations.each do |reservation|
@@ -75,15 +75,31 @@ namespace :prestations do
             qté_reservée = jour_semaine_match?(date, reservation)
             
             if qté_reservée > 0
-              puts "Le jour de la semaine correspond à la réservation. Quantité = #{qté_reservée}" 
-              presta = enfant.prestations.new(prestation_type: reservation.prestation_type, date: date, qté: qté_reservée) 
-              if presta.valid?
-                presta.save if enregistrer
-                puts "OK Prestation créée "   
-                prestations_ajoutées += 1   
+              puts "Le jour de la semaine correspond à la réservation. Quantité réservée = #{qté_reservée}" 
+              if reservation.prestation_type.forfaitaire?
+                presta = enfant.prestations.new(prestation_type: reservation.prestation_type, date: date, qté: qté_reservée) 
+                if presta.valid?
+                  presta.save if enregistrer
+                  puts "OK Prestation créée "   
+                  prestations_ajoutées += 1   
+                else
+                  puts "KO Création de prestation forfaitaire a échoué => #{presta.errors.messages}"  
+                end
               else
-                puts "KO Création de prestation a échoué => #{presta.errors.messages}"  
-              end  
+                if tranches_consommées = enfant.pointages.find_by(prestation_type: reservation.prestation_type, date_pointage: date).try(:tranches_consommées)
+                  puts "Tranches consommées : #{tranches_consommées}"
+                  presta = enfant.prestations.new(prestation_type: reservation.prestation_type, date: date, qté: tranches_consommées) 
+                  if presta.valid?
+                    presta.save if enregistrer
+                    puts "OK Prestation créée "   
+                    prestations_ajoutées += 1   
+                  else
+                    puts "KO ! Création de prestation par tranche a échoué => #{presta.errors.messages}"  
+                  end
+                end
+                # Créer la feuille de pointage du jour suivant
+                Pointage.find_or_create_by(date_pointage: date.tomorrow, enfant_id: enfant.id, prestation_type_id: reservation.prestation_type.id)
+              end
             else
               puts "pas de quantité consommée (jour ne match pas ?)"
             end

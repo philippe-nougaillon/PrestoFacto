@@ -56,6 +56,8 @@ class PaiementsController < ApplicationController
     @paiement = Paiement.new
     @paiement.compte_id = params[:compte_id]
     @paiement.date = Date.today
+    @paiement.réf = params[:réf]
+    @paiement.montant = params[:montant]
   end
 
   # GET /paiements/1/edit
@@ -72,6 +74,11 @@ class PaiementsController < ApplicationController
 
     respond_to do |format|
       if @paiement.save
+        # Mise à jour de l'état de la facture (payée)
+        # facture = current_user.organisation.factures.find_by(réf: @paiement.réf)
+        # facture.workflow_state = "payée"
+        # facture.save
+
         format.html { redirect_to @paiement.compte, notice: 'Paiement a été créé avec succès.' }
         format.json { render :show, status: :created, location: @paiement }
       else

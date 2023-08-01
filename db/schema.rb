@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_07_31_120816) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -256,6 +257,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_120816) do
     t.index ["compte_id"], name: "index_paiements_on_compte_id"
   end
 
+  create_table "pointages", force: :cascade do |t|
+    t.bigint "enfant_id", null: false
+    t.bigint "prestation_type_id", null: false
+    t.date "date_pointage"
+    t.datetime "heure_pointage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["enfant_id"], name: "index_pointages_on_enfant_id"
+    t.index ["prestation_type_id"], name: "index_pointages_on_prestation_type_id"
+  end
+
   create_table "prestation_types", force: :cascade do |t|
     t.bigint "organisation_id"
     t.string "nom", default: "", null: false
@@ -400,6 +412,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_31_120816) do
   add_foreign_key "factures", "comptes"
   add_foreign_key "mail_logs", "organisations"
   add_foreign_key "paiements", "comptes"
+  add_foreign_key "pointages", "enfants"
+  add_foreign_key "pointages", "prestation_types"
   add_foreign_key "prestation_types", "organisations"
   add_foreign_key "prestations", "enfants"
   add_foreign_key "prestations", "factures"

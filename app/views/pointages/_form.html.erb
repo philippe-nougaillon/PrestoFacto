@@ -1,0 +1,32 @@
+<%= bootstrap_form_with(model: pointage) do |form| %>
+  <% if pointage.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(pointage.errors.count, "error") %> prohibited this pointage from being saved:</h2>
+
+      <ul>
+        <% pointage.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <strong>Enfant :</strong>
+    <%= pointage.enfant.nom_et_prénom %>
+  </p>
+  <p>
+  <strong>Type de prestation :</strong>
+    <%= pointage.prestation_type.nom %>
+  </p>
+  <p>
+    <strong>Date de pointage :</strong>
+    <%= l pointage.date_pointage %>
+  </p>
+  <div class="row">
+    <div class="col-sm-3"><%= form.datetime_field :heure_pointage %></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3"><%= form.submit "Enregistrer", class: "btn btn-outline-success w-100 mt-4" %></div>
+  </div>
+<% end %>
