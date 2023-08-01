@@ -2,7 +2,7 @@
   <div class="col-lg-7">
     <h1 class="display-2 lh-1 mb-3">PrestoFacto</h1>
     <h2 class="display-7 mb-3">Facturation de vos services journaliers<h2>
-    <h3 class="display-8 fw-lighter">Aide les petites organisations dans la gestion et la facturation de leurs prestations (repas, garderie, activités, etc...)</h3>
+    <h3 class="display-8 fw-lighter">Aide les petites organisations dans la gestion et la facturation de leurs prestations (repas, garderie, activités périscolaires, nuitée d'hébergement, colonie de vacances, etc...)</h3>
     <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-5">
       <%= link_to "En savoir plus", "#a_propos" , class: 'btn btn-outline-secondary btn-lg px-4 me-md-2' %>
       <%= link_to "S'inscrire", new_user_registration_path, class: 'btn btn-primary btn-lg px-4' %>
@@ -13,8 +13,8 @@
   </div>
 </div>
 
-<div id="a_propos" class="my-5">
-  <div class="row px-4 py-5 bg-light">
+<div class="my-4">
+  <div  id="a_propos" class="row px-4 py-2 bg-light">
     <div class="col-md">
       <%= image_tag 'hands.png', class: 'img-fluid' %>
     </div>
@@ -27,7 +27,7 @@
     </div>
   </div>
 
-  <div class="row px-4 py-5">
+  <div class="row px-4 py-2">
     <div class="col-md">
       <h3 class="lh-1 mb-3 text-secondary fw-bold">Un usage simplifié</h3>
       <p class="lead mb-4">
@@ -37,13 +37,16 @@
         Une facture par mois des prestations consommées, avec solde. 
         Balance famille détaillée.
       </p>
+      <p>
+        <%= link_to "Voir le guide d'utilisation", guide_path %>
+      </p>
     </div>
     <div class="col-md">
       <%= image_tag 'stones.png', class: 'img-fluid' %>
     </div>
   </div>
 
-  <div class="row px-4 py-5 bg-light">
+  <div class="row px-4 py-2 bg-light">
     <div class="col-md">
       <%= image_tag 'cloud.webp', class: 'img-fluid' %>
     </div>
@@ -60,7 +63,7 @@
       </p>
     </div>
   </div>
-  <div class="row px-4 py-5">
+  <div class="row px-4 py-2">
     <div class="col-md">
       <h3 class="lh-1 mb-3 text-secondary fw-bold">Développé en communauté</h3>
       <p class="lead mb-4">
@@ -76,13 +79,14 @@
     </div>
   </div>
   <div class="px-4 py-5 bg-light">
-    <h3 class="lh-1 mb-3 text-secondary fw-bold text-center mb-2">Une solution éprouvée</h3>
+    <h3 class="lh-1 mb-3 text-secondary fw-bold text-center mb-2">Une solution éprouvée sur 2 générations</h3>
     <p class="lead mb-4">
-        Après plus de <strong>10 ans</strong> de bons et loyaux services, openCantine fait sa mue, change de nom et se professionnalise.
+        Après plus de <strong>10 ans</strong> de bons et loyaux services, openCantine a fait sa mue, change de nom et se professionnalise.
         Ce projet était au départ conçu pour donner un petit coup de main à une mairie qui gérait péniblement sa cantine sur Excel.
-        Mais le passage en logiciel libre a permis à une cinquantaine de mairies ou associations de gérer <strong>~500.000 repas</strong> via cette plateforme dont j'assure bénévolement la maintenance et les coûts d'hébergement.
-        Ce que je vais continuer à faire car openCantine est adapté aux petites mono-structures et a ses habitués.
-        Mais les structures plus importantes ne pouvaient s'en contenter, c'est pourquoi j'ai réécrit un autre logiciel, PrestoFacto, plus souple et adaptable, qui conviendra à des organisations de plus grande taille et multi-structures.
+        Mais le passage de l'application en logiciel libre, disponible gratuitement pour tous, a permis à une cinquantaine de mairies ou associations de gérer <strong>~500.000 repas</strong> via cette plateforme, dont j'ai assuré bénévolement la maintenance et les coûts d'hébergement.
+        <br>
+        Mais les structures plus importantes ne pouvaient s'en contenter. C'est pourquoi en 2020 j'ai complètement réécrit en 2020 le logiciel. 
+        PrestoFacto est plus souple, moderne et très adaptable. Il conviendra à des organisations de plus grande taille, multi-structures, à la recherche d'un outil simple et robuste.
     </p>
   </div>
 </div>
@@ -181,7 +185,7 @@
           <h4 class="my-0 fw-normal text-white text-center">Standard</h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title pricing-card-title text-center">29 €<small class="text-muted fw-light" style="font-size: 1rem"> / mois</small></h1>
+          <h1 class="card-title pricing-card-title text-center">49 €<small class="text-muted fw-light" style="font-size: 1rem"> / mois</small></h1>
           <ul class="list-unstyled mt-3 mb-4">
             <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Utilisation libre et illimitée</li>
             <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Sauvegarde automatique journalière</li>
@@ -199,7 +203,7 @@
           <h4 class="my-0 fw-normal text-center">Premium</h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title pricing-card-title text-center">49 €<small class="text-muted fw-light"> <small style="font-size: 1rem"> / mois</small></small></h1>
+          <h1 class="card-title pricing-card-title text-center">99 €<small class="text-muted fw-light"> <small style="font-size: 1rem"> / mois</small></small></h1>
           <ul class="list-unstyled mt-3 mb-4">
             <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Utilisation libre et illimitée</li>
             <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Sauvegarde continue (24 / 7)</li>

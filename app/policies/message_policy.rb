@@ -6,15 +6,15 @@ class MessagePolicy < ApplicationPolicy
   end
 
   def index?
-    user && user.email == "philippe.nougaillon@gmail.com"
+    user.admin?
   end
 
   def show?
-    index?
+    index? && (user.organisation == record.organisation)
   end
 
   def edit?
-    index?
+    false
   end
 
   def update?
@@ -30,6 +30,14 @@ class MessagePolicy < ApplicationPolicy
   end
 
   def destroy?
-    index?
+    index? && (user.organisation == record.organisation)
+  end
+
+  def traiter?
+    index? && (user.organisation == record.organisation)
+  end
+
+  def archiver?
+    index? && (user.organisation == record.organisation)
   end
 end

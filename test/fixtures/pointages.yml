@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  enfant: one
+  prestationtype: one
+  date_pointage: 2023-07-13
+  heure_pointage: 2023-07-13 11:17:50
+
+two:
+  enfant: two
+  prestationtype: two
+  date_pointage: 2023-07-13
+  heure_pointage: 2023-07-13 11:17:50

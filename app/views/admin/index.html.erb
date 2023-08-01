@@ -74,6 +74,18 @@
       <li class="list-group-item">
         <h4 class="my-1">
           <%= fa_icon 'envelope' %>
+          <%= link_to 'Messages (contestations)', messages_path, class: "text-muted text-decoration-none", title:"Journal d'activité des envois de courriels" %>
+          <% if @unread_messages > 0 %>
+            <span class="badge text-bg-danger rounded-pill ms-2"style="font-weight: 900"><%= @unread_messages %></span>
+          <% end %>
+        </h4>
+      </li>
+
+      <li class="list-group-item"></li>
+
+      <li class="list-group-item">
+        <h4 class="my-1">
+          <%= fa_icon 'mail-bulk' %>
           <%= link_to 'Mail Logs', mail_logs_path, class: "text-muted text-decoration-none", title:"Journal d'activité des envois de courriels" %>
         </h4>
       </li>

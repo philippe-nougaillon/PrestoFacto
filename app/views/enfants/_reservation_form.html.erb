@@ -7,7 +7,7 @@
                                     { label: "Presta.", include_blank: true }, 
                                     { class: "selectpicker", required: true } %>
       </div>
-      <div class="col-sm-3"><%= f.date_field :début, value: Date.today, required: true %></div>
+      <div class="col-sm-3"><%= f.date_field :début, required: true %></div>
       <div class="col-sm-3"><%= f.date_field :fin, required: true %></div>
       <div class="col"><%= f.select :workflow_state, Reservation.workflow_spec.states, label: 'État', required: true %></div>
     </div>

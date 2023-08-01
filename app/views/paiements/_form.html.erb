@@ -1,5 +1,17 @@
 <%= bootstrap_form_with(model: paiement, local: true) do |form| %>
 
+  <% if paiement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(paiement.errors.count, "erreur") %> empêche(nt) la sauvegarde du paiement :</h2>
+
+      <ul>
+        <% paiement.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= form.hidden_field :compte_id %>
 
   <div class="row">
@@ -18,7 +30,7 @@
         <div class="col"><%= form.date_field :date_remise %></div>
       </div>
       <%= form.text_area :mémo %>
-      <%= form.submit "Enregistrer", class: "btn btn-outline-success" %>
+      <%= form.submit "Enregistrer", class: "btn btn-outline-success", 'data-turbo': false %>
     </div>
   </div>
 

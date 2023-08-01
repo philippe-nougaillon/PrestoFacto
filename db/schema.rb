@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_23_083433) do
-
+ActiveRecord::Schema[7.0].define(version: 2023_07_31_120816) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,8 +21,8 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.boolean "matin"
     t.boolean "midi"
     t.boolean "soir"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "archive", default: false, null: false
     t.index ["archive"], name: "index_absences_on_archive"
     t.index ["enfant_id"], name: "index_absences_on_enfant_id"
@@ -34,7 +33,7 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -46,7 +45,7 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.text "metadata"
     t.bigint "byte_size", null: false
     t.string "checksum", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
@@ -77,7 +76,7 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.string "comment"
     t.string "remote_address"
     t.string "request_uuid"
-    t.datetime "created_at"
+    t.datetime "created_at", precision: nil
     t.index ["associated_type", "associated_id"], name: "associated_index"
     t.index ["auditable_type", "auditable_id", "version"], name: "auditable_index"
     t.index ["created_at"], name: "index_audits_on_created_at"
@@ -88,16 +87,16 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
   create_table "blogs", force: :cascade do |t|
     t.string "titre", null: false
     t.string "corps", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "classrooms", force: :cascade do |t|
     t.bigint "structure_id"
     t.string "nom"
     t.string "référent"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["structure_id"], name: "index_classrooms_on_structure_id"
   end
 
@@ -111,8 +110,8 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.string "ville"
     t.string "num_allocataire"
     t.string "mémo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "enfants_count"
     t.string "slug"
     t.bigint "organisation_id"
@@ -128,8 +127,8 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.string "portable"
     t.string "email"
     t.string "mémo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "prevenir"
     t.index ["compte_id"], name: "index_contacts_on_compte_id"
   end
@@ -142,8 +141,8 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.date "date_naissance"
     t.boolean "menu_sp"
     t.boolean "menu_all"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "tarif_type_id"
     t.string "badge"
     t.string "slug"
@@ -158,8 +157,8 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
   create_table "facture_chronos", force: :cascade do |t|
     t.bigint "organisation_id"
     t.integer "index", default: 0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["organisation_id"], name: "index_facture_chronos_on_organisation_id"
   end
 
@@ -169,8 +168,8 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.decimal "qté", precision: 4, scale: 2, default: "0.0", null: false
     t.decimal "prix", precision: 6, scale: 2, default: "0.0", null: false
     t.decimal "total", precision: 6, scale: 2, default: "0.0", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "intitulé"
     t.date "date"
     t.index ["facture_id"], name: "index_facture_lignes_on_facture_id"
@@ -180,8 +179,8 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
   create_table "facture_messages", force: :cascade do |t|
     t.string "contenu"
     t.boolean "actif"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "organisation_id", null: false
     t.index ["organisation_id"], name: "index_facture_messages_on_organisation_id"
   end
@@ -189,14 +188,14 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
   create_table "factures", force: :cascade do |t|
     t.bigint "compte_id"
     t.string "réf"
-    t.datetime "date"
+    t.datetime "date", precision: nil
     t.date "échéance"
     t.decimal "montant", precision: 6, scale: 2, default: "0.0", null: false
     t.boolean "vérifiée", default: false
     t.string "mémo"
-    t.datetime "envoyée_le"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "envoyée_le", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "slug"
     t.string "workflow_state"
     t.decimal "solde_avant", precision: 8, scale: 2
@@ -210,8 +209,8 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.string "to"
     t.string "subject"
     t.string "message_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "organisation_id", null: false
     t.index ["organisation_id"], name: "index_mail_logs_on_organisation_id"
   end
@@ -220,8 +219,12 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.string "email"
     t.string "objet"
     t.text "contenu"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "organisation_id"
+    t.string "facture_slug"
+    t.string "workflow_state"
+    t.index ["workflow_state"], name: "index_messages_on_workflow_state"
   end
 
   create_table "organisations", force: :cascade do |t|
@@ -231,8 +234,8 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.string "ville"
     t.string "téléphone"
     t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "zone"
     t.string "slug"
     t.index ["slug"], name: "index_organisations_on_slug"
@@ -240,7 +243,7 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
 
   create_table "paiements", force: :cascade do |t|
     t.bigint "compte_id"
-    t.datetime "date"
+    t.datetime "date", precision: nil
     t.string "réf"
     t.string "mode"
     t.string "banque"
@@ -248,16 +251,32 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.decimal "montant", precision: 5, scale: 2, default: "0.0", null: false
     t.date "date_remise"
     t.string "mémo"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.index ["compte_id"], name: "index_paiements_on_compte_id"
+  end
+
+  create_table "pointages", force: :cascade do |t|
+    t.bigint "enfant_id", null: false
+    t.bigint "prestation_type_id", null: false
+    t.date "date_pointage"
+    t.datetime "heure_pointage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["compte_id"], name: "index_paiements_on_compte_id"
+    t.index ["enfant_id"], name: "index_pointages_on_enfant_id"
+    t.index ["prestation_type_id"], name: "index_pointages_on_prestation_type_id"
   end
 
   create_table "prestation_types", force: :cascade do |t|
     t.bigint "organisation_id"
     t.string "nom", default: "", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.boolean "forfaitaire", default: true, null: false
+    t.integer "duree_tranche", default: 0
+    t.string "debut"
+    t.string "fin"
+    t.boolean "pointage_arrivee", default: true, null: false
     t.index ["organisation_id"], name: "index_prestation_types_on_organisation_id"
   end
 
@@ -266,8 +285,8 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.bigint "prestation_type_id"
     t.date "date", null: false
     t.decimal "qté", precision: 5, scale: 2, default: "0.0", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "facture_id"
     t.boolean "archive", default: false, null: false
     t.index ["archive"], name: "index_prestations_on_archive"
@@ -289,8 +308,8 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.boolean "matin"
     t.boolean "midi"
     t.boolean "soir"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "active", default: true
     t.boolean "hors_période_scolaire"
     t.string "workflow_state"
@@ -302,8 +321,8 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.bigint "structure_id"
     t.string "nom"
     t.string "référent"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["structure_id"], name: "index_structure_classes_on_structure_id"
   end
 
@@ -313,16 +332,16 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.string "adresse"
     t.string "cp"
     t.string "ville"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["organisation_id"], name: "index_structures_on_organisation_id"
   end
 
   create_table "tarif_types", force: :cascade do |t|
     t.bigint "organisation_id"
     t.string "nom"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["organisation_id"], name: "index_tarif_types_on_organisation_id"
   end
 
@@ -330,8 +349,8 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.bigint "tarif_type_id"
     t.bigint "prestation_type_id"
     t.decimal "prix", precision: 6, scale: 2
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["prestation_type_id"], name: "index_tarifs_on_prestation_type_id"
     t.index ["tarif_type_id"], name: "index_tarifs_on_tarif_type_id"
   end
@@ -340,23 +359,23 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "organisation_id"
     t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
+    t.datetime "current_sign_in_at", precision: nil
+    t.datetime "last_sign_in_at", precision: nil
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
+    t.datetime "confirmed_at", precision: nil
+    t.datetime "confirmation_sent_at", precision: nil
     t.string "unconfirmed_email"
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
-    t.datetime "locked_at"
+    t.datetime "locked_at", precision: nil
     t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["organisation_id"], name: "index_users_on_organisation_id"
@@ -369,8 +388,8 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.string "nom", default: "", null: false
     t.date "début"
     t.date "fin"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "organisation_id"
     t.index ["organisation_id"], name: "index_vacances_on_organisation_id"
   end
@@ -392,6 +411,8 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
   add_foreign_key "factures", "comptes"
   add_foreign_key "mail_logs", "organisations"
   add_foreign_key "paiements", "comptes"
+  add_foreign_key "pointages", "enfants"
+  add_foreign_key "pointages", "prestation_types"
   add_foreign_key "prestation_types", "organisations"
   add_foreign_key "prestations", "enfants"
   add_foreign_key "prestations", "factures"

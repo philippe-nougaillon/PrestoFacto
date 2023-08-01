@@ -23,6 +23,11 @@ private
       @ctrl = params[:controller]
       @action = params[:action]
       @site_name = "PrestoFacto"
+      set_meta_tags(
+        description: "Facturation de vos services journaliers. PrestoFacto aide les petites organisations dans la gestion et la facturation de leurs prestations (repas, garderie, activités périscolaires, nuitée d'hébergement, colonie de vacances, etc...)",
+        keywords: "Facturation, facture, prestation, repas, cantine, garderie, périscolaire, nuitée, colonie, colonie de vacances",
+        author: ['Philippe NOUGAILLON', 'Pierre-Emmanuel DACQUET', 'Studio Philnoug&Partners']
+      )
     end
 
     def user_not_authorized

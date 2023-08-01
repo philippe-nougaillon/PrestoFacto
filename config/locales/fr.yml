@@ -267,9 +267,6 @@ fr:
       title: Importer données XLS
     import_do:
       title: Importer données XLS
-  messages:
-    new:
-      title: Contact
   devise:
     sessions:
       new:
@@ -351,6 +348,15 @@ fr:
       title: Éditer Paiement
     new:
       title: Nouveau Paiement
+  messages:
+    index:
+      title: Messages
+    show:
+      title: Message
+    edit:
+      title: Éditer Message
+    new:
+      title: Contact
   organisations:
     index:
       title: Organisations
@@ -371,7 +377,7 @@ fr:
       title: Éditer Utilisateur
     new:
       title: Nouvel Utilisateur
-  prestations_types:
+  prestation_types:
     index:
       title: Types de prestations
     show:
@@ -409,3 +415,12 @@ fr:
       title: Structure
     edit:
       title: Éditer Structure
+  pointages:
+    index:
+      title: Pointages
+    show:
+      title: Pointage
+    edit:
+      title: Éditer Pointage
+    new:
+      title: Nouveau Pointage

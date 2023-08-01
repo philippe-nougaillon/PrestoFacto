@@ -6,6 +6,7 @@ class AdminController < ApplicationController
 
   def index
     authorize(:admin)
+    @unread_messages = current_user.organisation.messages.where(workflow_state: "nouveau").count
   end
 
   def ajout_prestations

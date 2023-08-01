@@ -22,6 +22,13 @@
     <br><br>
     <u><%= @facture.organisation.facture_messages.actif.first.contenu %></u>
   <% end %>
+
+  <p>
+    <b>Ceci est un message automatique, merci de ne pas y répondre directement.</b>
+    <br>
+    En cas de besoin, veuillez cliquer <%= link_to "ici", new_message_url(facture_slug: @facture.slug) %> pour envoyer un message au gestionnaire de la facturation.
+  </p>
+
   <br><br>
   Nous vous remercions de votre confiance.
   <br>
