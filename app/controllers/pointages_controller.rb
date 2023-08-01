@@ -73,6 +73,22 @@ class PointagesController < ApplicationController
     end
   end
 
+  def action
+    return unless params[:pointages_id]
+    pointages = Pointage.where(id: params[:pointages_id].keys)
+    pointages_count = pointages.count
+
+    case params[:action_name]
+    when "Pointer"
+      pointages.each do | p | 
+        p.heure_pointage = Time.zone.now + 2.hour
+        p.save
+      end
+      flash[:notice] = "#{pointages_count} pointages.s réalisé.s" 
+      redirect_to pointages_url
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pointage

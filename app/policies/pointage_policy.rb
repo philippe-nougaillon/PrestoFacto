@@ -33,4 +33,8 @@ class PointagePolicy < ApplicationPolicy
     index?
   end
 
+  def action?
+    index?
+  end
+
 end

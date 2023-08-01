@@ -50,7 +50,11 @@ Rails.application.routes.draw do
   resources :messages
   resources :vacances
   resources :mail_logs, only: %i[ index show ]
-  resources :pointages, only: %i[ index edit update ]
+  resources :pointages, only: %i[ index edit update ] do
+    collection do
+      post :action
+    end
+  end
 
   namespace :admin do
     get :index

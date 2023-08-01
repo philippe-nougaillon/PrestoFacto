@@ -1,5 +1,10 @@
 <tr id="<%= dom_id pointage %>">
   <td>
+    <span data-action="click->action#click">
+      <%= check_box_tag "[pointages_id][#{pointage.id}]", 'yes', false,  data: {"action-target":"source"} %>
+    </span>
+  </td>
+  <td>
     <%= link_to_if policy(pointage).edit?, pointage.enfant.nom_et_prénom, edit_pointage_path(pointage) %>
   </td>
   <td><%= pointage.prestation_type.nom %></td>
