@@ -377,7 +377,7 @@ fr:
       title: Éditer Utilisateur
     new:
       title: Nouvel Utilisateur
-  prestations_types:
+  prestation_types:
     index:
       title: Types de prestations
     show:
@@ -415,3 +415,12 @@ fr:
       title: Structure
     edit:
       title: Éditer Structure
+  pointages:
+    index:
+      title: Pointages
+    show:
+      title: Pointage
+    edit:
+      title: Éditer Pointage
+    new:
+      title: Nouveau Pointage

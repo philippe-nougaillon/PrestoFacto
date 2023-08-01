@@ -1,0 +1,57 @@
+<div class="pb-2 mt-4 mb-2 border-bottom">
+  <h2 class="fw-light d-inline">
+    <%= fa_icon 'calendar-check', class: "text-success" %> 
+    Pointages
+    <% unless params[:date].blank? %>
+      du <%= l params[:date].to_date %>
+    <% end %>
+  </h2>
+  <%= link_to guide_path(anchor: "pointage") do %>
+    <%= fa_icon 'info-circle', title: "Ouvrir l'aide" %>
+  <% end %>
+</div>
+
+<%= bootstrap_form_tag url: pointages_path, method: :get do |f| %>
+  <div class="row">
+    <div class="col-sm-2"><%= f.date_field :date, value: params[:date], onchange: "this.form.submit()" %></div>
+    <div class="col-sm-2"><%= f.select :prestation_type_id, options_from_collection_for_select(@prestation_types, 'id', 'nom', params[:prestation_type_id]), { include_blank: true, label: "Prestation" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
+    <div class="col-sm-2"><%= f.select :classroom_id, options_from_collection_for_select(@classrooms, 'id', 'nom', params[:classroom_id]), { include_blank: true, label: "Classe" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
+  </div>
+<% end %>
+
+<%= bootstrap_form_tag url: action_pointages_path, method: :post do %>
+  <div id="pointages" class="table-responsive" data-controller="action">
+    <table class="table table-striped">
+      <thead>
+        <th></th>
+        <th>Enfant</th>
+        <th>Type prestation</th>
+        <th>Date pointage</th>
+        <th>Heure pointage</th>
+        <th>Minutes consommées</th>
+        <th>Tranches consommées</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <%= render @pointages %>
+      </tbody>
+    </table>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="input-group">
+          <%= select_tag :action_name, 
+                          options_for_select(["Pointer les arrivées/départs à l'instant T"]), 
+                          include_blank: true, 
+                          class: 'form-control form-control-sm',
+                          data: { 'action-target': 'selector' } %>
+          <div class="input-group-append">
+            <%= submit_tag 'ok',  name: 'action', 
+                                  class: 'btn btn-sm btn-outline-success',
+                                  data: {'action-target': 'button'} %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
