@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_23_083433) do
-
+ActiveRecord::Schema[7.0].define(version: 2023_07_31_120816) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -180,8 +179,8 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
   create_table "facture_messages", force: :cascade do |t|
     t.string "contenu"
     t.boolean "actif"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "organisation_id", null: false
     t.index ["organisation_id"], name: "index_facture_messages_on_organisation_id"
   end
@@ -210,8 +209,8 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.string "to"
     t.string "subject"
     t.string "message_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "organisation_id", null: false
     t.index ["organisation_id"], name: "index_mail_logs_on_organisation_id"
   end
@@ -220,8 +219,12 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.string "email"
     t.string "objet"
     t.text "contenu"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "organisation_id"
+    t.string "facture_slug"
+    t.string "workflow_state"
+    t.index ["workflow_state"], name: "index_messages_on_workflow_state"
   end
 
   create_table "organisations", force: :cascade do |t|
@@ -258,6 +261,11 @@ ActiveRecord::Schema.define(version: 2023_01_23_083433) do
     t.string "nom", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "forfaitaire", default: true
+    t.integer "duree_tranche", default: 0
+    t.string "debut"
+    t.string "fin"
+    t.boolean "pointage_arrivee", default: true, null: false
     t.index ["organisation_id"], name: "index_prestation_types_on_organisation_id"
   end
 
