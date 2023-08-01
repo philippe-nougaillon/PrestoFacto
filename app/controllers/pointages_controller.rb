@@ -79,10 +79,10 @@ class PointagesController < ApplicationController
     pointages_count = pointages.count
 
     case params[:action_name]
-    when "Pointer"
-      pointages.each do | p | 
-        p.heure_pointage = Time.zone.now + 2.hour
-        p.save
+    when "Pointer les arrivées/départs à l'instant T"
+      pointages.each do | pointage | 
+        pointage.heure_pointage = DateTime.now + 2.hour
+        pointage.save
       end
       flash[:notice] = "#{pointages_count} pointages.s réalisé.s" 
       redirect_to pointages_url

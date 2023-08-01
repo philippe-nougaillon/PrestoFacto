@@ -80,6 +80,11 @@
       Si vous avez plusieurs tarifs, ajoutez autant de Type de Tarifs et de Tarifs que nécessaire.
       <br><br>
 
+      Pour facturer des prestations non forfaitaires (ex: garderie facturée au temps passé, par tranche de X minutes), il suffit de décocher la case "forfaitaire ?" et de saisir les paramètres suivants : "Heure de début de la période (ex: 07:30)", "Heure de fin de la période (ex: 09:00)", "Durée de la tranche de facturation (en minutes) : (ex: 15min)".
+      <br>
+      Pour pointer une heure d'arrivée, cochez "Pointage", sinon, le pointage correspondra à l'heure de départ.
+      <br><br>
+
       Maintenant que l'organisation et les prestations fournies sont correctement paramétrées, nous pouvons ajouter Familles, 
       Enfants et Réservations.
     </p>
@@ -334,6 +339,19 @@
   </div>
 
   <div class="pb-1 mt-2 mb-1 border-bottom">
+    <h4 class="text-secondary fw-bold">
+      <%= fa_icon 'calendar-check', class: 'text-success' %>
+      Pointage
+    </h4>
+  </div>
+  <p>
+    Pour les prestations de type non forfaitaire (ex: garderie facturée au temps passé), il est important de savoir les heures d'arrivées et de départs des enfants.
+    Cette liste présente l'ensemble des prestations devant être pointées pour pouvoir être facturées.
+    Pour pointer une prestation, cliquez sur le bouton modifier, et saisissez la date d'arrivée ou de départ, puis enregistrer.
+    Pour pointer rapidement un ensemble de prestations à l'instant T, cochez la case à gauche des prestations,et choisissez l'action "Pointer les arrivées/départs à l'instant T".
+  </p>
+
+  <div class="pb-1 mt-5 mb-1 border-bottom">
     <h4 class="text-secondary fw-bold">
       <%= fa_icon 'calendar-alt', class: 'text-warning' %>
       Réservations

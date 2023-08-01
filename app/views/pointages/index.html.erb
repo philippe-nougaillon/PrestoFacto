@@ -1,7 +1,7 @@
 <div class="pb-2 mt-4 mb-2 border-bottom">
   <h2 class="fw-light d-inline">
     <%= fa_icon 'calendar-check', class: "text-success" %> 
-    Pointage
+    Pointages
     <% unless params[:date].blank? %>
       du <%= l params[:date].to_date %>
     <% end %>
@@ -41,7 +41,7 @@
       <div class="col-sm-4">
         <div class="input-group">
           <%= select_tag :action_name, 
-                          options_for_select(["Pointer"]), 
+                          options_for_select(["Pointer les arrivées/départs à l'instant T"]), 
                           include_blank: true, 
                           class: 'form-control form-control-sm',
                           data: { 'action-target': 'selector' } %>
