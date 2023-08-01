@@ -1,6 +1,15 @@
+<div class="pb-2 mt-4 mb-5 border-bottom">
+  <h2 class="fw-light d-inline"><%= fa_icon 'envelope-open', class: 'text-primary' %> Message de <%= @message.email %></h2>
+</div>
+
 <p>
-  <strong>Email:</strong>
-  <%= @message.email %>
+  <strong>Reçu le:</strong>
+  <%= l @message.created_at %>
+</p>
+
+<p>
+  <strong>Expéditeur:</strong>
+  <%= mail_to @message.email, @message.email, {subject: "Re: Votre message au gestionnaire de la facturation", body: "#{'_' * 50} \r\n #{@message.contenu}"} %>
 </p>
 
 <p>
@@ -9,7 +18,7 @@
 </p>
 
 <p>
-  <strong>Contenu:</strong>
+  <strong>Message:</strong>
   <%= @message.contenu %>
 </p>
 
@@ -18,10 +27,15 @@
   <span class="badge text-bg-<%= @message.style %>"><%= @message.workflow_state.humanize %></span>
 </p>
 
-  <% if true %>
-    <%= render partial: 'partials/wf_button', locals: { state: 'traité', transition: 'traiter', label: 'traiter' } %>
-    <%= render partial: 'partials/wf_button', locals: { state: 'archivé', transition: 'archiver', label: 'archiver' } %>
-  <% end %>
+<p>
+  <strong>MàJ:</strong>
+  <%= l @message.updated_at %>
+</p>
+
+<% if @message.can_traiter? || @message.can_archiver? %>
+  <%= render partial: 'partials/wf_button', locals: { state: 'traité', transition: 'traiter', label: 'traiter' } %>
+  <%= render partial: 'partials/wf_button', locals: { state: 'archivé', transition: 'archiver', label: 'archiver' } %>
+<% end %>
 
 <br>
 

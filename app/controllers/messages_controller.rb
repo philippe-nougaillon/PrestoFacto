@@ -14,9 +14,16 @@ class MessagesController < ApplicationController
       @messages = current_user.organisation.messages.ordered
     end
 
+    unless params[:search].blank?
+      s = "%#{params[:search].upcase}%"
+      @messages = @messages.where('messages.email ILIKE :search OR messages.objet ILIKE :search OR messages.contenu ILIKE :search', {search: s})
+    end
+
     unless params[:state].blank?
       @messages = @messages.where("messages.workflow_state = ?", params[:state].to_s.downcase)
     end
+
+    @messages = @messages.page(params[:page])
   end
 
   # GET /messages/1 or /messages/1.json
@@ -50,9 +57,9 @@ class MessagesController < ApplicationController
       respond_to do |format|
         if @message.save
           if @message.organisation_id
-            MessageMailer.with(message: @message).notification_organisation.deliver_later
+            MessageMailer.with(message: @message).notification_organisation.deliver_now
           else
-            MessageMailer.with(message: @message).notification_dev.deliver_later
+            MessageMailer.with(message: @message).notification_dev.deliver_now
           end
 
           format.html { redirect_to new_message_path, notice: "Votre message a bien été pris en compte." }
