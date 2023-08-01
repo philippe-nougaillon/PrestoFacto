@@ -34,6 +34,8 @@ fr:
         resend_confirmation_instructions: Renvoyer les instructions de confirmation
       send_instructions: Vous allez recevoir sous quelques minutes un courriel comportant des instructions pour confirmer votre compte.
       send_paranoid_instructions: Si votre courriel existe sur notre base de données, vous recevrez sous quelques minutes un message avec des instructions pour confirmer votre compte.
+      show:
+        title: Renvoyer les instructions de confirmation
     failure:
       already_authenticated: Vous êtes déjà connecté(e).
       inactive: Votre compte n’est pas encore activé.
