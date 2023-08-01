@@ -47,7 +47,12 @@ Rails.application.routes.draw do
   end
   resources :paiements
   resources :facture_messages
-  resources :messages
+  resources :messages do
+    member do
+      get :traiter
+      get :archiver
+    end
+  end
   resources :vacances
   resources :mail_logs, only: %i[ index show ]
   resources :pointages, only: %i[ index edit update ] do
