@@ -23,7 +23,8 @@ class Facture < ApplicationRecord
 
   # self.per_page = 10
 
-  AJOUTEE   = 'ajoutée'
+#  AJOUTEE   = 'ajoutée'
+  NOUVELLE  = 'nouvelle'
   VERIFIEE  = 'vérifiée'
   ENVOYEE   = 'envoyée'
   RELANCE1  = 'relance1'
@@ -34,7 +35,11 @@ class Facture < ApplicationRecord
   IMPUTEE   = 'imputée'
 
   workflow do
-    state AJOUTEE, meta: { style: 'bg-info' } do
+    # state AJOUTEE, meta: { style: 'bg-info' } do
+    #   event :vérifier, transitions_to: VERIFIEE
+    # end
+
+    state NOUVELLE, meta: { style: 'bg-info' } do
       event :vérifier, transitions_to: VERIFIEE
     end
 
@@ -74,9 +79,9 @@ class Facture < ApplicationRecord
 
     state IMPUTEE, meta: { style: 'bg-dark' }
 
-    after_transition do |from, to, triggering_event, *event_args|
-      logger.debug "[WORKFLOW] #{from} -> #{to} #{triggering_event}"
-    end
+    # after_transition do |from, to, triggering_event, *event_args|
+    #   logger.debug "[WORKFLOW] #{from} -> #{to} #{triggering_event}"
+    # end
   end
 
   # pour que le changement se voit dans l'audit trail

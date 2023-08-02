@@ -56,7 +56,7 @@ class FacturesController < ApplicationController
 
     case params[:action_name]
     when "Passer à l'état 'vérifiée'"
-      factures = factures.with_ajoutée_state.each do | f | 
+      factures = factures.with_nouvelle_state.each do | f | 
         f.vérifier!
       end
       flash[:notice] = "#{factures.count} facture.s modifiée.s"  
@@ -71,7 +71,7 @@ class FacturesController < ApplicationController
         f.update(envoyée_le: DateTime.now)
         f.envoyer!
       end
-      flash[:notice] = "#{factures.count} facture.s envoyée.s. Consultez l'état des envoies dans 'Administation/Mail Logs'"  
+      flash[:notice] = "#{factures.count} facture(s) envoyée(s) Consultez l'état des envois dans 'Administation/Mail Logs'"  
     end
 
     redirect_to factures_url

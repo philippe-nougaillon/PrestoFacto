@@ -1,15 +1,22 @@
 <div class="min-vh-100 row flex-lg-row align-items-center justify-content-center">
   <div class="col-lg-7">
-    <h1 class="display-2 lh-1 mb-3">PrestoFacto</h1>
+    <h1 class="display-3 lh-1 mb-3">PrestoFacto</h1>
     <h2 class="display-7 mb-3">Facturation de vos services journaliers<h2>
     <h3 class="display-8 fw-lighter">Aide les petites organisations dans la gestion et la facturation de leurs prestations (repas, garderie, activités périscolaires, nuitée d'hébergement, colonie de vacances, etc...)</h3>
     <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-5">
-      <%= link_to "En savoir plus", "#a_propos" , class: 'btn btn-outline-secondary btn-lg px-4 me-md-2' %>
-      <%= link_to "S'inscrire", new_user_registration_path, class: 'btn btn-primary btn-lg px-4' %>
+      <%= link_to "En savoir plus", "#a_propos" , class: 'btn btn-primary btn-lg px-4 me-md-2' %>
+      <%= link_to guide_path, class: 'btn btn-outline-secondary btn-lg px-4 me-md-2' do %>
+        <i class="fas fa-book-open"></i>
+        Guide d'utilisation 
+      <% end %>
+      <%= link_to new_user_registration_path, class: 'btn btn-outline-secondary btn-lg px-4' do %>
+        <i class="fas fa-user-plus"></i>
+        S'inscrire
+      <% end %>
     </div>
   </div>
   <div class="col-12 col-lg-5">
-    <%= image_tag("undraw_Online_payments_re_y8f2.png", class: 'd-block mx-lg-auto img-fluid opacity-75', alt: "Logo de #{ @site_name }", width: 700, height: 500, loading: 'lazy') %>
+    <%= image_tag "undraw_Mobile_payments_re_7udl.png", class: 'd-block mx-lg-auto img-fluid opacity-50 shadow-sm rounded-circle', alt: "Logo de #{ @site_name }", width: 700, height: 500, loading: 'lazy' %>
   </div>
 </div>
 
@@ -106,7 +113,7 @@
       </thead>
       <tbody>
         <tr>
-          <td scope="row" class="text-start">Utilisation libre et illimitée</td>
+          <td scope="row" class="text-start">Utilisation libre (limitée à 1000 factures)</td>
           <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
           <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
           <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
@@ -169,7 +176,7 @@
         <div class="card-body">
           <h1 class="card-title pricing-card-title text-center">Gratuit</h1>
           <ul class="list-unstyled mt-3 mb-4">
-            <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Utilisation libre et limitée à 1000 factures</li>
+            <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Utilisation libre (limitée à 1000 factures)</li>
             <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Sauvegarde automatique journalière</li>
             <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Support par email</li>
             <li><%= fa_icon 'times-circle', class: 'text-danger me-2' %>Pas de sous-domaine personnalisé</li>
