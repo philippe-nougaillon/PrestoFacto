@@ -14,26 +14,26 @@ module ApplicationHelper
                 url_for(request.parameters.merge(column: column, direction: direction))
     end
 
-    def navbar_item(action_name, path, label = nil)
-        is_active = params[:action] == action_name
-        render(inline: %{
-            <li class="nav-item">
-                <%= link_to '#{ url_for(path) }', 
-                            class: "nav-link text-#{ is_active ? 'dark active text-decoration-underline text-underline-offset-4' : 'secondary' }", style: "text-underline-offset: 5px;" do %>
-                    #{ label ? label : action_name.humanize }
-                <% end %>
-            </li>
-        })
-    end
+    # def navbar_item(action_name, path, label = nil)
+    #     is_active = params[:action] == action_name
+    #     render(inline: %{
+    #         <li class="nav-item">
+    #             <%= link_to '#{ url_for(path) }', 
+    #                         class: "nav-link text-#{ is_active ? 'dark active text-decoration-underline text-underline-offset-4' : 'secondary' }", style: "text-underline-offset: 5px;" do %>
+    #                 #{ label ? label : action_name.humanize }
+    #             <% end %>
+    #         </li>
+    #     })
+    # end
 
     def navbar_nav_item(controller_name, icon, icon_color, path, label = nil, data_turbo = true)
 
-        is_active = params[:controller] == controller_name
+        is_active = (params[:controller] == controller_name || params[:action] == controller_name)
 
         render(inline: %{
-            <li class="nav-item" #{ "data-turbo='false'" unless data_turbo } >
+            <li class="nav-item #{ 'active' if is_active }" #{ "data-turbo='false'" unless data_turbo } >
                 <%= link_to '#{ url_for(path) }', 
-                            class: "nav-link text-#{ is_active ? 'dark active text-decoration-underline text-underline-offset-4' : 'secondary' }", style: "text-underline-offset: 5px;" do %>
+                            class: "nav-link" do %>
                     <%= fa_icon '#{ icon }', class: "me-1 text-#{ icon_color }" %>#{ label ? label : controller_name.humanize }
                 <% end %>
             </li>

@@ -23,10 +23,10 @@
             <%= navbar_nav_item('paiements', 'money-bill-alt', 'success', paiements_path) %>
           <% end %>
         <% else %>
-          <%= navbar_item('accueil', root_path) %>
-          <%= navbar_item('actualites', actualites_path, 'Actualités') %>
-          <%= navbar_item('guide', guide_path) %>
-          <%= navbar_nav_item('messages', 'comments', 'secondary', new_message_path, 'Contact', false) %>
+          <%= navbar_nav_item('accueil', 'home', '', root_path) %>
+          <%= navbar_nav_item('actualites', 'comment', '', actualites_path, 'Blog') %>
+          <%= navbar_nav_item('guide', 'book', '', guide_path) %>
+          <%= navbar_nav_item('messages', 'comments', '', new_message_path, 'Contact', false) %>
         <% end %>
       </ul>
       <div class="d-flex">

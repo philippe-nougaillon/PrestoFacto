@@ -14,3 +14,53 @@
  *= require_self
  */
 @import "bootstrap";
+
+nav.navbar ul li.nav-item {
+  *{
+    color: #222;
+  }
+  a, a:after, a:before {
+    transition: all .5s;
+  }
+  a{
+  position: relative;
+  }
+  a:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 0%;
+    content: '.';
+    color: transparent;
+    background: #aaa;
+    height: 1px;
+  }
+  a:hover:after {
+    width: 100%;
+  }
+  &:hover{
+    *{
+      color: #555;
+    }
+  }
+  &.active{
+    *{
+      // Ça ne change pas la couleur des logo fontawesome dans le back parce qu'ils ont une classe 'text-...' (c'est voulu)
+      color: #555;
+    }
+    a:after{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: 100%;
+      content: '.';
+      color: transparent;
+      background: #aaa;
+      height: 1px;
+    }
+  }
+}
