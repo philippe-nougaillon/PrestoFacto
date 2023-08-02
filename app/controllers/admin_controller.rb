@@ -286,7 +286,7 @@ class AdminController < ApplicationController
         end
       end
       puts "Total factures envoyées = #{envoyées}"
-      puts "Consultez l'état des envoies dans 'Administation/Mail Logs'"
+      puts "Consultez l'état des envois dans 'Administation/Mail Logs'"
     end
   end
 
