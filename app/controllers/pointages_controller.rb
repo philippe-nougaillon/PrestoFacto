@@ -2,6 +2,8 @@ class PointagesController < ApplicationController
   before_action :set_pointage, only: %i[ show edit update destroy ]
   before_action :is_user_authorized
 
+  helper_method :sort_column, :sort_direction
+
   # GET /pointages or /pointages.json
   def index
     params[:date] ||= Date.today
@@ -20,6 +22,9 @@ class PointagesController < ApplicationController
     unless params[:classroom_id].blank?
       @pointages = @pointages.joins(:enfant).where(enfants: {classroom_id: params[:classroom_id]})
     end
+
+    # Appliquer le tri
+    @pointages = @pointages.joins(:enfant).joins(:prestation_type).reorder(Arel.sql("#{sort_column} #{sort_direction}"))
   end
 
   # GET /pointages/1 or /pointages/1.json
@@ -102,5 +107,17 @@ class PointagesController < ApplicationController
 
     def is_user_authorized
       authorize Pointage
+    end
+
+    def sortable_columns
+      %w{enfants.nom prestation_types.nom pointages.date_pointage pointages.heure_pointage pointages.updated_at}
+    end
+  
+    def sort_column
+      sortable_columns.include?(params[:column]) ? params[:column] : 'enfants.id'
+    end
+  
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
     end
 end

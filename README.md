@@ -120,4 +120,4 @@ Le compte 'Visiteur' est utilisé donner l'accès au portail Familles/Comptes.
 
 Le compte de type 'Normal' peut accéder à toutes les données mais sans pouvoir les modifier, au contraire de l'Administrateur qui a tous les droits.
 
-Pour en savoir plus, veuillez consulter [le guide d'utilisation](https://www.prestofacto.fr/guide/utilisation)
+## Pour en savoir plus, veuillez consulter [le guide d'utilisation](https://www.prestofacto.fr/guide).
