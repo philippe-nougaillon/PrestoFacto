@@ -24,13 +24,13 @@
     <table class="table table-striped">
       <thead>
         <th></th>
-        <th>Enfant</th>
-        <th>Type prestation</th>
-        <th>Date pointage</th>
-        <th>Heure pointage</th>
-        <th>Minutes consommées</th>
-        <th>Tranches consommées</th>
-        <th>MàJ</th>
+        <th><%= sort_link 'enfants.nom', 'Enfant' %></th>
+        <th><%= sort_link 'prestation_types.nom', 'Type prestation' %></th>
+        <th><%= sort_link 'pointages.date_pointage', 'Date pointage' %></th>
+        <th><%= sort_link 'pointages.heure_pointage', 'Heure pointage' %></th>
+        <th><a class="btn btn-sm" style="cursor: not-allowed;">Minutes consommées</a></th>
+        <th><a class="btn btn-sm" style="cursor: not-allowed;">Tranches consommées</a></th>
+        <th><%= sort_link 'pointages.updated_at', 'MàJ' %></th>
         <th></th>
       </thead>
       <tbody>
