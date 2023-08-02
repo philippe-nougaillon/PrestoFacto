@@ -30,9 +30,11 @@
       <%= form.text_area :mémo, rows: 4 %>
     </div>
 
-    <div class="col">
-      <%= form.number_field :montant, step: :any, label: 'Total', disabled: true %>
-    </div>
+    <% unless facture.new_record? %>
+      <div class="col-3">
+        <%= form.number_field :montant, step: :any, label: 'Total', disabled: true %>
+      </div>
+    <% end %>
   </div>
 
   <h4 class="title is-3 mt-4 p-2">Prestations</h4>
