@@ -3,13 +3,13 @@
 </div>
 
 <p>
-  <h4>Permet l'envoi par email des factures vérifiées</h4>
+  <h4>Permet l'envoi automatique, par email, de toutes les factures en état 'vérifiée'.</h4>
   <small>L'adresse du destinataire est celle du premier contact du compte.</small>
 </p>
 <br />
 
 <%= bootstrap_form_with(url: "envoyer_factures_do", method: :post, local: true) do |form| %>
-  <%= form.check_box :envoyer, {custom: :switch, label: "Envoyer les emails ? (non: visualisation seulement, ne fait rien de définitif :)"} %>  
+  <%= form.check_box :envoyer, {custom: :switch, label: "Envoyer les emails ? (Décoché = Visualisation seulement. Ne fait rien de définitif :)"} %>  
   <br /><br />
   <%= form.submit "Lancer", class: "btn btn-outline-success", 'data-turbo': false %>
 <% end %>

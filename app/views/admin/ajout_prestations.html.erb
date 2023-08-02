@@ -17,7 +17,7 @@
       <%= form.date_field :date %>
     </div>
     <br>
-    <%= form.check_box :enregistrer, {custom: :switch, label: "Enregistrer les changements ? (non: visualisation seulement, ne fait rien de définitif :)"} %>  
+    <%= form.check_box :enregistrer, {custom: :switch, label: "Enregistrer les changements ? (Décoché = Visualisation seulement. Ne fait rien de définitif :)"} %>  
     <br /><br />
     <%= form.submit "Lancer", class: "btn btn-outline-success", 'data-turbo': false %>
 <% end %>
