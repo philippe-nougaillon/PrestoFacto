@@ -2,17 +2,29 @@
   <div class="row mb-3 gap-3">
     <div class="col gap-3 shadow-sm p-2">
       <%= link_to moncompte_enfants_path, data: { turbo_frame: "main_frame" }, class:'text-decoration-none text-muted' do %>
-        <div class="col d-flex align-items-center gap-2">
-          <%= fa_icon 'child', class: 'text-primary', size: '2x' %>
-          <p class="mb-0"><%= "Enfant".pluralize(@enfants_count) %> (<%= @enfants_count %>)</p>
+        <div class="col container gap-2">
+          <div class="row">
+            <div class="col px-0 text-center">
+              <%= fa_icon 'child', class: 'text-primary', size: '2x' %>
+            </div>
+            <div class="col-9 px-0 my-auto">
+              <p class="mb-0"><%= "Enfant".pluralize(@enfants_count) %> (<%= @enfants_count %>)</p>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
     <div class="col gap-3 shadow-sm p-2">
       <%= link_to moncompte_contacts_path, data: { turbo_frame: "main_frame" }, class:'text-decoration-none text-muted' do %>
-        <div class="col d-flex align-items-center gap-2">
-          <%= fa_icon 'phone', class: 'text-success', size: '2x' %>
-          <p class="mb-0"><%= "Contact".pluralize(@contacts_count) %> (<%= @contacts_count %>)</p>
+        <div class="col container gap-2">
+          <div class="row">
+            <div class="col px-0 text-center">
+              <%= fa_icon 'phone', class: 'text-success', size: '2x' %>
+            </div>
+            <div class="col-9 px-0 my-auto">
+              <p class="mb-0 flex-fill"><%= "Contact".pluralize(@contacts_count) %> (<%= @contacts_count %>)</p>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
@@ -20,42 +32,65 @@
   <div class="row mb-3 gap-3">
     <div class="col gap-3 shadow-sm p-2">
       <%= link_to moncompte_reservations_path, data: { turbo_frame: "main_frame" }, class:'text-decoration-none text-muted' do %>
-        <div class="col d-flex align-items-center gap-2">
-          <%= fa_icon 'calendar-alt', class: 'text-warning', size: '2x' %>
-          <p class="mb-0">Réservations</p>
+        <div class="col container gap-2">
+          <div class="row">
+            <div class="col px-0 text-center">
+              <%= fa_icon 'calendar-alt', class: 'text-warning', size: '2x' %>
+            </div>
+            <div class="col-9 px-0 my-auto">
+              <p class="mb-0">Réservations</p>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
     <div class="col gap-3 shadow-sm p-2">
-      <%= link_to moncompte_absences_path, data: { turbo_frame: "main_frame" }, class:'text-decoration-none text-muted' do %>
-        <div class="col d-flex align-items-center gap-2">
-          <%= fa_icon 'calendar-times', class: 'text-danger', size: '2x' %>
-          <p class="mb-0"><%= "Absence".pluralize(@absences_count) %> (<%= @absences_count %>)</p>
+      <div class="col container gap-2">
+        <%= link_to moncompte_absences_path, data: { turbo_frame: "main_frame" }, class:'text-decoration-none text-muted' do %>
+          <div class="row">
+            <div class="col px-0 text-center">
+              <%= fa_icon 'calendar-times', class: 'text-danger', size: '2x' %>
+            </div>
+            <div class="col-9 px-0 my-auto">
+              <p class="mb-0"><%= "Absence".pluralize(@absences_count) %> (<%= @absences_count %>)</p>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>
   </div>
-  <div class="row">
+  <div class="row mb-3 gap-3">
     <div class="col gap-3 shadow-sm p-2">
-      <%= link_to moncompte_factures_path, data: { turbo_frame: "main_frame" }, class:'text-decoration-none text-muted' do %>
-        <div class="col d-flex align-items-center gap-2">
-          <%= fa_icon 'file-invoice', class: 'text-info', size: '2x' %>
-          <p class="mb-0"><%= "Facture".pluralize(@factures_count) %> (<%= @factures_count %>)</p>
-        </div>
-      <% end %>
+      <div class="col container gap-2">
+        <%= link_to moncompte_factures_path, data: { turbo_frame: "main_frame" }, class:'text-decoration-none text-muted' do %>
+          <div class="row">
+            <div class="col px-0 text-center">
+              <%= fa_icon 'file-invoice', class: 'text-info', size: '2x' %>
+            </div>
+            <div class="col-9 px-0 my-auto">
+              <p class="mb-0"><%= "Facture".pluralize(@factures_count) %> (<%= @factures_count %>)</p>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
     <div class="col gap-3 shadow-sm p-2">
-      <%= link_to moncompte_releve_compte_path, data: { turbo_frame: "main_frame" }, class:'text-decoration-none text-muted' do %>
-        <div class="col d-flex align-items-center gap-2">
-          <%= fa_icon 'euro-sign', class:'text-muted', size: '2x' %>
-          <p class="mb-0 mt-1 text-center">
-            Solde :
-            <span class="<%= 'text-danger' if @solde.negative? %>">
-              <%= number_to_currency(@solde, unit: '€', precision: 2, format: "%n %u") %>
-            </span>
-          </p>
-        </div>
-      <% end %>
+      <div class="col container gap-2">
+        <%= link_to moncompte_releve_compte_path, data: { turbo_frame: "main_frame" }, class:'text-decoration-none text-muted' do %>
+          <div class="row">
+            <div class="col px-0 text-center">
+              <%= fa_icon 'euro-sign', class:'text-muted', size: '2x' %>
+            </div>
+            <div class="col-9 px-0 my-auto">
+              <p class="mb-0">
+                <span class="<%= 'text-danger' if @solde.negative? %>">
+                  <%= number_to_currency(@solde, unit: '€', precision: 2, format: "%n %u") %>
+                </span>
+              </p>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
