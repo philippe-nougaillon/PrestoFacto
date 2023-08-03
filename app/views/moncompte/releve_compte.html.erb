@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "main_frame" do %>
+  <section class="mt-4">
+    <h4>Relevé de compte</h4>
+
+    <% @releve.each do |ligne| %>
+      <%= render partial: 'balance', locals: {ligne: ligne} %>
+    <% end %>
+  </section>
+<% end %>

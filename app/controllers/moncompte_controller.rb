@@ -20,4 +20,29 @@ class MoncompteController < ApplicationController
     @total_sp = 0
   end
 
+  def releve_compte
+    @compte = Contact.find_by(email: current_user.email).compte
+    @releve = @compte.balance
+  end
+
+  def factures
+    @compte = Contact.find_by(email: current_user.email).compte
+    @factures_count = @compte.factures.count
+  end
+
+  def absences
+    @compte = Contact.find_by(email: current_user.email).compte
+    @absences_count = @compte.absences.count
+  end
+
+  def enfants
+    @compte = Contact.find_by(email: current_user.email).compte
+    @enfants = @compte.enfants
+  end
+
+  def reservations
+    @compte = Contact.find_by(email: current_user.email).compte
+    @réservations_count = @compte.reservations.count
+  end
+
 end

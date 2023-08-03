@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "main_frame" do %>
+  <section class="mt-4">
+    <h4>Mes enfants</h4>
+
+    <% @enfants.each do |enfant| %>
+      <%= render partial: 'enfant', locals: {enfant: enfant} %>
+    <% end %>
+  </section>
+<% end %>

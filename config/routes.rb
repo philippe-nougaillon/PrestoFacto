@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   end
   
   get 'moncompte/index'
+  get 'moncompte/releve_compte'
+  get 'moncompte/factures'
+  get 'moncompte/absences'
+  get 'moncompte/enfants'
+  get 'moncompte/reservations'
 
   resources :factures do
     collection do

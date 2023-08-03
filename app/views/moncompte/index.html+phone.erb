@@ -1,41 +1,47 @@
 <div class="container">
   <div class="row mb-3 gap-3">
     <div class="col d-flex align-items-center gap-3 shadow-sm p-3">
-      <%= fa_icon 'child', class: 'text-primary', size: '2x' %>
-      <p class="mb-0"><%= pluralize(@enfants_count, "Enfant", plural: 'Enfants') %></p>
+      <%= link_to moncompte_enfants_path, data: { turbo_frame: "main_frame" } do %>
+        <%= fa_icon 'child', class: 'text-primary', size: '2x' %>
+        <p class="mb-0"><%= "Enfant".pluralize(@enfants_count) %> (<%= @enfants_count %>)</p>
+      <% end %>
     </div>
     <div class="col d-flex align-items-center gap-3 shadow-sm p-3">
-      <%= fa_icon 'calendar-alt', class: 'text-warning', size: '2x' %>
-      <p class="mb-0">Réservations</p>
+      <%= link_to moncompte_reservations_path, data: { turbo_frame: "main_frame" } do %>
+        <%= fa_icon 'calendar-alt', class: 'text-warning', size: '2x' %>
+        <p class="mb-0">Réservations</p>
+      <% end %>
     </div>
   </div>
   <div class="row mb-3 gap-3">
     <div class="col d-flex align-items-center gap-3 shadow-sm p-3">
-      <%= fa_icon 'calendar-times', class: 'text-danger', size: '2x' %>
-      <p class="mb-0"><%= pluralize(@absences_count, "Absence", plural: 'Absences') %></p>
+      <%= link_to moncompte_absences_path, data: { turbo_frame: "main_frame" } do %>
+        <%= fa_icon 'calendar-times', class: 'text-danger', size: '2x' %>
+        <p class="mb-0"><%= "Absence".pluralize(@absences_count) %> (<%= @absences_count %>)</p>
+      <% end %>
     </div>
     <div class="col d-flex align-items-center gap-3 shadow-sm p-3">
-      <%= fa_icon 'file-invoice', class: 'text-info', size: '2x' %>
-      <p class="mb-0"><%= pluralize(@factures_count, "Facture", plural: 'Factures') %></p>
+      <%= link_to moncompte_factures_path, data: { turbo_frame: "main_frame" } do %>
+        <%= fa_icon 'file-invoice', class: 'text-info', size: '2x' %>
+        <p class="mb-0"><%= "Facture".pluralize(@factures_count) %> (<%= @factures_count %>)</p>
+      <% end %>
     </div>
   </div>
   <div class="row">
     <div class="col d-flex align-items-center gap-3 shadow-sm p-3">
-      <%= fa_icon 'balance-scale', size: '2x' %>
-      <p class="mb-0">
-        Votre solde :
-        <span class="<%= 'text-danger' if @solde.negative? %>">
-          <%= number_to_currency(@solde, unit: '€', precision: 2, format: "%n %u") %>
-        </span>
-      </p>
+      <%= link_to moncompte_releve_compte_path, data: { turbo_frame: "main_frame" } do %>
+        <%= fa_icon 'balance-scale', class:'text-muted', size: '2x' %>
+        <p class="mb-0">
+          Votre solde :
+          <span class="<%= 'text-danger' if @solde.negative? %>">
+            <%= number_to_currency(@solde, unit: '€', precision: 2, format: "%n %u") %>
+          </span>
+        </p>
+      <% end %>
     </div>
   </div>
 </div>
 
-<section class="mt-4">
-  <h4>Relevé de compte</h4>
-
-  <% @releve.each do |ligne| %>
-    <%= render partial: 'comptes/balance', locals: {ligne: ligne} %>
-  <% end %>
-</section>
+<%= turbo_frame_tag "main_frame" do %>
+  <p class="fs-1 text-center mt-5">Bienvenue</p>
+<% end %>
