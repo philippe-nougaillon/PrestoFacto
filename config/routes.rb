@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'moncompte/absences'
   get 'moncompte/enfants'
   get 'moncompte/reservations'
+  get 'moncompte/contacts'
 
   resources :factures do
     collection do

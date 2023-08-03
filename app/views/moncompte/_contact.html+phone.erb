@@ -1,0 +1,14 @@
+<div class="container gap-2">
+  <div class="row">
+    <%= contact.nom %>
+    <%= contact.email %>
+  </div>
+  <div class="row">
+    <%= contact.fixe %>
+    <%= contact.portable %>
+  </div>
+  <div class="row">
+    <%= "À prévenir en cas d'urgence" if contact.prevenir %>
+  </div>
+</div>
+<hr>

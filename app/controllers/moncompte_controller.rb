@@ -15,6 +15,7 @@ class MoncompteController < ApplicationController
     @réservations_count = @compte.reservations.count
     @factures_count = @compte.factures.count
     @absences_count = @compte.absences.count
+    @contacts_count = @compte.contacts.count
 
     @total_alg = 0
     @total_sp = 0
@@ -27,22 +28,27 @@ class MoncompteController < ApplicationController
 
   def factures
     @compte = Contact.find_by(email: current_user.email).compte
-    @factures_count = @compte.factures.count
+    @factures = @compte.factures
   end
 
   def absences
     @compte = Contact.find_by(email: current_user.email).compte
-    @absences_count = @compte.absences.count
+    @absences = @compte.absences
   end
 
   def enfants
     @compte = Contact.find_by(email: current_user.email).compte
     @enfants = @compte.enfants
   end
-
+  
   def reservations
     @compte = Contact.find_by(email: current_user.email).compte
-    @réservations_count = @compte.reservations.count
+    @enfants = @compte.enfants
+  end
+
+  def contacts
+    @compte = Contact.find_by(email: current_user.email).compte
+    @contacts = @compte.contacts
   end
 
 end
