@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row mb-3 gap-3">
+    <div class="col d-flex align-items-center gap-3 shadow-sm p-3">
+      <%= fa_icon 'child', class: 'text-primary', size: '2x' %>
+      <p class="mb-0"><%= pluralize(@enfants_count, "Enfant", plural: 'Enfants') %></p>
+    </div>
+    <div class="col d-flex align-items-center gap-3 shadow-sm p-3">
+      <%= fa_icon 'calendar-alt', class: 'text-warning', size: '2x' %>
+      <p class="mb-0">Réservations</p>
+    </div>
+  </div>
+  <div class="row mb-3 gap-3">
+    <div class="col d-flex align-items-center gap-3 shadow-sm p-3">
+      <%= fa_icon 'calendar-times', class: 'text-danger', size: '2x' %>
+      <p class="mb-0"><%= pluralize(@absences_count, "Absence", plural: 'Absences') %></p>
+    </div>
+    <div class="col d-flex align-items-center gap-3 shadow-sm p-3">
+      <%= fa_icon 'file-invoice', class: 'text-info', size: '2x' %>
+      <p class="mb-0"><%= pluralize(@factures_count, "Facture", plural: 'Factures') %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col d-flex align-items-center gap-3 shadow-sm p-3">
+      <%= fa_icon 'balance-scale', size: '2x' %>
+      <p class="mb-0">
+        Votre solde :
+        <span class="<%= 'text-danger' if @solde.negative? %>">
+          <%= number_to_currency(@solde, unit: '€', precision: 2, format: "%n %u") %>
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<section class="mt-4">
+  <h4>Relevé de compte</h4>
+
+  <% @releve.each do |ligne| %>
+    <%= render partial: 'comptes/balance', locals: {ligne: ligne} %>
+  <% end %>
+</section>

@@ -1,0 +1,13 @@
+<div class="container gap-2">
+    <div class="row">
+        <div class="col-3"><%= l ligne[:date], format: :short %></div>
+        <% if ligne[:type] == "Facture" %>
+            <div class="col">Facture <%= ligne[:ref] %></div>
+            <div class="col-3 text-end">-<%= number_to_currency(ligne[:mnt], unit:'€') %></div>
+        <% else %>
+            <div class="col"><%= ligne[:ref] %></div>
+            <div class="col-3 text-end"><%= number_to_currency(ligne[:mnt], unit:'€') %></div>
+        <% end %>
+    </div>
+</div>
+<hr>

@@ -11,6 +11,11 @@ class MoncompteController < ApplicationController
     @solde = @total_paiements - @total_factures
     @releve = @compte.balance
 
+    @enfants_count = @compte.enfants.count
+    @réservations_count = @compte.reservations.count
+    @factures_count = @compte.factures.count
+    @absences_count = @compte.absences.count
+
     @total_alg = 0
     @total_sp = 0
   end

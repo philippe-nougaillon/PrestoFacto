@@ -15,6 +15,7 @@ class Compte < ApplicationRecord
 
   has_many :prestations, through: :enfants
   has_many :reservations, through: :enfants
+  has_many :absences, through: :enfants
 
   accepts_nested_attributes_for :contacts, reject_if: proc { |attributes| attributes[:nom].blank? }, allow_destroy: true
 
@@ -65,6 +66,10 @@ class Compte < ApplicationRecord
       nom_contact1 fixe1 portable1 email1 prevenir1 mémo_contact1
       nom_contact2 fixe2 portable2 email2 prevenir2 mémo_contact2
       nom_contact3 fixe3 portable3 email3 prevenir3 mémo_contact3 }  
+  end
+
+  def nom_civilité
+    "#{self.civilité} #{self.nom}"
   end
 
 end
