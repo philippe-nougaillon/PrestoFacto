@@ -1,0 +1,14 @@
+<div class="container gap-2">
+  <div class="row">
+    <%= enfant.prénom %>
+    <%= enfant.nom %>
+    (<%= time_ago_in_words(enfant.date_naissance) if enfant.date_naissance %>)
+  </div>
+  <div class="row">
+    <%= enfant.classroom.nom %>
+    <%= "Sans porc" if enfant.menu_sp %>
+    <%= "Allergie" if enfant.menu_all %>
+    <%= enfant.allergenes %>
+  </div>
+</div>
+<hr>

@@ -1,0 +1,8 @@
+<%= turbo_frame_tag "main_frame" do %>
+  <section class="mt-4">
+    <h4>Factures</h4>
+    <% @factures.each do |facture| %>
+      <%= render partial: 'facture', locals: {facture: facture} %>
+    <% end %>
+  </section>
+<% end %>

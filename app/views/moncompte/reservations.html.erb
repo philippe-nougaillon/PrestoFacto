@@ -1,0 +1,14 @@
+<%= turbo_frame_tag "main_frame" do %>
+  <section class="mt-4">
+    <h4>Réservations</h4>
+    <% @enfants.each do |enfant| %>
+      <div class="d-inline fs-5">
+        - <%= enfant.prénom %>
+        <%= enfant.nom %>
+      </div>
+      <% enfant.reservations.each do |reservation| %>
+        <%= render partial: 'reservation', locals: {reservation: reservation} %>
+      <% end %>
+    <% end %>
+  </section>
+<% end %>
