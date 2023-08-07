@@ -312,10 +312,6 @@ GEM
       rails (>= 5.2)
     spreadsheet (1.3.0)
       ruby-ole
-    spring (2.1.1)
-    spring-watcher-listen (2.0.1)
-      listen (>= 2.7, < 4.0)
-      spring (>= 1.2, < 3.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -406,8 +402,6 @@ DEPENDENCIES
   sitemap_generator
   sortable-for-rails (~> 1.2)
   spreadsheet
-  spring
-  spring-watcher-listen (~> 2.0.0)
   sprockets-rails
   stimulus-rails
   turbo-rails
