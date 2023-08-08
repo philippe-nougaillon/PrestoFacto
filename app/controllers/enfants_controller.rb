@@ -178,7 +178,7 @@ class EnfantsController < ApplicationController
             .permit(:compte_id, :classroom_id, :nom, :prénom, :date_naissance, :menu_sp, :menu_all, :allergenes, :tarif_type_id, :badge, :mémo,
                     reservations_attributes: [:id, :enfant_id, :prestation_type_id, :workflow_state,
                                               :début, :fin, 
-                                              :lundi, :mardi, :mercredi, :jeudi, :vendredi, 
+                                              :lundi, :mardi, :mercredi, :jeudi, :vendredi, :samedi, :dimanche,
                                               :matin, :midi, :soir, :hors_période_scolaire, :_destroy])
     end
 

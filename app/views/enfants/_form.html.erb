@@ -36,7 +36,7 @@
     <% end %>
   </template>
 
-  <%= f.fields_for :reservations, layout: :horizontal do |reservation_fields| %>
+  <%= f.fields_for :reservations do |reservation_fields| %>
     <%= render "reservation_form", f: reservation_fields %>
   <% end %>
 

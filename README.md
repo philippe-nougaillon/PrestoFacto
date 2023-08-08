@@ -46,7 +46,7 @@ Les prestations et les tarifs sont entièrement paramétrables et illimités.
 
 ### Réservations
 
-- Une réservation est composée d'un type de prestation, d'une date de début et de fin, d'une quantité par jour de la semaine (lundi au vendredi), de la période (matin/midi/soir)
+- Une réservation est composée d'un type de prestation, d'une date de début et de fin, d'une quantité par jour de la semaine, de la période (matin/midi/soir)
 - Une réservation est en période scolaire ou hors période scolaire
 - Une réservation peut être active ou inactive
 
@@ -104,7 +104,7 @@ Au besoin, une prestation peut être supprimée par l'administrateur afin de ne 
 Les données de compte, contact, enfant, réservation peuvent être importées d'un fichier au format Excel 97-2003 (.xls).
 
 Ce fichier doit contenir les colonnes suivantes :
-structure, nom_compte, civilité, adresse1, adresse2, cp, ville, num_allocataire, mémo_compte, nom_contact, fixe, portable, email, mémo_contact, nom_enfant, prénom, classe, date_naissance, menu_sp, menu_all, tarif_type, badge, prestation_type, début, fin, lundi, mardi, mercredi, jeudi, vendredi, matin, midi, soir, active, hors_période_scolaire
+structure, nom_compte, civilité, adresse1, adresse2, cp, ville, num_allocataire, mémo_compte, nom_contact, fixe, portable, email, mémo_contact, nom_enfant, prénom, classe, date_naissance, menu_sp, menu_all, tarif_type, badge, prestation_type, début, fin, lundi, mardi, mercredi, jeudi, vendredi, samedi, dimanche, matin, midi, soir, active, hors_période_scolaire
 
 Exemple de fichier : [Fichier.xls]("/exemple_fichier_import_xls") 
 
