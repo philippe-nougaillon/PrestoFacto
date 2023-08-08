@@ -1,8 +1,12 @@
 
-<nav class="navbar navbar-expand-lg fixed-top bg-white shadow-sm py-3">
+<nav class="navbar navbar-expand-lg fixed-top bg-white shadow-sm">
   <div class="container-fluid">
     <%= link_to (user_signed_in? ? comptes_path : root_path), class: 'navbar-brand fw-bold' do %>
-      <%= (user_signed_in? && current_user.visiteur?) ? "Mon compte (#{@compte.nom_civilité})" : @site_name %>
+      <% if (user_signed_in? && current_user.visiteur?) %> 
+        Mon compte (<%= @compte.nom_civilité %>)
+      <% else %>
+        <%= image_tag "logo.png", class: "mb-lg-2" %>
+      <% end %>
     <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -24,8 +28,8 @@
           <% end %>
         <% else %>
           <%= navbar_nav_item('accueil', 'home', 'primary', root_path) %>
-          <%= navbar_nav_item('actualites', 'comment', 'success', actualites_path, 'Blog') %>
           <%= navbar_nav_item('guide', 'book', 'info', guide_path) %>
+          <%= navbar_nav_item('actualites', 'comment', 'success', actualites_path, 'Blog') %>
           <%= navbar_nav_item('messages', 'comments', 'warning', new_message_path, 'Contact', false) %>
         <% end %>
       </ul>
@@ -37,7 +41,7 @@
           %>
         <% else %>
           <% if current_user.admin? %>
-            <%= link_to "Administration", 
+            <%= link_to "Admin", 
                 admin_index_path, 
                 class: "btn btn-sm btn-link me-1" 
             %>
@@ -48,7 +52,7 @@
               </p>
             <% end %>    
 
-            <%= link_to "Tableau de bord", 
+            <%= link_to "Stats", 
                 dashboard_path, 
                 class: "btn btn-sm btn-link me-1",
                 'data-turbo': false

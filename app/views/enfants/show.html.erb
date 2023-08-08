@@ -85,6 +85,8 @@
                 <th>Mer</th>
                 <th>Jeu</th>
                 <th>Ven</th>
+                <th>Sam</th>
+                <th>Dim</th>
                 <th>Matin</th>
                 <th>Midi</th>
                 <th>Soir</th>
@@ -105,6 +107,8 @@
                 <td class="text-center"><%= number_with_precision(reservation.mercredi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.mercredi > 0 %></td>
                 <td class="text-center"><%= number_with_precision(reservation.jeudi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.jeudi > 0 %></td>
                 <td class="text-center"><%= number_with_precision(reservation.vendredi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.vendredi > 0 %></td>
+                <td class="text-center"><%= number_with_precision(reservation.samedi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.samedi > 0 %></td>
+                <td class="text-center"><%= number_with_precision(reservation.dimanche, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.dimanche > 0 %></td>
 
                 <td class="text-center"><%= fa_icon 'check' if reservation.matin %></i></td>
                 <td class="text-center"><%= fa_icon 'check' if reservation.midi  %></i></td>

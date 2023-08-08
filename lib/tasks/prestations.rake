@@ -129,6 +129,10 @@ namespace :prestations do
       reservation.jeudi
     when 5
       reservation.vendredi
+    when 6
+      reservation.samedi
+    when 7
+      reservation.dimanche
     else
       0
     end
