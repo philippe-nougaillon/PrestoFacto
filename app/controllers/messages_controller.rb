@@ -39,7 +39,7 @@ class MessagesController < ApplicationController
     if params[:facture_slug]
       @facture = Facture.find_by(slug: params[:facture_slug])
       @message.organisation_id = @facture.organisation.id
-      @message.email = @facture.compte.contacts.where(prevenir: true).first.email
+      @message.email = params[:email]
       @message.facture_slug = params[:facture_slug]
     end
   end

@@ -5,17 +5,15 @@
 <p>
   Bonjour,
   <br><br>
-  Ceci est un message automatique.
-  <br><br>
-  Nous vous informons que votre facture est disponible 
+  Nous vous informons qu'une nouvelle facture est disponible 
   à l'adresse suivante :
-  <br>
+  <br><br>
   <%= link_to facture_url(@facture, format: :pdf) do %>
     <%= facture_url(@facture, format: :pdf) %>
   <% end %>
 
   <br><br>
-  Le total de votre facture est de 
+  Le total de cette facture est de 
   <%= number_to_currency(@facture.montant, unit: '€', precision: 2, format: '%n %u') %>.
   
   <% if (@facture.organisation.facture_messages.actif.any?) %>
@@ -25,11 +23,10 @@
 
   <p>
     <b>Ceci est un message automatique, merci de ne pas y répondre directement.</b>
-    <br>
-    En cas de besoin, veuillez cliquer <%= link_to "ici", new_message_url(facture_slug: @facture.slug) %> pour envoyer un message au gestionnaire de la facturation.
+    En cas de besoin, vous pouvez contacter le gestionnaire de facturation via cette plateforme :
+    <%= link_to "envoyer un message au gestionnaire", new_message_url(facture_slug: @facture.slug, email: @email) %>.
   </p>
 
-  <br><br>
   Nous vous remercions de votre confiance.
   <br>
   L'équipe <%= @facture.organisation.nom %>
