@@ -39,7 +39,7 @@
 
       <br>
 
-      <%= recaptcha_tags %>
+      <%= recaptcha_tags unless Rails.env.development? %>
 
       <div class="actions" data-turbo="false">
         <%= f.submit "S'inscrire", class: "btn btn-outline-primary btn-lg mt-4" %>
