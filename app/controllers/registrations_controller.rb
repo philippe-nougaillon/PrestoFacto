@@ -7,7 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     def create
-        if verify_recaptcha
+        if verify_recaptcha || Rails.env.development?
             @user = User.new(user_params)
             Organisation.create_from_signup(@user, params[:organisation], params[:structure], params[:zone])
             respond_to do |format|
@@ -20,7 +20,7 @@ class RegistrationsController < Devise::RegistrationsController
                 end
             end
         else 
-            redirect_to new_user_registration_path(email: params[:user][:email], organisation: params[:organisation], structure: params[:structure], zone: params[:zone], password: params[:user][:password])
+            redirect_to new_user_registration_path(email: params[:user][:email], organisation: params[:organisation], structure: params[:structure], zone: params[:zone], password: params[:user][:password]), alert: "Problème avec reCAPTCHA"
         end
     end
 
