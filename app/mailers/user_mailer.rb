@@ -14,6 +14,6 @@ class UserMailer < ApplicationMailer
 
   def new_account_notification
     @user = params[:user]
-    mail(to:"philippe.nougaillon@gmail.com, p-edacquet@hotmail.fr")
+    mail(to:"philippe.nougaillon@gmail.com, pierreemmanuel.dacquet@gmail.com")
   end
 end
