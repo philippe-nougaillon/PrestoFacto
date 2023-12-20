@@ -28,7 +28,7 @@
               <td class=<%= 'text-info' if organisation.comptes.count > 1 %>><%= organisation.comptes.count %></td>
               <td><%= organisation.enfants.count %></td>
               <td class=<%= 'text-danger' if organisation.factures.count >= 1000 %>><%= organisation.factures.count %></td>
-              <td class="text-end"><%= number_to_currency(organisation.factures.sum(:montant)) %></td>
+              <td class="text-end"><%= number_to_currency(organisation.factures.sum(:montant), precision: 0) %></td>
               <td><%= time_ago_in_words user.updated_at %></td>
               <td><%= link_to "[X]", admin_suppression_compte_path(organisation:), class:"btn btn-ghost btn-sm" %></td>
             <% else %>
