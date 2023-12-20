@@ -1,52 +1,49 @@
-<div>
-  <h1 class="font-bold text-4xl mb-6">Admin</h1>
+<h1 class="font-bold my-4">Admin</h1>
 
-  <div class='overflow-x-auto mt-6'>
-    <table class='table'>
-      <thead>
-        <tr>
-          <th>Organisation</th>
-          <th>User email</th>
-          <th>Dernière Connexion</th>
-          <th>Nbr</th>
-          <th>Familles</th>
-          <th>Enfants</th>
-          <th>Factures</th>
-          <th>Total Facturé</th>
-          <th>Modifié le</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @organisations.uniq.each do |organisation| %>
-          <% organisation.users.each do |user| %>
-            <tr>
-              <td><%= organisation.nom %></td>
-              <td><%= user.email %></td>
-              <td><%= time_ago_in_words user.last_sign_in_at if user.sign_in_count.positive? %></td>
-              <td class=" <%= user.sign_in_count > 1 ? 'text-info font-weight-bold' : ''  %>"><%= user.sign_in_count %></td>
-              <% if organisation.users.first == user %>
-                <td class=<%= 'text-info' if organisation.comptes.count > 1 %>><%= organisation.comptes.count %></td>
-                <td><%= organisation.enfants.count %></td>
-                <td class=<%= 'text-danger' if organisation.factures.count >= 1000 %>><%= organisation.factures.count %></td>
-                <td><%= number_to_currency(organisation.factures.sum(:montant)) %></td>
-                <td><%= time_ago_in_words user.updated_at %></td>
-                <td><%= link_to "[X]", admin_suppression_compte_path(organisation:), class:"btn btn-ghost btn-sm" %></td>
-              <% else %>
-                <td colspan=4></td>
-                <td><%= time_ago_in_words user.updated_at %></td>
-                <td></td>
-              <% end %>
-              
-            </tr>
-          <% end %>
-          <tr></tr>
+<div class='overflow-x-auto mb-4'>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Organisation</th>
+        <th>User email</th>
+        <th>Dernière Connexion</th>
+        <th>Nbr</th>
+        <th>Familles</th>
+        <th>Enfants</th>
+        <th>Factures</th>
+        <th>Total Facturé</th>
+        <th>Modifié le</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @organisations.uniq.each do |organisation| %>
+        <% organisation.users.each do |user| %>
+          <tr>
+            <td><%= organisation.nom %></td>
+            <td><%= user.email %></td>
+            <td><%= time_ago_in_words user.last_sign_in_at if user.sign_in_count.positive? %></td>
+            <td class=" <%= user.sign_in_count > 1 ? 'text-info font-weight-bold' : ''  %>"><%= user.sign_in_count %></td>
+            <% if organisation.users.first == user %>
+              <td class=<%= 'text-info' if organisation.comptes.count > 1 %>><%= organisation.comptes.count %></td>
+              <td><%= organisation.enfants.count %></td>
+              <td class=<%= 'text-danger' if organisation.factures.count >= 1000 %>><%= organisation.factures.count %></td>
+              <td class="text-end"><%= number_to_currency(organisation.factures.sum(:montant)) %></td>
+              <td><%= time_ago_in_words user.updated_at %></td>
+              <td><%= link_to "[X]", admin_suppression_compte_path(organisation:), class:"btn btn-ghost btn-sm" %></td>
+            <% else %>
+              <td colspan=4></td>
+              <td><%= time_ago_in_words user.updated_at %></td>
+              <td></td>
+            <% end %>
+            
+          </tr>
         <% end %>
-      </tbody>
-    </table>
-  </div>
-
-  <span><%= page_entries_info @organisations, entry_name: 'user' %></span>
-  <%= paginate @organisations %>
-
+        <tr></tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
+
+<span><%= page_entries_info @organisations, entry_name: 'user' %></span>
+<%= paginate @organisations %>
