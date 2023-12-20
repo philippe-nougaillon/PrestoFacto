@@ -267,6 +267,8 @@ fr:
       title: Importer données XLS
     import_do:
       title: Importer données XLS
+    stats:
+      title: "Admin stats"
   devise:
     sessions:
       new:
@@ -424,6 +426,3 @@ fr:
       title: Éditer Pointage
     new:
       title: Nouveau Pointage
-  admin:
-    stats:
-      title: "Admin stats"

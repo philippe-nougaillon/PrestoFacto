@@ -1,6 +1,7 @@
 <div class="mx-auto">
-  <h1 class="text-danger mb-3">
-    Attention, vous êtes sur le point de supprimer définitivement votre organisation (<%= current_user.organisation.nom %>) !!!
+  <h1 class="text-danger my-3">
+    <%= fa_icon 'skull-crossbones' %>
+    Attention, vous allez supprimer définitivement votre organisation <%= current_user.organisation.nom %> !
   </h1>
   <p class="mb-2">Toutes les données ci-dessous seront irrémédiablement détruites :</p>
   <ul class="mb-4">
