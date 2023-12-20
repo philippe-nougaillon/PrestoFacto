@@ -82,9 +82,10 @@ class OrganisationsController < ApplicationController
 
   def suppression_organisation_do
     authorize @organisation
-    AdminMailer.with(organisation: @organisation, reason: params[:reason]).suppression_organisation_notification.deliver_now
 
-    MailLog.where(organisation_id: @organisation.id).destroy_all
+    unless ['pierreemmanuel.dacquet@gmail.com', 'philippe.nougaillon@gmail.com'].include?(current_user.email)
+      AdminMailer.with(organisation: @organisation, reason: params[:reason]).suppression_organisation_notification.deliver_now
+    end
 
     @organisation.structures.each do |structure|
       structure.classrooms.each do |classroom|
@@ -114,8 +115,9 @@ class OrganisationsController < ApplicationController
     @organisation.comptes.destroy_all
     @organisation.prestation_types.destroy_all
     @organisation.tarif_types.destroy_all
-
     @organisation.users.destroy_all
+
+    MailLog.where(organisation_id: @organisation.id).destroy_all
 
     @organisation.destroy
 
