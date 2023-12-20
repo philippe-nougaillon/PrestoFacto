@@ -13,8 +13,8 @@ class User < ApplicationRecord
           :rememberable, 
           :validatable,
           :trackable, 
-          :lockable,
-          :confirmable,
+          # :lockable,
+          # :confirmable,
           :registerable
  
   belongs_to :organisation

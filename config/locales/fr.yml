@@ -424,3 +424,6 @@ fr:
       title: Éditer Pointage
     new:
       title: Nouveau Pointage
+  admin:
+    stats:
+      title: "Admin stats"

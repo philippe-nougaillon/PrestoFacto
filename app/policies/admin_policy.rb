@@ -45,4 +45,12 @@ class AdminPolicy < ApplicationPolicy
     envoyer_factures?
   end
 
+  def stats?
+    user && ['pierreemmanuel.dacquet@gmail.com', 'philippe.nougaillon@gmail.com'].include?(user.email)
+  end
+
+  def suppression_compte?
+    stats?
+  end
+
 end
