@@ -1,5 +1,6 @@
 <h1 class="font-bold my-4">Admin</h1>
 
+
 <div class='overflow-x-auto mb-4'>
   <table class='table'>
     <thead>
@@ -22,7 +23,7 @@
         <% organisation.users.each do |user| %>
           <tr>
             <td><%= organisation.nom %></td>
-            <td><%= user.email %></td>
+            <td><%= user.email %> (<%= user.role %>)</td>
             <td><%= time_ago_in_words user.last_sign_in_at if user.sign_in_count.positive? %></td>
             <td class=" <%= user.sign_in_count > 1 ? 'text-info font-weight-bold' : ''  %>"><%= user.sign_in_count %></td>
             <% if organisation.users.first == user %>
