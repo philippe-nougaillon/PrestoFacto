@@ -77,6 +77,7 @@ Rails.application.routes.draw do
     get :exemple_fichier_import_xls
     get :envoyer_factures
     get :mode_demonstration
+    get :dashboard
     get :stats
     get :suppression_compte
 
@@ -92,7 +93,6 @@ Rails.application.routes.draw do
     get :actualites, to: 'pages#actualites'
     get :confidentialite, to: 'pages#confidentialite'
     post :conditions_generales_de_vente, to: 'pages#conditions_generales_de_vente'
-    get :dashboard, to: 'pages#dashboard'
   end
 
   root 'pages#accueil'

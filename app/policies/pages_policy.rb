@@ -5,8 +5,8 @@ class PagesPolicy < ApplicationPolicy
     end
   end
 
-  def dashboard?
-    user.admin?
+  def guide?
+    true
   end
 
 end

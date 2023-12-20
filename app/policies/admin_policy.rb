@@ -45,6 +45,10 @@ class AdminPolicy < ApplicationPolicy
     envoyer_factures?
   end
 
+  def dashboard?
+    user && user.admin?
+  end
+
   def stats?
     user && ['pierreemmanuel.dacquet@gmail.com', 'philippe.nougaillon@gmail.com'].include?(user.email)
   end
