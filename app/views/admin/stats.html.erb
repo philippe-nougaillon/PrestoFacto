@@ -32,7 +32,11 @@
               <td class="text-end"><%= number_to_currency(organisation.factures.sum(:montant), precision: 0) %></td>
               <td><%= time_ago_in_words user.updated_at %></td>
               <td><%= time_ago_in_words user.created_at %></td>
-              <td><%= link_to "[X]", admin_suppression_compte_path(organisation:), class:"btn btn-ghost btn-sm" %></td>
+              <td>
+                <%= form_with(url: suppression_organisation_do_organisation_path(id: organisation.slug)) do |form| %>
+                  <%= form.submit "[X]", class: "btn btn-outline-danger" %>
+                <% end %>
+              </td>
             <% else %>
               <td colspan=5></td>
               <td><%= time_ago_in_words user.updated_at %></td>
@@ -48,4 +52,4 @@
 </div>
 
 <span><%= page_entries_info @organisations, entry_name: 'user' %></span>
-<%= paginate @organisations %>
+<%= paginate @organisations, theme: 'twitter-bootstrap-4' %>

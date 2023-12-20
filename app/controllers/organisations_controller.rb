@@ -119,11 +119,18 @@ class OrganisationsController < ApplicationController
 
     @organisation.destroy
 
-    sign_out
+    if ['pierreemmanuel.dacquet@gmail.com', 'philippe.nougaillon@gmail.com'].include?(current_user.email)
+      respond_to do |format|
+        format.html { redirect_to admin_stats_path }
+        format.json { head :no_content }
+      end
+    else
+      sign_out
 
-    respond_to do |format|
-      format.html { redirect_to root_path, notice: "Tout a bien été supprimé. En espérant vous revoir prochainement :)" }
-      format.json { head :no_content }
+      respond_to do |format|
+        format.html { redirect_to root_path, notice: "Tout a bien été supprimé. En espérant vous revoir prochainement :)" }
+        format.json { head :no_content }
+      end
     end
   end
 

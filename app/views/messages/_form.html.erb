@@ -21,7 +21,7 @@
     <% end %>
     <%= form.text_area :contenu, placeholder: 'Votre message', rows: 4, required: true %>
 
-    <%= recaptcha_tags %>
+    <%= recaptcha_tags unless Rails.env.development? %>
 
     <br>
 
