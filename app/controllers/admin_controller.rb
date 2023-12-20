@@ -299,6 +299,11 @@ class AdminController < ApplicationController
 
   end
 
+  def stats
+    @organisations = Organisation.all.joins(:users).order('users.current_sign_in_at DESC')
+    @organisations = @organisations.page(params[:page]).per(50)
+  end
+
 private  
   def message_import_log(model)
     if model.valid? 
