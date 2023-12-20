@@ -1,7 +1,7 @@
 class AbsencesController < ApplicationController
   before_action :set_absence, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
-  before_action :is_user_authorized, except: %i[ show edit update destroy]
+  before_action :is_user_authorized, except: %i[show edit update destroy]
 
   # GET /absences
   # GET /absences.json
