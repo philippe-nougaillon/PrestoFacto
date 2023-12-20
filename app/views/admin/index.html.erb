@@ -121,24 +121,17 @@
         </h4>
       </li>
 
+      <li class="list-group-item"></li>
+      <li class="list-group-item text-danger fw-bold">Zone dangereuse</li>
+
+      <li class="list-group-item">
+        <h4 class="my-1">
+          <%= fa_icon 'skull-crossbones' %>
+          <%= link_to "Supprimer mon organisation", suppression_organisation_organisation_path(current_user.organisation), class: "text-muted text-decoration-none" %>
+        </h4>
+      </li>
+
     </ul>
   </div>
 
-</div>
-
-<hr class="style-two mt-5 mb-3">
-<div class="d-flex justify-content-between">
-  <div>
-    <form action="https://www.paypal.com/donate" method="post" target="_top">
-    <input type="hidden" name="hosted_button_id" value="SQEYZWYLARH7U" />
-    <input type="image" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Bouton Faites un don avec PayPal" />
-    <img alt="" border="0" src="https://www.paypal.com/fr_FR/i/scr/pixel.gif" width="1" height="1" />
-    </form>
-  </div>
-  <div>
-    <% if current_user.admin? %>
-      <h2 class="mb-6">Zone dangereuse</h2>
-      <%= link_to "Supprimer mon organisation", suppression_organisation_organisation_path(current_user.organisation), class:"link link-danger" %>
-    <% end %>
-  </div>
 </div>

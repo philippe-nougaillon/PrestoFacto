@@ -1,21 +1,18 @@
 class AdminController < ApplicationController
   skip_before_action :authenticate_user!, only: [:mode_demonstration]
+  before_action :user_authorized?, except: %i[mode_demonstration]
 
   skip_before_action :verify_authenticity_token
   # production => config.force_ssl = true
 
   def index
-    authorize(:admin)
     @unread_messages = current_user.organisation.messages.where(workflow_state: "nouveau").count
   end
 
   def ajout_prestations
-    authorize(:admin)
   end
 
   def ajout_prestations_do
-    authorize(:admin)
-    
     require 'rake'
 
     Rake::Task.clear # necessary to avoid tasks being loaded several times in dev mode
@@ -36,12 +33,10 @@ class AdminController < ApplicationController
   end
 
   def ajout_factures
-    authorize(:admin)
+
   end
 
   def ajout_factures_do
-    authorize(:admin)
-
     date = Date.civil(params["date(1i)"].to_i,
                       params["date(2i)"].to_i,
                       params["date(3i)"].to_i)
@@ -67,14 +62,10 @@ class AdminController < ApplicationController
   end
 
   def tarifs
-    authorize(:admin) 
-
     @organisation = current_user.organisation
   end
 
   def audit
-    authorize(:admin)
-
     @audits = Audited::Audit
                   .where(user_id: current_user.organisation.users)
                   .order("id DESC")
@@ -99,7 +90,7 @@ class AdminController < ApplicationController
   end
 
   def import
-    authorize(:admin)
+    
   end
 
   def import_do
@@ -259,12 +250,10 @@ class AdminController < ApplicationController
   end
 
   def envoyer_factures
-    authorize (:admin)
+    
   end
 
   def envoyer_factures_do
-    authorize (:admin)
-
     envoyer = (params[:envoyer] == '1')
 
     organisation = current_user.organisation
@@ -296,7 +285,7 @@ class AdminController < ApplicationController
   end
 
   def dashboard
-
+    
   end
 
   def stats
@@ -312,5 +301,8 @@ private
       " !! ERREURS: " + model.errors.messages.map{|m| "#{m.first} => #{m.last}"}.join(',')
     end
   end
-  
+
+  def user_authorized?
+    authorize :admin
+  end
 end
