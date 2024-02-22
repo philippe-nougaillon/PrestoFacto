@@ -312,7 +312,7 @@ class AdminController < ApplicationController
   end
 
   def stats
-    @organisations = Organisation.all.joins(:users).order('users.current_sign_in_at DESC')
+    @organisations = Organisation.all.joins(:users).order('users.current_sign_in_at DESC NULLS LAST')
     @organisations = @organisations.page(params[:page]).per(50)
   end
 
