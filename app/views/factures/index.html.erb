@@ -1,15 +1,15 @@
-<div class="pb-2 mt-4 mb-2 border-bottom">
-  <h2 class="fw-light d-inline">
+<div class="d-flex align-items-center pb-4 mt-4 mb-2">
+  <h2 class="fw-light d-inline mb-0">
     <%= fa_icon 'file-invoice', class: 'text-info' %> 
     Factures
   </h2>
   <%= link_to guide_path(anchor: "facturation") do %>
-    <%= fa_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-muted mx-2' %>
+    <%= fa_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-body-tertiary mx-3 fa-lg' %>
   <% end %>
 </div>
 
 <%= bootstrap_form_tag url: factures_path, method: :get do |f| %>
-  <div class="row">
+  <div class="row align-items-center border mb-4 p-3 mx-0 shadow-sm">
     <div class="col"><%= f.text_field :search, value: params[:search], label:"Nom du compte/Référence facture", onchange: "this.form.submit()", autofocus: false %></div>
     <div class="col-sm-2"><%= f.select :state, options_for_select(Facture.workflow_spec.states.keys.to_a, params[:state]), { include_blank: true, label: 'État' }, { onchange: "this.form.submit()" } %></div>
     <div class="col-sm-2"><%= f.date_field :date_début, value: params[:date_début], onchange: "this.form.submit()" %></div>
@@ -19,50 +19,53 @@
 
 
 <%= bootstrap_form_tag url: action_factures_path, method: :post do %>
-  <div class="table-responsive" data-controller="action">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th></th>
-          <th><%= sort_link 'factures.réf', 'Réf' %></th>
-          <th><%= sort_link 'factures.date', 'Date' %></th>
-          <th><%= sort_link 'comptes.nom', 'Compte' %></th>
-          <th><%= sort_link 'factures.envoyée_le', 'Envoyée le' %></th>
-          <th><%= sort_link 'factures.montant', 'Montant' %></th>
-          <th><%= sort_link 'factures.mémo', 'Mémo' %></th>
-          <th><%= sort_link 'factures.workflow_state', 'Etat' %></th>
-          <th></th>
-        </tr>
-      </thead>
+  <div data-controller="action">
+    <div class="table-responsive">
+      <table class="table table-hover border shadow-sm">
+        <thead>
+          <tr>
+            <th></th>
+            <th><%= sort_link 'factures.réf', 'Réf' %></th>
+            <th><%= sort_link 'factures.date', 'Date' %></th>
+            <th><%= sort_link 'comptes.nom', 'Compte' %></th>
+            <th><%= sort_link 'factures.envoyée_le', 'Envoyée le' %></th>
+            <th><%= sort_link 'factures.montant', 'Montant' %></th>
+            <th><%= sort_link 'factures.mémo', 'Mémo' %></th>
+            <th><%= sort_link 'factures.workflow_state', 'Etat' %></th>
+            <th colspan=2></th>
+          </tr>
+        </thead>
 
-      <tbody>
-        <%= render @factures.includes(:compte) %>
-      </tbody>
+        <tbody>
+          <%= render @factures.includes(:compte) %>
+        </tbody>
 
-      <tfoot>
-        <tr>
-          <td colspan=5 class="text-end">
-            Total page :
-          </td>
-          <td class="text-end">
-            <%= number_to_currency(@total_page, unit: '€', precision: 2, format: '%n %u') %>
-          </td>
-          <th colspan=5></th>
-        </tr>
-        
-        <tr>
-          <th colspan=5 class="text-end">
-            Total :
-          </th>
-          <th class="text-end">
-            <%= number_to_currency(@total_factures, unit: '€', precision: 2, format: '%n %u') %>
-          </th>
-          <th colspan=5></th>
-        </tr>
-      </tfoot>
-    </table>
+        <tfoot>
+          <tr>
+            <td colspan=5 class="text-end">
+              Total page :
+            </td>
+            <td class="text-end">
+              <%= number_to_currency(@total_page, unit: '€', precision: 2, format: '%n %u') %>
+            </td>
+            <th colspan=5></th>
+          </tr>
+          
+          <tr>
+            <th colspan=5 class="text-end">
+              Total :
+            </th>
+            <th class="text-end">
+              <%= number_to_currency(@total_factures, unit: '€', precision: 2, format: '%n %u') %>
+            </th>
+            <th colspan=5></th>
+          </tr>
+        </tfoot>
+      </table>
 
-    <div class="row mb-3">
+
+    </div>
+    <div class="row">
       <div class="col-sm-3">
         <div class="input-group">
           <%= select_tag :action_name, 
@@ -78,16 +81,17 @@
         </div>
       </div>
     </div>
-
   </div>
 <% end %>
 
-<%= page_entries_info @factures, entry_name: 'facture' %>
-<%= paginate @factures, theme: 'twitter-bootstrap-4' %>
+<div class="mt-2">
+  <%= page_entries_info @factures, entry_name: 'facture' %>
+  <%= paginate @factures, theme: 'twitter-bootstrap-4' %>
 
-<% if policy(Facture).to_xls? && !@factures.size.zero? %>
-  <%= link_to url_for(params.permit(:structure_id, :date_début, :date_fin, :search).merge(format: :xls)),
-              class: "float-sm-end text-success" do %>
-    <%= fa_icon "file-excel", class: 'me-1 mb-5', text: "Export XLS" %>
+  <% if policy(Facture).to_xls? && !@factures.size.zero? %>
+    <%= link_to url_for(params.permit(:structure_id, :date_début, :date_fin, :search).merge(format: :xls)),
+                class: "float-sm-end text-success" do %>
+      <%= fa_icon "file-excel", class: 'me-1 mb-5', text: "Export XLS" %>
+    <% end %>
   <% end %>
-<% end %>
+</div>

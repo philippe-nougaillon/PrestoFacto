@@ -1,7 +1,7 @@
 <tr>
-    <td>
+    <td style="text-align: center">
         <span data-action="click->action#click">
-            <%= check_box_tag "[enfants_id][#{enfant.id}]", 'yes', false,  data: {"action-target":"source"} %>
+            <%= check_box_tag "enfants_id[#{enfant.id}]", 'yes', false,  data: {"action-target":"source"} %>
         </span>
     </td>
     <td><%= enfant.classroom.structure.nom %></td>

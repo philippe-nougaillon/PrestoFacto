@@ -1,5 +1,5 @@
-<div class="pb-2 mt-4 mb-2 border-bottom">
-  <h2 class="fw-light d-inline">
+<div class="d-flex align-items-center pb-4 mt-4 mb-2">
+  <h2 class="fw-light d-inline mb-0">
     <%= fa_icon 'calendar-check', class: "text-success" %> 
     Pointages
     <% unless params[:date].blank? %>
@@ -7,12 +7,12 @@
     <% end %>
   </h2>
   <%= link_to guide_path(anchor: "pointage") do %>
-    <%= fa_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-muted mx-2' %>
+    <%= fa_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-body-tertiary mx-3 fa-lg' %>
   <% end %>
 </div>
 
 <%= bootstrap_form_tag url: pointages_path, method: :get do |f| %>
-  <div class="row">
+  <div class="row align-items-center border mb-4 p-3 mx-0 shadow-sm">
     <div class="col-sm-2"><%= f.date_field :date, value: params[:date], onchange: "this.form.submit()" %></div>
     <div class="col-sm-2"><%= f.select :prestation_type_id, options_from_collection_for_select(@prestation_types, 'id', 'nom', params[:prestation_type_id]), { include_blank: true, label: "Prestation" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
     <div class="col-sm-2"><%= f.select :classroom_id, options_from_collection_for_select(@classrooms, 'id', 'nom', params[:classroom_id]), { include_blank: true, label: "Classe" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
@@ -20,24 +20,26 @@
 <% end %>
 
 <%= bootstrap_form_tag url: action_pointages_path, method: :post do %>
-  <div id="pointages" class="table-responsive" data-controller="action">
-    <table class="table table-striped">
-      <thead>
-        <th></th>
-        <th><%= sort_link 'enfants.nom', 'Enfant' %></th>
-        <th><%= sort_link 'prestation_types.nom', 'Type prestation' %></th>
-        <th><%= sort_link 'pointages.date_pointage', 'Date pointage' %></th>
-        <th><%= sort_link 'pointages.heure_pointage', 'Heure pointage' %></th>
-        <th><a class="btn btn-sm" style="cursor: not-allowed;">Minutes consommées</a></th>
-        <th><a class="btn btn-sm" style="cursor: not-allowed;">Tranches consommées</a></th>
-        <th><%= sort_link 'pointages.updated_at', 'MàJ' %></th>
-        <th></th>
-      </thead>
-      <tbody>
-        <%= render @pointages %>
-      </tbody>
-    </table>
+  <div data-controller="action">
+    <div id="pointages" class="table-responsive">
+      <table class="table table-striped border shadow-sm">
+        <thead style="vertical-align: middle;">
+          <th></th>
+          <th><%= sort_link 'enfants.nom', 'Enfant' %></th>
+          <th><%= sort_link 'prestation_types.nom', 'Type prestation' %></th>
+          <th><%= sort_link 'pointages.date_pointage', 'Date pointage' %></th>
+          <th><%= sort_link 'pointages.heure_pointage', 'Heure pointage' %></th>
+          <th><small class="fw-bold text-dark">Minutes consommées</small></th>
+          <th><small class="fw-bold text-dark">Tranches consommées</small></th>
+          <th><%= sort_link 'pointages.updated_at', 'MàJ' %></th>
+          <th></th>
+        </thead>
+        <tbody>
+          <%= render @pointages %>
+        </tbody>
+      </table>
 
+    </div>
     <div class="row">
       <div class="col-sm-4">
         <div class="input-group">
@@ -56,3 +58,8 @@
     </div>
   </div>
 <% end %>
+
+<div class="mt-2">
+  <%= page_entries_info @pointages, entry_name: 'pointage' %>
+  <%= paginate @pointages, theme: 'twitter-bootstrap-4' %>
+</div>

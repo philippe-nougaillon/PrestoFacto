@@ -64,3 +64,17 @@ nav.navbar ul li.nav-item {
     }
   }
 }
+
+.table{
+  thead, tfoot{
+    th, td{
+      // bg-slate-100
+      background-color: #f1f5f9;
+    }
+  }
+  tbody{
+    tr{
+      vertical-align: middle;
+    }
+  }
+}

@@ -1,5 +1,5 @@
-<div class="pb-2 mt-4 mb-2 border-bottom">
-  <h2 class="fw-light d-inline">
+<div class="d-flex align-items-center pb-4 mt-4 mb-2">
+  <h2 class="fw-light d-inline mb-0">
     <%= fa_icon 'calendar-times', class: 'text-danger' %> 
     Absences 
     <% unless params[:date].blank? || params[:date] == 'full' %>
@@ -7,32 +7,32 @@
     <% end %>
   </h2>
   <%= link_to guide_path(anchor: "absences") do %>
-    <%= fa_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-muted mx-2' %>
+    <%= fa_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-body-tertiary mx-3 fa-lg' %>
   <% end %>
 </div>
 
 <%= bootstrap_form_tag url: absences_path, method: :get do |f| %>
-  <div class="row">
+  <div class="row align-items-center border mb-4 p-3 mx-0 shadow-sm">
     <div class="col-sm-2"><%= f.date_field :date, value: params[:date], onchange: "this.form.submit()" %></div>
     <div class="col"><%= f.text_field :nom, value: params[:nom], label: 'Nom/Prénom', onchange: "this.form.submit()", autofocus: false %></div>
     <div class="col-sm-3"><%= f.select :structure_id, options_from_collection_for_select(@structures, 'id', 'nom', params[:structure_id]), { include_blank: true, label: "Structure" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
     <div class="col-sm-2"><%= f.select :classroom_id, options_from_collection_for_select(@classrooms, 'id', 'nom', params[:classroom_id]), { include_blank: true, label: "Classe" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
-    <div class="col-sm-2"><br><br><%= check_box_tag :archives, 'yes', params[:archives] == 'yes', onchange: "this.form.submit()" %> Archives ?</div>
+    <div class="col-sm-2"><%= check_box_tag :archives, 'yes', params[:archives] == 'yes', onchange: "this.form.submit()" %> Archives ?</div>
   </div>
 <% end %>
 
 <div class="table-responsive">
-  <table class="table table-hover">
+  <table class="table table-hover border shadow-sm">
     <thead>
-      <tr>
+      <tr style="vertical-align: middle;">
         <th><%= sort_link 'structures.nom', 'Structure' %></th>
         <th><%= sort_link 'classrooms.nom', 'Classe' %></th>
         <th><%= sort_link 'enfants.nom', 'Enfant' %></th>
         <th><%= sort_link 'absences.début', 'Début' %></th>
         <th><%= sort_link 'absences.fin', 'Fin' %></th>
-        <th class="sortlink-style">Matin</th>
-        <th class="sortlink-style">Midi</th>
-        <th class="sortlink-style">Soir</th>
+        <th><small class="fw-bold text-dark">Matin</small></th>
+        <th><small class="fw-bold text-dark">Midi</small></th>
+        <th><small class="fw-bold text-dark">Soir</small></th>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -43,9 +43,11 @@
   </table>
 </div>
 
-<%= page_entries_info @absences, entry_name: 'absence' %>
-<%= paginate @absences, theme: 'twitter-bootstrap-4' %>
+<div class="mt-2">
+  <%= page_entries_info @absences, entry_name: 'absence' %>
+  <%= paginate @absences, theme: 'twitter-bootstrap-4' %>
 
-<% unless params[:date] == 'full' %>
-  | <%= link_to "Voir toutes les absences", absences_path(date: "full") %>
-<% end %>
+  <% unless params[:date] == 'full' %>
+    | <%= link_to "Voir toutes les absences", absences_path(date: "full") %>
+  <% end %>
+</div>

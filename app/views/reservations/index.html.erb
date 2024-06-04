@@ -1,5 +1,5 @@
-<div class="pb-2 mt-4 mb-2 border-bottom">
-  <h2 class="fw-light d-inline">
+<div class="d-flex align-items-center pb-4 mt-4 mb-2">
+  <h2 class="fw-light d-inline mb-0">
     <%= fa_icon 'calendar-alt', class: 'text-warning' %> 
     Réservations
     <% unless params[:date] == 'full' || params[:date].blank? %>
@@ -7,12 +7,12 @@
     <% end %>
   </h2>
   <%= link_to guide_path(anchor: "reservations") do %>
-    <%= fa_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-muted mx-2' %>
+    <%= fa_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-body-tertiary mx-3 fa-lg' %>
   <% end %>
 </div>
 
 <%= bootstrap_form_tag url: reservations_path, method: :get do |f| %>
-  <div class="row">
+  <div class="row align-items-center border mb-4 p-3 mx-0 shadow-sm">
     <div class="col-sm-2"><%= f.date_field :date, value: params[:date], onchange: "this.form.submit()" %></div>
     <div class="col-sm-2"><%= f.text_field :nom, value: params[:nom], onchange: "this.form.submit()", label: 'Nom/Prénom', autofocus: false  %></div>
     <div class="col-sm-2"><%= f.select :structure_id, options_from_collection_for_select(@structures, 'id', 'nom', params[:structure_id]), { include_blank: true, label: "Structure" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
@@ -23,56 +23,58 @@
 <% end %>
 
 <%= bootstrap_form_tag url: action_reservations_path, method: :post do %>
-  <div class="table-responsive" data-controller="action">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th></th>
-          <th><%= sort_link 'structures.nom', 'Structure' %></th>
-          <th><%= sort_link 'classrooms.nom', 'Classe' %></th>
-          <th><%= sort_link 'enfants.nom', 'Enfant' %></th>
-          <th><%= sort_link 'enfants.menu_all', 'ALG?' %></th>
-          <th><%= sort_link 'enfants.menu_sp', 'SP?' %></th>
-          <th><%= sort_link 'enfants.mémo', 'Mémo' %></th>
-          <th><%= sort_link 'reservations.prestation_type_id', 'Prestation' %></th>
-          <th><%= sort_link 'reservations.début', 'Début' %></th>
-          <th><%= sort_link 'reservations.fin', 'Fin' %></th>
-          <th><%= sort_link 'reservations.workflow_state', 'Etat' %></th>
-          <th><%= sort_link 'reservations.lundi', 'Lun' %></th>
-          <th><%= sort_link 'reservations.mardi', 'Mar' %></th>
-          <th><%= sort_link 'reservations.mercredi', 'Mer' %></th>
-          <th><%= sort_link 'reservations.jeudi', 'Jeu' %></th>
-          <th><%= sort_link 'reservations.vendredi', 'Ven' %></th>
-          <th><%= sort_link 'reservations.samedi', 'Sam' %></th>
-          <th><%= sort_link 'reservations.dimanche', 'Dim' %></th>
-          <th><%= sort_link 'reservations.matin', 'Matin' %></th>
-          <th><%= sort_link 'reservations.midi', 'Midi' %></th>
-          <th><%= sort_link 'reservations.soir', 'Soir' %></th>
-          <th><%= sort_link 'reservations.hors_période_scolaire', 'HScol?' %></th>
-        </tr>
-      </thead>
+  <div data-controller="action">
+    <div class="table-responsive">
+      <table class="table table-hover border shadow-sm">
+        <thead>
+          <tr>
+            <th></th>
+            <th><%= sort_link 'structures.nom', 'Structure' %></th>
+            <th><%= sort_link 'classrooms.nom', 'Classe' %></th>
+            <th><%= sort_link 'enfants.nom', 'Enfant' %></th>
+            <th><%= sort_link 'enfants.menu_all', 'ALG?' %></th>
+            <th><%= sort_link 'enfants.menu_sp', 'SP?' %></th>
+            <th><%= sort_link 'enfants.mémo', 'Mémo' %></th>
+            <th><%= sort_link 'reservations.prestation_type_id', 'Prestation' %></th>
+            <th><%= sort_link 'reservations.début', 'Début' %></th>
+            <th><%= sort_link 'reservations.fin', 'Fin' %></th>
+            <th><%= sort_link 'reservations.workflow_state', 'Etat' %></th>
+            <th><%= sort_link 'reservations.lundi', 'Lun' %></th>
+            <th><%= sort_link 'reservations.mardi', 'Mar' %></th>
+            <th><%= sort_link 'reservations.mercredi', 'Mer' %></th>
+            <th><%= sort_link 'reservations.jeudi', 'Jeu' %></th>
+            <th><%= sort_link 'reservations.vendredi', 'Ven' %></th>
+            <th><%= sort_link 'reservations.samedi', 'Sam' %></th>
+            <th><%= sort_link 'reservations.dimanche', 'Dim' %></th>
+            <th><%= sort_link 'reservations.matin', 'Matin' %></th>
+            <th><%= sort_link 'reservations.midi', 'Midi' %></th>
+            <th><%= sort_link 'reservations.soir', 'Soir' %></th>
+            <th><%= sort_link 'reservations.hors_période_scolaire', 'HScol?' %></th>
+          </tr>
+        </thead>
 
-      <tbody>
-        <%= render @reservations.includes(:enfant) %>
-      </tbody>
+        <tbody>
+          <%= render @reservations.includes(:enfant) %>
+        </tbody>
 
-      <tfoot>
-        <tr>
-          <th colspan=3 class="text-end">
-            Total :
-          </th>
-          <th class="text-center">
-            <%= @total_alg %>
-          </th>
-          <th class="text-center">
-            <%= @total_sp %>
-          </th>
-          <th colspan=14></th>
-        </tr>
-      </tfoot>
+        <tfoot>
+          <tr>
+            <th colspan=3 class="text-end">
+              Total :
+            </th>
+            <th class="text-center">
+              <%= @total_alg %>
+            </th>
+            <th class="text-center">
+              <%= @total_sp %>
+            </th>
+            <th colspan=17></th>
+          </tr>
+        </tfoot>
 
-    </table>
+      </table>
 
+    </div>
     <div class="row">
       <div class="col-sm-4">
         <div class="input-group">
@@ -92,9 +94,11 @@
   </div>
 <% end %>
 
-<%= page_entries_info @reservations, entry_name: 'réservation' %>
-<%= paginate @reservations, theme: 'twitter-bootstrap-4' %>
+<div class="mt-2">
+  <%= page_entries_info @reservations, entry_name: 'réservation' %>
+  <%= paginate @reservations, theme: 'twitter-bootstrap-4' %>
 
-<% unless params[:date] == 'full' %>
-  | <%= link_to "Voir toutes les réservations", reservations_path(date: 'full') %>
-<% end %>
+  <% unless params[:date] == 'full' %>
+    | <%= link_to "Voir toutes les réservations", reservations_path(date: 'full') %>
+  <% end %>
+</div>

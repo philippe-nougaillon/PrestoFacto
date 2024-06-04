@@ -79,7 +79,6 @@ Rails.application.routes.draw do
     get :mode_demonstration
     get :dashboard
     get :stats
-    get :suppression_compte
 
     post :ajout_prestations_do
     post :ajout_factures_do

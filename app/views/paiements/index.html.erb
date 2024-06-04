@@ -1,15 +1,15 @@
-<div class="pb-2 mt-4 mb-2 border-bottom">
-  <h2 class="fw-light d-inline">
+<div class="d-flex align-items-center pb-4 mt-4 mb-2">
+  <h2 class="fw-light d-inline mb-0">
     <i class="far fa-money-bill-alt text-success"></i> 
     Paiements
   </h2>
   <%= link_to guide_path(anchor: "paiements") do %>
-    <%= fa_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-muted mx-2' %>
+    <%= fa_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-body-tertiary mx-3 fa-lg' %>
   <% end %>
 </div>
 
 <%= bootstrap_form_tag url: paiements_path, method: :get do |f| %>
-  <div class="row">
+  <div class="row align-items-center border mb-4 p-3 mx-0 shadow-sm">
     <div class="col"><%= f.text_field :nom, value: params[:nom], label:"Nom du compte/Référence", onchange: "this.form.submit()", autofocus: false %></div>
     <div class="col-sm-3"><%= f.select :structure_id, options_from_collection_for_select(@structures, 'id', 'nom', params[:structure_id]), { include_blank: true, label: "Structure" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
     <div class="col-sm-2"><%= f.date_field :date_début, value: params[:date_début], onchange: "this.form.submit()" %></div>
@@ -19,7 +19,7 @@
 <% end %>
 
 <div class="table-responsive">
-  <table class="table table-hover">
+  <table class="table table-hover border shadow-sm">
     <thead>
       <tr>
         <th><%= sort_link 'paiements.date', 'Date' %></th>
@@ -41,13 +41,14 @@
   </table>
 </div>
 
-<%= page_entries_info @paiements, entry_name: 'paiement' %>
-<%= paginate @paiements, theme: 'twitter-bootstrap-4' %>
-<br>
+<div class="mt-2">
+  <%= page_entries_info @paiements, entry_name: 'paiement' %>
+  <%= paginate @paiements, theme: 'twitter-bootstrap-4' %>
 
-<% if policy(Paiement).to_xls? && !@paiements.size.zero? %>
-  <%= link_to url_for(params.permit(:structure_id, :date_début, :date_fin, :mode, :search).merge(format: :xls)),
-              class: "float-sm-end text-success" do %>
-    <%= fa_icon "file-excel", class: 'me-1 mb-5', text: "Export XLS" %>
+  <% if policy(Paiement).to_xls? && !@paiements.size.zero? %>
+    <%= link_to url_for(params.permit(:structure_id, :date_début, :date_fin, :mode, :search).merge(format: :xls)),
+                class: "float-sm-end text-success" do %>
+      <%= fa_icon "file-excel", class: 'me-1 mb-5', text: "Export XLS" %>
+    <% end %>
   <% end %>
-<% end %>
+</div>

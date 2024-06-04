@@ -1,17 +1,19 @@
-<div class="pb-2 mt-4 mb-2 border-bottom">
+<div class="pb-4 mt-4 mb-2">
   <% if policy(Compte).new? %>
     <%= link_to new_compte_path, class: 'btn btn-outline-primary float-end' do %>
       <%= fa_icon 'plus-circle' %> Ajouter un Compte
     <% end %>
   <% end %>
-  <h2 class="fw-light d-inline"><%= fa_icon 'users' %> Comptes</h2>
-  <%= link_to guide_path(anchor: "ajout_famille") do %>
-    <%= fa_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-muted mx-2' %>
-  <% end %>
+  <div class="d-flex align-items-center">
+    <h2 class="fw-light d-inline mb-0"><%= fa_icon 'users' %> Comptes</h2>
+    <%= link_to guide_path(anchor: "ajout_famille") do %>
+      <%= fa_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-body-tertiary mx-3 fa-lg mb-1' %>
+    <% end %>
+  </div>
 </div>
 
 <%= bootstrap_form_tag url: comptes_path, method: :get do |f| %>
-  <div class="row">
+  <div class="row align-items-center border mb-4 p-3 mx-0 shadow-sm">
     <div class="col">
       <%= f.text_field :search, 
                         value: params[:search], 
@@ -24,15 +26,15 @@
 <% end %>
 
 <div class="table-responsive">
-  <table class="table table-hover">
+  <table class="table table-hover border shadow-sm">
     <thead>
-      <tr>
+      <tr style="vertical-align: middle;">
         <th><%= sort_link 'comptes.nom', 'Nom' %></th>
         <th><%= sort_link 'comptes.enfants_count', 'Enfants' %></th>
         <th><%= sort_link 'comptes.adresse1', 'Adresse' %></th>
         <th><%= sort_link 'comptes.cp', 'CP'%></th>
         <th><%= sort_link 'comptes.ville', 'Ville' %></th>
-        <td class="sortlink-style">Solde</td>
+        <th><small class="fw-bold text-dark">Solde</small></td>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -44,12 +46,14 @@
   </table>
 </div>
 
-<%= page_entries_info @comptes, entry_name: 'compte' %>
-<%= paginate @comptes, theme: 'twitter-bootstrap-4' %>
+<div class="mt-2">
+  <%= page_entries_info @comptes, entry_name: 'compte' %>
+  <%= paginate @comptes, theme: 'twitter-bootstrap-4' %>
 
-<% if policy(Compte).to_xls? && !@comptes.size.zero? %>
-  <%= link_to url_for(params.permit(:search).merge(format: :xls)),
-              class: "float-sm-end text-success" do %>
-      <%= fa_icon "file-excel", class: 'me-1 mb-5', text: "Export XLS" %>
+  <% if policy(Compte).to_xls? && !@comptes.size.zero? %>
+    <%= link_to url_for(params.permit(:search).merge(format: :xls)),
+                class: "float-sm-end text-success" do %>
+        <%= fa_icon "file-excel", class: 'me-1 mb-5', text: "Export XLS" %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
