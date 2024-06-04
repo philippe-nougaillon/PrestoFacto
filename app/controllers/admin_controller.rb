@@ -280,7 +280,8 @@ class AdminController < ApplicationController
   end
 
   def mode_demonstration
-    sign_in User.first
+    # ID OU EMAIL DU USER(1) À CHANGER AVANT DE RÉUTILISER CETTE FONCTION
+    sign_in User.find(1)
     redirect_to comptes_url, notice: "Bienvenue dans la démonstration. Vous pouvez ici tester librement l'application. Merci d'en faire bon usage."
   end
 
