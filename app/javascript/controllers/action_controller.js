@@ -4,8 +4,8 @@ export default class extends Controller {
   static targets = [ 'source', 'selector', 'button' ]
 
   initialize() {
-    this.selectorTarget.style.visibility = 'hidden';
-    this.buttonTarget.style.visibility = 'hidden';
+    this.selectorTarget.style.display = 'none';
+    this.buttonTarget.style.display = 'none';
   }
 
   connect() {
@@ -20,11 +20,13 @@ export default class extends Controller {
     }
     //console.log(`Clicks = ${enabled.length}`)
     if (enabled.length == 0 ) {
-      this.selectorTarget.style.visibility = 'hidden';
-      this.buttonTarget.style.visibility = 'hidden';
+      console.log(this.selectorTarget)
+      console.log(this.buttonTarget)
+      this.selectorTarget.style.display = 'none';
+      this.buttonTarget.style.display = 'none';
     } else {
-      this.selectorTarget.style.visibility = 'visible';
-      this.buttonTarget.style.visibility = 'visible';
+      this.selectorTarget.style.display = 'block';
+      this.buttonTarget.style.display = 'block';
     }
   }
 }

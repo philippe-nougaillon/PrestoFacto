@@ -17,7 +17,7 @@
     </td>
     <td>
         <% if policy(paiement).destroy? %>
-            <%= button_to paiement, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class: 'btn btn-sm' do %>
+            <%= button_to paiement, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class: 'btn btn-sm lh-1' do %>
                 <%= fa_icon 'trash-alt', class: 'text-danger' %>
             <% end %>
         <% end %>

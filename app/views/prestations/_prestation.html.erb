@@ -1,7 +1,7 @@
 <tr>
-    <td>
+    <td style="text-align: center">
         <span data-action="click->action#click">
-            <%= check_box_tag "[prestations_id][#{prestation.id}]", 'yes', false,  data: {"action-target":"source"} %>
+            <%= check_box_tag "prestations_id[#{prestation.id}]", 'yes', false,  data: {"action-target":"source"} %>
         </span>
     </td>
     <td><%= prestation.enfant.classroom.structure.nom %></td>
@@ -13,7 +13,7 @@
     <td><%= number_with_precision(prestation.qté, precision: 2) %></td>
     <td>
         <% if policy(prestation).edit? %>
-            <%= link_to edit_prestation_path(prestation), class: 'btn btn-link btn-sm' do %>
+            <%= link_to edit_prestation_path(prestation), class: 'btn btn-link btn-sm lh-1' do %>
                 <%= fa_icon 'edit' %>
             <% end %>
         <% end %>

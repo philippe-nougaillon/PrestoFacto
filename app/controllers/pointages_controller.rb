@@ -25,6 +25,8 @@ class PointagesController < ApplicationController
 
     # Appliquer le tri
     @pointages = @pointages.joins(:enfant).joins(:prestation_type).reorder(Arel.sql("#{sort_column} #{sort_direction}"))
+
+    @pointages = @pointages.page(params[:page])
   end
 
   # GET /pointages/1 or /pointages/1.json

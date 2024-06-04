@@ -1,8 +1,8 @@
 <tr>
     <% if current_user.admin? %>
-        <td>
+        <td style="text-align: center">
             <span data-action="click->action#click">
-                <%= check_box_tag "[reservations_id][#{reservation.id}]", 'yes', false,  data: {"action-target":"source"} %>
+                <%= check_box_tag "reservations_id[#{reservation.id}]", 'yes', false,  data: {"action-target":"source"} %>
             </span>
         </td>
     <% end %>

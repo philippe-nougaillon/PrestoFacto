@@ -1,12 +1,15 @@
-<div class="pb-2 mt-4 mb-2 border-bottom">
-  <h2 class="fw-light d-inline"><%= fa_icon 'child', class: 'text-primary' %> Enfants</h2>
+<div class="d-flex align-items-center pb-4 mt-4 mb-2">
+  <h2 class="fw-light d-inline mb-0">
+    <%= fa_icon 'child', class: 'text-primary' %>
+    Enfants
+  </h2>
   <%= link_to guide_path(anchor: "ajout_enfant") do %>
-    <%= fa_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-muted mx-2' %>
+    <%= fa_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-body-tertiary mx-3 fa-lg' %>
   <% end %>
 </div>
 
 <%= bootstrap_form_tag url: enfants_path, method: :get do |f| %>
-  <div class="row">
+  <div class="row align-items-center border mb-4 p-3 mx-0 shadow-sm">
     <div class="col"><%= f.text_field :search, value: params[:search], label: 'Nom/Prénom/Badge', onchange: "this.form.submit()", autofocus: false %></div>
     <div class="col-sm-3"><%= f.select :structure_id, options_from_collection_for_select(@structures, 'id', 'nom', params[:structure_id]), { include_blank: true, label: "Structure" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
     <div class="col-sm-2"><%= f.select :classroom_id, options_from_collection_for_select(@classrooms, 'id', 'nom', params[:classroom_id]), { include_blank: true, label: "Classe" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
@@ -14,30 +17,32 @@
 <% end %>
 
 <%= bootstrap_form_tag url: action_enfants_path, method: :post do %>
-  <div class="table-responsive" data-controller="action">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th></th>
-          <th><%= sort_link 'structures.nom', 'Structure' %></th>
-          <th><%= sort_link 'classrooms.nom', 'Classe' %></th>
-          <th><%= sort_link 'comptes.nom', 'Compte' %></th>
-          <th><%= sort_link 'enfants.nom', 'Nom' %></th>
-          <th><%= sort_link 'enfants.prénom', 'Prénom' %></th>
-          <th><%= sort_link 'enfants.date_naissance', 'Né(e) le' %></th>
-          <th><%= sort_link 'enfants.menu_all', 'ALLERGIE?' %></th>
-          <th><%= sort_link 'enfants.menu_sp', 'SP?' %></th>
-          <th><%= sort_link 'enfants.mémo', 'Mémo' %></th>
-          <th class="sortlink-style">Réservations</th>
-          <th></th>
-        </tr>
-      </thead>
+  <div data-controller="action">
+    <div class="table-responsive">
+      <table class="table table-hover border shadow-sm">
+        <thead>
+          <tr style="vertical-align: middle;">
+            <th></th>
+            <th><%= sort_link 'structures.nom', 'Structure' %></th>
+            <th><%= sort_link 'classrooms.nom', 'Classe' %></th>
+            <th><%= sort_link 'comptes.nom', 'Compte' %></th>
+            <th><%= sort_link 'enfants.nom', 'Nom' %></th>
+            <th><%= sort_link 'enfants.prénom', 'Prénom' %></th>
+            <th><%= sort_link 'enfants.date_naissance', 'Né(e) le' %></th>
+            <th><%= sort_link 'enfants.menu_all', 'ALLERGIE?' %></th>
+            <th><%= sort_link 'enfants.menu_sp', 'SP?' %></th>
+            <th><%= sort_link 'enfants.mémo', 'Mémo' %></th>
+            <th><small class="fw-bold text-dark">Réservations</small></th>
+            <th></th>
+          </tr>
+        </thead>
 
-      <tbody>
-        <%= render @enfants.includes(:compte, :classroom) %>
-      </tbody>
-    </table>
+        <tbody>
+          <%= render @enfants.includes(:compte, :classroom) %>
+        </tbody>
+      </table>
 
+    </div>
     <div class="row">
       <div class="col-sm-4">
         <div class="input-group">
@@ -57,12 +62,14 @@
   </div>
 <% end %>
 
-<%= page_entries_info @enfants, entry_name: 'enfant' %>
-<%= paginate @enfants, theme: 'twitter-bootstrap-4' %>
+<div class="mt-2">
+  <%= page_entries_info @enfants, entry_name: 'enfant' %>
+  <%= paginate @enfants, theme: 'twitter-bootstrap-4' %>
 
-<% if policy(Enfant).to_xls? && !@enfants.size.zero? %>
-  <%= link_to url_for(params.permit(:search).merge(format: :xls)),
-              class: "float-sm-end text-success" do %>
-      <%= fa_icon "file-excel", class: 'me-1 mb-5', text: "Export XLS" %>
+  <% if policy(Enfant).to_xls? && !@enfants.size.zero? %>
+    <%= link_to url_for(params.permit(:search).merge(format: :xls)),
+                class: "float-sm-end text-success" do %>
+        <%= fa_icon "file-excel", class: 'me-1 mb-5', text: "Export XLS" %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
