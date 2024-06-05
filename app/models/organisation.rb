@@ -33,10 +33,11 @@ class Organisation < ApplicationRecord
     validates :nom, :email, presence: true
 
     def self.create_from_signup(user, organisation, structure, zone)
+        organisation ||= "Mon_Organisation"
+        structure ||= "Ma_Structure"
+        zone ||= "A"
         # On crée l'organisation 
-        organisation = Organisation.create( nom: organisation, 
-                                            email: user.email, 
-                                            zone: zone)
+        organisation = Organisation.create( nom: organisation, email: user.email, zone: zone)
 
         organisation.structures.create(nom: structure)
 

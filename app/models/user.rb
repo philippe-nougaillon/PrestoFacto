@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validate :check_visiteur_email
 
   # Include default devise modules. Others available are:
-  #  :timeoutable, :trackable and :omniauthable          
+  #  :timeoutable, :trackable         
 
   devise  :database_authenticatable, 
           :recoverable, 
@@ -15,7 +15,9 @@ class User < ApplicationRecord
           :trackable, 
           # :lockable,
           # :confirmable,
-          :registerable
+          :registerable,
+          :omniauthable,
+          omniauth_providers: [:google_oauth2]
  
   belongs_to :organisation
 
@@ -35,6 +37,30 @@ class User < ApplicationRecord
 
   def vip_admin?
     self.vip? || self.admin?
+  end
+
+  def self.from_omniauth(auth)
+    require "open-uri"
+
+    if user = User.find_by(email: auth.info.email)
+      user
+    else
+      find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
+        user.email = auth.info.email
+        user.password = Devise.friendly_token[0, 20]
+        user.password_confirmation = user.password
+        
+        #Crée l'organisation et ajoute le user dedans
+        Organisation.create_from_signup(user, nil, nil, nil)
+        
+        # If you are using confirmable and the provider(s) you use validate emails, 
+        # uncomment the line below to skip the confirmation emails.
+        # user.skip_confirmation!
+        
+        user.save
+        user
+      end
+    end
   end
 
 private
