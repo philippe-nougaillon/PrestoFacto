@@ -122,3 +122,9 @@ gem "importmap-rails", "~> 1.1"
 gem "bootstrap", "~> 5.2"
 
 gem "rack-attack", "~> 6.6"
+
+gem 'omniauth'
+
+gem "omniauth-rails_csrf_protection"
+
+gem "omniauth-google-oauth2"

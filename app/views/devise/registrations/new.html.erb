@@ -1,6 +1,23 @@
 <div class="col-md-10 col-lg-7 shadow-sm rounded p-3 p-md-5 mx-auto">
   <h1 class="fw-light mt-2 mb-5 text-center">Inscription</h1>
 
+  <%- if devise_mapping.omniauthable? %>
+    <%- resource_class.omniauth_providers.each do |provider| %>
+      <%= form_for "Login",
+        url: omniauth_authorize_path(resource_name, provider),
+        method: :post,
+        data: {turbo: "false"} do |f| %>
+          <div>
+            <button id="google_button" type="submit" style ="color: #444;border-radius: 5px;border: thin solid #888;box-shadow: 1px 1px 1px grey;white-space: nowrap;" class="btn w-100 py-2">
+              <%= image_tag "Google__G__logo.svg" %>
+              <span class="ms-2">Continuer avec Google</span>
+            </button>
+          </div>
+      <% end %>
+    <% end %>
+    <p class="text-center fs-5 mt-4">OU</p>
+  <% end %>
+
   <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -28,7 +45,7 @@
       
       <div class="row">
         <div class="col">
-          <%= f.label :structure, "Nom de la structure (GARDERIE/CENTRE DE LOISIRS...)" %>
+          <%= f.label :structure, "Nom de la structure (CANTINE/GARDERIE/...)" %>
           <%= text_field_tag :structure, params[:structure], required: true, value: ( params[:structure] || "Cantine"), class: "form-control col-sm-6" %>
         </div>
         <div class="col-4">
@@ -44,13 +61,6 @@
       <div class="actions" data-turbo="false">
         <%= f.submit "S'inscrire", class: "btn btn-outline-primary btn-lg mt-4" %>
       </div>
-
-      <p class="mt-3">
-        <i><small>
-          Un courriel va vous être envoyé afin de vérifier votre adresse email.
-          Cliquez sur le lien fourni afin de confirmer votre adresse email et de vous connecter.
-        </small></i>
-      </p>
     </div>
 
   <% end %>

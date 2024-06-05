@@ -33,10 +33,11 @@ class Organisation < ApplicationRecord
     validates :nom, :email, presence: true
 
     def self.create_from_signup(user, organisation, structure, zone)
+        organisation ||= "Mon_Organisation"
+        structure ||= "Cantine"
+        zone ||= "A"
         # On crée l'organisation 
-        organisation = Organisation.create( nom: organisation, 
-                                            email: user.email, 
-                                            zone: zone)
+        organisation = Organisation.create( nom: organisation, email: user.email, zone: zone)
 
         organisation.structures.create(nom: structure)
 
@@ -56,19 +57,20 @@ class Organisation < ApplicationRecord
                              .enfants.create(classroom: organisation.classrooms.first, 
                                     nom: 'TEST', 
                                     prénom: 'Martin', 
-                                    date_naissance: Date.today,
+                                    date_naissance: Date.today - 7.year,
                                     tarif_type: organisation.tarif_types.first)
 
         enfant.reservations.create(prestation_type: organisation.prestation_types.first,
                                     début: Date.today,
-                                    fin: Date.today.end_of_year,
+                                    fin: Date.today + 1.month,
                                     lundi: 1,
                                     mardi: 1,
                                     mercredi: 1,
                                     jeudi: 1,
                                     vendredi: 1,
                                     midi: true,
-                                    workflow_state: 'validée')
+                                    workflow_state: 'validée',
+                                    hors_période_scolaire: false)
 
         # on surclasse l'utilisateur et on l'ajoute à l'organisation
         user.update(role: 'admin')
