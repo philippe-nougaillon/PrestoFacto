@@ -58,6 +58,9 @@ class User < ApplicationRecord
         # user.skip_confirmation!
         
         user.save
+
+        UserMailer.with(user: user).new_account_notification().deliver_now
+        
         user
       end
     end
