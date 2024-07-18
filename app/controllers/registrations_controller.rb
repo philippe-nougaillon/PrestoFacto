@@ -13,6 +13,7 @@ class RegistrationsController < Devise::RegistrationsController
             if @user.save
                 sign_in @user
                 redirect_to comptes_path, notice: "Bienvenue ! Votre compte créé avec succès."
+                UserMailer.with(user: @user).welcome.deliver_now
                 UserMailer.with(user: @user).new_account_notification().deliver_now
             else
                 render :new, alert: @user.errors.full_messages

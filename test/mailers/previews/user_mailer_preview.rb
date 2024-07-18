@@ -4,4 +4,8 @@ class UserMailerPreview < ActionMailer::Preview
   def welcome_with_password
     UserMailer.with(user: Contact.last, password: SecureRandom.hex(10), organisation: User.first.organisation).welcome_with_password
   end
+
+  def welcome
+    UserMailer.with(user: User.last).welcome
+  end
 end
