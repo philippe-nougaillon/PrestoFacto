@@ -1,5 +1,36 @@
-<h1>Bienvenue <%= @user.email.split('@').first %> !</h1>
+<h1 style="text-align: center">Bienvenue <%= @user.email.split('@').first %> !</h1>
 
-<p>Votre compte PrestFacto a bien été activé. Nous vous remerçions pour votre confiance. Nous sommes à votre écoute si besoin à cette adresse : <%= mail_to 'contact@prestofacto.fr' %> </p>
+<p>Votre compte PrestFacto a bien été activé. Nous vous remerçions pour votre confiance.</p>
 
 <p><%= link_to "Accéder à mon compte", new_user_session_url %></p>
+
+<p>En cas de besoin, vous pouvez nous contacter à l'adresse suivante : <%= link_to "https://www.philnoug.com/contact", "https://www.philnoug.com/contact?objet=PrestoFacto" %></p>
+
+<hr style="margin-top: 30px; border: 1px solid #ccc">
+
+<h2 style="margin-top: 2rem">Découvrez nos autres logiciels open-source :</h2>
+
+<div style="margin-bottom: 1.5rem">
+  <%= link_to "Talea", "https://portfolio-philnoug.herokuapp.com/logiciels", style: 'font-size: 20px;' %>
+  <p>Application de <b>gestion des Interventions</b> (gestion de services techniques)</p>
+</div>
+
+<div style="margin-bottom: 1.5rem">
+  <%= link_to "Camino", "https://portfolio-philnoug.herokuapp.com/logiciels", style: 'font-size: 20px;' %>
+  <p>Application de <b>gestion de projets</b>, en équipe et en mobilité</p>
+</div>
+
+<div style="margin-bottom: 1.5rem">
+  <%= link_to "CrystalDATA", "https://portfolio-philnoug.herokuapp.com/logiciels", style: 'font-size: 20px;' %>
+  <p>Application <b>NO-CODE de Base de données</b> en ligne. Vos données métier 'In da Cloud' !</p>
+</div>
+
+<div style="margin-bottom: 1.5rem">
+  <%= link_to "Émargements", "https://portfolio-philnoug.herokuapp.com/logiciels", style: 'font-size: 20px;' %>
+  <p>Application de <b>gestion des feuilles de présence</b> numérique</p>
+</div>
+
+<div style="margin-bottom: 1.5rem">
+  <%= link_to "Business School Planning", "https://portfolio-philnoug.herokuapp.com/logiciels", style: 'font-size: 20px;' %>
+  <p>Application de <b>gestion de planification</b> de cours et de salles, à l’usage d’établissement de l’enseignement supérieur</p>
+</div>

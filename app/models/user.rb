@@ -59,6 +59,7 @@ class User < ApplicationRecord
         
         user.save
 
+        UserMailer.with(user: user).welcome.deliver_now
         UserMailer.with(user: user).new_account_notification().deliver_now
         
         user
