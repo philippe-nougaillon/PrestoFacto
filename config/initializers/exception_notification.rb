@@ -22,7 +22,7 @@ ExceptionNotification.configure do |config|
   config.add_notifier :email, {
     email_prefix: '[PRESTOFACTO ERROR] ',
     sender_address: %{"PrestoFacto Notifier" <prestofacto@philnoug.com>},
-    exception_recipients: %w{philippe.nougaillon@gmail.com, p-edacquet@hotmail.fr}
+    exception_recipients: %w{philippe.nougaillon@aikku.eu, pierre-emmanuel.dacquet@aikku.eu}
   }
 
   config.error_grouping = true
