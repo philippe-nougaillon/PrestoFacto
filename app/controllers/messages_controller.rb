@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
   def index
     authorize Message
 
-    if current_user.email == "philippe.nougaillon@gmail.com"
+    if ['philippe.nougaillon@aikku.eu', 'pierre-emmanuel.dacquet@aikku.eu', 'sebastien.pourchaire@aikku.eu'].include?(current_user.email)
       @messages = Message.all
     else
       @messages = current_user.organisation.messages.ordered

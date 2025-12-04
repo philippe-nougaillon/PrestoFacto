@@ -38,7 +38,7 @@ class OrganisationPolicy < ApplicationPolicy
   end
 
   def suppression_organisation_do?
-    suppression_organisation? || ['pierreemmanuel.dacquet@gmail.com', 'philippe.nougaillon@gmail.com'].include?(user.email)
+    suppression_organisation? || ['pierre-emmanuel.dacquet@aikku.eu', 'philippe.nougaillon@aikku.eu', 'sebastien.pourchaire@aikku.eu'].include?(user.email)
   end
 
 end

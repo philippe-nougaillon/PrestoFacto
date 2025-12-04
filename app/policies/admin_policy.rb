@@ -37,6 +37,10 @@ class AdminPolicy < ApplicationPolicy
     user.admin?
   end
 
+  def exemple_fichier_import_xls?
+    import?
+  end
+
   def envoyer_factures?
     user.admin?
   end
@@ -50,7 +54,7 @@ class AdminPolicy < ApplicationPolicy
   end
 
   def stats?
-    user && ['pierreemmanuel.dacquet@gmail.com', 'philippe.nougaillon@gmail.com'].include?(user.email)
+    user && ['pierre-emmanuel.dacquet@aikku.eu', 'philippe.nougaillon@aikku.eu', 'sebastien.pourchaire@aikku.eu', 'serena.pinali@aikku.eu'].include?(user.email)
   end
 
 end

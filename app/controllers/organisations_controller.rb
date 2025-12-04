@@ -83,7 +83,7 @@ class OrganisationsController < ApplicationController
   def suppression_organisation_do
     authorize @organisation
 
-    unless ['pierreemmanuel.dacquet@gmail.com', 'philippe.nougaillon@gmail.com'].include?(current_user.email)
+    unless ['pierre-emmanuel.dacquet@aikku.eu', 'philippe.nougaillon@aikku.eu', 'sebastien.pourchaire@aikku.eu'].include?(current_user.email)
       AdminMailer.with(organisation: @organisation, reason: params[:reason]).suppression_organisation_notification.deliver_now
     end
 
@@ -121,7 +121,7 @@ class OrganisationsController < ApplicationController
 
     @organisation.destroy
 
-    if ['pierreemmanuel.dacquet@gmail.com', 'philippe.nougaillon@gmail.com'].include?(current_user.email)
+    if ['pierre-emmanuel.dacquet@aikku.eu', 'philippe.nougaillon@aikku.eu', 'sebastien.pourchaire@aikku.eu'].include?(current_user.email)
       respond_to do |format|
         format.html { redirect_to admin_stats_path }
         format.json { head :no_content }
