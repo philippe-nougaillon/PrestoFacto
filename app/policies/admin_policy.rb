@@ -54,7 +54,7 @@ class AdminPolicy < ApplicationPolicy
   end
 
   def stats?
-    user && ['pierre-emmanuel.dacquet@aikku.eu', 'philippe.nougaillon@aikku.eu', 'sebastien.pourchaire@aikku.eu'].include?(user.email)
+    user && ['pierre-emmanuel.dacquet@aikku.eu', 'philippe.nougaillon@aikku.eu', 'sebastien.pourchaire@aikku.eu', 'serena.pinali@aikku.eu'].include?(user.email)
   end
 
 end
