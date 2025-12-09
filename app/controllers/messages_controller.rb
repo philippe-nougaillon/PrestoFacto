@@ -52,7 +52,7 @@ class MessagesController < ApplicationController
   def create
     authorize Message
 
-    if verify_recaptcha
+    if verify_recaptcha || Rails.env.development?
       @message = Message.new(message_params)
       respond_to do |format|
         if @message.save
