@@ -1,7 +1,7 @@
 <tr>
     <td style="text-align: center">
         <span data-action="click->action#click">
-            <%= check_box_tag "factures_id[#{facture.id}]", 'yes', false,  data: {"action-target":"source"} %>
+            <%= check_box_tag "factures_id[#{facture.id}]", 'yes', false, data: {"action-target": "source", "checkbox-select-all-target": "checkbox"} %>
         </span>
     </td>
     <td><%= link_to facture.réf, facture, style: 'white-space: nowrap;' %></td>

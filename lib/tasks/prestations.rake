@@ -44,8 +44,7 @@ namespace :prestations do
 
       hors_période_scolaire = vacances.any?
       puts "Jour à comptabiliser: #{I18n.l date}." \
-           " Ce jour est #{hors_période_scolaire ? "hors période scolaire" : "en période_scolaire" }" \
-           " => #{ hors_période_scolaire ? vacances.first.nom : 'Non' }"
+           " Ce jour est #{hors_période_scolaire ? "hors période scolaire => #{vacances.first.nom}}" : "en période_scolaire" }" 
 
       reservations = organisation.reservations
                                   .actives

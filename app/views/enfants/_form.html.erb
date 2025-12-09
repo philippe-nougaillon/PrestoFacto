@@ -11,12 +11,12 @@
     <div class="col-sm-1"><%= f.text_field :badge %></div>
   </div>
 
-  <div class="row">
+  <div class="row" data-controller="toggle-allergie">
     <div class="col-sm-1">
-      <%= f.check_box :menu_all, label: "Allergie", custom: :switch %>
+      <%= f.check_box :menu_all, label: "Allergie", custom: :switch, 'data-toggle-allergie-target': 'source', 'data-action': 'toggle-allergie#toggle' %>
     </div>
     <div class="col-sm-3">
-      <%= f.text_field :allergenes, label_as_placeholder: true, label: 'Allergènes' %>
+      <%= f.text_field :allergenes, label_as_placeholder: true, label: 'Allergènes', 'data-toggle-allergie-target': 'field' %>
     </div>
     <div class="col-sm-2">
       <%= f.check_box :menu_sp, label: "Menu 'Sans porc'", custom: :switch %>
