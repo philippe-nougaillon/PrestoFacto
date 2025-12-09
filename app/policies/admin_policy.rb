@@ -37,6 +37,10 @@ class AdminPolicy < ApplicationPolicy
     user.admin?
   end
 
+  def import_do?
+    import?
+  end
+
   def exemple_fichier_import_xls?
     import?
   end
