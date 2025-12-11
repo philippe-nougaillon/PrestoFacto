@@ -9,6 +9,7 @@ class Compte < ApplicationRecord
   validates :nom, presence: true
 
   has_many :contacts, inverse_of: :compte, dependent: :delete_all
+  accepts_nested_attributes_for :contacts, reject_if: proc { |attributes| attributes[:nom].blank? }, allow_destroy: true
   has_many :enfants, dependent: :delete_all
   has_many :factures
   has_many :paiements
@@ -17,9 +18,9 @@ class Compte < ApplicationRecord
   has_many :reservations, through: :enfants
   has_many :absences, through: :enfants
 
-  accepts_nested_attributes_for :contacts, reject_if: proc { |attributes| attributes[:nom].blank? }, allow_destroy: true
-
   default_scope { order(Arel.sql('comptes.nom')) }
+
+  validate :at_least_one_contact
 
   # self.per_page = 10
 
@@ -70,6 +71,14 @@ class Compte < ApplicationRecord
 
   def nom_civilité
     "#{self.civilité} #{self.nom}"
+  end
+
+  def at_least_one_contact
+    valid_contacts = contacts.reject(&:marked_for_destruction?)
+    
+    if valid_contacts.empty?
+      errors.add(:compte, "Il doit y avoir au moins un contact")
+    end
   end
 
 end
