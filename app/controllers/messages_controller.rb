@@ -100,13 +100,33 @@ class MessagesController < ApplicationController
   # WORKFLOW
 
   def traiter
-    @message.traiter!
-    redirect_to @message, notice: "Message modifié. État passé à 'traité'."
+    if @message.valid?
+      if @message.can_traiter?
+        @message.traiter!
+        redirect_to @message, notice: "Message modifié. État passé à 'traité'."
+      elsif @message.traité?
+        redirect_to @message, alert: "Le message est déjà traité"
+      else
+        redirect_to @message, alert: "Le message ne peut pas être traité"
+      end
+    else
+      redirect_to @message, alert: "Le message n'est pas valide. Il ne peut pas être traité"
+    end
   end
 
   def archiver
-    @message.archiver!
-    redirect_to @message, notice: "Message modifié. État passé à 'archivé'."
+    if @message.valid?
+      if @message.can_archiver?
+        @message.archiver!
+        redirect_to @message, notice: "Message modifié. État passé à 'archivé'."
+      elsif @message.archivé?
+        redirect_to @message, alert: "Le message est déjà archivé"
+      else
+        redirect_to @message, alert: "Le message ne peut pas être archivé"
+      end
+    else
+      redirect_to @message, alert: "Le message n'est pas valide. Il ne peut pas être archivé"
+    end
   end
 
   private
