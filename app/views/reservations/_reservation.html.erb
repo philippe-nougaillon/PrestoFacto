@@ -18,6 +18,12 @@
         <% end %>
     </td>
     <td class="text-center">
+        <% if reservation.enfant.menu_vege %>
+            <%= fa_icon 'exclamation' %>
+            <% @total_vege += 1 %>
+        <% end %>
+    </td>
+    <td class="text-center">
         <% if reservation.enfant.menu_sp %>
             <%= fa_icon 'exclamation' %>
             <% @total_sp += 1 %>

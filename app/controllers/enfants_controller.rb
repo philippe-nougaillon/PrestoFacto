@@ -175,7 +175,7 @@ class EnfantsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def enfant_params
       params.require(:enfant)
-            .permit(:compte_id, :classroom_id, :nom, :prénom, :date_naissance, :menu_sp, :menu_all, :allergenes, :tarif_type_id, :badge, :mémo,
+            .permit(:compte_id, :classroom_id, :nom, :prénom, :date_naissance, :menu_vege, :menu_sp, :menu_all, :allergenes, :tarif_type_id, :badge, :mémo,
                     reservations_attributes: [:id, :enfant_id, :prestation_type_id, :workflow_state,
                                               :début, :fin, 
                                               :lundi, :mardi, :mercredi, :jeudi, :vendredi, :samedi, :dimanche,
@@ -183,7 +183,7 @@ class EnfantsController < ApplicationController
     end
 
     def sortable_columns
-      %w{structures.nom comptes.nom classrooms.nom comptes.nom enfants.nom enfants.prénom enfants.date_naissance enfants.menu_sp enfants.menu_all}
+      %w{structures.nom comptes.nom classrooms.nom comptes.nom enfants.nom enfants.prénom enfants.date_naissance enfants.menu_sp enfants.menu_all enfants.menu_vege}
     end
   
     def sort_column
