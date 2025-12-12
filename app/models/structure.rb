@@ -5,6 +5,7 @@ class Structure < ApplicationRecord
 
   has_many :classrooms, inverse_of: :structure
   has_many :enfants, through: :classrooms
+  has_many :comptes
 
   accepts_nested_attributes_for :classrooms, reject_if: proc { |attributes| attributes[:nom].blank? }, allow_destroy: true
 

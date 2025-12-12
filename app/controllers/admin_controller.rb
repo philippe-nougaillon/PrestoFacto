@@ -153,6 +153,7 @@ class AdminController < ApplicationController
       structure.save if structure.valid? && enregistrer
 
       # Compte => nom_compte civilité adresse1 adresse2 cp ville num_allocataire mémo_compte
+      contacts = []
       compte = structure
               .comptes
               .where('UPPER(nom) = ?', row[headers.index 'nom_compte'].strip.upcase)
@@ -165,48 +166,56 @@ class AdminController < ApplicationController
                 c.ville = row[headers.index 'ville'] 
                 c.num_allocataire = row[headers.index 'num_allocataire'].to_s 
                 c.mémo = row[headers.index 'mémo_compte']
+                c.organisation_id = organisation.id
+                [1,2,3].each { |i|
+                  if row[headers.index "nom_contact#{i}"].present?
+                    # Contact => nom_contact1 fixe1 portable1 email1 prevenir1 mémo_contact1, nom_contact2 ..., nom_contact3 ...
+                    contact = c
+                                .contacts
+                                .where('UPPER(nom) = ?', row[headers.index "nom_contact#{i}"])
+                                .first_or_initialize do |ct|
+                      ct.nom = row[headers.index "nom_contact#{i}"]
+                      ct.fixe = row[headers.index "fixe#{i}"]
+                      ct.portable = row[headers.index "portable#{i}"]
+                      ct.email = row[headers.index "email#{i}"]
+                      ct.mémo = row[headers.index "mémo_contact#{i}"]
+                      ct.prevenir = get_boolean_in_xls(row[headers.index "prevenir#{i}"])
+                    end
+                    @messages << message_import_log(contact)
+                    contact.save if contact.valid? && enregistrer
+                    contacts << contact
+                  else
+                  end
+                }
               end
 
       @messages << message_import_log(compte)
       compte.save if compte.valid? && enregistrer 
               
-      # Contact => nom_contact fixe portable email mémo_contact
-      contact = compte
-              .contacts
-              .where('UPPER(nom) = ?', row[headers.index 'nom_contact'].strip.upcase)
-              .first_or_initialize do |ct|
-                ct.nom = row[headers.index 'nom_contact']
-                ct.fixe = row[headers.index 'fixe']
-                ct.portable = row[headers.index 'portable']
-                ct.email = row[headers.index 'email']
-                ct.mémo = row[headers.index 'mémo_contact'] 
-              end
+      classroom = structure
+        .classrooms
+        .where(nom: row[headers.index 'classe'])
+        .first_or_create do |classe|
+          classe.nom = row[headers.index 'classe']
+        end
 
-      @messages << message_import_log(contact)
-      contact.save if contact.valid? && enregistrer 
-
-        # Enfant => classroom nom_enfant prénom date_naissance menu_vege menu_sp menu_all tarif_type badge
+       # Enfant => classroom nom_enfant prénom date_naissance menu_vege menu_sp menu_all tarif_type badge
       enfant = compte
               .enfants
               .where('UPPER(nom) = ?', row[headers.index 'nom_enfant'].strip.upcase)
               .where('UPPER(prénom) = ?', row[headers.index 'prénom'].strip.upcase)
               .first_or_initialize do |e|
+                e.compte_id = compte.id
                 e.nom = row[headers.index 'nom_enfant']
                 e.prénom = row[headers.index 'prénom']
-                e.classroom = organisation
-                              .classrooms
-                              .where(nom: row[headers.index 'classe'])
-                              .first_or_create do |classe|
-                                classe.nom = row[headers.index 'classe'] 
-                              end
-                e.date_naissance = row[headers.index 'date_naissance']              
-                e.menu_vege = (row[headers.index 'menu_vege'].strip.upcase == 'OUI')
-                e.menu_sp = (row[headers.index 'menu_sp'].strip.upcase == 'OUI') 
-                e.menu_all = (row[headers.index 'menu_all'].strip.upcase == 'OUI')
+                e.classroom_id = classroom.id
+                e.date_naissance = row[headers.index 'date_naissance']
+                e.menu_vege = get_boolean_in_xls(row[headers.index 'menu_vege'])
+                e.menu_sp = get_boolean_in_xls(row[headers.index 'menu_sp'])
+                e.menu_all = get_boolean_in_xls(row[headers.index 'menu_all'])
                 e.tarif_type = organisation.tarif_types.find_by(nom: row[headers.index 'tarif_type'])
                 e.badge = row[headers.index 'badge']
               end    
-              
       @messages << message_import_log(enfant)
       enfant.save if enfant.valid? && enregistrer 
       
@@ -226,17 +235,19 @@ class AdminController < ApplicationController
                       r.mercredi = row[headers.index 'mercredi']
                       r.jeudi = row[headers.index 'jeudi']
                       r.vendredi = row[headers.index 'vendredi']
-                      r.matin = (row[headers.index 'matin'].strip.upcase == 'OUI')
-                      r.midi = (row[headers.index 'midi'].strip.upcase == 'OUI')
-                      r.soir = (row[headers.index 'soir'].strip.upcase == 'OUI')
-                      r.active = (row[headers.index 'active'].strip.upcase == 'OUI')
-                      r.hors_période_scolaire = (row[headers.index 'hors_période_scolaire'].strip.upcase == 'OUI')
+                      r.matin = get_boolean_in_xls(row[headers.index 'matin'])
+                      r.midi = get_boolean_in_xls(row[headers.index 'midi'])
+                      r.soir = get_boolean_in_xls(row[headers.index 'soir'])
+                      r.active = get_boolean_in_xls(row[headers.index 'active'])
+                      r.hors_période_scolaire = get_boolean_in_xls(row[headers.index 'hors_période_scolaire'])
                     end  
 
       @messages << message_import_log(reservation)
       reservation.save if reservation.valid? && enregistrer 
 
-      (structure.valid? && compte.valid? && contact.valid? && enfant.valid? && reservation.valid?) ? @importes += 1 : @errors += 1 
+      (structure.valid? && compte.valid? && enfant.valid? && reservation.valid? && contacts.each { |contact| contact.valid?}) ? @importes += 1 : @errors += 1
+
+      @messages << "#{@importes} lignes importées, #{@errors} lignes rejetées."
 
       puts @messages
     end
@@ -323,11 +334,15 @@ private
     if model.valid? 
       "#{model.class.name.upcase} #{model.new_record? ? 'NOUVEAU' : 'MAJ'} => id:#{model.id} changements:#{model.changes}"
     else
-      " !! ERREURS: " + model.errors.messages.map{|m| "#{m.first} => #{m.last}"}.join(',')
+      " !! ERREURS #{model.model_name}: " + model.errors.messages.map{|m| "#{m.first} => #{m.last}"}.join(',')
     end
   end
 
   def user_authorized?
     authorize :admin
+  end
+
+  def get_boolean_in_xls(value)
+    value ? (value.strip.upcase == 'OUI') : false
   end
 end
