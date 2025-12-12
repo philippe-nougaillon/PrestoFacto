@@ -22,7 +22,7 @@ class AbsencesController < ApplicationController
     end
 
     unless params[:structure_id].blank?
-      @absences = @absences.joins(enfant: [:compte]).where(comptes: { structure_id: params[:structure_id] })
+      @absences = @absences.joins(enfant: [:classroom]).where(classroom: { structure_id: params[:structure_id] })
       @classrooms = @classrooms.where(structure_id: params[:structure_id]) 
     end
 
