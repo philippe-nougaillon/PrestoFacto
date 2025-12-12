@@ -47,6 +47,7 @@ class ReservationsController < ApplicationController
     @reservations = @reservations.joins(:enfant => :classroom).reorder(Arel.sql("#{sort_column} #{sort_direction}"))
 
     @total_alg = 0
+    @total_vege = 0
     @total_sp = 0
 
     @reservations = @reservations.page(params[:page])
@@ -106,7 +107,7 @@ class ReservationsController < ApplicationController
     end
 
     def sortable_columns
-      %w{structures.nom classrooms.nom enfants.nom enfants.menu_sp enfants.menu_all 
+      %w{structures.nom classrooms.nom enfants.nom enfants.menu_vege enfants.menu_sp enfants.menu_all 
           reservations.début reservations.fin
           reservations.prestation_type_id
           reservations.lundi reservations.mardi reservations.mercredi reservations.jeudi reservations.vendredi reservations.samedi reservations.dimanche

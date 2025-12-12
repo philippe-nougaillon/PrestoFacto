@@ -19,6 +19,8 @@ class Enfant < ApplicationRecord
 
   validates :compte_id, :classroom_id, :tarif_type_id, :nom, :prénom, presence: true
 
+  before_save :sync_menu_vege_sp
+
   default_scope { order(Arel.sql('enfants.nom, enfants.prénom')) }
 
   # self.per_page = 10
@@ -29,6 +31,10 @@ class Enfant < ApplicationRecord
 
   def prénom_et_nom
     "#{self.prénom} #{self.nom}"
+  end
+
+  def sync_menu_vege_sp
+    self.menu_sp = true if self.menu_vege
   end
 
 end

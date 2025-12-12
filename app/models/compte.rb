@@ -63,7 +63,7 @@ class Compte < ApplicationRecord
 
   def self.xls_headers
     %w{organisation nom_compte civilité adresse1 adresse2 cp ville num_allocataire mémo_compte
-      nom_enfant prénom classe référent date_naissance menu_sp menu_all tarif_type badge allergenes mémo_enfant
+      nom_enfant prénom classe référent date_naissance menu_vege menu_sp menu_all tarif_type badge allergenes mémo_enfant
       nom_contact1 fixe1 portable1 email1 prevenir1 mémo_contact1
       nom_contact2 fixe2 portable2 email2 prevenir2 mémo_contact2
       nom_contact3 fixe3 portable3 email3 prevenir3 mémo_contact3 }  

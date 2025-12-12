@@ -185,7 +185,7 @@ class AdminController < ApplicationController
       @messages << message_import_log(contact)
       contact.save if contact.valid? && enregistrer 
 
-        # Enfant => classroom nom_enfant prénom date_naissance menu_sp menu_all tarif_type badge
+        # Enfant => classroom nom_enfant prénom date_naissance menu_vege menu_sp menu_all tarif_type badge
       enfant = compte
               .enfants
               .where('UPPER(nom) = ?', row[headers.index 'nom_enfant'].strip.upcase)
@@ -200,6 +200,7 @@ class AdminController < ApplicationController
                                 classe.nom = row[headers.index 'classe'] 
                               end
                 e.date_naissance = row[headers.index 'date_naissance']              
+                e.menu_vege = (row[headers.index 'menu_vege'].strip.upcase == 'OUI')
                 e.menu_sp = (row[headers.index 'menu_sp'].strip.upcase == 'OUI') 
                 e.menu_all = (row[headers.index 'menu_all'].strip.upcase == 'OUI')
                 e.tarif_type = organisation.tarif_types.find_by(nom: row[headers.index 'tarif_type'])

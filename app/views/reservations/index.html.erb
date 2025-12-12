@@ -33,6 +33,7 @@
             <th><%= sort_link 'classrooms.nom', 'Classe' %></th>
             <th><%= sort_link 'enfants.nom', 'Enfant' %></th>
             <th><%= sort_link 'enfants.menu_all', 'ALG?' %></th>
+            <th><%= sort_link 'enfants.menu_vege', 'Végé?' %></th>
             <th><%= sort_link 'enfants.menu_sp', 'SP?' %></th>
             <th><%= sort_link 'enfants.mémo', 'Mémo' %></th>
             <th><%= sort_link 'reservations.prestation_type_id', 'Prestation' %></th>
@@ -64,6 +65,9 @@
             </th>
             <th class="text-center">
               <%= @total_alg %>
+            </th>
+            <th class="text-center">
+              <%= @total_vege %>
             </th>
             <th class="text-center">
               <%= @total_sp %>

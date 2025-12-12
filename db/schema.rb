@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_06_04_142158) do
+ActiveRecord::Schema[7.2].define(version: 2025_12_12_105636) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -148,6 +148,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_04_142158) do
     t.string "slug"
     t.string "allergenes"
     t.string "mémo"
+    t.boolean "menu_vege", default: false
     t.index ["classroom_id"], name: "index_enfants_on_classroom_id"
     t.index ["compte_id"], name: "index_enfants_on_compte_id"
     t.index ["slug"], name: "index_enfants_on_slug", unique: true

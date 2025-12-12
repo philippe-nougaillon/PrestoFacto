@@ -8,7 +8,7 @@ export default class extends Controller {
     this.toggle();
   }
   connect() {
-    console.log("toggle-allergie connecté !")
+    // console.log("toggle-allergie connecté !")
   }
 
   toggle() {
