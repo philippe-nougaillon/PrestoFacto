@@ -171,19 +171,23 @@ class AdminController < ApplicationController
       compte.save if compte.valid? && enregistrer 
               
       # Contact => nom_contact fixe portable email mémo_contact
-      contact = compte
-              .contacts
-              .where('UPPER(nom) = ?', row[headers.index 'nom_contact'].strip.upcase)
-              .first_or_initialize do |ct|
-                ct.nom = row[headers.index 'nom_contact']
-                ct.fixe = row[headers.index 'fixe']
-                ct.portable = row[headers.index 'portable']
-                ct.email = row[headers.index 'email']
-                ct.mémo = row[headers.index 'mémo_contact'] 
-              end
+      [1,2,3].each { |i|
+        contact = compte
+                .contacts
+                .where('UPPER(nom) = ?', row[headers.index "nom_contact#{i}"])
+                .first_or_initialize do |ct|
+                  ct.nom = row[headers.index "nom_contact#{i}"]
+                  ct.fixe = row[headers.index "fixe#{i}"]
+                  ct.portable = row[headers.index "portable#{i}"]
+                  ct.email = row[headers.index "email#{i}"]
+                  ct.mémo = row[headers.index "mémo_contact#{i}"]
+                  ct.prevenir = row[headers.index "prevenir#{i}"] ? (row[headers.index "prevenir#{i}"].strip.upcase == 'OUI') : false
 
-      @messages << message_import_log(contact)
-      contact.save if contact.valid? && enregistrer 
+        end
+
+        @messages << message_import_log(contact)
+        contact.save if contact.valid? && enregistrer
+      }
 
         # Enfant => classroom nom_enfant prénom date_naissance menu_vege menu_sp menu_all tarif_type badge
       enfant = compte
