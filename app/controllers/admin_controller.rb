@@ -181,7 +181,7 @@ class AdminController < ApplicationController
                   ct.portable = row[headers.index "portable#{i}"]
                   ct.email = row[headers.index "email#{i}"]
                   ct.mémo = row[headers.index "mémo_contact#{i}"]
-                  ct.prevenir = row[headers.index "prevenir#{i}"] ? (row[headers.index "prevenir#{i}"].strip.upcase == 'OUI') : false
+                  ct.prevenir = get_boolean_in_xls(row[headers.index "prevenir#{i}"])
 
         end
 
@@ -204,9 +204,9 @@ class AdminController < ApplicationController
                                 classe.nom = row[headers.index 'classe'] 
                               end
                 e.date_naissance = row[headers.index 'date_naissance']              
-                e.menu_vege = (row[headers.index 'menu_vege'].strip.upcase == 'OUI')
-                e.menu_sp = (row[headers.index 'menu_sp'].strip.upcase == 'OUI') 
-                e.menu_all = (row[headers.index 'menu_all'].strip.upcase == 'OUI')
+                e.menu_vege = get_boolean_in_xls(row[headers.index 'menu_vege'])
+                e.menu_sp = get_boolean_in_xls(row[headers.index 'menu_sp'])
+                e.menu_all = get_boolean_in_xls(row[headers.index 'menu_all'])
                 e.tarif_type = organisation.tarif_types.find_by(nom: row[headers.index 'tarif_type'])
                 e.badge = row[headers.index 'badge']
               end    
@@ -230,11 +230,11 @@ class AdminController < ApplicationController
                       r.mercredi = row[headers.index 'mercredi']
                       r.jeudi = row[headers.index 'jeudi']
                       r.vendredi = row[headers.index 'vendredi']
-                      r.matin = (row[headers.index 'matin'].strip.upcase == 'OUI')
-                      r.midi = (row[headers.index 'midi'].strip.upcase == 'OUI')
-                      r.soir = (row[headers.index 'soir'].strip.upcase == 'OUI')
-                      r.active = (row[headers.index 'active'].strip.upcase == 'OUI')
-                      r.hors_période_scolaire = (row[headers.index 'hors_période_scolaire'].strip.upcase == 'OUI')
+                      r.matin = get_boolean_in_xls(row[headers.index 'matin'])
+                      r.midi = get_boolean_in_xls(row[headers.index 'midi'])
+                      r.soir = get_boolean_in_xls(row[headers.index 'soir'])
+                      r.active = get_boolean_in_xls(row[headers.index 'active'])
+                      r.hors_période_scolaire = get_boolean_in_xls(row[headers.index 'hors_période_scolaire'])
                     end  
 
       @messages << message_import_log(reservation)
@@ -333,5 +333,9 @@ private
 
   def user_authorized?
     authorize :admin
+  end
+
+  def get_boolean_in_xls(value)
+    value ? (value.strip.upcase == 'OUI') : false
   end
 end
