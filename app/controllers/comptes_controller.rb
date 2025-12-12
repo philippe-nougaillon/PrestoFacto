@@ -82,7 +82,7 @@ class ComptesController < ApplicationController
         format.html { redirect_to @compte, notice: 'Compte créé avec succès.' }
         format.json { render :show, status: :created, location: @compte }
       else
-        format.html { render :new }
+        format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @compte.errors, status: :unprocessable_entity }
       end
     end
@@ -99,7 +99,7 @@ class ComptesController < ApplicationController
         format.html { redirect_to @compte, notice: 'Compte modifié avec succès.' }
         format.json { render :show, status: :ok, location: @compte }
       else
-        format.html { render :edit }
+        format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @compte.errors, status: :unprocessable_entity }
       end
     end

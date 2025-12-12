@@ -1,4 +1,15 @@
 <%= bootstrap_form_with(model: compte, local: true, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' }) do |form| %>
+  <% if compte.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(compte.errors.count, "erreur") %> empêche(nt) l'enregistrement du compte :</h3>
+
+      <ul>
+        <% compte.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <%= form.hidden_field :organisation_id %>
 
