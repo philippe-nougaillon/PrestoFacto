@@ -269,6 +269,8 @@ fr:
       title: Importer données XLS
     stats:
       title: "Admin stats"
+    dashboard:
+      title: "Tableau de bord"
   devise:
     sessions:
       new:
