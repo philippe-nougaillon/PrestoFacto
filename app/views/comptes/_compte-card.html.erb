@@ -42,16 +42,18 @@
     <div class="card">
       <div class="card-body">
         <strong>Contacts</strong>
-        <table class="table table-hover table-borderless table-sm">
-          <% @compte.contacts.each do |contact| %>
-            <tr class="alert <%= 'alert-warning' if contact.prevenir? %>" >
-              <td><%= contact.nom.humanize %></td>
-              <td><%= mail_to contact.email, class:"text-break" %>
-              <td><%= [contact.fixe, contact.portable].join(' ') %>
-              <td><%= contact.mémo %></td>
-            </tr>
-          <% end %>
-        </table>
+        <div class="table-responsive">
+          <table class="table table-hover table-borderless table-sm">
+            <% @compte.contacts.each do |contact| %>
+              <tr class="alert <%= 'alert-warning' if contact.prevenir? %>">
+                <td><%= contact.nom.humanize %></td>
+                <td><%= mail_to contact.email, class:"text-break" %></td>
+                <td><%= [contact.fixe, contact.portable].join(' ') %></td>
+                <td><%= contact.mémo %></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
       </div>
     </div>
 

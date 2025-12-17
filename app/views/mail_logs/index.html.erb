@@ -34,29 +34,31 @@
   </div>
 <% end %>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th><%= sortable :to do %>Destinataire<% end %></th>
-      <th><%= sortable :subject do %>Objet<% end %></th>
-      <th><%= sortable :created_at, default: true do %>Il y a<% end %></th>
-      <th>Statut</th>
-      <th>État</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= sortable :to do %>Destinataire<% end %></th>
+        <th><%= sortable :subject do %>Objet<% end %></th>
+        <th><%= sortable :created_at, default: true do %>Il y a<% end %></th>
+        <th>Statut</th>
+        <th>État</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <% @mail_logs.each do |mail_log| %>
-      <% status_ko = @result_failed["items"].find{|item| item["message"]["headers"]["message-id"] == mail_log.message_id } %>
+    <tbody>
+      <% @mail_logs.each do |mail_log| %>
+        <% status_ko = @result_failed["items"].find{|item| item["message"]["headers"]["message-id"] == mail_log.message_id } %>
 
-      <% if params[:ko].blank? || (mail_log.created_at > 5.days.ago && status_ko) %>
-        <%= render partial: "mail_log", locals: {mail_log: mail_log, status_ko: status_ko} %>
+        <% if params[:ko].blank? || (mail_log.created_at > 5.days.ago && status_ko) %>
+          <%= render partial: "mail_log", locals: {mail_log: mail_log, status_ko: status_ko} %>
+        <% end %>
+
       <% end %>
-
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
 
 <% if @mail_logs.respond_to?(:total_pages) %>
   <%= page_entries_info @mail_logs, entry_name: 'mail_log' %>

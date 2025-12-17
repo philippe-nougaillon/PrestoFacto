@@ -12,67 +12,68 @@
   </small>
 </p>
 
-<p>
+<div class="table-responsive">
   <table class="table">
-  <thead>
-    <tr>
-    <th>Nom du type de Tarif</th>
-    <th>Nom du type de Prestation</th>
-    <th>Prix</th>  
-    <th></th>
-    </tr>
-  </thead>
+    <thead>
+      <tr>
+      <th>Nom du type de Tarif</th>
+      <th>Nom du type de Prestation</th>
+      <th>Prix</th>  
+      <th></th>
+      </tr>
+    </thead>
 
-  <% @organisation.tarifs.each do | tarif | %>
-    <tr>
-    <td><%= tarif.tarif_type.nom %></td>
-    <td><%= tarif.prestation_type.nom %></td>
-    <td><%= number_to_currency(tarif.prix, unit: '€', precision: 2, format: "%n %u") %></td>
-    <td>
-      <% if policy(tarif).destroy? %>
-        <%= button_to tarif, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class:'btn btn-sm' do %>
-          <%= fa_icon 'trash-alt', class: 'text-danger' %>
+    <% @organisation.tarifs.each do | tarif | %>
+      <tr>
+      <td><%= tarif.tarif_type.nom %></td>
+      <td><%= tarif.prestation_type.nom %></td>
+      <td><%= number_to_currency(tarif.prix, unit: '€', precision: 2, format: "%n %u") %></td>
+      <td>
+        <% if policy(tarif).destroy? %>
+          <%= button_to tarif, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class:'btn btn-sm' do %>
+            <%= fa_icon 'trash-alt', class: 'text-danger' %>
+          <% end %>
         <% end %>
-      <% end %>
-    </td>
-    </tr>
-  <% end %>
+      </td>
+      </tr>
+    <% end %>
   </table>
+</div>
 
-  <% if policy(Tarif).new? %>
-  <%= link_to new_tarif_path(organisation_id: @organisation), data: {'bs-toggle': "modal", 'bs-target': "#myModalTarif" }, class: "btn  btn-outline-primary" do %>
+<% if policy(Tarif).new? %>
+  <%= link_to new_tarif_path(organisation_id: @organisation), data: {'bs-toggle': "modal", 'bs-target': "#myModalTarif" }, class: "btn  btn-outline-primary mb-5" do %>
     <%= fa_icon 'plus-circle' %> Créer un nouveau tarif
   <% end %>
-  <% end %>
-</p>
-<br>
+<% end %>
 
 <div class="row">
 
   <div class="col">
     <h3 class="fw-light">Types de prestations</h3>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Nom</th>
-          <th></th>
-        </tr>
-      </thead>
-      <% @organisation.prestation_types.each do |prestation_type| %>
-        <tr>
-          <td><%= link_to prestation_type.nom.humanize, edit_prestation_type_path(prestation_type) %></td>
-          <td class="text-end col-sm-1">
-            <% if policy(prestation_type).destroy? %>
-              <%= button_to prestation_type, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class:'btn btn-sm p-0' do %>
-                <%= fa_icon 'trash-alt', class:'text-danger fs-6' %>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @organisation.prestation_types.each do |prestation_type| %>
+          <tr>
+            <td><%= link_to prestation_type.nom.humanize, edit_prestation_type_path(prestation_type) %></td>
+            <td class="text-end col-sm-1">
+              <% if policy(prestation_type).destroy? %>
+                <%= button_to prestation_type, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class:'btn btn-sm p-0' do %>
+                  <%= fa_icon 'trash-alt', class:'text-danger fs-6' %>
+                <% end %>
+              <% else %>
+                <%= fa_icon 'trash-alt', class:'text-muted', title: "Pas supprimable : il y a des données liées dans Réservations, Prestations, ou Tarifs" %>
               <% end %>
-            <% else %>
-              <%= fa_icon 'trash-alt', class:'text-muted', title: "Pas supprimable : il y a des données liées dans Réservations, Prestations, ou Tarifs" %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </table>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
 
     <% if policy(PrestationType).new? %>
       <%= link_to new_prestation_type_path(organisation_id: @organisation), 
@@ -84,26 +85,28 @@
 
   <div class="col">
     <h3 class="fw-light">Types de tarifs</h3>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Nom</th>
-          <th></th>
-        </tr>
-      </thead>
-      <% @organisation.tarif_types.each do |tarif_type| %>
-        <tr>
-          <td><%= link_to tarif_type.nom, edit_tarif_type_path(tarif_type) %></td>
-          <td class="text-end col-sm-1">
-            <% if policy(tarif_type).destroy? %>
-              <%= button_to tarif_type, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class:'btn btn-sm' do %>
-                <%= fa_icon 'trash-alt', class: 'text-danger' %>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @organisation.tarif_types.each do |tarif_type| %>
+          <tr>
+            <td><%= link_to tarif_type.nom, edit_tarif_type_path(tarif_type) %></td>
+            <td class="text-end col-sm-1">
+              <% if policy(tarif_type).destroy? %>
+                <%= button_to tarif_type, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class:'btn btn-sm' do %>
+                  <%= fa_icon 'trash-alt', class: 'text-danger' %>
+                <% end %>
               <% end %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </table>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
     <% if policy(TarifType).new? %>
       <%= link_to new_tarif_type_path(organisation_id: @organisation), data: {'bs-toggle': "modal", 'bs-target': "#myModalTypeTarif" }, class: "btn  btn-outline-primary" do %>
       <%= fa_icon 'plus-circle' %> Ajouter un type de tarif

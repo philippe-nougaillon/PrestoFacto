@@ -40,7 +40,7 @@ Rails.application.routes.draw do
       post :action
     end
   end
-  resources :tarifs
+  resources :tarifs, except: %i[ index ]
   resources :absences
   resources :tarif_types, except: %i[ index show ]
   resources :prestation_types, except: %i[ index show ]
@@ -59,7 +59,7 @@ Rails.application.routes.draw do
       get :archiver
     end
   end
-  resources :vacances
+  resources :vacances, except: %i[ index ]
   resources :mail_logs, only: %i[ index show ]
   resources :pointages, only: %i[ index edit update ] do
     collection do

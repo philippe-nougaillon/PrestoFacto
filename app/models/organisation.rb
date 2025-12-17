@@ -29,6 +29,7 @@ class Organisation < ApplicationRecord
     has_many :facture_messages
     has_many :mail_logs
     has_many :messages
+    has_many :pointages, through: :enfants
 
     validates :nom, :email, presence: true
 

@@ -10,7 +10,7 @@
 <%= bootstrap_form_with(url: 'ajout_factures_do', local: true) do |form| %>
   <div class="col-sm-4">
     <%= form.date_select :date, discard_day: true, label: "Mois", default: -1.month.from_now %>
-    <%= form.select :compte_id, options_from_collection_for_select(current_user.organisation.comptes, :id, :nom, params[:compte_id]), { include_blank: true, label: "Compte (Aucun = Facturer tous les comptes)" } %>
+    <%= form.select :compte_id, options_from_collection_for_select(current_user.organisation.comptes, :id, :nom, params[:compte_id]), { include_blank: 'Tous' } %>
     <%= form.check_box :enregistrer, { custom: :switch, label: "Enregistrer les factures *" } %> 
     <small>
         * Off = Visualisation de contrôle. Ne fait rien de définitif.<br>

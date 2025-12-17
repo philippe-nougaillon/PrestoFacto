@@ -6,33 +6,34 @@
 	<h3>Compte: <%= @compte.nom %></h3> 
 	Solde à ce jour: <%= number_to_currency(@solde, unit:'€') %>
 </p>
+<div class="table-responsive">
+	<table class="table table-hover table-bordered table-striped">
 
-<table class="table table-hover table-bordered table-striped">
+		<thead>
+			<th>Date</th>
+			<th>Type</th>
+			<th>Référence</th>
+			<th class="text-end">Débit</th>
+			<th class="text-end">Crédit</th>
+			<th class="text-end">Solde</th>
+		</thead>
 
-	<thead>
-		<th>Date</th>
-		<th>Type</th>
-		<th>Référence</th>
-		<th class="text-end">Débit</th>
-		<th class="text-end">Crédit</th>
-		<th class="text-end">Solde</th>
-	</thead>
+		<tbody>
+			<% @releve.each do |ligne| %>
+				<%= render partial: 'balance', locals: { ligne: ligne } %>
+			<% end %>
+			</tbody>
 
-	<tbody>
-		<% @releve.each do |ligne| %>
-			<%= render partial: 'balance', locals: { ligne: ligne } %>
-		<% end %>
-    </tbody>
-
-	<tfoot>
-		<tr>
-			<th><%= l Date.today %></th>
-			<th>SOLDE</th>
-			<th></th>
-			<th class="text-end"><%= number_to_currency(@debit, unit:'€') %></th>
-			<th class="text-end"><%= number_to_currency(@credit, unit:'€') %></th>
-			<th class="text-end"><%= number_to_currency(@solde, unit:'€') %></th>
-		</tr>
-	</tfoot>
-	
-</table>
+		<tfoot>
+			<tr>
+				<th><%= l Date.today %></th>
+				<th>SOLDE</th>
+				<th></th>
+				<th class="text-end"><%= number_to_currency(@debit, unit:'€') %></th>
+				<th class="text-end"><%= number_to_currency(@credit, unit:'€') %></th>
+				<th class="text-end"><%= number_to_currency(@solde, unit:'€') %></th>
+			</tr>
+		</tfoot>
+		
+	</table>
+</div>

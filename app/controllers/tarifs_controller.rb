@@ -3,9 +3,9 @@ class TarifsController < ApplicationController
 
   # GET /tarifs
   # GET /tarifs.json
-  def index
-    @tarifs = Tarif.all
-  end
+  # def index
+  #   @tarifs = current_user.organisation.tarifs
+  # end
 
   # GET /tarifs/1
   # GET /tarifs/1.json

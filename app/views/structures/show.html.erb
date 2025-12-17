@@ -20,8 +20,8 @@
 </p>
 <br />
 
-<p>
-  <h3>Classes</h3>
+<h3>Classes</h3>
+<div class="table-responsive">
   <table class="table table-striped table-hover">
     <thead>
       <tr>
@@ -31,15 +31,15 @@
       </tr>
     </thead>
 
-  <% @structure.classrooms.each do |classroom| %>
-    <tr>
-      <td><%= classroom.nom %></td>
-      <td><%= classroom.référent %></td>
-      <td><%= classroom.enfants.size %></td>
-    </tr>
-  <% end %>
+    <% @structure.classrooms.each do |classroom| %>
+      <tr>
+        <td><%= classroom.nom %></td>
+        <td><%= classroom.référent %></td>
+        <td><%= classroom.enfants.size %></td>
+      </tr>
+    <% end %>
   </table>
-</p>
+</div>
 
 <% if policy(@structure).edit? %>
   <%= link_to  edit_structure_path(@structure) do %>
