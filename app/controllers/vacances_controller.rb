@@ -2,9 +2,9 @@ class VacancesController < ApplicationController
   before_action :set_vacance, only: %i[ show edit update destroy ]
 
   # GET /vacances or /vacances.json
-  def index
-    @vacances = Vacance.all
-  end
+  # def index
+  #   @vacances = current_user.organisation.vacances
+  # end
 
   # GET /vacances/1 or /vacances/1.json
   def show

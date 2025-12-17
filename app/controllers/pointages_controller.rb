@@ -8,8 +8,8 @@ class PointagesController < ApplicationController
   def index
     params[:date] ||= Date.today
 
-    @pointages = Pointage.all
     organisation = current_user.organisation
+    @pointages = organisation.pointages
     @prestation_types = organisation.prestation_types.where(forfaitaire: false).order(:nom)
     @classrooms = organisation.classrooms
 
