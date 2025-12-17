@@ -17,8 +17,7 @@ class MoncompteController < ApplicationController
     @absences_count = @compte.absences.count
     @contacts_count = @compte.contacts.count
 
-    @total_alg = 0
-    @total_sp = 0
+    @total_alg = @total_sp = @total_vege = 0
   end
 
   def releve_compte
