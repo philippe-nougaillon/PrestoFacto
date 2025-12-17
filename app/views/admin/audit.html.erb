@@ -10,20 +10,21 @@
   </div>
 <% end %>
 
-
-<table class="table table-bordered table-hover table-sm">
-    <thead>
-        <tr>
-            <th>Date</th>
-            <th>Utilisateur</th>            
-            <th>Type</th>
-            <th>id</th>
-            <th>Action</th>
-            <th>Modifications</th>
-        </tr>
-    </thead>
-    <%= render partial: 'audit', collection: @audits.includes(:user) %>
-</table>
+<div class="table-responsive">
+  <table class="table table-bordered table-hover table-sm">
+      <thead>
+          <tr>
+              <th>Date</th>
+              <th>Utilisateur</th>            
+              <th>Type</th>
+              <th>id</th>
+              <th>Action</th>
+              <th>Modifications</th>
+          </tr>
+      </thead>
+      <%= render partial: 'audit', collection: @audits.includes(:user) %>
+  </table>
+</div>
 
 <%= page_entries_info @audits, entry_name: 'audit' %>
 <%= paginate @audits, theme: 'twitter-bootstrap-4' %>

@@ -1,24 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<h2>arifs</h2>
+<h2>Tarifs</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tarifs.each do |tarif| %>
+<div class="table-responsive">
+  <table>
+    <thead>
       <tr>
-        <td><%= link_to 'Show', tarif %></td>
-        <td><%= link_to 'Edit', edit_tarif_path(tarif) %></td>
-        <td><%= link_to 'Destroy', tarif, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @tarifs.each do |tarif| %>
+        <tr>
+          <td><%= link_to 'Show', tarif %></td>
+          <td><%= link_to 'Edit', edit_tarif_path(tarif) %></td>
+          <td><%= link_to 'Destroy', tarif, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <br>
 

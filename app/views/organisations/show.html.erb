@@ -39,10 +39,10 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row mt-3">
   <div class="col">
-    <p>
-      <h3><%= fa_icon 'school' %> Structures</h3>
+    <h3><%= fa_icon 'school' %> Structures</h3>
+    <div class="table-responsive">
       <table class="table table-bordered table-hover table-sm">
         <thead>
           <tr>
@@ -68,13 +68,12 @@
           </tr>
         <% end %>
       </table>
-
-    </p>
+    </div>
   </div>
 
   <div class="col">
-    <p>
-      <h3><%= fa_icon 'umbrella-beach' %> Vacances à venir en zone <%= @organisation.zone %></h3>
+    <h3><%= fa_icon 'umbrella-beach' %> Vacances à venir en zone <%= @organisation.zone %></h3>
+    <div class="table-responsive">
       <table class="table table-bordered table-hover table-sm">
         <thead>
           <tr>
@@ -92,7 +91,7 @@
           </tr>
         <% end %>
       </table>
-    </p>
+    </div>
   </div>
 </div>
 

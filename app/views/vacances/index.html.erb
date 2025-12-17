@@ -2,33 +2,35 @@
 
 <h1>Vacances</h1>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Zone</th>
-      <th>Nom</th>
-      <th>Début</th>
-      <th>Fin</th>
-      <th>Organisation</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @vacances.each do |vacance| %>
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
       <tr>
-        <td><%= vacance.zone %></td>
-        <td><%= vacance.nom %></td>
-        <td><%= vacance.début %></td>
-        <td><%= vacance.fin %></td>
-        <td><%= vacance.organisation_id %></td>
-        <td><%= link_to 'Show', vacance %></td>
-        <td><%= link_to 'Edit', edit_vacance_path(vacance) %></td>
-        <td><%= link_to 'Destroy', vacance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Zone</th>
+        <th>Nom</th>
+        <th>Début</th>
+        <th>Fin</th>
+        <th>Organisation</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @vacances.each do |vacance| %>
+        <tr>
+          <td><%= vacance.zone %></td>
+          <td><%= vacance.nom %></td>
+          <td><%= vacance.début %></td>
+          <td><%= vacance.fin %></td>
+          <td><%= vacance.organisation_id %></td>
+          <td><%= link_to 'Show', vacance %></td>
+          <td><%= link_to 'Edit', edit_vacance_path(vacance) %></td>
+          <td><%= link_to 'Destroy', vacance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <br>
 

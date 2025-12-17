@@ -15,20 +15,22 @@
   <%= f.text_field :search, value: params[:search], onchange: "this.form.submit()", label: 'Rechercher' %>
 <% end %>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Rôle</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Rôle</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
 
 
-  <tbody>
-    <%= render @users %>
-  </tbody>
-</table>
+    <tbody>
+      <%= render @users %>
+    </tbody>
+  </table>
+</div>
 
 <%= page_entries_info @users, entry_name: 'utilisateur' %>
 <%= paginate @users, theme: 'twitter-bootstrap-4' %>
