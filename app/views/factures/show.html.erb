@@ -1,8 +1,8 @@
 <div class="card my-3">
   <div class="card-header">
-    <h5>  
-      <%= fa_icon 'file-invoice', class: 'text-info' %> FACTURE #<%= @facture.réf %> | <%= @facture.compte.nom %>
-    </h5>
+    <h4 class="p-2">  
+      <%= fa_icon 'file-invoice', class: 'text-info' %> Facture #<%= @facture.réf %> | <%= @facture.compte.nom %>
+    </h4>
   </div>
   <div class="card-body">
     <div class="row">
@@ -39,23 +39,20 @@
       </div>
     </div>
   </div>
+
   <div class="card-footer d-flex">
-    <%= link_to edit_facture_path(@facture), class: "btn btn-outline-primary" do %>
+    <%= link_to edit_facture_path(@facture), class: "btn btn-light" do %>
       <%= fa_icon 'edit', text: ' Éditer' %>
     <% end %>
     <% if policy(@facture).show? %>
-        <%= link_to facture_url(@facture, format: :pdf), target: '_blank', class: "btn btn-outline-primary" do %>
-            <i class="far fa-file-pdf text-success"></i> Afficher le PDF
+        <%= link_to facture_url(@facture, format: :pdf), target: '_blank', class: "btn btn-light" do %>
+            <i class="far fa-file-pdf text-danger"></i> Afficher le PDF
         <% end %>
     <% end %>
     <% if policy(@facture).destroy? %>
-      <%= button_to @facture, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class: 'btn btn-outline-danger mx-3' do %>
+      <%= button_to @facture, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class: 'btn btn-outline-danger' do %>
         <%= fa_icon 'trash-alt' %>
       <% end %>
-    <% end %>
-    <%= link_to factures_path, class: "mt-2" do %>
-      <%= fa_icon 'list' %>
-      Retour
     <% end %>
   </div>
 </div>

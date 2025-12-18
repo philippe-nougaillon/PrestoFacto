@@ -30,7 +30,8 @@
         <div class="col"><%= form.date_field :date_remise %></div>
       </div>
       <%= form.text_area :mémo %>
-      <%= form.submit "Enregistrer", class: "btn btn-outline-success", 'data-turbo': false %>
+      <%= form.submit "Enregistrer", class: "btn btn-outline-success me-2", 'data-turbo': false %>
+      <%= link_to 'Annuler', paiements_path %>
     </div>
   </div>
 
