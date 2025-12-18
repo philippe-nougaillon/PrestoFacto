@@ -41,15 +41,15 @@
             %>
           <% else %>
             <% if current_user.admin? %>
-              <%= navbar_nav_item('Admin', 'tools', 'success', admin_index_path, 'admin', nil, 'dashboard') %>
+              <%= navbar_nav_item('Admin', 'users-cog', 'secondary', admin_index_path, 'admin', nil, 'dashboard') %>
               <% if current_user.organisation.en_dépassement_plan_gratuit? %>
                 <p class="text-danger me-1">
                   <i class="fas fa-exclamation-circle" title="La limite de la formule libre et gratuite a été dépassée !"></i>
                 </p>
               <% end %>    
 
-              <%= navbar_nav_item('Stats', 'users-cog', 'primary', admin_dashboard_path, 'admin', 'dashboard') %>
-              <%= navbar_nav_item('Guide', 'book-open', 'info', guide_path, 'pages', 'guide') %>
+              <%= navbar_nav_item('Stats', 'tachometer-alt', 'secondary', admin_dashboard_path, 'admin', 'dashboard') %>
+              <%= navbar_nav_item('Guide', 'book-open', 'secondary', guide_path, 'pages', 'guide') %>
             <% end %>
             <%= button_to 'Déconnexion', destroy_user_session_path, class: "btn btn-outline-danger btn-sm", method: :delete %>
           <% end %>
