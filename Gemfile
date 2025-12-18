@@ -131,3 +131,5 @@ gem "omniauth-google-oauth2"
 
 # Needed until Ruby 3.3.4 is released https://github.com/ruby/ruby/pull/11006
 gem 'net-pop', github: 'ruby/net-pop'
+
+gem "hotwire-spark", "~> 0.1.13", :group => :development
