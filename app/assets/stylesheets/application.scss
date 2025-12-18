@@ -19,9 +19,6 @@ nav.navbar ul li.nav-item {
   *{
     color: #222;
   }
-  a, a:after, a:before {
-    transition: all .5s;
-  }
   a{
   position: relative;
   }
@@ -35,7 +32,7 @@ nav.navbar ul li.nav-item {
     content: '.';
     color: transparent;
     background: #aaa;
-    height: 1px;
+    height: 2px;
   }
   a:hover:after {
     width: 100%;
@@ -60,7 +57,7 @@ nav.navbar ul li.nav-item {
       content: '.';
       color: transparent;
       background: #aaa;
-      height: 1px;
+      height: 4px;
     }
   }
 }

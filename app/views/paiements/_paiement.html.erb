@@ -1,7 +1,7 @@
 <tr>
     <td><%= l paiement.date.to_date %></td>
     <td><%= link_to paiement.compte.nom, paiement.compte %></td>
-    <td><%= paiement.réf %></td>
+    <td><%= link_to paiement.réf, factures_path(search: paiement.réf) %></td>
     <td><%= paiement.mode %></td>
     <td><%= paiement.banque %></td>
     <td><%= paiement.chèque_num %></td>
