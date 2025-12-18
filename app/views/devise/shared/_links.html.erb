@@ -16,7 +16,7 @@
 <% end %>
 
 <%- if devise_mapping.omniauthable? %>
-  <p class="text-center fs-5">OU</p>
+  <p class="text-center fs-5 text-danger mt-4">Ou</p>
   <%- resource_class.omniauth_providers.each do |provider| %>
     <%= form_for "Login",
       url: omniauth_authorize_path(resource_name, provider),
@@ -25,7 +25,7 @@
         <div>
           <button id="google_button" type="submit" style ="color: #444;border-radius: 5px;border: thin solid #888;box-shadow: 1px 1px 1px grey;white-space: nowrap;" class="btn w-100 py-2">
             <%= image_tag "Google__G__logo.svg" %>
-            <span class="ms-2">Continuer avec Google</span>
+            <span class="ms-2">Continuer avec un compte Google</span>
           </button>
         </div>
     <% end %>
