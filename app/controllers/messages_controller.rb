@@ -62,7 +62,7 @@ class MessagesController < ApplicationController
             MessageMailer.with(message: @message).notification_dev.deliver_now
           end
 
-          format.html { redirect_to new_message_path, notice: "Votre message a bien été pris en compte." }
+          format.html { redirect_to new_message_path, notice: "Votre message a bien été pris en compte. Merci !" }
           format.json { render :show, status: :created, location: @message }
         else
           format.html { render :new, status: :unprocessable_entity }
