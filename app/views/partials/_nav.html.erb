@@ -14,55 +14,46 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <% if user_signed_in? %>
           <% if current_user.visiteur? %>
-            <%= navbar_nav_item('moncompte', 'users', 'dark', moncompte_index_path, 'Mon compte') %>
+            <%= navbar_nav_item('Mon compte', 'users', 'dark', moncompte_index_path, 'moncompte' ) %>
           <% else %>
-            <%= navbar_nav_item('comptes', 'users', 'dark', comptes_path) %>
-            <%= navbar_nav_item('enfants', 'child', 'primary', enfants_path) %>
-            <%= navbar_nav_item('reservations', 'calendar-alt', 'warning', reservations_path, 'Réservations') %>
-            <%= navbar_nav_item('absences', 'calendar-times', 'danger', absences_path) %>
-            <%= navbar_nav_item('pointages', 'calendar-check', 'success', pointages_path) %>
-            <%= navbar_nav_item('prestations', 'utensils', 'secondary', prestations_path) %>
-            <%= navbar_nav_item('factures', 'file-invoice', 'info', factures_path) %>
-            <%= navbar_nav_item('paiements', 'money-bill-alt', 'success', paiements_path) %>
+            <%= navbar_nav_item('Comptes', 'users', 'dark', comptes_path, 'comptes') %>
+            <%= navbar_nav_item('Enfants', 'child', 'primary', enfants_path, 'enfants') %>
+            <%= navbar_nav_item('Réservations', 'calendar-alt', 'warning', reservations_path, 'reservations') %>
+            <%= navbar_nav_item('Absences', 'calendar-times', 'danger', absences_path, 'absences') %>
+            <%= navbar_nav_item('Pointages', 'calendar-check', 'success', pointages_path, 'pointages') %>
+            <%= navbar_nav_item('Prestations', 'utensils', 'secondary', prestations_path, 'prestations') %>
+            <%= navbar_nav_item('Factures', 'file-invoice', 'info', factures_path, 'factures') %>
+            <%= navbar_nav_item('Paiements', 'money-bill-alt', 'success', paiements_path, 'paiements') %>
           <% end %>
         <% else %>
-          <%= navbar_nav_item('accueil', 'home', 'primary', root_path) %>
-          <%= navbar_nav_item('guide', 'book-open', 'info', guide_path) %>
-          <%= navbar_nav_item('actualites', 'comment', 'success', actualites_path, 'Blog') %>
-          <%= navbar_nav_item('messages', 'comments', 'warning', new_message_path, 'Contact', false) %>
+          <%= navbar_nav_item('Accueil', 'home', 'primary', root_path, 'pages', 'accueil') %>
+          <%= navbar_nav_item('Guide', 'book-open', 'info', guide_path, 'pages', 'guide') %>
+          <%= navbar_nav_item('Blog', 'comment', 'success', actualites_path, 'pages', 'actualites') %>
+          <%= navbar_nav_item('Contact', 'comments', 'warning', new_message_path, 'messages', nil, nil, false) %>
         <% end %>
       </ul>
       <div class="d-flex">
-        <% unless user_signed_in? %>
-          <%= link_to "Connexion", 
-              new_user_session_path, 
-              class: "btn btn-outline-primary" 
-          %>
-        <% else %>
-          <% if current_user.admin? %>
-            <%= link_to "Admin", 
-                admin_index_path, 
-                class: "btn btn-sm btn-link me-1" 
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-lg-center">
+          <% unless user_signed_in? %>
+            <%= link_to "Connexion", 
+                new_user_session_path, 
+                class: "btn btn-outline-primary" 
             %>
+          <% else %>
+            <% if current_user.admin? %>
+              <%= navbar_nav_item('Admin', 'tools', 'success', admin_index_path, 'admin', nil, 'dashboard') %>
+              <% if current_user.organisation.en_dépassement_plan_gratuit? %>
+                <p class="text-danger me-1">
+                  <i class="fas fa-exclamation-circle" title="La limite de la formule libre et gratuite a été dépassée !"></i>
+                </p>
+              <% end %>    
 
-            <% if current_user.organisation.en_dépassement_plan_gratuit? %>
-              <p class="text-danger me-1">
-                <i class="fas fa-exclamation-circle" title="La limite de la formule libre et gratuite a été dépassée !"></i>
-              </p>
-            <% end %>    
-
-            <%= link_to "Stats", 
-                admin_dashboard_path, 
-                class: "btn btn-sm btn-link me-1",
-                'data-turbo': false
-            %>
-            <%= link_to "Guide", 
-                guide_path, 
-                class: "btn btn-sm btn-link me-1" 
-            %>
+              <%= navbar_nav_item('Stats', 'users-cog', 'primary', admin_dashboard_path, 'admin', 'dashboard') %>
+              <%= navbar_nav_item('Guide', 'book-open', 'info', guide_path, 'pages', 'guide') %>
+            <% end %>
+            <%= button_to 'Déconnexion', destroy_user_session_path, class: "btn btn-outline-danger btn-sm", method: :delete %>
           <% end %>
-          <%= button_to 'Déconnexion', destroy_user_session_path, class: "btn btn-outline-danger btn-sm", method: :delete %>
-        <% end %>
+        </ul>
       </div>
     </div>
   </div>
