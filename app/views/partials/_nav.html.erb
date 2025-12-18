@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-expand-lg fixed-top bg-white shadow-sm">
   <div class="container-fluid">
     <%= link_to (user_signed_in? ? comptes_path : root_path), class: 'navbar-brand fw-bold' do %>
@@ -28,7 +27,7 @@
           <% end %>
         <% else %>
           <%= navbar_nav_item('accueil', 'home', 'primary', root_path) %>
-          <%= navbar_nav_item('guide', 'book', 'info', guide_path) %>
+          <%= navbar_nav_item('guide', 'book-open', 'info', guide_path) %>
           <%= navbar_nav_item('actualites', 'comment', 'success', actualites_path, 'Blog') %>
           <%= navbar_nav_item('messages', 'comments', 'warning', new_message_path, 'Contact', false) %>
         <% end %>
@@ -37,7 +36,7 @@
         <% unless user_signed_in? %>
           <%= link_to "Connexion", 
               new_user_session_path, 
-              class: "btn btn-outline-success" 
+              class: "btn btn-outline-primary" 
           %>
         <% else %>
           <% if current_user.admin? %>

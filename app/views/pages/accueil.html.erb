@@ -4,12 +4,7 @@
     <h2 class="display-7 mb-3">Facturation de vos services journaliers<h2>
     <h3 class="display-8 fw-lighter">Aide les petites organisations dans la gestion et la facturation de leurs prestations (repas, garderie, activités périscolaires, nuitée d'hébergement, colonie de vacances, etc...)</h3>
     <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-5">
-      <%= link_to "En savoir plus", "#a_propos" , class: 'btn btn-primary btn-lg px-4 me-md-2' %>
-      <%= link_to guide_path, class: 'btn btn-outline-secondary btn-lg px-4 me-md-2' do %>
-        <i class="fas fa-book-open"></i>
-        Guide d'utilisation 
-      <% end %>
-      <%= link_to new_user_registration_path, class: 'btn btn-outline-secondary btn-lg px-4' do %>
+      <%= link_to new_user_registration_path, class: 'btn btn-outline-primary btn-lg px-4 w-50' do %>
         <i class="fas fa-user-plus"></i>
         S'inscrire
       <% end %>
@@ -21,7 +16,7 @@
 </div>
 
 <div class="my-4">
-  <div  id="a_propos" class="row px-4 py-2 bg-light">
+  <div id="a_propos" class="row px-4 py-2 bg-light">
     <div class="col-md">
       <%= image_tag 'hands.png', class: 'img-fluid' %>
     </div>
@@ -90,10 +85,10 @@
     <p class="lead mb-4">
         Après plus de <strong>10 ans</strong> de bons et loyaux services, openCantine a fait sa mue, change de nom et se professionnalise.
         Ce projet était au départ conçu pour donner un petit coup de main à une mairie qui gérait péniblement sa cantine sur Excel.
-        Mais le passage de l'application en logiciel libre, disponible gratuitement pour tous, a permis à une cinquantaine de mairies ou associations de gérer <strong>~500.000 repas</strong> via cette plateforme, dont j'ai assuré bénévolement la maintenance et les coûts d'hébergement.
-        <br>
-        Mais les structures plus importantes ne pouvaient s'en contenter. C'est pourquoi en 2020 j'ai complètement réécrit en 2020 le logiciel. 
-        PrestoFacto est plus souple, moderne et très adaptable. Il conviendra à des organisations de plus grande taille, multi-structures, à la recherche d'un outil simple et robuste.
+        Le passage de l'application en logiciel libre (open-source), disponible gratuitement, a permis à une cinquantaine de mairies ou associations de gérer <strong>~500.000 repas</strong> via cette plateforme, dont j'ai assuré bénévolement la maintenance et les coûts d'hébergement.
+        <br><br>
+        Mais les structures plus importantes ne pouvaient s'en contenter. C'est pourquoi, en 2020, j'ai complètement réécrit le logiciel pour qu'il soit plus souple, moderne et très adaptable. 
+        Il conviendra à des organisations de plus grande taille, multi-structures, à la recherche d'un outil simple et robuste, à prix modeste.
     </p>
   </div>
 </div>
@@ -176,11 +171,11 @@
         <div class="card-body">
           <h1 class="card-title pricing-card-title text-center">Gratuit</h1>
           <ul class="list-unstyled mt-3 mb-4">
-            <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Utilisation libre (limitée à 1000 factures)</li>
-            <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Sauvegarde automatique journalière</li>
-            <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Support par email</li>
-            <li><%= fa_icon 'times-circle', class: 'text-danger me-2' %>Pas de sous-domaine personnalisé</li>
-            <li><%= fa_icon 'times-circle', class: 'text-danger me-2' %>Pas de serveur virtuel dédié</li>
+            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Utilisation libre (limitée à 1000 factures)</li>
+            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Sauvegarde automatique journalière</li>
+            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Support par email</li>
+            <li><br></li>
+            <li><br></li>
             <li><br></li>
           </ul>
           <%= link_to "S'inscrire", new_user_registration_path, class: 'w-100 btn btn-lg btn-outline-success' %>
@@ -195,11 +190,11 @@
         <div class="card-body">
           <h1 class="card-title pricing-card-title text-center">49 €<small class="text-muted fw-light" style="font-size: 1rem"> TTC / mois</small></h1>
           <ul class="list-unstyled mt-3 mb-4">
-            <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Utilisation libre et illimitée</li>
-            <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Sauvegarde automatique journalière</li>
-            <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Support par email J+1</li>
-            <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Accès via sous-domaine perso.</li>
-            <li><%= fa_icon 'times-circle', class: 'text-danger me-2' %>Aucun serveur virtuel dédié</li>
+            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Utilisation libre et illimitée</li>
+            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Sauvegarde automatique journalière</li>
+            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Support par email J+1</li>
+            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Accès via sous-domaine perso.</li>
+            <li><br></li>
             <li><br></li>
           </ul>
           <%= link_to "Sur demande", new_message_path(offre: 'Offre standard'), class: 'w-100 btn btn-lg btn-outline-primary' %>
@@ -214,12 +209,12 @@
         <div class="card-body">
           <h1 class="card-title pricing-card-title text-center">99 €<small class="text-muted fw-light"> <small style="font-size: 1rem"> TTC / mois</small></small></h1>
           <ul class="list-unstyled mt-3 mb-4">
-            <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Utilisation libre et illimitée</li>
-            <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Sauvegarde continue (24 / 7)</li>
-            <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Support par email / téléphonique H+2</li>
-            <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Accès par votre nom de domaine</li>
-            <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Serveur virtuel dédié</li>
-            <li><%= fa_icon 'check-circle', class: 'text-primary me-2' %>Participez aux évolutions !</li>
+            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Utilisation libre et illimitée</li>
+            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Sauvegarde continue (24 / 7)</li>
+            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Support par email / téléphonique H+2</li>
+            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Accès par votre nom de domaine</li>
+            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Serveur virtuel dédié</li>
+            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Participez aux évolutions !</li>
           </ul>
           <%= link_to "Sur demande", new_message_path(offre: 'Offre premium'), class: 'w-100 btn btn-lg btn-outline-danger' %>
         </div>
