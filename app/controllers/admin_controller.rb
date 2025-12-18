@@ -190,7 +190,7 @@ class AdminController < ApplicationController
               end
 
       @messages << message_import_log(compte)
-      compte.save if compte.valid? && enregistrer 
+      compte.save(validate: false) if enregistrer 
               
       classroom = structure
         .classrooms
