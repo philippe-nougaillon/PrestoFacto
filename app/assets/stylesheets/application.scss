@@ -78,3 +78,10 @@ nav.navbar ul li.nav-item {
     }
   }
 }
+
+/* aligner les icones dans la navbar mobile */
+@media (max-width: 768px) {
+  .pf-icon {
+    width: 22px;
+  }
+}

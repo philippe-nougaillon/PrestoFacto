@@ -26,15 +26,22 @@ module ApplicationHelper
     #     })
     # end
 
-    def navbar_nav_item(controller_name, icon, icon_color, path, label = nil, data_turbo = true)
-
-        is_active = (params[:controller] == controller_name || params[:action] == controller_name)
+    def navbar_nav_item(label, icon, icon_color, path, controller = nil, action = nil, exclude_action = nil, data_turbo = true)
+        is_active = if controller && action
+                        controller_name == controller && action_name == action
+                    elsif controller
+                        controller_name == controller && exclude_action != action_name
+                    elsif action
+                        action_name == action
+                    else
+                        controller_name == label && exclude_action != action_name
+                    end
 
         render(inline: %{
             <li class="nav-item #{ 'active' if is_active }" #{ "data-turbo='false'" unless data_turbo } >
                 <%= link_to '#{ url_for(path) }', 
                             class: "nav-link" do %>
-                    <%= fa_icon '#{ icon }', class: "me-1 text-#{ icon_color }" %>#{ label ? label : controller_name.humanize }
+                    <%= fa_icon '#{ icon }', class: "pf-icon me-1 text-#{ icon_color }" %>#{ label ? label : controller_name.humanize }
                 <% end %>
             </li>
         })
