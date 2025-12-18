@@ -22,7 +22,7 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
 
     #assert_redirected_to new_message_path
     follow_redirect!
-    assert_equal "Votre message a bien été pris en compte.", flash[:notice]
+    assert_equal "Votre message a bien été pris en compte. Merci !", flash[:notice]
   end
 
   test "should show message" do
