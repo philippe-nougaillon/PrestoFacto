@@ -16,12 +16,8 @@
     <td><span class="badge <%= facture.style %>"><%= facture.try(:workflow_state).try(:humanize) %></span></td>
     <td>
         <% if policy(Paiement).new? %>
-            <% unless current_user.organisation.paiements.where(réf: facture.réf).any? %>
-                <%= link_to new_paiement_path(compte_id: facture.compte_id, réf: facture.réf, montant: facture.montant), target: '_blank', title: "Saisir le paiement de cette facture", class: 'btn btn-sm lh-1' do %>
-                    <i class="fas fa-money-bill-alt text-success"></i>
-                <% end %>
-            <% else %>
-                <i class="fas fa-money-bill-alt text-secondary"></i>
+            <%= link_to new_paiement_path(compte_id: facture.compte_id, réf: facture.réf, montant: facture.montant), target: '_blank', title: "Saisir le paiement de cette facture", class: 'btn btn-sm lh-1' do %>
+                <i class="fas fa-money-bill-alt text-success"></i>
             <% end %>
         <% end %>
     </td>
