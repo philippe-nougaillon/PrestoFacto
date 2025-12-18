@@ -37,14 +37,13 @@ class Organisation < ApplicationRecord
         organisation ||= "Mon_Organisation"
         structure ||= "Cantine"
         zone ||= "A"
+
         # On crée l'organisation 
         organisation = Organisation.create( nom: organisation, email: user.email, zone: zone)
-
         organisation.structures.create(nom: structure)
 
         # et quelques données de base pour aider la prise en main 
         organisation.structures.first.classrooms.create(nom: 'UNE CLASSE')
-        organisation.comptes.create(nom: 'FAMILLE-TEST')
         organisation.facture_chronos.create(index: 1)
         organisation.tarif_types.create(nom: 'Général')
         organisation.prestation_types.create(nom: 'Repas')
@@ -54,12 +53,15 @@ class Organisation < ApplicationRecord
                     .create(prestation_type: organisation.prestation_types.first, 
                             prix: 1.00)
 
-        enfant = organisation.comptes.first
-                             .enfants.create(classroom: organisation.classrooms.first, 
-                                    nom: 'TEST', 
-                                    prénom: 'Martin', 
-                                    date_naissance: Date.today - 7.year,
-                                    tarif_type: organisation.tarif_types.first)
+                                    # on ajoute un compte sans contacts (pour l'instant)
+        compte = organisation.comptes.new(nom: 'FAMILLE-TEST')
+        compte.save(validate: false) # pour éviter le test at-least_one_contact
+
+        enfant = compte.enfants.create(classroom: organisation.classrooms.first, 
+                                        nom: 'TEST', 
+                                        prénom: 'Martin', 
+                                        date_naissance: Date.today - 7.year,
+                                        tarif_type: organisation.tarif_types.first)
 
         enfant.reservations.create(prestation_type: organisation.prestation_types.first,
                                     début: Date.today,

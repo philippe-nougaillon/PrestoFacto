@@ -1,4 +1,4 @@
-<div class="pb-2 mt-4 mb-2 border-bottom">
+<div class="pb-2 mt-4 mb-4 border-bottom">
   <h2 class="fw-light d-inline"><%= fa_icon 'users-cog', class: 'text-success' %> Administration</h2>
   <%= link_to guide_path(anchor: "administration") do %>
     <%= fa_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-muted mx-2' %>
@@ -10,8 +10,8 @@
   <div class="col">
     <ul class="list-group">
       <li class="list-group-item">
-        <h4 class="fw-light my-1">
-          <%= fa_icon 'city' %> 
+        <h4 class="fw-light my-2">
+          <%= fa_icon 'city', class: "col-sm-2" %> 
           <%= link_to organisation_url(current_user.organisation), title: "Organisation, Structures, Vacances", class: "text-muted text-decoration-none" do %>Organisation<% end %>
         </h4>
       </li>
@@ -19,8 +19,8 @@
       <li class="list-group-item"></li>
 
       <li class="list-group-item">
-        <h4 class="fw-light my-1 d-inline">
-          <%= fa_icon 'user-friends' %>
+        <h4 class="fw-light my-2">
+          <%= fa_icon 'user-friends', class: "col-sm-2" %>
           <%= link_to users_admin_index_path, class: "text-muted text-decoration-none" do %>
             Utilisateurs / Portail Parents
           <% end %>
@@ -30,8 +30,8 @@
       <li class="list-group-item"></li>
 
       <li class="list-group-item">
-        <h4 class="fw-light my-1">
-          <%= fa_icon 'euro-sign' %>
+        <h4 class="fw-light my-2">
+          <%= fa_icon 'euro-sign', class: "col-sm-2"  %>
           <%= link_to admin_tarifs_url, title: "Tarifs, Types de tarifs et de Prestations", class: "text-muted text-decoration-none" do %>
             Prestations et Tarifs
           <% end %>
@@ -45,8 +45,8 @@
     <ul class="list-group">
 
       <li class="list-group-item">
-        <h4 class="fw-light my-1">
-          <%= fa_icon 'calendar-day' %>
+        <h4 class="fw-light my-2">
+          <%= fa_icon 'calendar-day', class: "col-sm-1" %>
           <%= link_to 'Comptabilisation prestations', admin_ajout_prestations_path, class: "text-muted text-decoration-none" %>
         </h4>
       </li>
@@ -54,8 +54,8 @@
       <li class="list-group-item"></li>
 
       <li class="list-group-item">
-        <h4 class="fw-light my-1">
-          <%= fa_icon 'calendar-day' %>
+        <h4 class="fw-light my-2">
+          <%= fa_icon 'calendar-day', class: "col-sm-1" %>
           <%= link_to 'Facturation prestations', admin_ajout_factures_path, class: "text-muted text-decoration-none" %>
         </h4>
       </li>
@@ -63,8 +63,8 @@
       <li class="list-group-item"></li>
 
       <li class="list-group-item">
-        <h4 class="fw-light my-1">
-          <%= fa_icon 'paper-plane' %>
+        <h4 class="fw-light my-2">
+          <%= fa_icon 'paper-plane', class: "col-sm-1" %>
           <%= link_to 'Envoyer les factures', admin_envoyer_factures_path, class: "text-muted text-decoration-none" %>
         </h4>
       </li>
@@ -72,8 +72,8 @@
       <li class="list-group-item"></li>
 
       <li class="list-group-item">
-        <h4 class="fw-light my-1">
-          <%= fa_icon 'envelope' %>
+        <h4 class="fw-light my-2">
+          <%= fa_icon 'envelope', class: "col-sm-1" %>
           <%= link_to 'Messages (contestations)', messages_path, class: "text-muted text-decoration-none", title:"Journal d'activité des envois de courriels" %>
           <% if @unread_messages > 0 %>
             <span class="badge text-bg-danger rounded-pill ms-2"style="font-weight: 900"><%= @unread_messages %></span>
@@ -84,8 +84,8 @@
       <li class="list-group-item"></li>
 
       <li class="list-group-item">
-        <h4 class="fw-light my-1">
-          <%= fa_icon 'mail-bulk' %>
+        <h4 class="fw-light my-2">
+          <%= fa_icon 'mail-bulk', class: "col-sm-1" %>
           <%= link_to 'Mail Logs', mail_logs_path, class: "text-muted text-decoration-none", title:"Journal d'activité des envois de courriels" %>
         </h4>
       </li>
@@ -97,8 +97,8 @@
     <ul class="list-group">
 
       <li class="list-group-item">
-        <h4 class="fw-light my-1">
-          <%= fa_icon 'search' %>
+        <h4 class="fw-light my-2">
+          <%= fa_icon 'search', class: "col-sm-2" %>
           <%= link_to 'Audit des modifications', admin_audit_path, class: "text-muted text-decoration-none" %>
         </h4>
       </li>
@@ -106,8 +106,8 @@
       <li class="list-group-item"></li>
 
       <li class="list-group-item">
-        <h4 class="fw-light my-1">
-          <%= fa_icon 'file-import' %>
+        <h4 class="fw-light my-2">
+          <%= fa_icon 'file-import', class: "col-sm-2" %>
           <%= link_to 'Importer', admin_import_path, class: "text-muted text-decoration-none" %>
         </h4>
       </li>
@@ -115,19 +115,19 @@
       <li class="list-group-item"></li>
 
       <li class="list-group-item">
-        <h4 class="fw-light my-1">
-          <%= fa_icon 'comment-dots' %>
+        <h4 class="fw-light my-2">
+          <%= fa_icon 'comment-dots', class: "col-sm-2" %>
           <%= link_to 'Messages de factures', facture_messages_path, title: "Afficher en bas de vos factures et dans l'e-mail d'accompagnement" ,class: "text-muted text-decoration-none" %>
         </h4>
       </li>
 
       <li class="list-group-item"></li>
-      <li class="list-group-item text-danger fw-bold">Zone dangereuse</li>
+      <li class="list-group-item text-danger text-center fw-bold">Zone dangereuse</li>
 
       <li class="list-group-item">
-        <h4 class="fw-light my-1">
-          <%= fa_icon 'skull-crossbones' %>
-          <%= link_to "Supprimer mon organisation", suppression_organisation_organisation_path(current_user.organisation), class: "text-muted text-decoration-none" %>
+        <h4 class="fw-light my-2">
+          <%= fa_icon 'skull-crossbones', class: "col-sm-2" %>
+          <%= link_to "Supprimer organisation", suppression_organisation_organisation_path(current_user.organisation), class: "text-muted text-decoration-none" %>
         </h4>
       </li>
 

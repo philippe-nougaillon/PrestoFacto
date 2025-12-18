@@ -75,7 +75,7 @@ fr:
         subject: Instructions pour déverrouiller le compte
     omniauth_callbacks:
       failure: 'Nous ne pouvons pas vous authentifier depuis %{kind} pour la raison suivante : ''%{reason}''.'
-      success: Autorisé par votre compte %{kind}.
+      success: Connecté avec votre compte %{kind}.
     passwords:
       edit:
         change_my_password: Changer mon mot de passe
