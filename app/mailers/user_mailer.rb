@@ -14,6 +14,6 @@ class UserMailer < ApplicationMailer
 
   def new_account_notification
     @user = params[:user]
-    mail(to:"philippe.nougaillon@aikku.eu, pierre-emmanuel.dacquet@aikku.eu, sebastien.pourchaire@aikku.eu", subject: "[PRESTOFACTO] Nouveau compte créé")
+    mail(to:"philippe.nougaillon@aikku.eu, pierre-emmanuel.dacquet@aikku.eu, serena.pinali@aikku.eu", subject: "[PRESTOFACTO] Nouveau compte créé")
   end
 end
