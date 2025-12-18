@@ -1,5 +1,5 @@
-<div class="col-md-10 col-lg-7 shadow-sm rounded p-3 p-md-5 mx-auto">
-  <h1 class="fw-light mt-2 mb-5 text-center">Inscription</h1>
+<div class="col-md-10 col-lg-7 shadow-sm rounded p-1 p-md-3 mx-auto mt-2 bg-body">
+  <h1 class="my-2 text-center">Inscription</h1>
 
   <%- if devise_mapping.omniauthable? %>
     <%- resource_class.omniauth_providers.each do |provider| %>
@@ -10,12 +10,12 @@
           <div>
             <button id="google_button" type="submit" style ="color: #444;border-radius: 5px;border: thin solid #888;box-shadow: 1px 1px 1px grey;white-space: nowrap;" class="btn w-100 py-2">
               <%= image_tag "Google__G__logo.svg" %>
-              <span class="ms-2">Continuer avec Google</span>
+              <span class="ms-2">S'incrire automatiquement avec un compte Google</span>
             </button>
           </div>
       <% end %>
     <% end %>
-    <p class="text-center fs-5 mt-4">OU</p>
+    <p class="text-center text-danger fs-5 mt-4">Ou</p>
   <% end %>
 
   <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -23,7 +23,6 @@
 
     <div class="form-group">
       <%= f.email_field :email, value: params[:email], autofocus: false, required: true, autocomplete: "email", class: "form-control col-sm-3" %>
-
 
       <div class="row">
         <div class="col">
@@ -59,7 +58,7 @@
       <%= recaptcha_tags unless Rails.env.development? %>
 
       <div class="actions" data-turbo="false">
-        <%= f.submit "S'inscrire", class: "btn btn-outline-primary btn-lg mt-4" %>
+        <%= f.submit "S'inscrire", class: "btn btn-outline-primary btn-lg  mt-2 w-100" %>
       </div>
     </div>
 
