@@ -20,17 +20,20 @@
   </head>
 
   <body style="background-color: #FAFAFA">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W856963"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+    <% if cookies[:axeptio_cookies] && JSON.parse(cookies[:axeptio_cookies])["google_analytics"] == true %>
+      <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W856963"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager (noscript) -->
+    <% end %>
 
-    <% if cookies[:axeptio_cookies].blank? %>
+    <% if cookies[:axeptio_cookies].blank? || cookies[:axeptio_cookies]["google_analytics"].blank? %>
       <%= render 'partials/cookies' %>
     <% end %>
     <%= render 'partials/nav' %>
+    
 
-    <div class="container">
+    <div class="container">      
       <%= render 'partials/alert' %>
       <%= yield %>
     </div>
