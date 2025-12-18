@@ -24,7 +24,7 @@
     <td>
         <% if policy(facture).show? %>
             <%= link_to facture_url(facture, format: :pdf), target: '_blank', title: "Voir la facture en PDF", class: 'btn btn-sm lh-1' do %>
-                <i class="fas fa-file-pdf text-success"></i>
+                <i class="fas fa-file-pdf text-dark"></i>
             <% end %>
         <% end %>
     </td>
