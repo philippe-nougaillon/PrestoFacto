@@ -26,9 +26,9 @@
             <%= navbar_nav_item('Paiements', 'money-bill-alt', 'success', paiements_path, 'paiements') %>
           <% end %>
         <% else %>
-          <%= navbar_nav_item('Accueil', 'home', 'primary', root_path, 'pages', 'accueil') %>
-          <%= navbar_nav_item('Guide', 'book-open', 'info', guide_path, 'pages', 'guide') %>
-          <%= navbar_nav_item('Blog', 'comment', 'success', actualites_path, 'pages', 'actualites') %>
+          <%= navbar_nav_item('Accueil', 'home', 'primary', root_path, 'pages', 'accueil', nil, false) %>
+          <%= navbar_nav_item('Guide', 'book-open', 'info', guide_path, 'pages', 'guide', nil, false) %>
+          <%= navbar_nav_item('Blog', 'comment', 'success', actualites_path, 'pages', 'actualites', nil, false) %>
           <%= navbar_nav_item('Contact', 'comments', 'warning', new_message_path, 'messages', nil, nil, false) %>
         <% end %>
       </ul>
