@@ -33,23 +33,31 @@ class AdminController < ApplicationController
   end
 
   def ajout_factures
-
+    @date_début  = Date.today.prev_month.beginning_of_month
+    @date_fin    = Date.today.prev_month.end_of_month
   end
 
   def ajout_factures_do
-    date = Date.new(params["[date(1i)]"].to_i,
-                    params["[date(2i)]"].to_i,
-                    params["[date(3i)]"].to_i)
-        
+    début = date_saisie(params[:date_début])
+    fin   = date_saisie(params[:date_fin])
+
+    # Une période incohérente est refusée et l'utilisateur la corrige lui-même.
+    if début.nil? || fin.nil? || fin < début
+      @date_début, @date_fin = params[:date_début], params[:date_fin] # on réaffiche sa saisie
+      flash.now[:alert] = "Période invalide : indiquez une date de début et une date de fin cohérentes."
+      return render :ajout_factures, status: :unprocessable_entity
+    end
+
+    @date_début, @date_fin = début, fin
+
     require 'rake'
 
     Rake::Task.clear # necessary to avoid tasks being loaded several times in dev mode
     Rails.application.load_tasks # providing your application name is 'sample'
-      
     # capture output
     @stdout_stream = capture_stdout do
       Rake::Task['factures:facturer'].reenable # in case you're going to invoke the same task second time.
-      Rake::Task['factures:facturer'].invoke(current_user.id, params[:enregistrer], date, params[:compte_id])
+      Rake::Task['factures:facturer'].invoke(current_user.id, params[:enregistrer], @date_début, @date_fin, params[:compte_id])
     end
 
     # Garder une trace dans un fichier de log
@@ -329,7 +337,15 @@ class AdminController < ApplicationController
     @organisations = @organisations.page(params[:page]).per(50)
   end
 
-private  
+private
+
+  # La date saisie, ou nil si elle est absente ou ne désigne pas une date réelle.
+  def date_saisie(valeur)
+    Date.iso8601(valeur.to_s)
+  rescue ArgumentError
+    nil
+  end
+
   def message_import_log(model)
     if model.valid? 
       "#{model.class.name.upcase} #{model.new_record? ? 'NOUVEAU' : 'MAJ'} => id:#{model.id} changements:#{model.changes}"
