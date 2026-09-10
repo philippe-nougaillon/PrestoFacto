@@ -5,3 +5,11 @@ user_001:
   encrypted_password: 123456789ezf
   confirmed_at: DateTime.now
   organisation_id: 1
+
+admin_asso_créée_en_2024:
+  id: 4
+  role: admin
+  email: admin_asso_creee_en_2024@gmail.com
+  encrypted_password: 123456789ezf
+  confirmed_at: DateTime.now
+  organisation_id: 2

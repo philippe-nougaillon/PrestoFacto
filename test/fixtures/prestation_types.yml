@@ -2,3 +2,8 @@ repas:
   id: 1
   nom: Repas
   organisation_id: 1
+
+garderie:
+  id: 2
+  nom: Garderie
+  organisation_id: 1

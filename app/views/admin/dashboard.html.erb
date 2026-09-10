@@ -2,37 +2,91 @@
   <h2 class="fw-light"><%= fa_icon 'tachometer-alt', class: 'text-primary' %> Stats / Tableau de bord</h2>
 </div>
 
+<%# data-turbo="false" : rechargement complet de la page, sinon Turbo ré-exécute le <script> du
+    graphique dans un contexte JS déjà chargé (const redéclarées) et le graphe ne s'affiche pas.
+    Posé sur le <form>, il couvre aussi les liens "Périodes rapides" qu'il contient. %>
+<%= bootstrap_form_tag url: admin_dashboard_path, method: :get, html: { data: { turbo: false } } do |f| %>
+  <div class="row align-items-center mb-4 p-3 mx-0 shadow-sm">
+    <div class="col-sm-3"><%= f.date_field :date_début, value: @date_début, onchange: "this.form.submit()" %></div>
+    <div class="col-sm-3"><%= f.date_field :date_fin, value: @date_fin, onchange: "this.form.submit()" %></div>
+    <div class="col">
+      <div class="form-text mb-1">Périodes rapides</div>
+      <%= link_to "12 derniers mois",
+                  admin_dashboard_path(date_début: (Date.today - 1.year).beginning_of_month, date_fin: Date.today),
+                  class: 'btn btn-sm btn-outline-secondary me-1' %>
+      <%= link_to "Mois en cours",
+                  admin_dashboard_path(date_début: Date.today.beginning_of_month, date_fin: Date.today.end_of_month),
+                  class: 'btn btn-sm btn-outline-secondary me-1' %>
+      <%= link_to "Année en cours",
+                  admin_dashboard_path(date_début: Date.today.beginning_of_year, date_fin: Date.today.end_of_year),
+                  class: 'btn btn-sm btn-outline-secondary me-1' %>
+      <%= link_to "Depuis la création",
+                  admin_dashboard_path(date_début: @date_création, date_fin: Date.today),
+                  class: 'btn btn-sm btn-outline-secondary' %>
+    </div>
+  </div>
+<% end %>
+
+<p class="text-body-secondary">
+  Période du <b><%= @date_début.strftime("%d/%m/%Y") %></b> au <b><%= @date_fin.strftime("%d/%m/%Y") %></b>
+</p>
+
 <div class="row mt-4">
   <div class="col px-5 mx-3">
-    <p>Nombre de Comptes : <span class="float-end"><%= @organisation.comptes.count %></span></p>
-    <p>Nombre d'Enfants : <span class="float-end"><%= nbr_enfants = @organisation.enfants.count %></span></p>
-    <p>Nombre de Classes : <span class="float-end"><%= nbr_classes = @organisation.classrooms.count %></span></p>
-    
-    <% if nbr_classes > 0 %>
-      <p>Nombre d'Enfants par Classe : <span class="float-end"><%= nbr_enfants / nbr_classes %></span></p>
+    <p>
+      Nombre de Comptes :
+      <span class="float-end">
+        <%= number_with_delimiter(@nbr_comptes, delimiter: " ") %>
+        <% if @nbr_comptes_période != @nbr_comptes %>
+          <small class="text-body-secondary">(+<%= @nbr_comptes_période %>)</small>
+        <% end %>
+      </span>
+    </p>
+    <p>
+      Nombre d'Enfants :
+      <span class="float-end">
+        <%= number_with_delimiter(@nbr_enfants, delimiter: " ") %>
+        <% if @nbr_enfants_période != @nbr_enfants %>
+          <small class="text-body-secondary">(+<%= @nbr_enfants_période %>)</small>
+        <% end %>
+      </span>
+    </p>
+    <p>Nombre de Classes : <span class="float-end"><%= @nbr_classes %></span></p>
+
+    <% if @nbr_classes > 0 %>
+      <p>Nombre d'Enfants par Classe : <span class="float-end"><%= @nbr_enfants / @nbr_classes %></span></p>
+    <% end %>
+
+    <% if @nbr_comptes_période != @nbr_comptes || @nbr_enfants_période != @nbr_enfants %>
+      <p class="form-text">Totaux actuels, entre parenthèses les créations sur la période.</p>
     <% end %>
   </div>
 
   <div class="col px-5 mx-3">
-    <p>Nombre de Réservations : <span class="float-end"><%= number_with_delimiter(@organisation.reservations.count, delimiter: " ") %></span></p>
-    <p>Nombre de Prestations : <span class="float-end"><%= number_with_delimiter(@organisation.prestations.count, delimiter: " ") %></span></p>
+    <p>Nombre de Réservations : <span class="float-end"><%= number_with_delimiter(@nbr_reservations, delimiter: " ") %></span></p>
+    <p class="mb-1">Nombre de Prestations : <span class="float-end"><%= number_with_delimiter(@nbr_prestations, delimiter: " ") %></span></p>
+    <ul class="list-unstyled small text-body-secondary ps-3 mb-3">
+      <% @prestations_par_type.each do |nom, nombre| %>
+        <li><%= nom %> : <span class="float-end"><%= number_with_delimiter(nombre, delimiter: " ") %></span></li>
+      <% end %>
+    </ul>
     <% if @organisation.en_dépassement_plan_gratuit? %>
       <p class="text-danger">
         <i class="fas fa-exclamation-circle" title="La limite de la formule 'Libre' a été dépassée !"></i>
-        Nombre de Factures : 
+        Nombre de Factures :
         <span class="float-end">
-          <%= number_with_delimiter(@organisation.factures.count, delimiter: " ") %>
+          <%= number_with_delimiter(@nbr_factures, delimiter: " ") %>
         </span>
         <br>
-        <b>Limite de la formule libre et gratuite dépassée !</b> 
+        <b>Limite de la formule libre et gratuite dépassée !</b>
         <br>
         <%= link_to "Merci de nous contacter pour changer de formule.", "https://www.philnoug.com/contact" %>
       </p>
     <% else %>
       <p>
-        Nombre de Factures : 
+        Nombre de Factures :
         <span class="float-end">
-          <%= number_with_delimiter(@organisation.factures.count, delimiter: " ") %>
+          <%= number_with_delimiter(@nbr_factures, delimiter: " ") %>
         </span>
       </p>
     <% end %>
@@ -40,28 +94,28 @@
 
   <div class="col px-5 mx-3">
     <p>
-      Total des Factures : 
+      Total des Factures :
       <span class="float-end">
-        <%= number_to_currency(montant_total_factures = @organisation.factures.sum(:montant)) %>
+        <%= number_to_currency(@montant_factures) %>
       </span>
     </p>
     <p>
-      Total des Paiements : 
+      Total des Paiements :
       <span class="float-end">
-        <%= number_to_currency(montant_total_paiements = @organisation.paiements.sum(:montant)) %>
+        <%= number_to_currency(@montant_paiements) %>
       </span>
     </p>
     <p>
-      Balance : 
-      <span class="float-end <%= 'text-danger' if (montant_total_factures - montant_total_paiements).negative? %>">
-        <%= number_to_currency(montant_total_factures - montant_total_paiements) %>
+      Balance :
+      <span class="float-end <%= 'text-danger' if (@montant_factures - @montant_paiements).negative? %>">
+        <%= number_to_currency(@montant_factures - @montant_paiements) %>
       </span>
     </p>
   </div>
 </div>
 
 <div class="shadow-sm mx-auto my-4 p-5">
-  <div class="h4 px-2 fw-light">Facturation des 12 derniers mois</div>
+  <div class="h4 px-2 fw-light">Facturation du <%= @date_début.strftime("%d/%m/%Y") %> au <%= @date_fin.strftime("%d/%m/%Y") %></div>
   <canvas class="p-10" id="chartBar"></canvas>
 </div>
 
