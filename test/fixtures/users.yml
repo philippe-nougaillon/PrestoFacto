@@ -5,3 +5,19 @@ user_001:
   encrypted_password: 123456789ezf
   confirmed_at: DateTime.now
   organisation_id: 1
+
+user_vip:
+  id: 2
+  role: vip
+  email: vip@gmail.com
+  encrypted_password: 123456789ezf
+  confirmed_at: DateTime.now
+  organisation_id: 1
+
+user_visiteur:
+  id: 3
+  role: visiteur
+  email: visiteur@gmail.com
+  encrypted_password: 123456789ezf
+  confirmed_at: DateTime.now
+  organisation_id: 1

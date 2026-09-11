@@ -66,6 +66,10 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+
+  # minitest 6 a renommé des éléments d'API dont Rails 7.2 dépend encore : le correctif
+  # (rails/rails#56434) n'est rétroporté que sur 8-0-stable et 8-1-stable. À lever au passage à Rails 8.
+  gem "minitest", "< 6"
 end
 
 gem 'pundit'
