@@ -34,3 +34,20 @@ facture_martin_même_référence_que_dupont:
   solde_avant: -17.00
   solde_après: -25.50
   workflow_state: nouvelle
+
+
+facture_mars_2024:
+  id: 5
+  compte_id: 1
+  réf: "1-2024/1"
+  date: 2024-03-15
+  montant: 10.00
+  workflow_state: nouvelle
+
+facture_mai_2024:
+  id: 6
+  compte_id: 1
+  réf: "1-2024/2"
+  date: 2024-05-15
+  montant: 20.00
+  workflow_state: nouvelle

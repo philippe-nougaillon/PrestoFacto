@@ -3,3 +3,21 @@ prestation:
   enfant_id: 1
   prestation_type_id: 1
   date: <%= Date.today %>
+
+prestation_repas_10_mars_2024:
+  id: 2
+  enfant_id: 1
+  prestation_type_id: 1
+  date: 2024-03-10
+
+prestation_repas_11_mars_2024:
+  id: 3
+  enfant_id: 1
+  prestation_type_id: 1
+  date: 2024-03-11
+
+prestation_garderie_10_mars_2024:
+  id: 4
+  enfant_id: 1
+  prestation_type_id: 2
+  date: 2024-03-10
