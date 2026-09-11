@@ -1,7 +1,7 @@
 namespace :factures do
     
     desc "Facturation"
-    task :facturer, [:current_user_id, :enregistrer, :date, :compte] => :environment do |task, args|
+    task :facturer, [:current_user_id, :enregistrer, :date_début, :date_fin, :compte] => :environment do |task, args|
 
         enregistrer = (args[:enregistrer] == '1')    
         if enregistrer
@@ -15,8 +15,8 @@ namespace :factures do
         user = User.find(args.current_user_id)
         puts "current_user id = #{user.id}"
 
-        date_début = args.date
-        date_fin = date_début.end_of_month
+        date_début = args.date_début
+        date_fin   = args.date_fin
         puts "Facturation des prestations du #{I18n.l date_début} au #{I18n.l date_fin}"
 
         # quels sont les comptes ayants des prestations consommées durant la période ?
