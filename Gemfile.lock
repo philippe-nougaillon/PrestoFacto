@@ -509,6 +509,7 @@ DEPENDENCIES
   rails-erd
   recaptcha
   redis (~> 4.0)
+  rubyzip
   sassc-rails
   selenium-webdriver
   sitemap_generator

@@ -137,3 +137,5 @@ gem "omniauth-google-oauth2"
 gem 'net-pop', github: 'ruby/net-pop'
 
 gem "hotwire-spark", "~> 0.1.13", :group => :development
+
+gem 'rubyzip', require: 'zip'
