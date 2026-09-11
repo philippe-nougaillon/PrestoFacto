@@ -1,11 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# NB : les fixtures de ce projet fixent des id: explicites, il faut donc référencer
+# les associations par id et non par label.
 
 one:
+  organisation_id: 1
   to: MyString
   subject: MyString
   message_id: MyString
 
 two:
+  organisation_id: 1
   to: MyString
   subject: MyString
   message_id: MyString
