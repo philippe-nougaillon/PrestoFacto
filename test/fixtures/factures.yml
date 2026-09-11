@@ -4,3 +4,50 @@ one:
   id: 1
   compte_id: 1
   réf: 1234
+
+facture_dupont:
+  id: 2
+  compte_id: 1
+  réf: "1-2026/1"
+  date: 2026-01-15
+  montant: 42.50
+  solde_avant: 0.0
+  solde_après: -42.50
+  workflow_state: nouvelle
+
+facture_martin:
+  id: 3
+  compte_id: 2
+  réf: "1-2026/2"
+  date: 2026-01-15
+  montant: 17.00
+  solde_avant: 0.0
+  solde_après: -17.00
+  workflow_state: nouvelle
+
+facture_martin_même_référence_que_dupont:
+  id: 4
+  compte_id: 2
+  réf: "1-2026/1"
+  date: 2026-02-15
+  montant: 8.50
+  solde_avant: -17.00
+  solde_après: -25.50
+  workflow_state: nouvelle
+
+
+facture_mars_2024:
+  id: 5
+  compte_id: 1
+  réf: "1-2024/1"
+  date: 2024-03-15
+  montant: 10.00
+  workflow_state: nouvelle
+
+facture_mai_2024:
+  id: 6
+  compte_id: 1
+  réf: "1-2024/2"
+  date: 2024-05-15
+  montant: 20.00
+  workflow_state: nouvelle

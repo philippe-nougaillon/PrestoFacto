@@ -308,6 +308,49 @@ class AdminController < ApplicationController
   def dashboard
     @organisation = current_user.organisation
 
+    # Période analysée (par défaut : depuis la création de l'organisation)
+    @date_création = @organisation.created_at.to_date
+    @date_début = date_ou_défaut(params[:date_début], @date_création)
+    @date_fin   = date_ou_défaut(params[:date_fin], Date.today)
+    @date_début, @date_fin = @date_fin, @date_début if @date_début > @date_fin
+    période = @date_début.beginning_of_day..@date_fin.end_of_day
+
+    # Etat actuel de l'organisation (indépendant de la période)
+    @nbr_comptes = @organisation.comptes.count
+    @nbr_enfants = @organisation.enfants.count
+    @nbr_classes = @organisation.classrooms.count
+
+    # Créations sur la période
+    @nbr_comptes_période = @organisation.comptes.where(created_at: période).count
+    @nbr_enfants_période = @organisation.enfants.where(created_at: période).count
+
+    # Activité sur la période
+    @nbr_reservations = @organisation.reservations
+                                     .where("reservations.début <= ? AND reservations.fin >= ?", @date_fin, @date_début)
+                                     .count
+
+    prestations = @organisation.prestations.where(date: @date_début..@date_fin)
+    @nbr_prestations = prestations.count
+
+    # Détail des prestations par type (les types sans prestation sur la période sont affichés à 0)
+    @prestations_par_type = @organisation.prestation_types
+                                         .order(:nom)
+                                         .pluck(:nom)
+                                         .index_with(0)
+                                         .merge(prestations.joins(:prestation_type)
+                                                           .reorder(Arel.sql("prestation_types.nom"))
+                                                           .group("prestation_types.nom")
+                                                           .count)
+
+    factures = @organisation.factures.where("DATE(factures.date) BETWEEN ? AND ?", @date_début, @date_fin)
+    @nbr_factures = factures.count
+    @montant_factures = factures.sum(:montant)
+
+    @montant_paiements = @organisation.paiements
+                                      .where("DATE(paiements.date) BETWEEN ? AND ?", @date_début, @date_fin)
+                                      .sum(:montant)
+
+    # Facturation mois par mois sur la période
     compte_ids = @organisation.comptes.pluck(:id)
     @results = {}
 
@@ -315,20 +358,18 @@ class AdminController < ApplicationController
       @results = Facture
                 .unscoped
                 .where(compte_id: compte_ids)
-                .where("factures.date BETWEEN ? AND ?", Date.today - 1.year, Date.today.beginning_of_month)
+                .where("DATE(factures.date) BETWEEN ? AND ?", @date_début, @date_fin)
                 .group("TO_CHAR(factures.date, 'YYYY-MM')")
                 .sum(:montant)
 
-      unless @results.keys.count == 12
-        for i in 1..12 do
-          key = (Date.today - i.months).strftime("%Y-%m")
-          unless @results.key?(key)
-            @results.store(key, 0)
-          end
-        end
+      # on complète les mois sans facture pour avoir un graphique continu
+      mois = @date_début.beginning_of_month
+      while mois <= @date_fin
+        @results[mois.strftime("%Y-%m")] ||= 0
+        mois = mois.next_month
       end
-      @results = @results.sort_by { |key| key }.to_h
-
+      # to_f : sinon les BigDecimal sont sérialisés en chaînes dans le JSON du graphique
+      @results = @results.sort_by { |key, _| key }.to_h.transform_values(&:to_f)
     end
   end
 
@@ -344,6 +385,12 @@ private
     Date.iso8601(valeur.to_s)
   rescue ArgumentError
     nil
+  end
+
+  def date_ou_défaut(valeur, défaut)
+    valeur.present? ? Date.parse(valeur) : défaut
+  rescue ArgumentError, TypeError
+    défaut
   end
 
   def message_import_log(model)
