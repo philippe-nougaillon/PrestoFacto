@@ -16,7 +16,7 @@
   </div>
 <% end %>
 
-<%= form_with url: action_enfants_path, method: :post do %>
+<%= form_with url: action_enfants_path, method: :post, data: { turbo: false } do %>
   <div data-controller="action">
     <div class="overflow-x-auto">
       <table class="table border border-slate-200 shadow-sm">

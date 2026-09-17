@@ -33,7 +33,7 @@
           <td><%= mail_to message.email, message.email, {subject: "Re: Votre message au gestionnaire de la facturation", body: "#{'_' * 50} \r\n #{message.contenu}"} %></td>
           <td><%= message.objet %></td>
           <td><%= truncate(message.contenu, length: 30) %></td>
-          <td><span class="badge badge-<%= message.style %>"><%= message.workflow_state.humanize %></span></td>
+          <td><span class="badge badge-<%= message.style %>"><%= message.workflow_state&.humanize %></span></td>
           <td>Il y a <%= time_ago_in_words message.updated_at %></td>
           <td><%= link_to 'Voir', message %></td>
           <td><%= link_to 'Supprimer', message, data: { 'turbo-method': :delete, 'turbo-confirm': 'Êtes-vous bien certain.e ???' } %></td>
