@@ -16,7 +16,7 @@
   </div>
 <% end %>
 
-<%= bootstrap_form_tag url: action_enfants_path, method: :post do %>
+<%= bootstrap_form_tag url: action_enfants_path, method: :post, data: { turbo: false } do %>
   <div data-controller="action">
     <div class="table-responsive">
       <table class="table table-hover border shadow-sm">

@@ -72,6 +72,10 @@ class FacturesController < ApplicationController
         f.envoyer!
       end
       flash[:notice] = "#{factures.count} facture(s) envoyée(s) Consultez l'état des envois dans 'Administation/Mail Logs'"  
+    when "Télécharger les PDF"
+      return send_data FacturesToZip.new(factures).call,
+                       filename: "Factures_#{Date.today}.zip",
+                       type: 'application/zip'
     end
 
     redirect_to factures_url

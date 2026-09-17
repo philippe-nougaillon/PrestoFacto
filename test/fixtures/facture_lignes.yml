@@ -2,3 +2,33 @@ facture_ligne:
   id: 1
   facture_id: 1
   prestation_type_id: 1
+
+ligne_facture_dupont:
+  id: 2
+  facture_id: 2
+  prestation_type_id: 1
+  intitulé: Thomas Dupont
+  date: 2026-01-12
+  qté: 10.0
+  prix: 4.25
+  total: 42.50
+
+ligne_facture_martin:
+  id: 3
+  facture_id: 3
+  prestation_type_id: 1
+  intitulé: Léa Martin
+  date: 2026-01-12
+  qté: 4.0
+  prix: 4.25
+  total: 17.00
+
+ligne_facture_martin_même_référence_que_dupont:
+  id: 4
+  facture_id: 4
+  prestation_type_id: 1
+  intitulé: Léa Martin
+  date: 2026-02-10
+  qté: 2.0
+  prix: 4.25
+  total: 8.50

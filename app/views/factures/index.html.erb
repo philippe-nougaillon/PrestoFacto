@@ -18,7 +18,7 @@
 <%end %>
 
 
-<%= bootstrap_form_tag url: action_factures_path, method: :post do %>
+<%= bootstrap_form_tag url: action_factures_path, method: :post, data: { turbo: false } do %>
   <div data-controller="checkbox-select-all action">
     <div class="table-responsive">
       <table class="table table-hover border shadow-sm">
@@ -73,7 +73,7 @@
       <div class="col-sm-3">
         <div class="input-group">
           <%= select_tag :action_name, 
-                          options_for_select(["Passer à l'état 'vérifiée'", "Envoyer"]), 
+                          options_for_select(["Passer à l'état 'vérifiée'", "Envoyer", "Télécharger les PDF"]),
                           include_blank: true, 
                           class: 'form-control form-control-sm',
                           data: { 'action-target': 'selector' } %>

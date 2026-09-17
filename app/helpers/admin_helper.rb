@@ -5,7 +5,7 @@ module AdminHelper
         
         audit.audited_changes.each do |c|
             key = c.first.humanize
-            if audit.action == 'update'
+            if audit.action == 'update' && c.last.is_a?(Array)
                 unless c.last.first.blank? && c.last.last.blank?    
                     pretty_changes << "#{key} modifié de '#{c.last.first}' à '#{c.last.last}'"
                 end

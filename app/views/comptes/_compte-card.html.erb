@@ -81,7 +81,7 @@
         <div class="card-footer d-flex justify-content-between">
           <% if policy(Facture).new? %>
             <div>
-              <%= link_to admin_ajout_factures_path(compte_id: @compte.id), class: "btn btn-sm", title: 'Lance la facturation des prestations du mois' do %>
+              <%= link_to admin_ajout_factures_path(compte_id: @compte.id), class: "btn btn-sm", title: 'Lance la facturation des prestations sur une période' do %>
                 <%= fa_icon 'file-invoice', class: 'text-info me-1' %> Facturer
               <% end %>
             </div>

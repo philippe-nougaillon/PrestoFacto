@@ -4,12 +4,17 @@
 
 <p>
   <h4>Lance la création de factures à partir des prestations consommées</h4>
+  <small>
+    Une seule facture par compte est créée, couvrant l'intégralité de la période sélectionnée,
+    avec une ligne de détail par jour.
+  </small>
 </p>
 <br />
 
 <%= bootstrap_form_with(url: 'ajout_factures_do', local: true) do |form| %>
   <div class="col-sm-4">
-    <%= form.date_select :date, discard_day: true, label: "Mois", default: -1.month.from_now %>
+    <%= form.date_field :date_début, value: @date_début, label: "Du", required: true %>
+    <%= form.date_field :date_fin,   value: @date_fin,   label: "Au", required: true %>
     <%= form.select :compte_id, options_from_collection_for_select(current_user.organisation.comptes, :id, :nom, params[:compte_id]), { include_blank: 'Tous' } %>
     <%= form.check_box :enregistrer, { custom: :switch, label: "Enregistrer les factures *" } %> 
     <small>

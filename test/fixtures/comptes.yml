@@ -2,3 +2,8 @@ dupont:
   id: 1
   nom: Dupont
   organisation_id: 1
+
+martin:
+  id: 2
+  nom: Martin
+  organisation_id: 1

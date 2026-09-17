@@ -1,13 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# NB : les fixtures de ce projet fixent des id: explicites, il faut donc référencer
+# les associations par id et non par label.
 
 one:
-  enfant: one
-  prestationtype: one
+  enfant_id: 1
+  prestation_type_id: 1
   date_pointage: 2023-07-13
   heure_pointage: 2023-07-13 11:17:50
 
 two:
-  enfant: two
-  prestationtype: two
-  date_pointage: 2023-07-13
-  heure_pointage: 2023-07-13 11:17:50
+  enfant_id: 1
+  prestation_type_id: 1
+  date_pointage: 2023-07-14
+  heure_pointage: 2023-07-14 11:17:50

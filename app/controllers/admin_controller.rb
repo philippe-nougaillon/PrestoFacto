@@ -33,23 +33,31 @@ class AdminController < ApplicationController
   end
 
   def ajout_factures
-
+    @date_début  = Date.today.prev_month.beginning_of_month
+    @date_fin    = Date.today.prev_month.end_of_month
   end
 
   def ajout_factures_do
-    date = Date.new(params["[date(1i)]"].to_i,
-                    params["[date(2i)]"].to_i,
-                    params["[date(3i)]"].to_i)
-        
+    début = date_saisie(params[:date_début])
+    fin   = date_saisie(params[:date_fin])
+
+    # Une période incohérente est refusée et l'utilisateur la corrige lui-même.
+    if début.nil? || fin.nil? || fin < début
+      @date_début, @date_fin = params[:date_début], params[:date_fin] # on réaffiche sa saisie
+      flash.now[:alert] = "Période invalide : indiquez une date de début et une date de fin cohérentes."
+      return render :ajout_factures, status: :unprocessable_entity
+    end
+
+    @date_début, @date_fin = début, fin
+
     require 'rake'
 
     Rake::Task.clear # necessary to avoid tasks being loaded several times in dev mode
     Rails.application.load_tasks # providing your application name is 'sample'
-      
     # capture output
     @stdout_stream = capture_stdout do
       Rake::Task['factures:facturer'].reenable # in case you're going to invoke the same task second time.
-      Rake::Task['factures:facturer'].invoke(current_user.id, params[:enregistrer], date, params[:compte_id])
+      Rake::Task['factures:facturer'].invoke(current_user.id, params[:enregistrer], @date_début, @date_fin, params[:compte_id])
     end
 
     # Garder une trace dans un fichier de log
@@ -195,9 +203,10 @@ class AdminController < ApplicationController
       classroom = structure
         .classrooms
         .where(nom: row[headers.index 'classe'])
-        .first_or_create do |classe|
+        .first_or_initialize do |classe|
           classe.nom = row[headers.index 'classe']
         end
+      classroom.save if classroom.valid? && enregistrer
 
        # Enfant => classroom nom_enfant prénom date_naissance menu_vege menu_sp menu_all tarif_type badge
       enfant = compte
@@ -300,6 +309,49 @@ class AdminController < ApplicationController
   def dashboard
     @organisation = current_user.organisation
 
+    # Période analysée (par défaut : depuis la création de l'organisation)
+    @date_création = @organisation.created_at.to_date
+    @date_début = date_ou_défaut(params[:date_début], @date_création)
+    @date_fin   = date_ou_défaut(params[:date_fin], Date.today)
+    @date_début, @date_fin = @date_fin, @date_début if @date_début > @date_fin
+    période = @date_début.beginning_of_day..@date_fin.end_of_day
+
+    # Etat actuel de l'organisation (indépendant de la période)
+    @nbr_comptes = @organisation.comptes.count
+    @nbr_enfants = @organisation.enfants.count
+    @nbr_classes = @organisation.classrooms.count
+
+    # Créations sur la période
+    @nbr_comptes_période = @organisation.comptes.where(created_at: période).count
+    @nbr_enfants_période = @organisation.enfants.where(created_at: période).count
+
+    # Activité sur la période
+    @nbr_reservations = @organisation.reservations
+                                     .where("reservations.début <= ? AND reservations.fin >= ?", @date_fin, @date_début)
+                                     .count
+
+    prestations = @organisation.prestations.where(date: @date_début..@date_fin)
+    @nbr_prestations = prestations.count
+
+    # Détail des prestations par type (les types sans prestation sur la période sont affichés à 0)
+    @prestations_par_type = @organisation.prestation_types
+                                         .order(:nom)
+                                         .pluck(:nom)
+                                         .index_with(0)
+                                         .merge(prestations.joins(:prestation_type)
+                                                           .reorder(Arel.sql("prestation_types.nom"))
+                                                           .group("prestation_types.nom")
+                                                           .count)
+
+    factures = @organisation.factures.where("DATE(factures.date) BETWEEN ? AND ?", @date_début, @date_fin)
+    @nbr_factures = factures.count
+    @montant_factures = factures.sum(:montant)
+
+    @montant_paiements = @organisation.paiements
+                                      .where("DATE(paiements.date) BETWEEN ? AND ?", @date_début, @date_fin)
+                                      .sum(:montant)
+
+    # Facturation mois par mois sur la période
     compte_ids = @organisation.comptes.pluck(:id)
     @results = {}
 
@@ -307,20 +359,18 @@ class AdminController < ApplicationController
       @results = Facture
                 .unscoped
                 .where(compte_id: compte_ids)
-                .where("factures.date BETWEEN ? AND ?", Date.today - 1.year, Date.today.beginning_of_month)
+                .where("DATE(factures.date) BETWEEN ? AND ?", @date_début, @date_fin)
                 .group("TO_CHAR(factures.date, 'YYYY-MM')")
                 .sum(:montant)
 
-      unless @results.keys.count == 12
-        for i in 1..12 do
-          key = (Date.today - i.months).strftime("%Y-%m")
-          unless @results.key?(key)
-            @results.store(key, 0)
-          end
-        end
+      # on complète les mois sans facture pour avoir un graphique continu
+      mois = @date_début.beginning_of_month
+      while mois <= @date_fin
+        @results[mois.strftime("%Y-%m")] ||= 0
+        mois = mois.next_month
       end
-      @results = @results.sort_by { |key| key }.to_h
-
+      # to_f : sinon les BigDecimal sont sérialisés en chaînes dans le JSON du graphique
+      @results = @results.sort_by { |key, _| key }.to_h.transform_values(&:to_f)
     end
   end
 
@@ -329,7 +379,21 @@ class AdminController < ApplicationController
     @organisations = @organisations.page(params[:page]).per(50)
   end
 
-private  
+private
+
+  # La date saisie, ou nil si elle est absente ou ne désigne pas une date réelle.
+  def date_saisie(valeur)
+    Date.iso8601(valeur.to_s)
+  rescue ArgumentError
+    nil
+  end
+
+  def date_ou_défaut(valeur, défaut)
+    valeur.present? ? Date.parse(valeur) : défaut
+  rescue ArgumentError, TypeError
+    défaut
+  end
+
   def message_import_log(model)
     if model.valid? 
       "#{model.class.name.upcase} #{model.new_record? ? 'NOUVEAU' : 'MAJ'} => id:#{model.id} changements:#{model.changes}"
@@ -343,6 +407,6 @@ private
   end
 
   def get_boolean_in_xls(value)
-    value ? (value.strip.upcase == 'OUI') : false
+    value ? (value.to_s.strip.upcase == 'OUI') : false
   end
 end

@@ -24,7 +24,7 @@
 
 <p>
   <strong>État:</strong>
-  <span class="badge text-bg-<%= @message.style %>"><%= @message.workflow_state.humanize %></span>
+  <span class="badge text-bg-<%= @message.style %>"><%= @message.workflow_state&.humanize %></span>
 </p>
 
 <p>

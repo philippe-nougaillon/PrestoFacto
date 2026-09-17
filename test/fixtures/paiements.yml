@@ -3,3 +3,9 @@ paiement:
   compte_id: 1
   date: <%= Date.today %>
   montant: 23
+
+paiement_mars_2024:
+  id: 2
+  compte_id: 1
+  date: 2024-03-15
+  montant: 5.00

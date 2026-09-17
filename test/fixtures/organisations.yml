@@ -2,3 +2,9 @@ asso_cantine:
   id: 1
   nom: asso_cantine
   email: asso_cantinegmail.com
+
+asso_créée_en_2024:
+  id: 2
+  nom: asso_créée_en_2024
+  email: asso_creee_en_2024@gmail.com
+  created_at: 2024-01-01
