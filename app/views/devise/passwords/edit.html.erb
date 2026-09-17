@@ -3,11 +3,15 @@
     <%= render "devise/shared/error_messages", resource: resource %>
     <%= f.hidden_field :reset_password_token %>
 
-    <%= f.password_field :password, autofocus: false, autocomplete: "new-password",
-                         label: "Nouveau mot de passe",
-                         help: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length) %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password",
-                         label: "Confirmation du mot de passe" %>
+    <fieldset class="fieldset">
+      <%= f.label :password, "Nouveau mot de passe", class: "fieldset-legend" %>
+      <%= f.password_field :password, autofocus: false, autocomplete: "new-password", class: "input w-full" %>
+      <p class="label"><%= ("#{@minimum_password_length} caractères minimum" if @minimum_password_length) %></p>
+    </fieldset>
+    <fieldset class="fieldset">
+      <%= f.label :password_confirmation, "Confirmation du mot de passe", class: "fieldset-legend" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input w-full" %>
+    </fieldset>
 
     <%= f.submit "Changer mon mot de passe", class: "btn btn-primary text-white w-full" %>
   <% end %>

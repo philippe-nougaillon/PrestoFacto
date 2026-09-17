@@ -14,10 +14,18 @@
 
 <%= form_with(url: 'ajout_prestations_do') do |form| %>
     <div class="w-full sm:w-3/12 px-2">
-      <%= form.date_field :date %>
+      <fieldset class="fieldset">
+        <%= form.label :date, class: "fieldset-legend" %>
+        <%= form.date_field :date, class: "input w-full" %>
+      </fieldset>
     </div>
     <br>
-    <%= form.check_box :enregistrer, {custom: :switch, label: "Enregistrer les changements ? (Décoché = Visualisation seulement. Ne fait rien de définitif :)"} %>  
+    <fieldset class="fieldset">
+      <%= form.label :enregistrer, class: "label" do %>
+        <%= form.check_box :enregistrer, class: "checkbox checkbox-primary" %>
+        Enregistrer les changements ? (Décoché = Visualisation seulement. Ne fait rien de définitif :)
+      <% end %>
+    </fieldset>  
     <br /><br />
     <%= form.submit "Lancer", class: "btn btn-outline btn-success", 'data-turbo': false %>
 <% end %>

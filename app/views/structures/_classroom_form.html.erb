@@ -1,7 +1,17 @@
 <div class="nested-form-wrapper" data-new-record="<%= form.object.new_record? %>">
   <div class="flex flex-wrap -mx-2">
-    <div class="flex-1 px-2"><%= form.text_field :nom, label_as_placeholder: true %></div>
-    <div class="flex-1 px-2"><%= form.text_field :référent, label_as_placeholder: true %></div>
+    <div class="flex-1 px-2">
+      <fieldset class="fieldset">
+        <%= form.label :nom, class: "fieldset-legend" %>
+        <%= form.text_field :nom, class: "input w-full" %>
+      </fieldset>
+    </div>
+    <div class="flex-1 px-2">
+      <fieldset class="fieldset">
+        <%= form.label :référent, class: "fieldset-legend" %>
+        <%= form.text_field :référent, class: "input w-full" %>
+      </fieldset>
+    </div>
     <div class="w-1/12 px-2"><a type="button" data-action="nested-form#remove"><%= mi_icon 'trash-alt', class:"text-error mt-2" %></a></div>
   </div>
   <%= form.hidden_field :_destroy %>

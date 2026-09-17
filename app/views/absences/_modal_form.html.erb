@@ -3,15 +3,36 @@
   <%= form.hidden_field :enfant_id %>
 
   <div class="">
-    <%= form.text_field :début, label: 'Du :', class: "input input-bordered w-full", type: "date"  %>
-    <%= form.text_field :fin, label: 'Au :', class: "input input-bordered w-full", type: "date"  %>
+    <fieldset class="fieldset">
+      <%= form.label :début, 'Du :', class: "fieldset-legend" %>
+      <%= form.text_field :début, type: "date", class: "input input-bordered w-full" %>
+    </fieldset>
+    <fieldset class="fieldset">
+      <%= form.label :fin, 'Au :', class: "fieldset-legend" %>
+      <%= form.text_field :fin, type: "date", class: "input input-bordered w-full" %>
+    </fieldset>
   </div>
   <br />
 
   <div class="custom-control">
-    <%= form.check_box :matin, custom: :switch %>
-    <%= form.check_box :midi, custom: :switch %>
-    <%= form.check_box :soir, custom: :switch %>
+    <fieldset class="fieldset">
+      <%= form.label :matin, class: "label" do %>
+        <%= form.check_box :matin, class: "checkbox checkbox-primary" %>
+        Matin
+      <% end %>
+    </fieldset>
+    <fieldset class="fieldset">
+      <%= form.label :midi, class: "label" do %>
+        <%= form.check_box :midi, class: "checkbox checkbox-primary" %>
+        Midi
+      <% end %>
+    </fieldset>
+    <fieldset class="fieldset">
+      <%= form.label :soir, class: "label" do %>
+        <%= form.check_box :soir, class: "checkbox checkbox-primary" %>
+        Soir
+      <% end %>
+    </fieldset>
   </div>
   <br />
 

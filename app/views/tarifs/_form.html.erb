@@ -1,8 +1,17 @@
 <%= form_with(model: tarif, local: true) do |form| %>
 
-  <%= form.select :tarif_type_id, options_from_collection_for_select(current_user.organisation.tarif_types, 'id', 'nom', tarif.tarif_type_id), { label: "Type de Tarif" }, { class: "selectpicker" } %>
-  <%= form.select :prestation_type_id, options_from_collection_for_select(current_user.organisation.prestation_types, 'id', 'nom', tarif.prestation_type_id), { label: "Type de Prestation" }, { class: "selectpicker" } %>
-  <%= form.number_field :prix, step: :any, required: true %>
+  <fieldset class="fieldset">
+    <%= form.label :tarif_type_id, "Type de Tarif", class: "fieldset-legend" %>
+    <%= form.select :tarif_type_id, options_from_collection_for_select(current_user.organisation.tarif_types, 'id', 'nom', tarif.tarif_type_id), {}, { class: "select w-full" } %>
+  </fieldset>
+  <fieldset class="fieldset">
+    <%= form.label :prestation_type_id, "Type de Prestation", class: "fieldset-legend" %>
+    <%= form.select :prestation_type_id, options_from_collection_for_select(current_user.organisation.prestation_types, 'id', 'nom', tarif.prestation_type_id), {}, { class: "select w-full" } %>
+  </fieldset>
+  <fieldset class="fieldset">
+    <%= form.label :prix, class: "fieldset-legend" %>
+    <%= form.number_field :prix, step: :any, required: true, class: "input w-full" %>
+  </fieldset>
 
   <%= form.submit "Enregistrer", class: "btn btn-outline btn-success" %>
 

@@ -12,8 +12,16 @@
   <% end %>
 
     <%= form.hidden_field :organisation_id %>
-    <%= form.text_field :contenu %>
-    <%= form.check_box :actif %>
+    <fieldset class="fieldset">
+      <%= form.label :contenu, class: "fieldset-legend" %>
+      <%= form.text_field :contenu, class: "input w-full" %>
+    </fieldset>
+    <fieldset class="fieldset">
+      <%= form.label :actif, class: "label" do %>
+        <%= form.check_box :actif, class: "checkbox checkbox-primary" %>
+        Actif
+      <% end %>
+    </fieldset>
 
   <div class="actions my-6">
     <%= form.submit "Enregistrer", class: "btn btn-outline btn-success" %>

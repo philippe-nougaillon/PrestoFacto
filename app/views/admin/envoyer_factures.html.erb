@@ -9,7 +9,12 @@
 <br />
 
 <%= form_with(url: "envoyer_factures_do", method: :post, local: true) do |form| %>
-  <%= form.check_box :envoyer, {custom: :switch, label: "Envoyer les emails ? (Décoché = Visualisation seulement. Ne fait rien de définitif :)"} %>  
+  <fieldset class="fieldset">
+    <%= form.label :envoyer, class: "label" do %>
+      <%= form.check_box :envoyer, class: "checkbox checkbox-primary" %>
+      Envoyer les emails ? (Décoché = Visualisation seulement. Ne fait rien de définitif :)
+    <% end %>
+  </fieldset>  
   <br /><br />
   <%= form.submit "Lancer", class: "btn btn-outline btn-success", 'data-turbo': false %>
 <% end %>

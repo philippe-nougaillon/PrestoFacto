@@ -4,9 +4,18 @@
 
     <div class="flex flex-wrap -mx-2">
         <div class="w-full sm:w-4/12 px-2">
-            <%= form.date_field :date %>
-            <%= form.select :prestation_type_id, options_from_collection_for_select(@prestation_types, 'id', 'nom', prestation.prestation_type_id), { label: "Prestation type:", wrapper: { class: 'has-warning', data: { foo: 'bar' } } }, { class: "selectpicker" } %>
-            <%= form.number_field :qté, step: :any %>
+            <fieldset class="fieldset">
+              <%= form.label :date, class: "fieldset-legend" %>
+              <%= form.date_field :date, class: "input w-full" %>
+            </fieldset>
+            <fieldset class="fieldset">
+              <%= form.label :prestation_type_id, "Prestation type:", class: "fieldset-legend" %>
+              <%= form.select :prestation_type_id, options_from_collection_for_select(@prestation_types, 'id', 'nom', prestation.prestation_type_id), {}, { class: "select w-full" } %>
+            </fieldset>
+            <fieldset class="fieldset">
+              <%= form.label :qté, class: "fieldset-legend" %>
+              <%= form.number_field :qté, step: :any, class: "input w-full" %>
+            </fieldset>
         </div>
     </div>
 

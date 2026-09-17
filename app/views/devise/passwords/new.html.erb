@@ -1,7 +1,10 @@
 <%= render layout: "devise/shared/auth_card", locals: { titre: "Mot de passe oublié ?" } do %>
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
-    <%= f.email_field :email, autofocus: false, autocomplete: "email", label: "Adresse email" %>
+    <fieldset class="fieldset">
+      <%= f.label :email, "Adresse email", class: "fieldset-legend" %>
+      <%= f.email_field :email, autofocus: false, autocomplete: "email", class: "input w-full" %>
+    </fieldset>
     <%= f.submit "Envoyez-moi les instructions", class: "btn btn-primary text-white w-full" %>
   <% end %>
 <% end %>

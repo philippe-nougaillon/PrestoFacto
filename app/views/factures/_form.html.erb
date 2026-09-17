@@ -17,22 +17,43 @@
   <div class="flex flex-wrap -mx-2 shadow-sm p-2">
 
     <div class="flex-1 px-2">
-      <%= form.date_field :date %>
-      <%= form.text_field :réf, label: 'Référence', required: true %>
-      <%= form.select :workflow_state, Facture.workflow_spec.states, label: 'Etat' %>
+      <fieldset class="fieldset">
+        <%= form.label :date, class: "fieldset-legend" %>
+        <%= form.date_field :date, class: "input w-full" %>
+      </fieldset>
+      <fieldset class="fieldset">
+        <%= form.label :réf, 'Référence', class: "fieldset-legend" %>
+        <%= form.text_field :réf, required: true, class: "input w-full" %>
+      </fieldset>
+      <fieldset class="fieldset">
+        <%= form.label :workflow_state, 'Etat', class: "fieldset-legend" %>
+        <%= form.select :workflow_state, Facture.workflow_spec.states, {}, { class: "select w-full" } %>
+      </fieldset>
     </div>
     
     <div class="flex-1 px-2">
-      <%= form.date_field :échéance, label: 'Echéance' %>
+      <fieldset class="fieldset">
+        <%= form.label :échéance, 'Echéance', class: "fieldset-legend" %>
+        <%= form.date_field :échéance, class: "input w-full" %>
+      </fieldset>
       <% unless facture.new_record? %>
-        <%= form.datetime_field :envoyée_le, include_blank: true, label: 'Envoi_le' %>
+        <fieldset class="fieldset">
+          <%= form.label :envoyée_le, 'Envoi_le', class: "fieldset-legend" %>
+          <%= form.datetime_field :envoyée_le, include_blank: true, class: "input w-full" %>
+        </fieldset>
       <% end %>
-      <%= form.text_area :mémo, rows: 4 %>
+      <fieldset class="fieldset">
+        <%= form.label :mémo, class: "fieldset-legend" %>
+        <%= form.text_area :mémo, rows: 4, class: "textarea w-full" %>
+      </fieldset>
     </div>
 
     <% unless facture.new_record? %>
       <div class="w-3/12 px-2">
-        <%= form.number_field :montant, step: :any, label: 'Total', disabled: true %>
+        <fieldset class="fieldset">
+          <%= form.label :montant, 'Total', class: "fieldset-legend" %>
+          <%= form.number_field :montant, step: :any, disabled: true, class: "input w-full" %>
+        </fieldset>
       </div>
     <% end %>
   </div>

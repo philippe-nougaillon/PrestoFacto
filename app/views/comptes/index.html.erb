@@ -15,12 +15,10 @@
 <%= form_with url: comptes_path, method: :get do |f| %>
   <div class="flex flex-wrap -mx-2 items-center mb-6 p-4 mx-0 shadow-sm">
     <div class="flex-1 px-2">
-      <%= f.text_field :search, 
-                        value: params[:search], 
-                        label: 'Rechercher',
-                        placeholder: 'Entrez un terme à rechercher (ex: Nom, Prénom enfant, Code postal, Ville, Numéro allocataire, Badge)', 
-                        onchange: 'this.form.submit()', 
-                        autofocus: false %>
+      <fieldset class="fieldset">
+        <%= f.label :search, 'Rechercher', class: "fieldset-legend" %>
+        <%= f.text_field :search, value: params[:search], placeholder: 'Entrez un terme à rechercher (ex: Nom, Prénom enfant, Code postal, Ville, Numéro allocataire, Badge)', onchange: 'this.form.submit()', autofocus: false, class: "input w-full" %>
+      </fieldset>
     </div>
   </div>
 <% end %>

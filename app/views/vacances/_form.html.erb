@@ -12,26 +12,41 @@
   <% end %>
 
   <div class="field">
-    <%= form.text_field :zone %>
+    <fieldset class="fieldset">
+      <%= form.label :zone, class: "fieldset-legend" %>
+      <%= form.text_field :zone, class: "input w-full" %>
+    </fieldset>
   </div>
 
   <div class="field">
-    <%= form.text_field :nom %>
+    <fieldset class="fieldset">
+      <%= form.label :nom, class: "fieldset-legend" %>
+      <%= form.text_field :nom, class: "input w-full" %>
+    </fieldset>
   </div>
 
   <div class="field">
-    <%= form.date_select :début %>
+    <fieldset class="fieldset">
+      <%= form.label :début, class: "fieldset-legend" %>
+      <%= form.date_select :début, {}, { class: "select" } %>
+    </fieldset>
   </div>
 
   <div class="field">
-    <%= form.date_select :fin %>
+    <fieldset class="fieldset">
+      <%= form.label :fin, class: "fieldset-legend" %>
+      <%= form.date_select :fin, {}, { class: "select" } %>
+    </fieldset>
   </div>
 
   <div class="field">
-    <%= form.text_field :organisation_id %>
+    <fieldset class="fieldset">
+      <%= form.label :organisation_id, class: "fieldset-legend" %>
+      <%= form.text_field :organisation_id, class: "input w-full" %>
+    </fieldset>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>

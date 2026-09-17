@@ -13,10 +13,24 @@
 
 <%= form_with(url: 'ajout_factures_do', local: true) do |form| %>
   <div class="w-full sm:w-4/12 px-2">
-    <%= form.date_field :date_début, value: @date_début, label: "Du", required: true %>
-    <%= form.date_field :date_fin,   value: @date_fin,   label: "Au", required: true %>
-    <%= form.select :compte_id, options_from_collection_for_select(current_user.organisation.comptes, :id, :nom, params[:compte_id]), { include_blank: 'Tous' } %>
-    <%= form.check_box :enregistrer, { custom: :switch, label: "Enregistrer les factures *" } %> 
+    <fieldset class="fieldset">
+      <%= form.label :date_début, "Du", class: "fieldset-legend" %>
+      <%= form.date_field :date_début, value: @date_début, required: true, class: "input w-full" %>
+    </fieldset>
+    <fieldset class="fieldset">
+      <%= form.label :date_fin, "Au", class: "fieldset-legend" %>
+      <%= form.date_field :date_fin, value: @date_fin, required: true, class: "input w-full" %>
+    </fieldset>
+    <fieldset class="fieldset">
+      <%= form.label :compte_id, class: "fieldset-legend" %>
+      <%= form.select :compte_id, options_from_collection_for_select(current_user.organisation.comptes, :id, :nom, params[:compte_id]), { include_blank: 'Tous' }, { class: "select w-full" } %>
+    </fieldset>
+    <fieldset class="fieldset">
+      <%= form.label :enregistrer, class: "label" do %>
+        <%= form.check_box :enregistrer, class: "checkbox checkbox-primary" %>
+        Enregistrer les factures *
+      <% end %>
+    </fieldset> 
     <small>
         * Off = Visualisation de contrôle. Ne fait rien de définitif.<br>
         Aucune facture ne sera crée.

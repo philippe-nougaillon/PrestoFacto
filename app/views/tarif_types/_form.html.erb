@@ -1,7 +1,10 @@
 <%= form_with(model: tarif_type, local: true) do |form| %>
 
   <%= form.hidden_field :organisation_id %>
-  <%= form.text_field :nom, required: true %>
+  <fieldset class="fieldset">
+    <%= form.label :nom, class: "fieldset-legend" %>
+    <%= form.text_field :nom, required: true, class: "input w-full" %>
+  </fieldset>
 
   <%= form.submit "Enregistrer", class: "btn btn-outline btn-success" %>
 

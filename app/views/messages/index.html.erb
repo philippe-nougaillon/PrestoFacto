@@ -7,8 +7,18 @@
 
 <%= form_with url: messages_path, method: :get do |f| %>
   <div class="flex flex-wrap -mx-2">
-    <div class="flex-1 px-2"><%= f.text_field :search, value: params[:search], label: 'Email/Objet/Contenu', onchange: "this.form.submit()", autofocus: false %></div>
-    <div class="w-full sm:w-2/12 px-2"><%= f.select :state, options_for_select(Message.workflow_spec.states.keys.to_a, params[:state]), { include_blank: true, label: 'État' }, { onchange: "this.form.submit()" } %></div>
+    <div class="flex-1 px-2">
+      <fieldset class="fieldset">
+        <%= f.label :search, 'Email/Objet/Contenu', class: "fieldset-legend" %>
+        <%= f.text_field :search, value: params[:search], onchange: "this.form.submit()", autofocus: false, class: "input w-full" %>
+      </fieldset>
+    </div>
+    <div class="w-full sm:w-2/12 px-2">
+      <fieldset class="fieldset">
+        <%= f.label :state, 'État', class: "fieldset-legend" %>
+        <%= f.select :state, options_for_select(Message.workflow_spec.states.keys.to_a, params[:state]), { include_blank: true }, { onchange: "this.form.submit()", class: "select w-full" } %>
+      </fieldset>
+    </div>
   </div>
 <% end %>
 

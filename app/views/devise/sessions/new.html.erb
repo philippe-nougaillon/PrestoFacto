@@ -4,11 +4,22 @@
       <h1 class="text-3xl font-title font-bold text-primary text-center mb-6">Connexion</h1>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", label: "Adresse email" %>
-        <%= f.password_field :password, autocomplete: "current-password", label: "Mot de passe" %>
+        <fieldset class="fieldset">
+          <%= f.label :email, "Adresse email", class: "fieldset-legend" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input w-full" %>
+        </fieldset>
+        <fieldset class="fieldset">
+          <%= f.label :password, "Mot de passe", class: "fieldset-legend" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "input w-full" %>
+        </fieldset>
 
         <% if devise_mapping.rememberable? %>
-          <%= f.check_box :remember_me, custom: :switch, label: "Se souvenir de moi" %>
+          <fieldset class="fieldset">
+            <%= f.label :remember_me, class: "label" do %>
+              <%= f.check_box :remember_me, class: "checkbox checkbox-primary" %>
+              Se souvenir de moi
+            <% end %>
+          </fieldset>
         <% end %>
 
         <%= f.submit "Se connecter", class: "btn btn-primary text-white w-full" %>

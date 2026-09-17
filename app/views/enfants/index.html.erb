@@ -10,9 +10,24 @@
 
 <%= form_with url: enfants_path, method: :get do |f| %>
   <div class="flex flex-wrap -mx-2 items-center mb-6 p-4 mx-0 shadow-sm">
-    <div class="flex-1 px-2"><%= f.text_field :search, value: params[:search], label: 'Nom/Prénom/Badge', onchange: "this.form.submit()", autofocus: false %></div>
-    <div class="w-full sm:w-3/12 px-2"><%= f.select :structure_id, options_from_collection_for_select(@structures, 'id', 'nom', params[:structure_id]), { include_blank: true, label: "Structure" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
-    <div class="w-full sm:w-2/12 px-2"><%= f.select :classroom_id, options_from_collection_for_select(@classrooms, 'id', 'nom', params[:classroom_id]), { include_blank: true, label: "Classe" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
+    <div class="flex-1 px-2">
+      <fieldset class="fieldset">
+        <%= f.label :search, 'Nom/Prénom/Badge', class: "fieldset-legend" %>
+        <%= f.text_field :search, value: params[:search], onchange: "this.form.submit()", autofocus: false, class: "input w-full" %>
+      </fieldset>
+    </div>
+    <div class="w-full sm:w-3/12 px-2">
+      <fieldset class="fieldset">
+        <%= f.label :structure_id, "Structure", class: "fieldset-legend" %>
+        <%= f.select :structure_id, options_from_collection_for_select(@structures, 'id', 'nom', params[:structure_id]), { include_blank: true }, { onchange: "this.form.submit()", class: "select w-full" } %>
+      </fieldset>
+    </div>
+    <div class="w-full sm:w-2/12 px-2">
+      <fieldset class="fieldset">
+        <%= f.label :classroom_id, "Classe", class: "fieldset-legend" %>
+        <%= f.select :classroom_id, options_from_collection_for_select(@classrooms, 'id', 'nom', params[:classroom_id]), { include_blank: true }, { onchange: "this.form.submit()", class: "select w-full" } %>
+      </fieldset>
+    </div>
   </div>
 <% end %>
 

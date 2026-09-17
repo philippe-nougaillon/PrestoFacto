@@ -15,13 +15,28 @@
     <%= form.hidden_field :organisation_id %>
 
     <% unless params[:facture_slug] %>
-      <%= form.email_field :email, placeholder: 'Votre adresse e-mail', required: true %>
-      <%= form.select :objet, options_for_select(['Question', 'Offre standard', 'Offre premium', 'Remarque', "Proposition d'amélioration", 'Résiliation', 'Autre'], @offre), prompt: 'Choisir un objet', required: true %>
+      <fieldset class="fieldset">
+        <%= form.label :email, class: "fieldset-legend" %>
+        <%= form.email_field :email, placeholder: 'Votre adresse e-mail', required: true, class: "input w-full" %>
+      </fieldset>
+      <fieldset class="fieldset">
+        <%= form.label :objet, class: "fieldset-legend" %>
+        <%= form.select :objet, options_for_select(['Question', 'Offre standard', 'Offre premium', 'Remarque', "Proposition d'amélioration", 'Résiliation', 'Autre'], @offre), { prompt: 'Choisir un objet', required: true }, { class: "select w-full" } %>
+      </fieldset>
     <% else %>
-      <%= form.email_field :email, placeholder: 'Votre adresse e-mail', required: true %>
-      <%= form.select :objet, options_for_select(["Facture n° #{@facture.réf}", "Question", "Remarque", "Autre"]), required: true %>
+      <fieldset class="fieldset">
+        <%= form.label :email, class: "fieldset-legend" %>
+        <%= form.email_field :email, placeholder: 'Votre adresse e-mail', required: true, class: "input w-full" %>
+      </fieldset>
+      <fieldset class="fieldset">
+        <%= form.label :objet, class: "fieldset-legend" %>
+        <%= form.select :objet, options_for_select(["Facture n° #{@facture.réf}", "Question", "Remarque", "Autre"]), { required: true }, { class: "select w-full" } %>
+      </fieldset>
     <% end %>
-    <%= form.text_area :contenu, placeholder: 'Votre message', rows: 4, required: true %>
+    <fieldset class="fieldset">
+      <%= form.label :contenu, class: "fieldset-legend" %>
+      <%= form.text_area :contenu, placeholder: 'Votre message', rows: 4, required: true, class: "textarea w-full" %>
+    </fieldset>
 
     <%= recaptcha_tags unless Rails.env.development? %>
 

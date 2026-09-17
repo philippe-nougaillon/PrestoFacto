@@ -20,7 +20,7 @@
   <p>Merci de nous expliquer la raison pour laquelle vous nous quittez. Vos commentaires nous permettrons d'améliorer le logiciel.</p>
   <%= form_with(url: suppression_organisation_do_organisation_path) do |form| %>
     <div class="w-full">
-      <%= form.text_area :reason, hide_label: true, class: "mb-4", style: "height: 8rem" %>
+      <%= form.text_area :reason, style: "height: 8rem", class: "mb-4 textarea w-full" %>
     </div>
     <%= form.submit "TOUT SUPPRIMER", class: "btn btn-outline btn-error", 'data-turbo-confirm': "ÊTES-VOUS BIEN SÛR DE VOULOIR SUPPRIMER VOTRE ORGANISATION ? VOUS NE POURREZ PLUS REVENIR EN ARRIÈRE !!!" %>
     <%= link_to "Annuler", admin_index_path(current_user.organisation), class: "btn btn-outline btn-secondary" %>

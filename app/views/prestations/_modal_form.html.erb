@@ -3,11 +3,20 @@
     <%= form.hidden_field :enfant_id %>
 
     <div class="">
-        <%= form.text_field :date, label: 'Date', type: "date", required: true %>
+        <fieldset class="fieldset">
+          <%= form.label :date, 'Date', class: "fieldset-legend" %>
+          <%= form.text_field :date, type: "date", required: true, class: "input w-full" %>
+        </fieldset>
     </div>
     
-    <%= form.select :prestation_type_id, options_from_collection_for_select(current_user.organisation.prestation_types, 'id', 'nom', prestation.prestation_type_id), { label: "Prestation type", wrapper: { class: 'has-warning', data: { foo: 'bar' } } }, { class: "selectpicker" } %>
-    <%= form.number_field :qté, value: 1, step: :any %>
+    <fieldset class="fieldset">
+      <%= form.label :prestation_type_id, "Prestation type", class: "fieldset-legend" %>
+      <%= form.select :prestation_type_id, options_from_collection_for_select(current_user.organisation.prestation_types, 'id', 'nom', prestation.prestation_type_id), {}, { class: "select w-full" } %>
+    </fieldset>
+    <fieldset class="fieldset">
+      <%= form.label :qté, class: "fieldset-legend" %>
+      <%= form.number_field :qté, value: 1, step: :any, class: "input w-full" %>
+    </fieldset>
 
     <%= form.submit "Enregistrer", class: "btn btn-outline btn-success" %>
 

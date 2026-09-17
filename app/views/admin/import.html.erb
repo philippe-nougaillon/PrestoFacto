@@ -23,8 +23,16 @@
 <%= form_with(url: "import_do", method: :post, local: true) do |form| %>
 
     <div class="w-full sm:w-6/12">
-        <%= form.file_field :file, {accept: '.xls', required: true, label: 'Fichier à importer'} %>
-        <%= form.check_box :enregistrer, {custom: :switch, label: "Enregistrer les changements ? (non=Visualisation seulement)"} %>  
+        <fieldset class="fieldset">
+          <%= form.label :file, 'Fichier à importer', class: "fieldset-legend" %>
+          <%= form.file_field :file, accept: '.xls', required: true, class: "file-input w-full" %>
+        </fieldset>
+        <fieldset class="fieldset">
+          <%= form.label :enregistrer, class: "label" do %>
+            <%= form.check_box :enregistrer, class: "checkbox checkbox-primary" %>
+            Enregistrer les changements ? (non=Visualisation seulement)
+          <% end %>
+        </fieldset>  
     </div>
     <br />
 

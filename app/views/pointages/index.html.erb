@@ -13,9 +13,24 @@
 
 <%= form_with url: pointages_path, method: :get do |f| %>
   <div class="flex flex-wrap -mx-2 items-center mb-6 p-4 mx-0 shadow-sm">
-    <div class="w-full sm:w-2/12 px-2"><%= f.date_field :date, value: params[:date], onchange: "this.form.submit()" %></div>
-    <div class="w-full sm:w-2/12 px-2"><%= f.select :prestation_type_id, options_from_collection_for_select(@prestation_types, 'id', 'nom', params[:prestation_type_id]), { include_blank: true, label: "Prestation" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
-    <div class="w-full sm:w-2/12 px-2"><%= f.select :classroom_id, options_from_collection_for_select(@classrooms, 'id', 'nom', params[:classroom_id]), { include_blank: true, label: "Classe" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
+    <div class="w-full sm:w-2/12 px-2">
+      <fieldset class="fieldset">
+        <%= f.label :date, class: "fieldset-legend" %>
+        <%= f.date_field :date, value: params[:date], onchange: "this.form.submit()", class: "input w-full" %>
+      </fieldset>
+    </div>
+    <div class="w-full sm:w-2/12 px-2">
+      <fieldset class="fieldset">
+        <%= f.label :prestation_type_id, "Prestation", class: "fieldset-legend" %>
+        <%= f.select :prestation_type_id, options_from_collection_for_select(@prestation_types, 'id', 'nom', params[:prestation_type_id]), { include_blank: true }, { onchange: "this.form.submit()", class: "select w-full" } %>
+      </fieldset>
+    </div>
+    <div class="w-full sm:w-2/12 px-2">
+      <fieldset class="fieldset">
+        <%= f.label :classroom_id, "Classe", class: "fieldset-legend" %>
+        <%= f.select :classroom_id, options_from_collection_for_select(@classrooms, 'id', 'nom', params[:classroom_id]), { include_blank: true }, { onchange: "this.form.submit()", class: "select w-full" } %>
+      </fieldset>
+    </div>
   </div>
 <% end %>
 

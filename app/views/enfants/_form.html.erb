@@ -3,30 +3,83 @@
   <%= f.hidden_field :compte_id %>
   
   <div class="flex flex-wrap -mx-2">
-    <div class="flex-1 px-2"><%= f.select :classroom_id, options_from_collection_for_select(@classrooms, 'id', 'nom_et_structure', enfant.classroom_id), { label: "Classe" }, { class: "selectpicker" } %></div>
-    <div class="flex-1 px-2"><%= f.text_field :nom, required: true %></div>
-    <div class="flex-1 px-2"><%= f.text_field :prénom, required: true %></div>
-    <div class="flex-1 px-2"><%= f.date_field :date_naissance%></div>
-    <div class="flex-1 px-2"><%= f.select :tarif_type_id, options_from_collection_for_select(@tarif_types, 'id', 'nom', enfant.tarif_type_id), { label: "Tarif"}, { class: "selectpicker" } %></div>
-    <div class="w-full sm:w-1/12 px-2"><%= f.text_field :badge %></div>
+    <div class="flex-1 px-2">
+      <fieldset class="fieldset">
+        <%= f.label :classroom_id, "Classe", class: "fieldset-legend" %>
+        <%= f.select :classroom_id, options_from_collection_for_select(@classrooms, 'id', 'nom_et_structure', enfant.classroom_id), {}, { class: "select w-full" } %>
+      </fieldset>
+    </div>
+    <div class="flex-1 px-2">
+      <fieldset class="fieldset">
+        <%= f.label :nom, class: "fieldset-legend" %>
+        <%= f.text_field :nom, required: true, class: "input w-full" %>
+      </fieldset>
+    </div>
+    <div class="flex-1 px-2">
+      <fieldset class="fieldset">
+        <%= f.label :prénom, class: "fieldset-legend" %>
+        <%= f.text_field :prénom, required: true, class: "input w-full" %>
+      </fieldset>
+    </div>
+    <div class="flex-1 px-2">
+      <fieldset class="fieldset">
+        <%= f.label :date_naissance, class: "fieldset-legend" %>
+        <%= f.date_field :date_naissance, class: "input w-full" %>
+      </fieldset>
+    </div>
+    <div class="flex-1 px-2">
+      <fieldset class="fieldset">
+        <%= f.label :tarif_type_id, "Tarif", class: "fieldset-legend" %>
+        <%= f.select :tarif_type_id, options_from_collection_for_select(@tarif_types, 'id', 'nom', enfant.tarif_type_id), {}, { class: "select w-full" } %>
+      </fieldset>
+    </div>
+    <div class="w-full sm:w-1/12 px-2">
+      <fieldset class="fieldset">
+        <%= f.label :badge, class: "fieldset-legend" %>
+        <%= f.text_field :badge, class: "input w-full" %>
+      </fieldset>
+    </div>
   </div>
 
   <div class="flex flex-wrap -mx-2 items-center" data-controller="toggle-allergie vege-sp-sync">
     <div class="w-full sm:w-1/12 px-2 mb-4">
-      <%= f.check_box :menu_all, label: "Allergie", custom: :switch, 'data-toggle-allergie-target': 'source', 'data-action': 'toggle-allergie#toggle' %>
+      <fieldset class="fieldset">
+        <%= f.label :menu_all, class: "label" do %>
+          <%= f.check_box :menu_all, 'data-toggle-allergie-target': 'source', 'data-action': 'toggle-allergie#toggle', class: "checkbox checkbox-primary" %>
+          Allergie
+        <% end %>
+      </fieldset>
     </div>
     <div class="flex-1 px-2">
-      <%= f.text_field :allergenes, label_as_placeholder: true, label: 'Allergènes', 'data-toggle-allergie-target': 'field' %>
+      <fieldset class="fieldset">
+        <%= f.label :allergenes, 'Allergènes', class: "fieldset-legend" %>
+        <%= f.text_field :allergenes, 'data-toggle-allergie-target': 'field', class: "input w-full" %>
+      </fieldset>
     </div>
     <div class="w-full sm:w-2/12 px-2 mb-4">
-      <%= f.check_box :menu_vege, label: "Menu 'Végétarien'", custom: :switch, 'data-vege-sp-sync-target': 'vege', 'data-action': 'vege-sp-sync#toggleVege' %>
+      <fieldset class="fieldset">
+        <%= f.label :menu_vege, class: "label" do %>
+          <%= f.check_box :menu_vege, 'data-vege-sp-sync-target': 'vege', 'data-action': 'vege-sp-sync#toggleVege', class: "checkbox checkbox-primary" %>
+          Menu &#39;Végétarien&#39;
+        <% end %>
+      </fieldset>
     </div>
     <div class="w-full sm:w-2/12 px-2 mb-4">
-      <%= f.check_box :menu_sp, label: "Menu 'Sans porc'", custom: :switch, 'data-vege-sp-sync-target': 'sp', 'data-action': 'vege-sp-sync#toggleSP' %>
+      <fieldset class="fieldset">
+        <%= f.label :menu_sp, class: "label" do %>
+          <%= f.check_box :menu_sp, 'data-vege-sp-sync-target': 'sp', 'data-action': 'vege-sp-sync#toggleSP', class: "checkbox checkbox-primary" %>
+          Menu &#39;Sans porc&#39;
+        <% end %>
+      </fieldset>
     </div>
   </div>
   <div class="flex flex-wrap -mx-2">
-    <div class="flex-1 px-2"><%= f.text_field :mémo, label_as_placeholder: true, label: 'Mémo' %></div>
+    <div class="flex-1 px-2">
+      <fieldset class="fieldset">
+        <%= f.label :mémo, 'Mémo', class: "fieldset-legend" %>
+        <%= f.text_field :mémo, class: "input w-full" %>
+      </fieldset>
+    </div>
   </div>
   <br>
 

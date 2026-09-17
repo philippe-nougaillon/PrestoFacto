@@ -24,7 +24,12 @@
     <%= l pointage.date_pointage %>
   </p>
   <div class="flex flex-wrap -mx-2">
-    <div class="w-full sm:w-3/12 px-2"><%= form.datetime_field :heure_pointage %></div>
+    <div class="w-full sm:w-3/12 px-2">
+      <fieldset class="fieldset">
+        <%= form.label :heure_pointage, class: "fieldset-legend" %>
+        <%= form.datetime_field :heure_pointage, class: "input w-full" %>
+      </fieldset>
+    </div>
   </div>
   <div class="flex flex-wrap -mx-2">
     <div class="w-full sm:w-3/12 px-2"><%= form.submit "Enregistrer", class: "btn btn-outline btn-success w-full mt-6" %></div>

@@ -17,19 +17,57 @@
   <div class="flex flex-wrap -mx-2">
     <div class="flex-1 px-2">
       <div class="flex flex-wrap -mx-2">
-        <div class="flex-1 px-2"><%= form.date_field :date, required: true %></div>
-        <div class="flex-1 px-2"><%= form.text_field :réf %></div>
-        <div class="flex-1 px-2"><%= form.select :mode, Paiement.modes %></div>
+        <div class="flex-1 px-2">
+          <fieldset class="fieldset">
+            <%= form.label :date, class: "fieldset-legend" %>
+            <%= form.date_field :date, required: true, class: "input w-full" %>
+          </fieldset>
+        </div>
+        <div class="flex-1 px-2">
+          <fieldset class="fieldset">
+            <%= form.label :réf, class: "fieldset-legend" %>
+            <%= form.text_field :réf, class: "input w-full" %>
+          </fieldset>
+        </div>
+        <div class="flex-1 px-2">
+          <fieldset class="fieldset">
+            <%= form.label :mode, class: "fieldset-legend" %>
+            <%= form.select :mode, Paiement.modes, {}, { class: "select w-full" } %>
+          </fieldset>
+        </div>
       </div>
       <div class="flex flex-wrap -mx-2">
-        <div class="flex-1 px-2"><%= form.select :banque, Paiement.banques, include_blank: true %></div>
-        <div class="flex-1 px-2"><%= form.text_field :chèque_num, label: 'Chèque N°' %></div>
+        <div class="flex-1 px-2">
+          <fieldset class="fieldset">
+            <%= form.label :banque, class: "fieldset-legend" %>
+            <%= form.select :banque, Paiement.banques, { include_blank: true }, { class: "select w-full" } %>
+          </fieldset>
+        </div>
+        <div class="flex-1 px-2">
+          <fieldset class="fieldset">
+            <%= form.label :chèque_num, 'Chèque N°', class: "fieldset-legend" %>
+            <%= form.text_field :chèque_num, class: "input w-full" %>
+          </fieldset>
+        </div>
       </div>
       <div class="flex flex-wrap -mx-2">
-        <div class="flex-1 px-2"><%= form.number_field :montant, step: :any %></div>
-        <div class="flex-1 px-2"><%= form.date_field :date_remise %></div>
+        <div class="flex-1 px-2">
+          <fieldset class="fieldset">
+            <%= form.label :montant, class: "fieldset-legend" %>
+            <%= form.number_field :montant, step: :any, class: "input w-full" %>
+          </fieldset>
+        </div>
+        <div class="flex-1 px-2">
+          <fieldset class="fieldset">
+            <%= form.label :date_remise, class: "fieldset-legend" %>
+            <%= form.date_field :date_remise, class: "input w-full" %>
+          </fieldset>
+        </div>
       </div>
-      <%= form.text_area :mémo %>
+      <fieldset class="fieldset">
+        <%= form.label :mémo, class: "fieldset-legend" %>
+        <%= form.text_area :mémo, class: "textarea w-full" %>
+      </fieldset>
       <%= form.submit "Enregistrer", class: "btn btn-outline btn-success mr-2", 'data-turbo': false %>
       <%= link_to 'Annuler', paiements_path %>
     </div>

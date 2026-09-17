@@ -2,21 +2,59 @@
 
   <div class="flex flex-wrap -mx-2">
     <div class="w-full sm:w-5/12 px-2">
-      <%= form.text_field :nom %>
-      <%= form.text_field :adresse %>
+      <fieldset class="fieldset">
+        <%= form.label :nom, class: "fieldset-legend" %>
+        <%= form.text_field :nom, class: "input w-full" %>
+      </fieldset>
+      <fieldset class="fieldset">
+        <%= form.label :adresse, class: "fieldset-legend" %>
+        <%= form.text_field :adresse, class: "input w-full" %>
+      </fieldset>
       <div class="flex flex-wrap -mx-2">
-        <div class="w-full sm:w-3/12 px-2"><%= form.text_field :cp %></div>
-        <div class="flex-1 px-2"><%= form.text_field :ville %></div>
+        <div class="w-full sm:w-3/12 px-2">
+          <fieldset class="fieldset">
+            <%= form.label :cp, class: "fieldset-legend" %>
+            <%= form.text_field :cp, class: "input w-full" %>
+          </fieldset>
+        </div>
+        <div class="flex-1 px-2">
+          <fieldset class="fieldset">
+            <%= form.label :ville, class: "fieldset-legend" %>
+            <%= form.text_field :ville, class: "input w-full" %>
+          </fieldset>
+        </div>
       </div>
     </div>
     <div class="flex-1 px-2">
       <div class="flex flex-wrap -mx-2">
-        <div class="w-full sm:w-4/12 px-2"><%= form.text_field :téléphone %></div>
-        <div class="flex-1 px-2"><%= form.text_field :email %></div>
+        <div class="w-full sm:w-4/12 px-2">
+          <fieldset class="fieldset">
+            <%= form.label :téléphone, class: "fieldset-legend" %>
+            <%= form.text_field :téléphone, class: "input w-full" %>
+          </fieldset>
+        </div>
+        <div class="flex-1 px-2">
+          <fieldset class="fieldset">
+            <%= form.label :email, class: "fieldset-legend" %>
+            <%= form.text_field :email, class: "input w-full" %>
+          </fieldset>
+        </div>
       </div>
       <div class="flex flex-wrap -mx-2">
-        <div class="w-full sm:w-4/12 px-2"><%= form.select :zone, ['A', 'B', 'C'], { label: "Zone", help: "Zone de vacances scolaires", wrapper: { class: 'has-warning', data: { foo: 'bar' } } }, { class: "selectpicker" } %></div>
-        <div class="flex-1 px-2"><%= form.file_field :logo, help: "Votre logo. Apparaît sur l'entête des documents", placeholder: "Choisir un fichier image" %></div>
+        <div class="w-full sm:w-4/12 px-2">
+          <fieldset class="fieldset">
+            <%= form.label :zone, "Zone", class: "fieldset-legend" %>
+            <%= form.select :zone, ['A', 'B', 'C'], {}, { class: "select w-full" } %>
+            <p class="label">Zone de vacances scolaires</p>
+          </fieldset>
+        </div>
+        <div class="flex-1 px-2">
+          <fieldset class="fieldset">
+            <%= form.label :logo, class: "fieldset-legend" %>
+            <%= form.file_field :logo, placeholder: "Choisir un fichier image", class: "file-input w-full" %>
+            <p class="label">Votre logo. Apparaît sur l&#39;entête des documents</p>
+          </fieldset>
+        </div>
       </div>
     </div>
   </div>

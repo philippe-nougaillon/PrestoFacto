@@ -21,35 +21,41 @@
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
-        <%= f.email_field :email, value: params[:email], autofocus: false, required: true,
-                          autocomplete: "email", label: "Adresse email" %>
+        <fieldset class="fieldset">
+          <%= f.label :email, "Adresse email", class: "fieldset-legend" %>
+          <%= f.email_field :email, value: params[:email], autofocus: false, required: true, autocomplete: "email", class: "input w-full" %>
+        </fieldset>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <%= f.password_field :password, value: params[:password], required: true,
-                               autocomplete: "new-password", label: "Mot de passe",
-                               help: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length) %>
-          <%= f.password_field :password_confirmation, value: params[:password], required: true,
-                               autocomplete: "new-password", label: "Confirmation du mot de passe" %>
+          <fieldset class="fieldset">
+            <%= f.label :password, "Mot de passe", class: "fieldset-legend" %>
+            <%= f.password_field :password, value: params[:password], required: true, autocomplete: "new-password", class: "input w-full" %>
+            <p class="label"><%= ("#{@minimum_password_length} caractères minimum" if @minimum_password_length) %></p>
+          </fieldset>
+          <fieldset class="fieldset">
+            <%= f.label :password_confirmation, "Confirmation du mot de passe", class: "fieldset-legend" %>
+            <%= f.password_field :password_confirmation, value: params[:password], required: true, autocomplete: "new-password", class: "input w-full" %>
+          </fieldset>
         </div>
 
-        <div class="w-full mb-4">
-          <%= label_tag :organisation, "Association / Mairie", class: DaisyFormBuilder::LABEL_CLASS %>
+        <fieldset class="fieldset">
+          <%= label_tag :organisation, "Association / Mairie", class: "fieldset-legend" %>
           <%= text_field_tag :organisation, params[:organisation], required: true,
                              placeholder: "Le nom de votre ASSOCIATION/MAIRIE",
-                             class: "input input-bordered w-full" %>
-        </div>
+                             class: "input w-full" %>
+        </fieldset>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div class="md:col-span-2">
-            <%= label_tag :structure, "Nom de la structure (CANTINE/GARDERIE/...)", class: DaisyFormBuilder::LABEL_CLASS %>
+          <fieldset class="fieldset md:col-span-2">
+            <%= label_tag :structure, "Nom de la structure (CANTINE/GARDERIE/...)", class: "fieldset-legend" %>
             <%= text_field_tag :structure, (params[:structure] || "Cantine"), required: true,
-                               class: "input input-bordered w-full" %>
-          </div>
-          <div>
-            <%= label_tag :zone, "Zone de vacances scolaires", class: DaisyFormBuilder::LABEL_CLASS %>
+                               class: "input w-full" %>
+          </fieldset>
+          <fieldset class="fieldset">
+            <%= label_tag :zone, "Zone de vacances scolaires", class: "fieldset-legend" %>
             <%= select_tag :zone, options_for_select(['A', 'B', 'C'], (params[:zone] || 'A')),
-                           class: "select select-bordered w-full" %>
-          </div>
+                           class: "select w-full" %>
+          </fieldset>
         </div>
 
         <div class="my-4">

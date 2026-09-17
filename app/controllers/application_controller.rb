@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
 
-  default_form_builder DaisyFormBuilder
-
   before_action :authenticate_user!
   before_action :detect_device_format
   before_action :set_layout_variables

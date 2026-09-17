@@ -2,13 +2,35 @@
   <%= form_with(model: prestation_type, local: true) do |form| %>
 
     <%= form.hidden_field :organisation_id %>
-    <%= form.text_field :nom, required: true %>
-    <%= form.check_box :forfaitaire, 'data-action-forfaitaire-target': 'source', 'data-action': 'action-forfaitaire#toggle' %>
+    <fieldset class="fieldset">
+      <%= form.label :nom, class: "fieldset-legend" %>
+      <%= form.text_field :nom, required: true, class: "input w-full" %>
+    </fieldset>
+    <fieldset class="fieldset">
+      <%= form.label :forfaitaire, class: "label" do %>
+        <%= form.check_box :forfaitaire, 'data-action-forfaitaire-target': 'source', 'data-action': 'action-forfaitaire#toggle', class: "checkbox checkbox-primary" %>
+        Forfaitaire
+      <% end %>
+    </fieldset>
     <div data-action-forfaitaire-target='panel'>
-      <%= form.text_field :debut, label: "Heure de début de la période (07:30)" %>
-      <%= form.text_field :fin, label: "Heure de fin de la période (09:00)" %>
-      <%= form.number_field :duree_tranche, label: "Durée de la tranche de facturation (en minutes) : ", min: 0 %>
-      <%= form.check_box :pointage_arrivee, label: "Pointage = heure d'arrivée (sinon, heure de départ)" %>
+      <fieldset class="fieldset">
+        <%= form.label :debut, "Heure de début de la période (07:30)", class: "fieldset-legend" %>
+        <%= form.text_field :debut, class: "input w-full" %>
+      </fieldset>
+      <fieldset class="fieldset">
+        <%= form.label :fin, "Heure de fin de la période (09:00)", class: "fieldset-legend" %>
+        <%= form.text_field :fin, class: "input w-full" %>
+      </fieldset>
+      <fieldset class="fieldset">
+        <%= form.label :duree_tranche, "Durée de la tranche de facturation (en minutes) : ", class: "fieldset-legend" %>
+        <%= form.number_field :duree_tranche, min: 0, class: "input w-full" %>
+      </fieldset>
+      <fieldset class="fieldset">
+        <%= form.label :pointage_arrivee, class: "label" do %>
+          <%= form.check_box :pointage_arrivee, class: "checkbox checkbox-primary" %>
+          Pointage = heure d&#39;arrivée (sinon, heure de départ)
+        <% end %>
+      </fieldset>
     </div>
 
     <%= form.submit "Enregistrer", class: "btn btn-outline btn-success mt-6" %>

@@ -12,7 +12,10 @@
 </div>
 
 <%= form_with url: users_admin_index_path, method: :get do |f| %>
-  <%= f.text_field :search, value: params[:search], onchange: "this.form.submit()", label: 'Rechercher' %>
+  <fieldset class="fieldset">
+    <%= f.label :search, 'Rechercher', class: "fieldset-legend" %>
+    <%= f.text_field :search, value: params[:search], onchange: "this.form.submit()", class: "input w-full" %>
+  </fieldset>
 <% end %>
 
 <div class="overflow-x-auto">
