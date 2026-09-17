@@ -203,9 +203,10 @@ class AdminController < ApplicationController
       classroom = structure
         .classrooms
         .where(nom: row[headers.index 'classe'])
-        .first_or_create do |classe|
+        .first_or_initialize do |classe|
           classe.nom = row[headers.index 'classe']
         end
+      classroom.save if classroom.valid? && enregistrer
 
        # Enfant => classroom nom_enfant prénom date_naissance menu_vege menu_sp menu_all tarif_type badge
       enfant = compte
@@ -406,6 +407,6 @@ private
   end
 
   def get_boolean_in_xls(value)
-    value ? (value.strip.upcase == 'OUI') : false
+    value ? (value.to_s.strip.upcase == 'OUI') : false
   end
 end

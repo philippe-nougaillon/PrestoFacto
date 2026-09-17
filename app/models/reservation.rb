@@ -6,6 +6,8 @@ class Reservation < ApplicationRecord
   belongs_to :enfant
   belongs_to :prestation_type
 
+  validates :début, :fin, presence: true
+
   scope :actives, ->{ where(active: true) }
 
   # self.per_page = 10
