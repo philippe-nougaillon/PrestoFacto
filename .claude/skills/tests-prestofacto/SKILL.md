@@ -158,6 +158,7 @@ Ne pas écrire de test qui en dépend :
 - **`assigns(...)`** — la gem `rails-controller-testing` n'est pas installée. On asserte sur le
   rendu ou sur la base, pas sur les variables d'instance.
 - **SimpleCov** — pas de mesure de couverture. Pour savoir ce qui est rouge, relancer la suite.
+- **`stub` et `Minitest::Mock`** — minitest 6 les a sortis dans la gem `minitest-mock`, non installée.
 - **`test/support/`** — n'existe pas encore. Le créer au premier helper réellement partagé entre
   plusieurs fichiers, pas avant.
 - **Marquage des tests critiques** — aucun modèle de menace n'a été arrêté pour ce projet : ne pas
@@ -165,9 +166,14 @@ Ne pas écrire de test qui en dépend :
 
 ## État de la suite
 
-`bin/rails test` démarre. La contrainte `gem "minitest", "< 6"` du Gemfile est nécessaire : minitest 6
-a renommé des éléments d'API dont Rails 7.2 dépend encore, et le correctif amont n'est pas
-rétroporté sur 7.2 — à lever au passage à Rails 8.
+Ruby 4.0.7, Rails 8.1 et **minitest 6**, qui a supprimé :
+
+- `assert_equal nil, valeur` (comme `assert_same nil, valeur`) — écrire `assert_nil valeur` ;
+- les attentes façon spec sur les objets (`valeur.must_equal …`) et `assert_send`.
+
+L'environnement de test est en `show_exceptions = :none` : une exception levée par une action n'est
+pas transformée en page 404 ou 500, elle remonte dans le test avec sa trace. Une exception attendue
+et non rattrapée par un `rescue_from` s'asserte donc avec `assert_raises`, pas avec `assert_response`.
 
 ⚠ ~28 échecs pré-existants subsistent dans des tests de scaffold jamais adaptés (Vacances,
 Pointages, MailLogs, Messages, Pages, Contact) : routes inexistantes, pas de `sign_in`. Ils sont

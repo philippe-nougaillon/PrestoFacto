@@ -1,10 +1,13 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.4.9"
+ruby "4.0.7"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.2.3"
+gem "rails", "~> 8.1.3"
+
+# Rails 8.1.3.1 passe ses options à JSON.parse en hash positionnel, ce que json 3 refuse : à lever à la prochaine version de Rails
+gem "json", "< 3"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -13,7 +16,7 @@ gem "sprockets-rails"
 gem "pg", "~> 1.1"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 7.0"
+gem "puma", "~> 8.0"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
@@ -25,7 +28,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
-gem "redis", "~> 4.0"
+gem "redis", "~> 5.4"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -34,7 +37,7 @@ gem "redis", "~> 4.0"
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -47,7 +50,7 @@ gem "sassc-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "debug", platforms: %i[ mri windows ]
 end
 
 group :development do
@@ -65,17 +68,12 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
-  gem "webdrivers"
-
-  # minitest 6 a renommé des éléments d'API dont Rails 7.2 dépend encore : le correctif
-  # (rails/rails#56434) n'est rétroporté que sur 8-0-stable et 8-1-stable. À lever au passage à Rails 8.
-  gem "minitest", "< 6"
 end
 
 gem 'pundit'
 gem "devise"
 gem 'audited'
-gem 'friendly_id', '~> 5.2.4'
+gem 'friendly_id', '~> 5.7.0'
 
 gem 'bootstrap_form', git: 'https://github.com/bootstrap-ruby/bootstrap_form.git', branch: 'bootstrap-5'
 gem 'font_awesome5_rails'
@@ -121,7 +119,7 @@ gem "sortable-for-rails", "~> 1.2"
 
 gem "page_title_helper"
 
-gem "importmap-rails", "~> 1.1"
+gem "importmap-rails", "~> 2.2"
 
 gem "bootstrap", "~> 5.2"
 
@@ -132,9 +130,6 @@ gem 'omniauth'
 gem "omniauth-rails_csrf_protection"
 
 gem "omniauth-google-oauth2"
-
-# Needed until Ruby 3.3.4 is released https://github.com/ruby/ruby/pull/11006
-gem 'net-pop', github: 'ruby/net-pop'
 
 gem "hotwire-spark", "~> 0.1.13", :group => :development
 
