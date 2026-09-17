@@ -1,22 +1,22 @@
-<div class="pb-2 mt-4 mb-2 border-bottom">
+<div class="pb-2 mt-6 mb-2 border-b border-slate-200">
   <% if policy(User).new? %>
-    <%= link_to new_users_admin_path, class: 'btn btn-outline-primary float-end' do %>
-      <%= fa_icon 'plus-circle' %> Ajouter un Utilisateur
+    <%= link_to new_users_admin_path, class: 'btn btn-outline btn-primary float-right' do %>
+      <%= mi_icon 'plus-circle' %> Ajouter un Utilisateur
     <% end %>
   <% end %>
 
-  <h2 class="fw-light d-inline"><%= fa_icon 'user-friends' %> Utilisateurs / Accès portail parents</h2>
+  <h2 class="font-light inline"><%= mi_icon 'user-friends' %> Utilisateurs / Accès portail parents</h2>
   <%= link_to guide_path(anchor: "portail") do %>
-    <%= fa_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-muted mx-2' %>
+    <%= mi_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-slate-500 mx-2' %>
   <% end %>
 </div>
 
-<%= bootstrap_form_tag url: users_admin_index_path, method: :get do |f| %>
+<%= form_with url: users_admin_index_path, method: :get do |f| %>
   <%= f.text_field :search, value: params[:search], onchange: "this.form.submit()", label: 'Rechercher' %>
 <% end %>
 
-<div class="table-responsive">
-  <table class="table table-hover">
+<div class="overflow-x-auto">
+  <table class="table">
     <thead>
       <tr>
         <th>Email</th>
@@ -33,4 +33,4 @@
 </div>
 
 <%= page_entries_info @users, entry_name: 'utilisateur' %>
-<%= paginate @users, theme: 'twitter-bootstrap-4' %>
+<%= paginate @users %>

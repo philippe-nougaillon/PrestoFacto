@@ -1,0 +1,29 @@
+<dialog id="logout_modal" class="modal">
+  <div class="modal-box">
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+
+    <h3 class="text-lg font-bold text-error flex items-center gap-2">
+      <%= embedded_svg "icons/warning.svg", class: "w-5 h-5 fill-current", title: "Déconnexion" %>
+      Déconnexion
+    </h3>
+
+    <p class="py-4 text-sm text-slate-600">
+      Êtes-vous certain(e) de vouloir fermer cette session ?
+    </p>
+
+    <div class="modal-action">
+      <form method="dialog">
+        <button class="btn btn-ghost">Annuler</button>
+      </form>
+
+      <%= button_to "Oui, se déconnecter", destroy_user_session_path, method: :delete,
+                    class: "btn btn-error text-white" %>
+    </div>
+  </div>
+
+  <form method="dialog" class="modal-backdrop">
+    <button>Fermer</button>
+  </form>
+</dialog>

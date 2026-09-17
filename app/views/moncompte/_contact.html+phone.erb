@@ -1,13 +1,13 @@
-<div class="container gap-2">
-  <div class="row">
+<div class="container mx-auto gap-2">
+  <div class="flex flex-wrap -mx-2">
     <%= contact.nom %>
     <%= contact.email %>
   </div>
-  <div class="row">
+  <div class="flex flex-wrap -mx-2">
     <%= contact.fixe %>
     <%= contact.portable %>
   </div>
-  <div class="row">
+  <div class="flex flex-wrap -mx-2">
     <%= "À prévenir en cas d'urgence" if contact.prevenir %>
   </div>
 </div>

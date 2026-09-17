@@ -1,23 +1,22 @@
-<div class="col-md-10 col-lg-7 shadow-sm rounded p-1 p-md-5 mx-auto bg-body mt-4">
-  <h1 class="mt-2 mb-4 text-center">Connexion</h1>
-  <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-    <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+<div class="max-w-md mx-auto mt-6">
+  <div class="card bg-white shadow-sm border border-slate-200">
+    <div class="card-body">
+      <h1 class="text-3xl font-title font-bold text-primary text-center mb-6">Connexion</h1>
 
-    <% if devise_mapping.rememberable? %>
-      <div class="checkbox">
-        <%= f.check_box :remember_me, custom: :switch %>
-      </div>
-    <% end %>
-    <br>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", label: "Adresse email" %>
+        <%= f.password_field :password, autocomplete: "current-password", label: "Mot de passe" %>
 
-    <div class="row">
-      <div class="col">
-        <%= f.submit "Se connecter", class: "btn btn-lg btn-outline-success w-100" %>
+        <% if devise_mapping.rememberable? %>
+          <%= f.check_box :remember_me, custom: :switch, label: "Se souvenir de moi" %>
+        <% end %>
+
+        <%= f.submit "Se connecter", class: "btn btn-primary text-white w-full" %>
+      <% end %>
+
+      <div class="mt-6 pt-4 border-t border-slate-200 text-sm text-center">
+        <%= render "devise/shared/links" %>
       </div>
     </div>
-  <% end %>
-  <br>
-
-  <%= render "devise/shared/links" %>
+  </div>
 </div>

@@ -1,16 +1,16 @@
-<div class="card mb-5">
-  <div class="card-header">
-    <h2 class="fw-light"><%= fa_icon 'user' %> <%= @compte.nom %></h2>
+<div class="card mb-12">
+  <div class="card-title px-6 pt-5">
+    <h2 class="font-light"><%= mi_icon 'user' %> <%= @compte.nom %></h2>
   </div>
 
   <div class="card-body">
     <%= render partial: 'comptes/compte-card' %>
 
-    <div class="card mt-3">
+    <div class="card mt-4">
       <div class="card-body">
-        <h3><%= fa_icon 'child', class: 'text-primary' %> Enfants</h3>
-        <div class="table-responsive">
-          <table class="table table-bordered table-hover table-sm">
+        <h3><%= mi_icon 'child', class: 'text-primary' %> Enfants</h3>
+        <div class="overflow-x-auto">
+          <table class="table border border-slate-200 table-sm">
             <thead>
               <tr>
                 <th>Nom</th>
@@ -25,25 +25,25 @@
             </thead>
 
             <% @compte.enfants.each do |enfant| %>
-              <tr>
+              <tr class="row-hover">
                 <td><%= enfant.nom %></td>
                 <td><%= enfant.prénom %></td>
                 <td><%= l(enfant.date_naissance) if enfant.date_naissance %></td>
                 <td><%= enfant.classroom.nom %></td>
-                <td class="text-center"><%= fa_icon 'check' if enfant.menu_vege %></i></td>
-                <td class="text-center"><%= fa_icon 'check' if enfant.menu_sp %></i></td>
-                <td class="text-center"><%= fa_icon 'check' if enfant.menu_all %></i></td>
+                <td class="text-center"><%= mi_icon 'check' if enfant.menu_vege %></i></td>
+                <td class="text-center"><%= mi_icon 'check' if enfant.menu_sp %></i></td>
+                <td class="text-center"><%= mi_icon 'check' if enfant.menu_all %></i></td>
                 <td>
                   <% if policy(enfant).edit? %>
                     <%= link_to edit_enfant_path(enfant) do %>
-                      <%= fa_icon 'edit' %>
+                      <%= mi_icon 'edit' %>
                     <% end %>
                   <% end %>
                 </td>
                 <td>
                   <% if policy(enfant).destroy? %>
-                    <%= button_to enfant, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class:'btn btn-sm' do %>
-                        <%= fa_icon 'trash-alt', class: 'text-danger' %>
+                    <%= button_to enfant, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class:'btn btn-sm btn-ghost' do %>
+                        <%= mi_icon 'trash-alt', class: 'text-error' %>
                     <% end %>
                   <% end %>
                 </td>
@@ -58,11 +58,11 @@
 
     <div class="card">
       <div class="card-body">
-        <h3><%= fa_icon 'calendar-alt', class: 'text-warning' %> Réservations</h3>
+        <h3><%= mi_icon 'calendar-alt', class: 'text-warning' %> Réservations</h3>
         
         <% if @compte.reservations.any? %>
-          <div class="table-responsive">
-            <table class="table table-bordered table-hover table-sm">
+          <div class="overflow-x-auto">
+            <table class="table border border-slate-200 table-sm">
               <thead>
                 <tr>
                   <th>Structure</th>
@@ -99,27 +99,27 @@
         <% end %>
       </div>
 
-      <div class="card-footer">
-        <%= link_to new_reservation_path, data: {'bs-toggle': "modal", 'bs-target': "#myModalTarif" }, class: 'btn btn-outline-primary' do %>
-          <%= fa_icon 'plus-circle', text: ' Ajouter une réservation' %>
-        <% end %>
+      <div class="card-actions px-6 pb-5">
+        <button type="button" onclick="myModalTarif.showModal()" class="btn btn-outline btn-primary">
+          <%= mi_icon 'plus-circle', text: ' Ajouter une réservation' %>
+        </button>
       </div>
     </div>
 
     <div class="card">
       <div class="card-body">
-        <h3><%= fa_icon 'balance-scale' %> Relevé de compte</h3>
+        <h3><%= mi_icon 'balance-scale' %> Relevé de compte</h3>
 
-        <div class="table-responsive">
-          <table class="table table-hover table-bordered table-sm">
+        <div class="overflow-x-auto">
+          <table class="table border border-slate-200 table-sm">
             <thead>
               <tr>
                 <th>Date</th>
                 <th>Type</th>
                 <th>Référence</th>
-                <th class="text-end">Débit</th>
-                <th class="text-end">Crédit</th>
-                <th class="text-end">Solde</th>
+                <th class="text-right">Débit</th>
+                <th class="text-right">Crédit</th>
+                <th class="text-right">Solde</th>
               </tr>
             </thead>
 
@@ -134,58 +134,32 @@
                 <th><%= l Date.today %></th>
                 <th>SOLDE</th>
                 <th></th>
-                <th class="text-end"><%= number_to_currency(@debit, unit:'€') %></th>
-                <th class="text-end"><%= number_to_currency(@credit, unit:'€') %></th>
-                <th class="text-end"><%= number_to_currency(@solde, unit:'€') %></th>
+                <th class="text-right"><%= number_to_currency(@debit, unit:'€') %></th>
+                <th class="text-right"><%= number_to_currency(@credit, unit:'€') %></th>
+                <th class="text-right"><%= number_to_currency(@solde, unit:'€') %></th>
               </tr>
             </tfoot>
           </table>
         </div>
       </div>
-      <div class="card-footer">
+      <div class="card-actions px-6 pb-5">
         <% if policy(Paiement).new? %>
-          <%= link_to new_paiement_path, class: 'btn btn-outline-primary' do %>
-            <%= fa_icon 'plus-circle', text: ' Effectuer un paiement' %>
+          <%= link_to new_paiement_path, class: 'btn btn-outline btn-primary' do %>
+            <%= mi_icon 'plus-circle', text: ' Effectuer un paiement' %>
           <% end %>
         <% end %>
       </div>
     </div>
 
-    <div class="modal fade" id="myModalNewPaiement">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <h4 class="modal-title">Nouveau Paiement</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-
-          <!-- Modal body -->
-          <div class="modal-body">
-            <%= render 'paiements/form', paiement: Paiement.new(compte_id: @compte.id) %>
-          </div>
-        </div>
-      </div>
+    <%= render layout: 'partials/modal', locals: { id: 'myModalNewPaiement', titre: 'Nouveau paiement' } do %>
+      <%= render 'paiements/form', paiement: Paiement.new(compte_id: @compte.id) %>
+    <% end %>
     </div>
     <br>
 
-    <div class="modal fade" id="myModalTarif">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-
-          <!-- Modal Header -->
-          <div class="modal-header">
-            <h4 class="modal-title">Nouvelle réservation</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-
-          <!-- Modal body -->
-          <div class="modal-body">
-            <%= render 'reservation', reservation: @compte.reservations.new %>
-          </div>
-        </div>
-      </div>
+    <%= render layout: 'partials/modal', locals: { id: 'myModalTarif', titre: 'Nouvelle réservation' } do %>
+      <%= render 'reservation', reservation: @compte.reservations.new %>
+    <% end %>
     </div>
   </div>
 </div>

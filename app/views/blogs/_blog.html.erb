@@ -1,11 +1,11 @@
 <small>
-    <i class="fw-lighter">il y a <%= time_ago_in_words(blog.created_at) %></i>
+    <i class="font-light">il y a <%= time_ago_in_words(blog.created_at) %></i>
 </small>
 
-<h4 class="text-primary fw-light">
+<h4 class="text-primary font-light">
     <%= blog.titre %>
 </h4>
 
-<%= simple_format blog.corps, class: 'fw-light' %>
+<%= simple_format blog.corps, class: 'font-light' %>
 
 <hr>

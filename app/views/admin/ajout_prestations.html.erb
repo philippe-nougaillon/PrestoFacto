@@ -1,5 +1,5 @@
-<div class="pb-2 mt-4 mb-2 border-bottom">
-  <h2 class="fw-light"><%= fa_icon 'calendar-day' %> Comptabilisation des prestations</h2>
+<div class="pb-2 mt-6 mb-2 border-b border-slate-200">
+  <h2 class="font-light"><%= mi_icon 'calendar-day' %> Comptabilisation des prestations</h2>
 </div>
 
 <p>
@@ -12,14 +12,14 @@
 </p>
 <br />
 
-<%= bootstrap_form_with(url: 'ajout_prestations_do') do |form| %>
-    <div class="col-sm-3">
+<%= form_with(url: 'ajout_prestations_do') do |form| %>
+    <div class="w-full sm:w-3/12 px-2">
       <%= form.date_field :date %>
     </div>
     <br>
     <%= form.check_box :enregistrer, {custom: :switch, label: "Enregistrer les changements ? (Décoché = Visualisation seulement. Ne fait rien de définitif :)"} %>  
     <br /><br />
-    <%= form.submit "Lancer", class: "btn btn-outline-success", 'data-turbo': false %>
+    <%= form.submit "Lancer", class: "btn btn-outline btn-success", 'data-turbo': false %>
 <% end %>
 
 

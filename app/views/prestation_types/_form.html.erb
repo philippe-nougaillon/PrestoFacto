@@ -1,5 +1,5 @@
 <div data-controller="action-forfaitaire">
-  <%= bootstrap_form_with(model: prestation_type, local: true) do |form| %>
+  <%= form_with(model: prestation_type, local: true) do |form| %>
 
     <%= form.hidden_field :organisation_id %>
     <%= form.text_field :nom, required: true %>
@@ -11,7 +11,7 @@
       <%= form.check_box :pointage_arrivee, label: "Pointage = heure d'arrivée (sinon, heure de départ)" %>
     </div>
 
-    <%= form.submit "Enregistrer", class: "btn btn-outline-success mt-4" %>
+    <%= form.submit "Enregistrer", class: "btn btn-outline btn-success mt-6" %>
 
   <% end %>
 </div>

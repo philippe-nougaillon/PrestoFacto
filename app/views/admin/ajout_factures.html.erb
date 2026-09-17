@@ -1,5 +1,5 @@
-<div class="pb-2 mt-4 mb-2 border-bottom">
-  <h2 class="fw-light"><%= fa_icon 'calendar-day' %> Facturation des prestations</h2>
+<div class="pb-2 mt-6 mb-2 border-b border-slate-200">
+  <h2 class="font-light"><%= mi_icon 'calendar-day' %> Facturation des prestations</h2>
 </div>
 
 <p>
@@ -11,8 +11,8 @@
 </p>
 <br />
 
-<%= bootstrap_form_with(url: 'ajout_factures_do', local: true) do |form| %>
-  <div class="col-sm-4">
+<%= form_with(url: 'ajout_factures_do', local: true) do |form| %>
+  <div class="w-full sm:w-4/12 px-2">
     <%= form.date_field :date_début, value: @date_début, label: "Du", required: true %>
     <%= form.date_field :date_fin,   value: @date_fin,   label: "Au", required: true %>
     <%= form.select :compte_id, options_from_collection_for_select(current_user.organisation.comptes, :id, :nom, params[:compte_id]), { include_blank: 'Tous' } %>
@@ -23,7 +23,7 @@
     </small> 
   </div>
   <br>
-  <%= form.submit "Lancer", class: "btn btn-outline-success", 'data-turbo': false %>
+  <%= form.submit "Lancer", class: "btn btn-outline btn-success", 'data-turbo': false %>
 <% end %>
 
 

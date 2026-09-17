@@ -1,0 +1,122 @@
+<div class="hidden lg:navbar bg-base-100 shadow-sm py-0! pr-0! fixed top-0 z-200">
+  <div class="flex items-center flex-1">
+    <%= link_to comptes_path, title: "Accueil" do %>
+      <%= image_tag "logo.png", class: "h-9 ml-6" %>
+    <% end %>
+    <% if current_user.visiteur? && @compte %>
+      <span class="ml-4 text-sm text-secondary">Mon compte (<%= @compte.nom_civilité %>)</span>
+    <% end %>
+  </div>
+
+  <div class="flex-none">
+    <ul class="flex items-center list-none p-0 m-0">
+      <% if current_user.visiteur? %>
+        <li>
+          <%= link_to moncompte_index_path, class: navbar_link_classes(controller_name == 'moncompte'), title: "Mon compte" do %>
+            <%= mi_icon 'users', class: "text-2xl" %>
+            <span class="hidden xl:block">Mon compte</span>
+          <% end %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to comptes_path, class: navbar_link_classes(controller_name == 'comptes'), title: "Comptes" do %>
+            <%= mi_icon 'users', class: "text-2xl" %>
+            <span class="hidden xl:block">Comptes</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to enfants_path, class: navbar_link_classes(controller_name == 'enfants'), title: "Enfants" do %>
+            <%= mi_icon 'child', class: "text-2xl" %>
+            <span class="hidden xl:block">Enfants</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to reservations_path, class: navbar_link_classes(controller_name == 'reservations'), title: "Réservations" do %>
+            <%= mi_icon 'calendar-alt', class: "text-2xl" %>
+            <span class="hidden xl:block">Réservations</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to absences_path, class: navbar_link_classes(controller_name == 'absences'), title: "Absences" do %>
+            <%= mi_icon 'calendar-times', class: "text-2xl" %>
+            <span class="hidden xl:block">Absences</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to pointages_path, class: navbar_link_classes(controller_name == 'pointages'), title: "Pointages" do %>
+            <%= mi_icon 'calendar-check', class: "text-2xl" %>
+            <span class="hidden xl:block">Pointages</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to prestations_path, class: navbar_link_classes(controller_name == 'prestations'), title: "Prestations" do %>
+            <%= mi_icon 'utensils', class: "text-2xl" %>
+            <span class="hidden xl:block">Prestations</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to factures_path, class: navbar_link_classes(controller_name == 'factures'), title: "Factures" do %>
+            <%= mi_icon 'file-invoice', class: "text-2xl" %>
+            <span class="hidden xl:block">Factures</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to paiements_path, class: navbar_link_classes(controller_name == 'paiements'), title: "Paiements" do %>
+            <%= mi_icon 'money-bill-alt', class: "text-2xl" %>
+            <span class="hidden xl:block">Paiements</span>
+          <% end %>
+        </li>
+      <% end %>
+
+      <% if current_user.admin? %>
+        <li class="dropdown dropdown-end relative">
+          <div tabindex="0" role="button"
+               class="<%= navbar_link_classes(controller_name == 'admin' || (controller_name == 'pages' && action_name == 'guide')) %> cursor-pointer"
+               title="Administration">
+            <%= mi_icon 'users-cog', class: "text-2xl" %>
+            <span class="hidden xl:block">Admin</span>
+            <%= mi_icon 'expand_more', class: "text-base opacity-70" %>
+          </div>
+
+          <ul tabindex="0" class="dropdown-content z-[210] menu p-0! py-2 shadow bg-base-100 rounded-box w-60 border border-slate-200 text-slate-700 right-0! top-full mt-0!" style="margin-left: 0px;">
+            <li>
+              <%= link_to admin_index_path, class: "py-2.5 px-3 flex items-center gap-2 rounded-none #{'bg-slate-100 text-primary font-semibold' if controller_name == 'admin' && action_name != 'dashboard'}" do %>
+                <%= mi_icon 'users-cog', class: "text-xl" %>
+                <span>Paramètres</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to admin_dashboard_path, class: "py-2.5 px-3 flex items-center gap-2 rounded-none #{'bg-slate-100 text-primary font-semibold' if controller_name == 'admin' && action_name == 'dashboard'}", data: { turbo: false } do %>
+                <%= mi_icon 'tachometer-alt', class: "text-xl" %>
+                <span>Statistiques</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to guide_path, class: "py-2.5 px-3 flex items-center gap-2 rounded-none #{'bg-slate-100 text-primary font-semibold' if controller_name == 'pages' && action_name == 'guide'}" do %>
+                <%= mi_icon 'book-open', class: "text-xl" %>
+                <span>Guide</span>
+              <% end %>
+            </li>
+          </ul>
+        </li>
+
+        <% if current_user.organisation.en_dépassement_plan_gratuit? %>
+          <li>
+            <span class="h-16 px-2 flex items-center text-error" title="La limite de la formule libre et gratuite a été dépassée !">
+              <%= mi_icon 'exclamation-circle', class: "text-xl" %>
+            </span>
+          </li>
+        <% end %>
+      <% end %>
+
+      <li>
+        <button onclick="logout_modal.showModal()"
+                title="Fermer la session de <%= current_user.email %>"
+                class="<%= navbar_link_classes(false) %> cursor-pointer"
+                data-testid="se_deconnecter">
+          <%= mi_icon 'logout', class: "text-2xl" %>
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>

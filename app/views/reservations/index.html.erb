@@ -1,31 +1,31 @@
-<div class="d-flex align-items-center pb-4 mt-4 mb-2">
-  <h2 class="fw-light d-inline mb-0">
-    <%= fa_icon 'calendar-alt', class: 'text-warning' %> 
+<div class="flex items-center pb-6 mt-6 mb-2">
+  <h2 class="font-light inline mb-0 whitespace-nowrap">
+    <%= mi_icon 'calendar-alt', class: 'text-warning' %> 
     Réservations
     <% unless params[:date] == 'full' || params[:date].blank? %>
       du <%= l params[:date].to_date %>
     <% end %>
   </h2>
   <%= link_to guide_path(anchor: "reservations") do %>
-    <%= fa_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-body-tertiary mx-3 fa-lg' %>
+    <%= mi_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-slate-400 mx-4 text-2xl' %>
   <% end %>
 </div>
 
-<%= bootstrap_form_tag url: reservations_path, method: :get do |f| %>
-  <div class="row align-items-center mb-4 p-3 mx-0 shadow-sm">
-    <div class="col-sm-2"><%= f.date_field :date, value: params[:date], onchange: "this.form.submit()" %></div>
-    <div class="col-sm-2"><%= f.text_field :nom, value: params[:nom], onchange: "this.form.submit()", label: 'Nom/Prénom', autofocus: false  %></div>
-    <div class="col-sm-2"><%= f.select :structure_id, options_from_collection_for_select(@structures, 'id', 'nom', params[:structure_id]), { include_blank: true, label: "Structure" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
-    <div class="col-sm-2"><%= f.select :classroom_id, options_from_collection_for_select(@classrooms, 'id', 'nom', params[:classroom_id]), { include_blank: true, label: "Classe" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
-    <div class="col-sm-2"><%= f.select :state, options_for_select(Reservation.workflow_spec.states.keys.to_a, params[:state]), { include_blank: true, label: 'État' }, { onchange: "this.form.submit()" } %></div>
-    <div class="col-sm-2"><%= f.select :prestation_type_id, options_from_collection_for_select(@prestation_types, 'id', 'nom', params[:prestation_type_id]), { include_blank: true, label: "Prestation" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
+<%= form_with url: reservations_path, method: :get do |f| %>
+  <div class="flex flex-wrap -mx-2 items-center mb-6 p-4 mx-0 shadow-sm">
+    <div class="w-full sm:w-2/12 px-2"><%= f.date_field :date, value: params[:date], onchange: "this.form.submit()" %></div>
+    <div class="w-full sm:w-2/12 px-2"><%= f.text_field :nom, value: params[:nom], onchange: "this.form.submit()", label: 'Nom/Prénom', autofocus: false  %></div>
+    <div class="w-full sm:w-2/12 px-2"><%= f.select :structure_id, options_from_collection_for_select(@structures, 'id', 'nom', params[:structure_id]), { include_blank: true, label: "Structure" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
+    <div class="w-full sm:w-2/12 px-2"><%= f.select :classroom_id, options_from_collection_for_select(@classrooms, 'id', 'nom', params[:classroom_id]), { include_blank: true, label: "Classe" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
+    <div class="w-full sm:w-2/12 px-2"><%= f.select :state, options_for_select(Reservation.workflow_spec.states.keys.to_a, params[:state]), { include_blank: true, label: 'État' }, { onchange: "this.form.submit()" } %></div>
+    <div class="w-full sm:w-2/12 px-2"><%= f.select :prestation_type_id, options_from_collection_for_select(@prestation_types, 'id', 'nom', params[:prestation_type_id]), { include_blank: true, label: "Prestation" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
   </div>
 <% end %>
 
-<%= bootstrap_form_tag url: action_reservations_path, method: :post do %>
+<%= form_with url: action_reservations_path, method: :post do %>
   <div data-controller="action">
-    <div class="table-responsive">
-      <table class="table table-hover border shadow-sm">
+    <div class="overflow-x-auto">
+      <table class="table border border-slate-200 shadow-sm">
         <thead>
           <tr>
             <th></th>
@@ -60,7 +60,7 @@
 
         <tfoot>
           <tr>
-            <th colspan=4 class="text-end">
+            <th colspan=4 class="text-right">
               Total :
             </th>
             <th class="text-center">
@@ -79,19 +79,17 @@
       </table>
 
     </div>
-    <div class="row">
-      <div class="col-sm-4">
-        <div class="input-group">
+    <div class="flex flex-wrap -mx-2">
+      <div class="w-full sm:w-4/12 px-2">
+        <div class="join">
           <%= select_tag :action_name, 
                           options_for_select(["Supprimer"]), 
                           include_blank: true, 
-                          class: 'form-control form-control-sm',
+                          class: 'select select-bordered select-sm join-item w-full',
                           data: { 'action-target': 'selector' } %>
-          <div class="input-group-append">
             <%= submit_tag 'ok',  name: 'action', 
-                                  class: 'btn btn-sm btn-outline-success',
+                                  class: 'btn btn-sm btn-outline btn-success join-item',
                                   data: {'action-target': 'button'} %>
-          </div>
         </div>
       </div>
     </div>
@@ -100,7 +98,7 @@
 
 <div class="mt-2">
   <%= page_entries_info @reservations, entry_name: 'réservation' %>
-  <%= paginate @reservations, theme: 'twitter-bootstrap-4' %>
+  <%= paginate @reservations %>
 
   <% unless params[:date] == 'full' %>
     | <%= link_to "Voir toutes les réservations", reservations_path(date: 'full') %>

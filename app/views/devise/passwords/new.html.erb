@@ -1,13 +1,7 @@
-<h2>Mot de passe oublié ?</h2>
-
-<%= bootstrap_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <%= f.email_field :email, autofocus: false, autocomplete: "email", class: "col-sm-3" %>
-
-  <div class="actions">
-    <%= f.submit "Envoyez moi les instructions", class: "btn btn-primary btn-lg" %>
-  </div>
+<%= render layout: "devise/shared/auth_card", locals: { titre: "Mot de passe oublié ?" } do %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <%= f.email_field :email, autofocus: false, autocomplete: "email", label: "Adresse email" %>
+    <%= f.submit "Envoyez-moi les instructions", class: "btn btn-primary text-white w-full" %>
+  <% end %>
 <% end %>
-
-<%= render "devise/shared/links" %>

@@ -1,5 +1,5 @@
-<div class="pb-2 mt-4 mb-5 border-bottom">
-  <h2 class="fw-light d-inline"><%= fa_icon 'envelope-open', class: 'text-primary' %> Message de <%= @message.email %></h2>
+<div class="pb-2 mt-6 mb-12 border-b border-slate-200">
+  <h2 class="font-light inline"><%= mi_icon 'envelope-open', class: 'text-primary' %> Message de <%= @message.email %></h2>
 </div>
 
 <p>
@@ -24,7 +24,7 @@
 
 <p>
   <strong>État:</strong>
-  <span class="badge text-bg-<%= @message.style %>"><%= @message.workflow_state.humanize %></span>
+  <span class="badge badge-<%= @message.style %>"><%= @message.workflow_state.humanize %></span>
 </p>
 
 <p>

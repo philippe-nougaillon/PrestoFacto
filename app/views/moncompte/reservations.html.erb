@@ -1,8 +1,8 @@
 <%= turbo_frame_tag "main_frame" do %>
-  <section class="mt-4">
+  <section class="mt-6">
     <h4>Réservations</h4>
     <% @enfants.each do |enfant| %>
-      <div class="d-inline fs-5">
+      <div class="inline text-lg">
         - <%= enfant.prénom %>
         <%= enfant.nom %>
       </div>

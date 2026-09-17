@@ -1,5 +1,5 @@
-<div class="pb-2 mt-4 mb-2 border-bottom">
-  <h2 class="fw-light"><%= fa_icon 'calendar-day' %> Envoyer les factures</h2>
+<div class="pb-2 mt-6 mb-2 border-b border-slate-200">
+  <h2 class="font-light"><%= mi_icon 'calendar-day' %> Envoyer les factures</h2>
 </div>
 
 <p>
@@ -8,10 +8,10 @@
 </p>
 <br />
 
-<%= bootstrap_form_with(url: "envoyer_factures_do", method: :post, local: true) do |form| %>
+<%= form_with(url: "envoyer_factures_do", method: :post, local: true) do |form| %>
   <%= form.check_box :envoyer, {custom: :switch, label: "Envoyer les emails ? (Décoché = Visualisation seulement. Ne fait rien de définitif :)"} %>  
   <br /><br />
-  <%= form.submit "Lancer", class: "btn btn-outline-success", 'data-turbo': false %>
+  <%= form.submit "Lancer", class: "btn btn-outline btn-success", 'data-turbo': false %>
 <% end %>
 
 

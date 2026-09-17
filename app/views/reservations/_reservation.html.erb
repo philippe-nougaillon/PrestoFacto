@@ -1,8 +1,8 @@
-<tr>
+<tr class="row-hover">
     <% if current_user.admin? %>
         <td style="text-align: center">
             <span data-action="click->action#click">
-                <%= check_box_tag "reservations_id[#{reservation.id}]", 'yes', false,  data: {"action-target":"source"} %>
+                <%= check_box_tag "reservations_id[#{reservation.id}]", 'yes', false,  class: "checkbox checkbox-sm checkbox-primary", data: {"action-target":"source"} %>
             </span>
         </td>
     <% end %>
@@ -12,20 +12,20 @@
 
     <td class="text-center">
         <% if reservation.enfant.menu_all %>
-            <%= fa_icon 'exclamation' %>
+            <%= mi_icon 'exclamation' %>
             <%= reservation.enfant.allergenes %>
             <% @total_alg += 1 %>
         <% end %>
     </td>
     <td class="text-center">
         <% if reservation.enfant.menu_vege %>
-            <%= fa_icon 'exclamation' %>
+            <%= mi_icon 'exclamation' %>
             <% @total_vege += 1 %>
         <% end %>
     </td>
     <td class="text-center">
         <% if reservation.enfant.menu_sp %>
-            <%= fa_icon 'exclamation' %>
+            <%= mi_icon 'exclamation' %>
             <% @total_sp += 1 %>
         <% end %>
     </td>
@@ -49,8 +49,8 @@
     <td class="text-center"><%= number_with_precision(reservation.samedi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.samedi > 0 %></td>
     <td class="text-center"><%= number_with_precision(reservation.dimanche, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.dimanche > 0 %></td>
     
-    <td class="text-center"><%= fa_icon 'check' if reservation.matin %></td>
-    <td class="text-center"><%= fa_icon 'check' if reservation.midi %></td>
-    <td class="text-center"><%= fa_icon 'check' if reservation.soir %></td>
-    <td class="text-center"><%= fa_icon 'umbrella-beach' if reservation.hors_période_scolaire %></td>
+    <td class="text-center"><%= mi_icon 'check' if reservation.matin %></td>
+    <td class="text-center"><%= mi_icon 'check' if reservation.midi %></td>
+    <td class="text-center"><%= mi_icon 'check' if reservation.soir %></td>
+    <td class="text-center"><%= mi_icon 'umbrella-beach' if reservation.hors_période_scolaire %></td>
 </tr>

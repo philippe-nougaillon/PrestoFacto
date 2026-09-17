@@ -1,0 +1,133 @@
+@import 'tailwindcss';
+
+@source "../../../public/*.html";
+@source "../../../app/helpers/**/*.rb";
+@source "../../../app/javascript/**/*.js";
+@source "../../../app/models/**/*.rb";
+@source "../../../app/views/**/*";
+
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/aspect-ratio';
+@plugin '@tailwindcss/typography';
+@plugin "./daisyui.js" {
+  themes: corporate;
+}
+/* Thème personnalisé : tout jeton omis reste indéfini et casse bordures, interrupteurs et boutons. */
+@plugin "./daisyui-theme.js" {
+  name: "aikku";
+  default: true;
+  color-scheme: light;
+
+  --color-base-100: #FAFAFA;
+  --color-base-200: #E8E8E8;
+  --color-base-300: #D1D1D1;
+  --color-base-content: #1E1B18;
+  --color-primary: #50B9DF;
+  --color-secondary: #db2767;
+  --radius-field: 2rem;
+  --radius-selector: 2rem;
+  --radius-box: 2rem;
+  --color-primary-content: #FFFFFF;
+  --color-secondary-content: #FFFFFF;
+  --color-accent: oklch(60% 0.118 184.704);
+  --color-accent-content: #FFFFFF;
+  --color-neutral: oklch(22.389% 0.031 278.072);
+  --color-neutral-content: #FFFFFF;
+  --color-info: oklch(60% 0.126 221.723);
+  --color-info-content: #FFFFFF;
+  --color-success: oklch(62% 0.194 149.214);
+  --color-success-content: #FFFFFF;
+  --color-warning: oklch(85% 0.199 91.936);
+  --color-warning-content: oklch(0% 0 0);
+  --color-error: oklch(70% 0.191 22.216);
+  --color-error-content: oklch(0% 0 0);
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@theme {
+  --font-sans: "Google Sans Flex", sans-serif;
+  --font-title: "Montserrat", sans-serif;
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@layer base {
+  /* Styles par défaut effacés par le reset Tailwind. */
+  h1 { @apply text-3xl font-title font-bold text-primary mb-3; }
+  h2 { @apply text-2xl font-title font-semibold mb-2; }
+  h3 { @apply text-xl font-semibold mb-2; }
+  h4 { @apply text-lg font-semibold mb-1; }
+  h5 { @apply text-base font-semibold; }
+  h6 { @apply text-sm font-semibold uppercase tracking-wide text-slate-500; }
+
+  ul:not([class]) { @apply list-disc pl-6 my-2; }
+  ol:not([class]) { @apply list-decimal pl-6 my-2; }
+
+  hr { @apply border-t border-slate-200 my-4; }
+
+  a:not([class]) { @apply text-primary hover:underline; }
+
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    font-size: 1.25rem;
+    line-height: 1;
+    vertical-align: middle;
+    user-select: none;
+  }
+
+  /* Aligne le bas du dessin sur la ligne de base du titre (espace sous l'icône : voir mi_icon). */
+  :is(h1, h2, h3, h4, h5, h6) .material-symbols-outlined {
+    vertical-align: calc(-1 * var(--espace-sous-icone, 0.08em));
+  }
+}
+
+@layer components {
+  input[required], select[required] {
+    @apply border-red-400;
+    &:valid {
+      @apply border-green-400;
+    }
+  }
+
+  .pf-btn {
+    box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+    &:active {
+      transform: scale(0.98);
+      box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    }
+  }
+}
+
+/* Hors @layer : DaisyUI émet ses composants après nos couches et écraserait ces règles. */
+.navbar .menu :where(li > *) {
+  border-radius: 0;
+}
+
+/* DaisyUI met .card-body en colonne flex, ce qui étire boutons et liens sur toute la largeur. */
+.card-body:not(.flex):not(.inline-flex):not(.grid):not(.block) {
+  display: block;
+}
+
+tr.alert {
+  display: table-row;
+  color: inherit;
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0;
+}
+tr.alert.alert-warning { background-color: color-mix(in oklab, var(--color-warning) 22%, transparent); }
+tr.alert.alert-success { background-color: color-mix(in oklab, var(--color-success) 18%, transparent); }
+tr.alert.alert-error   { background-color: color-mix(in oklab, var(--color-error) 18%, transparent); }
+tr.alert.alert-info    { background-color: color-mix(in oklab, var(--color-info) 18%, transparent); }

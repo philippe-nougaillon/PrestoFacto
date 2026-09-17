@@ -1,4 +1,4 @@
-<%= bootstrap_form_with(model: reservation, url: create_visiteur_reservations_path) do |form| %>
+<%= form_with(model: reservation, url: create_visiteur_reservations_path) do |form| %>
 
   <p>
     <h2>
@@ -12,21 +12,21 @@
 
   <%= form.select :prestation_type_id, options_from_collection_for_select(@compte.organisation.prestation_types, 'id', 'nom', reservation.prestation_type_id), { label: 'Prestation', wrapper: { class: 'has-warning', data: { foo: 'bar' } } }, { class: "selectpicker" } %>
 
-  <div class="form-inline">
-    <%= form.text_field :début, label: 'Du :', class: "form-control", type: "date" %>
-    <%= form.text_field :fin, label: 'Au :', class: "form-control", type: "date" %>
+  <div class="">
+    <%= form.text_field :début, label: 'Du :', class: "input input-bordered w-full", type: "date" %>
+    <%= form.text_field :fin, label: 'Au :', class: "input input-bordered w-full", type: "date" %>
   </div>
   
-  <div class="row">
-    <div class="col"><%= form.text_field :lundi %></div>
-    <div class="col"><%= form.text_field :mardi %></div>
-    <div class="col"><%= form.text_field :mercredi %></div>
-    <div class="col"><%= form.text_field :jeudi %></div>
+  <div class="flex flex-wrap -mx-2">
+    <div class="flex-1 px-2"><%= form.text_field :lundi %></div>
+    <div class="flex-1 px-2"><%= form.text_field :mardi %></div>
+    <div class="flex-1 px-2"><%= form.text_field :mercredi %></div>
+    <div class="flex-1 px-2"><%= form.text_field :jeudi %></div>
   </div>
-  <div class="row">
-    <div class="col-3"><%= form.text_field :vendredi %></div>
-    <div class="col-3"><%= form.text_field :samedi %></div>
-    <div class="col-3"><%= form.text_field :dimanche %></div>
+  <div class="flex flex-wrap -mx-2">
+    <div class="w-3/12 px-2"><%= form.text_field :vendredi %></div>
+    <div class="w-3/12 px-2"><%= form.text_field :samedi %></div>
+    <div class="w-3/12 px-2"><%= form.text_field :dimanche %></div>
   </div>
 
   <div class="custom-control">
@@ -36,6 +36,6 @@
   </div>
   <br />
 
-  <%= form.submit "Enregistrer", class: "btn btn-outline-success" %>
+  <%= form.submit "Enregistrer", class: "btn btn-outline btn-success" %>
 
 <% end %>

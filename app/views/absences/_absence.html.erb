@@ -1,23 +1,23 @@
-<tr>
+<tr class="row-hover">
     <td><%= absence.enfant.classroom.structure.nom %></td>
     <td><%= absence.enfant.classroom.nom %></td>
     <td><%= link_to absence.enfant.nom_et_prénom, absence.enfant %></td>
     <td><%= l absence.début %></td>
     <td><%= l absence.fin %></td>
-    <td class="text-center"><%= fa_icon 'check' if absence.matin %></i></td>
-    <td class="text-center"><%= fa_icon 'check' if absence.midi %></i></td>
-    <td class="text-center"><%= fa_icon 'check' if absence.soir %></i></td>
+    <td class="text-center"><%= mi_icon 'check' if absence.matin %></i></td>
+    <td class="text-center"><%= mi_icon 'check' if absence.midi %></i></td>
+    <td class="text-center"><%= mi_icon 'check' if absence.soir %></i></td>
     <td>
         <% if policy(absence).edit? %>
             <%= link_to edit_absence_path(absence), class: 'btn btn-link btn-sm' do %>
-                <%= fa_icon 'edit' %>
+                <%= mi_icon 'edit' %>
             <% end %>
         <% end %>
     </td>
     <td>
         <% if policy(absence).destroy? %>
-            <%= button_to absence, method: :delete, 'data-turbo-confirm':  'Êtes-vous bien certain.e ???', class:'btn btn-sm' do %>
-                <%= fa_icon 'trash-alt', class: 'text-danger' %>
+            <%= button_to absence, method: :delete, 'data-turbo-confirm':  'Êtes-vous bien certain.e ???', class:'btn btn-sm btn-ghost' do %>
+                <%= mi_icon 'trash-alt', class: 'text-error' %>
             <% end %>
         <% end %>
     </td>

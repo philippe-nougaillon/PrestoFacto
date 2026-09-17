@@ -1,0 +1,3 @@
+<%= link_to page, url, remote: remote,
+            class: "join-item btn btn-sm #{page.current? ? 'btn-primary text-white' : 'btn-ghost bg-white border-slate-200'}",
+            rel: page.rel, 'aria-current': ('page' if page.current?) %>

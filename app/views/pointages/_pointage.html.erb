@@ -1,7 +1,7 @@
 <tr id="<%= dom_id pointage %>">
   <td style="text-align: center">
     <span data-action="click->action#click">
-      <%= check_box_tag "pointages_id[#{pointage.id}]", 'yes', false,  data: {"action-target":"source"} %>
+      <%= check_box_tag "pointages_id[#{pointage.id}]", 'yes', false,  class: "checkbox checkbox-sm checkbox-primary", data: {"action-target":"source"} %>
     </span>
   </td>
   <td>
@@ -16,7 +16,7 @@
   <td>
     <% if policy(pointage).edit? %>
       <%= link_to edit_pointage_path(pointage), class: 'btn btn-link btn-sm' do %>
-        <%= fa_icon 'edit' %>
+        <%= mi_icon 'edit' %>
       <% end %>
     <% end %>
   </td>

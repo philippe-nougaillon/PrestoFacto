@@ -1,30 +1,30 @@
-<%= bootstrap_form_with(model: organisation, local: true) do |form| %>
+<%= form_with(model: organisation, local: true) do |form| %>
 
-  <div class="row">
-    <div class="col-sm-5">
+  <div class="flex flex-wrap -mx-2">
+    <div class="w-full sm:w-5/12 px-2">
       <%= form.text_field :nom %>
       <%= form.text_field :adresse %>
-      <div class="row">
-        <div class="col-sm-3"><%= form.text_field :cp %></div>
-        <div class="col"><%= form.text_field :ville %></div>
+      <div class="flex flex-wrap -mx-2">
+        <div class="w-full sm:w-3/12 px-2"><%= form.text_field :cp %></div>
+        <div class="flex-1 px-2"><%= form.text_field :ville %></div>
       </div>
     </div>
-    <div class="col">
-      <div class="row">
-        <div class="col-sm-4"><%= form.text_field :téléphone %></div>
-        <div class="col"><%= form.text_field :email %></div>
+    <div class="flex-1 px-2">
+      <div class="flex flex-wrap -mx-2">
+        <div class="w-full sm:w-4/12 px-2"><%= form.text_field :téléphone %></div>
+        <div class="flex-1 px-2"><%= form.text_field :email %></div>
       </div>
-      <div class="row">
-        <div class="col-sm-4"><%= form.select :zone, ['A', 'B', 'C'], { label: "Zone", help: "Zone de vacances scolaires", wrapper: { class: 'has-warning', data: { foo: 'bar' } } }, { class: "selectpicker" } %></div>
-        <div class="col"><%= form.file_field :logo, help: "Votre logo. Apparaît sur l'entête des documents", placeholder: "Choisir un fichier image" %></div>
+      <div class="flex flex-wrap -mx-2">
+        <div class="w-full sm:w-4/12 px-2"><%= form.select :zone, ['A', 'B', 'C'], { label: "Zone", help: "Zone de vacances scolaires", wrapper: { class: 'has-warning', data: { foo: 'bar' } } }, { class: "selectpicker" } %></div>
+        <div class="flex-1 px-2"><%= form.file_field :logo, help: "Votre logo. Apparaît sur l'entête des documents", placeholder: "Choisir un fichier image" %></div>
       </div>
     </div>
   </div>
   <br>
 
-  <div class="row">
-    <div class="col-sm-5">
-      <h3><%= fa_icon 'school' %> Structures</h3>
+  <div class="flex flex-wrap -mx-2">
+    <div class="w-full sm:w-5/12 px-2">
+      <h3><%= mi_icon 'school' %> Structures</h3>
 
       <div data-controller="nested-form" data-nested-form-wrapper-selector-value=".nested-form-wrapper" >
         <template data-nested-form-target="template">
@@ -40,12 +40,12 @@
         <!-- Inserted elements will be injected before that target. -->
         <div data-nested-form-target="target"></div>
 
-        <button class="btn btn-outline-primary" type="button" data-action="nested-form#add"><%= fa_icon 'plus-circle' %> Ajouter une structure</button>
+        <button class="btn btn-outline btn-primary" type="button" data-action="nested-form#add"><%= mi_icon 'plus-circle' %> Ajouter une structure</button>
       </div>
     </div>
     
-    <div class="col">
-      <h3><%= fa_icon 'umbrella-beach' %> Vacances spécifiques à votre organisation</h3>
+    <div class="flex-1 px-2">
+      <h3><%= mi_icon 'umbrella-beach' %> Vacances spécifiques à votre organisation</h3>
 
       <div data-controller="nested-form" data-nested-form-wrapper-selector-value=".nested-form-wrapper" >
         <template data-nested-form-target="template">
@@ -61,12 +61,12 @@
         <!-- Inserted elements will be injected before that target. -->
         <div data-nested-form-target="target"></div>
 
-        <button class="btn btn-outline-primary" type="button" data-action="nested-form#add"><%= fa_icon 'plus-circle' %> Ajouter des vacances</button>
+        <button class="btn btn-outline btn-primary" type="button" data-action="nested-form#add"><%= mi_icon 'plus-circle' %> Ajouter des vacances</button>
       </div>
     </div>
   </div>
 
-  <%= form.submit "Enregistrer", class: "btn btn-outline-success mt-5" %>
+  <%= form.submit "Enregistrer", class: "btn btn-outline btn-success mt-12" %>
 
 <% end %>
 <br>

@@ -1,36 +1,36 @@
-<%= bootstrap_form_with(model: enfant, local: true, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' }) do |f| %>
+<%= form_with(model: enfant, local: true, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' }) do |f| %>
 
   <%= f.hidden_field :compte_id %>
   
-  <div class="row">
-    <div class="col"><%= f.select :classroom_id, options_from_collection_for_select(@classrooms, 'id', 'nom_et_structure', enfant.classroom_id), { label: "Classe" }, { class: "selectpicker" } %></div>
-    <div class="col"><%= f.text_field :nom, required: true %></div>
-    <div class="col"><%= f.text_field :prénom, required: true %></div>
-    <div class="col"><%= f.date_field :date_naissance%></div>
-    <div class="col"><%= f.select :tarif_type_id, options_from_collection_for_select(@tarif_types, 'id', 'nom', enfant.tarif_type_id), { label: "Tarif"}, { class: "selectpicker" } %></div>
-    <div class="col-sm-1"><%= f.text_field :badge %></div>
+  <div class="flex flex-wrap -mx-2">
+    <div class="flex-1 px-2"><%= f.select :classroom_id, options_from_collection_for_select(@classrooms, 'id', 'nom_et_structure', enfant.classroom_id), { label: "Classe" }, { class: "selectpicker" } %></div>
+    <div class="flex-1 px-2"><%= f.text_field :nom, required: true %></div>
+    <div class="flex-1 px-2"><%= f.text_field :prénom, required: true %></div>
+    <div class="flex-1 px-2"><%= f.date_field :date_naissance%></div>
+    <div class="flex-1 px-2"><%= f.select :tarif_type_id, options_from_collection_for_select(@tarif_types, 'id', 'nom', enfant.tarif_type_id), { label: "Tarif"}, { class: "selectpicker" } %></div>
+    <div class="w-full sm:w-1/12 px-2"><%= f.text_field :badge %></div>
   </div>
 
-  <div class="row align-items-center" data-controller="toggle-allergie vege-sp-sync">
-    <div class="col-sm-1 mb-3">
+  <div class="flex flex-wrap -mx-2 items-center" data-controller="toggle-allergie vege-sp-sync">
+    <div class="w-full sm:w-1/12 px-2 mb-4">
       <%= f.check_box :menu_all, label: "Allergie", custom: :switch, 'data-toggle-allergie-target': 'source', 'data-action': 'toggle-allergie#toggle' %>
     </div>
-    <div class="col">
+    <div class="flex-1 px-2">
       <%= f.text_field :allergenes, label_as_placeholder: true, label: 'Allergènes', 'data-toggle-allergie-target': 'field' %>
     </div>
-    <div class="col-sm-2 mb-3">
+    <div class="w-full sm:w-2/12 px-2 mb-4">
       <%= f.check_box :menu_vege, label: "Menu 'Végétarien'", custom: :switch, 'data-vege-sp-sync-target': 'vege', 'data-action': 'vege-sp-sync#toggleVege' %>
     </div>
-    <div class="col-sm-2 mb-3">
+    <div class="w-full sm:w-2/12 px-2 mb-4">
       <%= f.check_box :menu_sp, label: "Menu 'Sans porc'", custom: :switch, 'data-vege-sp-sync-target': 'sp', 'data-action': 'vege-sp-sync#toggleSP' %>
     </div>
   </div>
-  <div class="row">
-    <div class="col"><%= f.text_field :mémo, label_as_placeholder: true, label: 'Mémo' %></div>
+  <div class="flex flex-wrap -mx-2">
+    <div class="flex-1 px-2"><%= f.text_field :mémo, label_as_placeholder: true, label: 'Mémo' %></div>
   </div>
   <br>
 
-  <h3><%= fa_icon 'calendar-alt', class: 'text-warning' %> Réservations</h3>
+  <h3><%= mi_icon 'calendar-alt', class: 'text-warning' %> Réservations</h3>
   <hr />
   
   <template data-nested-form-target="template">
@@ -46,9 +46,9 @@
   <!-- Inserted elements will be injected before that target. -->
   <div data-nested-form-target="target"></div>
 
-  <button class="btn btn-outline-primary" type="button" data-action="nested-form#add"><%= fa_icon 'plus-circle' %> Ajouter réservation</button>
+  <button class="btn btn-outline btn-primary" type="button" data-action="nested-form#add"><%= mi_icon 'plus-circle' %> Ajouter réservation</button>
 
-  <%= f.submit "Enregistrer", class: "btn btn-outline-success" %>
+  <%= f.submit "Enregistrer", class: "btn btn-outline btn-success" %>
 
 <% end %>
 <br>

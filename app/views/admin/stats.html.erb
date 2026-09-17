@@ -1,8 +1,8 @@
-<h1 class="font-bold my-4">Admin</h1>
+<h1 class="font-bold my-6">Admin</h1>
 
 Total Facturé : <%= number_to_currency(Facture.sum(:montant), precision: 0) %>
 
-<div class='overflow-x-auto mb-4'>
+<div class='overflow-x-auto mb-6'>
   <table class='table'>
     <thead>
       <tr>
@@ -30,13 +30,13 @@ Total Facturé : <%= number_to_currency(Facture.sum(:montant), precision: 0) %>
             <% if organisation.users.first == user %>
               <td class=<%= 'text-info' if organisation.comptes.count > 1 %>><%= organisation.comptes.count %></td>
               <td><%= organisation.enfants.count %></td>
-              <td class=<%= 'text-danger' if organisation.factures.count >= 1000 %>><%= organisation.factures.count %></td>
-              <td class="text-end"><%= number_to_currency(organisation.factures.sum(:montant), precision: 0) %></td>
+              <td class=<%= 'text-error' if organisation.factures.count >= 1000 %>><%= organisation.factures.count %></td>
+              <td class="text-right"><%= number_to_currency(organisation.factures.sum(:montant), precision: 0) %></td>
               <td><%= time_ago_in_words user.updated_at %></td>
               <td><%= time_ago_in_words user.created_at %></td>
               <td>
                 <%= form_with(url: suppression_organisation_do_organisation_path(id: organisation.slug)) do |form| %>
-                  <%= form.submit "[X]", class: "btn btn-outline-danger" %>
+                  <%= form.submit "[X]", class: "btn btn-outline btn-error" %>
                 <% end %>
               </td>
             <% else %>
@@ -54,4 +54,4 @@ Total Facturé : <%= number_to_currency(Facture.sum(:montant), precision: 0) %>
 </div>
 
 <span><%= page_entries_info @organisations, entry_name: 'user' %></span>
-<%= paginate @organisations, theme: 'twitter-bootstrap-4' %>
+<%= paginate @organisations %>

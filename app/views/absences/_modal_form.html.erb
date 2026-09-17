@@ -1,10 +1,10 @@
-<%= bootstrap_form_with(url: absences_path, model: absence, method: :post, local: true) do |form| %>
+<%= form_with(url: absences_path, model: absence, method: :post, local: true) do |form| %>
 
   <%= form.hidden_field :enfant_id %>
 
-  <div class="form-inline">
-    <%= form.text_field :début, label: 'Du :', class: "form-control", type: "date"  %>
-    <%= form.text_field :fin, label: 'Au :', class: "form-control", type: "date"  %>
+  <div class="">
+    <%= form.text_field :début, label: 'Du :', class: "input input-bordered w-full", type: "date"  %>
+    <%= form.text_field :fin, label: 'Au :', class: "input input-bordered w-full", type: "date"  %>
   </div>
   <br />
 
@@ -15,6 +15,6 @@
   </div>
   <br />
 
-  <%= form.submit "Enregistrer", class: "btn btn-outline-success" %>
+  <%= form.submit "Enregistrer", class: "btn btn-outline btn-success" %>
 
 <% end %>

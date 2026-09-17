@@ -1,20 +1,20 @@
-<tr>
+<tr class="row-hover">
     <td><%= link_to compte.nom, compte %></td>
     <td><%= compte.enfants.pluck(:prénom).join(', ') %> (<%= compte.enfants_count %>)</td>
     <td><%= compte.adresse1 %></td>
     <td><%= compte.cp %></td>
     <td><%= compte.ville %></td>
-    <td class="text-end"><%= number_to_currency compte.solde %></td>
+    <td class="text-right"><%= number_to_currency compte.solde %></td>
     <td><% if policy(compte).edit? %>
             <%= link_to edit_compte_path(compte), class:'btn btn-link btn-sm' do %>
-                <%= fa_icon 'edit' %>
+                <%= mi_icon 'edit' %>
             <% end %>
         <% end %>
     </td>
     <td>
         <% if policy(compte).destroy? %>
-            <%= button_to compte, method: :delete, 'data-turbo-confirm': 'Attention ! Les enfants liés à ce compte seront effacés ! Êtes-vous bien certain.e ???', class: 'btn btn-sm' do %>
-                <%= fa_icon 'trash-alt', class: 'text-danger' %>
+            <%= button_to compte, method: :delete, 'data-turbo-confirm': 'Attention ! Les enfants liés à ce compte seront effacés ! Êtes-vous bien certain.e ???', class: 'btn btn-sm btn-ghost' do %>
+                <%= mi_icon 'trash-alt', class: 'text-error' %>
             <% end %>
         <% end %>
     </td>

@@ -1,20 +1,20 @@
-<div class="pb-4 mt-4 mb-2">
+<div class="pb-6 mt-6 mb-2">
   <% if policy(Compte).new? %>
-    <%= link_to new_compte_path, class: 'btn btn-outline-primary float-end' do %>
-      <%= fa_icon 'plus-circle' %> Ajouter un Compte
+    <%= link_to new_compte_path, class: 'btn btn-outline btn-primary float-right' do %>
+      <%= mi_icon 'plus-circle' %> Ajouter un Compte
     <% end %>
   <% end %>
-  <div class="d-flex align-items-center">
-    <h2 class="fw-light d-inline mb-0"><%= fa_icon 'users' %> Comptes</h2>
+  <div class="flex items-center">
+    <h2 class="font-light inline mb-0 whitespace-nowrap"><%= mi_icon 'users' %> Comptes</h2>
     <%= link_to guide_path(anchor: "ajout_famille") do %>
-      <%= fa_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-body-tertiary mx-3 fa-lg mb-1' %>
+      <%= mi_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-slate-400 mx-4 text-2xl mb-1' %>
     <% end %>
   </div>
 </div>
 
-<%= bootstrap_form_tag url: comptes_path, method: :get do |f| %>
-  <div class="row align-items-center mb-4 p-3 mx-0 shadow-sm">
-    <div class="col">
+<%= form_with url: comptes_path, method: :get do |f| %>
+  <div class="flex flex-wrap -mx-2 items-center mb-6 p-4 mx-0 shadow-sm">
+    <div class="flex-1 px-2">
       <%= f.text_field :search, 
                         value: params[:search], 
                         label: 'Rechercher',
@@ -25,8 +25,8 @@
   </div>
 <% end %>
 
-<div class="table-responsive">
-  <table class="table table-hover border shadow-sm">
+<div class="overflow-x-auto">
+  <table class="table border border-slate-200 shadow-sm">
     <thead>
       <tr style="vertical-align: middle;">
         <th><%= sort_link 'comptes.nom', 'Nom' %></th>
@@ -34,7 +34,7 @@
         <th><%= sort_link 'comptes.adresse1', 'Adresse' %></th>
         <th><%= sort_link 'comptes.cp', 'CP'%></th>
         <th><%= sort_link 'comptes.ville', 'Ville' %></th>
-        <th><small class="fw-bold text-dark">Solde</small></td>
+        <th><small class="font-bold text-slate-800">Solde</small></td>
         <th colspan="2"></th>
       </tr>
     </thead>
@@ -48,12 +48,12 @@
 
 <div class="mt-2">
   <%= page_entries_info @comptes, entry_name: 'compte' %>
-  <%= paginate @comptes, theme: 'twitter-bootstrap-4' %>
+  <%= paginate @comptes %>
 
   <% if policy(Compte).to_xls? && !@comptes.size.zero? %>
     <%= link_to url_for(params.permit(:search).merge(format: :xls)),
-                class: "float-sm-end text-success" do %>
-        <%= fa_icon "file-excel", class: 'me-1 mb-5', text: "Export XLS" %>
+                class: "inline-flex items-center sm:float-right text-success no-underline hover:underline" do %>
+        <%= mi_icon "file-excel", class: 'mr-1' %> Export XLS
     <% end %>
   <% end %>
 </div>

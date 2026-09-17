@@ -1,19 +1,19 @@
-<div class="pb-2 mt-4 mb-2 border-bottom">
-  <h2 class="fw-light d-inline"><%= fa_icon 'envelope', class: 'text-primary' %> Messages</h2>
+<div class="pb-2 mt-6 mb-2 border-b border-slate-200">
+  <h2 class="font-light inline"><%= mi_icon 'envelope', class: 'text-primary' %> Messages</h2>
   <%= link_to guide_path(anchor: "messages") do %>
-    <%= fa_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-muted mx-2' %>
+    <%= mi_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-slate-500 mx-2' %>
   <% end %>
 </div>
 
-<%= bootstrap_form_tag url: messages_path, method: :get do |f| %>
-  <div class="row">
-    <div class="col"><%= f.text_field :search, value: params[:search], label: 'Email/Objet/Contenu', onchange: "this.form.submit()", autofocus: false %></div>
-    <div class="col-sm-2"><%= f.select :state, options_for_select(Message.workflow_spec.states.keys.to_a, params[:state]), { include_blank: true, label: 'État' }, { onchange: "this.form.submit()" } %></div>
+<%= form_with url: messages_path, method: :get do |f| %>
+  <div class="flex flex-wrap -mx-2">
+    <div class="flex-1 px-2"><%= f.text_field :search, value: params[:search], label: 'Email/Objet/Contenu', onchange: "this.form.submit()", autofocus: false %></div>
+    <div class="w-full sm:w-2/12 px-2"><%= f.select :state, options_for_select(Message.workflow_spec.states.keys.to_a, params[:state]), { include_blank: true, label: 'État' }, { onchange: "this.form.submit()" } %></div>
   </div>
 <% end %>
 
-<div class="table-responsive">
-  <table class="table table-hover">
+<div class="overflow-x-auto">
+  <table class="table">
     <thead>
       <tr>
         <th>Reçu</th>
@@ -28,12 +28,12 @@
 
     <tbody>
       <% @messages.each do |message| %>
-        <tr>
+        <tr class="row-hover">
           <td>Il y a <%= time_ago_in_words message.created_at %></td>
           <td><%= mail_to message.email, message.email, {subject: "Re: Votre message au gestionnaire de la facturation", body: "#{'_' * 50} \r\n #{message.contenu}"} %></td>
           <td><%= message.objet %></td>
           <td><%= truncate(message.contenu, length: 30) %></td>
-          <td><span class="badge text-bg-<%= message.style %>"><%= message.workflow_state.humanize %></span></td>
+          <td><span class="badge badge-<%= message.style %>"><%= message.workflow_state.humanize %></span></td>
           <td>Il y a <%= time_ago_in_words message.updated_at %></td>
           <td><%= link_to 'Voir', message %></td>
           <td><%= link_to 'Supprimer', message, data: { 'turbo-method': :delete, 'turbo-confirm': 'Êtes-vous bien certain.e ???' } %></td>
@@ -43,8 +43,8 @@
   </table>
 </div>
 
-<div class="mb-3">
+<div class="mb-4">
   <%= page_entries_info @messages, entry_name: 'message' %>
   <%= pp @messages.reorder(nil).select(:id).group(:workflow_state).count(:id) %>
 </div>
-<%= paginate @messages, theme: 'twitter-bootstrap-4' %>
+<%= paginate @messages %>

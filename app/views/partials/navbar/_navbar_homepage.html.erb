@@ -1,0 +1,53 @@
+<div class="navbar bg-base-100 shadow-sm fixed top-0 z-200 px-2 lg:px-6">
+  <div class="flex-1">
+    <%= link_to root_path, title: "Accueil" do %>
+      <%= image_tag "logo.png", class: "h-9" %>
+    <% end %>
+  </div>
+
+  <div class="flex-none flex items-center gap-2">
+    <ul class="hidden md:flex items-center list-none p-0 m-0 gap-1">
+      <li>
+        <%= link_to root_path, class: navbar_link_classes(controller_name == 'pages' && action_name == 'accueil'), data: { turbo: false } do %>
+          <%= mi_icon 'home', class: "text-xl" %>
+          <span>Accueil</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to guide_path, class: navbar_link_classes(controller_name == 'pages' && action_name == 'guide'), data: { turbo: false } do %>
+          <%= mi_icon 'book-open', class: "text-xl" %>
+          <span>Guide</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to actualites_path, class: navbar_link_classes(controller_name == 'pages' && action_name == 'actualites'), data: { turbo: false } do %>
+          <%= mi_icon 'comment', class: "text-xl" %>
+          <span>Blog</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to new_message_path, class: navbar_link_classes(controller_name == 'messages'), data: { turbo: false } do %>
+          <%= mi_icon 'comments', class: "text-xl" %>
+          <span>Contact</span>
+        <% end %>
+      </li>
+    </ul>
+
+    <%= link_to new_user_session_path, class: "btn btn-primary btn-sm text-white ml-2" do %>
+      <%= mi_icon 'login', class: "text-xl" %>
+      Connexion
+    <% end %>
+
+    <div class="dropdown dropdown-end md:hidden">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-sm btn-circle">
+        <%= mi_icon 'menu', class: "text-2xl" %>
+      </div>
+      <ul tabindex="0" class="dropdown-content z-[210] menu p-2 shadow bg-base-100 rounded-box w-52 border border-slate-200 text-slate-700">
+        <li><%= link_to "Accueil", root_path, data: { turbo: false } %></li>
+        <li><%= link_to "Guide", guide_path, data: { turbo: false } %></li>
+        <li><%= link_to "Blog", actualites_path, data: { turbo: false } %></li>
+        <li><%= link_to "Contact", new_message_path, data: { turbo: false } %></li>
+      </ul>
+    </div>
+  </div>
+</div>

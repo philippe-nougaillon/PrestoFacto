@@ -1,14 +1,14 @@
-<tr>
+<tr class="row-hover">
     <td style="text-align: center">
         <span data-action="click->action#click">
-            <%= check_box_tag "factures_id[#{facture.id}]", 'yes', false, data: {"action-target": "source", "checkbox-select-all-target": "checkbox"} %>
+            <%= check_box_tag "factures_id[#{facture.id}]", 'yes', false, class: "checkbox checkbox-sm checkbox-primary", data: {"action-target": "source", "checkbox-select-all-target": "checkbox"} %>
         </span>
     </td>
     <td><%= link_to facture.réf, facture, style: 'white-space: nowrap;' %></td>
     <td><%= l facture.date.to_date %></td>
     <td><%= link_to facture.compte.nom, facture.compte %></td>
     <td><%= l facture.envoyée_le.to_date if facture.envoyée_le %></td>
-    <td class="text-end">
+    <td class="text-right">
         <%= number_to_currency(facture.montant, unit: '€', precision: 2, format: '%n %u') %>
         <% @total_page += facture.montant %>
     </td>
@@ -16,15 +16,15 @@
     <td><span class="badge <%= facture.style %>"><%= facture.try(:workflow_state).try(:humanize) %></span></td>
     <td>
         <% if policy(Paiement).new? %>
-            <%= link_to new_paiement_path(compte_id: facture.compte_id, réf: facture.réf, montant: facture.montant), target: '_blank', title: "Saisir le paiement de cette facture", class: 'btn btn-sm lh-1' do %>
-                <i class="fas fa-money-bill-alt text-success"></i>
+            <%= link_to new_paiement_path(compte_id: facture.compte_id, réf: facture.réf, montant: facture.montant), target: '_blank', title: "Saisir le paiement de cette facture", class: 'btn btn-sm btn-ghost' do %>
+                <%= mi_icon 'money-bill-alt', class: 'text-success' %>
             <% end %>
         <% end %>
     </td>
     <td>
         <% if policy(facture).show? %>
-            <%= link_to facture_url(facture, format: :pdf), target: '_blank', title: "Voir la facture en PDF", class: 'btn btn-sm lh-1' do %>
-                <i class="fas fa-file-pdf text-dark"></i>
+            <%= link_to facture_url(facture, format: :pdf), target: '_blank', title: "Voir la facture en PDF", class: 'btn btn-sm btn-ghost' do %>
+                <%= mi_icon 'file-pdf', class: 'text-slate-800' %>
             <% end %>
         <% end %>
     </td>

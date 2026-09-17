@@ -1,12 +1,12 @@
-<div class="card my-3">
-  <div class="card-header">
+<div class="card my-4">
+  <div class="card-title px-6 pt-5">
     <h4 class="p-2">  
-      <%= fa_icon 'file-invoice', class: 'text-info' %> Facture #<%= @facture.réf %> | <%= @facture.compte.nom %>
+      <%= mi_icon 'file-invoice', class: 'text-info' %> Facture #<%= @facture.réf %> | <%= @facture.compte.nom %>
     </h4>
   </div>
   <div class="card-body">
-    <div class="row">
-      <div class="col">
+    <div class="flex flex-wrap -mx-2">
+      <div class="flex-1 px-2">
         <p>
           <strong>Date:</strong>
           <%= l @facture.date.to_date %>
@@ -24,11 +24,11 @@
 
         <p>
           <strong>Vérifiée:</strong>
-          <%= fa_icon 'check' if @facture.vérifiée %></i>
+          <%= mi_icon 'check' if @facture.vérifiée %></i>
         </p>
       </div>
 
-      <div class="col">
+      <div class="flex-1 px-2">
         <p>
           <strong>Etat:</strong>
           <span class="badge <%= @facture.style %>"><%= @facture.try(:workflow_state).try(:humanize) %></span>        </p>
@@ -40,26 +40,26 @@
     </div>
   </div>
 
-  <div class="card-footer d-flex">
-    <%= link_to edit_facture_path(@facture), class: "btn btn-light" do %>
-      <%= fa_icon 'edit', text: ' Éditer' %>
+  <div class="card-actions px-6 pb-5 flex">
+    <%= link_to edit_facture_path(@facture), class: "btn btn-ghost" do %>
+      <%= mi_icon 'edit', text: ' Éditer' %>
     <% end %>
     <% if policy(@facture).show? %>
-        <%= link_to facture_url(@facture, format: :pdf), target: '_blank', class: "btn btn-light" do %>
-            <i class="far fa-file-pdf text-danger"></i> Afficher le PDF
+        <%= link_to facture_url(@facture, format: :pdf), target: '_blank', class: "btn btn-ghost" do %>
+            <%= mi_icon 'file-pdf', class: 'text-error' %> Afficher le PDF
         <% end %>
     <% end %>
     <% if policy(@facture).destroy? %>
-      <%= button_to @facture, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class: 'btn btn-outline-danger' do %>
-        <%= fa_icon 'trash-alt' %>
+      <%= button_to @facture, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class: 'btn btn-outline btn-error' do %>
+        <%= mi_icon 'trash-alt' %>
       <% end %>
     <% end %>
   </div>
 </div>
 <br>
 
-<div class="table-responsive">
-  <table class="table table-striped table-bordered">
+<div class="overflow-x-auto">
+  <table class="table table-zebra border border-slate-200">
     <thead>
       <tr>
         <th>Intitulé</th>
@@ -73,15 +73,15 @@
       <tr>
         <td><%= ligne.intitulé %></td>
         <td><%= ligne.prestation_type.nom %></td>
-        <td class="text-end"><%= ligne.qté %></td>
-        <td class="text-end"><%= number_to_currency(ligne.prix, unit: '€', precision: 2, format: "%n %u") %></td>
-        <td class="text-end"><%= number_to_currency(ligne.total, unit: '€', precision: 2, format: "%n %u") %></td>
+        <td class="text-right"><%= ligne.qté %></td>
+        <td class="text-right"><%= number_to_currency(ligne.prix, unit: '€', precision: 2, format: "%n %u") %></td>
+        <td class="text-right"><%= number_to_currency(ligne.total, unit: '€', precision: 2, format: "%n %u") %></td>
       </tr>
     <% end %>
     <tfoot>
       <tr>
         <td colspan=4></td>
-        <td class="text-end">
+        <td class="text-right">
           <b><%= number_to_currency(@facture.montant, unit: '€', precision: 2, format: "%n %u") %></b>
         </td>
       </tr>

@@ -1,17 +1,17 @@
-<div class="pb-2 mt-4 mb-2 border-bottom">
-  <h2 class="fw-light"><%= fa_icon 'search' %> Audit des modifications</h2>
+<div class="pb-2 mt-6 mb-2 border-b border-slate-200">
+  <h2 class="font-light"><%= mi_icon 'search' %> Audit des modifications</h2>
 </div>
 
-<%= bootstrap_form_tag url: admin_audit_path, method: :get do |f| %>
-  <div class="row">
-    <div class="col-sm-2"><%= f.date_field :date, value: params[:date], onchange: "this.form.submit()" %></div>
-    <div class="col-sm-3"><%= f.select :user_id, options_from_collection_for_select(@users, 'id', 'email', params[:user_id]), { include_blank: true, label: "Utilisateur" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
-    <div class="col-sm-2"><%= f.select :type, options_for_select(@types, params[:type]), { include_blank: true, label: "Type" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
+<%= form_with url: admin_audit_path, method: :get do |f| %>
+  <div class="flex flex-wrap -mx-2">
+    <div class="w-full sm:w-2/12 px-2"><%= f.date_field :date, value: params[:date], onchange: "this.form.submit()" %></div>
+    <div class="w-full sm:w-3/12 px-2"><%= f.select :user_id, options_from_collection_for_select(@users, 'id', 'email', params[:user_id]), { include_blank: true, label: "Utilisateur" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
+    <div class="w-full sm:w-2/12 px-2"><%= f.select :type, options_for_select(@types, params[:type]), { include_blank: true, label: "Type" }, { class: "selectpicker", onchange: "this.form.submit()" } %></div>
   </div>
 <% end %>
 
-<div class="table-responsive">
-  <table class="table table-bordered table-hover table-sm">
+<div class="overflow-x-auto">
+  <table class="table border border-slate-200 table-sm">
       <thead>
           <tr>
               <th>Date</th>
@@ -27,4 +27,4 @@
 </div>
 
 <%= page_entries_info @audits, entry_name: 'audit' %>
-<%= paginate @audits, theme: 'twitter-bootstrap-4' %>
+<%= paginate @audits %>

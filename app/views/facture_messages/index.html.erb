@@ -1,11 +1,11 @@
-<div class="pb-2 mt-4 mb-2 border-bottom">
-  <h2 class="fw-light"><%= fa_icon 'comment-dots' %> Messages</h2>
+<div class="pb-2 mt-6 mb-2 border-b border-slate-200">
+  <h2 class="font-light"><%= mi_icon 'comment-dots' %> Messages</h2>
 </div>
 
-<h3 class="fw-lighter mb-5">Ajoutez ici le message que vous voulez voir en bas de vos factures et e-mails d'accompagnement</h3>
+<h3 class="fw-lighter mb-12">Ajoutez ici le message que vous voulez voir en bas de vos factures et e-mails d'accompagnement</h3>
 
-<div class="table-responsive col-sm-6">
-  <table class="table table-bordered table-hover table-striped table-sm">
+<div class="overflow-x-auto w-full sm:w-6/12 px-2">
+  <table class="table border border-slate-200 table-zebra table-sm">
     <thead>
       <tr>
         <th>Contenu</th>
@@ -16,17 +16,17 @@
 
     <tbody>
       <% @facture_messages.each do |facture_message| %>
-        <tr>
+        <tr class="row-hover">
           <td><%= facture_message.contenu %></td>
-          <td class="text-center"><%= fa_icon 'check' if facture_message.actif %></td>
+          <td class="text-center"><%= mi_icon 'check' if facture_message.actif %></td>
           <td class="text-center">
             <%= link_to edit_facture_message_path(facture_message) do %>
-              <%= fa_icon 'edit' %>
+              <%= mi_icon 'edit' %>
             <% end %>
           </td>
           <td class="text-center">
-            <%= button_to facture_message, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class:'btn btn-sm' do %>
-              <%= fa_icon 'trash-alt', class: 'text-danger' %>
+            <%= button_to facture_message, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class:'btn btn-sm btn-ghost' do %>
+              <%= mi_icon 'trash-alt', class: 'text-error' %>
             <% end %>
           </td>
         </tr>
@@ -36,6 +36,6 @@
 
 <br>
 
-<%= link_to new_facture_message_path, class: "btn btn-outline-primary" do %>
-  <%= fa_icon 'plus-circle' %> Ajouter un message
+<%= link_to new_facture_message_path, class: "btn btn-outline btn-primary" do %>
+  <%= mi_icon 'plus-circle' %> Ajouter un message
 <% end %>

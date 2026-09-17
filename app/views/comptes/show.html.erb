@@ -1,16 +1,16 @@
-<div class="card my-3">
-  <div class="card-header">
-    <h2 class="fw-light p-2"><%= fa_icon 'user' %> <%= @compte.nom %></h2>
+<div class="card my-4">
+  <div class="card-title px-6 pt-5">
+    <h2 class="font-light p-2"><%= mi_icon 'user' %> <%= @compte.nom %></h2>
   </div>
 
   <div class="card-body">
     <%= render partial: "compte-card" %>
-    <div class="card mt-3">
+    <div class="card mt-4">
       <div class="card-body">
 
-        <h4><%= fa_icon 'child', class: 'text-primary' %> Enfants</h4>
-        <div class="table-responsive">
-          <table class="table table-hover table-sm">
+        <h4><%= mi_icon 'child', class: 'text-primary' %> Enfants</h4>
+        <div class="overflow-x-auto">
+          <table class="table table-sm">
             <thead>
               <tr>
                 <th>Nom</th>
@@ -25,25 +25,25 @@
             </thead>
 
             <% @compte.enfants.each do |enfant| %>
-              <tr>
+              <tr class="row-hover">
                 <td><%= enfant.nom %></td>
                 <td><%= link_to enfant.prénom, enfant %></td>
                 <td><%= l(enfant.date_naissance) if enfant.date_naissance %></td>
                 <td><%= enfant.classroom.nom %></td>
-                <td class="text-center"><%= fa_icon('exclamation', title: enfant.allergenes) if enfant.menu_all %></td>
-                <td class="text-center"><%= fa_icon 'exclamation' if enfant.menu_vege %></td>
-                <td class="text-center"><%= fa_icon 'exclamation' if enfant.menu_sp %></td>
+                <td class="text-center"><%= mi_icon('exclamation', title: enfant.allergenes) if enfant.menu_all %></td>
+                <td class="text-center"><%= mi_icon 'exclamation' if enfant.menu_vege %></td>
+                <td class="text-center"><%= mi_icon 'exclamation' if enfant.menu_sp %></td>
                 <td>
                   <% if policy(enfant).edit? %>
                     <%= link_to edit_enfant_path(enfant), class: 'btn btn-link btn-sm' do %>
-                      <%= fa_icon 'edit' %>
+                      <%= mi_icon 'edit' %>
                     <% end %>
                   <% end %>
                 </td>
                 <td>
                   <% if policy(enfant).destroy? %>
-                    <%= button_to enfant, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class: 'btn btn-sm' do %>
-                        <%= fa_icon 'trash-alt', class: 'text-danger' %>
+                    <%= button_to enfant, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class: 'btn btn-sm btn-ghost' do %>
+                        <%= mi_icon 'trash-alt', class: 'text-error' %>
                     <% end %>
                   <% end %>
                 </td>
@@ -54,8 +54,8 @@
         </div>
 
         <% if policy(Enfant).new? %>
-          <%= link_to new_enfant_path(compte_id: @compte), class: "btn btn-outline-primary" do %>
-            <%= fa_icon 'plus-circle' %> Ajouter un enfant
+          <%= link_to new_enfant_path(compte_id: @compte), class: "btn btn-outline btn-primary" do %>
+            <%= mi_icon 'plus-circle' %> Ajouter un enfant
           <% end %>
         <% end %>
 
@@ -64,20 +64,13 @@
   </div>
 </div>
 
-<div class="modal fade" id="myModalNewPaiement">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Nouveau Paiement</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        <%= render 'paiements/form', paiement: Paiement.new(compte_id: @compte.id, date: Date.today, réf: current_user.organisation.factures.where(compte_id: @compte.id, workflow_state: "vérifiée").last.try(:réf)) %>
-      </div>
-    </div>
+<dialog id="myModalNewPaiement" class="modal">
+  <div class="modal-box max-w-3xl">
+    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" aria-label="Fermer">✕</button>
+    </form>
+    <h3 class="text-lg font-bold mb-4">Nouveau paiement</h3>
+    <%= render 'paiements/form', paiement: Paiement.new(compte_id: @compte.id, date: Date.today, réf: current_user.organisation.factures.where(compte_id: @compte.id, workflow_state: "vérifiée").last.try(:réf)) %>
   </div>
-</div>
+  <form method="dialog" class="modal-backdrop"><button>Fermer</button></form>
+</dialog>

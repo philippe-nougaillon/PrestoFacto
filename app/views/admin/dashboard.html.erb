@@ -1,80 +1,80 @@
-<div class="pb-2 my-4 border-bottom">
-  <h2 class="fw-light"><%= fa_icon 'tachometer-alt', class: 'text-primary' %> Stats / Tableau de bord</h2>
+<div class="pb-2 my-6 border-b border-slate-200">
+  <h2 class="font-light"><%= mi_icon 'tachometer-alt', class: 'text-primary' %> Stats / Tableau de bord</h2>
 </div>
 
 <%# data-turbo="false" : rechargement complet de la page, sinon Turbo ré-exécute le <script> du
     graphique dans un contexte JS déjà chargé (const redéclarées) et le graphe ne s'affiche pas.
     Posé sur le <form>, il couvre aussi les liens "Périodes rapides" qu'il contient. %>
-<%= bootstrap_form_tag url: admin_dashboard_path, method: :get, html: { data: { turbo: false } } do |f| %>
-  <div class="row align-items-center mb-4 p-3 mx-0 shadow-sm">
-    <div class="col-sm-3"><%= f.date_field :date_début, value: @date_début, onchange: "this.form.submit()" %></div>
-    <div class="col-sm-3"><%= f.date_field :date_fin, value: @date_fin, onchange: "this.form.submit()" %></div>
-    <div class="col">
-      <div class="form-text mb-1">Périodes rapides</div>
+<%= form_with url: admin_dashboard_path, method: :get, html: { data: { turbo: false } } do |f| %>
+  <div class="flex flex-wrap -mx-2 items-center mb-6 p-4 mx-0 shadow-sm">
+    <div class="w-full sm:w-3/12 px-2"><%= f.date_field :date_début, value: @date_début, onchange: "this.form.submit()" %></div>
+    <div class="w-full sm:w-3/12 px-2"><%= f.date_field :date_fin, value: @date_fin, onchange: "this.form.submit()" %></div>
+    <div class="flex-1 px-2">
+      <div class="text-xs text-slate-500 mb-1">Périodes rapides</div>
       <%= link_to "12 derniers mois",
                   admin_dashboard_path(date_début: (Date.today - 1.year).beginning_of_month, date_fin: Date.today),
-                  class: 'btn btn-sm btn-outline-secondary me-1' %>
+                  class: 'btn btn-sm btn-outline btn-secondary mr-1' %>
       <%= link_to "Mois en cours",
                   admin_dashboard_path(date_début: Date.today.beginning_of_month, date_fin: Date.today.end_of_month),
-                  class: 'btn btn-sm btn-outline-secondary me-1' %>
+                  class: 'btn btn-sm btn-outline btn-secondary mr-1' %>
       <%= link_to "Année en cours",
                   admin_dashboard_path(date_début: Date.today.beginning_of_year, date_fin: Date.today.end_of_year),
-                  class: 'btn btn-sm btn-outline-secondary me-1' %>
+                  class: 'btn btn-sm btn-outline btn-secondary mr-1' %>
       <%= link_to "Depuis la création",
                   admin_dashboard_path(date_début: @date_création, date_fin: Date.today),
-                  class: 'btn btn-sm btn-outline-secondary' %>
+                  class: 'btn btn-sm btn-outline btn-secondary' %>
     </div>
   </div>
 <% end %>
 
-<p class="text-body-secondary">
+<p class="text-slate-600">
   Période du <b><%= @date_début.strftime("%d/%m/%Y") %></b> au <b><%= @date_fin.strftime("%d/%m/%Y") %></b>
 </p>
 
-<div class="row mt-4">
-  <div class="col px-5 mx-3">
+<div class="flex flex-wrap -mx-2 mt-6">
+  <div class="flex-1 px-2 px-12 mx-4">
     <p>
       Nombre de Comptes :
-      <span class="float-end">
+      <span class="float-right">
         <%= number_with_delimiter(@nbr_comptes, delimiter: " ") %>
         <% if @nbr_comptes_période != @nbr_comptes %>
-          <small class="text-body-secondary">(+<%= @nbr_comptes_période %>)</small>
+          <small class="text-slate-600">(+<%= @nbr_comptes_période %>)</small>
         <% end %>
       </span>
     </p>
     <p>
       Nombre d'Enfants :
-      <span class="float-end">
+      <span class="float-right">
         <%= number_with_delimiter(@nbr_enfants, delimiter: " ") %>
         <% if @nbr_enfants_période != @nbr_enfants %>
-          <small class="text-body-secondary">(+<%= @nbr_enfants_période %>)</small>
+          <small class="text-slate-600">(+<%= @nbr_enfants_période %>)</small>
         <% end %>
       </span>
     </p>
-    <p>Nombre de Classes : <span class="float-end"><%= @nbr_classes %></span></p>
+    <p>Nombre de Classes : <span class="float-right"><%= @nbr_classes %></span></p>
 
     <% if @nbr_classes > 0 %>
-      <p>Nombre d'Enfants par Classe : <span class="float-end"><%= @nbr_enfants / @nbr_classes %></span></p>
+      <p>Nombre d'Enfants par Classe : <span class="float-right"><%= @nbr_enfants / @nbr_classes %></span></p>
     <% end %>
 
     <% if @nbr_comptes_période != @nbr_comptes || @nbr_enfants_période != @nbr_enfants %>
-      <p class="form-text">Totaux actuels, entre parenthèses les créations sur la période.</p>
+      <p class="text-xs text-slate-500">Totaux actuels, entre parenthèses les créations sur la période.</p>
     <% end %>
   </div>
 
-  <div class="col px-5 mx-3">
-    <p>Nombre de Réservations : <span class="float-end"><%= number_with_delimiter(@nbr_reservations, delimiter: " ") %></span></p>
-    <p class="mb-1">Nombre de Prestations : <span class="float-end"><%= number_with_delimiter(@nbr_prestations, delimiter: " ") %></span></p>
-    <ul class="list-unstyled small text-body-secondary ps-3 mb-3">
+  <div class="flex-1 px-2 px-12 mx-4">
+    <p>Nombre de Réservations : <span class="float-right"><%= number_with_delimiter(@nbr_reservations, delimiter: " ") %></span></p>
+    <p class="mb-1">Nombre de Prestations : <span class="float-right"><%= number_with_delimiter(@nbr_prestations, delimiter: " ") %></span></p>
+    <ul class="list-none pl-0 text-sm text-slate-600 pl-4 mb-4">
       <% @prestations_par_type.each do |nom, nombre| %>
-        <li><%= nom %> : <span class="float-end"><%= number_with_delimiter(nombre, delimiter: " ") %></span></li>
+        <li><%= nom %> : <span class="float-right"><%= number_with_delimiter(nombre, delimiter: " ") %></span></li>
       <% end %>
     </ul>
     <% if @organisation.en_dépassement_plan_gratuit? %>
-      <p class="text-danger">
-        <i class="fas fa-exclamation-circle" title="La limite de la formule 'Libre' a été dépassée !"></i>
+      <p class="text-error">
+        <%= mi_icon 'exclamation-circle', title: "La limite de la formule 'Libre' a été dépassée !" %>
         Nombre de Factures :
-        <span class="float-end">
+        <span class="float-right">
           <%= number_with_delimiter(@nbr_factures, delimiter: " ") %>
         </span>
         <br>
@@ -85,37 +85,37 @@
     <% else %>
       <p>
         Nombre de Factures :
-        <span class="float-end">
+        <span class="float-right">
           <%= number_with_delimiter(@nbr_factures, delimiter: " ") %>
         </span>
       </p>
     <% end %>
   </div>
 
-  <div class="col px-5 mx-3">
+  <div class="flex-1 px-2 px-12 mx-4">
     <p>
       Total des Factures :
-      <span class="float-end">
+      <span class="float-right">
         <%= number_to_currency(@montant_factures) %>
       </span>
     </p>
     <p>
       Total des Paiements :
-      <span class="float-end">
+      <span class="float-right">
         <%= number_to_currency(@montant_paiements) %>
       </span>
     </p>
     <p>
       Balance :
-      <span class="float-end <%= 'text-danger' if (@montant_factures - @montant_paiements).negative? %>">
+      <span class="float-right <%= 'text-error' if (@montant_factures - @montant_paiements).negative? %>">
         <%= number_to_currency(@montant_factures - @montant_paiements) %>
       </span>
     </p>
   </div>
 </div>
 
-<div class="shadow-sm mx-auto my-4 p-5">
-  <div class="h4 px-2 fw-light">Facturation du <%= @date_début.strftime("%d/%m/%Y") %> au <%= @date_fin.strftime("%d/%m/%Y") %></div>
+<div class="shadow-sm mx-auto my-6 p-12">
+  <div class="h4 px-2 font-light">Facturation du <%= @date_début.strftime("%d/%m/%Y") %> au <%= @date_fin.strftime("%d/%m/%Y") %></div>
   <canvas class="p-10" id="chartBar"></canvas>
 </div>
 

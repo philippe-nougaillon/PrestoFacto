@@ -1,0 +1,41 @@
+<style>
+  @keyframes close-ring {
+    from { stroke-dashoffset: 0; }
+    to { stroke-dashoffset: 62.8; }
+  }
+</style>
+<div id="notification">
+  <% flash.each do |type, msg| %>
+    <% next unless %w[notice alert].include?(type) && msg.present? %>
+    <div data-controller="notification"
+      data-notification-delay-value="3600000"
+      data-notification-duration-value="10000"
+      class="group transition transform duration-1000 hidden fixed bottom-20 right-0 flex items-end justify-center px-4 py-6 pointer-events-none sm:p-6 sm:pt-16 sm:items-start z-50 mt-8 w-full mb-14 lg:mb-6"
+      data-transition-enter-from="opacity-0 translate-x-96"
+      data-transition-enter-to="opacity-100 translate-x-0"
+      data-transition-leave-from="opacity-100 translate-x-0"
+      data-transition-leave-to="opacity-0 translate-x-96">
+
+      <div role="alert"
+           class="alert <%= type == 'notice' ? 'alert-success' : 'alert-error' %> flex items-start gap-3 max-w-lg w-full shadow-xl rounded-xl pointer-events-auto">
+
+        <%= embedded_svg(type == 'notice' ? "icons/info.svg" : "icons/error.svg", class: "w-6 h-6 fill-current shrink-0 mt-0.5") %>
+
+        <p class="flex-1 break-words whitespace-pre-line font-medium text-base"><%= msg %></p>
+
+        <button data-action="notification#hide"
+                class="relative p-1 rounded-md shrink-0 focus:outline-none transition-colors"
+                data-testid="close_notification">
+          <span class="sr-only">Fermer</span>
+          <svg class="absolute inset-0 w-full h-full -rotate-90 pointer-events-none" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" class="fill-none stroke-current opacity-30 stroke-2" />
+            <circle cx="12" cy="12" r="10"
+                    class="fill-none stroke-current stroke-2 [stroke-dasharray:62.8] animate-[close-ring_linear_forwards] [animation-duration:var(--duration,5000ms)] group-[.paused]:[animation-play-state:paused]" />
+          </svg>
+          <%= embedded_svg "icons/close_small.svg", class: "w-4 h-4 fill-current relative" %>
+        </button>
+
+      </div>
+    </div>
+  <% end %>
+</div>

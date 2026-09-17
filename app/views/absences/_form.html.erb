@@ -1,4 +1,4 @@
-<%= bootstrap_form_with(model: absence, local: true) do |form| %>
+<%= form_with(model: absence, local: true) do |form| %>
   <p>
     <h2>
       <%= @absence.try(:enfant).try(:nom_et_prénom) %>
@@ -13,5 +13,5 @@
   <%= form.check_box :soir, custom: :switch %>
   <br />
 
-  <%= form.submit "Enregistrer", class: "btn btn-outline-success" %>
+  <%= form.submit "Enregistrer", class: "btn btn-outline btn-success" %>
 <% end %>

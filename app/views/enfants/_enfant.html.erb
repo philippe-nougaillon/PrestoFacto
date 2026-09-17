@@ -1,7 +1,7 @@
-<tr>
+<tr class="row-hover">
     <td style="text-align: center">
         <span data-action="click->action#click">
-            <%= check_box_tag "enfants_id[#{enfant.id}]", 'yes', false,  data: {"action-target":"source"} %>
+            <%= check_box_tag "enfants_id[#{enfant.id}]", 'yes', false,  class: "checkbox checkbox-sm checkbox-primary", data: {"action-target":"source"} %>
         </span>
     </td>
     <td><%= enfant.classroom.structure.nom %></td>
@@ -10,15 +10,15 @@
     <td><%= enfant.nom %></td>
     <td><%= link_to enfant.prénom, enfant %></td>
     <td><%= l(enfant.date_naissance) if enfant.date_naissance %></td>
-    <td class="text-center"><%= fa_icon 'exclamation' if enfant.menu_all %> <%= enfant.allergenes %></td>
-    <td class="text-center"><%= fa_icon 'exclamation' if enfant.menu_vege %></td>
-    <td class="text-center"><%= fa_icon 'exclamation' if enfant.menu_sp %></td>
+    <td class="text-center"><%= mi_icon 'exclamation' if enfant.menu_all %> <%= enfant.allergenes %></td>
+    <td class="text-center"><%= mi_icon 'exclamation' if enfant.menu_vege %></td>
+    <td class="text-center"><%= mi_icon 'exclamation' if enfant.menu_sp %></td>
     <td><%= truncate(enfant.mémo, length: 10) %></td>
     <td><%= enfant.reservations.actives.joins(:prestation_type).pluck("prestation_types.nom").join(', ') %></td>
     <td>
         <% if policy(enfant).edit? %>
             <%= link_to edit_enfant_path(enfant), class: 'btn btn-link btn-sm' do %>
-                <%= fa_icon 'edit' %>
+                <%= mi_icon 'edit' %>
             <% end %>
         <% end %>
     </td>

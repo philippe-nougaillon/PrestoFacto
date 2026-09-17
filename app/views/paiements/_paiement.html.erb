@@ -1,24 +1,24 @@
-<tr>
+<tr class="row-hover">
     <td><%= l paiement.date.to_date %></td>
     <td><%= link_to paiement.compte.nom, paiement.compte %></td>
     <td><%= link_to paiement.réf, factures_path(search: paiement.réf) %></td>
     <td><%= paiement.mode %></td>
     <td><%= paiement.banque %></td>
     <td><%= paiement.chèque_num %></td>
-    <td class="text-end"><%= number_to_currency(paiement.montant, unit: '€', precision: 2, format: "%n %u") %></td>
+    <td class="text-right"><%= number_to_currency(paiement.montant, unit: '€', precision: 2, format: "%n %u") %></td>
     <td><%= l paiement.date_remise if paiement.date_remise %></td>
     <td><%= paiement.mémo %></td>
     <td>
         <% if policy(paiement).edit? %>
             <%= link_to edit_paiement_path(paiement), class: 'btn btn-link btn-sm' do %>
-                <%= fa_icon 'edit' %>
+                <%= mi_icon 'edit' %>
             <% end %>
         <% end %>
     </td>
     <td>
         <% if policy(paiement).destroy? %>
-            <%= button_to paiement, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class: 'btn btn-sm lh-1' do %>
-                <%= fa_icon 'trash-alt', class: 'text-danger' %>
+            <%= button_to paiement, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class: 'btn btn-sm btn-ghost' do %>
+                <%= mi_icon 'trash-alt', class: 'text-error' %>
             <% end %>
         <% end %>
     </td>

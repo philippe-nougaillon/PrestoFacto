@@ -1,10 +1,10 @@
-<div class="container gap-2">
-  <div class="row">
+<div class="container mx-auto gap-2">
+  <div class="flex flex-wrap -mx-2">
     <%= enfant.prénom %>
     <%= enfant.nom %>
     (<%= time_ago_in_words(enfant.date_naissance) if enfant.date_naissance %>)
   </div>
-  <div class="row">
+  <div class="flex flex-wrap -mx-2">
     <%= enfant.classroom.nom %>
     <%= "Végétarien" if enfant.menu_vege %>
     <%= "Sans porc" if enfant.menu_sp %>

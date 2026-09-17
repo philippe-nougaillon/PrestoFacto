@@ -2,8 +2,8 @@
 
 <h1>Vacances</h1>
 
-<div class="table-responsive">
-  <table class="table table-hover">
+<div class="overflow-x-auto">
+  <table class="table">
     <thead>
       <tr>
         <th>Zone</th>
@@ -17,7 +17,7 @@
 
     <tbody>
       <% @vacances.each do |vacance| %>
-        <tr>
+        <tr class="row-hover">
           <td><%= vacance.zone %></td>
           <td><%= vacance.nom %></td>
           <td><%= vacance.début %></td>

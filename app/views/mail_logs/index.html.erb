@@ -1,40 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<div class="pb-2 mt-4 mb-2 border-bottom">
-  <h2 class="fw-light">
-    <%= fa_icon 'mail-bulk' %>
+<div class="pb-2 mt-6 mb-2 border-b border-slate-200">
+  <h2 class="font-light">
+    <%= mi_icon 'mail-bulk' %>
     Mail Logs
   </h2>
 </div>
 
-<p class="text-muted">
+<p class="text-slate-500">
   Journal d'activité des envois de courriels. Statut / État visiblent pendant 5 jours.
 </p>
 
 <%= form_tag request.path, method: :get do %>
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="input-group">
+  <div class="flex flex-wrap -mx-2">
+    <div class="w-full sm:w-4/12 px-2">
+      <div class="join">
         <%= select_tag :to, 
                         options_for_select(current_user.organisation.mail_logs.pluck(:to).uniq.sort, params[:to]), 
                         include_blank: true, 
-                        class: 'form-control form-control-sm',
+                        class: 'select select-bordered select-sm join-item w-full',
                         data: { 'action-target': 'selector' } %>
-        <div class="input-group-append">
           <%= submit_tag 'ok',  name: 'action', 
-                                class: 'btn btn-sm btn-outline-success',
+                                class: 'btn btn-sm btn-outline btn-success join-item',
                                 data: {'action-target': 'button'} %>
-        </div>
       </div>
     </div>
-    <div class="col-sm-3">
-      <%= check_box_tag :ko, 1, params[:ko], onchange:'this.form.submit()' %>
+    <div class="w-full sm:w-3/12 px-2">
+      <%= check_box_tag :ko, 1, params[:ko], class: 'checkbox checkbox-sm checkbox-primary', onchange: 'this.form.submit()' %>
       <%= label_tag :ko, "Afficher que les KO ?" %>
     </div>
   </div>
 <% end %>
 
-<div class="table-responsive">
+<div class="overflow-x-auto">
   <table class="table">
     <thead>
       <tr>
@@ -62,5 +60,5 @@
 
 <% if @mail_logs.respond_to?(:total_pages) %>
   <%= page_entries_info @mail_logs, entry_name: 'mail_log' %>
-  <%= paginate @mail_logs, theme: 'twitter-bootstrap-4' %>
+  <%= paginate @mail_logs %>
 <% end %>

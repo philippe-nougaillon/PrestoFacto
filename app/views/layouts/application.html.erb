@@ -13,13 +13,16 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body style="background-color: #FAFAFA">
+  <body data-theme="<%= page_theme %>" class="bg-slate-50 font-sans">
     <% if cookies[:axeptio_cookies] && JSON.parse(cookies[:axeptio_cookies])["google_analytics"] == true %>
       <!-- Google Tag Manager (noscript) -->
       <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W856963"
@@ -30,13 +33,20 @@
     <% if cookies[:axeptio_cookies].blank? || cookies[:axeptio_cookies]["google_analytics"].blank? %>
       <%= render 'partials/cookies' %>
     <% end %>
-    <%= render 'partials/nav' %>
-    
 
-    <div class="container">      
-      <%= render 'partials/alert' %>
-      <%= yield %>
-    </div>
+    <% if user_signed_in? %>
+      <%= render 'partials/navbar' %>
+    <% else %>
+      <%= render 'partials/navbar/navbar_homepage' %>
+    <% end %>
+
+    <main>
+      <%= render 'partials/notification' %>
+      <div class="min-h-screen mx-auto px-4 2xl:px-8 py-4 pb-24 <%= user_signed_in? ? 'pt-4 lg:pt-24' : 'pt-20' %>">
+        <%= yield %>
+      </div>
+    </main>
+
+    <div class="hidden badge-success badge-info badge-secondary badge-error badge-ghost badge-warning badge-accent text-accent">required for DaisyUI 😭</div>
   </body>
-
 </html>

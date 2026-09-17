@@ -1,72 +1,41 @@
 <section id="guide">
-  <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top bg-light shadow-sm" style="margin-top: 70px; overflow-x: auto">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Sommaire :</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#créer_compte">Inscription</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#organisation">Organisation</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#tarifs">Tarifs</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#ajout_famille">Compte</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#ajout_enfant">Enfant</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#reservations">Réservations</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#prestations">Prestations</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#absences">Abscences</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#facturation">Facturation</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#balance">Balance</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#paiements">Paiements</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#portail">Portail Parents</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#modules">Modules</a>
-          </li>
-        </ul>
-      </div>
+  <nav class="sticky top-16 z-40 bg-slate-100 border-b border-slate-200 shadow-sm -mx-4 px-4 py-2">
+    <div class="flex items-center gap-3 overflow-x-auto" style="scrollbar-width: thin;">
+      <span class="font-semibold text-slate-500 text-sm whitespace-nowrap">Sommaire :</span>
+      <ul class="flex items-center gap-1 text-sm text-slate-600 list-none p-0 m-0">
+        <li><a href="#créer_compte" class="whitespace-nowrap px-3 py-1 rounded-full hover:bg-white hover:text-primary transition-colors">Inscription</a></li>
+        <li><a href="#organisation" class="whitespace-nowrap px-3 py-1 rounded-full hover:bg-white hover:text-primary transition-colors">Organisation</a></li>
+        <li><a href="#tarifs" class="whitespace-nowrap px-3 py-1 rounded-full hover:bg-white hover:text-primary transition-colors">Tarifs</a></li>
+        <li><a href="#ajout_famille" class="whitespace-nowrap px-3 py-1 rounded-full hover:bg-white hover:text-primary transition-colors">Compte</a></li>
+        <li><a href="#ajout_enfant" class="whitespace-nowrap px-3 py-1 rounded-full hover:bg-white hover:text-primary transition-colors">Enfant</a></li>
+        <li><a href="#reservations" class="whitespace-nowrap px-3 py-1 rounded-full hover:bg-white hover:text-primary transition-colors">Réservations</a></li>
+        <li><a href="#prestations" class="whitespace-nowrap px-3 py-1 rounded-full hover:bg-white hover:text-primary transition-colors">Prestations</a></li>
+        <li><a href="#absences" class="whitespace-nowrap px-3 py-1 rounded-full hover:bg-white hover:text-primary transition-colors">Abscences</a></li>
+        <li><a href="#facturation" class="whitespace-nowrap px-3 py-1 rounded-full hover:bg-white hover:text-primary transition-colors">Facturation</a></li>
+        <li><a href="#balance" class="whitespace-nowrap px-3 py-1 rounded-full hover:bg-white hover:text-primary transition-colors">Balance</a></li>
+        <li><a href="#paiements" class="whitespace-nowrap px-3 py-1 rounded-full hover:bg-white hover:text-primary transition-colors">Paiements</a></li>
+        <li><a href="#portail" class="whitespace-nowrap px-3 py-1 rounded-full hover:bg-white hover:text-primary transition-colors">Portail Parents</a></li>
+        <li><a href="#modules" class="whitespace-nowrap px-3 py-1 rounded-full hover:bg-white hover:text-primary transition-colors">Modules</a></li>
+      </ul>
     </div>
   </nav>
 
-  <h1 class="fw-light mb-3" style="margin-top: 100px;">Guide d'utilisation</h1>
+  <h1 class="font-light mb-4" style="margin-top: 100px;">Guide d'utilisation</h1>
 
-  <section id="possibilites" class="mb-5">
-    <div class="pb-2 my-4">
-      <h2 class="fw-light mb-2">Bien démarrer la configuration de <%= @site_name %></h2>
+  <section id="possibilites" class="mb-12">
+    <div class="pb-2 my-6">
+      <h2 class="font-light mb-2">Bien démarrer la configuration de <%= @site_name %></h2>
     </div>
     <div id="créer_compte">
     </div>
-    <section class="mb-5">
-      <h4 class="text-secondary fw-bold">Inscription<hr></h4>
-      <p class="lead">
+    <section class="mb-12">
+      <h4 class="text-secondary font-bold">Inscription<hr></h4>
+      <p class="text-lg">
         Pour avoir accès à <%= @site_name %>, il suffit de se rendre sur la page d'accueil et de cliquer sur
         <%= link_to "S'inscrire", new_user_registration_path %>
       </p>
 
-      <p class="lead">
+      <p class="text-lg">
         Après avoir renseigné le formulaire avec une adresse e-mail, un mot de passe, un nom d'organisation (ex: Mairie de Village) 
         et enfin d'un nom de structure (ex: Ecole Jules Ferry), le système vous enverra un e-mail afin de vérifier que l'adresse donnée existe bien 
         (et oui, si vous saviez le nombre de robots esseulés qui passent leurs journées à s'inscrire un peu partout...).
@@ -81,53 +50,53 @@
 
     <div id="organisation">
     </div>
-    <section class="mb-5">
-      <h4 class="text-secondary fw-bold">Enregistrer votre Organisation<hr></h4>
-      <p class="lead">
+    <section class="mb-12">
+      <h4 class="text-secondary font-bold">Enregistrer votre Organisation<hr></h4>
+      <p class="text-lg">
         Une fois connecté.e, rendez-vous sur la page "Administration".
         Cette page "Administration" affiche un menu qui donne accès à l'ensemble des paramètres importants, 
         tels que l'Organisation, les Utilisateurs et les Tarifs, etc.
       </p>
 
-      <div class="row">
-        <div class="card col-md-6 mx-auto my-4">
-          <div class="img-thumbnail">
+      <div class="flex flex-wrap -mx-2">
+        <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+          <div class="max-w-full h-auto rounded-lg border border-slate-200">
             <a href="/guide/administration.png">
               <img src="/guide/administration.png" alt="Page Administration" style="width:100%">
             </a>
-            <div class="card-footer">
+            <div class="card-actions px-6 pb-5">
               <p class="text-center">Page Administration</p>
             </div>
           </div>
         </div>
-        <div class="card col-md-6 mx-auto my-4">
-          <div class="img-thumbnail">
+        <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+          <div class="max-w-full h-auto rounded-lg border border-slate-200">
             <a href="/guide/organisation.png">
               <img src="/guide/organisation.png" alt="Organisation" style="width:100%">
             </a>
-            <div class="card-footer">
+            <div class="card-actions px-6 pb-5">
               <p class="text-center">Organisation</p>
             </div>
           </div>
         </div>
       </div>
 
-      <p class="lead">
+      <p class="text-lg">
         Cliquez sur "Organisation" afin d'afficher les détails de votre organisation, comme la liste des structures et des classes, ainsi que les vacances scolaires.
         <br><br>
         Cliquez "Éditer" pour modifier les données de votre organisation.
       </p>
-      <div class="card col-md-6 mx-auto my-4">
-        <div class="img-thumbnail">
+      <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+        <div class="max-w-full h-auto rounded-lg border border-slate-200">
           <a href="/guide/edit_organisation.png">
             <img src="/guide/edit_organisation.png" alt="Édition organisation" style="width:100%">
           </a>
-          <div class="card-footer">
+          <div class="card-actions px-6 pb-5">
             <p class="text-center">Édition organisation</p>
           </div>
         </div>
       </div>
-      <p class="lead">
+      <p class="text-lg">
         Compléter l'adresse de votre organisation et le logo (ces informations apparaitront sur les factures et autres documents à entête).
         <br><br>
         La zone de vacances scolaires doit être renseignée afin que le système puisse faire la différence entre un jour en période scolaire et un jour de vacances.
@@ -143,38 +112,38 @@
 
     <div id="tarifs">
     </div>
-    <section class="mb-5">
+    <section class="mb-12">
       <section>
-        <h4 class="text-secondary fw-bold">Enregistrer vos tarifs<hr></h4>
-      <p class="lead">
+        <h4 class="text-secondary font-bold">Enregistrer vos tarifs<hr></h4>
+      <p class="text-lg">
         Une fois l'organisation et les structures en place, nous allons pouvoir paramétrer les prestations proposées par votre organisation (Cantine, Garderie...) et leurs tarifs.
         Pour se faire, rendez-vous à la page "Tarifs", dans le menu "Administration".
       </p>
 
-      <div class="card col-md-6 mx-auto my-4">
-        <div class="img-thumbnail">
+      <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+        <div class="max-w-full h-auto rounded-lg border border-slate-200">
           <a href="/guide/prestations_et_tarifs.png">
             <img src="/guide/prestations_et_tarifs.png" alt="Prestations et Tarifs" style="width:100%">
           </a>
-          <div class="card-footer">
+          <div class="card-actions px-6 pb-5">
             <p class="text-center">Prestations et Tarifs</p>
           </div>
         </div>
       </div>
 
-      <p class="lead">
+      <p class="text-lg">
         Commençons par un cas simple; vous proposez une prestation de cantine avec un repas au tarif unique de 5€.
         <br>
         Pour paramétrer correctement cette prestation, nous avons besoin :
         <br>
       </p>
-      <ul class="lead">
+      <ul class="text-lg">
         <li>d'un "Type de prestation" nommé "Repas"</li>
         <li>d'un "Type de tarif" nommé "Général"</li>
         <li>et enfin d'un "Tarif" qui associe le "Repas" avec le tarif "Général" au prix de 5€</li>
       </ul>
 
-      <p class="lead">
+      <p class="text-lg">
 
         <%= 'ç'.upcase %>a tombe bien, lors de votre inscription le système a créé une prestation et un tarif par défaut, qu'il suffit de supprimer pour en recréer un à votre convenance.
         <br><br>
@@ -189,17 +158,17 @@
         <br>
         Pour pointer une heure d'arrivée, cochez "Pointage", sinon, le pointage correspondra à l'heure de départ.
       </p>
-        <div class="card col-md-4 mx-auto my-4">
-          <div class="img-thumbnail">
+        <div class="card w-full md:w-4/12 px-2 mx-auto my-6">
+          <div class="max-w-full h-auto rounded-lg border border-slate-200">
             <a href="/guide/prestation_type_form.png">
               <img src="/guide/prestation_type_form.png" alt="Formulaire type de prestation" style="width:100%">
             </a>
-            <div class="card-footer">
+            <div class="card-actions px-6 pb-5">
               <p class="text-center">Formulaire type de prestation</p>
             </div>
           </div>
         </div>
-      <p class="lead">
+      <p class="text-lg">
         Maintenant que l'organisation et les prestations fournies sont correctement paramétrées, nous pouvons ajouter Familles, 
         Enfants et Réservations.
       </p>
@@ -207,36 +176,36 @@
 
     <div id="ajout_famille">
     </div>
-    <section class="mb-5">
-      <h4 class="text-secondary fw-bold">Ajouter un Compte famille<hr></h4>
-      <p class="lead">
+    <section class="mb-12">
+      <h4 class="text-secondary font-bold">Ajouter un Compte famille<hr></h4>
+      <p class="text-lg">
         Pour ajouter un compte Famille, rendez-vous sur la page "Comptes" et cliquez sur le lien "(+) Ajouter un Compte".
       </p>
 
-      <div class="row">
-        <div class="card col-md-6 mx-auto my-4">
-          <div class="img-thumbnail">
+      <div class="flex flex-wrap -mx-2">
+        <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+          <div class="max-w-full h-auto rounded-lg border border-slate-200">
             <a href="/guide/compte_form.png">
               <img src="/guide/compte_form.png" alt="Formulaire compte" style="width:100%">
             </a>
-            <div class="card-footer">
+            <div class="card-actions px-6 pb-5">
               <p class="text-center">Formulaire compte</p>
             </div>
           </div>
         </div>
-        <div class="card col-md-6 mx-auto my-4">
-          <div class="img-thumbnail">
+        <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+          <div class="max-w-full h-auto rounded-lg border border-slate-200">
             <a href="/guide/compte.png">
               <img src="/guide/compte.png" alt="Compte" style="width:100%">
             </a>
-            <div class="card-footer">
+            <div class="card-actions px-6 pb-5">
               <p class="text-center">Compte</p>
             </div>
           </div>
         </div>
       </div>
 
-      <p class="lead">
+      <p class="text-lg">
         La liste des Contacts permet de conserver les coordonnées de tous les contacts liés (maman, papa, tonton, mamie, etc).
         <br><br>
         Pour supprimer un Contact, cochez "Supprimer?" et appuyez sur le bouton "Enregistrer"; la demande de suppression sera alors effectuée.
@@ -254,9 +223,9 @@
 
     <div id="ajout_enfant">
     </div>
-    <section class="mb-5">
-      <h4 class="text-secondary fw-bold">Ajouter un enfant<hr></h4>
-      <p class="lead">
+    <section class="mb-12">
+      <h4 class="text-secondary font-bold">Ajouter un enfant<hr></h4>
+      <p class="text-lg">
         Pour ajouter un enfant, ouvrir la page "Comptes" et cliquez sur le nom du compte concerné. Cliquez sur "(+) Ajouter un enfant" et entrez les informations demandées, à commencer par sa classe et son nom (même s'il est identique à celui du compte).
         <br><br>
         Ne pas oublier de choisir le tarif adapté et de signaler les allergies éventuelles.
@@ -268,22 +237,22 @@
 
     <div id="reservations">
     </div>
-    <section class="mb-5">
-      <h4 class="text-secondary fw-bold">Réservations (Inscrire un enfant à des prestations)<hr></h4>
-      <p class="lead">
+    <section class="mb-12">
+      <h4 class="text-secondary font-bold">Réservations (Inscrire un enfant à des prestations)<hr></h4>
+      <p class="text-lg">
         Il s'agit maintenant de réserver une prestation parmi celles que vous avez créées lors du paramètrage des Tarifs.
       </p>
-        <div class="card col-md-6 mx-auto my-4">
-          <div class="img-thumbnail">
+        <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+          <div class="max-w-full h-auto rounded-lg border border-slate-200">
             <a href="/guide/compte.png">
               <img src="/guide/compte.png" alt="Compte" style="width:100%">
             </a>
-            <div class="card-footer">
+            <div class="card-actions px-6 pb-5">
               <p class="text-center">Compte</p>
             </div>
           </div>
         </div>
-      <p class="lead">
+      <p class="text-lg">
         Pour éviter les saisies rébarbatives, une première réservation est proposée par défaut pour toute l'année scolaire. 
         <br><br>
         Pour ce faire, il suffit de choisir le Type de prestation, de donner une date de début, une date de fin et la quantité souhaitée pour chaque jour de la semaine.
@@ -292,7 +261,7 @@
         <br><br>
       </p>
 
-      <p class="lead">
+      <p class="text-lg">
         Pour inscrire un enfant à la fois à la cantine et à la garderie, il faudra donc deux lignes; une par Type de prestation.
         <br><br>
         Si vous souhaitez inscrire l'enfant au centre de loisir pour les vacances de Février; 
@@ -307,28 +276,28 @@
 
     <div id="prestations">
     </div>
-    <section class="mb-5">
-      <h4 class="text-secondary fw-bold">Les Prestations<hr></h4>
-      <p class="lead">
+    <section class="mb-12">
+      <h4 class="text-secondary font-bold">Les Prestations<hr></h4>
+      <p class="text-lg">
         Les prestations sont créées automatiquement chaque matin, dès potron-minet, sur la base des réservations.
         <br><br>
         Pour connaitre les prestations qui ont été consommées et qui seront donc ajoutées automatiquement lors du traitement, 
         il faut se rendre sur la page "Administration/Comptabilisation des prestations" et cliquer sur "Lancer". 
         <br><br>
         Un rapport affichera le détail des prestations succeptibles d'être ajoutées. 
-        <div class="card col-md-6 mx-auto my-4">
-          <div class="img-thumbnail">
+        <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+          <div class="max-w-full h-auto rounded-lg border border-slate-200">
             <a href="/guide/comptabilisation_prestation.png">
               <img src="/guide/comptabilisation_prestation.png" alt="Comptabilisation des prestations consommées" style="width:100%">
             </a>
-            <div class="card-footer">
+            <div class="card-actions px-6 pb-5">
               <p class="text-center">Comptabilisation des prestations consommées</p>
             </div>
           </div>
         </div>
       </p>
 
-      <p class="lead">
+      <p class="text-lg">
         Si une prestation n'a pas été consommée, vous pouvez soit la modifier, 
         soit la supprimer en allant sur l'onglet 'Prestations' si vous souhaitez que la prestation
         n'apparaisse pas sur la facture.
@@ -339,25 +308,25 @@
 
     <div id="absences">
     </div>
-    <section class="mb-5">
-      <h4 class="text-secondary fw-bold">Les Absences<hr></h4>
-      <p class="lead">
+    <section class="mb-12">
+      <h4 class="text-secondary font-bold">Les Absences<hr></h4>
+      <p class="text-lg">
         Pour ajouter une Absence, rendez-vous sur la fiche de l'enfant concerné 
         (en allant que l'onglet "Enfants" puis en cliquant sur son Prénom).
         <br><br>
       </p>
       
-      <p class="lead">
+      <p class="text-lg">
         Cliquez sur "(+) Ajouter une Absence" et renseignez les informations demandées, 
         à savoir les dates de début et de fin d'absence, ainsi que la période (matin, midi, soir).
       </p>
 
-      <div class="card col-md-4 mx-auto my-4">
-        <div class="img-thumbnail">
+      <div class="card w-full md:w-4/12 px-2 mx-auto my-6">
+        <div class="max-w-full h-auto rounded-lg border border-slate-200">
           <a href="/guide/absence_form.png">
             <img src="/guide/absence_form.png" alt="Formulaire absence" style="width:100%">
           </a>
-          <div class="card-footer">
+          <div class="card-actions px-6 pb-5">
             <p class="text-center">Formulaire absence</p>
           </div>
         </div>
@@ -366,32 +335,32 @@
 
     <div id="facturation">
     </div>
-    <section class="mb-5">
-      <h4 class="text-secondary fw-bold">La Facturation<hr></h4>
-      <p class="lead">
+    <section class="mb-12">
+      <h4 class="text-secondary font-bold">La Facturation<hr></h4>
+      <p class="text-lg">
         La facturation consiste à regrouper les prestations consommées durant une période et d'en établir une facture par compte.
         <br><br>
         Pour lancer la "Facturation", rendez-vous sur la page "Administration/Facturation prestations" 
         et cliquez sur "Lancer" une fois la période choisie.
         <br><br>
         Une facture par compte sera alors créée, avec le détails des prestations consommées par enfant.
-      <div class="row">
-        <div class="card col-md-6 mx-auto my-4">
-          <div class="img-thumbnail">
+      <div class="flex flex-wrap -mx-2">
+        <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+          <div class="max-w-full h-auto rounded-lg border border-slate-200">
             <a href="/guide/facturation_form.png">
               <img src="/guide/facturation_form.png" alt="Formulaire facturation" style="width:100%">
             </a>
-            <div class="card-footer">
+            <div class="card-actions px-6 pb-5">
               <p class="text-center">Formulaire facturation</p>
             </div>
           </div>
         </div>
-        <div class="card col-md-6 mx-auto my-4">
-          <div class="img-thumbnail">
+        <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+          <div class="max-w-full h-auto rounded-lg border border-slate-200">
             <a href="/guide/facturation_prestations.png">
               <img src="/guide/facturation_prestations.png" alt="Création facturation" style="width:100%">
             </a>
-            <div class="card-footer">
+            <div class="card-actions px-6 pb-5">
               <p class="text-center">Création facturation</p>
             </div>
           </div>
@@ -399,7 +368,7 @@
       </div>
       </p>
 
-      <p class="lead">
+      <p class="text-lg">
         Notez que par défaut les factures ne sont pas réellement créées. Un rapport détaillé est produit afin de voir ce qui serait facturé.
         <br><br>
         Pour créer et enregistrer réellement les factures, activer le bouton "Enregistrer les changements ?" 
@@ -410,42 +379,42 @@
 
     <div id="facture">
     </div>
-    <section class="mb-5">
-      <h4 class="text-secondary fw-bold">Facture manuelle<hr></h4>
-      <p class="lead">
+    <section class="mb-12">
+      <h4 class="text-secondary font-bold">Facture manuelle<hr></h4>
+      <p class="text-lg">
         Vous avez la possibilité d'ajouter une facture manuellement. Dans cette facture manuelle, la saisie de tous les éléments (montant, prestations et tarifs) est libre.
         <br><br>
         Pour ce faire, rendez-vous sur la page du Compte concerné et cliquez sur "Nouvelle facture". 
       </p>
-        <div class="card col-md-6 mx-auto my-4">
-          <div class="img-thumbnail">
+        <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+          <div class="max-w-full h-auto rounded-lg border border-slate-200">
             <a href="/guide/facture_speciale_form.png">
               <img src="/guide/facture_speciale_form.png" alt="Création facture manuelle" style="width:100%">
             </a>
-            <div class="card-footer">
+            <div class="card-actions px-6 pb-5">
               <p class="text-center">Création facture manuelle</p>
             </div>
           </div>
         </div>
-      <p class="lead">
+      <p class="text-lg">
         Une fois enregistrée, cette facture sera ajoutée à la liste des factures et comptabilisée dans le solde du compte.
       </p>
     </section>
 
     <div id="avoirs">
     </div>
-    <section class="mb-5">
-      <h4 class="text-secondary fw-bold">Avoirs<hr></h4>
-      <p class="lead">
+    <section class="mb-12">
+      <h4 class="text-secondary font-bold">Avoirs<hr></h4>
+      <p class="text-lg">
         Comme le montant de la facture manuelle est libre, vous pouvez créer des avoirs en indiquant un montant négatif.
       </p>
     </section>
 
     <div id="solde">
     </div>
-    <section class="mb-5">
-      <h4 class="text-secondary fw-bold">Le solde famille<hr></h4>
-      <p class="lead">
+    <section class="mb-12">
+      <h4 class="text-secondary font-bold">Le solde famille<hr></h4>
+      <p class="text-lg">
         Pour afficher le solde d'un compte famille, rendez-vous sur la page du compte concerné; 
         le solde apparaît dans un cartouche dédié.
       </p>
@@ -453,18 +422,18 @@
 
     <div id="balance">
     </div>
-    <section class="mb-5">
-      <h4 class="text-secondary fw-bold">Balance (Le relevé de compte)<hr></h4>
-      <p class="lead">
+    <section class="mb-12">
+      <h4 class="text-secondary font-bold">Balance (Le relevé de compte)<hr></h4>
+      <p class="text-lg">
         Pour voir la balance d'un compte, qui liste l'ensemble des opérations du compte (factures et paiements), 
         rendez-vous sur la page du compte concerné et cliquez sur le bouton "Balance".
       </p>
-      <div class="card col-md-6 mx-auto my-4">
-        <div class="img-thumbnail">
+      <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+        <div class="max-w-full h-auto rounded-lg border border-slate-200">
           <a href="/guide/balance.png">
             <img src="/guide/balance.png" alt="Balance" style="width:100%">
           </a>
-          <div class="card-footer">
+          <div class="card-actions px-6 pb-5">
             <p class="text-center">Balance</p>
           </div>
         </div>
@@ -473,37 +442,37 @@
 
     <div id="paiements">
     </div>
-    <section class="mb-5">
-      <h4 class="text-secondary fw-bold">Paiements (Remise de chèques)<hr></h4>
-      <p class="lead">
+    <section class="mb-12">
+      <h4 class="text-secondary font-bold">Paiements (Remise de chèques)<hr></h4>
+      <p class="text-lg">
         Pour saisir un paiement, rendez-vous sur le compte concerné et cliquez sur "Ajouter un paiement". 
         Une fois le paiement enregistré, le solde du compte est mis à jour automatiquement.
         <br><br>
         Vous retrouverez l'ensemble des paiements dans l'onglet 'Paiements'.
       </p>
-      <div class="row">
-        <div class="card col-md-4 mx-auto my-4">
-          <div class="img-thumbnail">
+      <div class="flex flex-wrap -mx-2">
+        <div class="card w-full md:w-4/12 px-2 mx-auto my-6">
+          <div class="max-w-full h-auto rounded-lg border border-slate-200">
             <a href="/guide/paiement_form.png">
               <img src="/guide/paiement_form.png" alt="Formulaire paiement" style="width:100%">
             </a>
-            <div class="card-footer">
+            <div class="card-actions px-6 pb-5">
               <p class="text-center">Formulaire paiement</p>
             </div>
           </div>
         </div>
-        <div class="card col-md-6 mx-auto my-4">
-          <div class="img-thumbnail">
+        <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+          <div class="max-w-full h-auto rounded-lg border border-slate-200">
             <a href="/guide/paiements.png">
               <img src="/guide/paiements.png" alt="Liste des paiements" style="width:100%">
             </a>
-            <div class="card-footer">
+            <div class="card-actions px-6 pb-5">
               <p class="text-center">Liste des paiements</p>
             </div>
           </div>
         </div>
       </div>
-      <p class="lead">
+      <p class="text-lg">
         Pour exporter la liste des paiements vers Excel, il suffit de filtrer la liste des paiements 
         selon la structure, période, mode de paiement, puis, une fois la liste voulue sous les yeux 
         cliquez sur le bouton "Export XLS" pour générer une feuille de calcul Excel basée sur les éléments affichés.
@@ -512,44 +481,44 @@
 
     <div id="portail">
     </div>
-    <section class="mb-5">
-      <h4 class="text-secondary fw-bold">Portail Parents<hr></h4>
-      <p class="lead">
+    <section class="mb-12">
+      <h4 class="text-secondary font-bold">Portail Parents<hr></h4>
+      <p class="text-lg">
         Le portail Parents permet à un visiteur (ex: un parent) de consulter son compte.  
         Une fois connecté, le visiteur a un accès limité à l'application. Il a accès aux informations non sensibles du compte auquel il est associé. 
         Il y retrouvera ses réservations ainsi que son relevé de compte. Le visiteur pourra ainsi voir s'il doit de l'argent et visualiser/imprimer 
         ses factures. Il pourra aussi effectuer un paiement en CB afin d'alimenter son compte (sous réserve de mise en place d'une passerelle avec votre banque).
       </p>
-      <div class="row">
-        <div class="card col-6 mx-auto my-4 me-3">
-          <div class="img-thumbnail">
+      <div class="flex flex-wrap -mx-2">
+        <div class="card w-6/12 px-2 mx-auto my-6 mr-4">
+          <div class="max-w-full h-auto rounded-lg border border-slate-200">
             <a href="/guide/portail_parent.png">
               <img src="/guide/portail_parent.png" alt="Portail Parents" style="width:100%">
             </a>
-            <div class="card-footer">
+            <div class="card-actions px-6 pb-5">
               <p class="text-center">Portail Parents (format PC)</p>
             </div>
           </div>
         </div>
-        <div class="card col mx-auto my-4">
-          <div class="row">
-            <div class="col img-thumbnail shadow me-3">
+        <div class="card flex-1 px-2 mx-auto my-6">
+          <div class="flex flex-wrap -mx-2">
+            <div class="flex-1 px-2 max-w-full h-auto rounded-lg border border-slate-200 shadow mr-4">
               <a href="/guide/mobile_moncompte_releve.png">
                 <img src="/guide/mobile_moncompte_releve.png" alt="Portail Parents mobile : relevé" style="width:100%">
               </a>
             </div>
-            <div class="col img-thumbnail shadow">
+            <div class="flex-1 px-2 max-w-full h-auto rounded-lg border border-slate-200 shadow">
               <a href="/guide/mobile_moncompte_factures.png">
                 <img src="/guide/mobile_moncompte_factures.png" alt="Portail Parents mobile : factures" style="width:100%">
               </a>
             </div>
           </div>
-          <div class="card-footer">
+          <div class="card-actions px-6 pb-5">
             <p class="text-center">Format mobile</p>
           </div>
         </div>
       </div>
-      <p class="lead">
+      <p class="text-lg">
         Le visiteur pourra ajouter des réservations. Ces prestations nouvellement ajoutées devront être validées par un utilisateur de votre organisation.   
         <br><br>
         Pour donner l'accès à un visiteur, allez dans "Administration/Utilisateurs" 
@@ -564,27 +533,27 @@
 
   <div id="modules">
   </div>
-  <section class="mb-5">
-    <div class="pb-2 mt-4">
-      <h2 class="fw-light">Descriptions des modules </h2>
+  <section class="mb-12">
+    <div class="pb-2 mt-6">
+      <h2 class="font-light">Descriptions des modules </h2>
     </div>
-    <p class="lead mb-2">
+    <p class="text-lg mb-2">
     <%= @site_name %> 
     se présente sous la forme de 7 modules;  Comptes, Enfants, Réservations, Absences, 
     Prestations, Factures, Paiements, qui vont vous permettre d'accéder aux données du même nom. 
     </p>
     <br>
 
-    <div class="row">
-      <div class="col">
-        <div class="pb-1 mt-2 mb-1 border-bottom">
-          <h4 class="text-secondary fw-bold">
-            <%= fa_icon 'users', class: 'text-dark' %>
+    <div class="flex flex-wrap -mx-2">
+      <div class="flex-1 px-2">
+        <div class="pb-1 mt-2 mb-1 border-b border-slate-200">
+          <h4 class="text-secondary font-bold">
+            <%= mi_icon 'users', class: 'text-slate-800' %>
             Comptes
           </h4>
         </div>
         <p>
-          <ul class="lead">
+          <ul class="text-lg">
             <li>Un compte est attaché à une organisation</li>
             <li>Un compte est composé d'un nom, d'une adresse, un numéro d'allocataire et d'un mémo</li>
             <li>Un compte contient les coordonnées des personnes à contacter</li>
@@ -596,15 +565,15 @@
           </ul>
         </p>
       </div>
-      <div class="col">
-        <div class="pb-1 mt-2 mb-1 border-bottom">
-          <h4 class="text-secondary fw-bold">
-            <%= fa_icon 'child', class: 'text-primary' %>
+      <div class="flex-1 px-2">
+        <div class="pb-1 mt-2 mb-1 border-b border-slate-200">
+          <h4 class="text-secondary font-bold">
+            <%= mi_icon 'child', class: 'text-primary' %>
             Enfants
           </h4>
         </div>
         <p>
-          <ul class="lead">
+          <ul class="text-lg">
             <li>Un enfant est associé à un compte (famille)</li>
             <li>Un enfant est lié à une structure et à une classe</li>
             <li>Un enfant est composé d'un nom, prénom, date de naissance, N° de badge, préférences alimentaires (sans porc, sans allergènes) et d'un tarif</li>
@@ -613,14 +582,14 @@
           </ul>
         </p>
 
-        <div class="pb-1 mt-2 mb-1 border-bottom">
-          <h4 class="text-secondary fw-bold">
-            <%= fa_icon 'calendar-times', class: 'text-danger' %>
+        <div class="pb-1 mt-2 mb-1 border-b border-slate-200">
+          <h4 class="text-secondary font-bold">
+            <%= mi_icon 'calendar-times', class: 'text-error' %>
             Absences
           </h4>
         </div>
         <p>
-          <ul class="lead">
+          <ul class="text-lg">
             <li>Une absence est liée à un enfant</li>
             <li>Une absence est composée d'un début, d'une fin, d'une période (matin/midi/soir)</li>
           </ul>
@@ -629,44 +598,44 @@
       </div>
     </div>
 
-    <div id="pointage" class="pb-1 mt-2 mb-1 border-bottom">
-      <h4 class="text-secondary fw-bold">
-        <%= fa_icon 'calendar-check', class: 'text-success' %>
+    <div id="pointage" class="pb-1 mt-2 mb-1 border-b border-slate-200">
+      <h4 class="text-secondary font-bold">
+        <%= mi_icon 'calendar-check', class: 'text-success' %>
         Pointage
       </h4>
     </div>
-    <p class="lead">
+    <p class="text-lg">
       Pour les prestations de type non forfaitaire (ex: garderie facturée au temps passé), il est important de savoir les heures d'arrivées et de départs des enfants.
       Cette liste présente l'ensemble des prestations devant être pointées pour pouvoir être facturées.
       Pour pointer une prestation, cliquez sur le bouton modifier, et saisissez la date d'arrivée ou de départ, puis enregistrer.
       Pour pointer rapidement un ensemble de prestations à l'instant T, cochez la case à gauche des prestations,et choisissez l'action "Pointer les arrivées/départs à l'instant T".
     </p>
 
-    <div class="card col-md-6 mx-auto my-4">
-      <div class="img-thumbnail">
+    <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+      <div class="max-w-full h-auto rounded-lg border border-slate-200">
         <a href="/guide/pointages.png">
           <img src="/guide/pointages.png" alt="Liste des pointages" style="width:100%">
         </a>
-        <div class="card-footer">
+        <div class="card-actions px-6 pb-5">
           <p class="text-center">Liste des pointages</p>
         </div>
       </div>
     </div>
 
-    <div class="pb-1 mt-5 mb-1 border-bottom">
-      <h4 class="text-secondary fw-bold">
-        <%= fa_icon 'calendar-alt', class: 'text-warning' %>
+    <div class="pb-1 mt-12 mb-1 border-b border-slate-200">
+      <h4 class="text-secondary font-bold">
+        <%= mi_icon 'calendar-alt', class: 'text-warning' %>
         Réservations
       </h4>
     </div>
     <p>
-      <ul class="lead">
+      <ul class="text-lg">
         <li>Une réservation est composée d'un Type de prestation, d'une date de début et de fin, d'une quantité par jour de la semaine, de la période (matin/midi/soir)</li>
         <li>Une réservation est en période scolaire ou hors période scolaire</li>
         <li>Une réservation peut être active ou inactive</li>
         <li>
           Exemple:
-          <ul class="lead">
+          <ul class="text-lg">
             <li>Mathieu PETIT a une réservation pour un Repas, tous les jours de la semaine sauf le mercredi</li>
             <li>Mathieu PETIT a une réservation pour 1 heure de Garderie, tous les jours, le matin, sauf mercredi</li>
             <li>Mathieu PETIT a une réservation pour 1,5 heure de Garderie, tous les jours, le soir, sauf mercredi</li>
@@ -674,42 +643,42 @@
           </ul>
         </li>
       </ul>
-      <div class="card col-md-6 mx-auto my-4">
-        <div class="img-thumbnail">
+      <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+        <div class="max-w-full h-auto rounded-lg border border-slate-200">
           <a href="/guide/réservations.png">
             <img src="/guide/réservations.png" alt="Liste des réservations" style="width:100%">
           </a>
-          <div class="card-footer">
+          <div class="card-actions px-6 pb-5">
             <p class="text-center">Liste des réservations</p>
           </div>
         </div>
       </div>
     </p>
 
-    <div class="pb-1 mt-2 mb-1 border-bottom">
-      <h4 class="text-secondary fw-bold">
-        <%= fa_icon 'utensils', class: 'text-secondary' %>
+    <div class="pb-1 mt-2 mb-1 border-b border-slate-200">
+      <h4 class="text-secondary font-bold">
+        <%= mi_icon 'utensils', class: 'text-secondary' %>
         Prestations
       </h4>
     </div>
-    <p class="lead">
+    <p class="text-lg">
       À lieu, chaque matin, dès potron-minet, la comptabilisation automatique des prestations consommées la veille.
       Cette comptabilisation est effectuée sur la base des réservations actives
     </p>
-    <div class="card col-md-6 mx-auto my-4">
-      <div class="img-thumbnail">
+    <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+      <div class="max-w-full h-auto rounded-lg border border-slate-200">
         <a href="/guide/prestations.png">
           <img src="/guide/prestations.png" alt="Liste des prestations" style="width:100%">
         </a>
-        <div class="card-footer">
+        <div class="card-actions px-6 pb-5">
           <p class="text-center">Liste des prestations</p>
         </div>
       </div>
     </div>
     <p>
-      <ul class="lead">
+      <ul class="text-lg">
         <li>Les prestations sont comptabilisées en fonction de la période, Scolaire/HorsScolaire :</li>
-        <ul class="lead">
+        <ul class="text-lg">
           <li>sont comptabilisées les prestations dont la réservation n'est PAS "Hors Période Scolaire" si c'est un jour hors période de vacances scolaires</li>
           <li>sont comptabilisées les prestations dont la réservation est "Hors Période Scolaire" si ce n'est PAS un jour en période de vacances scolaires</li>
           <li>sont comptabilisées les prestations dont la réservation n'est PAS "Hors Période Scolaire" si ce jour n'est pas en période de vacances scolaires</li>
@@ -720,24 +689,24 @@
       </ul>
     </p>
 
-    <div class="pb-1 mt-2 mb-1 border-bottom">
-      <h4 class="text-secondary fw-bold">
-        <%= fa_icon 'file-invoice', class: 'text-info' %>
+    <div class="pb-1 mt-2 mb-1 border-b border-slate-200">
+      <h4 class="text-secondary font-bold">
+        <%= mi_icon 'file-invoice', class: 'text-info' %>
         Factures
       </h4>
     </div>
-    <div class="card col-md-6 mx-auto my-4">
-      <div class="img-thumbnail">
+    <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+      <div class="max-w-full h-auto rounded-lg border border-slate-200">
         <a href="/guide/factures.png">
           <img src="/guide/factures.png" alt="Liste des factures" style="width:100%">
         </a>
-        <div class="card-footer">
+        <div class="card-actions px-6 pb-5">
           <p class="text-center">Liste des factures</p>
         </div>
       </div>
     </div>
     <p>
-      <ul class="lead">
+      <ul class="text-lg">
         <li>Les prestations consommées sont facturées à la demande, pour tous les comptes d'une organisation</li>
         <li>Une facture est créée par mois et par compte. Y figure le détail des prestations par enfant</li>
         <li>Les prestations sont facturées selon le tarif auquel est soumis l'enfant</li>
@@ -746,31 +715,31 @@
       </ul>
     </p>
 
-    <div class="row">
-      <div class="col">
-        <div class="pb-1 mt-2 mb-1 border-bottom">
-          <h4 class="text-secondary fw-bold">
-            <%= fa_icon 'euro-sign', class: 'text-dark' %>
+    <div class="flex flex-wrap -mx-2">
+      <div class="flex-1 px-2">
+        <div class="pb-1 mt-2 mb-1 border-b border-slate-200">
+          <h4 class="text-secondary font-bold">
+            <%= mi_icon 'euro-sign', class: 'text-slate-800' %>
             Tarifs
           </h4>
         </div>
         <p>
-          <ul class="lead">
+          <ul class="text-lg">
             <li>Un tarif est le prix d'un Type de prestation selon un type de Tarif</li>
             <li>Les Types de prestations (Cantine, Garderie, etc.) sont configurables à votre convenance</li>
             <li>Les types de tarifs (Plein, Demi-tarif, QF1/2/3/4/5, etc...) aussi</li>
           </ul>
         </p>
       </div>
-      <div class="col">
-        <div class="pb-1 mt-2 mb-1 border-bottom">
-          <h4 class="text-secondary fw-bold">
-            <i class="far fa-money-bill-alt text-success"></i>
+      <div class="flex-1 px-2">
+        <div class="pb-1 mt-2 mb-1 border-b border-slate-200">
+          <h4 class="text-secondary font-bold">
+            <%= mi_icon 'money-bill-alt', class: 'text-success' %>
             Paiements
           </h4>
         </div>
         <p>
-          <ul class="lead">
+          <ul class="text-lg">
             <li>Les paiements reçus sont enregistrés afin d'établir une balance de compte</li>
             <li>Chaque compte dispose d'un relevé qui liste l'ensemble des opérations (factures/paiements) et le soles après chaque opération</li>
             <li>La liste des paiements peut s'exporter au format XLS</li>
@@ -779,16 +748,16 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col">
-        <div class="pb-1 mb-1 border-bottom">
-          <h4 class="text-secondary fw-bold">
-            <%= fa_icon 'city', class: 'text-muted' %>
+    <div class="flex flex-wrap -mx-2">
+      <div class="flex-1 px-2">
+        <div class="pb-1 mb-1 border-b border-slate-200">
+          <h4 class="text-secondary font-bold">
+            <%= mi_icon 'city', class: 'text-slate-500' %>
             Organisation
           </h4>
         </div>
         <p>
-          <ul class="lead">
+          <ul class="text-lg">
             <li>Une organisation (Mairie, Association,...) est composée d'un nom, d'une adresse, une zone (vacances scolaires) et d'un logo</li>
             <li>Une organisation a une ou plusieurs structures</li>
             <li>Un compte utilisateur de type administrateur est associé à une organisation lors de l'inscription</li>
@@ -797,15 +766,15 @@
           </ul>
         </p>
       </div>
-      <div class="col">
-        <div class="pb-1 mb-1 border-bottom">
-          <h4 class="text-secondary fw-bold">
-            <%= fa_icon 'school', class: 'text-muted' %>
+      <div class="flex-1 px-2">
+        <div class="pb-1 mb-1 border-b border-slate-200">
+          <h4 class="text-secondary font-bold">
+            <%= mi_icon 'school', class: 'text-slate-500' %>
             Structures
           </h4>
         </div>
         <p>
-          <ul class="lead">
+          <ul class="text-lg">
             <li>Une structure est composée d'un nom (École, Cantine, Garderie, Halte, Centre périscolaire,...)</li>
             <li>Une structure contient des classes</li>
             <li>Une structure contient des comptes</li>
@@ -814,23 +783,23 @@
         </p>
       </div>
     </div>
-    <div class="row">
-      <div class="card col-md-6 mx-auto my-4">
-        <div class="img-thumbnail">
+    <div class="flex flex-wrap -mx-2">
+      <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+        <div class="max-w-full h-auto rounded-lg border border-slate-200">
           <a href="/guide/organisation.png">
             <img src="/guide/organisation.png" alt="Organisation" style="width:100%">
           </a>
-          <div class="card-footer">
+          <div class="card-actions px-6 pb-5">
             <p class="text-center">Organisation</p>
           </div>
         </div>
       </div>
-      <div class="card col-md-6 mx-auto my-4">
-        <div class="img-thumbnail">
+      <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+        <div class="max-w-full h-auto rounded-lg border border-slate-200">
           <a href="/guide/structure.png">
             <img src="/guide/structure.png" alt="Structure" style="width:100%">
           </a>
-          <div class="card-footer">
+          <div class="card-actions px-6 pb-5">
             <p class="text-center">Structure</p>
           </div>
         </div>
@@ -838,17 +807,17 @@
     </div>
 
     <div id="administration">
-      <div class="pb-1 mt-2 mb-1 border-bottom">
-        <h4 class="text-secondary fw-bold">
-          <%= fa_icon 'users-cog', class: 'text-success' %>
+      <div class="pb-1 mt-2 mb-1 border-b border-slate-200">
+        <h4 class="text-secondary font-bold">
+          <%= mi_icon 'users-cog', class: 'text-success' %>
           Administration
         </h4>
       </div>
 
       <p>
-        <ul class="lead">
+        <ul class="text-lg">
           <li>Importation des données:</li>
-          <ul class="lead">
+          <ul class="text-lg">
             <li>
               Les données de compte, contact, enfant, réservation peuvent être importées d'un fichier au format Excel 97-2003 (.xls).
               Ce fichier doit contenir les colonnes suivantes :
@@ -857,50 +826,50 @@
               Exemple de fichier : Fichier.xls 
             </li>
           </ul>
-          <div class="card col-md-6 mx-auto my-4">
-            <div class="img-thumbnail">
+          <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+            <div class="max-w-full h-auto rounded-lg border border-slate-200">
               <a href="/guide/import.png">
                 <img src="/guide/import.png" alt="Formulaire d'importation" style="width:100%">
               </a>
-              <div class="card-footer">
+              <div class="card-actions px-6 pb-5">
                 <p class="text-center">Formulaire d'importation</p>
               </div>
             </div>
           </div>
           <li>Audit des modifications :</li>
-          <ul class="lead">
+          <ul class="text-lg">
             <li>
               Chaque modification de donnée est enregistrée dans un journal, avec la date, l'utilisateur, la table, le champs et la valeur avant/après modification.
             </li>
           </ul>
-          <div class="card col-md-6 mx-auto my-4">
-            <div class="img-thumbnail">
+          <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+            <div class="max-w-full h-auto rounded-lg border border-slate-200">
               <a href="/guide/audit.png">
                 <img src="/guide/audit.png" alt="Formulaire d'importation" style="width:100%">
               </a>
-              <div class="card-footer">
+              <div class="card-actions px-6 pb-5">
                 <p class="text-center">Formulaire d'importation</p>
               </div>
             </div>
           </div>
           <li>Utilisateurs :</li>
-          <ul class="lead">
+          <ul class="text-lg">
             <li>
               Il existe trois types de compte utilisateur; visiteur (pour accès via le portail parent), vip ou administrateur. 
             </li>
           </ul>
-          <div class="card col-md-6 mx-auto my-4">
-            <div class="img-thumbnail">
+          <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+            <div class="max-w-full h-auto rounded-lg border border-slate-200">
               <a href="/guide/utilisateurs.png">
                 <img src="/guide/utilisateurs.png" alt="Utilisateurs" style="width:100%">
               </a>
-              <div class="card-footer">
+              <div class="card-actions px-6 pb-5">
                 <p class="text-center">Utilisateurs</p>
               </div>
             </div>
           </div>
           <li id="messages">Messages :</li>
-          <ul class="lead">
+          <ul class="text-lg">
             <li>
               Un utilisateur qui reçoit une facture, a la possibilité de communiquer avec le gestionnaire de la facturation au moyen des "Messages".
               L'arrivée d'un nouveau message est signalée par une notification par mail et d'une pastille rouge dans le menu d'administration.
@@ -908,28 +877,28 @@
               Pour répondre facilement à un message, il suffit de cliquer sur l'email de l'expéditeur.
             </li>
           </ul>
-          <div class="card col-md-6 mx-auto my-4">
-            <div class="img-thumbnail">
+          <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+            <div class="max-w-full h-auto rounded-lg border border-slate-200">
               <a href="/guide/messages.png">
                 <img src="/guide/messages.png" alt="Liste des messages" style="width:100%">
               </a>
-              <div class="card-footer">
+              <div class="card-actions px-6 pb-5">
                 <p class="text-center">Liste des messages</p>
               </div>
             </div>
           </div>
           <li>Mail Logs:</li>
-          <ul class="lead">
+          <ul class="text-lg">
             <li>
               Permet de vérifier si un mail est arrivé à destination et s'il a été ouvert par son destinataire.
             </li>
           </ul>
-          <div class="card col-md-6 mx-auto my-4">
-            <div class="img-thumbnail">
+          <div class="card w-full md:w-6/12 px-2 mx-auto my-6">
+            <div class="max-w-full h-auto rounded-lg border border-slate-200">
               <a href="/guide/mail_logs.png">
                 <img src="/guide/mail_logs.png" alt="Liste des Mail Logs" style="width:100%">
               </a>
-              <div class="card-footer">
+              <div class="card-actions px-6 pb-5">
                 <p class="text-center">Liste des Mail Logs</p>
               </div>
             </div>

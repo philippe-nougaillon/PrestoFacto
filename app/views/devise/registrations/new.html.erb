@@ -1,67 +1,70 @@
-<div class="col-md-10 col-lg-7 shadow-sm rounded p-1 p-md-3 mx-auto mt-2 bg-body">
-  <h1 class="my-2 text-center">Inscription</h1>
+<div class="max-w-3xl mx-auto mt-4">
+  <div class="card bg-white shadow-sm border border-slate-200">
+    <div class="card-body">
+      <h1 class="text-3xl font-title font-bold text-primary text-center mb-6">Inscription</h1>
 
-  <%- if devise_mapping.omniauthable? %>
-    <%- resource_class.omniauth_providers.each do |provider| %>
-      <%= form_for "Login",
-        url: omniauth_authorize_path(resource_name, provider),
-        method: :post,
-        data: {turbo: "false"} do |f| %>
-          <div>
-            <button id="google_button" type="submit" style ="color: #444;border-radius: 5px;border: thin solid #888;box-shadow: 1px 1px 1px grey;white-space: nowrap;" class="btn w-100 py-2">
-              <%= image_tag "Google__G__logo.svg" %>
-              <span class="ms-2">S'incrire automatiquement avec un compte Google</span>
+      <%- if devise_mapping.omniauthable? %>
+        <%- resource_class.omniauth_providers.each do |provider| %>
+          <%= form_for "Login",
+            url: omniauth_authorize_path(resource_name, provider),
+            method: :post,
+            data: { turbo: "false" } do |f| %>
+            <button type="submit" class="btn btn-outline w-full bg-white border-slate-300 text-slate-700 hover:bg-slate-50 font-normal normal-case">
+              <%= image_tag "Google__G__logo.svg", class: "w-5 h-5" %>
+              <span>S'inscrire automatiquement avec un compte Google</span>
             </button>
-          </div>
-      <% end %>
-    <% end %>
-    <p class="text-center text-danger fs-5 mt-4">Ou</p>
-  <% end %>
-
-  <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-
-    <div class="form-group">
-      <%= f.email_field :email, value: params[:email], autofocus: false, required: true, autocomplete: "email", class: "form-control col-sm-3" %>
-
-      <div class="row">
-        <div class="col">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> caractères minimum)</em>
+          <% end %>
         <% end %>
-          <%= f.password_field :password, value: params[:password], required: true, hide_label: true, autocomplete: "new-password", class: "form-control" %>
-        </div>
-        <div class="col">
-          <%= f.label :password_confirmation %>
-          <%= f.password_field :password_confirmation, value: params[:password], hide_label: true, required: true, autocomplete: "new-password", class: "form-control" %>
-        </div>
-      </div>
-    
-      <%= f.label :organisation %>
-      <%= text_field_tag :organisation, params[:organisation], required: true, placeholder: "Le nom de votre ASSOCIATION/MAIRIE", class: "form-control col-sm-5" %>
-      <br>
-      
-      <div class="row">
-        <div class="col">
-          <%= f.label :structure, "Nom de la structure (CANTINE/GARDERIE/...)" %>
-          <%= text_field_tag :structure, params[:structure], required: true, value: ( params[:structure] || "Cantine"), class: "form-control col-sm-6" %>
-        </div>
-        <div class="col-4">
-          <%= f.label :zone, "Zone de vacances scolaires" %>
-          <%= select_tag :zone, options_for_select(['A', 'B', 'C'], (params[:zone] || 'A')), class: "form-control" %></div>
-        </div>
-      </div>
+        <div class="divider text-slate-400 text-xs">OU</div>
+      <% end %>
 
-      <br>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-      <%= recaptcha_tags unless Rails.env.development? %>
+        <%= f.email_field :email, value: params[:email], autofocus: false, required: true,
+                          autocomplete: "email", label: "Adresse email" %>
 
-      <div class="actions" data-turbo="false">
-        <%= f.submit "S'inscrire", class: "btn btn-outline-primary btn-lg  mt-2 w-100" %>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <%= f.password_field :password, value: params[:password], required: true,
+                               autocomplete: "new-password", label: "Mot de passe",
+                               help: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length) %>
+          <%= f.password_field :password_confirmation, value: params[:password], required: true,
+                               autocomplete: "new-password", label: "Confirmation du mot de passe" %>
+        </div>
+
+        <div class="w-full mb-4">
+          <%= label_tag :organisation, "Association / Mairie", class: DaisyFormBuilder::LABEL_CLASS %>
+          <%= text_field_tag :organisation, params[:organisation], required: true,
+                             placeholder: "Le nom de votre ASSOCIATION/MAIRIE",
+                             class: "input input-bordered w-full" %>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="md:col-span-2">
+            <%= label_tag :structure, "Nom de la structure (CANTINE/GARDERIE/...)", class: DaisyFormBuilder::LABEL_CLASS %>
+            <%= text_field_tag :structure, (params[:structure] || "Cantine"), required: true,
+                               class: "input input-bordered w-full" %>
+          </div>
+          <div>
+            <%= label_tag :zone, "Zone de vacances scolaires", class: DaisyFormBuilder::LABEL_CLASS %>
+            <%= select_tag :zone, options_for_select(['A', 'B', 'C'], (params[:zone] || 'A')),
+                           class: "select select-bordered w-full" %>
+          </div>
+        </div>
+
+        <div class="my-4">
+          <%= recaptcha_tags unless Rails.env.development? %>
+        </div>
+
+        <div data-turbo="false">
+          <%= f.submit "S'inscrire", class: "btn btn-primary text-white w-full" %>
+        </div>
+      <% end %>
+
+      <%# Pas de devise/shared/links : il répéterait le bouton Google du haut de page. %>
+      <div class="mt-6 pt-4 border-t border-slate-200 text-sm text-center">
+        <%= link_to "Déjà inscrit ? Se connecter", new_session_path(resource_name), class: "link link-primary" %>
       </div>
     </div>
-
-  <% end %>
-
+  </div>
 </div>

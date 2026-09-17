@@ -1,16 +1,16 @@
-<tr>
+<tr class="row-hover">
     <td><%= user.email %></td>
     <td><%= user.role.humanize %></td>
     <td><% if policy(user).edit? %>
             <%= link_to  edit_user_path(user) do %>
-                <%= fa_icon 'edit' %>
+                <%= mi_icon 'edit' %>
             <% end %>
         <% end %>
     </td>
     <td>
         <% if policy(user).destroy? %>
-            <%= button_to users_admin_path(user), method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class:'btn btn-sm' do %>
-                <%= fa_icon 'trash-alt', class: 'text-danger' %>
+            <%= button_to users_admin_path(user), method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class:'btn btn-sm btn-ghost' do %>
+                <%= mi_icon 'trash-alt', class: 'text-error' %>
             <% end %>
         <% end %>
     </td>

@@ -1,4 +1,4 @@
-<%= bootstrap_form_with(model: @user, url: '/users_admin', local: true) do |form| %>
+<%= form_with(model: @user, url: '/users_admin', local: true) do |form| %>
 
   <% if user.errors.any? %>
     <div id="error_explanation">
@@ -12,14 +12,14 @@
     </div>
   <% end %>
 
-  <div class="col-sm-5">
+  <div class="w-full sm:w-5/12 px-2">
     <%= form.text_field :email, required: true %>
     <%= form.password_field :password, required: true, label: 'Mot de passe' %>
     <%= form.password_field :password_confirmation, required: true, label: 'Confirmation du mot de passe' %>
     <%= form.select :role, options_for_select(User.roles.keys.to_a), label: 'Rôle' %>
     <br />
 
-    <%= form.submit "Enregistrer", class: "btn btn-outline-success", 'data-turbo': false %>
+    <%= form.submit "Enregistrer", class: "btn btn-outline btn-success", 'data-turbo': false %>
   </div>
 
 <% end %>

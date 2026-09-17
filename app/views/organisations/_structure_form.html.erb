@@ -1,11 +1,11 @@
 <div class="nested-form-wrapper" data-new-record="<%= f.object.new_record? %>">
-  <div class="row">
-    <div class="col-sm-8">
+  <div class="flex flex-wrap -mx-2">
+    <div class="w-full sm:w-8/12 px-2">
       <%= f.text_field :nom, label_as_placeholder: true %>
     </div>
     <% unless f.object.classrooms.any? %>
-      <div class="col">
-        <a type="button" data-action="nested-form#remove"><%= fa_icon 'trash-alt', class:"text-danger mt-2" %></a>
+      <div class="flex-1 px-2">
+        <a type="button" data-action="nested-form#remove"><%= mi_icon 'trash-alt', class:"text-error mt-2" %></a>
       </div>
     <% end %>
   </div>

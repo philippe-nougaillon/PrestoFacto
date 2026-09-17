@@ -1,38 +1,38 @@
-<div class="min-vh-100 row flex-lg-row align-items-center justify-content-center">
-  <div class="col-lg-7">
-    <h1 class="display-3 lh-1 mb-3">PrestoFacto</h1>
-    <h2 class="display-7 mb-3">Facturation de vos services journaliers<h2>
-    <h3 class="display-8 fw-lighter">Aide les petites organisations dans la gestion et la facturation de leurs prestations (repas, garderie, activités périscolaires, nuitée d'hébergement, colonie de vacances, etc...)</h3>
-    <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-5">
-      <%= link_to new_user_registration_path, class: 'btn btn-outline-primary btn-lg px-4 w-50' do %>
-        <i class="fas fa-user-plus"></i>
+<div class="min-h-[80vh] flex flex-wrap -mx-2 lg:flex-row items-center justify-center">
+  <div class="w-full lg:w-7/12 px-2">
+    <h1 class="text-5xl md:text-6xl font-title font-bold leading-tight mb-4 text-primary">PrestoFacto</h1>
+    <h2 class="text-2xl md:text-3xl font-title mb-4 text-secondary">Facturation de vos services journaliers<h2>
+    <h3 class="text-lg font-light text-slate-600">Aide les petites organisations dans la gestion et la facturation de leurs prestations (repas, garderie, activités périscolaires, nuitée d'hébergement, colonie de vacances, etc...)</h3>
+    <div class="grid gap-2 md:flex md:justify-start mt-12">
+      <%= link_to new_user_registration_path, class: 'btn btn-outline btn-primary btn-lg px-6 w-1/2' do %>
+        <%= mi_icon 'user-plus' %>
         S'inscrire
       <% end %>
     </div>
   </div>
-  <div class="col-12 col-lg-5">
-    <%= image_tag "undraw_Mobile_payments_re_7udl.png", class: 'd-block mx-lg-auto img-fluid opacity-50 shadow-sm rounded-circle', alt: "Logo de #{ @site_name }", width: 700, height: 500, loading: 'lazy' %>
+  <div class="w-full lg:w-5/12 px-2">
+    <%= image_tag "undraw_Mobile_payments_re_7udl.png", class: 'block lg:mx-auto max-w-full h-auto opacity-50 shadow-sm rounded-full', alt: "Logo de #{ @site_name }", width: 700, height: 500, loading: 'lazy' %>
   </div>
 </div>
 
-<div class="my-4">
-  <div id="a_propos" class="row px-4 py-2 bg-light">
-    <div class="col-md">
-      <%= image_tag 'hands.png', class: 'img-fluid' %>
+<div class="my-6">
+  <div id="a_propos" class="flex flex-wrap -mx-2 px-6 py-2 bg-slate-100">
+    <div class="w-full md:flex-1 px-2">
+      <%= image_tag 'hands.png', class: 'max-w-full h-auto' %>
     </div>
-    <div class="col-md">
-      <h3 class="lh-1 mb-3 text-secondary fw-bold">Pour qui ?</h3>
-      <p class="lead mb-4">
+    <div class="w-full md:flex-1 px-2">
+      <h3 class="text-2xl mb-4 text-secondary font-bold">Pour qui ?</h3>
+      <p class="text-lg mb-6">
         PrestoFacto est destiné aux petites collectivités, associations, mairies, écoles, centre de loisirs, etc.
         <br>
         Cette solution vous aidera dans l’organisation de votre association et vous fera gagner un temps précieux en simplifiant la gestion administrative et la facturation de vos cantines et services périscolaires.</p>
     </div>
   </div>
 
-  <div class="row px-4 py-2">
-    <div class="col-md">
-      <h3 class="lh-1 mb-3 text-secondary fw-bold">Un usage simplifié</h3>
-      <p class="lead mb-4">
+  <div class="flex flex-wrap -mx-2 px-6 py-2">
+    <div class="w-full md:flex-1 px-2">
+      <h3 class="text-2xl mb-4 text-secondary font-bold">Un usage simplifié</h3>
+      <p class="text-lg mb-6">
         Prise en main immédiate.
         <br>Une comptabilité simple par famille. 
         Basée sur le principe de la réservation des prestations. 
@@ -43,18 +43,18 @@
         <%= link_to "Voir le guide d'utilisation", guide_path %>
       </p>
     </div>
-    <div class="col-md">
-      <%= image_tag 'stones.png', class: 'img-fluid' %>
+    <div class="w-full md:flex-1 px-2">
+      <%= image_tag 'stones.png', class: 'max-w-full h-auto' %>
     </div>
   </div>
 
-  <div class="row px-4 py-2 bg-light">
-    <div class="col-md">
-      <%= image_tag 'cloud.webp', class: 'img-fluid' %>
+  <div class="flex flex-wrap -mx-2 px-6 py-2 bg-slate-100">
+    <div class="w-full md:flex-1 px-2">
+      <%= image_tag 'cloud.webp', class: 'max-w-full h-auto' %>
     </div>
-    <div class="col-md">
-      <h3 class="lh-1 mb-3 text-secondary fw-bold">Une informatique 'dans le nuage'</h3>
-      <p class="lead mb-4">
+    <div class="w-full md:flex-1 px-2">
+      <h3 class="text-2xl mb-4 text-secondary font-bold">Une informatique 'dans le nuage'</h3>
+      <p class="text-lg mb-6">
           Une simple page internet, pas de logiciel à installer. 
           Mise à jour automatique.
           Nombre d'utilisateurs illimité. 
@@ -65,10 +65,10 @@
       </p>
     </div>
   </div>
-  <div class="row px-4 py-2">
-    <div class="col-md">
-      <h3 class="lh-1 mb-3 text-secondary fw-bold">Développé en communauté</h3>
-      <p class="lead mb-4">
+  <div class="flex flex-wrap -mx-2 px-6 py-2">
+    <div class="w-full md:flex-1 px-2">
+      <h3 class="text-2xl mb-4 text-secondary font-bold">Développé en communauté</h3>
+      <p class="text-lg mb-6">
         Ne dépend pas d'une société. Code source librement disponible.
         Les sources de l'application sont disponibles ici : 
         <a href="https://github.com/philippe-nougaillon/PrestoFacto" rel="noopener noreferrer" target="_blank">https://github.com/philippe-nougaillon/PrestoFacto</a>
@@ -76,13 +76,13 @@
         Vos remarques et propositions sont les bienvenues et nous aident à améliorer l'application.
       </p>
     </div>
-    <div class="col-md">
-      <%= image_tag 'blue_arrows.png', class: 'img-fluid' %>
+    <div class="w-full md:flex-1 px-2">
+      <%= image_tag 'blue_arrows.png', class: 'max-w-full h-auto' %>
     </div>
   </div>
-  <div class="px-4 py-5 bg-light">
-    <h3 class="lh-1 mb-3 text-secondary fw-bold text-center mb-2">Une solution éprouvée sur 2 générations</h3>
-    <p class="lead mb-4">
+  <div class="px-6 py-12 bg-slate-100">
+    <h3 class="text-2xl text-secondary font-bold text-center mb-4">Une solution éprouvée sur 2 générations</h3>
+    <p class="text-lg mb-6">
         Après plus de <strong>10 ans</strong> de bons et loyaux services, openCantine a fait sa mue, change de nom et se professionnalise.
         Ce projet était au départ conçu pour donner un petit coup de main à une mairie qui gérait péniblement sa cantine sur Excel.
         Le passage de l'application en logiciel libre (open-source), disponible gratuitement, a permis à une cinquantaine de mairies ou associations de gérer <strong>~500.000 repas</strong> via cette plateforme, dont j'ai assuré bénévolement la maintenance et les coûts d'hébergement.
@@ -94,10 +94,10 @@
 </div>
 
 <div>
-  <h2 class="display-3 text-center mb-4">Comparer les offres</h2>
+  <h2 class="text-4xl font-title font-bold text-primary text-center mb-6">Comparer les offres</h2>
 
-  <div class="table-responsive mb-5">
-    <table class="table table-striped table-hover text-center">
+  <div class="overflow-x-auto mb-12">
+    <table class="table table-zebra text-center">
       <thead>
         <tr>
           <th style="width: 50%;"></th>
@@ -107,45 +107,45 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td scope="row" class="text-start">Utilisation libre (limitée à 1000 factures)</td>
-          <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
-          <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
-          <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
+        <tr class="row-hover">
+          <td scope="row" class="text-left">Utilisation libre (limitée à 1000 factures)</td>
+          <td><%= mi_icon 'check-circle', class: 'text-primary' %></td>
+          <td><%= mi_icon 'check-circle', class: 'text-primary' %></td>
+          <td><%= mi_icon 'check-circle', class: 'text-primary' %></td>
         </tr>
-        <tr>
-          <td scope="row" class="text-start">
+        <tr class="row-hover">
+          <td scope="row" class="text-left">
             Accès par un sous-domaine personnalisé
             <br> Ex: https://mon-organisation.prestofacto.fr
           </td>
           <td></td>
-          <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
-          <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
+          <td><%= mi_icon 'check-circle', class: 'text-primary' %></td>
+          <td><%= mi_icon 'check-circle', class: 'text-primary' %></td>
         </tr>
-        <tr>
-          <td scope="row" class="text-start">
+        <tr class="row-hover">
+          <td scope="row" class="text-left">
             Accès par votre nom de domaine
             <br>
             ex: https://prestofacto.votre-domaine.fr
           </td>
           <td></td>
-          <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
-          <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
+          <td><%= mi_icon 'check-circle', class: 'text-primary' %></td>
+          <td><%= mi_icon 'check-circle', class: 'text-primary' %></td>
         </tr>
-        <tr>
-          <td scope="row" class="text-start">Serveur virtuel dédié</td>
+        <tr class="row-hover">
+          <td scope="row" class="text-left">Serveur virtuel dédié</td>
           <td></td>
           <td></td>
-          <td><%= fa_icon 'check-circle', class: 'text-primary' %></td>
+          <td><%= mi_icon 'check-circle', class: 'text-primary' %></td>
         </tr>
-        <tr>
-          <td scope="row" class="text-start">Sauvegarde automatique des données</td>
+        <tr class="row-hover">
+          <td scope="row" class="text-left">Sauvegarde automatique des données</td>
           <td><p>1 / j</p></td>
           <td><p>1 / j</p></td>
           <td><p>En continu (24 / 7)</p></td>
         </tr>
-        <tr>
-          <td scope="row" class="text-start">Support</td>
+        <tr class="row-hover">
+          <td scope="row" class="text-left">Support</td>
           <td><p>email</p></td>
           <td><p>email J+1</p></td>
           <td><p>email / téléphonique H+2</p></td>
@@ -157,66 +157,66 @@
   </div>
 </div>
 
-<div class="px-4">
-  <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-    <h2 class="display-3">Tarifs</h2>
+<div class="px-6">
+  <div class="p-4 md:pb-6 mx-auto text-center">
+    <h2 class="text-4xl font-title font-bold text-primary">Tarifs</h2>
   </div>
 
-  <div class="row row-cols-1 row-cols-md-3 mb-5 text-start">
-    <div class="col">
-      <div class="card mb-4 rounded-3 shadow-sm border-success">
-        <div class="card-header py-3 border-success">
-          <h4 class="my-0 fw-normal text-center">Libre</h4>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 text-left">
+    <div>
+      <div class="card h-full bg-white mb-0 rounded-xl shadow-sm border-success">
+        <div class="card-title px-6 pt-5 py-4 border-success">
+          <h4 class="my-0 font-normal text-center">Libre</h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title pricing-card-title text-center">Gratuit</h1>
-          <ul class="list-unstyled mt-3 mb-4">
-            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Utilisation libre (limitée à 1000 factures)</li>
-            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Sauvegarde automatique journalière</li>
-            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Support par email</li>
+          <h1 class="text-3xl font-bold text-center">Gratuit</h1>
+          <ul class="list-none pl-0 mt-4 mb-6">
+            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Utilisation libre (limitée à 1000 factures)</li>
+            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Sauvegarde automatique journalière</li>
+            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Support par email</li>
             <li><br></li>
             <li><br></li>
             <li><br></li>
           </ul>
-          <%= link_to "S'inscrire", new_user_registration_path, class: 'w-100 btn btn-lg btn-outline-success' %>
+          <%= link_to "S'inscrire", new_user_registration_path, class: 'w-full btn btn-lg btn-outline btn-success' %>
         </div>
       </div>
     </div>
-    <div class="col">
-      <div class="card mb-4 rounded-3 shadow-sm border-primary">
-        <div class="card-header py-3">
-          <h4 class="my-0 fw-normal text-center">Mini</h4>
+    <div>
+      <div class="card h-full bg-white mb-0 rounded-xl shadow-sm border-primary">
+        <div class="card-title px-6 pt-5 py-4">
+          <h4 class="my-0 font-normal text-center">Mini</h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title pricing-card-title text-center">49 €<small class="text-muted fw-light" style="font-size: 1rem"> TTC / mois</small></h1>
-          <ul class="list-unstyled mt-3 mb-4">
-            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Utilisation libre et illimitée</li>
-            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Sauvegarde automatique journalière</li>
-            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Support par email J+1</li>
-            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Accès via sous-domaine perso.</li>
+          <h1 class="text-3xl font-bold text-center">49 €<small class="text-slate-500 font-light" style="font-size: 1rem"> TTC / mois</small></h1>
+          <ul class="list-none pl-0 mt-4 mb-6">
+            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Utilisation libre et illimitée</li>
+            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Sauvegarde automatique journalière</li>
+            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Support par email J+1</li>
+            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Accès via sous-domaine perso.</li>
             <li><br></li>
             <li><br></li>
           </ul>
-          <%= link_to "Sur demande", new_message_path(offre: 'Offre standard'), class: 'w-100 btn btn-lg btn-outline-primary' %>
+          <%= link_to "Sur demande", new_message_path(offre: 'Offre standard'), class: 'w-full btn btn-lg btn-outline btn-primary' %>
         </div>
       </div>
     </div>
-    <div class="col">
-      <div class="card mb-4 rounded-3 shadow-sm border-danger">
-        <div class="card-header py-3">
-          <h4 class="my-0 fw-normal text-center">Premium</h4>
+    <div>
+      <div class="card h-full bg-white mb-0 rounded-xl shadow-sm border-error">
+        <div class="card-title px-6 pt-5 py-4">
+          <h4 class="my-0 font-normal text-center">Premium</h4>
         </div>
         <div class="card-body">
-          <h1 class="card-title pricing-card-title text-center">99 €<small class="text-muted fw-light"> <small style="font-size: 1rem"> TTC / mois</small></small></h1>
-          <ul class="list-unstyled mt-3 mb-4">
-            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Utilisation libre et illimitée</li>
-            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Sauvegarde continue (24 / 7)</li>
-            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Support par email / téléphonique H+2</li>
-            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Accès par votre nom de domaine</li>
-            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Serveur virtuel dédié</li>
-            <li><%= fa_icon 'check-square', class: 'text-dark me-2' %>Participez aux évolutions !</li>
+          <h1 class="text-3xl font-bold text-center">99 €<small class="text-slate-500 font-light"> <small style="font-size: 1rem"> TTC / mois</small></small></h1>
+          <ul class="list-none pl-0 mt-4 mb-6">
+            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Utilisation libre et illimitée</li>
+            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Sauvegarde continue (24 / 7)</li>
+            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Support par email / téléphonique H+2</li>
+            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Accès par votre nom de domaine</li>
+            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Serveur virtuel dédié</li>
+            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Participez aux évolutions !</li>
           </ul>
-          <%= link_to "Sur demande", new_message_path(offre: 'Offre premium'), class: 'w-100 btn btn-lg btn-outline-danger' %>
+          <%= link_to "Sur demande", new_message_path(offre: 'Offre premium'), class: 'w-full btn btn-lg btn-outline btn-error' %>
         </div>
       </div>
     </div>

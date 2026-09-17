@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "main_frame" do %>
-  <section class="mt-4">
+  <section class="mt-6">
     <h4>Absences</h4>
     <% @absences.each do |absence| %>
       <%= render partial: 'absence', locals: {absence: absence} %>

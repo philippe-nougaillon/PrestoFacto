@@ -39,8 +39,8 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
-# Use Sass to process CSS
-gem "sassc-rails"
+# Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
+gem "tailwindcss-rails", "~> 4.3"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -77,8 +77,6 @@ gem "devise"
 gem 'audited'
 gem 'friendly_id', '~> 5.2.4'
 
-gem 'bootstrap_form', git: 'https://github.com/bootstrap-ruby/bootstrap_form.git', branch: 'bootstrap-5'
-gem 'font_awesome5_rails'
 
 # XLSX sheet
 gem 'spreadsheet'
@@ -113,7 +111,6 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'recaptcha'
 
 gem 'kaminari'
-gem 'bootstrap4-kaminari-views'
 
 gem "mailgun-ruby", "~> 1.2"
 
@@ -122,8 +119,6 @@ gem "sortable-for-rails", "~> 1.2"
 gem "page_title_helper"
 
 gem "importmap-rails", "~> 1.1"
-
-gem "bootstrap", "~> 5.2"
 
 gem "rack-attack", "~> 6.6"
 

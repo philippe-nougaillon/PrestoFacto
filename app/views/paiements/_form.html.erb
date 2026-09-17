@@ -1,4 +1,4 @@
-<%= bootstrap_form_with(model: paiement, local: true) do |form| %>
+<%= form_with(model: paiement, local: true) do |form| %>
 
   <% if paiement.errors.any? %>
     <div id="error_explanation">
@@ -14,23 +14,23 @@
 
   <%= form.hidden_field :compte_id %>
 
-  <div class="row">
-    <div class="col">
-      <div class="row">
-        <div class="col"><%= form.date_field :date, required: true %></div>
-        <div class="col"><%= form.text_field :réf %></div>
-        <div class="col"><%= form.select :mode, Paiement.modes %></div>
+  <div class="flex flex-wrap -mx-2">
+    <div class="flex-1 px-2">
+      <div class="flex flex-wrap -mx-2">
+        <div class="flex-1 px-2"><%= form.date_field :date, required: true %></div>
+        <div class="flex-1 px-2"><%= form.text_field :réf %></div>
+        <div class="flex-1 px-2"><%= form.select :mode, Paiement.modes %></div>
       </div>
-      <div class="row">
-        <div class="col"><%= form.select :banque, Paiement.banques, include_blank: true %></div>
-        <div class="col"><%= form.text_field :chèque_num, label: 'Chèque N°' %></div>
+      <div class="flex flex-wrap -mx-2">
+        <div class="flex-1 px-2"><%= form.select :banque, Paiement.banques, include_blank: true %></div>
+        <div class="flex-1 px-2"><%= form.text_field :chèque_num, label: 'Chèque N°' %></div>
       </div>
-      <div class="row">
-        <div class="col"><%= form.number_field :montant, step: :any %></div>
-        <div class="col"><%= form.date_field :date_remise %></div>
+      <div class="flex flex-wrap -mx-2">
+        <div class="flex-1 px-2"><%= form.number_field :montant, step: :any %></div>
+        <div class="flex-1 px-2"><%= form.date_field :date_remise %></div>
       </div>
       <%= form.text_area :mémo %>
-      <%= form.submit "Enregistrer", class: "btn btn-outline-success me-2", 'data-turbo': false %>
+      <%= form.submit "Enregistrer", class: "btn btn-outline btn-success mr-2", 'data-turbo': false %>
       <%= link_to 'Annuler', paiements_path %>
     </div>
   </div>

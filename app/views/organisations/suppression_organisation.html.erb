@@ -1,10 +1,10 @@
 <div class="mx-auto">
-  <h1 class="text-danger my-3">
-    <%= fa_icon 'skull-crossbones' %>
+  <h1 class="text-error my-4">
+    <%= mi_icon 'skull-crossbones' %>
     Attention, vous allez supprimer définitivement votre organisation <%= current_user.organisation.nom %> !
   </h1>
   <p class="mb-2">Toutes les données ci-dessous seront irrémédiablement détruites :</p>
-  <ul class="mb-4">
+  <ul class="mb-6">
     <li><%= current_user.organisation.comptes.count %> Comptes</li>
     <li><%= current_user.organisation.enfants.count %> Enfants</li>
     <li><%= current_user.organisation.factures.count %> Factures</li>
@@ -19,10 +19,10 @@
 
   <p>Merci de nous expliquer la raison pour laquelle vous nous quittez. Vos commentaires nous permettrons d'améliorer le logiciel.</p>
   <%= form_with(url: suppression_organisation_do_organisation_path) do |form| %>
-    <div class="form-floating">
-      <%= form.text_area :reason, class:"form-control mb-3", style: "height: 8rem" %>
+    <div class="w-full">
+      <%= form.text_area :reason, hide_label: true, class: "mb-4", style: "height: 8rem" %>
     </div>
-    <%= form.submit "TOUT SUPPRIMER", class: "btn btn-outline-danger", 'data-turbo-confirm': "ÊTES-VOUS BIEN SÛR DE VOULOIR SUPPRIMER VOTRE ORGANISATION ? VOUS NE POURREZ PLUS REVENIR EN ARRIÈRE !!!" %>
-    <%= link_to "Annuler", admin_index_path(current_user.organisation), class: "btn btn-outline-secondary" %>
+    <%= form.submit "TOUT SUPPRIMER", class: "btn btn-outline btn-error", 'data-turbo-confirm': "ÊTES-VOUS BIEN SÛR DE VOULOIR SUPPRIMER VOTRE ORGANISATION ? VOUS NE POURREZ PLUS REVENIR EN ARRIÈRE !!!" %>
+    <%= link_to "Annuler", admin_index_path(current_user.organisation), class: "btn btn-outline btn-secondary" %>
   <% end %>
 </div>

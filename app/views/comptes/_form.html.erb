@@ -1,4 +1,4 @@
-<%= bootstrap_form_with(model: compte, local: true, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' }) do |form| %>
+<%= form_with(model: compte, local: true, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' }) do |form| %>
   <% if compte.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(compte.errors.count, "erreur") %> empêche(nt) l'enregistrement du compte :</h3>
@@ -13,37 +13,37 @@
 
   <%= form.hidden_field :organisation_id %>
 
-  <div class="row">
-    <div class="col-sm-6 mb-3">
-      <div class="row">
-        <div class="col-sm-9">
+  <div class="flex flex-wrap -mx-2">
+    <div class="w-full sm:w-6/12 px-2 mb-4">
+      <div class="flex flex-wrap -mx-2">
+        <div class="w-full sm:w-9/12 px-2">
           <%= form.text_field :nom, required: true, autofocus: false, label: "Nom *" %>
         </div>
-        <div class="col-sm-3">
+        <div class="w-full sm:w-3/12 px-2">
           <%= form.select :civilité, ["M et Mme","Mme", "M"] %>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col">
+      <div class="flex flex-wrap -mx-2">
+        <div class="flex-1 px-2">
           <%= form.text_field :adresse1, label: "Adresse" %>
         </div>
-        <div class="col">
+        <div class="flex-1 px-2">
           <%= form.text_field :adresse2, label: "Adresse complémentaire" %>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-sm-3"><%= form.text_field :cp %></div>
-        <div class="col-sm-9"><%= form.text_field :ville %></div>
+      <div class="flex flex-wrap -mx-2">
+        <div class="w-full sm:w-3/12 px-2"><%= form.text_field :cp %></div>
+        <div class="w-full sm:w-9/12 px-2"><%= form.text_field :ville %></div>
       </div>
       <%= form.text_field :num_allocataire, label: "Numéro d'Allocataire" %>
       <%= form.text_area :mémo %>
-      <%= check_box_tag :acces %>
-      <%= label_tag :acces, "Créer automatiquement un compte d'accès au portail parents pour les contacts à prévenir en cas d'urgence et leur envoyer une notification ?", class:'d-inline' %>
+      <%= check_box_tag :acces, '1', false, class: 'checkbox checkbox-primary' %>
+      <%= label_tag :acces, "Créer automatiquement un compte d'accès au portail parents pour les contacts à prévenir en cas d'urgence et leur envoyer une notification ?", class:'inline' %>
     </div>
 
-    <div class="col-sm-6">
+    <div class="w-full sm:w-6/12 px-2">
       <h5>
         Contacts
       </h5>
@@ -60,14 +60,14 @@
       <!-- Inserted elements will be injected before that target. -->
       <div data-nested-form-target="target"></div>
 
-      <button class="btn btn-outline-primary" type="button" data-action="nested-form#add"><%= fa_icon 'plus-circle' %> Ajouter un contact</button>
+      <button class="btn btn-outline btn-primary" type="button" data-action="nested-form#add"><%= mi_icon 'plus-circle' %> Ajouter un contact</button>
     </div>
   </div>
 
   <p>* : Champs requis</p>
 
-  <div class="mb-3">
-    <%= form.submit "Enregistrer", class: "btn btn-outline-success" %>
+  <div class="mb-4">
+    <%= form.submit "Enregistrer", class: "btn btn-outline btn-success" %>
   </div>
 
 <% end %>

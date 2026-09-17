@@ -1,4 +1,4 @@
-<%= bootstrap_form_with(model: facture_message, local: true) do |form| %>
+<%= form_with(model: facture_message, local: true) do |form| %>
   <% if facture_message.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(facture_message.errors.count, "erreur") %> empêche(nt) la sauvegarde du message de facture :</h2>
@@ -15,7 +15,7 @@
     <%= form.text_field :contenu %>
     <%= form.check_box :actif %>
 
-  <div class="actions my-4">
-    <%= form.submit "Enregistrer", class: "btn btn-outline-success" %>
+  <div class="actions my-6">
+    <%= form.submit "Enregistrer", class: "btn btn-outline btn-success" %>
   </div>
 <% end %>

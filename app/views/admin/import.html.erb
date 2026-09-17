@@ -1,5 +1,5 @@
-<div class="pb-2 mt-4 mb-2 border-bottom">
-  <h2 class="fw-light"><%= fa_icon 'file-import' %> Importer données XLS</h2>
+<div class="pb-2 mt-6 mb-2 border-b border-slate-200">
+  <h2 class="font-light"><%= mi_icon 'file-import' %> Importer données XLS</h2>
 </div>
 
 <p>
@@ -20,15 +20,15 @@
     </p>
 </p>
 
-<%= bootstrap_form_with(url: "import_do", method: :post, local: true) do |form| %>
+<%= form_with(url: "import_do", method: :post, local: true) do |form| %>
 
-    <div class="form-group col-sm-6">
+    <div class="w-full sm:w-6/12">
         <%= form.file_field :file, {accept: '.xls', required: true, label: 'Fichier à importer'} %>
         <%= form.check_box :enregistrer, {custom: :switch, label: "Enregistrer les changements ? (non=Visualisation seulement)"} %>  
     </div>
     <br />
 
-    <%= form.submit "Importer", class: "btn btn-outline-success", 'data-turbo': false %>
+    <%= form.submit "Importer", class: "btn btn-outline btn-success", 'data-turbo': false %>
 <% end %>
 
 <script type="text/javascript">

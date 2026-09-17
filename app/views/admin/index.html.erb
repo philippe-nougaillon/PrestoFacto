@@ -1,38 +1,36 @@
-<div class="pb-2 mt-4 mb-4 border-bottom">
-  <h2 class="fw-light d-inline"><%= fa_icon 'users-cog', class: 'text-success' %> Administration</h2>
+<div class="pb-2 mt-6 mb-6 border-b border-slate-200">
+  <h2 class="font-light inline"><%= mi_icon 'users-cog', class: 'text-success' %> Administration</h2>
   <%= link_to guide_path(anchor: "administration") do %>
-    <%= fa_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-muted mx-2' %>
+    <%= mi_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-slate-500 mx-2' %>
   <% end %>
 </div>
 <br />
 
-<div class="row" style="gap: 2rem;">
-  <div class="col">
-    <ul class="list-group">
-      <li class="list-group-item">
-        <h4 class="fw-light my-2">
-          <%= fa_icon 'city', class: "col-sm-2" %> 
-          <%= link_to organisation_url(current_user.organisation), title: "Organisation, Structures, Vacances", class: "text-muted text-decoration-none" do %>Organisation<% end %>
+<div class="flex flex-wrap -mx-2" style="gap: 2rem;">
+  <div class="flex-1 px-2">
+    <ul class="menu bg-white rounded-box border border-slate-200 w-full p-2">
+      <li>
+        <h4 class="font-light my-2">
+          <%= mi_icon 'city', class: "w-full sm:w-2/12 px-2" %> 
+          <%= link_to organisation_url(current_user.organisation), title: "Organisation, Structures, Vacances", class: "text-slate-500 no-underline" do %>Organisation<% end %>
         </h4>
       </li>
 
-      <li class="list-group-item"></li>
 
-      <li class="list-group-item">
-        <h4 class="fw-light my-2">
-          <%= fa_icon 'user-friends', class: "col-sm-2" %>
-          <%= link_to users_admin_index_path, class: "text-muted text-decoration-none" do %>
+      <li>
+        <h4 class="font-light my-2">
+          <%= mi_icon 'user-friends', class: "w-full sm:w-2/12 px-2" %>
+          <%= link_to users_admin_index_path, class: "text-slate-500 no-underline" do %>
             Utilisateurs / Portail Parents
           <% end %>
         </h4>
       </li>
 
-      <li class="list-group-item"></li>
 
-      <li class="list-group-item">
-        <h4 class="fw-light my-2">
-          <%= fa_icon 'euro-sign', class: "col-sm-2"  %>
-          <%= link_to admin_tarifs_url, title: "Tarifs, Types de tarifs et de Prestations", class: "text-muted text-decoration-none" do %>
+      <li>
+        <h4 class="font-light my-2">
+          <%= mi_icon 'euro-sign', class: "w-full sm:w-2/12 px-2"  %>
+          <%= link_to admin_tarifs_url, title: "Tarifs, Types de tarifs et de Prestations", class: "text-slate-500 no-underline" do %>
             Prestations et Tarifs
           <% end %>
         </h4>
@@ -41,93 +39,86 @@
     </ul>  
   </div>
 
-  <div class="col">
-    <ul class="list-group">
+  <div class="flex-1 px-2">
+    <ul class="menu bg-white rounded-box border border-slate-200 w-full p-2">
 
-      <li class="list-group-item">
-        <h4 class="fw-light my-2">
-          <%= fa_icon 'calendar-day', class: "col-sm-1" %>
-          <%= link_to 'Comptabilisation prestations', admin_ajout_prestations_path, class: "text-muted text-decoration-none" %>
+      <li>
+        <h4 class="font-light my-2">
+          <%= mi_icon 'calendar-day', class: "w-full sm:w-1/12 px-2" %>
+          <%= link_to 'Comptabilisation prestations', admin_ajout_prestations_path, class: "text-slate-500 no-underline" %>
         </h4>
       </li>
 
-      <li class="list-group-item"></li>
 
-      <li class="list-group-item">
-        <h4 class="fw-light my-2">
-          <%= fa_icon 'calendar-day', class: "col-sm-1" %>
-          <%= link_to 'Facturation prestations', admin_ajout_factures_path, class: "text-muted text-decoration-none" %>
+      <li>
+        <h4 class="font-light my-2">
+          <%= mi_icon 'calendar-day', class: "w-full sm:w-1/12 px-2" %>
+          <%= link_to 'Facturation prestations', admin_ajout_factures_path, class: "text-slate-500 no-underline" %>
         </h4>
       </li>
 
-      <li class="list-group-item"></li>
 
-      <li class="list-group-item">
-        <h4 class="fw-light my-2">
-          <%= fa_icon 'paper-plane', class: "col-sm-1" %>
-          <%= link_to 'Envoyer les factures', admin_envoyer_factures_path, class: "text-muted text-decoration-none" %>
+      <li>
+        <h4 class="font-light my-2">
+          <%= mi_icon 'paper-plane', class: "w-full sm:w-1/12 px-2" %>
+          <%= link_to 'Envoyer les factures', admin_envoyer_factures_path, class: "text-slate-500 no-underline" %>
         </h4>
       </li>
 
-      <li class="list-group-item"></li>
 
-      <li class="list-group-item">
-        <h4 class="fw-light my-2">
-          <%= fa_icon 'envelope', class: "col-sm-1" %>
-          <%= link_to 'Messages (contestations)', messages_path, class: "text-muted text-decoration-none", title:"Journal d'activité des envois de courriels" %>
+      <li>
+        <h4 class="font-light my-2">
+          <%= mi_icon 'envelope', class: "w-full sm:w-1/12 px-2" %>
+          <%= link_to 'Messages (contestations)', messages_path, class: "text-slate-500 no-underline", title:"Journal d'activité des envois de courriels" %>
           <% if @unread_messages > 0 %>
-            <span class="badge text-bg-danger rounded-pill ms-2"style="font-weight: 900"><%= @unread_messages %></span>
+            <span class="badge badge-error text-white rounded-full ml-2"style="font-weight: 900"><%= @unread_messages %></span>
           <% end %>
         </h4>
       </li>
 
-      <li class="list-group-item"></li>
 
-      <li class="list-group-item">
-        <h4 class="fw-light my-2">
-          <%= fa_icon 'mail-bulk', class: "col-sm-1" %>
-          <%= link_to 'Mail Logs', mail_logs_path, class: "text-muted text-decoration-none", title:"Journal d'activité des envois de courriels" %>
+      <li>
+        <h4 class="font-light my-2">
+          <%= mi_icon 'mail-bulk', class: "w-full sm:w-1/12 px-2" %>
+          <%= link_to 'Mail Logs', mail_logs_path, class: "text-slate-500 no-underline", title:"Journal d'activité des envois de courriels" %>
         </h4>
       </li>
 
     </ul>
   </div>
 
-  <div class="col">
-    <ul class="list-group">
+  <div class="flex-1 px-2">
+    <ul class="menu bg-white rounded-box border border-slate-200 w-full p-2">
 
-      <li class="list-group-item">
-        <h4 class="fw-light my-2">
-          <%= fa_icon 'search', class: "col-sm-2" %>
-          <%= link_to 'Audit des modifications', admin_audit_path, class: "text-muted text-decoration-none" %>
+      <li>
+        <h4 class="font-light my-2">
+          <%= mi_icon 'search', class: "w-full sm:w-2/12 px-2" %>
+          <%= link_to 'Audit des modifications', admin_audit_path, class: "text-slate-500 no-underline" %>
         </h4>
       </li>
 
-      <li class="list-group-item"></li>
 
-      <li class="list-group-item">
-        <h4 class="fw-light my-2">
-          <%= fa_icon 'file-import', class: "col-sm-2" %>
-          <%= link_to 'Importer', admin_import_path, class: "text-muted text-decoration-none" %>
+      <li>
+        <h4 class="font-light my-2">
+          <%= mi_icon 'file-import', class: "w-full sm:w-2/12 px-2" %>
+          <%= link_to 'Importer', admin_import_path, class: "text-slate-500 no-underline" %>
         </h4>
       </li>
 
-      <li class="list-group-item"></li>
 
-      <li class="list-group-item">
-        <h4 class="fw-light my-2">
-          <%= fa_icon 'comment-dots', class: "col-sm-2" %>
-          <%= link_to 'Messages de factures', facture_messages_path, title: "Afficher en bas de vos factures et dans l'e-mail d'accompagnement" ,class: "text-muted text-decoration-none" %>
+      <li>
+        <h4 class="font-light my-2">
+          <%= mi_icon 'comment-dots', class: "w-full sm:w-2/12 px-2" %>
+          <%= link_to 'Messages de factures', facture_messages_path, title: "Afficher en bas de vos factures et dans l'e-mail d'accompagnement" ,class: "text-slate-500 no-underline" %>
         </h4>
       </li>
 
-      <li class="list-group-item"></li>
-      <li class="list-group-item text-danger text-center fw-bold">Zone dangereuse</li>
+      <li class="menu-title text-error text-center font-bold">Zone dangereuse</li>
 
-      <li class="list-group-item">
-        <h4 class="fw-light my-2">
-          <%= fa_icon 'skull-crossbones', class: "col-sm-2" %>
-          <%= link_to "Supprimer organisation", suppression_organisation_organisation_path(current_user.organisation), class: "text-muted text-decoration-none" %>
+      <li>
+        <h4 class="font-light my-2">
+          <%= mi_icon 'skull-crossbones', class: "w-full sm:w-2/12 px-2" %>
+          <%= link_to "Supprimer organisation", suppression_organisation_organisation_path(current_user.organisation), class: "text-slate-500 no-underline" %>
         </h4>
       </li>
 

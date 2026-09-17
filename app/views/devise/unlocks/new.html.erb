@@ -1,13 +1,7 @@
-<h2>Renvoyer les instructions de déverrouillage</h2>
-
-<%= bootstrap_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <%= f.email_field :email, autofocus: false, autocomplete: "email", class: "col-sm-3" %>
-
-  <div class="actions">
-    <%= f.submit "Renvoyer les instructions", class: "btn btn-primary btn-lg" %>
-  </div>
+<%= render layout: "devise/shared/auth_card", locals: { titre: "Renvoyer les instructions de déverrouillage" } do %>
+  <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <%= f.email_field :email, autofocus: false, autocomplete: "email", label: "Adresse email" %>
+    <%= f.submit "Renvoyer les instructions", class: "btn btn-primary text-white w-full" %>
+  <% end %>
 <% end %>
-
-<%= render "devise/shared/links" %>

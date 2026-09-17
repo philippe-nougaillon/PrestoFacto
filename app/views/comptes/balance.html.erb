@@ -1,21 +1,21 @@
-<div class="pb-2 mt-4 mb-2 border-bottom">
-  <h2 class="fw-light"><%= fa_icon 'balance-scale' %> Balance</h2>
+<div class="pb-2 mt-6 mb-2 border-b border-slate-200">
+  <h2 class="font-light"><%= mi_icon 'balance-scale' %> Balance</h2>
 </div>
 
 <p>
 	<h3>Compte: <%= @compte.nom %></h3> 
 	Solde à ce jour: <%= number_to_currency(@solde, unit:'€') %>
 </p>
-<div class="table-responsive">
-	<table class="table table-hover table-bordered table-striped">
+<div class="overflow-x-auto">
+	<table class="table table-zebra border border-slate-200">
 
 		<thead>
 			<th>Date</th>
 			<th>Type</th>
 			<th>Référence</th>
-			<th class="text-end">Débit</th>
-			<th class="text-end">Crédit</th>
-			<th class="text-end">Solde</th>
+			<th class="text-right">Débit</th>
+			<th class="text-right">Crédit</th>
+			<th class="text-right">Solde</th>
 		</thead>
 
 		<tbody>
@@ -29,9 +29,9 @@
 				<th><%= l Date.today %></th>
 				<th>SOLDE</th>
 				<th></th>
-				<th class="text-end"><%= number_to_currency(@debit, unit:'€') %></th>
-				<th class="text-end"><%= number_to_currency(@credit, unit:'€') %></th>
-				<th class="text-end"><%= number_to_currency(@solde, unit:'€') %></th>
+				<th class="text-right"><%= number_to_currency(@debit, unit:'€') %></th>
+				<th class="text-right"><%= number_to_currency(@credit, unit:'€') %></th>
+				<th class="text-right"><%= number_to_currency(@solde, unit:'€') %></th>
 			</tr>
 		</tfoot>
 		
