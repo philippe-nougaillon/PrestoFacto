@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   audited
 
-  enum role: [:visiteur, :vip, :admin]
+  enum :role, [:visiteur, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
   validate :check_visiteur_email
 
