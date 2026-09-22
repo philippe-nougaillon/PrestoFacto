@@ -16,7 +16,7 @@
   <td>
     <% if policy(pointage).edit? %>
       <%= link_to edit_pointage_path(pointage), class: 'btn btn-link btn-sm' do %>
-        <%= mi_icon 'edit' %>
+        <%= embedded_svg "icons/edit.svg", class: "w-5 h-5 inline" %>
       <% end %>
     <% end %>
   </td>

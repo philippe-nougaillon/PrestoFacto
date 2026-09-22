@@ -1,14 +1,14 @@
-<div class="card my-4">
-  <div class="card-title px-6 pt-5">
-    <h2 class="font-light p-2"><%= mi_icon 'user' %> <%= @compte.nom %></h2>
+<div class="card my-4 border border-slate-200">
+  <div class="card-title px-6 pt-5 border-b border-slate-200">
+    <h2 class="font-light p-2"><%= embedded_svg "icons/person.svg", class: "w-5 h-5 inline align-[-3px]" %> <%= @compte.nom %></h2>
   </div>
 
   <div class="card-body">
     <%= render partial: "compte-card" %>
-    <div class="card mt-4">
+    <div class="card mt-4 border border-slate-200">
       <div class="card-body">
 
-        <h4><%= mi_icon 'child', class: 'text-primary' %> Enfants</h4>
+        <h4><%= embedded_svg "icons/accessibility_new.svg", class: "w-5 h-5 text-primary inline align-[-2px]" %> Enfants</h4>
         <div class="overflow-x-auto">
           <table class="table table-sm">
             <thead>
@@ -30,20 +30,20 @@
                 <td><%= link_to enfant.prénom, enfant %></td>
                 <td><%= l(enfant.date_naissance) if enfant.date_naissance %></td>
                 <td><%= enfant.classroom.nom %></td>
-                <td class="text-center"><%= mi_icon('exclamation', title: enfant.allergenes) if enfant.menu_all %></td>
-                <td class="text-center"><%= mi_icon 'exclamation' if enfant.menu_vege %></td>
-                <td class="text-center"><%= mi_icon 'exclamation' if enfant.menu_sp %></td>
+                <td class="text-center"><%= embedded_svg("icons/priority_high.svg", class: "w-5 h-5 inline", title: enfant.allergenes) if enfant.menu_all %></td>
+                <td class="text-center"><%= embedded_svg "icons/priority_high.svg", class: "w-5 h-5 inline" if enfant.menu_vege %></td>
+                <td class="text-center"><%= embedded_svg "icons/priority_high.svg", class: "w-5 h-5 inline" if enfant.menu_sp %></td>
                 <td>
                   <% if policy(enfant).edit? %>
                     <%= link_to edit_enfant_path(enfant), class: 'btn btn-link btn-sm' do %>
-                      <%= mi_icon 'edit' %>
+                      <%= embedded_svg "icons/edit.svg", class: "w-5 h-5 inline" %>
                     <% end %>
                   <% end %>
                 </td>
                 <td>
                   <% if policy(enfant).destroy? %>
                     <%= button_to enfant, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class: 'btn btn-sm btn-ghost' do %>
-                        <%= mi_icon 'trash-alt', class: 'text-error' %>
+                        <%= embedded_svg "icons/delete.svg", class: "w-5 h-5 text-error inline" %>
                     <% end %>
                   <% end %>
                 </td>
@@ -55,7 +55,7 @@
 
         <% if policy(Enfant).new? %>
           <%= link_to new_enfant_path(compte_id: @compte), class: "btn btn-outline btn-primary" do %>
-            <%= mi_icon 'plus-circle' %> Ajouter un enfant
+            <%= embedded_svg "icons/add_circle.svg", class: "w-5 h-5 inline" %> Ajouter un enfant
           <% end %>
         <% end %>
 
@@ -69,7 +69,7 @@
     <form method="dialog">
       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" aria-label="Fermer">✕</button>
     </form>
-    <h3 class="text-lg font-bold mb-4">Nouveau paiement</h3>
+    <h3 class="text-lg font-bold mb-4 pb-4 border-b border-slate-200">Nouveau paiement</h3>
     <%= render 'paiements/form', paiement: Paiement.new(compte_id: @compte.id, date: Date.today, réf: current_user.organisation.factures.where(compte_id: @compte.id, workflow_state: "vérifiée").last.try(:réf)) %>
   </div>
   <form method="dialog" class="modal-backdrop"><button>Fermer</button></form>

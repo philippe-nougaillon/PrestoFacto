@@ -1,5 +1,5 @@
 <div class="pb-2 mt-6 mb-2 border-b border-slate-200">
-  <h2 class="font-light"><%= mi_icon 'city' %> Organisation</h2>
+  <h2 class="font-light"><%= embedded_svg "icons/location_city.svg", class: "w-5 h-5 inline align-[-3px]" %> Organisation</h2>
 </div>
 
 <p>
@@ -41,9 +41,9 @@
 
 <div class="flex flex-wrap -mx-2 mt-4">
   <div class="flex-1 px-2">
-    <h3><%= mi_icon 'school' %> Structures</h3>
+    <h3><%= embedded_svg "icons/school.svg", class: "w-5 h-5 inline align-[-2px]" %> Structures</h3>
     <div class="overflow-x-auto">
-      <table class="table border border-slate-200 table-sm">
+      <table class="table border border-slate-200 [&_th]:border [&_td]:border table-sm">
         <thead>
           <tr>
             <th>Nom</th>
@@ -61,7 +61,7 @@
             <td>
               <% if policy(structure).destroy? %>
                 <%= button_to structure, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class:'btn btn-sm btn-ghost' do %>
-                  <%= mi_icon 'trash-alt', class: 'text-error' %>
+                  <%= embedded_svg "icons/delete.svg", class: "w-5 h-5 text-error inline" %>
                 <% end %>
               <% end %>
             </td>
@@ -72,9 +72,9 @@
   </div>
 
   <div class="flex-1 px-2">
-    <h3><%= mi_icon 'umbrella-beach' %> Vacances à venir en zone <%= @organisation.zone %></h3>
+    <h3><%= embedded_svg "icons/beach_access.svg", class: "w-5 h-5 inline align-[-3px]" %> Vacances à venir en zone <%= @organisation.zone %></h3>
     <div class="overflow-x-auto">
-      <table class="table border border-slate-200 table-sm">
+      <table class="table border border-slate-200 [&_th]:border [&_td]:border table-sm">
         <thead>
           <tr>
             <th>Nom</th>
@@ -99,6 +99,6 @@
 
 <% if policy(@organisation).edit? %>
   <%= link_to edit_organisation_path(@organisation), class: "btn btn-outline btn-primary" do %>
-    <%= mi_icon 'edit', text: ' Éditer' %>
+    <%= embedded_svg "icons/edit.svg", class: "w-5 h-5 inline" %> Éditer
   <% end %>
 <% end %>

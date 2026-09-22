@@ -78,19 +78,6 @@
   hr { @apply border-t border-slate-200 my-4; }
 
   a:not([class]) { @apply text-primary hover:underline; }
-
-  .material-symbols-outlined {
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-    font-size: 1.25rem;
-    line-height: 1;
-    vertical-align: middle;
-    user-select: none;
-  }
-
-  /* Aligne le bas du dessin sur la ligne de base du titre (espace sous l'icône : voir mi_icon). */
-  :is(h1, h2, h3, h4, h5, h6) .material-symbols-outlined {
-    vertical-align: calc(-1 * var(--espace-sous-icone, 0.08em));
-  }
 }
 
 @layer components {

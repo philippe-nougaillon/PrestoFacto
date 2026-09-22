@@ -1,37 +1,37 @@
 <div class="dock dock-lg lg:hidden z-200 shadow-2xl" style="scrollbar-width: none;">
   <% if current_user.visiteur? %>
     <%= link_to moncompte_index_path, class: dock_link_classes(controller_name == 'moncompte'), title: "Mon compte" do %>
-      <%= mi_icon 'users', class: "text-2xl" %>
+      <%= embedded_svg "icons/groups.svg", class: "w-6 h-6 inline" %>
       <span class="dock-label">Mon compte</span>
     <% end %>
 
     <%= link_to factures_path, class: dock_link_classes(controller_name == 'factures'), title: "Factures" do %>
-      <%= mi_icon 'file-invoice', class: "text-2xl" %>
+      <%= embedded_svg "icons/description.svg", class: "w-6 h-6 inline" %>
       <span class="dock-label">Factures</span>
     <% end %>
 
     <button onclick="logout_modal.showModal()" class="text-secondary hover:shadow" title="Se déconnecter">
-      <%= mi_icon 'logout', class: "text-2xl" %>
+      <%= embedded_svg "icons/logout.svg", class: "w-6 h-6 inline" %>
       <span class="dock-label">Quitter</span>
     </button>
   <% else %>
     <%= link_to comptes_path, class: dock_link_classes(controller_name == 'comptes'), title: "Comptes" do %>
-      <%= mi_icon 'users', class: "text-2xl" %>
+      <%= embedded_svg "icons/groups.svg", class: "w-6 h-6 inline" %>
       <span class="dock-label">Comptes</span>
     <% end %>
 
     <%= link_to reservations_path, class: dock_link_classes(controller_name == 'reservations'), title: "Réservations" do %>
-      <%= mi_icon 'calendar-alt', class: "text-2xl" %>
+      <%= embedded_svg "icons/calendar_month.svg", class: "w-6 h-6 inline" %>
       <span class="dock-label">Résa.</span>
     <% end %>
 
     <%= link_to pointages_path, class: dock_link_classes(controller_name == 'pointages'), title: "Pointages" do %>
-      <%= mi_icon 'calendar-check', class: "text-2xl" %>
+      <%= embedded_svg "icons/event_available.svg", class: "w-6 h-6 inline" %>
       <span class="dock-label">Pointages</span>
     <% end %>
 
     <%= link_to factures_path, class: dock_link_classes(controller_name == 'factures'), title: "Factures" do %>
-      <%= mi_icon 'file-invoice', class: "text-2xl" %>
+      <%= embedded_svg "icons/description.svg", class: "w-6 h-6 inline" %>
       <span class="dock-label">Factures</span>
     <% end %>
 
@@ -39,7 +39,7 @@
       <div tabindex="0" role="button"
            class="flex flex-col items-center justify-center text-secondary w-full h-full active:bg-slate-100"
            data-testid="dropdown_mobile">
-        <%= mi_icon 'more_vert', class: "text-2xl" %>
+        <%= embedded_svg "icons/more_vert.svg", class: "w-6 h-6 inline" %>
         <span class="dock-label">Plus</span>
       </div>
 
@@ -48,22 +48,22 @@
           <ul class="menu p-0 text-slate-700 w-full">
             <li>
               <%= link_to enfants_path, class: "py-3 #{'bg-slate-100 text-primary font-semibold' if controller_name == 'enfants'}" do %>
-                <%= mi_icon 'child', class: "text-xl inline mr-2" %> Enfants
+                <%= embedded_svg "icons/accessibility_new.svg", class: "w-5 h-5 inline mr-2" %> Enfants
               <% end %>
             </li>
             <li>
               <%= link_to absences_path, class: "py-3 #{'bg-slate-100 text-primary font-semibold' if controller_name == 'absences'}" do %>
-                <%= mi_icon 'calendar-times', class: "text-xl inline mr-2" %> Absences
+                <%= embedded_svg "icons/event_busy.svg", class: "w-5 h-5 inline mr-2" %> Absences
               <% end %>
             </li>
             <li>
               <%= link_to prestations_path, class: "py-3 #{'bg-slate-100 text-primary font-semibold' if controller_name == 'prestations'}" do %>
-                <%= mi_icon 'utensils', class: "text-xl inline mr-2" %> Prestations
+                <%= embedded_svg "icons/restaurant.svg", class: "w-5 h-5 inline mr-2" %> Prestations
               <% end %>
             </li>
             <li>
               <%= link_to paiements_path, class: "py-3 #{'bg-slate-100 text-primary font-semibold' if controller_name == 'paiements'}" do %>
-                <%= mi_icon 'money-bill-alt', class: "text-xl inline mr-2" %> Paiements
+                <%= embedded_svg "icons/payments.svg", class: "w-5 h-5 inline mr-2" %> Paiements
               <% end %>
             </li>
 
@@ -71,24 +71,24 @@
               <li class="menu-title px-4 py-1 text-xs uppercase font-bold text-slate-400">Admin</li>
               <li>
                 <%= link_to admin_index_path, class: "py-3 #{'bg-slate-100 text-primary font-semibold' if controller_name == 'admin' && action_name != 'dashboard'}" do %>
-                  <%= mi_icon 'users-cog', class: "text-xl inline mr-2" %> Paramètres
+                  <%= embedded_svg "icons/manage_accounts.svg", class: "w-5 h-5 inline mr-2" %> Paramètres
                 <% end %>
               </li>
               <li>
                 <%= link_to admin_dashboard_path, class: "py-3 #{'bg-slate-100 text-primary font-semibold' if controller_name == 'admin' && action_name == 'dashboard'}", data: { turbo: false } do %>
-                  <%= mi_icon 'tachometer-alt', class: "text-xl inline mr-2" %> Statistiques
+                  <%= embedded_svg "icons/speed.svg", class: "w-5 h-5 inline mr-2" %> Statistiques
                 <% end %>
               </li>
               <li>
                 <%= link_to guide_path, class: "py-3 #{'bg-slate-100 text-primary font-semibold' if controller_name == 'pages' && action_name == 'guide'}" do %>
-                  <%= mi_icon 'book-open', class: "text-xl inline mr-2" %> Guide
+                  <%= embedded_svg "icons/menu_book.svg", class: "w-5 h-5 inline mr-2" %> Guide
                 <% end %>
               </li>
             <% end %>
 
             <li class="mt-1 border-t border-slate-200 pt-1">
               <button onclick="logout_modal.showModal()" class="py-3 text-error w-full text-left">
-                <%= mi_icon 'logout', class: "text-xl inline mr-2" %> Se déconnecter
+                <%= embedded_svg "icons/logout.svg", class: "w-5 h-5 inline mr-2" %> Se déconnecter
               </button>
             </li>
           </ul>

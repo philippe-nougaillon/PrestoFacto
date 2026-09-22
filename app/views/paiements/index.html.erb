@@ -1,10 +1,10 @@
 <div class="flex items-center pb-6 mt-6 mb-2">
   <h2 class="font-light inline mb-0 whitespace-nowrap">
-    <%= mi_icon 'money-bill-alt', class: 'text-success' %> 
+    <%= embedded_svg "icons/payments.svg", class: "w-5 h-5 text-success inline align-[-3px]" %> 
     Paiements
   </h2>
   <%= link_to guide_path(anchor: "paiements") do %>
-    <%= mi_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-slate-400 mx-4 text-2xl' %>
+    <%= embedded_svg "icons/help.svg", class: "w-6 h-6 text-slate-400 mx-4 inline", title: "Ouvrir l'aide" %>
   <% end %>
 </div>
 
@@ -73,7 +73,7 @@
   <% if policy(Paiement).to_xls? && !@paiements.size.zero? %>
     <%= link_to url_for(params.permit(:structure_id, :date_début, :date_fin, :mode, :search).merge(format: :xls)),
                 class: "inline-flex items-center sm:float-right text-success no-underline hover:underline" do %>
-      <%= mi_icon "file-excel", class: 'mr-1' %> Export XLS
+      <%= embedded_svg "icons/table_view.svg", class: "w-5 h-5 mr-1 inline" %> Export XLS
     <% end %>
   <% end %>
 </div>

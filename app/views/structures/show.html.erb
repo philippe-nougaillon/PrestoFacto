@@ -43,6 +43,6 @@
 
 <% if policy(@structure).edit? %>
   <%= link_to  edit_structure_path(@structure) do %>
-    <%= mi_icon 'edit', text: ' Éditer' %>
+    <%= embedded_svg "icons/edit.svg", class: "w-5 h-5 inline" %> Éditer
   <% end %>
 <% end %>

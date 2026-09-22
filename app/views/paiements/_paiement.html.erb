@@ -11,14 +11,14 @@
     <td>
         <% if policy(paiement).edit? %>
             <%= link_to edit_paiement_path(paiement), class: 'btn btn-link btn-sm' do %>
-                <%= mi_icon 'edit' %>
+                <%= embedded_svg "icons/edit.svg", class: "w-5 h-5 inline" %>
             <% end %>
         <% end %>
     </td>
     <td>
         <% if policy(paiement).destroy? %>
             <%= button_to paiement, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class: 'btn btn-sm btn-ghost' do %>
-                <%= mi_icon 'trash-alt', class: 'text-error' %>
+                <%= embedded_svg "icons/delete.svg", class: "w-5 h-5 text-error inline" %>
             <% end %>
         <% end %>
     </td>

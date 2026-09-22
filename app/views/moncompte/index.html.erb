@@ -1,16 +1,16 @@
-<div class="card mb-12">
-  <div class="card-title px-6 pt-5">
-    <h2 class="font-light"><%= mi_icon 'user' %> <%= @compte.nom %></h2>
+<div class="card mb-12 border border-slate-200">
+  <div class="card-title px-6 pt-5 border-b border-slate-200">
+    <h2 class="font-light"><%= embedded_svg "icons/person.svg", class: "w-5 h-5 inline align-[-3px]" %> <%= @compte.nom %></h2>
   </div>
 
   <div class="card-body">
     <%= render partial: 'comptes/compte-card' %>
 
-    <div class="card mt-4">
+    <div class="card mt-4 border border-slate-200">
       <div class="card-body">
-        <h3><%= mi_icon 'child', class: 'text-primary' %> Enfants</h3>
+        <h3><%= embedded_svg "icons/accessibility_new.svg", class: "w-5 h-5 text-primary inline align-[-2px]" %> Enfants</h3>
         <div class="overflow-x-auto">
-          <table class="table border border-slate-200 table-sm">
+          <table class="table border border-slate-200 [&_th]:border [&_td]:border table-sm">
             <thead>
               <tr>
                 <th>Nom</th>
@@ -30,20 +30,20 @@
                 <td><%= enfant.prénom %></td>
                 <td><%= l(enfant.date_naissance) if enfant.date_naissance %></td>
                 <td><%= enfant.classroom.nom %></td>
-                <td class="text-center"><%= mi_icon 'check' if enfant.menu_vege %></i></td>
-                <td class="text-center"><%= mi_icon 'check' if enfant.menu_sp %></i></td>
-                <td class="text-center"><%= mi_icon 'check' if enfant.menu_all %></i></td>
+                <td class="text-center"><%= embedded_svg "icons/check.svg", class: "w-5 h-5 inline" if enfant.menu_vege %></i></td>
+                <td class="text-center"><%= embedded_svg "icons/check.svg", class: "w-5 h-5 inline" if enfant.menu_sp %></i></td>
+                <td class="text-center"><%= embedded_svg "icons/check.svg", class: "w-5 h-5 inline" if enfant.menu_all %></i></td>
                 <td>
                   <% if policy(enfant).edit? %>
                     <%= link_to edit_enfant_path(enfant) do %>
-                      <%= mi_icon 'edit' %>
+                      <%= embedded_svg "icons/edit.svg", class: "w-5 h-5 inline" %>
                     <% end %>
                   <% end %>
                 </td>
                 <td>
                   <% if policy(enfant).destroy? %>
                     <%= button_to enfant, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class:'btn btn-sm btn-ghost' do %>
-                        <%= mi_icon 'trash-alt', class: 'text-error' %>
+                        <%= embedded_svg "icons/delete.svg", class: "w-5 h-5 text-error inline" %>
                     <% end %>
                   <% end %>
                 </td>
@@ -56,13 +56,13 @@
     </div>
   
 
-    <div class="card">
+    <div class="card border border-slate-200">
       <div class="card-body">
-        <h3><%= mi_icon 'calendar-alt', class: 'text-warning' %> Réservations</h3>
-        
+        <h3><%= embedded_svg "icons/calendar_month.svg", class: "w-5 h-5 text-warning inline align-[-2px]" %> Réservations</h3>
+
         <% if @compte.reservations.any? %>
           <div class="overflow-x-auto">
-            <table class="table border border-slate-200 table-sm">
+            <table class="table border border-slate-200 [&_th]:border [&_td]:border table-sm">
               <thead>
                 <tr>
                   <th>Structure</th>
@@ -99,19 +99,19 @@
         <% end %>
       </div>
 
-      <div class="card-actions px-6 pb-5">
+      <div class="card-actions px-6 pb-5 border-t border-slate-200 pt-5">
         <button type="button" onclick="myModalTarif.showModal()" class="btn btn-outline btn-primary">
-          <%= mi_icon 'plus-circle', text: ' Ajouter une réservation' %>
+          <%= embedded_svg "icons/add_circle.svg", class: "w-5 h-5 inline" %> Ajouter une réservation
         </button>
       </div>
     </div>
 
-    <div class="card">
+    <div class="card border border-slate-200">
       <div class="card-body">
-        <h3><%= mi_icon 'balance-scale' %> Relevé de compte</h3>
+        <h3><%= embedded_svg "icons/balance.svg", class: "w-5 h-5 inline align-[-3px]" %> Relevé de compte</h3>
 
         <div class="overflow-x-auto">
-          <table class="table border border-slate-200 table-sm">
+          <table class="table border border-slate-200 [&_th]:border [&_td]:border table-sm">
             <thead>
               <tr>
                 <th>Date</th>
@@ -142,10 +142,10 @@
           </table>
         </div>
       </div>
-      <div class="card-actions px-6 pb-5">
+      <div class="card-actions px-6 pb-5 border-t border-slate-200 pt-5">
         <% if policy(Paiement).new? %>
           <%= link_to new_paiement_path, class: 'btn btn-outline btn-primary' do %>
-            <%= mi_icon 'plus-circle', text: ' Effectuer un paiement' %>
+            <%= embedded_svg "icons/add_circle.svg", class: "w-5 h-5 inline" %> Effectuer un paiement
           <% end %>
         <% end %>
       </div>

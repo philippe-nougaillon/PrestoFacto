@@ -1,7 +1,7 @@
 <div class="pb-2 mt-6 mb-2 border-b border-slate-200">
-  <h2 class="font-light inline"><%= mi_icon 'envelope', class: 'text-primary' %> Messages</h2>
+  <h2 class="font-light inline"><%= embedded_svg "icons/mail.svg", class: "w-5 h-5 text-primary inline align-[-3px]" %> Messages</h2>
   <%= link_to guide_path(anchor: "messages") do %>
-    <%= mi_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-slate-500 mx-2' %>
+    <%= embedded_svg "icons/help.svg", class: "w-5 h-5 text-slate-500 mx-2 inline", title: "Ouvrir l'aide" %>
   <% end %>
 </div>
 

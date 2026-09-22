@@ -14,7 +14,7 @@
     <td>
         <% if policy(prestation).edit? %>
             <%= link_to edit_prestation_path(prestation), class: 'btn btn-link btn-sm lh-1' do %>
-                <%= mi_icon 'edit' %>
+                <%= embedded_svg "icons/edit.svg", class: "w-5 h-5 inline" %>
             <% end %>
         <% end %>
     </td>

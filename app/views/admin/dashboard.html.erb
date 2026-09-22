@@ -1,5 +1,5 @@
 <div class="pb-2 my-6 border-b border-slate-200">
-  <h2 class="font-light"><%= mi_icon 'tachometer-alt', class: 'text-primary' %> Stats / Tableau de bord</h2>
+  <h2 class="font-light"><%= embedded_svg "icons/speed.svg", class: "w-5 h-5 text-primary inline align-[-3px]" %> Stats / Tableau de bord</h2>
 </div>
 
 <%# data-turbo="false" : rechargement complet de la page, sinon Turbo ré-exécute le <script> du
@@ -82,7 +82,7 @@
     </ul>
     <% if @organisation.en_dépassement_plan_gratuit? %>
       <p class="text-error">
-        <%= mi_icon 'exclamation-circle', title: "La limite de la formule 'Libre' a été dépassée !" %>
+        <%= embedded_svg "icons/error.svg", class: "w-5 h-5 inline", title: "La limite de la formule 'Libre' a été dépassée !" %>
         Nombre de Factures :
         <span class="float-right">
           <%= number_with_delimiter(@nbr_factures, delimiter: " ") %>

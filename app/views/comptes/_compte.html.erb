@@ -7,14 +7,14 @@
     <td class="text-right"><%= number_to_currency compte.solde %></td>
     <td><% if policy(compte).edit? %>
             <%= link_to edit_compte_path(compte), class:'btn btn-link btn-sm' do %>
-                <%= mi_icon 'edit' %>
+                <%= embedded_svg "icons/edit.svg", class: "w-5 h-5 inline" %>
             <% end %>
         <% end %>
     </td>
     <td>
         <% if policy(compte).destroy? %>
             <%= button_to compte, method: :delete, 'data-turbo-confirm': 'Attention ! Les enfants liés à ce compte seront effacés ! Êtes-vous bien certain.e ???', class: 'btn btn-sm btn-ghost' do %>
-                <%= mi_icon 'trash-alt', class: 'text-error' %>
+                <%= embedded_svg "icons/delete.svg", class: "w-5 h-5 text-error inline" %>
             <% end %>
         <% end %>
     </td>

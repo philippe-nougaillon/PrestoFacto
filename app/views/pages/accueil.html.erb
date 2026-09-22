@@ -5,7 +5,7 @@
     <h3 class="text-lg font-light text-slate-600">Aide les petites organisations dans la gestion et la facturation de leurs prestations (repas, garderie, activités périscolaires, nuitée d'hébergement, colonie de vacances, etc...)</h3>
     <div class="grid gap-2 md:flex md:justify-start mt-12">
       <%= link_to new_user_registration_path, class: 'btn btn-outline btn-primary btn-lg px-6 w-1/2' do %>
-        <%= mi_icon 'user-plus' %>
+        <%= embedded_svg "icons/person_add.svg", class: "w-5 h-5 inline align-[-3px]" %>
         S'inscrire
       <% end %>
     </div>
@@ -109,9 +109,9 @@
       <tbody>
         <tr class="row-hover">
           <td scope="row" class="text-left">Utilisation libre (limitée à 1000 factures)</td>
-          <td><%= mi_icon 'check-circle', class: 'text-primary' %></td>
-          <td><%= mi_icon 'check-circle', class: 'text-primary' %></td>
-          <td><%= mi_icon 'check-circle', class: 'text-primary' %></td>
+          <td><%= embedded_svg "icons/check_circle.svg", class: "w-5 h-5 text-primary inline" %></td>
+          <td><%= embedded_svg "icons/check_circle.svg", class: "w-5 h-5 text-primary inline" %></td>
+          <td><%= embedded_svg "icons/check_circle.svg", class: "w-5 h-5 text-primary inline" %></td>
         </tr>
         <tr class="row-hover">
           <td scope="row" class="text-left">
@@ -119,8 +119,8 @@
             <br> Ex: https://mon-organisation.prestofacto.fr
           </td>
           <td></td>
-          <td><%= mi_icon 'check-circle', class: 'text-primary' %></td>
-          <td><%= mi_icon 'check-circle', class: 'text-primary' %></td>
+          <td><%= embedded_svg "icons/check_circle.svg", class: "w-5 h-5 text-primary inline" %></td>
+          <td><%= embedded_svg "icons/check_circle.svg", class: "w-5 h-5 text-primary inline" %></td>
         </tr>
         <tr class="row-hover">
           <td scope="row" class="text-left">
@@ -129,14 +129,14 @@
             ex: https://prestofacto.votre-domaine.fr
           </td>
           <td></td>
-          <td><%= mi_icon 'check-circle', class: 'text-primary' %></td>
-          <td><%= mi_icon 'check-circle', class: 'text-primary' %></td>
+          <td><%= embedded_svg "icons/check_circle.svg", class: "w-5 h-5 text-primary inline" %></td>
+          <td><%= embedded_svg "icons/check_circle.svg", class: "w-5 h-5 text-primary inline" %></td>
         </tr>
         <tr class="row-hover">
           <td scope="row" class="text-left">Serveur virtuel dédié</td>
           <td></td>
           <td></td>
-          <td><%= mi_icon 'check-circle', class: 'text-primary' %></td>
+          <td><%= embedded_svg "icons/check_circle.svg", class: "w-5 h-5 text-primary inline" %></td>
         </tr>
         <tr class="row-hover">
           <td scope="row" class="text-left">Sauvegarde automatique des données</td>
@@ -164,16 +164,16 @@
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 text-left">
     <div>
-      <div class="card h-full bg-white mb-0 rounded-xl shadow-sm border-success">
-        <div class="card-title px-6 pt-5 py-4 border-success">
+      <div class="card h-full bg-white mb-0 rounded-xl shadow-sm border border-success">
+        <div class="card-title px-6 pt-5 py-4 border-b border-success">
           <h4 class="my-0 font-normal text-center">Libre</h4>
         </div>
         <div class="card-body">
           <h1 class="text-3xl font-bold text-center">Gratuit</h1>
           <ul class="list-none pl-0 mt-4 mb-6">
-            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Utilisation libre (limitée à 1000 factures)</li>
-            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Sauvegarde automatique journalière</li>
-            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Support par email</li>
+            <li><%= embedded_svg "icons/check_box.svg", class: "w-5 h-5 text-slate-800 mr-2 inline" %>Utilisation libre (limitée à 1000 factures)</li>
+            <li><%= embedded_svg "icons/check_box.svg", class: "w-5 h-5 text-slate-800 mr-2 inline" %>Sauvegarde automatique journalière</li>
+            <li><%= embedded_svg "icons/check_box.svg", class: "w-5 h-5 text-slate-800 mr-2 inline" %>Support par email</li>
             <li><br></li>
             <li><br></li>
             <li><br></li>
@@ -183,17 +183,17 @@
       </div>
     </div>
     <div>
-      <div class="card h-full bg-white mb-0 rounded-xl shadow-sm border-primary">
-        <div class="card-title px-6 pt-5 py-4">
+      <div class="card h-full bg-white mb-0 rounded-xl shadow-sm border border-primary">
+        <div class="card-title px-6 pt-5 py-4 border-b border-slate-200">
           <h4 class="my-0 font-normal text-center">Mini</h4>
         </div>
         <div class="card-body">
           <h1 class="text-3xl font-bold text-center">49 €<small class="text-slate-500 font-light" style="font-size: 1rem"> TTC / mois</small></h1>
           <ul class="list-none pl-0 mt-4 mb-6">
-            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Utilisation libre et illimitée</li>
-            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Sauvegarde automatique journalière</li>
-            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Support par email J+1</li>
-            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Accès via sous-domaine perso.</li>
+            <li><%= embedded_svg "icons/check_box.svg", class: "w-5 h-5 text-slate-800 mr-2 inline" %>Utilisation libre et illimitée</li>
+            <li><%= embedded_svg "icons/check_box.svg", class: "w-5 h-5 text-slate-800 mr-2 inline" %>Sauvegarde automatique journalière</li>
+            <li><%= embedded_svg "icons/check_box.svg", class: "w-5 h-5 text-slate-800 mr-2 inline" %>Support par email J+1</li>
+            <li><%= embedded_svg "icons/check_box.svg", class: "w-5 h-5 text-slate-800 mr-2 inline" %>Accès via sous-domaine perso.</li>
             <li><br></li>
             <li><br></li>
           </ul>
@@ -202,19 +202,19 @@
       </div>
     </div>
     <div>
-      <div class="card h-full bg-white mb-0 rounded-xl shadow-sm border-error">
-        <div class="card-title px-6 pt-5 py-4">
+      <div class="card h-full bg-white mb-0 rounded-xl shadow-sm border border-error">
+        <div class="card-title px-6 pt-5 py-4 border-b border-slate-200">
           <h4 class="my-0 font-normal text-center">Premium</h4>
         </div>
         <div class="card-body">
           <h1 class="text-3xl font-bold text-center">99 €<small class="text-slate-500 font-light"> <small style="font-size: 1rem"> TTC / mois</small></small></h1>
           <ul class="list-none pl-0 mt-4 mb-6">
-            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Utilisation libre et illimitée</li>
-            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Sauvegarde continue (24 / 7)</li>
-            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Support par email / téléphonique H+2</li>
-            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Accès par votre nom de domaine</li>
-            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Serveur virtuel dédié</li>
-            <li><%= mi_icon 'check-square', class: 'text-slate-800 mr-2' %>Participez aux évolutions !</li>
+            <li><%= embedded_svg "icons/check_box.svg", class: "w-5 h-5 text-slate-800 mr-2 inline" %>Utilisation libre et illimitée</li>
+            <li><%= embedded_svg "icons/check_box.svg", class: "w-5 h-5 text-slate-800 mr-2 inline" %>Sauvegarde continue (24 / 7)</li>
+            <li><%= embedded_svg "icons/check_box.svg", class: "w-5 h-5 text-slate-800 mr-2 inline" %>Support par email / téléphonique H+2</li>
+            <li><%= embedded_svg "icons/check_box.svg", class: "w-5 h-5 text-slate-800 mr-2 inline" %>Accès par votre nom de domaine</li>
+            <li><%= embedded_svg "icons/check_box.svg", class: "w-5 h-5 text-slate-800 mr-2 inline" %>Serveur virtuel dédié</li>
+            <li><%= embedded_svg "icons/check_box.svg", class: "w-5 h-5 text-slate-800 mr-2 inline" %>Participez aux évolutions !</li>
           </ul>
           <%= link_to "Sur demande", new_message_path(offre: 'Offre premium'), class: 'w-full btn btn-lg btn-outline btn-error' %>
         </div>

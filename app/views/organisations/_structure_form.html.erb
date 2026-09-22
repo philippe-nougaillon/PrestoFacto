@@ -8,7 +8,7 @@
     </div>
     <% unless f.object.classrooms.any? %>
       <div class="flex-1 px-2">
-        <a type="button" data-action="nested-form#remove"><%= mi_icon 'trash-alt', class:"text-error mt-2" %></a>
+        <a type="button" data-action="nested-form#remove"><%= embedded_svg "icons/delete.svg", class: "w-5 h-5 text-error mt-2 inline" %></a>
       </div>
     <% end %>
   </div>

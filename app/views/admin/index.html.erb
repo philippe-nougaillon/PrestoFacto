@@ -1,25 +1,25 @@
 <div class="pb-2 mt-6 mb-6 border-b border-slate-200">
-  <h2 class="font-light inline"><%= mi_icon 'users-cog', class: 'text-success' %> Administration</h2>
+  <h2 class="font-light inline"><%= embedded_svg "icons/manage_accounts.svg", class: "w-5 h-5 text-success inline align-[-3px]" %> Administration</h2>
   <%= link_to guide_path(anchor: "administration") do %>
-    <%= mi_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-slate-500 mx-2' %>
+    <%= embedded_svg "icons/help.svg", class: "w-5 h-5 text-slate-500 mx-2 inline", title: "Ouvrir l'aide" %>
   <% end %>
 </div>
 <br />
 
 <div class="flex flex-wrap -mx-2" style="gap: 2rem;">
   <div class="flex-1 px-2">
-    <ul class="menu bg-white rounded-box border border-slate-200 w-full p-2">
+    <ul class="menu bg-white rounded-box border border-slate-200 divide-y divide-slate-200 w-full p-2">
       <li>
-        <h4 class="font-light my-2">
-          <%= mi_icon 'city', class: "w-full sm:w-2/12 px-2" %> 
+        <h4 class="font-light my-0 items-baseline">
+          <%= embedded_svg "icons/location_city.svg", class: "w-5 h-5 mx-2 inline translate-y-[3px]" %> 
           <%= link_to organisation_url(current_user.organisation), title: "Organisation, Structures, Vacances", class: "text-slate-500 no-underline" do %>Organisation<% end %>
         </h4>
       </li>
 
 
       <li>
-        <h4 class="font-light my-2">
-          <%= mi_icon 'user-friends', class: "w-full sm:w-2/12 px-2" %>
+        <h4 class="font-light my-0 items-baseline">
+          <%= embedded_svg "icons/groups.svg", class: "w-5 h-5 mx-2 inline translate-y-[5px]" %>
           <%= link_to users_admin_index_path, class: "text-slate-500 no-underline" do %>
             Utilisateurs / Portail Parents
           <% end %>
@@ -28,8 +28,8 @@
 
 
       <li>
-        <h4 class="font-light my-2">
-          <%= mi_icon 'euro-sign', class: "w-full sm:w-2/12 px-2"  %>
+        <h4 class="font-light my-0 items-baseline">
+          <%= embedded_svg "icons/euro_symbol.svg", class: "w-5 h-5 mx-2 inline translate-y-[3px]"  %>
           <%= link_to admin_tarifs_url, title: "Tarifs, Types de tarifs et de Prestations", class: "text-slate-500 no-underline" do %>
             Prestations et Tarifs
           <% end %>
@@ -40,35 +40,35 @@
   </div>
 
   <div class="flex-1 px-2">
-    <ul class="menu bg-white rounded-box border border-slate-200 w-full p-2">
+    <ul class="menu bg-white rounded-box border border-slate-200 divide-y divide-slate-200 w-full p-2">
 
       <li>
-        <h4 class="font-light my-2">
-          <%= mi_icon 'calendar-day', class: "w-full sm:w-1/12 px-2" %>
+        <h4 class="font-light my-0 items-baseline">
+          <%= embedded_svg "icons/today.svg", class: "w-5 h-5 mx-2 inline translate-y-[2px]" %>
           <%= link_to 'Comptabilisation prestations', admin_ajout_prestations_path, class: "text-slate-500 no-underline" %>
         </h4>
       </li>
 
 
       <li>
-        <h4 class="font-light my-2">
-          <%= mi_icon 'calendar-day', class: "w-full sm:w-1/12 px-2" %>
+        <h4 class="font-light my-0 items-baseline">
+          <%= embedded_svg "icons/today.svg", class: "w-5 h-5 mx-2 inline translate-y-[2px]" %>
           <%= link_to 'Facturation prestations', admin_ajout_factures_path, class: "text-slate-500 no-underline" %>
         </h4>
       </li>
 
 
       <li>
-        <h4 class="font-light my-2">
-          <%= mi_icon 'paper-plane', class: "w-full sm:w-1/12 px-2" %>
+        <h4 class="font-light my-0 items-baseline">
+          <%= embedded_svg "icons/send.svg", class: "w-5 h-5 mx-2 inline translate-y-[3px]" %>
           <%= link_to 'Envoyer les factures', admin_envoyer_factures_path, class: "text-slate-500 no-underline" %>
         </h4>
       </li>
 
 
       <li>
-        <h4 class="font-light my-2">
-          <%= mi_icon 'envelope', class: "w-full sm:w-1/12 px-2" %>
+        <h4 class="font-light my-0 items-baseline">
+          <%= embedded_svg "icons/mail.svg", class: "w-5 h-5 mx-2 inline translate-y-[3px]" %>
           <%= link_to 'Messages (contestations)', messages_path, class: "text-slate-500 no-underline", title:"Journal d'activité des envois de courriels" %>
           <% if @unread_messages > 0 %>
             <span class="badge badge-error text-white rounded-full ml-2"style="font-weight: 900"><%= @unread_messages %></span>
@@ -78,8 +78,8 @@
 
 
       <li>
-        <h4 class="font-light my-2">
-          <%= mi_icon 'mail-bulk', class: "w-full sm:w-1/12 px-2" %>
+        <h4 class="font-light my-0 items-baseline">
+          <%= embedded_svg "icons/forward_to_inbox.svg", class: "w-5 h-5 mx-2 inline translate-y-[1px]" %>
           <%= link_to 'Mail Logs', mail_logs_path, class: "text-slate-500 no-underline", title:"Journal d'activité des envois de courriels" %>
         </h4>
       </li>
@@ -88,27 +88,27 @@
   </div>
 
   <div class="flex-1 px-2">
-    <ul class="menu bg-white rounded-box border border-slate-200 w-full p-2">
+    <ul class="menu bg-white rounded-box border border-slate-200 divide-y divide-slate-200 w-full p-2">
 
       <li>
-        <h4 class="font-light my-2">
-          <%= mi_icon 'search', class: "w-full sm:w-2/12 px-2" %>
+        <h4 class="font-light my-0 items-baseline">
+          <%= embedded_svg "icons/search.svg", class: "w-5 h-5 mx-2 inline translate-y-[3px]" %>
           <%= link_to 'Audit des modifications', admin_audit_path, class: "text-slate-500 no-underline" %>
         </h4>
       </li>
 
 
       <li>
-        <h4 class="font-light my-2">
-          <%= mi_icon 'file-import', class: "w-full sm:w-2/12 px-2" %>
+        <h4 class="font-light my-0 items-baseline">
+          <%= embedded_svg "icons/upload_file.svg", class: "w-5 h-5 mx-2 inline translate-y-[2px]" %>
           <%= link_to 'Importer', admin_import_path, class: "text-slate-500 no-underline" %>
         </h4>
       </li>
 
 
       <li>
-        <h4 class="font-light my-2">
-          <%= mi_icon 'comment-dots', class: "w-full sm:w-2/12 px-2" %>
+        <h4 class="font-light my-0 items-baseline">
+          <%= embedded_svg "icons/chat.svg", class: "w-5 h-5 mx-2 inline translate-y-[2px]" %>
           <%= link_to 'Messages de factures', facture_messages_path, title: "Afficher en bas de vos factures et dans l'e-mail d'accompagnement" ,class: "text-slate-500 no-underline" %>
         </h4>
       </li>
@@ -116,8 +116,8 @@
       <li class="menu-title text-error text-center font-bold">Zone dangereuse</li>
 
       <li>
-        <h4 class="font-light my-2">
-          <%= mi_icon 'skull-crossbones', class: "w-full sm:w-2/12 px-2" %>
+        <h4 class="font-light my-0 items-baseline">
+          <%= embedded_svg "icons/skull.svg", class: "w-5 h-5 mx-2 inline translate-y-[2px]" %>
           <%= link_to "Supprimer organisation", suppression_organisation_organisation_path(current_user.organisation), class: "text-slate-500 no-underline" %>
         </h4>
       </li>

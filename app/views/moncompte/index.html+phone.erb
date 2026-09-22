@@ -1,11 +1,11 @@
 <div class="container mx-auto">
   <div class="flex flex-wrap -mx-2 mb-4 gap-3">
-    <div class="flex-1 px-2 pf-btn border border-slate-200 border-primary rounded-lg gap-3 shadow-sm p-2">
+    <div class="flex-1 px-2 pf-btn border border-primary rounded-lg gap-3 shadow-sm p-2">
       <%= link_to moncompte_enfants_path, data: { turbo_frame: "main_frame" }, class:'no-underline text-slate-500' do %>
         <div class="flex-1 px-2 container mx-auto gap-2">
           <div class="flex flex-wrap -mx-2">
             <div class="flex-1 px-2 px-0 text-center">
-              <%= mi_icon 'child', class: 'text-primary', size: '2x' %>
+              <%= embedded_svg "icons/accessibility_new.svg", class: "w-8 h-8 text-primary inline" %>
             </div>
             <div class="w-9/12 px-2 px-0 my-auto">
               <p class="mb-0"><%= "Enfant".pluralize(@enfants_count) %> (<%= @enfants_count %>)</p>
@@ -14,12 +14,12 @@
         </div>
       <% end %>
     </div>
-    <div class="flex-1 px-2 pf-btn border border-slate-200 border-success rounded-lg gap-3 shadow-sm p-2">
+    <div class="flex-1 px-2 pf-btn border border-success rounded-lg gap-3 shadow-sm p-2">
       <%= link_to moncompte_contacts_path, data: { turbo_frame: "main_frame" }, class:'no-underline text-slate-500' do %>
         <div class="flex-1 px-2 container mx-auto gap-2">
           <div class="flex flex-wrap -mx-2">
             <div class="flex-1 px-2 px-0 text-center">
-              <%= mi_icon 'phone', class: 'text-success', size: '2x' %>
+              <%= embedded_svg "icons/call.svg", class: "w-8 h-8 text-success inline" %>
             </div>
             <div class="w-9/12 px-2 px-0 my-auto">
               <p class="mb-0 flex-1"><%= "Contact".pluralize(@contacts_count) %> (<%= @contacts_count %>)</p>
@@ -30,12 +30,12 @@
     </div>
   </div>
   <div class="flex flex-wrap -mx-2 mb-4 gap-3">
-    <div class="flex-1 px-2 pf-btn border border-slate-200 border-warning rounded-lg gap-3 shadow-sm p-2">
+    <div class="flex-1 px-2 pf-btn border border-warning rounded-lg gap-3 shadow-sm p-2">
       <%= link_to moncompte_reservations_path, data: { turbo_frame: "main_frame" }, class:'no-underline text-slate-500' do %>
         <div class="flex-1 px-2 container mx-auto gap-2">
           <div class="flex flex-wrap -mx-2">
             <div class="flex-1 px-2 px-0 text-center">
-              <%= mi_icon 'calendar-alt', class: 'text-warning', size: '2x' %>
+              <%= embedded_svg "icons/calendar_month.svg", class: "w-8 h-8 text-warning inline" %>
             </div>
             <div class="w-9/12 px-2 px-0 my-auto">
               <p class="mb-0">Réservations</p>
@@ -44,12 +44,12 @@
         </div>
       <% end %>
     </div>
-    <div class="flex-1 px-2 pf-btn border border-slate-200 border-error rounded-lg gap-3 shadow-sm p-2">
+    <div class="flex-1 px-2 pf-btn border border-error rounded-lg gap-3 shadow-sm p-2">
       <div class="flex-1 px-2 container mx-auto gap-2">
         <%= link_to moncompte_absences_path, data: { turbo_frame: "main_frame" }, class:'no-underline text-slate-500' do %>
           <div class="flex flex-wrap -mx-2">
             <div class="flex-1 px-2 px-0 text-center">
-              <%= mi_icon 'calendar-times', class: 'text-error', size: '2x' %>
+              <%= embedded_svg "icons/event_busy.svg", class: "w-8 h-8 text-error inline" %>
             </div>
             <div class="w-9/12 px-2 px-0 my-auto">
               <p class="mb-0"><%= "Absence".pluralize(@absences_count) %> (<%= @absences_count %>)</p>
@@ -60,12 +60,12 @@
     </div>
   </div>
   <div class="flex flex-wrap -mx-2 mb-4 gap-3">
-    <div class="flex-1 px-2 pf-btn border border-slate-200 border-info rounded-lg gap-3 shadow-sm p-2">
+    <div class="flex-1 px-2 pf-btn border border-info rounded-lg gap-3 shadow-sm p-2">
       <div class="flex-1 px-2 container mx-auto gap-2">
         <%= link_to moncompte_factures_path, data: { turbo_frame: "main_frame" }, class:'no-underline text-slate-500' do %>
           <div class="flex flex-wrap -mx-2">
             <div class="flex-1 px-2 px-0 text-center">
-              <%= mi_icon 'file-invoice', class: 'text-info', size: '2x' %>
+              <%= embedded_svg "icons/description.svg", class: "w-8 h-8 text-info inline" %>
             </div>
             <div class="w-9/12 px-2 px-0 my-auto">
               <p class="mb-0"><%= "Facture".pluralize(@factures_count) %> (<%= @factures_count %>)</p>
@@ -79,7 +79,7 @@
         <%= link_to moncompte_releve_compte_path, data: { turbo_frame: "main_frame" }, class:'no-underline text-slate-500' do %>
           <div class="flex flex-wrap -mx-2">
             <div class="flex-1 px-2 px-0 text-center">
-              <%= mi_icon 'euro-sign', class:'text-slate-500', size: '2x' %>
+              <%= embedded_svg "icons/euro_symbol.svg", class: "w-8 h-8 text-slate-500 inline" %>
             </div>
             <div class="w-9/12 px-2 px-0 my-auto">
               <p class="mb-0">

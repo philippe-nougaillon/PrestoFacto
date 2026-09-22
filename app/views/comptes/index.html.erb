@@ -1,13 +1,13 @@
 <div class="pb-6 mt-6 mb-2">
   <% if policy(Compte).new? %>
     <%= link_to new_compte_path, class: 'btn btn-outline btn-primary float-right' do %>
-      <%= mi_icon 'plus-circle' %> Ajouter un Compte
+      <%= embedded_svg "icons/add_circle.svg", class: "w-5 h-5 inline" %> Ajouter un Compte
     <% end %>
   <% end %>
   <div class="flex items-center">
-    <h2 class="font-light inline mb-0 whitespace-nowrap"><%= mi_icon 'users' %> Comptes</h2>
+    <h2 class="font-light inline mb-0 whitespace-nowrap"><%= embedded_svg "icons/groups.svg", class: "w-5 h-5 inline align-[-5px]" %> Comptes</h2>
     <%= link_to guide_path(anchor: "ajout_famille") do %>
-      <%= mi_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-slate-400 mx-4 text-2xl mb-1' %>
+      <%= embedded_svg "icons/help.svg", class: "w-6 h-6 text-slate-400 mx-4 mb-1 inline", title: "Ouvrir l'aide" %>
     <% end %>
   </div>
 </div>
@@ -51,7 +51,7 @@
   <% if policy(Compte).to_xls? && !@comptes.size.zero? %>
     <%= link_to url_for(params.permit(:search).merge(format: :xls)),
                 class: "inline-flex items-center sm:float-right text-success no-underline hover:underline" do %>
-        <%= mi_icon "file-excel", class: 'mr-1' %> Export XLS
+        <%= embedded_svg "icons/table_view.svg", class: "w-5 h-5 mr-1 inline" %> Export XLS
     <% end %>
   <% end %>
 </div>

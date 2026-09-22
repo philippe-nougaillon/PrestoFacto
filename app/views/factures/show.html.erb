@@ -1,7 +1,7 @@
-<div class="card my-4">
-  <div class="card-title px-6 pt-5">
+<div class="card my-4 border border-slate-200">
+  <div class="card-title px-6 pt-5 border-b border-slate-200">
     <h4 class="p-2">  
-      <%= mi_icon 'file-invoice', class: 'text-info' %> Facture #<%= @facture.réf %> | <%= @facture.compte.nom %>
+      <%= embedded_svg "icons/description.svg", class: "w-5 h-5 text-info inline align-[-2px]" %> Facture #<%= @facture.réf %> | <%= @facture.compte.nom %>
     </h4>
   </div>
   <div class="card-body">
@@ -24,7 +24,7 @@
 
         <p>
           <strong>Vérifiée:</strong>
-          <%= mi_icon 'check' if @facture.vérifiée %></i>
+          <%= embedded_svg "icons/check.svg", class: "w-5 h-5 inline" if @facture.vérifiée %></i>
         </p>
       </div>
 
@@ -40,18 +40,18 @@
     </div>
   </div>
 
-  <div class="card-actions px-6 pb-5 flex">
+  <div class="card-actions px-6 pb-5 flex border-t border-slate-200 pt-5">
     <%= link_to edit_facture_path(@facture), class: "btn btn-ghost" do %>
-      <%= mi_icon 'edit', text: ' Éditer' %>
+      <%= embedded_svg "icons/edit.svg", class: "w-5 h-5 inline" %> Éditer
     <% end %>
     <% if policy(@facture).show? %>
         <%= link_to facture_url(@facture, format: :pdf), target: '_blank', class: "btn btn-ghost" do %>
-            <%= mi_icon 'file-pdf', class: 'text-error' %> Afficher le PDF
+            <%= embedded_svg "icons/picture_as_pdf.svg", class: "w-5 h-5 text-error inline" %> Afficher le PDF
         <% end %>
     <% end %>
     <% if policy(@facture).destroy? %>
       <%= button_to @facture, method: :delete, 'data-turbo-confirm': 'Êtes-vous bien certain.e ???', class: 'btn btn-outline btn-error' do %>
-        <%= mi_icon 'trash-alt' %>
+        <%= embedded_svg "icons/delete.svg", class: "w-5 h-5 inline" %>
       <% end %>
     <% end %>
   </div>
@@ -59,7 +59,7 @@
 <br>
 
 <div class="overflow-x-auto">
-  <table class="table table-zebra border border-slate-200">
+  <table class="table table-zebra border border-slate-200 [&_th]:border [&_td]:border">
     <thead>
       <tr>
         <th>Intitulé</th>

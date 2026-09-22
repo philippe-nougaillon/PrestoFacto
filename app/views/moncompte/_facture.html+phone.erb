@@ -4,7 +4,7 @@
     <div class="w-4/12 px-2 text-right"><%= number_to_currency(facture.montant, unit: '€', precision: 2, format: '%n %u') %></div>
     <div class="w-2/12 px-2 text-right">
       <%= link_to facture_url(facture, format: :pdf), target: '_blank', title: "Voir la facture en PDF", class: 'btn btn-sm btn-ghost' do %>
-        <%= mi_icon 'file-pdf', class: 'text-3xl text-error' %>
+        <%= embedded_svg "icons/picture_as_pdf.svg", class: "w-7.5 h-7.5 text-error inline" %>
       <% end %>
     </div>
   </div>

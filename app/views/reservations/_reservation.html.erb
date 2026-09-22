@@ -12,20 +12,20 @@
 
     <td class="text-center">
         <% if reservation.enfant.menu_all %>
-            <%= mi_icon 'exclamation' %>
+            <%= embedded_svg "icons/priority_high.svg", class: "w-5 h-5 inline" %>
             <%= reservation.enfant.allergenes %>
             <% @total_alg += 1 %>
         <% end %>
     </td>
     <td class="text-center">
         <% if reservation.enfant.menu_vege %>
-            <%= mi_icon 'exclamation' %>
+            <%= embedded_svg "icons/priority_high.svg", class: "w-5 h-5 inline" %>
             <% @total_vege += 1 %>
         <% end %>
     </td>
     <td class="text-center">
         <% if reservation.enfant.menu_sp %>
-            <%= mi_icon 'exclamation' %>
+            <%= embedded_svg "icons/priority_high.svg", class: "w-5 h-5 inline" %>
             <% @total_sp += 1 %>
         <% end %>
     </td>
@@ -49,8 +49,8 @@
     <td class="text-center"><%= number_with_precision(reservation.samedi, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.samedi > 0 %></td>
     <td class="text-center"><%= number_with_precision(reservation.dimanche, locale: :fr, precision: 2, significant: true, strip_insignificant_zeros: true) if reservation.dimanche > 0 %></td>
     
-    <td class="text-center"><%= mi_icon 'check' if reservation.matin %></td>
-    <td class="text-center"><%= mi_icon 'check' if reservation.midi %></td>
-    <td class="text-center"><%= mi_icon 'check' if reservation.soir %></td>
-    <td class="text-center"><%= mi_icon 'umbrella-beach' if reservation.hors_période_scolaire %></td>
+    <td class="text-center"><%= embedded_svg "icons/check.svg", class: "w-5 h-5 inline" if reservation.matin %></td>
+    <td class="text-center"><%= embedded_svg "icons/check.svg", class: "w-5 h-5 inline" if reservation.midi %></td>
+    <td class="text-center"><%= embedded_svg "icons/check.svg", class: "w-5 h-5 inline" if reservation.soir %></td>
+    <td class="text-center"><%= embedded_svg "icons/beach_access.svg", class: "w-5 h-5 inline" if reservation.hors_période_scolaire %></td>
 </tr>

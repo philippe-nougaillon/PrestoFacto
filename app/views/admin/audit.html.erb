@@ -1,5 +1,5 @@
 <div class="pb-2 mt-6 mb-2 border-b border-slate-200">
-  <h2 class="font-light"><%= mi_icon 'search' %> Audit des modifications</h2>
+  <h2 class="font-light"><%= embedded_svg "icons/search.svg", class: "w-5 h-5 inline align-[-3px]" %> Audit des modifications</h2>
 </div>
 
 <%= form_with url: admin_audit_path, method: :get do |f| %>
@@ -26,7 +26,7 @@
 <% end %>
 
 <div class="overflow-x-auto">
-  <table class="table border border-slate-200 table-sm">
+  <table class="table border border-slate-200 [&_th]:border [&_td]:border table-sm">
       <thead>
           <tr>
               <th>Date</th>

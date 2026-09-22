@@ -1,5 +1,5 @@
 <div class="pb-2 mt-6 mb-2 border-b border-slate-200">
-  <h2 class="font-light"><%= mi_icon 'balance-scale' %> Balance</h2>
+  <h2 class="font-light"><%= embedded_svg "icons/balance.svg", class: "w-5 h-5 inline align-[-3px]" %> Balance</h2>
 </div>
 
 <p>
@@ -7,7 +7,7 @@
 	Solde à ce jour: <%= number_to_currency(@solde, unit:'€') %>
 </p>
 <div class="overflow-x-auto">
-	<table class="table table-zebra border border-slate-200">
+	<table class="table table-zebra border border-slate-200 [&_th]:border [&_td]:border">
 
 		<thead>
 			<th>Date</th>

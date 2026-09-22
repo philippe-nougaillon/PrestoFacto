@@ -31,7 +31,7 @@
     
     <% if policy(@compte).edit? %>
       <%= link_to edit_compte_path(@compte), class: "btn btn-outline btn-primary" do %>
-        <%= mi_icon 'edit', text: ' Éditer compte' %>
+        <%= embedded_svg "icons/edit.svg", class: "w-5 h-5 inline" %> Éditer compte
       <% end %>
     <% end %>
 
@@ -39,7 +39,7 @@
 
   <div class="flex-1 px-2">
 
-    <div class="card">
+    <div class="card border border-slate-200">
       <div class="card-body">
         <strong>Contacts</strong>
         <div class="overflow-x-auto">
@@ -57,7 +57,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card border border-slate-200">
       <div class="card-body flex flex-row flex-wrap items-center gap-3">
         <div>
           <strong>Factures : </strong>
@@ -78,11 +78,11 @@
       </div>
 
       <% unless current_user.visiteur? %>
-        <div class="card-actions px-6 pb-5 flex justify-between">
+        <div class="card-actions px-6 pb-5 flex justify-between border-t border-slate-200 pt-5">
           <% if policy(Facture).new? %>
             <div>
               <%= link_to admin_ajout_factures_path(compte_id: @compte.id), class: "btn btn-sm btn-ghost", title: 'Lance la facturation des prestations sur une période' do %>
-                <%= mi_icon 'file-invoice', class: 'text-info mr-1' %> Facturer
+                <%= embedded_svg "icons/description.svg", class: "w-5 h-5 text-info mr-1 inline" %> Facturer
               <% end %>
             </div>
           <% end %>
@@ -90,7 +90,7 @@
           <% if policy(Facture).new? %>
             <div>
               <%= link_to new_facture_path(compte_id: @compte.id), class: "btn btn-sm btn-ghost", title: 'Créer une nouvelle facture manuelle' do %>
-                <%= mi_icon 'file-invoice', class: 'text-info mr-1' %> Nouvelle facture spéciale
+                <%= embedded_svg "icons/description.svg", class: "w-5 h-5 text-info mr-1 inline" %> Nouvelle facture spéciale
               <% end %>
             </div>
           <% end %>
@@ -98,7 +98,7 @@
           <% if policy(Paiement).new? %>
             <div>
               <button type="button" onclick="myModalNewPaiement.showModal()" class="btn btn-sm btn-ghost">
-                <%= mi_icon 'money-bill-alt', class: 'text-success' %> Ajouter un paiement
+                <%= embedded_svg "icons/payments.svg", class: "w-5 h-5 text-success inline" %> Ajouter un paiement
               </button>
             </div>
           <% end %>
@@ -106,7 +106,7 @@
           <% if policy(@compte).balance? %>
             <div>
               <%= link_to compte_balance_path(@compte), class: "btn btn-sm btn-ghost" do %>
-                <%= mi_icon 'balance-scale', class: 'mr-1' %> Balance
+                <%= embedded_svg "icons/balance.svg", class: "w-5 h-5 mr-1 inline" %> Balance
               <% end %>
             </div>
           <% end %>

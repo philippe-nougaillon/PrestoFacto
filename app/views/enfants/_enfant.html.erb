@@ -10,15 +10,15 @@
     <td><%= enfant.nom %></td>
     <td><%= link_to enfant.prénom, enfant %></td>
     <td><%= l(enfant.date_naissance) if enfant.date_naissance %></td>
-    <td class="text-center"><%= mi_icon 'exclamation' if enfant.menu_all %> <%= enfant.allergenes %></td>
-    <td class="text-center"><%= mi_icon 'exclamation' if enfant.menu_vege %></td>
-    <td class="text-center"><%= mi_icon 'exclamation' if enfant.menu_sp %></td>
+    <td class="text-center"><%= embedded_svg "icons/priority_high.svg", class: "w-5 h-5 inline" if enfant.menu_all %> <%= enfant.allergenes %></td>
+    <td class="text-center"><%= embedded_svg "icons/priority_high.svg", class: "w-5 h-5 inline" if enfant.menu_vege %></td>
+    <td class="text-center"><%= embedded_svg "icons/priority_high.svg", class: "w-5 h-5 inline" if enfant.menu_sp %></td>
     <td><%= truncate(enfant.mémo, length: 10) %></td>
     <td><%= enfant.reservations.actives.joins(:prestation_type).pluck("prestation_types.nom").join(', ') %></td>
     <td>
         <% if policy(enfant).edit? %>
             <%= link_to edit_enfant_path(enfant), class: 'btn btn-link btn-sm' do %>
-                <%= mi_icon 'edit' %>
+                <%= embedded_svg "icons/edit.svg", class: "w-5 h-5 inline" %>
             <% end %>
         <% end %>
     </td>

@@ -62,7 +62,7 @@
 
   <div class="flex flex-wrap -mx-2">
     <div class="w-full sm:w-5/12 px-2">
-      <h3><%= mi_icon 'school' %> Structures</h3>
+      <h3><%= embedded_svg "icons/school.svg", class: "w-5 h-5 inline align-[-2px]" %> Structures</h3>
 
       <div data-controller="nested-form" data-nested-form-wrapper-selector-value=".nested-form-wrapper" >
         <template data-nested-form-target="template">
@@ -78,12 +78,12 @@
         <!-- Inserted elements will be injected before that target. -->
         <div data-nested-form-target="target"></div>
 
-        <button class="btn btn-outline btn-primary" type="button" data-action="nested-form#add"><%= mi_icon 'plus-circle' %> Ajouter une structure</button>
+        <button class="btn btn-outline btn-primary" type="button" data-action="nested-form#add"><%= embedded_svg "icons/add_circle.svg", class: "w-5 h-5 inline" %> Ajouter une structure</button>
       </div>
     </div>
     
     <div class="flex-1 px-2">
-      <h3><%= mi_icon 'umbrella-beach' %> Vacances spécifiques à votre organisation</h3>
+      <h3><%= embedded_svg "icons/beach_access.svg", class: "w-5 h-5 inline align-[-3px]" %> Vacances spécifiques à votre organisation</h3>
 
       <div data-controller="nested-form" data-nested-form-wrapper-selector-value=".nested-form-wrapper" >
         <template data-nested-form-target="template">
@@ -99,7 +99,7 @@
         <!-- Inserted elements will be injected before that target. -->
         <div data-nested-form-target="target"></div>
 
-        <button class="btn btn-outline btn-primary" type="button" data-action="nested-form#add"><%= mi_icon 'plus-circle' %> Ajouter des vacances</button>
+        <button class="btn btn-outline btn-primary" type="button" data-action="nested-form#add"><%= embedded_svg "icons/add_circle.svg", class: "w-5 h-5 inline" %> Ajouter des vacances</button>
       </div>
     </div>
   </div>

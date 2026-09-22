@@ -1,13 +1,13 @@
 <div class="flex items-center pb-6 mt-6 mb-2">
   <h2 class="font-light inline mb-0 whitespace-nowrap">
-    <%= mi_icon 'calendar-times', class: 'text-error' %> 
+    <%= embedded_svg "icons/event_busy.svg", class: "w-5 h-5 text-error inline align-[-2px]" %> 
     Absences 
     <% unless params[:date].blank? || params[:date] == 'full' %>
       du <%= l params[:date].to_date %>
     <% end %>
   </h2>
   <%= link_to guide_path(anchor: "absences") do %>
-    <%= mi_icon 'question-circle', type: :regular, title: "Ouvrir l'aide", class: 'text-slate-400 mx-4 text-2xl' %>
+    <%= embedded_svg "icons/help.svg", class: "w-6 h-6 text-slate-400 mx-4 inline", title: "Ouvrir l'aide" %>
   <% end %>
 </div>
 

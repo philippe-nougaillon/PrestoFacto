@@ -4,20 +4,20 @@
     <td><%= link_to absence.enfant.nom_et_prénom, absence.enfant %></td>
     <td><%= l absence.début %></td>
     <td><%= l absence.fin %></td>
-    <td class="text-center"><%= mi_icon 'check' if absence.matin %></i></td>
-    <td class="text-center"><%= mi_icon 'check' if absence.midi %></i></td>
-    <td class="text-center"><%= mi_icon 'check' if absence.soir %></i></td>
+    <td class="text-center"><%= embedded_svg "icons/check.svg", class: "w-5 h-5 inline" if absence.matin %></i></td>
+    <td class="text-center"><%= embedded_svg "icons/check.svg", class: "w-5 h-5 inline" if absence.midi %></i></td>
+    <td class="text-center"><%= embedded_svg "icons/check.svg", class: "w-5 h-5 inline" if absence.soir %></i></td>
     <td>
         <% if policy(absence).edit? %>
             <%= link_to edit_absence_path(absence), class: 'btn btn-link btn-sm' do %>
-                <%= mi_icon 'edit' %>
+                <%= embedded_svg "icons/edit.svg", class: "w-5 h-5 inline" %>
             <% end %>
         <% end %>
     </td>
     <td>
         <% if policy(absence).destroy? %>
             <%= button_to absence, method: :delete, 'data-turbo-confirm':  'Êtes-vous bien certain.e ???', class:'btn btn-sm btn-ghost' do %>
-                <%= mi_icon 'trash-alt', class: 'text-error' %>
+                <%= embedded_svg "icons/delete.svg", class: "w-5 h-5 text-error inline" %>
             <% end %>
         <% end %>
     </td>
