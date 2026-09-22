@@ -137,7 +137,7 @@ class MessagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def message_params
-      params.require(:message).permit(:email, :objet, :contenu, :organisation_id, :facture_slug)
+      params.expect(message: [:email, :objet, :contenu, :organisation_id, :facture_slug])
     end
 
     def is_user_authorized
