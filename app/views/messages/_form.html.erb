@@ -14,7 +14,7 @@
     <%= form.hidden_field :facture_slug %>
     <%= form.hidden_field :organisation_id %>
 
-    <% unless params[:facture_slug] %>
+    <% unless @facture %>
       <%= form.email_field :email, placeholder: 'Votre adresse e-mail', required: true %>
       <%= form.select :objet, options_for_select(['Question', 'Offre standard', 'Offre premium', 'Remarque', "Proposition d'amélioration", 'Résiliation', 'Autre'], @offre), prompt: 'Choisir un objet', required: true %>
     <% else %>

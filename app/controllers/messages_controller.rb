@@ -36,11 +36,11 @@ class MessagesController < ApplicationController
 
     @message = Message.new
     @offre = params[:offre]
-    if params[:facture_slug]
-      @facture = Facture.find_by(slug: params[:facture_slug])
+    @facture = Facture.find_by(slug: params[:facture_slug]) if params[:facture_slug].is_a?(String)
+    if @facture
       @message.organisation_id = @facture.organisation.id
       @message.email = params[:email]
-      @message.facture_slug = params[:facture_slug]
+      @message.facture_slug = @facture.slug
     end
   end
 
