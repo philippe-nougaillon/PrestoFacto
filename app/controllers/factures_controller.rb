@@ -173,6 +173,7 @@ class FacturesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_facture
       @facture = Facture.find_by(slug: params[:id])
+      redirect_to root_url, alert: 'Oups! Cette facture est introuvable...' unless @facture
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
